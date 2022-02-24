@@ -6,9 +6,6 @@
   ],
   "version": "independent",
   "useWorkspaces": true,
-  "publishConfig": {
-    "access": "public"
-  },
   "command": {
     "version": {
       "message": "ci: publish"
