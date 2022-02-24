@@ -8,7 +8,7 @@
   "useWorkspaces": true,
   "command": {
     "version": {
-      "message": "ci: publish %s"
+      "message": "ci: publish"
     },
     "publish": {
       "conventionalCommits": true
