@@ -4,6 +4,9 @@
   "version": "0.1.0",
   "license": "MIT",
   "private": "false",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -30,6 +33,5 @@
   "dependencies": {
     "bech32": "^2.0.0",
     "crypto-addr-codec": "^0.1.7"
-  },
-  "gitHead": "0df4d6938679b5d33ebe981f8431cec0d7ec71cb"
+  }
 }
