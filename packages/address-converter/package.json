@@ -1,7 +1,7 @@
 {
   "name": "@evmos/address-converter",
   "description": "Address converter, convert ETH address to Ethermint/evmos address.",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "license": "MIT",
   "private": "false",
   "main": "dist/index.js",
