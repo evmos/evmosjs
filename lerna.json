@@ -1,0 +1,17 @@
+{
+  "npmClient": "yarn",
+  "name": "evmosjs",
+  "packages": [
+    "packages/*"
+  ],
+  "version": "independent",
+  "useWorkspaces": true,
+  "command": {
+    "version": {
+      "message": "ci: publish %s"
+    },
+    "publish": {
+      "conventionalCommits": true
+    }
+  }
+}
