@@ -4,7 +4,8 @@
     "baseUrl": ".",
     "paths": {
       "@tharsis/address-converter": [
-        "./packages/address-converter"
+        "./packages/address-converter",
+        "./packages/eip712"
       ]
     }
   }
