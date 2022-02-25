@@ -36,7 +36,7 @@ export function createSignerInfo(
   algo: string,
   publicKey: Uint8Array,
   sequence: number,
-  mode: number = signing.cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_DIRECT,
+  mode: number,
 ) {
   let pubkey: MessageGenerated
 
@@ -106,7 +106,7 @@ export function createTransaction(
   sequence: number,
   accountNumber: number,
   chainId: string,
-  mode: number = signing.cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_DIRECT,
+  mode: number,
 ) {
   const body = createBody(message, memo)
   const feeMessage = createFee(fee, denom, gasLimit)
@@ -127,6 +127,7 @@ export function createTransaction(
     chainId,
     accountNumber,
   )
+
   const hash = new Keccak(256)
   hash.update(Buffer.from(signDoc.serializeBinary()))
   const toSign = hash.digest('binary')
