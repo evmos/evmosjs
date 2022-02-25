@@ -7,6 +7,11 @@ import * as secp from '../proto/cosmos/crypto/secp256k1/keys'
 
 import { createAnyMessage, MessageGenerated } from '../messages/utils'
 
+export const SIGN_DIRECT =
+  signing.cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_DIRECT
+export const LEGACY_AMINO =
+  signing.cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_LEGACY_AMINO_JSON
+
 export function createBody(message: any, memo: string) {
   const msg = new tx.cosmos.tx.v1beta1.TxBody({
     messages: [createAnyMessage(message)],
@@ -31,6 +36,7 @@ export function createSignerInfo(
   algo: string,
   publicKey: Uint8Array,
   sequence: number,
+  mode: number = signing.cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_DIRECT,
 ) {
   let pubkey: MessageGenerated
 
@@ -56,7 +62,7 @@ export function createSignerInfo(
     public_key: createAnyMessage(pubkey),
     mode_info: new tx.cosmos.tx.v1beta1.ModeInfo({
       single: new tx.cosmos.tx.v1beta1.ModeInfo.Single({
-        mode: signing.cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_DIRECT,
+        mode,
       }),
     }),
     sequence,
@@ -100,6 +106,7 @@ export function createTransaction(
   sequence: number,
   accountNumber: number,
   chainId: string,
+  mode: number = signing.cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_DIRECT,
 ) {
   const body = createBody(message, memo)
   const feeMessage = createFee(fee, denom, gasLimit)
@@ -109,6 +116,7 @@ export function createTransaction(
     algo,
     new Uint8Array(pubKeyDecoded),
     sequence,
+    mode,
   )
 
   const authInfo = createAuthInfo(signInfo, feeMessage)
