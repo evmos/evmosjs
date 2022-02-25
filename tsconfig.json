@@ -5,7 +5,8 @@
     "paths": {
       "@tharsis/address-converter": [
         "./packages/address-converter",
-        "./packages/eip712"
+        "./packages/eip712",
+        "./packages/provider"
       ]
     }
   }
