@@ -1,7 +1,7 @@
 {
   "name": "@tharsis/provider",
   "description": "Simple provider to query the EVMOS rest api.",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license": "MIT",
   "private": "false",
   "publishConfig": {
@@ -13,7 +13,7 @@
     "dist"
   ],
   "_moduleAliases": {
-    "~eip712": "dist"
+    "~provider": "dist"
   },
   "scripts": {
     "postinstall": "shx mkdir -p dist && link-module-alias",
