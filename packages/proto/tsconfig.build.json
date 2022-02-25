@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.build.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist"
+  },
+  "include": [
+    "./src/**/*.ts"
+  ],
+  "references": [
+  ],
+  "exclude": [
+    "./src/proto/**/*.ts"
+  ]
+}

@@ -6,6 +6,7 @@
       "@tharsis/address-converter": [
         "./packages/address-converter",
         "./packages/eip712",
+        "./packages/proto",
         "./packages/provider"
       ]
     }
