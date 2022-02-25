@@ -146,8 +146,6 @@ describe('transaction tests', () => {
 
     const accountNumber = 0
 
-    const s = bodyBytes.serializeBinary()
-
     const res = createSigDoc(
       bodyBytes.serializeBinary(),
       authInfo.serializeBinary(),
