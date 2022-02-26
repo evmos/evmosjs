@@ -1,3 +1,5 @@
-export * from './messages/utils'
 export * from './messages/msgSend'
+export * from './messages/txRaw'
+export * from './messages/utils'
+export * from './messages/web3Extension'
 export * from './transaction/transaction'

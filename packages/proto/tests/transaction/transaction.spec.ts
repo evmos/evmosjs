@@ -1,10 +1,14 @@
 import { createMsgSend } from '../../src/messages/msgSend'
+
 import {
   createBody,
   createFee,
   createSignerInfo,
   createAuthInfo,
   createSigDoc,
+  createTransaction,
+  LEGACY_AMINO,
+  SIGN_DIRECT,
 } from '../../src/transaction/transaction'
 
 describe('transaction tests', () => {
@@ -61,7 +65,7 @@ describe('transaction tests', () => {
       105, 23,
     ])
     const sequence = 0
-    const info = createSignerInfo('ethsecp256k1', pubkey, sequence)
+    const info = createSignerInfo('ethsecp256k1', pubkey, sequence, SIGN_DIRECT)
     expect(info.toObject()).toStrictEqual({
       public_key: {
         type_url: '/ethermint.crypto.v1.ethsecp256k1.PubKey',
@@ -84,7 +88,7 @@ describe('transaction tests', () => {
       105, 23,
     ])
     const sequence = 0
-    const info = createSignerInfo('ethsecp256k1', pubkey, sequence)
+    const info = createSignerInfo('ethsecp256k1', pubkey, sequence, SIGN_DIRECT)
     const value = '20'
     const denom = 'aphoton'
     const gas = 20000
@@ -134,7 +138,7 @@ describe('transaction tests', () => {
       105, 23,
     ])
     const sequence = 0
-    const info = createSignerInfo('ethsecp256k1', pubkey, sequence)
+    const info = createSignerInfo('ethsecp256k1', pubkey, sequence, 1)
     const value = '20'
     const denom = 'aphoton'
     const gas = 20000
@@ -178,5 +182,35 @@ describe('transaction tests', () => {
       chain_id: chainId,
       account_number: accountNumber,
     })
+  })
+})
+
+describe('transaction eip712', () => {
+  it('valid eip712', () => {
+    const msg = createMsgSend(
+      'ethm1tfegf50n5xl0hd5cxfzjca3ylsfpg0fned5gqm',
+      'ethm1tfegf50n5xl0hd5cxfzjca3ylsfpg0fned5gqm',
+      '1',
+      'aphoton',
+    )
+    const tx = createTransaction(
+      msg,
+      '',
+      '20',
+      'aphoton',
+      200000,
+      'ethsecp256',
+      'AgTw+4v0daIrxsNSW4FcQ+IoingPseFwHO1DnssyoOqZ',
+      1,
+      9,
+      '',
+      LEGACY_AMINO,
+    )
+    expect(tx.bodyBytes).toBe(
+      'CogBChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5kEmgKK2V0aG0xdGZlZ2Y1MG41eGwwaGQ1Y3hmempjYTN5bHNmcGcwZm5lZDVncW0SK2V0aG0xdGZlZ2Y1MG41eGwwaGQ1Y3hmempjYTN5bHNmcGcwZm5lZDVncW0aDAoHYXBob3RvbhIBMQ==',
+    )
+    expect(tx.authInfoBytes).toBe(
+      'ClkKTwooL2V0aGVybWludC5jcnlwdG8udjEuZXRoc2VjcDI1NmsxLlB1YktleRIjCiECBPD7i/R1oivGw1JbgVxD4iiKeA+x4XAc7UOeyzKg6pkSBAoCCH8YARITCg0KB2FwaG90b24SAjIwEMCaDA==',
+    )
   })
 })
