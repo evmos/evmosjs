@@ -35,5 +35,6 @@
     "@types/google-protobuf": "^3.15.5",
     "google-protobuf": "^3.19.4",
     "sha3": "^2.1.4"
-  }
+  },
+  "gitHead": "fc2045b9357bde146e3374429453eb5d4a48a2ca"
 }

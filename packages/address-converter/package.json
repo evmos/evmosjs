@@ -28,5 +28,6 @@
   "dependencies": {
     "bech32": "^2.0.0",
     "crypto-addr-codec": "^0.1.7"
-  }
+  },
+  "gitHead": "fc2045b9357bde146e3374429453eb5d4a48a2ca"
 }

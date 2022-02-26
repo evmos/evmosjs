@@ -24,5 +24,6 @@
     "coverage": "jest --coverage",
     "dev": "ts-node-dev -r tsconfig-paths/register src/index.ts",
     "start": "node dist/index.js"
-  }
+  },
+  "gitHead": "fc2045b9357bde146e3374429453eb5d4a48a2ca"
 }
