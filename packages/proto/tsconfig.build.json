@@ -8,8 +8,5 @@
     "./src/**/*.ts"
   ],
   "references": [
-  ],
-  "exclude": [
-    "./src/proto/**/*.ts"
   ]
 }

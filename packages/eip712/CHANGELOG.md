@@ -7,4 +7,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* init repo ([#1](https://github.com/tharsis/evmosjs/issues/1)) ([75a1c71](https://github.com/tharsis/evmosjs/commit/75a1c71af1e48216139554f375151e167d3ff87f))
+* msgSend added ([#4](https://github.com/tharsis/evmosjs/issues/4)) ([fe40011](https://github.com/tharsis/evmosjs/commit/fe40011fedad558d6666674b3001e34cc86ae30d))

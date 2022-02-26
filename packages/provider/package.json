@@ -1,7 +1,7 @@
 {
   "name": "@tharsis/provider",
   "description": "Simple provider to query the EVMOS rest api.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "private": "false",
   "publishConfig": {
@@ -31,6 +31,5 @@
   },
   "dependencies": {
     "@types/node": "^17.0.21"
-  },
-  "devDependencies": {}
+  }
 }
