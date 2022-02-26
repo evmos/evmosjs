@@ -3,10 +3,6 @@
   "description": "Protobuf files for EVMOS.",
   "version": "0.1.2",
   "license": "MIT",
-  "private": "false",
-  "publishConfig": {
-    "access": "public"
-  },
   "eslintIgnore": [
     "src/proto/**/*.ts"
   ],
