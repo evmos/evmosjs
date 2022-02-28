@@ -1,0 +1,7 @@
+{
+  "extends": "../../tsconfig.json",
+  "references": [
+    {"path": "../eip712/tsconfig.json"},
+    {"path": "../proto/tsconfig.json"},
+  ]
+}

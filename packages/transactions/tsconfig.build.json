@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.build.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+  },
+  "include": [
+    "./src/**/*.ts"
+  ],
+  "references": [
+    {"path": "../eip712/tsconfig.build.json"},
+    {"path": "../proto/tsconfig.build.json"},
+  ]
+}

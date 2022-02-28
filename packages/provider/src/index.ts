@@ -1,1 +1,5 @@
 export * from './rest/account'
+export * from './rest/balances'
+export * from './rest/broadcast'
+export * from './rest/claims'
+export * from './rest/coin'

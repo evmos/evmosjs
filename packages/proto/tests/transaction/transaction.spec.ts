@@ -7,7 +7,6 @@ import {
   createAuthInfo,
   createSigDoc,
   createTransaction,
-  LEGACY_AMINO,
   SIGN_DIRECT,
 } from '../../src/transaction/transaction'
 
@@ -130,7 +129,7 @@ describe('transaction tests', () => {
       '69420',
       'aphoton',
     )
-    const bodyBytes = createBody(msgSend, 'this is a test')
+    const body = createBody(msgSend, 'this is a test')
 
     const pubkey = new Uint8Array([
       10, 33, 2, 136, 177, 245, 49, 184, 120, 113, 219, 192, 55, 41, 81, 135,
@@ -151,7 +150,7 @@ describe('transaction tests', () => {
     const accountNumber = 0
 
     const res = createSigDoc(
-      bodyBytes.serializeBinary(),
+      body.serializeBinary(),
       authInfo.serializeBinary(),
       chainId,
       accountNumber,
@@ -204,13 +203,30 @@ describe('transaction eip712', () => {
       1,
       9,
       '',
-      LEGACY_AMINO,
     )
-    expect(tx.bodyBytes).toBe(
+    expect(
+      Buffer.from(tx.legacyAmino.body.serializeBinary()).toString('base64'),
+    ).toBe(
       'CogBChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5kEmgKK2V0aG0xdGZlZ2Y1MG41eGwwaGQ1Y3hmempjYTN5bHNmcGcwZm5lZDVncW0SK2V0aG0xdGZlZ2Y1MG41eGwwaGQ1Y3hmempjYTN5bHNmcGcwZm5lZDVncW0aDAoHYXBob3RvbhIBMQ==',
     )
-    expect(tx.authInfoBytes).toBe(
+    expect(
+      Buffer.from(tx.legacyAmino.authInfoBytes.serializeBinary()).toString(
+        'base64',
+      ),
+    ).toBe(
       'ClkKTwooL2V0aGVybWludC5jcnlwdG8udjEuZXRoc2VjcDI1NmsxLlB1YktleRIjCiECBPD7i/R1oivGw1JbgVxD4iiKeA+x4XAc7UOeyzKg6pkSBAoCCH8YARITCg0KB2FwaG90b24SAjIwEMCaDA==',
+    )
+    expect(
+      Buffer.from(tx.signDirect.body.serializeBinary()).toString('base64'),
+    ).toBe(
+      'CogBChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5kEmgKK2V0aG0xdGZlZ2Y1MG41eGwwaGQ1Y3hmempjYTN5bHNmcGcwZm5lZDVncW0SK2V0aG0xdGZlZ2Y1MG41eGwwaGQ1Y3hmempjYTN5bHNmcGcwZm5lZDVncW0aDAoHYXBob3RvbhIBMQ==',
+    )
+    expect(
+      Buffer.from(tx.signDirect.authInfoBytes.serializeBinary()).toString(
+        'base64',
+      ),
+    ).toBe(
+      'ClkKTwooL2V0aGVybWludC5jcnlwdG8udjEuZXRoc2VjcDI1NmsxLlB1YktleRIjCiECBPD7i/R1oivGw1JbgVxD4iiKeA+x4XAc7UOeyzKg6pkSBAoCCAEYARITCg0KB2FwaG90b24SAjIwEMCaDA==',
     )
   })
 })
