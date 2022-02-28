@@ -12,6 +12,12 @@ export const SIGN_DIRECT =
 export const LEGACY_AMINO =
   signing.cosmos.tx.signing.v1beta1.SignMode.SIGN_MODE_LEGACY_AMINO_JSON
 
+export namespace protoTxNamespace {
+  /* global cosmos */
+  /* eslint no-undef: "error" */
+  export import txn = tx.cosmos.tx.v1beta1
+}
+
 export function createBody(message: any, memo: string) {
   const msg = new tx.cosmos.tx.v1beta1.TxBody({
     messages: [createAnyMessage(message)],
@@ -106,38 +112,63 @@ export function createTransaction(
   sequence: number,
   accountNumber: number,
   chainId: string,
-  mode: number,
 ) {
   const body = createBody(message, memo)
   const feeMessage = createFee(fee, denom, gasLimit)
   const pubKeyDecoded = Buffer.from(pubKey, 'base64')
 
-  const signInfo = createSignerInfo(
+  // AMINO
+  const signInfoAmino = createSignerInfo(
     algo,
     new Uint8Array(pubKeyDecoded),
     sequence,
-    mode,
+    LEGACY_AMINO,
   )
 
-  const authInfo = createAuthInfo(signInfo, feeMessage)
+  const authInfoAmino = createAuthInfo(signInfoAmino, feeMessage)
 
-  const signDoc = createSigDoc(
+  const signDocAmino = createSigDoc(
     body.serializeBinary(),
-    authInfo.serializeBinary(),
+    authInfoAmino.serializeBinary(),
     chainId,
     accountNumber,
   )
 
-  const hash = new Keccak(256)
-  hash.update(Buffer.from(signDoc.serializeBinary()))
-  const toSign = hash.digest('binary')
+  const hashAmino = new Keccak(256)
+  hashAmino.update(Buffer.from(signDocAmino.serializeBinary()))
+  const toSignAmino = hashAmino.digest('binary')
 
-  const res = {
-    bodyBytes: Buffer.from(body.serializeBinary()).toString('base64'),
-    authInfoBytes: Buffer.from(authInfo.serializeBinary()).toString('base64'),
+  // SignDirect
+  const signInfoDirect = createSignerInfo(
+    algo,
+    new Uint8Array(pubKeyDecoded),
+    sequence,
+    SIGN_DIRECT,
+  )
+
+  const authInfoDirect = createAuthInfo(signInfoDirect, feeMessage)
+
+  const signDocDirect = createSigDoc(
+    body.serializeBinary(),
+    authInfoDirect.serializeBinary(),
     chainId,
     accountNumber,
-    signBytes: toSign.toString('base64'),
+  )
+
+  const hashDirect = new Keccak(256)
+  hashDirect.update(Buffer.from(signDocDirect.serializeBinary()))
+  const toSignDirect = hashDirect.digest('binary')
+
+  return {
+    legacyAmino: {
+      body,
+      authInfo: authInfoAmino,
+      signBytes: toSignAmino.toString('base64'),
+    },
+    signDirect: {
+      body,
+      authInfo: authInfoDirect,
+      signBytes: toSignDirect.toString('base64'),
+    },
   }
-  return res
 }

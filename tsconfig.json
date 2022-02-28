@@ -3,12 +3,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@tharsis/address-converter": [
-        "./packages/address-converter",
-        "./packages/eip712",
-        "./packages/proto",
-        "./packages/provider"
-      ]
+        "@tharsis/address-converter": ["./packages/address-converter/*"],
+        "@tharsis/eip712":["packages/eip712"],
+        "@tharsis/proto":["packages/proto"],
+        "@tharsis/provider":["./packages/provider/*"],
+        "@tharsis/transactions":["./packages/transactions/*"]
     }
   }
 }
