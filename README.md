@@ -10,11 +10,11 @@ Get the account number, sequence and pubkey from an address.
 NOTE: if the address had not sent any transaction to the blockchain, the pubkey value are going to be empty.
 
 ```ts
-import { ethToEvmos } from "@tharsis/address-converter";
+import { ethToEvmos } from '@tharsis/address-converter';
 import { accountEndpoint } from '@tharsis/provider';
 
-const sender = "evmos1..."
-let destination = "0x...."
+const sender = 'evmos1...'
+let destination = '0x....'
 // The address must be bech32 encoded
 if (destination.split('0x').length == 2) {
     destination = ethToEvmos(destination)
@@ -99,6 +99,8 @@ After creating the transaction we need to send the payload to metamask so it can
 
 ```ts
 // Follow the previous step to generate the msg object
+import { broadcastEndpoint } from '@tharsis/provider'
+import { createTxRawEIP712, signatureToWeb3Extension } from '@tharsis/transactions'
 
 // Init Metamask
 await window.ethereum.enable();
@@ -115,8 +117,23 @@ let signature = await signer.provider.send('eth_signTypedData_v4', [
 // The chain and sender objects are the same as the previous example
 let extension = signatureToWeb3Extension(chain, sender, signature)
 
-//
+// Create the txRaw
+let rawTx = createTxRawEIP712(msg.legacyAmino.body, msg.legacyAmino.authInfo, extension)
 
+// Broadcast it
+const postOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: `{ 'tx_bytes': [${txRaw.message
+        .serializeBinary()
+        .toString()}], 'mode': 'BROADCAST_MODE_SYNC' }`,
+};
+
+let broadcastPost = await fetch(
+    `http://localhost:1317${broadcastEndpoint}`,
+    postOptions
+);
+let response = await broadcastPost.json();
 ```
 
 ### Signing with Keplr
@@ -125,4 +142,5 @@ TODO: after the keplr release for chain type `60`
 
 ## TODO
 
-- Add docs and examples to all the packages
+- Add docs and examples to all the packages.
+- Add more cosmos messages

@@ -162,12 +162,12 @@ export function createTransaction(
   return {
     legacyAmino: {
       body,
-      authInfoBytes: authInfoAmino,
+      authInfo: authInfoAmino,
       signBytes: toSignAmino.toString('base64'),
     },
     signDirect: {
       body,
-      authInfoBytes: authInfoDirect,
+      authInfo: authInfoDirect,
       signBytes: toSignDirect.toString('base64'),
     },
   }

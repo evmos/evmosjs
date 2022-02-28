@@ -1,6 +1,6 @@
 import { signatureToWeb3Extension } from './web3Extension'
 
-describe('msgSend tests', () => {
+describe('web3Extension tests', () => {
   it('valid', async () => {
     const chain = {
       chainId: 9000,
