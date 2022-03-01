@@ -99,20 +99,18 @@ After creating the transaction we need to send the payload to metamask so it can
 
 ```ts
 // Follow the previous step to generate the msg object
+import { evmosToEth } from '@tharsis/address-converter'
 import { broadcastEndpoint } from '@tharsis/provider'
 import { createTxRawEIP712, signatureToWeb3Extension } from '@tharsis/transactions'
 
 // Init Metamask
 await window.ethereum.enable();
-const provider = new ethers.providers.Web3Provider(window.ethereum);
-const signer = provider.getSigner();
-const myAccount = await signer.getAddress();
 
 // Request the signature
-let signature = await signer.provider.send('eth_signTypedData_v4', [
-    myAccount,
-    JSON.stringify(msg.eipToSign),
-]);
+let signature = await window.ethereum.request({
+    method: 'eth_signTypedData_v4',
+    params: [evmosToEth(sender.accountAddress), JSON.stringify(msg.eipToSign)],
+});
 
 // The chain and sender objects are the same as the previous example
 let extension = signatureToWeb3Extension(chain, sender, signature)
@@ -124,9 +122,9 @@ let rawTx = createTxRawEIP712(msg.legacyAmino.body, msg.legacyAmino.authInfo, ex
 const postOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: `{ 'tx_bytes': [${txRaw.message
+    body: `{ "tx_bytes": [${rawTx.message
         .serializeBinary()
-        .toString()}], 'mode': 'BROADCAST_MODE_SYNC' }`,
+        .toString()}], "mode": "BROADCAST_MODE_SYNC" }`,
 };
 
 let broadcastPost = await fetch(
