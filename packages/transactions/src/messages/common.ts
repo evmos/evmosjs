@@ -1,3 +1,5 @@
+import { protoTxNamespace } from '@tharsis/proto'
+
 export interface Fee {
   amount: string
   denom: string
@@ -14,4 +16,17 @@ export interface Sender {
 export interface Chain {
   chainId: number
   cosmosChainId: string
+}
+export interface TxGenerated {
+  signDirect: {
+    body: protoTxNamespace.txn.TxBody
+    authInfo: protoTxNamespace.txn.AuthInfo
+    signBytes: string
+  }
+  legacyAmino: {
+    body: protoTxNamespace.txn.TxBody
+    authInfo: protoTxNamespace.txn.AuthInfo
+    signBytes: string
+  }
+  eipToSign: string
 }
