@@ -4,6 +4,13 @@
   "packages": [
     "packages/*"
   ],
+  "ignoreChanges": [
+    "**/CHANGELOG.md",
+    "**/node_modules/**",
+    "**/package.json",
+    "**/*.md",
+    "**/perf/**"
+  ],
   "version": "independent",
   "useWorkspaces": true,
   "command": {
