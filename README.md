@@ -30,7 +30,7 @@ let addrRawData = await fetch(
     `http://127.0.0.1:1317${accountEndpoint}${sender}`,
     options
 );
-// NOTE: the node returns status code 400 if the wallet doesn't exists, catch that error
+// NOTE: the node returns status code 400 if the wallet doesn't exist, catch that error
 
 let addrData = await addRawData.json()
 
