@@ -12,7 +12,6 @@ export namespace ethermint.feemarket.v1 {
     export class GenesisState extends pb_1.Message {
         constructor(data?: any[] | {
             params?: dependency_2.ethermint.feemarket.v1.Params;
-            base_fee?: string;
             block_gas?: number;
         }) {
             super();
@@ -20,9 +19,6 @@ export namespace ethermint.feemarket.v1 {
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;
-                }
-                if ("base_fee" in data && data.base_fee != undefined) {
-                    this.base_fee = data.base_fee;
                 }
                 if ("block_gas" in data && data.block_gas != undefined) {
                     this.block_gas = data.block_gas;
@@ -35,12 +31,6 @@ export namespace ethermint.feemarket.v1 {
         set params(value: dependency_2.ethermint.feemarket.v1.Params) {
             pb_1.Message.setWrapperField(this, 1, value);
         }
-        get base_fee() {
-            return pb_1.Message.getField(this, 2) as string;
-        }
-        set base_fee(value: string) {
-            pb_1.Message.setField(this, 2, value);
-        }
         get block_gas() {
             return pb_1.Message.getField(this, 3) as number;
         }
@@ -49,15 +39,11 @@ export namespace ethermint.feemarket.v1 {
         }
         static fromObject(data: {
             params?: ReturnType<typeof dependency_2.ethermint.feemarket.v1.Params.prototype.toObject>;
-            base_fee?: string;
             block_gas?: number;
         }) {
             const message = new GenesisState({});
             if (data.params != null) {
                 message.params = dependency_2.ethermint.feemarket.v1.Params.fromObject(data.params);
-            }
-            if (data.base_fee != null) {
-                message.base_fee = data.base_fee;
             }
             if (data.block_gas != null) {
                 message.block_gas = data.block_gas;
@@ -67,14 +53,10 @@ export namespace ethermint.feemarket.v1 {
         toObject() {
             const data: {
                 params?: ReturnType<typeof dependency_2.ethermint.feemarket.v1.Params.prototype.toObject>;
-                base_fee?: string;
                 block_gas?: number;
             } = {};
             if (this.params != null) {
                 data.params = this.params.toObject();
-            }
-            if (this.base_fee != null) {
-                data.base_fee = this.base_fee;
             }
             if (this.block_gas != null) {
                 data.block_gas = this.block_gas;
@@ -87,8 +69,6 @@ export namespace ethermint.feemarket.v1 {
             const writer = w || new pb_1.BinaryWriter();
             if (this.params !== undefined)
                 writer.writeMessage(1, this.params, () => this.params.serialize(writer));
-            if (typeof this.base_fee === "string" && this.base_fee.length)
-                writer.writeString(2, this.base_fee);
             if (this.block_gas !== undefined)
                 writer.writeUint64(3, this.block_gas);
             if (!w)
@@ -102,9 +82,6 @@ export namespace ethermint.feemarket.v1 {
                 switch (reader.getFieldNumber()) {
                     case 1:
                         reader.readMessage(message.params, () => message.params = dependency_2.ethermint.feemarket.v1.Params.deserialize(reader));
-                        break;
-                    case 2:
-                        message.base_fee = reader.readString();
                         break;
                     case 3:
                         message.block_gas = reader.readUint64();

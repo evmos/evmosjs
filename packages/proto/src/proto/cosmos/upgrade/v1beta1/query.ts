@@ -246,6 +246,7 @@ export namespace cosmos.upgrade.v1beta1 {
             return QueryAppliedPlanResponse.deserialize(bytes);
         }
     }
+    /** @deprecated*/
     export class QueryUpgradedConsensusStateRequest extends pb_1.Message {
         constructor(data?: any[] | {
             last_height?: number;
@@ -312,6 +313,7 @@ export namespace cosmos.upgrade.v1beta1 {
             return QueryUpgradedConsensusStateRequest.deserialize(bytes);
         }
     }
+    /** @deprecated*/
     export class QueryUpgradedConsensusStateResponse extends pb_1.Message {
         constructor(data?: any[] | {
             upgraded_consensus_state?: Uint8Array;

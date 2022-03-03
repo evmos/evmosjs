@@ -10,6 +10,7 @@ import * as dependency_2 from "./../../../cosmos/base/query/v1beta1/pagination";
 import * as dependency_3 from "./../../../google/api/annotations";
 import * as dependency_4 from "./evm";
 import * as dependency_5 from "./tx";
+import * as dependency_6 from "./../../../google/protobuf/timestamp";
 import * as pb_1 from "google-protobuf";
 export namespace ethermint.evm.v1 {
     export class QueryAccountRequest extends pb_1.Message {
@@ -968,138 +969,6 @@ export namespace ethermint.evm.v1 {
     export class QueryTxLogsRequest extends pb_1.Message {
         constructor(data?: any[] | {
             hash?: string;
-        }) {
-            super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
-            if (!Array.isArray(data) && typeof data == "object") {
-                if ("hash" in data && data.hash != undefined) {
-                    this.hash = data.hash;
-                }
-            }
-        }
-        get hash() {
-            return pb_1.Message.getField(this, 1) as string;
-        }
-        set hash(value: string) {
-            pb_1.Message.setField(this, 1, value);
-        }
-        static fromObject(data: {
-            hash?: string;
-        }) {
-            const message = new QueryTxLogsRequest({});
-            if (data.hash != null) {
-                message.hash = data.hash;
-            }
-            return message;
-        }
-        toObject() {
-            const data: {
-                hash?: string;
-            } = {};
-            if (this.hash != null) {
-                data.hash = this.hash;
-            }
-            return data;
-        }
-        serialize(): Uint8Array;
-        serialize(w: pb_1.BinaryWriter): void;
-        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
-            const writer = w || new pb_1.BinaryWriter();
-            if (typeof this.hash === "string" && this.hash.length)
-                writer.writeString(1, this.hash);
-            if (!w)
-                return writer.getResultBuffer();
-        }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryTxLogsRequest {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryTxLogsRequest();
-            while (reader.nextField()) {
-                if (reader.isEndGroup())
-                    break;
-                switch (reader.getFieldNumber()) {
-                    case 1:
-                        message.hash = reader.readString();
-                        break;
-                    default: reader.skipField();
-                }
-            }
-            return message;
-        }
-        serializeBinary(): Uint8Array {
-            return this.serialize();
-        }
-        static deserializeBinary(bytes: Uint8Array): QueryTxLogsRequest {
-            return QueryTxLogsRequest.deserialize(bytes);
-        }
-    }
-    export class QueryTxLogsResponse extends pb_1.Message {
-        constructor(data?: any[] | {
-            logs?: dependency_4.ethermint.evm.v1.Log[];
-        }) {
-            super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
-            if (!Array.isArray(data) && typeof data == "object") {
-                if ("logs" in data && data.logs != undefined) {
-                    this.logs = data.logs;
-                }
-            }
-        }
-        get logs() {
-            return pb_1.Message.getRepeatedWrapperField(this, dependency_4.ethermint.evm.v1.Log, 1) as dependency_4.ethermint.evm.v1.Log[];
-        }
-        set logs(value: dependency_4.ethermint.evm.v1.Log[]) {
-            pb_1.Message.setRepeatedWrapperField(this, 1, value);
-        }
-        static fromObject(data: {
-            logs?: ReturnType<typeof dependency_4.ethermint.evm.v1.Log.prototype.toObject>[];
-        }) {
-            const message = new QueryTxLogsResponse({});
-            if (data.logs != null) {
-                message.logs = data.logs.map(item => dependency_4.ethermint.evm.v1.Log.fromObject(item));
-            }
-            return message;
-        }
-        toObject() {
-            const data: {
-                logs?: ReturnType<typeof dependency_4.ethermint.evm.v1.Log.prototype.toObject>[];
-            } = {};
-            if (this.logs != null) {
-                data.logs = this.logs.map((item: dependency_4.ethermint.evm.v1.Log) => item.toObject());
-            }
-            return data;
-        }
-        serialize(): Uint8Array;
-        serialize(w: pb_1.BinaryWriter): void;
-        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
-            const writer = w || new pb_1.BinaryWriter();
-            if (this.logs !== undefined)
-                writer.writeRepeatedMessage(1, this.logs, (item: dependency_4.ethermint.evm.v1.Log) => item.serialize(writer));
-            if (!w)
-                return writer.getResultBuffer();
-        }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryTxLogsResponse {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryTxLogsResponse();
-            while (reader.nextField()) {
-                if (reader.isEndGroup())
-                    break;
-                switch (reader.getFieldNumber()) {
-                    case 1:
-                        reader.readMessage(message.logs, () => pb_1.Message.addToRepeatedWrapperField(message, 1, dependency_4.ethermint.evm.v1.Log.deserialize(reader), dependency_4.ethermint.evm.v1.Log));
-                        break;
-                    default: reader.skipField();
-                }
-            }
-            return message;
-        }
-        serializeBinary(): Uint8Array {
-            return this.serialize();
-        }
-        static deserializeBinary(bytes: Uint8Array): QueryTxLogsResponse {
-            return QueryTxLogsResponse.deserialize(bytes);
-        }
-    }
-    export class QueryBlockLogsRequest extends pb_1.Message {
-        constructor(data?: any[] | {
-            hash?: string;
             pagination?: dependency_2.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
@@ -1129,7 +998,7 @@ export namespace ethermint.evm.v1 {
             hash?: string;
             pagination?: ReturnType<typeof dependency_2.cosmos.base.query.v1beta1.PageRequest.prototype.toObject>;
         }) {
-            const message = new QueryBlockLogsRequest({});
+            const message = new QueryTxLogsRequest({});
             if (data.hash != null) {
                 message.hash = data.hash;
             }
@@ -1162,8 +1031,8 @@ export namespace ethermint.evm.v1 {
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryBlockLogsRequest {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryBlockLogsRequest();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryTxLogsRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryTxLogsRequest();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
@@ -1182,30 +1051,30 @@ export namespace ethermint.evm.v1 {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): QueryBlockLogsRequest {
-            return QueryBlockLogsRequest.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): QueryTxLogsRequest {
+            return QueryTxLogsRequest.deserialize(bytes);
         }
     }
-    export class QueryBlockLogsResponse extends pb_1.Message {
+    export class QueryTxLogsResponse extends pb_1.Message {
         constructor(data?: any[] | {
-            tx_logs?: dependency_4.ethermint.evm.v1.TransactionLogs[];
+            logs?: dependency_4.ethermint.evm.v1.Log[];
             pagination?: dependency_2.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
             if (!Array.isArray(data) && typeof data == "object") {
-                if ("tx_logs" in data && data.tx_logs != undefined) {
-                    this.tx_logs = data.tx_logs;
+                if ("logs" in data && data.logs != undefined) {
+                    this.logs = data.logs;
                 }
                 if ("pagination" in data && data.pagination != undefined) {
                     this.pagination = data.pagination;
                 }
             }
         }
-        get tx_logs() {
-            return pb_1.Message.getRepeatedWrapperField(this, dependency_4.ethermint.evm.v1.TransactionLogs, 1) as dependency_4.ethermint.evm.v1.TransactionLogs[];
+        get logs() {
+            return pb_1.Message.getRepeatedWrapperField(this, dependency_4.ethermint.evm.v1.Log, 1) as dependency_4.ethermint.evm.v1.Log[];
         }
-        set tx_logs(value: dependency_4.ethermint.evm.v1.TransactionLogs[]) {
+        set logs(value: dependency_4.ethermint.evm.v1.Log[]) {
             pb_1.Message.setRepeatedWrapperField(this, 1, value);
         }
         get pagination() {
@@ -1215,12 +1084,12 @@ export namespace ethermint.evm.v1 {
             pb_1.Message.setWrapperField(this, 2, value);
         }
         static fromObject(data: {
-            tx_logs?: ReturnType<typeof dependency_4.ethermint.evm.v1.TransactionLogs.prototype.toObject>[];
+            logs?: ReturnType<typeof dependency_4.ethermint.evm.v1.Log.prototype.toObject>[];
             pagination?: ReturnType<typeof dependency_2.cosmos.base.query.v1beta1.PageResponse.prototype.toObject>;
         }) {
-            const message = new QueryBlockLogsResponse({});
-            if (data.tx_logs != null) {
-                message.tx_logs = data.tx_logs.map(item => dependency_4.ethermint.evm.v1.TransactionLogs.fromObject(item));
+            const message = new QueryTxLogsResponse({});
+            if (data.logs != null) {
+                message.logs = data.logs.map(item => dependency_4.ethermint.evm.v1.Log.fromObject(item));
             }
             if (data.pagination != null) {
                 message.pagination = dependency_2.cosmos.base.query.v1beta1.PageResponse.fromObject(data.pagination);
@@ -1229,11 +1098,11 @@ export namespace ethermint.evm.v1 {
         }
         toObject() {
             const data: {
-                tx_logs?: ReturnType<typeof dependency_4.ethermint.evm.v1.TransactionLogs.prototype.toObject>[];
+                logs?: ReturnType<typeof dependency_4.ethermint.evm.v1.Log.prototype.toObject>[];
                 pagination?: ReturnType<typeof dependency_2.cosmos.base.query.v1beta1.PageResponse.prototype.toObject>;
             } = {};
-            if (this.tx_logs != null) {
-                data.tx_logs = this.tx_logs.map((item: dependency_4.ethermint.evm.v1.TransactionLogs) => item.toObject());
+            if (this.logs != null) {
+                data.logs = this.logs.map((item: dependency_4.ethermint.evm.v1.Log) => item.toObject());
             }
             if (this.pagination != null) {
                 data.pagination = this.pagination.toObject();
@@ -1244,21 +1113,21 @@ export namespace ethermint.evm.v1 {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.tx_logs !== undefined)
-                writer.writeRepeatedMessage(1, this.tx_logs, (item: dependency_4.ethermint.evm.v1.TransactionLogs) => item.serialize(writer));
+            if (this.logs !== undefined)
+                writer.writeRepeatedMessage(1, this.logs, (item: dependency_4.ethermint.evm.v1.Log) => item.serialize(writer));
             if (this.pagination !== undefined)
                 writer.writeMessage(2, this.pagination, () => this.pagination.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryBlockLogsResponse {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryBlockLogsResponse();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryTxLogsResponse {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryTxLogsResponse();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        reader.readMessage(message.tx_logs, () => pb_1.Message.addToRepeatedWrapperField(message, 1, dependency_4.ethermint.evm.v1.TransactionLogs.deserialize(reader), dependency_4.ethermint.evm.v1.TransactionLogs));
+                        reader.readMessage(message.logs, () => pb_1.Message.addToRepeatedWrapperField(message, 1, dependency_4.ethermint.evm.v1.Log.deserialize(reader), dependency_4.ethermint.evm.v1.Log));
                         break;
                     case 2:
                         reader.readMessage(message.pagination, () => message.pagination = dependency_2.cosmos.base.query.v1beta1.PageResponse.deserialize(reader));
@@ -1271,140 +1140,8 @@ export namespace ethermint.evm.v1 {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): QueryBlockLogsResponse {
-            return QueryBlockLogsResponse.deserialize(bytes);
-        }
-    }
-    export class QueryBlockBloomRequest extends pb_1.Message {
-        constructor(data?: any[] | {
-            height?: number;
-        }) {
-            super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
-            if (!Array.isArray(data) && typeof data == "object") {
-                if ("height" in data && data.height != undefined) {
-                    this.height = data.height;
-                }
-            }
-        }
-        get height() {
-            return pb_1.Message.getField(this, 1) as number;
-        }
-        set height(value: number) {
-            pb_1.Message.setField(this, 1, value);
-        }
-        static fromObject(data: {
-            height?: number;
-        }) {
-            const message = new QueryBlockBloomRequest({});
-            if (data.height != null) {
-                message.height = data.height;
-            }
-            return message;
-        }
-        toObject() {
-            const data: {
-                height?: number;
-            } = {};
-            if (this.height != null) {
-                data.height = this.height;
-            }
-            return data;
-        }
-        serialize(): Uint8Array;
-        serialize(w: pb_1.BinaryWriter): void;
-        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
-            const writer = w || new pb_1.BinaryWriter();
-            if (this.height !== undefined)
-                writer.writeInt64(1, this.height);
-            if (!w)
-                return writer.getResultBuffer();
-        }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryBlockBloomRequest {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryBlockBloomRequest();
-            while (reader.nextField()) {
-                if (reader.isEndGroup())
-                    break;
-                switch (reader.getFieldNumber()) {
-                    case 1:
-                        message.height = reader.readInt64();
-                        break;
-                    default: reader.skipField();
-                }
-            }
-            return message;
-        }
-        serializeBinary(): Uint8Array {
-            return this.serialize();
-        }
-        static deserializeBinary(bytes: Uint8Array): QueryBlockBloomRequest {
-            return QueryBlockBloomRequest.deserialize(bytes);
-        }
-    }
-    export class QueryBlockBloomResponse extends pb_1.Message {
-        constructor(data?: any[] | {
-            bloom?: Uint8Array;
-        }) {
-            super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
-            if (!Array.isArray(data) && typeof data == "object") {
-                if ("bloom" in data && data.bloom != undefined) {
-                    this.bloom = data.bloom;
-                }
-            }
-        }
-        get bloom() {
-            return pb_1.Message.getField(this, 1) as Uint8Array;
-        }
-        set bloom(value: Uint8Array) {
-            pb_1.Message.setField(this, 1, value);
-        }
-        static fromObject(data: {
-            bloom?: Uint8Array;
-        }) {
-            const message = new QueryBlockBloomResponse({});
-            if (data.bloom != null) {
-                message.bloom = data.bloom;
-            }
-            return message;
-        }
-        toObject() {
-            const data: {
-                bloom?: Uint8Array;
-            } = {};
-            if (this.bloom != null) {
-                data.bloom = this.bloom;
-            }
-            return data;
-        }
-        serialize(): Uint8Array;
-        serialize(w: pb_1.BinaryWriter): void;
-        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
-            const writer = w || new pb_1.BinaryWriter();
-            if (this.bloom !== undefined)
-                writer.writeBytes(1, this.bloom);
-            if (!w)
-                return writer.getResultBuffer();
-        }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryBlockBloomResponse {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryBlockBloomResponse();
-            while (reader.nextField()) {
-                if (reader.isEndGroup())
-                    break;
-                switch (reader.getFieldNumber()) {
-                    case 1:
-                        message.bloom = reader.readBytes();
-                        break;
-                    default: reader.skipField();
-                }
-            }
-            return message;
-        }
-        serializeBinary(): Uint8Array {
-            return this.serialize();
-        }
-        static deserializeBinary(bytes: Uint8Array): QueryBlockBloomResponse {
-            return QueryBlockBloomResponse.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): QueryTxLogsResponse {
+            return QueryTxLogsResponse.deserialize(bytes);
         }
     }
     export class QueryParamsRequest extends pb_1.Message {
@@ -1510,177 +1247,6 @@ export namespace ethermint.evm.v1 {
         }
         static deserializeBinary(bytes: Uint8Array): QueryParamsResponse {
             return QueryParamsResponse.deserialize(bytes);
-        }
-    }
-    export class QueryBaseFeeRequest extends pb_1.Message {
-        constructor(data?: any[] | {}) {
-            super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
-            if (!Array.isArray(data) && typeof data == "object") { }
-        }
-        static fromObject(data: {}) {
-            const message = new QueryBaseFeeRequest({});
-            return message;
-        }
-        toObject() {
-            const data: {} = {};
-            return data;
-        }
-        serialize(): Uint8Array;
-        serialize(w: pb_1.BinaryWriter): void;
-        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
-            const writer = w || new pb_1.BinaryWriter();
-            if (!w)
-                return writer.getResultBuffer();
-        }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryBaseFeeRequest {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryBaseFeeRequest();
-            while (reader.nextField()) {
-                if (reader.isEndGroup())
-                    break;
-                switch (reader.getFieldNumber()) {
-                    default: reader.skipField();
-                }
-            }
-            return message;
-        }
-        serializeBinary(): Uint8Array {
-            return this.serialize();
-        }
-        static deserializeBinary(bytes: Uint8Array): QueryBaseFeeRequest {
-            return QueryBaseFeeRequest.deserialize(bytes);
-        }
-    }
-    export class QueryBaseFeeResponse extends pb_1.Message {
-        constructor(data?: any[] | {
-            base_fee?: string;
-        }) {
-            super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
-            if (!Array.isArray(data) && typeof data == "object") {
-                if ("base_fee" in data && data.base_fee != undefined) {
-                    this.base_fee = data.base_fee;
-                }
-            }
-        }
-        get base_fee() {
-            return pb_1.Message.getField(this, 1) as string;
-        }
-        set base_fee(value: string) {
-            pb_1.Message.setField(this, 1, value);
-        }
-        static fromObject(data: {
-            base_fee?: string;
-        }) {
-            const message = new QueryBaseFeeResponse({});
-            if (data.base_fee != null) {
-                message.base_fee = data.base_fee;
-            }
-            return message;
-        }
-        toObject() {
-            const data: {
-                base_fee?: string;
-            } = {};
-            if (this.base_fee != null) {
-                data.base_fee = this.base_fee;
-            }
-            return data;
-        }
-        serialize(): Uint8Array;
-        serialize(w: pb_1.BinaryWriter): void;
-        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
-            const writer = w || new pb_1.BinaryWriter();
-            if (typeof this.base_fee === "string" && this.base_fee.length)
-                writer.writeString(1, this.base_fee);
-            if (!w)
-                return writer.getResultBuffer();
-        }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryBaseFeeResponse {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryBaseFeeResponse();
-            while (reader.nextField()) {
-                if (reader.isEndGroup())
-                    break;
-                switch (reader.getFieldNumber()) {
-                    case 1:
-                        message.base_fee = reader.readString();
-                        break;
-                    default: reader.skipField();
-                }
-            }
-            return message;
-        }
-        serializeBinary(): Uint8Array {
-            return this.serialize();
-        }
-        static deserializeBinary(bytes: Uint8Array): QueryBaseFeeResponse {
-            return QueryBaseFeeResponse.deserialize(bytes);
-        }
-    }
-    export class QueryStaticCallResponse extends pb_1.Message {
-        constructor(data?: any[] | {
-            data?: Uint8Array;
-        }) {
-            super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
-            if (!Array.isArray(data) && typeof data == "object") {
-                if ("data" in data && data.data != undefined) {
-                    this.data = data.data;
-                }
-            }
-        }
-        get data() {
-            return pb_1.Message.getField(this, 1) as Uint8Array;
-        }
-        set data(value: Uint8Array) {
-            pb_1.Message.setField(this, 1, value);
-        }
-        static fromObject(data: {
-            data?: Uint8Array;
-        }) {
-            const message = new QueryStaticCallResponse({});
-            if (data.data != null) {
-                message.data = data.data;
-            }
-            return message;
-        }
-        toObject() {
-            const data: {
-                data?: Uint8Array;
-            } = {};
-            if (this.data != null) {
-                data.data = this.data;
-            }
-            return data;
-        }
-        serialize(): Uint8Array;
-        serialize(w: pb_1.BinaryWriter): void;
-        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
-            const writer = w || new pb_1.BinaryWriter();
-            if (this.data !== undefined)
-                writer.writeBytes(1, this.data);
-            if (!w)
-                return writer.getResultBuffer();
-        }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryStaticCallResponse {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryStaticCallResponse();
-            while (reader.nextField()) {
-                if (reader.isEndGroup())
-                    break;
-                switch (reader.getFieldNumber()) {
-                    case 1:
-                        message.data = reader.readBytes();
-                        break;
-                    default: reader.skipField();
-                }
-            }
-            return message;
-        }
-        serializeBinary(): Uint8Array {
-            return this.serialize();
-        }
-        static deserializeBinary(bytes: Uint8Array): QueryStaticCallResponse {
-            return QueryStaticCallResponse.deserialize(bytes);
         }
     }
     export class EthCallRequest extends pb_1.Message {
@@ -1836,6 +1402,500 @@ export namespace ethermint.evm.v1 {
         }
         static deserializeBinary(bytes: Uint8Array): EstimateGasResponse {
             return EstimateGasResponse.deserialize(bytes);
+        }
+    }
+    export class QueryTraceTxRequest extends pb_1.Message {
+        constructor(data?: any[] | {
+            msg?: dependency_5.ethermint.evm.v1.MsgEthereumTx;
+            tx_index?: number;
+            trace_config?: dependency_4.ethermint.evm.v1.TraceConfig;
+            predecessors?: dependency_5.ethermint.evm.v1.MsgEthereumTx[];
+            block_number?: number;
+            block_hash?: string;
+            block_time?: dependency_6.google.protobuf.Timestamp;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("msg" in data && data.msg != undefined) {
+                    this.msg = data.msg;
+                }
+                if ("tx_index" in data && data.tx_index != undefined) {
+                    this.tx_index = data.tx_index;
+                }
+                if ("trace_config" in data && data.trace_config != undefined) {
+                    this.trace_config = data.trace_config;
+                }
+                if ("predecessors" in data && data.predecessors != undefined) {
+                    this.predecessors = data.predecessors;
+                }
+                if ("block_number" in data && data.block_number != undefined) {
+                    this.block_number = data.block_number;
+                }
+                if ("block_hash" in data && data.block_hash != undefined) {
+                    this.block_hash = data.block_hash;
+                }
+                if ("block_time" in data && data.block_time != undefined) {
+                    this.block_time = data.block_time;
+                }
+            }
+        }
+        get msg() {
+            return pb_1.Message.getWrapperField(this, dependency_5.ethermint.evm.v1.MsgEthereumTx, 1) as dependency_5.ethermint.evm.v1.MsgEthereumTx;
+        }
+        set msg(value: dependency_5.ethermint.evm.v1.MsgEthereumTx) {
+            pb_1.Message.setWrapperField(this, 1, value);
+        }
+        get tx_index() {
+            return pb_1.Message.getField(this, 2) as number;
+        }
+        set tx_index(value: number) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        get trace_config() {
+            return pb_1.Message.getWrapperField(this, dependency_4.ethermint.evm.v1.TraceConfig, 3) as dependency_4.ethermint.evm.v1.TraceConfig;
+        }
+        set trace_config(value: dependency_4.ethermint.evm.v1.TraceConfig) {
+            pb_1.Message.setWrapperField(this, 3, value);
+        }
+        get predecessors() {
+            return pb_1.Message.getRepeatedWrapperField(this, dependency_5.ethermint.evm.v1.MsgEthereumTx, 4) as dependency_5.ethermint.evm.v1.MsgEthereumTx[];
+        }
+        set predecessors(value: dependency_5.ethermint.evm.v1.MsgEthereumTx[]) {
+            pb_1.Message.setRepeatedWrapperField(this, 4, value);
+        }
+        get block_number() {
+            return pb_1.Message.getField(this, 5) as number;
+        }
+        set block_number(value: number) {
+            pb_1.Message.setField(this, 5, value);
+        }
+        get block_hash() {
+            return pb_1.Message.getField(this, 6) as string;
+        }
+        set block_hash(value: string) {
+            pb_1.Message.setField(this, 6, value);
+        }
+        get block_time() {
+            return pb_1.Message.getWrapperField(this, dependency_6.google.protobuf.Timestamp, 7) as dependency_6.google.protobuf.Timestamp;
+        }
+        set block_time(value: dependency_6.google.protobuf.Timestamp) {
+            pb_1.Message.setWrapperField(this, 7, value);
+        }
+        static fromObject(data: {
+            msg?: ReturnType<typeof dependency_5.ethermint.evm.v1.MsgEthereumTx.prototype.toObject>;
+            tx_index?: number;
+            trace_config?: ReturnType<typeof dependency_4.ethermint.evm.v1.TraceConfig.prototype.toObject>;
+            predecessors?: ReturnType<typeof dependency_5.ethermint.evm.v1.MsgEthereumTx.prototype.toObject>[];
+            block_number?: number;
+            block_hash?: string;
+            block_time?: ReturnType<typeof dependency_6.google.protobuf.Timestamp.prototype.toObject>;
+        }) {
+            const message = new QueryTraceTxRequest({});
+            if (data.msg != null) {
+                message.msg = dependency_5.ethermint.evm.v1.MsgEthereumTx.fromObject(data.msg);
+            }
+            if (data.tx_index != null) {
+                message.tx_index = data.tx_index;
+            }
+            if (data.trace_config != null) {
+                message.trace_config = dependency_4.ethermint.evm.v1.TraceConfig.fromObject(data.trace_config);
+            }
+            if (data.predecessors != null) {
+                message.predecessors = data.predecessors.map(item => dependency_5.ethermint.evm.v1.MsgEthereumTx.fromObject(item));
+            }
+            if (data.block_number != null) {
+                message.block_number = data.block_number;
+            }
+            if (data.block_hash != null) {
+                message.block_hash = data.block_hash;
+            }
+            if (data.block_time != null) {
+                message.block_time = dependency_6.google.protobuf.Timestamp.fromObject(data.block_time);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                msg?: ReturnType<typeof dependency_5.ethermint.evm.v1.MsgEthereumTx.prototype.toObject>;
+                tx_index?: number;
+                trace_config?: ReturnType<typeof dependency_4.ethermint.evm.v1.TraceConfig.prototype.toObject>;
+                predecessors?: ReturnType<typeof dependency_5.ethermint.evm.v1.MsgEthereumTx.prototype.toObject>[];
+                block_number?: number;
+                block_hash?: string;
+                block_time?: ReturnType<typeof dependency_6.google.protobuf.Timestamp.prototype.toObject>;
+            } = {};
+            if (this.msg != null) {
+                data.msg = this.msg.toObject();
+            }
+            if (this.tx_index != null) {
+                data.tx_index = this.tx_index;
+            }
+            if (this.trace_config != null) {
+                data.trace_config = this.trace_config.toObject();
+            }
+            if (this.predecessors != null) {
+                data.predecessors = this.predecessors.map((item: dependency_5.ethermint.evm.v1.MsgEthereumTx) => item.toObject());
+            }
+            if (this.block_number != null) {
+                data.block_number = this.block_number;
+            }
+            if (this.block_hash != null) {
+                data.block_hash = this.block_hash;
+            }
+            if (this.block_time != null) {
+                data.block_time = this.block_time.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.msg !== undefined)
+                writer.writeMessage(1, this.msg, () => this.msg.serialize(writer));
+            if (this.tx_index !== undefined)
+                writer.writeUint64(2, this.tx_index);
+            if (this.trace_config !== undefined)
+                writer.writeMessage(3, this.trace_config, () => this.trace_config.serialize(writer));
+            if (this.predecessors !== undefined)
+                writer.writeRepeatedMessage(4, this.predecessors, (item: dependency_5.ethermint.evm.v1.MsgEthereumTx) => item.serialize(writer));
+            if (this.block_number !== undefined)
+                writer.writeInt64(5, this.block_number);
+            if (typeof this.block_hash === "string" && this.block_hash.length)
+                writer.writeString(6, this.block_hash);
+            if (this.block_time !== undefined)
+                writer.writeMessage(7, this.block_time, () => this.block_time.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryTraceTxRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryTraceTxRequest();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.msg, () => message.msg = dependency_5.ethermint.evm.v1.MsgEthereumTx.deserialize(reader));
+                        break;
+                    case 2:
+                        message.tx_index = reader.readUint64();
+                        break;
+                    case 3:
+                        reader.readMessage(message.trace_config, () => message.trace_config = dependency_4.ethermint.evm.v1.TraceConfig.deserialize(reader));
+                        break;
+                    case 4:
+                        reader.readMessage(message.predecessors, () => pb_1.Message.addToRepeatedWrapperField(message, 4, dependency_5.ethermint.evm.v1.MsgEthereumTx.deserialize(reader), dependency_5.ethermint.evm.v1.MsgEthereumTx));
+                        break;
+                    case 5:
+                        message.block_number = reader.readInt64();
+                        break;
+                    case 6:
+                        message.block_hash = reader.readString();
+                        break;
+                    case 7:
+                        reader.readMessage(message.block_time, () => message.block_time = dependency_6.google.protobuf.Timestamp.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): QueryTraceTxRequest {
+            return QueryTraceTxRequest.deserialize(bytes);
+        }
+    }
+    export class QueryTraceTxResponse extends pb_1.Message {
+        constructor(data?: any[] | {
+            data?: Uint8Array;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("data" in data && data.data != undefined) {
+                    this.data = data.data;
+                }
+            }
+        }
+        get data() {
+            return pb_1.Message.getField(this, 1) as Uint8Array;
+        }
+        set data(value: Uint8Array) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        static fromObject(data: {
+            data?: Uint8Array;
+        }) {
+            const message = new QueryTraceTxResponse({});
+            if (data.data != null) {
+                message.data = data.data;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                data?: Uint8Array;
+            } = {};
+            if (this.data != null) {
+                data.data = this.data;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.data !== undefined)
+                writer.writeBytes(1, this.data);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryTraceTxResponse {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryTraceTxResponse();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.data = reader.readBytes();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): QueryTraceTxResponse {
+            return QueryTraceTxResponse.deserialize(bytes);
+        }
+    }
+    export class QueryTraceBlockRequest extends pb_1.Message {
+        constructor(data?: any[] | {
+            txs?: dependency_5.ethermint.evm.v1.MsgEthereumTx[];
+            trace_config?: dependency_4.ethermint.evm.v1.TraceConfig;
+            block_number?: number;
+            block_hash?: string;
+            block_time?: dependency_6.google.protobuf.Timestamp;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("txs" in data && data.txs != undefined) {
+                    this.txs = data.txs;
+                }
+                if ("trace_config" in data && data.trace_config != undefined) {
+                    this.trace_config = data.trace_config;
+                }
+                if ("block_number" in data && data.block_number != undefined) {
+                    this.block_number = data.block_number;
+                }
+                if ("block_hash" in data && data.block_hash != undefined) {
+                    this.block_hash = data.block_hash;
+                }
+                if ("block_time" in data && data.block_time != undefined) {
+                    this.block_time = data.block_time;
+                }
+            }
+        }
+        get txs() {
+            return pb_1.Message.getRepeatedWrapperField(this, dependency_5.ethermint.evm.v1.MsgEthereumTx, 1) as dependency_5.ethermint.evm.v1.MsgEthereumTx[];
+        }
+        set txs(value: dependency_5.ethermint.evm.v1.MsgEthereumTx[]) {
+            pb_1.Message.setRepeatedWrapperField(this, 1, value);
+        }
+        get trace_config() {
+            return pb_1.Message.getWrapperField(this, dependency_4.ethermint.evm.v1.TraceConfig, 3) as dependency_4.ethermint.evm.v1.TraceConfig;
+        }
+        set trace_config(value: dependency_4.ethermint.evm.v1.TraceConfig) {
+            pb_1.Message.setWrapperField(this, 3, value);
+        }
+        get block_number() {
+            return pb_1.Message.getField(this, 5) as number;
+        }
+        set block_number(value: number) {
+            pb_1.Message.setField(this, 5, value);
+        }
+        get block_hash() {
+            return pb_1.Message.getField(this, 6) as string;
+        }
+        set block_hash(value: string) {
+            pb_1.Message.setField(this, 6, value);
+        }
+        get block_time() {
+            return pb_1.Message.getWrapperField(this, dependency_6.google.protobuf.Timestamp, 7) as dependency_6.google.protobuf.Timestamp;
+        }
+        set block_time(value: dependency_6.google.protobuf.Timestamp) {
+            pb_1.Message.setWrapperField(this, 7, value);
+        }
+        static fromObject(data: {
+            txs?: ReturnType<typeof dependency_5.ethermint.evm.v1.MsgEthereumTx.prototype.toObject>[];
+            trace_config?: ReturnType<typeof dependency_4.ethermint.evm.v1.TraceConfig.prototype.toObject>;
+            block_number?: number;
+            block_hash?: string;
+            block_time?: ReturnType<typeof dependency_6.google.protobuf.Timestamp.prototype.toObject>;
+        }) {
+            const message = new QueryTraceBlockRequest({});
+            if (data.txs != null) {
+                message.txs = data.txs.map(item => dependency_5.ethermint.evm.v1.MsgEthereumTx.fromObject(item));
+            }
+            if (data.trace_config != null) {
+                message.trace_config = dependency_4.ethermint.evm.v1.TraceConfig.fromObject(data.trace_config);
+            }
+            if (data.block_number != null) {
+                message.block_number = data.block_number;
+            }
+            if (data.block_hash != null) {
+                message.block_hash = data.block_hash;
+            }
+            if (data.block_time != null) {
+                message.block_time = dependency_6.google.protobuf.Timestamp.fromObject(data.block_time);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                txs?: ReturnType<typeof dependency_5.ethermint.evm.v1.MsgEthereumTx.prototype.toObject>[];
+                trace_config?: ReturnType<typeof dependency_4.ethermint.evm.v1.TraceConfig.prototype.toObject>;
+                block_number?: number;
+                block_hash?: string;
+                block_time?: ReturnType<typeof dependency_6.google.protobuf.Timestamp.prototype.toObject>;
+            } = {};
+            if (this.txs != null) {
+                data.txs = this.txs.map((item: dependency_5.ethermint.evm.v1.MsgEthereumTx) => item.toObject());
+            }
+            if (this.trace_config != null) {
+                data.trace_config = this.trace_config.toObject();
+            }
+            if (this.block_number != null) {
+                data.block_number = this.block_number;
+            }
+            if (this.block_hash != null) {
+                data.block_hash = this.block_hash;
+            }
+            if (this.block_time != null) {
+                data.block_time = this.block_time.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.txs !== undefined)
+                writer.writeRepeatedMessage(1, this.txs, (item: dependency_5.ethermint.evm.v1.MsgEthereumTx) => item.serialize(writer));
+            if (this.trace_config !== undefined)
+                writer.writeMessage(3, this.trace_config, () => this.trace_config.serialize(writer));
+            if (this.block_number !== undefined)
+                writer.writeInt64(5, this.block_number);
+            if (typeof this.block_hash === "string" && this.block_hash.length)
+                writer.writeString(6, this.block_hash);
+            if (this.block_time !== undefined)
+                writer.writeMessage(7, this.block_time, () => this.block_time.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryTraceBlockRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryTraceBlockRequest();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.txs, () => pb_1.Message.addToRepeatedWrapperField(message, 1, dependency_5.ethermint.evm.v1.MsgEthereumTx.deserialize(reader), dependency_5.ethermint.evm.v1.MsgEthereumTx));
+                        break;
+                    case 3:
+                        reader.readMessage(message.trace_config, () => message.trace_config = dependency_4.ethermint.evm.v1.TraceConfig.deserialize(reader));
+                        break;
+                    case 5:
+                        message.block_number = reader.readInt64();
+                        break;
+                    case 6:
+                        message.block_hash = reader.readString();
+                        break;
+                    case 7:
+                        reader.readMessage(message.block_time, () => message.block_time = dependency_6.google.protobuf.Timestamp.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): QueryTraceBlockRequest {
+            return QueryTraceBlockRequest.deserialize(bytes);
+        }
+    }
+    export class QueryTraceBlockResponse extends pb_1.Message {
+        constructor(data?: any[] | {
+            data?: Uint8Array;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("data" in data && data.data != undefined) {
+                    this.data = data.data;
+                }
+            }
+        }
+        get data() {
+            return pb_1.Message.getField(this, 1) as Uint8Array;
+        }
+        set data(value: Uint8Array) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        static fromObject(data: {
+            data?: Uint8Array;
+        }) {
+            const message = new QueryTraceBlockResponse({});
+            if (data.data != null) {
+                message.data = data.data;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                data?: Uint8Array;
+            } = {};
+            if (this.data != null) {
+                data.data = this.data;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.data !== undefined)
+                writer.writeBytes(1, this.data);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryTraceBlockResponse {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryTraceBlockResponse();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.data = reader.readBytes();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): QueryTraceBlockResponse {
+            return QueryTraceBlockResponse.deserialize(bytes);
         }
     }
 }

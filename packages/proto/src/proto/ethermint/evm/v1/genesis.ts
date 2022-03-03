@@ -13,19 +13,15 @@ export namespace ethermint.evm.v1 {
         constructor(data?: any[] | {
             accounts?: GenesisAccount[];
             params?: dependency_2.ethermint.evm.v1.Params;
-            txs_logs?: dependency_2.ethermint.evm.v1.TransactionLogs[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 4], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("accounts" in data && data.accounts != undefined) {
                     this.accounts = data.accounts;
                 }
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;
-                }
-                if ("txs_logs" in data && data.txs_logs != undefined) {
-                    this.txs_logs = data.txs_logs;
                 }
             }
         }
@@ -36,21 +32,14 @@ export namespace ethermint.evm.v1 {
             pb_1.Message.setRepeatedWrapperField(this, 1, value);
         }
         get params() {
-            return pb_1.Message.getWrapperField(this, dependency_2.ethermint.evm.v1.Params, 3) as dependency_2.ethermint.evm.v1.Params;
+            return pb_1.Message.getWrapperField(this, dependency_2.ethermint.evm.v1.Params, 2) as dependency_2.ethermint.evm.v1.Params;
         }
         set params(value: dependency_2.ethermint.evm.v1.Params) {
-            pb_1.Message.setWrapperField(this, 3, value);
-        }
-        get txs_logs() {
-            return pb_1.Message.getRepeatedWrapperField(this, dependency_2.ethermint.evm.v1.TransactionLogs, 4) as dependency_2.ethermint.evm.v1.TransactionLogs[];
-        }
-        set txs_logs(value: dependency_2.ethermint.evm.v1.TransactionLogs[]) {
-            pb_1.Message.setRepeatedWrapperField(this, 4, value);
+            pb_1.Message.setWrapperField(this, 2, value);
         }
         static fromObject(data: {
             accounts?: ReturnType<typeof GenesisAccount.prototype.toObject>[];
             params?: ReturnType<typeof dependency_2.ethermint.evm.v1.Params.prototype.toObject>;
-            txs_logs?: ReturnType<typeof dependency_2.ethermint.evm.v1.TransactionLogs.prototype.toObject>[];
         }) {
             const message = new GenesisState({});
             if (data.accounts != null) {
@@ -59,25 +48,18 @@ export namespace ethermint.evm.v1 {
             if (data.params != null) {
                 message.params = dependency_2.ethermint.evm.v1.Params.fromObject(data.params);
             }
-            if (data.txs_logs != null) {
-                message.txs_logs = data.txs_logs.map(item => dependency_2.ethermint.evm.v1.TransactionLogs.fromObject(item));
-            }
             return message;
         }
         toObject() {
             const data: {
                 accounts?: ReturnType<typeof GenesisAccount.prototype.toObject>[];
                 params?: ReturnType<typeof dependency_2.ethermint.evm.v1.Params.prototype.toObject>;
-                txs_logs?: ReturnType<typeof dependency_2.ethermint.evm.v1.TransactionLogs.prototype.toObject>[];
             } = {};
             if (this.accounts != null) {
                 data.accounts = this.accounts.map((item: GenesisAccount) => item.toObject());
             }
             if (this.params != null) {
                 data.params = this.params.toObject();
-            }
-            if (this.txs_logs != null) {
-                data.txs_logs = this.txs_logs.map((item: dependency_2.ethermint.evm.v1.TransactionLogs) => item.toObject());
             }
             return data;
         }
@@ -88,9 +70,7 @@ export namespace ethermint.evm.v1 {
             if (this.accounts !== undefined)
                 writer.writeRepeatedMessage(1, this.accounts, (item: GenesisAccount) => item.serialize(writer));
             if (this.params !== undefined)
-                writer.writeMessage(3, this.params, () => this.params.serialize(writer));
-            if (this.txs_logs !== undefined)
-                writer.writeRepeatedMessage(4, this.txs_logs, (item: dependency_2.ethermint.evm.v1.TransactionLogs) => item.serialize(writer));
+                writer.writeMessage(2, this.params, () => this.params.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -103,11 +83,8 @@ export namespace ethermint.evm.v1 {
                     case 1:
                         reader.readMessage(message.accounts, () => pb_1.Message.addToRepeatedWrapperField(message, 1, GenesisAccount.deserialize(reader), GenesisAccount));
                         break;
-                    case 3:
+                    case 2:
                         reader.readMessage(message.params, () => message.params = dependency_2.ethermint.evm.v1.Params.deserialize(reader));
-                        break;
-                    case 4:
-                        reader.readMessage(message.txs_logs, () => pb_1.Message.addToRepeatedWrapperField(message, 4, dependency_2.ethermint.evm.v1.TransactionLogs.deserialize(reader), dependency_2.ethermint.evm.v1.TransactionLogs));
                         break;
                     default: reader.skipField();
                 }
