@@ -1,3 +1,4 @@
+export * from './messages/ibcMsgTransfer'
 export * from './messages/msgSend'
 export * from './messages/txRaw'
 export * from './messages/utils'
