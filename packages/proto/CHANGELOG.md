@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.8](https://github.com/tharsis/evmosjs/compare/@tharsis/proto@0.1.7...@tharsis/proto@0.1.8) (2022-03-03)
+
+### Features
+
+* ibc transactions added ([#14](https://github.com/tharsis/evmosjs/issues/14)) ([3809f28](https://github.com/tharsis/evmosjs/commit/3809f289e4e54c5013d3027578bde5c244ec8736))
+
 ## [0.1.7](https://github.com/tharsis/evmosjs/compare/@tharsis/proto@0.1.6...@tharsis/proto@0.1.7) (2022-03-03)
 
 ### Features
