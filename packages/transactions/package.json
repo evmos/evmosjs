@@ -1,7 +1,7 @@
 {
   "name": "@tharsis/transactions",
   "description": "Transactions generator for EVMOS",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
