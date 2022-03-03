@@ -6,14 +6,15 @@
  * source: ethermint/evm/v1/tx.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as dependency_1 from "./../../../gogoproto/gogo";
-import * as dependency_2 from "./../../../google/protobuf/any";
-import * as dependency_3 from "./../../../cosmos_proto/cosmos";
-import * as dependency_4 from "./evm";
+import * as dependency_2 from "./../../../google/api/annotations";
+import * as dependency_3 from "./../../../google/protobuf/any";
+import * as dependency_4 from "./../../../cosmos_proto/cosmos";
+import * as dependency_5 from "./evm";
 import * as pb_1 from "google-protobuf";
 export namespace ethermint.evm.v1 {
     export class MsgEthereumTx extends pb_1.Message {
         constructor(data?: any[] | {
-            data?: dependency_2.google.protobuf.Any;
+            data?: dependency_3.google.protobuf.Any;
             size?: number;
             hash?: string;
             from?: string;
@@ -36,9 +37,9 @@ export namespace ethermint.evm.v1 {
             }
         }
         get data() {
-            return pb_1.Message.getWrapperField(this, dependency_2.google.protobuf.Any, 1) as dependency_2.google.protobuf.Any;
+            return pb_1.Message.getWrapperField(this, dependency_3.google.protobuf.Any, 1) as dependency_3.google.protobuf.Any;
         }
-        set data(value: dependency_2.google.protobuf.Any) {
+        set data(value: dependency_3.google.protobuf.Any) {
             pb_1.Message.setWrapperField(this, 1, value);
         }
         get size() {
@@ -60,14 +61,14 @@ export namespace ethermint.evm.v1 {
             pb_1.Message.setField(this, 4, value);
         }
         static fromObject(data: {
-            data?: ReturnType<typeof dependency_2.google.protobuf.Any.prototype.toObject>;
+            data?: ReturnType<typeof dependency_3.google.protobuf.Any.prototype.toObject>;
             size?: number;
             hash?: string;
             from?: string;
         }) {
             const message = new MsgEthereumTx({});
             if (data.data != null) {
-                message.data = dependency_2.google.protobuf.Any.fromObject(data.data);
+                message.data = dependency_3.google.protobuf.Any.fromObject(data.data);
             }
             if (data.size != null) {
                 message.size = data.size;
@@ -82,7 +83,7 @@ export namespace ethermint.evm.v1 {
         }
         toObject() {
             const data: {
-                data?: ReturnType<typeof dependency_2.google.protobuf.Any.prototype.toObject>;
+                data?: ReturnType<typeof dependency_3.google.protobuf.Any.prototype.toObject>;
                 size?: number;
                 hash?: string;
                 from?: string;
@@ -123,7 +124,7 @@ export namespace ethermint.evm.v1 {
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        reader.readMessage(message.data, () => message.data = dependency_2.google.protobuf.Any.deserialize(reader));
+                        reader.readMessage(message.data, () => message.data = dependency_3.google.protobuf.Any.deserialize(reader));
                         break;
                     case 2:
                         message.size = reader.readDouble();
@@ -405,7 +406,7 @@ export namespace ethermint.evm.v1 {
             to?: string;
             value?: string;
             data?: Uint8Array;
-            accesses?: dependency_4.ethermint.evm.v1.AccessTuple[];
+            accesses?: dependency_5.ethermint.evm.v1.AccessTuple[];
             v?: Uint8Array;
             r?: Uint8Array;
             s?: Uint8Array;
@@ -491,9 +492,9 @@ export namespace ethermint.evm.v1 {
             pb_1.Message.setField(this, 7, value);
         }
         get accesses() {
-            return pb_1.Message.getRepeatedWrapperField(this, dependency_4.ethermint.evm.v1.AccessTuple, 8) as dependency_4.ethermint.evm.v1.AccessTuple[];
+            return pb_1.Message.getRepeatedWrapperField(this, dependency_5.ethermint.evm.v1.AccessTuple, 8) as dependency_5.ethermint.evm.v1.AccessTuple[];
         }
-        set accesses(value: dependency_4.ethermint.evm.v1.AccessTuple[]) {
+        set accesses(value: dependency_5.ethermint.evm.v1.AccessTuple[]) {
             pb_1.Message.setRepeatedWrapperField(this, 8, value);
         }
         get v() {
@@ -522,7 +523,7 @@ export namespace ethermint.evm.v1 {
             to?: string;
             value?: string;
             data?: Uint8Array;
-            accesses?: ReturnType<typeof dependency_4.ethermint.evm.v1.AccessTuple.prototype.toObject>[];
+            accesses?: ReturnType<typeof dependency_5.ethermint.evm.v1.AccessTuple.prototype.toObject>[];
             v?: Uint8Array;
             r?: Uint8Array;
             s?: Uint8Array;
@@ -550,7 +551,7 @@ export namespace ethermint.evm.v1 {
                 message.data = data.data;
             }
             if (data.accesses != null) {
-                message.accesses = data.accesses.map(item => dependency_4.ethermint.evm.v1.AccessTuple.fromObject(item));
+                message.accesses = data.accesses.map(item => dependency_5.ethermint.evm.v1.AccessTuple.fromObject(item));
             }
             if (data.v != null) {
                 message.v = data.v;
@@ -572,7 +573,7 @@ export namespace ethermint.evm.v1 {
                 to?: string;
                 value?: string;
                 data?: Uint8Array;
-                accesses?: ReturnType<typeof dependency_4.ethermint.evm.v1.AccessTuple.prototype.toObject>[];
+                accesses?: ReturnType<typeof dependency_5.ethermint.evm.v1.AccessTuple.prototype.toObject>[];
                 v?: Uint8Array;
                 r?: Uint8Array;
                 s?: Uint8Array;
@@ -599,7 +600,7 @@ export namespace ethermint.evm.v1 {
                 data.data = this.data;
             }
             if (this.accesses != null) {
-                data.accesses = this.accesses.map((item: dependency_4.ethermint.evm.v1.AccessTuple) => item.toObject());
+                data.accesses = this.accesses.map((item: dependency_5.ethermint.evm.v1.AccessTuple) => item.toObject());
             }
             if (this.v != null) {
                 data.v = this.v;
@@ -631,7 +632,7 @@ export namespace ethermint.evm.v1 {
             if (this.data !== undefined)
                 writer.writeBytes(7, this.data);
             if (this.accesses !== undefined)
-                writer.writeRepeatedMessage(8, this.accesses, (item: dependency_4.ethermint.evm.v1.AccessTuple) => item.serialize(writer));
+                writer.writeRepeatedMessage(8, this.accesses, (item: dependency_5.ethermint.evm.v1.AccessTuple) => item.serialize(writer));
             if (this.v !== undefined)
                 writer.writeBytes(9, this.v);
             if (this.r !== undefined)
@@ -669,7 +670,7 @@ export namespace ethermint.evm.v1 {
                         message.data = reader.readBytes();
                         break;
                     case 8:
-                        reader.readMessage(message.accesses, () => pb_1.Message.addToRepeatedWrapperField(message, 8, dependency_4.ethermint.evm.v1.AccessTuple.deserialize(reader), dependency_4.ethermint.evm.v1.AccessTuple));
+                        reader.readMessage(message.accesses, () => pb_1.Message.addToRepeatedWrapperField(message, 8, dependency_5.ethermint.evm.v1.AccessTuple.deserialize(reader), dependency_5.ethermint.evm.v1.AccessTuple));
                         break;
                     case 9:
                         message.v = reader.readBytes();
@@ -702,7 +703,7 @@ export namespace ethermint.evm.v1 {
             to?: string;
             value?: string;
             data?: Uint8Array;
-            accesses?: dependency_4.ethermint.evm.v1.AccessTuple[];
+            accesses?: dependency_5.ethermint.evm.v1.AccessTuple[];
             v?: Uint8Array;
             r?: Uint8Array;
             s?: Uint8Array;
@@ -797,9 +798,9 @@ export namespace ethermint.evm.v1 {
             pb_1.Message.setField(this, 8, value);
         }
         get accesses() {
-            return pb_1.Message.getRepeatedWrapperField(this, dependency_4.ethermint.evm.v1.AccessTuple, 9) as dependency_4.ethermint.evm.v1.AccessTuple[];
+            return pb_1.Message.getRepeatedWrapperField(this, dependency_5.ethermint.evm.v1.AccessTuple, 9) as dependency_5.ethermint.evm.v1.AccessTuple[];
         }
-        set accesses(value: dependency_4.ethermint.evm.v1.AccessTuple[]) {
+        set accesses(value: dependency_5.ethermint.evm.v1.AccessTuple[]) {
             pb_1.Message.setRepeatedWrapperField(this, 9, value);
         }
         get v() {
@@ -829,7 +830,7 @@ export namespace ethermint.evm.v1 {
             to?: string;
             value?: string;
             data?: Uint8Array;
-            accesses?: ReturnType<typeof dependency_4.ethermint.evm.v1.AccessTuple.prototype.toObject>[];
+            accesses?: ReturnType<typeof dependency_5.ethermint.evm.v1.AccessTuple.prototype.toObject>[];
             v?: Uint8Array;
             r?: Uint8Array;
             s?: Uint8Array;
@@ -860,7 +861,7 @@ export namespace ethermint.evm.v1 {
                 message.data = data.data;
             }
             if (data.accesses != null) {
-                message.accesses = data.accesses.map(item => dependency_4.ethermint.evm.v1.AccessTuple.fromObject(item));
+                message.accesses = data.accesses.map(item => dependency_5.ethermint.evm.v1.AccessTuple.fromObject(item));
             }
             if (data.v != null) {
                 message.v = data.v;
@@ -883,7 +884,7 @@ export namespace ethermint.evm.v1 {
                 to?: string;
                 value?: string;
                 data?: Uint8Array;
-                accesses?: ReturnType<typeof dependency_4.ethermint.evm.v1.AccessTuple.prototype.toObject>[];
+                accesses?: ReturnType<typeof dependency_5.ethermint.evm.v1.AccessTuple.prototype.toObject>[];
                 v?: Uint8Array;
                 r?: Uint8Array;
                 s?: Uint8Array;
@@ -913,7 +914,7 @@ export namespace ethermint.evm.v1 {
                 data.data = this.data;
             }
             if (this.accesses != null) {
-                data.accesses = this.accesses.map((item: dependency_4.ethermint.evm.v1.AccessTuple) => item.toObject());
+                data.accesses = this.accesses.map((item: dependency_5.ethermint.evm.v1.AccessTuple) => item.toObject());
             }
             if (this.v != null) {
                 data.v = this.v;
@@ -947,7 +948,7 @@ export namespace ethermint.evm.v1 {
             if (this.data !== undefined)
                 writer.writeBytes(8, this.data);
             if (this.accesses !== undefined)
-                writer.writeRepeatedMessage(9, this.accesses, (item: dependency_4.ethermint.evm.v1.AccessTuple) => item.serialize(writer));
+                writer.writeRepeatedMessage(9, this.accesses, (item: dependency_5.ethermint.evm.v1.AccessTuple) => item.serialize(writer));
             if (this.v !== undefined)
                 writer.writeBytes(10, this.v);
             if (this.r !== undefined)
@@ -988,7 +989,7 @@ export namespace ethermint.evm.v1 {
                         message.data = reader.readBytes();
                         break;
                     case 9:
-                        reader.readMessage(message.accesses, () => pb_1.Message.addToRepeatedWrapperField(message, 9, dependency_4.ethermint.evm.v1.AccessTuple.deserialize(reader), dependency_4.ethermint.evm.v1.AccessTuple));
+                        reader.readMessage(message.accesses, () => pb_1.Message.addToRepeatedWrapperField(message, 9, dependency_5.ethermint.evm.v1.AccessTuple.deserialize(reader), dependency_5.ethermint.evm.v1.AccessTuple));
                         break;
                     case 10:
                         message.v = reader.readBytes();
@@ -1053,7 +1054,7 @@ export namespace ethermint.evm.v1 {
     export class MsgEthereumTxResponse extends pb_1.Message {
         constructor(data?: any[] | {
             hash?: string;
-            logs?: dependency_4.ethermint.evm.v1.Log[];
+            logs?: dependency_5.ethermint.evm.v1.Log[];
             ret?: Uint8Array;
             vm_error?: string;
             gas_used?: number;
@@ -1085,9 +1086,9 @@ export namespace ethermint.evm.v1 {
             pb_1.Message.setField(this, 1, value);
         }
         get logs() {
-            return pb_1.Message.getRepeatedWrapperField(this, dependency_4.ethermint.evm.v1.Log, 2) as dependency_4.ethermint.evm.v1.Log[];
+            return pb_1.Message.getRepeatedWrapperField(this, dependency_5.ethermint.evm.v1.Log, 2) as dependency_5.ethermint.evm.v1.Log[];
         }
-        set logs(value: dependency_4.ethermint.evm.v1.Log[]) {
+        set logs(value: dependency_5.ethermint.evm.v1.Log[]) {
             pb_1.Message.setRepeatedWrapperField(this, 2, value);
         }
         get ret() {
@@ -1110,7 +1111,7 @@ export namespace ethermint.evm.v1 {
         }
         static fromObject(data: {
             hash?: string;
-            logs?: ReturnType<typeof dependency_4.ethermint.evm.v1.Log.prototype.toObject>[];
+            logs?: ReturnType<typeof dependency_5.ethermint.evm.v1.Log.prototype.toObject>[];
             ret?: Uint8Array;
             vm_error?: string;
             gas_used?: number;
@@ -1120,7 +1121,7 @@ export namespace ethermint.evm.v1 {
                 message.hash = data.hash;
             }
             if (data.logs != null) {
-                message.logs = data.logs.map(item => dependency_4.ethermint.evm.v1.Log.fromObject(item));
+                message.logs = data.logs.map(item => dependency_5.ethermint.evm.v1.Log.fromObject(item));
             }
             if (data.ret != null) {
                 message.ret = data.ret;
@@ -1136,7 +1137,7 @@ export namespace ethermint.evm.v1 {
         toObject() {
             const data: {
                 hash?: string;
-                logs?: ReturnType<typeof dependency_4.ethermint.evm.v1.Log.prototype.toObject>[];
+                logs?: ReturnType<typeof dependency_5.ethermint.evm.v1.Log.prototype.toObject>[];
                 ret?: Uint8Array;
                 vm_error?: string;
                 gas_used?: number;
@@ -1145,7 +1146,7 @@ export namespace ethermint.evm.v1 {
                 data.hash = this.hash;
             }
             if (this.logs != null) {
-                data.logs = this.logs.map((item: dependency_4.ethermint.evm.v1.Log) => item.toObject());
+                data.logs = this.logs.map((item: dependency_5.ethermint.evm.v1.Log) => item.toObject());
             }
             if (this.ret != null) {
                 data.ret = this.ret;
@@ -1165,7 +1166,7 @@ export namespace ethermint.evm.v1 {
             if (typeof this.hash === "string" && this.hash.length)
                 writer.writeString(1, this.hash);
             if (this.logs !== undefined)
-                writer.writeRepeatedMessage(2, this.logs, (item: dependency_4.ethermint.evm.v1.Log) => item.serialize(writer));
+                writer.writeRepeatedMessage(2, this.logs, (item: dependency_5.ethermint.evm.v1.Log) => item.serialize(writer));
             if (this.ret !== undefined)
                 writer.writeBytes(3, this.ret);
             if (typeof this.vm_error === "string" && this.vm_error.length)
@@ -1185,7 +1186,7 @@ export namespace ethermint.evm.v1 {
                         message.hash = reader.readString();
                         break;
                     case 2:
-                        reader.readMessage(message.logs, () => pb_1.Message.addToRepeatedWrapperField(message, 2, dependency_4.ethermint.evm.v1.Log.deserialize(reader), dependency_4.ethermint.evm.v1.Log));
+                        reader.readMessage(message.logs, () => pb_1.Message.addToRepeatedWrapperField(message, 2, dependency_5.ethermint.evm.v1.Log.deserialize(reader), dependency_5.ethermint.evm.v1.Log));
                         break;
                     case 3:
                         message.ret = reader.readBytes();

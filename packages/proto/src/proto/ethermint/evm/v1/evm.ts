@@ -181,8 +181,9 @@ export namespace ethermint.evm.v1 {
             istanbul_block?: string;
             muir_glacier_block?: string;
             berlin_block?: string;
-            catalyst_block?: string;
             london_block?: string;
+            arrow_glacier_block?: string;
+            merge_fork_block?: string;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
@@ -226,11 +227,14 @@ export namespace ethermint.evm.v1 {
                 if ("berlin_block" in data && data.berlin_block != undefined) {
                     this.berlin_block = data.berlin_block;
                 }
-                if ("catalyst_block" in data && data.catalyst_block != undefined) {
-                    this.catalyst_block = data.catalyst_block;
-                }
                 if ("london_block" in data && data.london_block != undefined) {
                     this.london_block = data.london_block;
+                }
+                if ("arrow_glacier_block" in data && data.arrow_glacier_block != undefined) {
+                    this.arrow_glacier_block = data.arrow_glacier_block;
+                }
+                if ("merge_fork_block" in data && data.merge_fork_block != undefined) {
+                    this.merge_fork_block = data.merge_fork_block;
                 }
             }
         }
@@ -312,17 +316,23 @@ export namespace ethermint.evm.v1 {
         set berlin_block(value: string) {
             pb_1.Message.setField(this, 13, value);
         }
-        get catalyst_block() {
-            return pb_1.Message.getField(this, 16) as string;
-        }
-        set catalyst_block(value: string) {
-            pb_1.Message.setField(this, 16, value);
-        }
         get london_block() {
             return pb_1.Message.getField(this, 17) as string;
         }
         set london_block(value: string) {
             pb_1.Message.setField(this, 17, value);
+        }
+        get arrow_glacier_block() {
+            return pb_1.Message.getField(this, 18) as string;
+        }
+        set arrow_glacier_block(value: string) {
+            pb_1.Message.setField(this, 18, value);
+        }
+        get merge_fork_block() {
+            return pb_1.Message.getField(this, 19) as string;
+        }
+        set merge_fork_block(value: string) {
+            pb_1.Message.setField(this, 19, value);
         }
         static fromObject(data: {
             homestead_block?: string;
@@ -338,8 +348,9 @@ export namespace ethermint.evm.v1 {
             istanbul_block?: string;
             muir_glacier_block?: string;
             berlin_block?: string;
-            catalyst_block?: string;
             london_block?: string;
+            arrow_glacier_block?: string;
+            merge_fork_block?: string;
         }) {
             const message = new ChainConfig({});
             if (data.homestead_block != null) {
@@ -381,11 +392,14 @@ export namespace ethermint.evm.v1 {
             if (data.berlin_block != null) {
                 message.berlin_block = data.berlin_block;
             }
-            if (data.catalyst_block != null) {
-                message.catalyst_block = data.catalyst_block;
-            }
             if (data.london_block != null) {
                 message.london_block = data.london_block;
+            }
+            if (data.arrow_glacier_block != null) {
+                message.arrow_glacier_block = data.arrow_glacier_block;
+            }
+            if (data.merge_fork_block != null) {
+                message.merge_fork_block = data.merge_fork_block;
             }
             return message;
         }
@@ -404,8 +418,9 @@ export namespace ethermint.evm.v1 {
                 istanbul_block?: string;
                 muir_glacier_block?: string;
                 berlin_block?: string;
-                catalyst_block?: string;
                 london_block?: string;
+                arrow_glacier_block?: string;
+                merge_fork_block?: string;
             } = {};
             if (this.homestead_block != null) {
                 data.homestead_block = this.homestead_block;
@@ -446,11 +461,14 @@ export namespace ethermint.evm.v1 {
             if (this.berlin_block != null) {
                 data.berlin_block = this.berlin_block;
             }
-            if (this.catalyst_block != null) {
-                data.catalyst_block = this.catalyst_block;
-            }
             if (this.london_block != null) {
                 data.london_block = this.london_block;
+            }
+            if (this.arrow_glacier_block != null) {
+                data.arrow_glacier_block = this.arrow_glacier_block;
+            }
+            if (this.merge_fork_block != null) {
+                data.merge_fork_block = this.merge_fork_block;
             }
             return data;
         }
@@ -484,10 +502,12 @@ export namespace ethermint.evm.v1 {
                 writer.writeString(12, this.muir_glacier_block);
             if (typeof this.berlin_block === "string" && this.berlin_block.length)
                 writer.writeString(13, this.berlin_block);
-            if (typeof this.catalyst_block === "string" && this.catalyst_block.length)
-                writer.writeString(16, this.catalyst_block);
             if (typeof this.london_block === "string" && this.london_block.length)
                 writer.writeString(17, this.london_block);
+            if (typeof this.arrow_glacier_block === "string" && this.arrow_glacier_block.length)
+                writer.writeString(18, this.arrow_glacier_block);
+            if (typeof this.merge_fork_block === "string" && this.merge_fork_block.length)
+                writer.writeString(19, this.merge_fork_block);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -536,11 +556,14 @@ export namespace ethermint.evm.v1 {
                     case 13:
                         message.berlin_block = reader.readString();
                         break;
-                    case 16:
-                        message.catalyst_block = reader.readString();
-                        break;
                     case 17:
                         message.london_block = reader.readString();
+                        break;
+                    case 18:
+                        message.arrow_glacier_block = reader.readString();
+                        break;
+                    case 19:
+                        message.merge_fork_block = reader.readString();
                         break;
                     default: reader.skipField();
                 }
@@ -1250,6 +1273,279 @@ export namespace ethermint.evm.v1 {
         }
         static deserializeBinary(bytes: Uint8Array): AccessTuple {
             return AccessTuple.deserialize(bytes);
+        }
+    }
+    export class TraceConfig extends pb_1.Message {
+        constructor(data?: any[] | {
+            tracer?: string;
+            timeout?: string;
+            reexec?: number;
+            disable_stack?: boolean;
+            disable_storage?: boolean;
+            debug?: boolean;
+            limit?: number;
+            overrides?: ChainConfig;
+            enable_memory?: boolean;
+            enable_return_data?: boolean;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("tracer" in data && data.tracer != undefined) {
+                    this.tracer = data.tracer;
+                }
+                if ("timeout" in data && data.timeout != undefined) {
+                    this.timeout = data.timeout;
+                }
+                if ("reexec" in data && data.reexec != undefined) {
+                    this.reexec = data.reexec;
+                }
+                if ("disable_stack" in data && data.disable_stack != undefined) {
+                    this.disable_stack = data.disable_stack;
+                }
+                if ("disable_storage" in data && data.disable_storage != undefined) {
+                    this.disable_storage = data.disable_storage;
+                }
+                if ("debug" in data && data.debug != undefined) {
+                    this.debug = data.debug;
+                }
+                if ("limit" in data && data.limit != undefined) {
+                    this.limit = data.limit;
+                }
+                if ("overrides" in data && data.overrides != undefined) {
+                    this.overrides = data.overrides;
+                }
+                if ("enable_memory" in data && data.enable_memory != undefined) {
+                    this.enable_memory = data.enable_memory;
+                }
+                if ("enable_return_data" in data && data.enable_return_data != undefined) {
+                    this.enable_return_data = data.enable_return_data;
+                }
+            }
+        }
+        get tracer() {
+            return pb_1.Message.getField(this, 1) as string;
+        }
+        set tracer(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get timeout() {
+            return pb_1.Message.getField(this, 2) as string;
+        }
+        set timeout(value: string) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        get reexec() {
+            return pb_1.Message.getField(this, 3) as number;
+        }
+        set reexec(value: number) {
+            pb_1.Message.setField(this, 3, value);
+        }
+        get disable_stack() {
+            return pb_1.Message.getField(this, 5) as boolean;
+        }
+        set disable_stack(value: boolean) {
+            pb_1.Message.setField(this, 5, value);
+        }
+        get disable_storage() {
+            return pb_1.Message.getField(this, 6) as boolean;
+        }
+        set disable_storage(value: boolean) {
+            pb_1.Message.setField(this, 6, value);
+        }
+        get debug() {
+            return pb_1.Message.getField(this, 8) as boolean;
+        }
+        set debug(value: boolean) {
+            pb_1.Message.setField(this, 8, value);
+        }
+        get limit() {
+            return pb_1.Message.getField(this, 9) as number;
+        }
+        set limit(value: number) {
+            pb_1.Message.setField(this, 9, value);
+        }
+        get overrides() {
+            return pb_1.Message.getWrapperField(this, ChainConfig, 10) as ChainConfig;
+        }
+        set overrides(value: ChainConfig) {
+            pb_1.Message.setWrapperField(this, 10, value);
+        }
+        get enable_memory() {
+            return pb_1.Message.getField(this, 11) as boolean;
+        }
+        set enable_memory(value: boolean) {
+            pb_1.Message.setField(this, 11, value);
+        }
+        get enable_return_data() {
+            return pb_1.Message.getField(this, 12) as boolean;
+        }
+        set enable_return_data(value: boolean) {
+            pb_1.Message.setField(this, 12, value);
+        }
+        static fromObject(data: {
+            tracer?: string;
+            timeout?: string;
+            reexec?: number;
+            disable_stack?: boolean;
+            disable_storage?: boolean;
+            debug?: boolean;
+            limit?: number;
+            overrides?: ReturnType<typeof ChainConfig.prototype.toObject>;
+            enable_memory?: boolean;
+            enable_return_data?: boolean;
+        }) {
+            const message = new TraceConfig({});
+            if (data.tracer != null) {
+                message.tracer = data.tracer;
+            }
+            if (data.timeout != null) {
+                message.timeout = data.timeout;
+            }
+            if (data.reexec != null) {
+                message.reexec = data.reexec;
+            }
+            if (data.disable_stack != null) {
+                message.disable_stack = data.disable_stack;
+            }
+            if (data.disable_storage != null) {
+                message.disable_storage = data.disable_storage;
+            }
+            if (data.debug != null) {
+                message.debug = data.debug;
+            }
+            if (data.limit != null) {
+                message.limit = data.limit;
+            }
+            if (data.overrides != null) {
+                message.overrides = ChainConfig.fromObject(data.overrides);
+            }
+            if (data.enable_memory != null) {
+                message.enable_memory = data.enable_memory;
+            }
+            if (data.enable_return_data != null) {
+                message.enable_return_data = data.enable_return_data;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                tracer?: string;
+                timeout?: string;
+                reexec?: number;
+                disable_stack?: boolean;
+                disable_storage?: boolean;
+                debug?: boolean;
+                limit?: number;
+                overrides?: ReturnType<typeof ChainConfig.prototype.toObject>;
+                enable_memory?: boolean;
+                enable_return_data?: boolean;
+            } = {};
+            if (this.tracer != null) {
+                data.tracer = this.tracer;
+            }
+            if (this.timeout != null) {
+                data.timeout = this.timeout;
+            }
+            if (this.reexec != null) {
+                data.reexec = this.reexec;
+            }
+            if (this.disable_stack != null) {
+                data.disable_stack = this.disable_stack;
+            }
+            if (this.disable_storage != null) {
+                data.disable_storage = this.disable_storage;
+            }
+            if (this.debug != null) {
+                data.debug = this.debug;
+            }
+            if (this.limit != null) {
+                data.limit = this.limit;
+            }
+            if (this.overrides != null) {
+                data.overrides = this.overrides.toObject();
+            }
+            if (this.enable_memory != null) {
+                data.enable_memory = this.enable_memory;
+            }
+            if (this.enable_return_data != null) {
+                data.enable_return_data = this.enable_return_data;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (typeof this.tracer === "string" && this.tracer.length)
+                writer.writeString(1, this.tracer);
+            if (typeof this.timeout === "string" && this.timeout.length)
+                writer.writeString(2, this.timeout);
+            if (this.reexec !== undefined)
+                writer.writeUint64(3, this.reexec);
+            if (this.disable_stack !== undefined)
+                writer.writeBool(5, this.disable_stack);
+            if (this.disable_storage !== undefined)
+                writer.writeBool(6, this.disable_storage);
+            if (this.debug !== undefined)
+                writer.writeBool(8, this.debug);
+            if (this.limit !== undefined)
+                writer.writeInt32(9, this.limit);
+            if (this.overrides !== undefined)
+                writer.writeMessage(10, this.overrides, () => this.overrides.serialize(writer));
+            if (this.enable_memory !== undefined)
+                writer.writeBool(11, this.enable_memory);
+            if (this.enable_return_data !== undefined)
+                writer.writeBool(12, this.enable_return_data);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): TraceConfig {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new TraceConfig();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.tracer = reader.readString();
+                        break;
+                    case 2:
+                        message.timeout = reader.readString();
+                        break;
+                    case 3:
+                        message.reexec = reader.readUint64();
+                        break;
+                    case 5:
+                        message.disable_stack = reader.readBool();
+                        break;
+                    case 6:
+                        message.disable_storage = reader.readBool();
+                        break;
+                    case 8:
+                        message.debug = reader.readBool();
+                        break;
+                    case 9:
+                        message.limit = reader.readInt32();
+                        break;
+                    case 10:
+                        reader.readMessage(message.overrides, () => message.overrides = ChainConfig.deserialize(reader));
+                        break;
+                    case 11:
+                        message.enable_memory = reader.readBool();
+                        break;
+                    case 12:
+                        message.enable_return_data = reader.readBool();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): TraceConfig {
+            return TraceConfig.deserialize(bytes);
         }
     }
 }

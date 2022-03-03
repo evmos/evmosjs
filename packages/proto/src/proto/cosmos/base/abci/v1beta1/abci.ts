@@ -24,9 +24,10 @@ export namespace cosmos.base.abci.v1beta1 {
             gas_used?: number;
             tx?: dependency_3.google.protobuf.Any;
             timestamp?: string;
+            events?: dependency_2.tendermint.abci.Event[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [7], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [7, 13], []);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("height" in data && data.height != undefined) {
                     this.height = data.height;
@@ -63,6 +64,9 @@ export namespace cosmos.base.abci.v1beta1 {
                 }
                 if ("timestamp" in data && data.timestamp != undefined) {
                     this.timestamp = data.timestamp;
+                }
+                if ("events" in data && data.events != undefined) {
+                    this.events = data.events;
                 }
             }
         }
@@ -138,6 +142,12 @@ export namespace cosmos.base.abci.v1beta1 {
         set timestamp(value: string) {
             pb_1.Message.setField(this, 12, value);
         }
+        get events() {
+            return pb_1.Message.getRepeatedWrapperField(this, dependency_2.tendermint.abci.Event, 13) as dependency_2.tendermint.abci.Event[];
+        }
+        set events(value: dependency_2.tendermint.abci.Event[]) {
+            pb_1.Message.setRepeatedWrapperField(this, 13, value);
+        }
         static fromObject(data: {
             height?: number;
             txhash?: string;
@@ -151,6 +161,7 @@ export namespace cosmos.base.abci.v1beta1 {
             gas_used?: number;
             tx?: ReturnType<typeof dependency_3.google.protobuf.Any.prototype.toObject>;
             timestamp?: string;
+            events?: ReturnType<typeof dependency_2.tendermint.abci.Event.prototype.toObject>[];
         }) {
             const message = new TxResponse({});
             if (data.height != null) {
@@ -189,6 +200,9 @@ export namespace cosmos.base.abci.v1beta1 {
             if (data.timestamp != null) {
                 message.timestamp = data.timestamp;
             }
+            if (data.events != null) {
+                message.events = data.events.map(item => dependency_2.tendermint.abci.Event.fromObject(item));
+            }
             return message;
         }
         toObject() {
@@ -205,6 +219,7 @@ export namespace cosmos.base.abci.v1beta1 {
                 gas_used?: number;
                 tx?: ReturnType<typeof dependency_3.google.protobuf.Any.prototype.toObject>;
                 timestamp?: string;
+                events?: ReturnType<typeof dependency_2.tendermint.abci.Event.prototype.toObject>[];
             } = {};
             if (this.height != null) {
                 data.height = this.height;
@@ -242,6 +257,9 @@ export namespace cosmos.base.abci.v1beta1 {
             if (this.timestamp != null) {
                 data.timestamp = this.timestamp;
             }
+            if (this.events != null) {
+                data.events = this.events.map((item: dependency_2.tendermint.abci.Event) => item.toObject());
+            }
             return data;
         }
         serialize(): Uint8Array;
@@ -272,6 +290,8 @@ export namespace cosmos.base.abci.v1beta1 {
                 writer.writeMessage(11, this.tx, () => this.tx.serialize(writer));
             if (typeof this.timestamp === "string" && this.timestamp.length)
                 writer.writeString(12, this.timestamp);
+            if (this.events !== undefined)
+                writer.writeRepeatedMessage(13, this.events, (item: dependency_2.tendermint.abci.Event) => item.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -316,6 +336,9 @@ export namespace cosmos.base.abci.v1beta1 {
                         break;
                     case 12:
                         message.timestamp = reader.readString();
+                        break;
+                    case 13:
+                        reader.readMessage(message.events, () => pb_1.Message.addToRepeatedWrapperField(message, 13, dependency_2.tendermint.abci.Event.deserialize(reader), dependency_2.tendermint.abci.Event));
                         break;
                     default: reader.skipField();
                 }

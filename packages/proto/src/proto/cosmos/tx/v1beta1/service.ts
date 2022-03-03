@@ -10,6 +10,8 @@ import * as dependency_2 from "./../../base/abci/v1beta1/abci";
 import * as dependency_3 from "./tx";
 import * as dependency_4 from "./../../../gogoproto/gogo";
 import * as dependency_5 from "./../../base/query/v1beta1/pagination";
+import * as dependency_6 from "./../../../tendermint/types/block";
+import * as dependency_7 from "./../../../tendermint/types/types";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.tx.v1beta1 {
     export enum OrderBy {
@@ -736,6 +738,230 @@ export namespace cosmos.tx.v1beta1 {
         }
         static deserializeBinary(bytes: Uint8Array): GetTxResponse {
             return GetTxResponse.deserialize(bytes);
+        }
+    }
+    export class GetBlockWithTxsRequest extends pb_1.Message {
+        constructor(data?: any[] | {
+            height?: number;
+            pagination?: dependency_5.cosmos.base.query.v1beta1.PageRequest;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("height" in data && data.height != undefined) {
+                    this.height = data.height;
+                }
+                if ("pagination" in data && data.pagination != undefined) {
+                    this.pagination = data.pagination;
+                }
+            }
+        }
+        get height() {
+            return pb_1.Message.getField(this, 1) as number;
+        }
+        set height(value: number) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get pagination() {
+            return pb_1.Message.getWrapperField(this, dependency_5.cosmos.base.query.v1beta1.PageRequest, 2) as dependency_5.cosmos.base.query.v1beta1.PageRequest;
+        }
+        set pagination(value: dependency_5.cosmos.base.query.v1beta1.PageRequest) {
+            pb_1.Message.setWrapperField(this, 2, value);
+        }
+        static fromObject(data: {
+            height?: number;
+            pagination?: ReturnType<typeof dependency_5.cosmos.base.query.v1beta1.PageRequest.prototype.toObject>;
+        }) {
+            const message = new GetBlockWithTxsRequest({});
+            if (data.height != null) {
+                message.height = data.height;
+            }
+            if (data.pagination != null) {
+                message.pagination = dependency_5.cosmos.base.query.v1beta1.PageRequest.fromObject(data.pagination);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                height?: number;
+                pagination?: ReturnType<typeof dependency_5.cosmos.base.query.v1beta1.PageRequest.prototype.toObject>;
+            } = {};
+            if (this.height != null) {
+                data.height = this.height;
+            }
+            if (this.pagination != null) {
+                data.pagination = this.pagination.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.height !== undefined)
+                writer.writeInt64(1, this.height);
+            if (this.pagination !== undefined)
+                writer.writeMessage(2, this.pagination, () => this.pagination.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): GetBlockWithTxsRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new GetBlockWithTxsRequest();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.height = reader.readInt64();
+                        break;
+                    case 2:
+                        reader.readMessage(message.pagination, () => message.pagination = dependency_5.cosmos.base.query.v1beta1.PageRequest.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): GetBlockWithTxsRequest {
+            return GetBlockWithTxsRequest.deserialize(bytes);
+        }
+    }
+    export class GetBlockWithTxsResponse extends pb_1.Message {
+        constructor(data?: any[] | {
+            txs?: dependency_3.cosmos.tx.v1beta1.Tx[];
+            block_id?: dependency_7.tendermint.types.BlockID;
+            block?: dependency_6.tendermint.types.Block;
+            pagination?: dependency_5.cosmos.base.query.v1beta1.PageResponse;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("txs" in data && data.txs != undefined) {
+                    this.txs = data.txs;
+                }
+                if ("block_id" in data && data.block_id != undefined) {
+                    this.block_id = data.block_id;
+                }
+                if ("block" in data && data.block != undefined) {
+                    this.block = data.block;
+                }
+                if ("pagination" in data && data.pagination != undefined) {
+                    this.pagination = data.pagination;
+                }
+            }
+        }
+        get txs() {
+            return pb_1.Message.getRepeatedWrapperField(this, dependency_3.cosmos.tx.v1beta1.Tx, 1) as dependency_3.cosmos.tx.v1beta1.Tx[];
+        }
+        set txs(value: dependency_3.cosmos.tx.v1beta1.Tx[]) {
+            pb_1.Message.setRepeatedWrapperField(this, 1, value);
+        }
+        get block_id() {
+            return pb_1.Message.getWrapperField(this, dependency_7.tendermint.types.BlockID, 2) as dependency_7.tendermint.types.BlockID;
+        }
+        set block_id(value: dependency_7.tendermint.types.BlockID) {
+            pb_1.Message.setWrapperField(this, 2, value);
+        }
+        get block() {
+            return pb_1.Message.getWrapperField(this, dependency_6.tendermint.types.Block, 3) as dependency_6.tendermint.types.Block;
+        }
+        set block(value: dependency_6.tendermint.types.Block) {
+            pb_1.Message.setWrapperField(this, 3, value);
+        }
+        get pagination() {
+            return pb_1.Message.getWrapperField(this, dependency_5.cosmos.base.query.v1beta1.PageResponse, 4) as dependency_5.cosmos.base.query.v1beta1.PageResponse;
+        }
+        set pagination(value: dependency_5.cosmos.base.query.v1beta1.PageResponse) {
+            pb_1.Message.setWrapperField(this, 4, value);
+        }
+        static fromObject(data: {
+            txs?: ReturnType<typeof dependency_3.cosmos.tx.v1beta1.Tx.prototype.toObject>[];
+            block_id?: ReturnType<typeof dependency_7.tendermint.types.BlockID.prototype.toObject>;
+            block?: ReturnType<typeof dependency_6.tendermint.types.Block.prototype.toObject>;
+            pagination?: ReturnType<typeof dependency_5.cosmos.base.query.v1beta1.PageResponse.prototype.toObject>;
+        }) {
+            const message = new GetBlockWithTxsResponse({});
+            if (data.txs != null) {
+                message.txs = data.txs.map(item => dependency_3.cosmos.tx.v1beta1.Tx.fromObject(item));
+            }
+            if (data.block_id != null) {
+                message.block_id = dependency_7.tendermint.types.BlockID.fromObject(data.block_id);
+            }
+            if (data.block != null) {
+                message.block = dependency_6.tendermint.types.Block.fromObject(data.block);
+            }
+            if (data.pagination != null) {
+                message.pagination = dependency_5.cosmos.base.query.v1beta1.PageResponse.fromObject(data.pagination);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                txs?: ReturnType<typeof dependency_3.cosmos.tx.v1beta1.Tx.prototype.toObject>[];
+                block_id?: ReturnType<typeof dependency_7.tendermint.types.BlockID.prototype.toObject>;
+                block?: ReturnType<typeof dependency_6.tendermint.types.Block.prototype.toObject>;
+                pagination?: ReturnType<typeof dependency_5.cosmos.base.query.v1beta1.PageResponse.prototype.toObject>;
+            } = {};
+            if (this.txs != null) {
+                data.txs = this.txs.map((item: dependency_3.cosmos.tx.v1beta1.Tx) => item.toObject());
+            }
+            if (this.block_id != null) {
+                data.block_id = this.block_id.toObject();
+            }
+            if (this.block != null) {
+                data.block = this.block.toObject();
+            }
+            if (this.pagination != null) {
+                data.pagination = this.pagination.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.txs !== undefined)
+                writer.writeRepeatedMessage(1, this.txs, (item: dependency_3.cosmos.tx.v1beta1.Tx) => item.serialize(writer));
+            if (this.block_id !== undefined)
+                writer.writeMessage(2, this.block_id, () => this.block_id.serialize(writer));
+            if (this.block !== undefined)
+                writer.writeMessage(3, this.block, () => this.block.serialize(writer));
+            if (this.pagination !== undefined)
+                writer.writeMessage(4, this.pagination, () => this.pagination.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): GetBlockWithTxsResponse {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new GetBlockWithTxsResponse();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.txs, () => pb_1.Message.addToRepeatedWrapperField(message, 1, dependency_3.cosmos.tx.v1beta1.Tx.deserialize(reader), dependency_3.cosmos.tx.v1beta1.Tx));
+                        break;
+                    case 2:
+                        reader.readMessage(message.block_id, () => message.block_id = dependency_7.tendermint.types.BlockID.deserialize(reader));
+                        break;
+                    case 3:
+                        reader.readMessage(message.block, () => message.block = dependency_6.tendermint.types.Block.deserialize(reader));
+                        break;
+                    case 4:
+                        reader.readMessage(message.pagination, () => message.pagination = dependency_5.cosmos.base.query.v1beta1.PageResponse.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): GetBlockWithTxsResponse {
+            return GetBlockWithTxsResponse.deserialize(bytes);
         }
     }
 }
