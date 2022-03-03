@@ -1,5 +1,17 @@
 import { protoTxNamespace } from '@tharsis/proto'
 
+export interface EIPToSign {
+  types: object
+  primaryType: string
+  domain: {
+    name: string
+    version: string
+    chainId: number
+    verifyingContract: string
+    salt: string
+  }
+  message: object
+}
 export interface Fee {
   amount: string
   denom: string
@@ -28,5 +40,5 @@ export interface TxGenerated {
     authInfo: protoTxNamespace.txn.AuthInfo
     signBytes: string
   }
-  eipToSign: string
+  eipToSign: EIPToSign
 }
