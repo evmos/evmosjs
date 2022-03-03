@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.7](https://github.com/tharsis/evmosjs/compare/@tharsis/proto@0.1.6...@tharsis/proto@0.1.7) (2022-03-03)
+
+### Features
+
+* update proto files ([#13](https://github.com/tharsis/evmosjs/issues/13)) ([bfba54f](https://github.com/tharsis/evmosjs/commit/bfba54f01056a97f34425b3ae0371627e6526a3f))
+
 ## 0.1.6 (2022-03-02)
 
 ### Features
