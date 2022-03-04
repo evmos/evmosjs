@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.8](https://github.com/tharsis/evmosjs/compare/@tharsis/eip712@0.1.7...@tharsis/eip712@0.1.8) (2022-03-04)
+
+### Features
+
+* delegate message ([#15](https://github.com/tharsis/evmosjs/issues/15)) ([1e68b10](https://github.com/tharsis/evmosjs/commit/1e68b10d107edef6d54358447cee60af84d46053))
+
 ## [0.1.7](https://github.com/tharsis/evmosjs/compare/@tharsis/eip712@0.1.6...@tharsis/eip712@0.1.7) (2022-03-03)
 
 ### Features

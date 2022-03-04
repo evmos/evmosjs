@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.6](https://github.com/tharsis/evmosjs/compare/@tharsis/transactions@0.1.5...@tharsis/transactions@0.1.6) (2022-03-04)
+
+### Features
+
+* delegate message ([#15](https://github.com/tharsis/evmosjs/issues/15)) ([1e68b10](https://github.com/tharsis/evmosjs/commit/1e68b10d107edef6d54358447cee60af84d46053))
+
 ## [0.1.5](https://github.com/tharsis/evmosjs/compare/@tharsis/transactions@0.1.4...@tharsis/transactions@0.1.5) (2022-03-03)
 
 **Note:** Version bump only for package @tharsis/transactions
