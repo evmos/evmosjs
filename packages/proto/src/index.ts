@@ -1,5 +1,6 @@
 export * from './messages/ibcMsgTransfer'
 export * from './messages/msgSend'
+export * from './messages/stacking'
 export * from './messages/txRaw'
 export * from './messages/utils'
 export * from './messages/web3Extension'
