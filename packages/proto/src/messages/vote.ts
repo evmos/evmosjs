@@ -13,6 +13,6 @@ export function createMsgVote(
 
   return {
     message: voteMessage,
-    path: 'cosmos.gov.v1beta.MsgVote',
+    path: 'cosmos.gov.v1beta1.MsgVote',
   }
 }

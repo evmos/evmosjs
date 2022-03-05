@@ -2,7 +2,7 @@ export const msgVoteTypes = {
   MsgValue: [
     { name: 'proposal_id', type: 'uint64' },
     { name: 'voter', type: 'string' },
-    { name: 'option', type: 'uint64' },
+    { name: 'option', type: 'int32' },
   ],
 }
 export function createMsgVote(
