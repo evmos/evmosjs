@@ -1,4 +1,5 @@
 export * from './messages/common'
+export * from './messages/gov'
 export * from './messages/ibcMsgTransfer'
 export * from './messages/msgSend'
 export * from './messages/stacking'
