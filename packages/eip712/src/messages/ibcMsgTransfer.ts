@@ -38,8 +38,8 @@ export function createIBCMsgTransfer(
       source_channel: sourceChannel,
       source_port: sourcePort,
       timeout_height: {
-        revision_height: revisionHeight,
-        revision_number: revisionNumber,
+        revision_height: revisionHeight.toString(),
+        revision_number: revisionNumber.toString(),
       },
       timeout_timestamp: timeoutTimestamp,
       token: {
