@@ -8,6 +8,10 @@ export function bytesToTxBody(bytes: Uint8Array) {
   return tx.cosmos.tx.v1beta1.TxBody.deserialize(bytes)
 }
 
+export function bytesToAuthInfo(bytes: Uint8Array) {
+  return tx.cosmos.tx.v1beta1.AuthInfo.deserialize(bytes)
+}
+
 export function createTxRaw(
   bodyBytes: Uint8Array,
   authInfoBytes: Uint8Array,
