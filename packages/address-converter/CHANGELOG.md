@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.7](https://github.com/tharsis/evmosjs/compare/@tharsis/address-converter@0.1.6...@tharsis/address-converter@0.1.7) (2022-03-09)
+
+### Features
+
+* cosmos and osmosis address converter ([#19](https://github.com/tharsis/evmosjs/issues/19)) ([96c0999](https://github.com/tharsis/evmosjs/commit/96c0999b2b7b9c00a1be5b8d1f94587d5a22274a))
+
 ## 0.1.6 (2022-03-02)
 
 ### Features

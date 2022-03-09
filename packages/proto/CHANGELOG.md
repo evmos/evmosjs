@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.11](https://github.com/tharsis/evmosjs/compare/@tharsis/proto@0.1.10...@tharsis/proto@0.1.11) (2022-03-09)
+
+### Features
+
+* cosmos tx to ethereum tx ([#18](https://github.com/tharsis/evmosjs/issues/18)) ([1aea76d](https://github.com/tharsis/evmosjs/commit/1aea76d2c1ff5fb04782ff6e1b7e3d881512b524))
+
 ## [0.1.10](https://github.com/tharsis/evmosjs/compare/@tharsis/proto@0.1.9...@tharsis/proto@0.1.10) (2022-03-05)
 
 ### Features
