@@ -2,6 +2,10 @@
 
 Protobuf files used to generate cosmos/evmos transactions.
 
+## Convert protobuf to Eth Transaction
+
+Example on how to convert protobuf message -> ethereum tx [here]('./src/messages/msgEthereumTx.spec.ts')
+
 ## Local generation
 
 To generate the protobuf files on linux instead of OSX, remove the empty string after `sed -i ''`

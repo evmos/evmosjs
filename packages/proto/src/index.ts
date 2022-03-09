@@ -1,4 +1,5 @@
 export * from './messages/ibcMsgTransfer'
+export * from './messages/msgEthereumTx'
 export * from './messages/msgSend'
 export * from './messages/stacking'
 export * from './messages/txRaw'
