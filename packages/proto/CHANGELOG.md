@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.13](https://github.com/tharsis/evmosjs/compare/@tharsis/proto@0.1.12...@tharsis/proto@0.1.13) (2022-03-09)
+
+### Features
+
+* authInfo converter added ([#21](https://github.com/tharsis/evmosjs/issues/21)) ([635a1b8](https://github.com/tharsis/evmosjs/commit/635a1b83c61bd94d37d8be529e2534b4600bb92e))
+
 ## [0.1.12](https://github.com/tharsis/evmosjs/compare/@tharsis/proto@0.1.11...@tharsis/proto@0.1.12) (2022-03-09)
 
 ### Bug Fixes
