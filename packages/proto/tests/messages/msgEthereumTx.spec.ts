@@ -1,6 +1,13 @@
-import { bytesToLegacyTx, bytesToMsgEthereumTx } from './msgEthereumTx'
-import { bytesToTxBody, bytesToTxRaw } from './txRaw'
-import * as google from '../proto/google/protobuf/any'
+import {
+  bytesToLegacyTx,
+  bytesToMsgEthereumTx,
+} from '../../src/messages/msgEthereumTx'
+import {
+  bytesToAuthInfo,
+  bytesToTxBody,
+  bytesToTxRaw,
+} from '../../src/messages/txRaw'
+import * as google from '../../src/proto/google/protobuf/any'
 
 describe('msgEthereumTx tests', () => {
   const blockchainTx =
@@ -11,6 +18,21 @@ describe('msgEthereumTx tests', () => {
 
     // Create body
     const bodyProto = bytesToTxBody(txRawProto.body_bytes)
+
+    // Create the authInfo
+    const authInfoProto = bytesToAuthInfo(txRawProto.auth_info_bytes)
+    expect(authInfoProto.toObject()).toStrictEqual({
+      signer_infos: [],
+      fee: {
+        amount: [
+          {
+            amount: '6000000000000000000',
+            denom: 'basecro',
+          },
+        ],
+        gas_limit: 1200000,
+      },
+    })
 
     // Get the messages
     const bodyProtoMessages = bodyProto.messages as google.google.protobuf.Any[]
