@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "references": [
+    {"path": "../address-converter/tsconfig.json"},
+    {"path": "../eip712/tsconfig.json"},
+    {"path": "../proto/tsconfig.json"},
+    {"path": "../provider/tsconfig.json"},
+    {"path": "../transactions/tsconfig.json"},
+  ]
+}
