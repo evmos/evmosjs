@@ -76,3 +76,27 @@ export const evmosToEth = (evmosAddress: string) => {
   const data = EVMOS.decoder(evmosAddress)
   return ETH.encoder(data)
 }
+
+export const OSMOSIS = bech32Chain('OSMOSIS', 'osmo')
+
+export const ethToOsmosis = (ethAddress: string) => {
+  const data = ETH.decoder(ethAddress)
+  return OSMOSIS.encoder(data)
+}
+
+export const osmosisToEth = (evmosAddress: string) => {
+  const data = OSMOSIS.decoder(evmosAddress)
+  return ETH.encoder(data)
+}
+
+export const COSMOS = bech32Chain('COSMOS', 'cosmos')
+
+export const ethToCosmos = (ethAddress: string) => {
+  const data = ETH.decoder(ethAddress)
+  return COSMOS.encoder(data)
+}
+
+export const cosmosToEth = (evmosAddress: string) => {
+  const data = COSMOS.decoder(evmosAddress)
+  return ETH.encoder(data)
+}
