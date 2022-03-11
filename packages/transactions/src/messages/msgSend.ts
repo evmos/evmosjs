@@ -9,7 +9,7 @@ import {
   generateMessage,
   generateTypes,
   createMsgSend,
-  msgSendTypes,
+  MSG_SEND_TYPES,
 } from '@tharsis/eip712'
 
 import { Chain, Fee, Sender } from './common'
@@ -34,7 +34,7 @@ export function createMessageSend(
     fee.gas,
     sender.accountAddress,
   )
-  const types = generateTypes(msgSendTypes)
+  const types = generateTypes(MSG_SEND_TYPES)
   const msg = createMsgSend(
     params.amount,
     params.denom,

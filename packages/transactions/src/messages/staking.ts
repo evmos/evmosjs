@@ -11,13 +11,13 @@ import {
   generateFee,
   generateMessage,
   generateTypes,
-  msgDelegateTypes,
+  MSG_DELEGATE_TYPES,
   createMsgDelegate,
-  msgUndelegateTypes,
+  MSG_UNDELEGATE_TYPES,
   createMsgUndelegate,
-  msgBeginRedelegateTypes,
+  MSG_BEGIN_REDELEGATE_TYPES,
   createMsgBeginRedelegate,
-  msgWithdrawDelegatorRewardTypes,
+  MSG_WITHDRAW_DELEGATOR_REWARD_TYPES,
   createMsgWithdrawDelegatorReward,
 } from '@tharsis/eip712'
 
@@ -43,7 +43,7 @@ export function createTxMsgDelegate(
     fee.gas,
     sender.accountAddress,
   )
-  const types = generateTypes(msgDelegateTypes)
+  const types = generateTypes(MSG_DELEGATE_TYPES)
   const msg = createMsgDelegate(
     sender.accountAddress,
     params.validatorAddress,
@@ -108,7 +108,7 @@ export function createTxMsgBeginRedelegate(
     fee.gas,
     sender.accountAddress,
   )
-  const types = generateTypes(msgBeginRedelegateTypes)
+  const types = generateTypes(MSG_BEGIN_REDELEGATE_TYPES)
   const msg = createMsgBeginRedelegate(
     sender.accountAddress,
     params.validatorSrcAddress,
@@ -174,7 +174,7 @@ export function createTxMsgUndelegate(
     fee.gas,
     sender.accountAddress,
   )
-  const types = generateTypes(msgUndelegateTypes)
+  const types = generateTypes(MSG_UNDELEGATE_TYPES)
   const msg = createMsgUndelegate(
     sender.accountAddress,
     params.validatorAddress,
@@ -236,7 +236,7 @@ export function createTxMsgWithdrawDelegatorReward(
     fee.gas,
     sender.accountAddress,
   )
-  const types = generateTypes(msgWithdrawDelegatorRewardTypes)
+  const types = generateTypes(MSG_WITHDRAW_DELEGATOR_REWARD_TYPES)
   const msg = createMsgWithdrawDelegatorReward(
     sender.accountAddress,
     params.validatorAddress,

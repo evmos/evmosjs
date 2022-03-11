@@ -1,4 +1,4 @@
-export const msgSendTypes = {
+export const MSG_SEND_TYPES = {
   MsgValue: [
     { name: 'from_address', type: 'string' },
     { name: 'to_address', type: 'string' },

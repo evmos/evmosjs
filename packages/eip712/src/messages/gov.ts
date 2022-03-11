@@ -1,4 +1,4 @@
-export const msgVoteTypes = {
+export const MSG_VOTE_TYPES = {
   MsgValue: [
     { name: 'proposal_id', type: 'uint64' },
     { name: 'voter', type: 'string' },

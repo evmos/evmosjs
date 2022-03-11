@@ -1,4 +1,4 @@
-export const msgDelegateTypes = {
+export const MSG_DELEGATE_TYPES = {
   MsgValue: [
     { name: 'delegator_address', type: 'string' },
     { name: 'validator_address', type: 'string' },
@@ -28,7 +28,7 @@ export function createMsgDelegate(
   }
 }
 
-export const msgBeginRedelegateTypes = {
+export const MSG_BEGIN_REDELEGATE_TYPES = {
   MsgValue: [
     { name: 'delegator_address', type: 'string' },
     { name: 'validator_src_address', type: 'string' },
@@ -61,7 +61,7 @@ export function createMsgBeginRedelegate(
   }
 }
 
-export const msgUndelegateTypes = {
+export const MSG_UNDELEGATE_TYPES = {
   MsgValue: [
     { name: 'delegator_address', type: 'string' },
     { name: 'validator_address', type: 'string' },
@@ -91,7 +91,7 @@ export function createMsgUndelegate(
   }
 }
 
-export const msgWithdrawDelegatorRewardTypes = {
+export const MSG_WITHDRAW_DELEGATOR_REWARD_TYPES = {
   MsgValue: [
     { name: 'delegator_address', type: 'string' },
     { name: 'validator_address', type: 'string' },
