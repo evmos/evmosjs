@@ -11,19 +11,19 @@ import {
   generateFee,
   generateMessage,
   generateTypes,
-  msgDelegateTypes,
+  MSG_DELEGATE_TYPES,
   createMsgDelegate,
-  msgUndelegateTypes,
+  MSG_UNDELEGATE_TYPES,
   createMsgUndelegate,
-  msgBeginRedelegateTypes,
+  MSG_BEGIN_REDELEGATE_TYPES,
   createMsgBeginRedelegate,
-  msgWithdrawDelegatorRewardTypes,
+  MSG_WITHDRAW_DELEGATOR_REWARD_TYPES,
   createMsgWithdrawDelegatorReward,
 } from '@tharsis/eip712'
 
 import { Chain, Fee, Sender } from './common'
 
-export interface msgDelegateParams {
+export interface MsgDelegateParams {
   validatorAddress: string
   amount: string
   denom: string
@@ -34,7 +34,7 @@ export function createTxMsgDelegate(
   sender: Sender,
   fee: Fee,
   memo: string,
-  params: msgDelegateParams,
+  params: MsgDelegateParams,
 ) {
   // EIP712
   const feeObject = generateFee(
@@ -43,7 +43,7 @@ export function createTxMsgDelegate(
     fee.gas,
     sender.accountAddress,
   )
-  const types = generateTypes(msgDelegateTypes)
+  const types = generateTypes(MSG_DELEGATE_TYPES)
   const msg = createMsgDelegate(
     sender.accountAddress,
     params.validatorAddress,
@@ -87,7 +87,7 @@ export function createTxMsgDelegate(
   }
 }
 
-export interface msgBeginRedelegateParams {
+export interface MsgBeginRedelegateParams {
   validatorSrcAddress: string
   validatorDstAddress: string
   amount: string
@@ -99,7 +99,7 @@ export function createTxMsgBeginRedelegate(
   sender: Sender,
   fee: Fee,
   memo: string,
-  params: msgBeginRedelegateParams,
+  params: MsgBeginRedelegateParams,
 ) {
   // EIP712
   const feeObject = generateFee(
@@ -108,7 +108,7 @@ export function createTxMsgBeginRedelegate(
     fee.gas,
     sender.accountAddress,
   )
-  const types = generateTypes(msgBeginRedelegateTypes)
+  const types = generateTypes(MSG_BEGIN_REDELEGATE_TYPES)
   const msg = createMsgBeginRedelegate(
     sender.accountAddress,
     params.validatorSrcAddress,
@@ -154,7 +154,7 @@ export function createTxMsgBeginRedelegate(
   }
 }
 
-export interface msgUndelegateParams {
+export interface MsgUndelegateParams {
   validatorAddress: string
   amount: string
   denom: string
@@ -165,7 +165,7 @@ export function createTxMsgUndelegate(
   sender: Sender,
   fee: Fee,
   memo: string,
-  params: msgUndelegateParams,
+  params: MsgUndelegateParams,
 ) {
   // EIP712
   const feeObject = generateFee(
@@ -174,7 +174,7 @@ export function createTxMsgUndelegate(
     fee.gas,
     sender.accountAddress,
   )
-  const types = generateTypes(msgUndelegateTypes)
+  const types = generateTypes(MSG_UNDELEGATE_TYPES)
   const msg = createMsgUndelegate(
     sender.accountAddress,
     params.validatorAddress,
@@ -218,7 +218,7 @@ export function createTxMsgUndelegate(
   }
 }
 
-export interface msgWithdrawDelegatorReward {
+export interface MsgWithdrawDelegatorRewardParams {
   validatorAddress: string
 }
 
@@ -227,7 +227,7 @@ export function createTxMsgWithdrawDelegatorReward(
   sender: Sender,
   fee: Fee,
   memo: string,
-  params: msgWithdrawDelegatorReward,
+  params: MsgWithdrawDelegatorRewardParams,
 ) {
   // EIP712
   const feeObject = generateFee(
@@ -236,7 +236,7 @@ export function createTxMsgWithdrawDelegatorReward(
     fee.gas,
     sender.accountAddress,
   )
-  const types = generateTypes(msgWithdrawDelegatorRewardTypes)
+  const types = generateTypes(MSG_WITHDRAW_DELEGATOR_REWARD_TYPES)
   const msg = createMsgWithdrawDelegatorReward(
     sender.accountAddress,
     params.validatorAddress,

@@ -9,7 +9,7 @@ import {
   generateMessage,
   generateTypes,
   createIBCMsgTransfer,
-  IBCMsgTransferTypes,
+  IBC_MSG_TRANSFER_TYPES,
 } from '@tharsis/eip712'
 
 import { Chain, Fee, Sender } from './common'
@@ -43,7 +43,7 @@ export function createTxIBCMsgTransfer(
     fee.gas,
     sender.accountAddress,
   )
-  const types = generateTypes(IBCMsgTransferTypes)
+  const types = generateTypes(IBC_MSG_TRANSFER_TYPES)
 
   const msg = createIBCMsgTransfer(
     params.receiver,

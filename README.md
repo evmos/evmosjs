@@ -11,7 +11,7 @@ NOTE: if the address had not sent any transaction to the blockchain, the pubkey 
 
 ```ts
 import { ethToEvmos } from '@tharsis/address-converter';
-import { accountEndpoint } from '@tharsis/provider';
+import { generateEndpointAccount } from '@tharsis/provider';
 
 const sender = 'evmos1...'
 let destination = '0x....'
@@ -27,7 +27,7 @@ const options = {
 };
 
 let addrRawData = await fetch(
-    `http://127.0.0.1:1317${accountEndpoint}${sender}`,
+    `http://127.0.0.1:1317${generateEndpointAccount(sender)}`,
     options
 );
 // NOTE: the node returns status code 400 if the wallet doesn't exist, catch that error
@@ -100,7 +100,7 @@ After creating the transaction we need to send the payload to metamask so it can
 ```ts
 // Follow the previous step to generate the msg object
 import { evmosToEth } from '@tharsis/address-converter'
-import { broadcastEndpoint } from '@tharsis/provider'
+import { generateEndpointBroadcast, generatePostBodyBroadcast } from '@tharsis/provider'
 import { createTxRawEIP712, signatureToWeb3Extension } from '@tharsis/transactions'
 
 // Init Metamask
@@ -122,13 +122,11 @@ let rawTx = createTxRawEIP712(msg.legacyAmino.body, msg.legacyAmino.authInfo, ex
 const postOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: `{ "tx_bytes": [${rawTx.message
-        .serializeBinary()
-        .toString()}], "mode": "BROADCAST_MODE_SYNC" }`,
+    body: generatePostBodyBroadcast(rawTx),
 };
 
 let broadcastPost = await fetch(
-    `http://localhost:1317${broadcastEndpoint}`,
+    `http://localhost:1317${generateEndpointBroadcast()}`,
     postOptions
 );
 let response = await broadcastPost.json();

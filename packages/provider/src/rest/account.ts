@@ -1,6 +1,8 @@
 import { fetch } from './http'
 
-export const accountEndpoint = '/cosmos/auth/v1beta1/accounts/'
+export function generateEndpointAccount(address: string) {
+  return `/cosmos/auth/v1beta1/accounts/${address}`
+}
 
 /* eslint-disable camelcase */
 export interface AccountResponse {
@@ -20,6 +22,6 @@ export interface AccountResponse {
 }
 
 export async function getAccount(url: string, address: string) {
-  const res = await fetch(`${url}${accountEndpoint}${address}`)
+  const res = await fetch(`${url}${generateEndpointAccount(address)}`)
   return JSON.parse(res)
 }

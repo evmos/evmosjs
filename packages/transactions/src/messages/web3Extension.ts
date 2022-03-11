@@ -17,12 +17,3 @@ export function signatureToWeb3Extension(
     Uint8Array.from(Buffer.from(signature, 'hex')),
   )
 }
-
-// let tempBody = createBody(msgSend, memo);
-// tempBody.extension_options.push(createAnyMessage(web3));
-// // tx.bodyBytes
-// let txRaw = createTxRaw(
-//   tempBody.serializeBinary(),
-//   Buffer.from(tx.authInfoBytes, 'base64'),
-//   [new Uint8Array()]
-// );

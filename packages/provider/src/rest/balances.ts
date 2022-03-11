@@ -1,6 +1,9 @@
 import { Coin } from './coin'
 
-export const balancesEndpoint = '/cosmos/bank/v1beta1/balances/'
+// TODO: add pagination to the request
+export function generateEndpointBalances(address: string) {
+  return `/cosmos/bank/v1beta1/balances/${address}`
+}
 
 /* eslint-disable camelcase */
 export interface BalancesResponse {

@@ -9,7 +9,7 @@ import {
   generateMessage,
   generateTypes,
   createMsgVote,
-  msgVoteTypes,
+  MSG_VOTE_TYPES,
 } from '@tharsis/eip712'
 
 import { Chain, Fee, Sender } from './common'
@@ -33,7 +33,7 @@ export function createTxMsgVote(
     fee.gas,
     sender.accountAddress,
   )
-  const types = generateTypes(msgVoteTypes)
+  const types = generateTypes(MSG_VOTE_TYPES)
 
   const msg = createMsgVote(
     params.proposalId,

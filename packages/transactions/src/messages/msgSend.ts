@@ -9,12 +9,12 @@ import {
   generateMessage,
   generateTypes,
   createMsgSend,
-  msgSendTypes,
+  MSG_SEND_TYPES,
 } from '@tharsis/eip712'
 
 import { Chain, Fee, Sender } from './common'
 
-export interface messageSendParams {
+export interface MessageSendParams {
   destinationAddress: string
   amount: string
   denom: string
@@ -25,7 +25,7 @@ export function createMessageSend(
   sender: Sender,
   fee: Fee,
   memo: string,
-  params: messageSendParams,
+  params: MessageSendParams,
 ) {
   // EIP712
   const feeObject = generateFee(
@@ -34,7 +34,7 @@ export function createMessageSend(
     fee.gas,
     sender.accountAddress,
   )
-  const types = generateTypes(msgSendTypes)
+  const types = generateTypes(MSG_SEND_TYPES)
   const msg = createMsgSend(
     params.amount,
     params.denom,
