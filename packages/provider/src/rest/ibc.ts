@@ -4,7 +4,7 @@ export function generateEndpointIBCChannels() {
 }
 
 /* eslint-disable camelcase */
-interface CounterParty {
+export interface CounterParty {
   port_id: string
   channel_id: string
 }

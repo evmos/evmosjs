@@ -14,7 +14,7 @@ import {
 
 import { Chain, Fee, Sender } from './common'
 
-export interface messageSendParams {
+export interface MessageSendParams {
   destinationAddress: string
   amount: string
   denom: string
@@ -25,7 +25,7 @@ export function createMessageSend(
   sender: Sender,
   fee: Fee,
   memo: string,
-  params: messageSendParams,
+  params: MessageSendParams,
 ) {
   // EIP712
   const feeObject = generateFee(

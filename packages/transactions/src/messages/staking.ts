@@ -23,7 +23,7 @@ import {
 
 import { Chain, Fee, Sender } from './common'
 
-export interface msgDelegateParams {
+export interface MsgDelegateParams {
   validatorAddress: string
   amount: string
   denom: string
@@ -34,7 +34,7 @@ export function createTxMsgDelegate(
   sender: Sender,
   fee: Fee,
   memo: string,
-  params: msgDelegateParams,
+  params: MsgDelegateParams,
 ) {
   // EIP712
   const feeObject = generateFee(
@@ -87,7 +87,7 @@ export function createTxMsgDelegate(
   }
 }
 
-export interface msgBeginRedelegateParams {
+export interface MsgBeginRedelegateParams {
   validatorSrcAddress: string
   validatorDstAddress: string
   amount: string
@@ -99,7 +99,7 @@ export function createTxMsgBeginRedelegate(
   sender: Sender,
   fee: Fee,
   memo: string,
-  params: msgBeginRedelegateParams,
+  params: MsgBeginRedelegateParams,
 ) {
   // EIP712
   const feeObject = generateFee(
@@ -154,7 +154,7 @@ export function createTxMsgBeginRedelegate(
   }
 }
 
-export interface msgUndelegateParams {
+export interface MsgUndelegateParams {
   validatorAddress: string
   amount: string
   denom: string
@@ -165,7 +165,7 @@ export function createTxMsgUndelegate(
   sender: Sender,
   fee: Fee,
   memo: string,
-  params: msgUndelegateParams,
+  params: MsgUndelegateParams,
 ) {
   // EIP712
   const feeObject = generateFee(
@@ -218,7 +218,7 @@ export function createTxMsgUndelegate(
   }
 }
 
-export interface msgWithdrawDelegatorReward {
+export interface MsgWithdrawDelegatorRewardParams {
   validatorAddress: string
 }
 
@@ -227,7 +227,7 @@ export function createTxMsgWithdrawDelegatorReward(
   sender: Sender,
   fee: Fee,
   memo: string,
-  params: msgWithdrawDelegatorReward,
+  params: MsgWithdrawDelegatorRewardParams,
 ) {
   // EIP712
   const feeObject = generateFee(
