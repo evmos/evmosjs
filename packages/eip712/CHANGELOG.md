@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/tharsis/evmosjs/compare/@tharsis/eip712@0.1.10...@tharsis/eip712@0.2.0) (2022-03-11)
+
+### Features
+
+* use the same naming style across all packages ([#24](https://github.com/tharsis/evmosjs/issues/24)) ([348db46](https://github.com/tharsis/evmosjs/commit/348db46ac299655257addc7a381e4ac1eb88f20a))
+
 ## [0.1.10](https://github.com/tharsis/evmosjs/compare/@tharsis/eip712@0.1.9...@tharsis/eip712@0.1.10) (2022-03-11)
 
 ### Features
