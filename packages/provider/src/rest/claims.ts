@@ -1,4 +1,6 @@
-export const claimsRecordEndpoint = '/evmos/claims/v1/claims_records/'
+export function generateEndpointClaimsRecord(address: string) {
+  return `/evmos/claims/v1/claims_records/${address}`
+}
 
 /* eslint-disable camelcase */
 export interface Claim {
@@ -8,7 +10,7 @@ export interface Claim {
 }
 
 /* eslint-disable camelcase */
-export interface claimsRecordResponse {
+export interface ClaimsRecordResponse {
   initial_claimable_amount: number
   claims: Claim[]
 }

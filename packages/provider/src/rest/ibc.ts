@@ -1,4 +1,7 @@
-export const ibcChannelsEndpoint = '/ibc/core/channel/v1/channels'
+// Gets all the IBC channels
+export function generateEndpointIBCChannels() {
+  return `/ibc/core/channel/v1/channels`
+}
 
 /* eslint-disable camelcase */
 interface CounterParty {

@@ -1,6 +1,10 @@
 import { Coin } from './coin'
 
-export const proposalsEndpoint = '/cosmos/gov/v1beta1/proposals'
+// NOTE: this returns all the proposals
+// TODO: add pagination to the request
+export function generateEndpointProposals() {
+  return `/cosmos/gov/v1beta1/proposals`
+}
 
 /* eslint-disable camelcase */
 export interface Proposal {

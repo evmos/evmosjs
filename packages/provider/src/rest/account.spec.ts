@@ -1,7 +1,7 @@
 import { getAccount } from './account'
 
 // TODO: add mockttp for these tests or directly remove the getAccount function
-// users should use the accountEndpoint and AccountResponse to make their own http requests
+// users should use the generateEndpointAccount and AccountResponse to make their own http requests
 describe('account tests', () => {
   it('getAccount valid', async () => {
     const res = await getAccount(
