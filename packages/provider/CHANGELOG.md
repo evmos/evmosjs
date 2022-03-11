@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.9](https://github.com/tharsis/evmosjs/compare/@tharsis/provider@0.1.8...@tharsis/provider@0.1.9) (2022-03-11)
+
+### Features
+
+* redelegate/undelegate/claim transactions added ([#23](https://github.com/tharsis/evmosjs/issues/23)) ([3b536c3](https://github.com/tharsis/evmosjs/commit/3b536c321f7c304f79d121af346f16d6cca74b47))
+
 ## [0.1.8](https://github.com/tharsis/evmosjs/compare/@tharsis/provider@0.1.7...@tharsis/provider@0.1.8) (2022-03-05)
 
 ### Features

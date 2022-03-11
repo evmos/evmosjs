@@ -1,7 +1,7 @@
 {
   "name": "@tharsis/provider",
   "description": "Simple provider to query the EVMOS rest api.",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
