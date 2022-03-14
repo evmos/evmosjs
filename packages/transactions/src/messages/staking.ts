@@ -280,8 +280,7 @@ export function createTxMsgWithdrawDelegatorReward(
   }
 }
 
-// Multiple delegations
-
+// Multiple WithdrawRewards
 export interface MsgMultipleWithdrawDelegatorRewardParams {
   validatorAddresses: string[]
 }
@@ -326,7 +325,6 @@ export function createTxMsgMultipleWithdrawDelegatorReward(
   const eipToSign = createEIP712(types, chain.chainId, messages)
 
   // Cosmos
-
   const tx = createTransactionWithMultipleMessages(
     protoMsgs,
     memo,
