@@ -18,6 +18,7 @@ export namespace protoTxNamespace {
   export import txn = tx.cosmos.tx.v1beta1
 }
 
+// TODO: messages should be typed as proto message. A types package is needed to export that type without problems
 export function createBodyWithMultipleMessages(messages: any[], memo: string) {
   const content: any[] = []
 
@@ -110,6 +111,7 @@ export function createSigDoc(
   })
 }
 
+// TODO: messages should be typed as proto message. A types package is needed to export that type without problems
 export function createTransactionWithMultipleMessages(
   messages: any,
   memo: string,
