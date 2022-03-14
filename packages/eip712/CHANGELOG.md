@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/tharsis/evmosjs/compare/@tharsis/eip712@0.2.0...@tharsis/eip712@0.2.1) (2022-03-14)
+
+### Features
+
+* added multiple transactions support for withdraw rewards ([#26](https://github.com/tharsis/evmosjs/issues/26)) ([9cddd62](https://github.com/tharsis/evmosjs/commit/9cddd62bdeec00d50791df8fbaa0c1301d08d4ca))
+
 # [0.2.0](https://github.com/tharsis/evmosjs/compare/@tharsis/eip712@0.1.10...@tharsis/eip712@0.2.0) (2022-03-11)
 
 ### Features
