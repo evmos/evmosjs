@@ -13,6 +13,24 @@ export function createEIP712(types: object, chainId: number, message: object) {
   }
 }
 
+export function generateMessageWithMultipleTransactions(
+  accountNumber: string,
+  sequence: string,
+  chainCosmosId: string,
+  memo: string,
+  fee: object,
+  msgs: object[],
+) {
+  return {
+    account_number: accountNumber,
+    chain_id: chainCosmosId,
+    fee,
+    memo,
+    msgs,
+    sequence,
+  }
+}
+
 export function generateMessage(
   accountNumber: string,
   sequence: string,
@@ -21,14 +39,14 @@ export function generateMessage(
   fee: object,
   msg: object,
 ) {
-  return {
-    account_number: accountNumber,
-    chain_id: chainCosmosId,
-    fee,
-    memo,
-    msgs: [msg],
+  return generateMessageWithMultipleTransactions(
+    accountNumber,
     sequence,
-  }
+    chainCosmosId,
+    memo,
+    fee,
+    [msg],
+  )
 }
 
 export function generateTypes(msgValues: object) {

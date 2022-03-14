@@ -73,6 +73,11 @@ export function createMsgUndelegate(
   }
 }
 
+export interface MsgWithdrawDelegatorRewardProtoInterface {
+  path: string
+  message: dist.cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward
+}
+
 export function createMsgWithdrawDelegatorReward(
   delegatorAddress: string,
   validatorAddress: string,

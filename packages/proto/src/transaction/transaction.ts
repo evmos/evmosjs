@@ -18,12 +18,21 @@ export namespace protoTxNamespace {
   export import txn = tx.cosmos.tx.v1beta1
 }
 
-export function createBody(message: any, memo: string) {
-  const msg = new tx.cosmos.tx.v1beta1.TxBody({
-    messages: [createAnyMessage(message)],
+export function createBodyWithMultipleMessages(messages: any[], memo: string) {
+  const content: any[] = []
+
+  messages.forEach((message) => {
+    content.push(createAnyMessage(message))
+  })
+
+  return new tx.cosmos.tx.v1beta1.TxBody({
+    messages: content,
     memo,
   })
-  return msg
+}
+
+export function createBody(message: any, memo: string) {
+  return createBodyWithMultipleMessages([message], memo)
 }
 
 export function createFee(fee: string, denom: string, gasLimit: number) {
@@ -101,8 +110,8 @@ export function createSigDoc(
   })
 }
 
-export function createTransaction(
-  message: any,
+export function createTransactionWithMultipleMessages(
+  messages: any,
   memo: string,
   fee: string,
   denom: string,
@@ -113,7 +122,7 @@ export function createTransaction(
   accountNumber: number,
   chainId: string,
 ) {
-  const body = createBody(message, memo)
+  const body = createBodyWithMultipleMessages(messages, memo)
   const feeMessage = createFee(fee, denom, gasLimit)
   const pubKeyDecoded = Buffer.from(pubKey, 'base64')
 
@@ -171,4 +180,30 @@ export function createTransaction(
       signBytes: toSignDirect.toString('base64'),
     },
   }
+}
+
+export function createTransaction(
+  message: any,
+  memo: string,
+  fee: string,
+  denom: string,
+  gasLimit: number,
+  algo: string,
+  pubKey: string,
+  sequence: number,
+  accountNumber: number,
+  chainId: string,
+) {
+  return createTransactionWithMultipleMessages(
+    [message],
+    memo,
+    fee,
+    denom,
+    gasLimit,
+    algo,
+    pubKey,
+    sequence,
+    accountNumber,
+    chainId,
+  )
 }

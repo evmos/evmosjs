@@ -3,13 +3,16 @@ import {
   createMsgDelegate as protoMsgDelegate,
   createMsgUndelegate as protoMsgUndelegate,
   createMsgWithdrawDelegatorReward as protoeMsgWithdrawDelegatorReward,
+  MsgWithdrawDelegatorRewardProtoInterface,
   createTransaction,
+  createTransactionWithMultipleMessages,
 } from '@tharsis/proto'
 
 import {
   createEIP712,
   generateFee,
   generateMessage,
+  generateMessageWithMultipleTransactions,
   generateTypes,
   MSG_DELEGATE_TYPES,
   createMsgDelegate,
@@ -19,6 +22,7 @@ import {
   createMsgBeginRedelegate,
   MSG_WITHDRAW_DELEGATOR_REWARD_TYPES,
   createMsgWithdrawDelegatorReward,
+  MsgWithdrawDelegatorRewardInterface,
 } from '@tharsis/eip712'
 
 import { Chain, Fee, Sender } from './common'
@@ -258,6 +262,73 @@ export function createTxMsgWithdrawDelegatorReward(
   )
   const tx = createTransaction(
     protoMessage,
+    memo,
+    fee.amount,
+    fee.denom,
+    parseInt(fee.gas, 10),
+    'ethsecp256',
+    sender.pubkey,
+    sender.sequence,
+    sender.accountNumber,
+    chain.cosmosChainId,
+  )
+
+  return {
+    signDirect: tx.signDirect,
+    legacyAmino: tx.legacyAmino,
+    eipToSign,
+  }
+}
+
+// Multiple delegations
+
+export interface MsgMultipleWithdrawDelegatorRewardParams {
+  validatorAddresses: string[]
+}
+
+export function createTxMsgMultipleWithdrawDelegatorReward(
+  chain: Chain,
+  sender: Sender,
+  fee: Fee,
+  memo: string,
+  params: MsgMultipleWithdrawDelegatorRewardParams,
+) {
+  // EIP712
+  const feeObject = generateFee(
+    fee.amount,
+    fee.denom,
+    fee.gas,
+    sender.accountAddress,
+  )
+  const types = generateTypes(MSG_WITHDRAW_DELEGATOR_REWARD_TYPES)
+  // EIP712
+  const msgs: MsgWithdrawDelegatorRewardInterface[] = []
+  // Cosmos
+  const protoMsgs: MsgWithdrawDelegatorRewardProtoInterface[] = []
+  params.validatorAddresses.forEach((validator) => {
+    msgs.push(
+      createMsgWithdrawDelegatorReward(sender.accountAddress, validator),
+    )
+
+    protoMsgs.push(
+      protoeMsgWithdrawDelegatorReward(sender.accountAddress, validator),
+    )
+  })
+
+  const messages = generateMessageWithMultipleTransactions(
+    sender.accountNumber.toString(),
+    sender.sequence.toString(),
+    chain.cosmosChainId,
+    memo,
+    feeObject,
+    msgs,
+  )
+  const eipToSign = createEIP712(types, chain.chainId, messages)
+
+  // Cosmos
+
+  const tx = createTransactionWithMultipleMessages(
+    protoMsgs,
     memo,
     fee.amount,
     fee.denom,
