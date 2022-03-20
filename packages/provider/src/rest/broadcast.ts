@@ -19,7 +19,7 @@ export function generatePostBodyBroadcast(
 ) {
   return `{ "tx_bytes": [${txRaw.message
     .serializeBinary()
-    .toString()}], "mode": ${broadcastMode} }`
+    .toString()}], "mode": "${broadcastMode}" }`
 }
 
 /* eslint-disable camelcase */
