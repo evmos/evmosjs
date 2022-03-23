@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/tharsis/evmosjs/compare/@tharsis/provider@0.2.0...@tharsis/provider@0.2.1) (2022-03-23)
+
+### Bug Fixes
+
+* added missing quotes to generate post body broadcast ([#28](https://github.com/tharsis/evmosjs/issues/28)) ([045f596](https://github.com/tharsis/evmosjs/commit/045f596d3ed85de895b4064594184a5595d6557f))
+
+### Features
+
+* get validators info added ([#29](https://github.com/tharsis/evmosjs/issues/29)) ([6a7ea97](https://github.com/tharsis/evmosjs/commit/6a7ea9729cb63a0cfc7c35cb95c2149c4d9ce650))
+
 # [0.2.0](https://github.com/tharsis/evmosjs/compare/@tharsis/provider@0.1.9...@tharsis/provider@0.2.0) (2022-03-11)
 
 ### Features
