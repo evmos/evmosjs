@@ -57,3 +57,26 @@ export interface GetValidatorsResponse {
     total: number
   }
 }
+
+export function generateEndpointGetDelegations(delegatorAddress: string) {
+  return `/cosmos/staking/v1beta1/delegations/${delegatorAddress}`
+}
+
+/* eslint-disable camelcase */
+export interface DelegationResponse {
+  balance: Coin
+  delegation: {
+    delegator_address: string
+    shares: string
+    validator_address: string
+  }
+}
+
+/* eslint-disable camelcase */
+export interface GetDelegationsResponse {
+  delegation_responses: DelegationResponse[]
+  pagination: {
+    next_key: string
+    total: number
+  }
+}
