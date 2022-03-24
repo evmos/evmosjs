@@ -36,3 +36,12 @@ export interface ProposalsResponse {
     total: number
   }
 }
+
+export enum ProposalStatus {
+  Unspecified = 'PROPOSAL_STATUS_UNSPECIFIED',
+  Deposit = 'PROPOSAL_STATUS_DEPOSIT_PERIOD',
+  Voting = 'PROPOSAL_STATUS_VOTING_PERIOD',
+  Passed = 'PROPOSAL_STATUS_PASSED',
+  Rejected = 'PROPOSAL_STATUS_REJECTED',
+  Failed = 'PROPOSAL_STATUS_FAILED',
+}
