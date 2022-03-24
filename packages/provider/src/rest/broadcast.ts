@@ -12,10 +12,16 @@ export interface TxToSend {
   path: string
 }
 
-// TODO: export enum for all the broadcast modes
+export enum BroadcastMode {
+  Unspecified = 'BROADCAST_MODE_UNSPECIFIED',
+  Block = 'BROADCAST_MODE_BLOCK',
+  Sync = 'BROADCAST_MODE_SYNC',
+  Async = 'BROADCAST_MODE_ASYNC',
+}
+
 export function generatePostBodyBroadcast(
   txRaw: TxToSend,
-  broadcastMode: string = 'BROADCAST_MODE_SYNC',
+  broadcastMode: string = BroadcastMode.Sync,
 ) {
   return `{ "tx_bytes": [${txRaw.message
     .serializeBinary()
