@@ -1,0 +1,35 @@
+name: Test
+on:
+  push:
+    branches: [main]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: technote-space/get-diff-action@v6.0.1
+        id: git_diff
+        with:
+          PATTERNS: |
+            packages/**/**.js
+            packages/**/**.ts
+            packages/**/package.json
+            packages/**/yarn.lock
+            package.json
+            yarn.lock
+
+      - name: Install modules
+        run: yarn install
+        if: env.GIT_DIFF
+
+      - name: Yarn build is needed because the packages inter-dependencies
+        run: yarn build
+        if: env.GIT_DIFF
+
+      - name: Run tests
+        run: yarn test
+        if: env.GIT_DIFF

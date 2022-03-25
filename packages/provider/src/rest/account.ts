@@ -1,5 +1,3 @@
-import { fetch } from './http'
-
 export function generateEndpointAccount(address: string) {
   return `/cosmos/auth/v1beta1/accounts/${address}`
 }
@@ -19,9 +17,4 @@ export interface AccountResponse {
     }
     code_hash: string
   }
-}
-
-export async function getAccount(url: string, address: string) {
-  const res = await fetch(`${url}${generateEndpointAccount(address)}`)
-  return JSON.parse(res)
 }
