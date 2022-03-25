@@ -8,12 +8,18 @@ Example on how to convert protobuf message -> ethereum tx [here]('./tests/messag
 
 ## Local generation
 
+Requirements:
+
+- `brew install protoc`
+- `npm install -g protoc-gen-ts`
+
 To generate the protobuf files on linux instead of OSX, remove the empty string after `sed -i ''`
 
 ```sh
 ./scripts/get_proto_files.sh
 ./scripts/create_proto_files.sh
 ./scripts/remove_grpc.sh
+./scripts/remove_unused_dependencies.sh
 ```
 
 ## Note
