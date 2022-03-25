@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4](https://github.com/tharsis/evmosjs/compare/@tharsis/provider@0.2.3...@tharsis/provider@0.2.4) (2022-03-25)
+
+### Bug Fixes
+
+* typo on undelegations endpoint ([#36](https://github.com/tharsis/evmosjs/issues/36)) ([fb80617](https://github.com/tharsis/evmosjs/commit/fb8061720d8561cc5d921dc72c8231aead0bb833))
+
 ## [0.2.3](https://github.com/tharsis/evmosjs/compare/@tharsis/provider@0.2.2...@tharsis/provider@0.2.3) (2022-03-25)
 
 ### Features
