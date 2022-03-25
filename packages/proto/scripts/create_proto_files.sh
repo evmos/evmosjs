@@ -13,7 +13,7 @@ mkdir -p $DEST_TS
 
 # This generates ts protos (used for src)
 protoc \
---plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts \
+--plugin=protoc-gen-ts=$(which protoc-gen-ts) \
 --ts_out=$DEST_TS \
 --proto_path=$I \
 $(find $(PWD)/proto -iname "*.proto")
