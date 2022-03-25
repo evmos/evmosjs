@@ -82,7 +82,7 @@ export interface GetDelegationsResponse {
 }
 
 export function generateEndpointGetUndelegations(delegatorAddress: string) {
-  return `/cosmos/staking/v1beta1/delegations/${delegatorAddress}/unbonding_delegations`
+  return `/cosmos/staking/v1beta1/delegators/${delegatorAddress}/unbonding_delegations`
 }
 
 /* eslint-disable camelcase */
