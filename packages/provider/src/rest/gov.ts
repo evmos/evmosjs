@@ -1,5 +1,14 @@
 import { Coin } from './coin'
 
+export enum ProposalStatus {
+  Unspecified = 'PROPOSAL_STATUS_UNSPECIFIED',
+  Deposit = 'PROPOSAL_STATUS_DEPOSIT_PERIOD',
+  Voting = 'PROPOSAL_STATUS_VOTING_PERIOD',
+  Passed = 'PROPOSAL_STATUS_PASSED',
+  Rejected = 'PROPOSAL_STATUS_REJECTED',
+  Failed = 'PROPOSAL_STATUS_FAILED',
+}
+
 // NOTE: this returns all the proposals
 // TODO: add pagination to the request
 export function generateEndpointProposals() {
@@ -37,11 +46,15 @@ export interface ProposalsResponse {
   }
 }
 
-export enum ProposalStatus {
-  Unspecified = 'PROPOSAL_STATUS_UNSPECIFIED',
-  Deposit = 'PROPOSAL_STATUS_DEPOSIT_PERIOD',
-  Voting = 'PROPOSAL_STATUS_VOTING_PERIOD',
-  Passed = 'PROPOSAL_STATUS_PASSED',
-  Rejected = 'PROPOSAL_STATUS_REJECTED',
-  Failed = 'PROPOSAL_STATUS_FAILED',
+export function generateEndpointProposalTally(proposalId: string) {
+  return `/cosmos/gov/v1beta1/proposals/${proposalId}/tally`
+}
+
+export interface TallyResponse {
+  tally: {
+    yes: string
+    abstain: string
+    no: string
+    no_with_veto: string
+  }
 }
