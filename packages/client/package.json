@@ -1,0 +1,37 @@
+{
+  "name": "@evmos/client",
+  "version": "0.1.0",
+  "description": "EVMOS network RPC client",
+  "author": "Yury Shapkarin <yury@shapkarin.me>",
+  "homepage": "https://github.com/tharsis/evmosjs#readme",
+  "license": "MIT",
+  "main": "src/index.tx",
+  "files": [
+    "dist"
+  ],
+  "_moduleAliases": {
+    "~client": "dist"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tharsis/evmosjs.git"
+  },
+  "scripts": {
+    "postinstall": "shx mkdir -p dist && link-module-alias",
+    "build": "tsc --build tsconfig.build.json && link-module-alias",
+    "build:watch": "tsc --build -w tsconfig.build.json && link-module-alias",
+    "clean": "tsc --build tsconfig.build.json --clean  && shx rm -rf coverage *.log junit.xml dist && jest --clearCache"
+  },
+  "bugs": {
+    "url": "https://github.com/tharsis/evmosjs/issues"
+  },
+  "dependencies": {
+    "@cosmjs/tendermint-rpc": "^0.28.4"
+  },
+  "directories": {
+    "src": "src"
+  }
+}
