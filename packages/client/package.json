@@ -1,7 +1,7 @@
 {
   "name": "@evmos/client",
   "version": "0.1.0",
-  "description": "EVMOS network RPC client",
+  "description": "EVMOS client",
   "author": "Yury Shapkarin <yury@shapkarin.me>",
   "homepage": "https://github.com/tharsis/evmosjs#readme",
   "license": "MIT",
