@@ -100,3 +100,15 @@ export const cosmosToEth = (evmosAddress: string) => {
   const data = COSMOS.decoder(evmosAddress)
   return ETH.encoder(data)
 }
+
+export const ASTRA = bech32Chain('ASTRA', 'astra')
+
+export const ethToAstra = (ethAddress: string) => {
+  const data = ETH.decoder(ethAddress)
+  return ASTRA.encoder(data)
+}
+
+export const astraToEth = (astraAddress: string) => {
+  const data = ASTRA.decoder(astraAddress)
+  return ETH.encoder(data)
+}
