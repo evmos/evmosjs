@@ -1,13 +1,18 @@
 {
-  "name": "@tharsis/address-converter",
+  "name": "@astraprotocol/address-converter",
   "description": "Address converter, convert ETH address to Ethermint/evmos address.",
-  "version": "0.1.7",
+  "version": "0.2.3",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": "https://github.com/astraprotocol/astrajs",
   "_moduleAliases": {
     "~address-converter": "dist"
   },
@@ -31,5 +36,5 @@
     "link-module-alias": "^1.2.0",
     "shx": "^0.3.4"
   },
-  "gitHead": "fc2045b9357bde146e3374429453eb5d4a48a2ca"
+  "gitHead": "d3aa409d7c04671d2a8c3c5262c9bbfeaa1864b9"
 }

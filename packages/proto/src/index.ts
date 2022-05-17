@@ -1,3 +1,4 @@
+// Protocol json-rpc
 export * from './messages/ibcMsgTransfer'
 export * from './messages/msgEthereumTx'
 export * from './messages/msgSend'

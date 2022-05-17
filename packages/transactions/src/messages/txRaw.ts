@@ -3,7 +3,7 @@ import {
   createAnyMessage,
   protoTxNamespace,
   MessageGenerated,
-} from '@tharsis/proto'
+} from '@astraprotocol/proto'
 
 export function createTxRawEIP712(
   body: protoTxNamespace.txn.TxBody,

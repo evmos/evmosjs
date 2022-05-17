@@ -1,13 +1,18 @@
 {
-  "name": "@tharsis/eip712",
+  "name": "@astraprotocol/eip712",
   "description": "EIP712 transaction creator for EVMOS.",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": "https://github.com/astraprotocol/astrajs",
   "_moduleAliases": {
     "~eip712": "dist"
   },

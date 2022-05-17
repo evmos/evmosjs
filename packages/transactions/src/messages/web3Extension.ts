@@ -1,4 +1,4 @@
-import { createWeb3Extension } from '@tharsis/proto'
+import { createWeb3Extension } from '@astraprotocol/proto'
 import { Chain, Sender } from './common'
 
 export function signatureToWeb3Extension(

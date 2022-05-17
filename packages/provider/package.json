@@ -1,7 +1,7 @@
 {
-  "name": "@tharsis/provider",
+  "name": "@astraprotocol/provider",
   "description": "Simple provider to query the EVMOS rest api.",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,6 +11,11 @@
   "_moduleAliases": {
     "~provider": "dist"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": "https://github.com/astraprotocol/astrajs",
   "scripts": {
     "postinstall": "shx mkdir -p dist && link-module-alias",
     "build": "tsc --build tsconfig.build.json && link-module-alias",

@@ -1,5 +1,62 @@
 {
-  "extends": "../../tsconfig.json",
-  "references": [
-  ]
+  "name": "@astraprotocol/address-converter",
+  "description": "Address converter, convert ETH address to Ethermint/evmos address.",
+  "dist-tags": {
+    "latest": "0.2.2"
+  },
+  "versions": {
+    "0.2.2": {
+      "_from": "",
+      "_id": "@astraprotocol/address-converter@0.2.2",
+      "_nodeVersion": "18.0.0",
+      "_npmUser": {},
+      "_npmVersion": "lerna/4.0.0/node@v18.0.0+arm64 (darwin)",
+      "_shasum": "",
+      "author": null,
+      "bin": null,
+      "bugs": {
+        "url": "https://github.com/astraprotocol/astrajs/issues"
+      },
+      "dependencies": {
+        "bech32": "^2.0.0",
+        "crypto-addr-codec": "^0.1.7",
+        "link-module-alias": "^1.2.0",
+        "shx": "^0.3.4"
+      },
+      "description": "Address converter, convert ETH address to Ethermint/evmos address.",
+      "devDependencies": null,
+      "dist": {
+        "integrity": "sha512-nCHNAtu92QTOCvl/yIkQfGTe4E8q1Zq9tMekWBARn2v9HEjDVhgh1cY1M6oupWIak4y9fzOsjxb89zmj8jK5RA==",
+        "shasum": "09277946566304d8bd0c668b211ef0144569e460",
+        "tarball": "https://npm.pkg.github.com/download/@astraprotocol/address-converter/0.2.2/d488dde29ff65935c882d75c77d9e19060587b5bc6abf5ae24618d0cfccc1aea"
+      },
+      "gitHead": "d3aa409d7c04671d2a8c3c5262c9bbfeaa1864b9",
+      "homepage": "https://github.com/astraprotocol/astrajs#readme",
+      "license": "MIT",
+      "main": "dist/index.js",
+      "name": "@astraprotocol/address-converter",
+      "optionalDependencies": null,
+      "peerDependencies": null,
+      "readme": "# Address converter\n\nA simple converter between `ETH` address and `Ethermint`/`evmos` addresses.\n\n## Installation\n\n``` sh\nnpm install @astraprotocol/address-converter\n```\n\n## Usage\n\n### Converter\n\n``` ts\nimport {ethToEthermint, ethermintToEth} from \"@astraprotocol/address-converter\"\n\nlet address = ethToEthermint(\"0xe2D61e49ff8a9d724CC54d338D8076F878aC6b71\")\n// \"ethm1uttpuj0l32whynx9f5ecmqrklpu2c6m3973048\"\n\nlet address = ethermintToEth(\"ethm1uttpuj0l32whynx9f5ecmqrklpu2c6m3973048\")\n// \"0xe2D61e49ff8a9d724CC54d338D8076F878aC6b71\"\n```\n\n### Decoders\n\n``` ts\nimport {ETH, ETHERMINT} from \"@astraprotocol/address-converter\"\nlet hex = ETH.decoder(\"0xe2D61e49ff8a9d724CC54d338D8076F878aC6b71\")\n// hex.toString('hex') === \"e2d61e49ff8a9d724cc54d338d8076f878ac6b71\"\n\nhex = ETHERMINT.decoder(\"ethm1uttpuj0l32whynx9f5ecmqrklpu2c6m3973048\")\n// hex.toString('hex') === \"e2d61e49ff8a9d724cc54d338d8076f878ac6b71\"\n```\n\n### Encoders\n\n``` ts\nimport {ETH, ETHERMINT} from \"@astraprotocol/address-converter\"\nlet address = ETH.encoder(Buffer.from(\"e2d61e49ff8a9d724cc54d338d8076f878ac6b71\",\"hex\"))\n// address === \"0xe2D61e49ff8a9d724CC54d338D8076F878aC6b71\"\n\naddress = ETHERMINT.encoder(Buffer.from(\"e2d61e49ff8a9d724cc54d338d8076f878ac6b71\",\"hex\"))\n// address === \"ethm1uttpuj0l32whynx9f5ecmqrklpu2c6m3973048\"\n```\n\n### EVMOS support\n\n```ts\nimport {ethToEvmos, evmosToEth} from \"@astraprotocol/address-converter\"\n\nlet address = ethToEvmos(\"0x14574a6DFF2Ddf9e07828b4345d3040919AF5652\")\n// \"evmos1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw\"\n\nlet address = evmosToEth(\"evmos1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw\")\n// \"0x14574a6DFF2Ddf9e07828b4345d3040919AF5652\"\n```\n\n## Reference\n\n- [ENSDOMAINS-AddressEnconder](https://github.com/ensdomains/address-encoder)\n",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/astraprotocol/astrajs.git"
+      },
+      "scripts": {
+        "build": "tsc --build tsconfig.build.json \u0026\u0026 link-module-alias",
+        "build:watch": "tsc --build -w tsconfig.build.json \u0026\u0026 link-module-alias",
+        "clean": "tsc --build tsconfig.build.json --clean  \u0026\u0026 shx rm -rf coverage *.log junit.xml dist \u0026\u0026 jest --clearCache",
+        "coverage": "jest --coverage",
+        "dev": "ts-node-dev -r tsconfig-paths/register src/index.ts",
+        "postinstall": "shx mkdir -p dist \u0026\u0026 link-module-alias",
+        "start": "node dist/index.js",
+        "test": "jest",
+        "test:ci": "jest --coverage --ci --reporters='jest-junit'",
+        "test:integration": "jest test/unit",
+        "test:unit": "jest test/unit",
+        "test:watch": "jest --watch"
+      },
+      "version": "0.2.2"
+    }
+  }
 }

@@ -1,3 +1,4 @@
+// Tool for governace
 export * from './messages/base'
 export * from './messages/gov'
 export * from './messages/ibcMsgTransfer'

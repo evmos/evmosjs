@@ -101,6 +101,7 @@ export const cosmosToEth = (evmosAddress: string) => {
   return ETH.encoder(data)
 }
 
+// Customize for Astra
 export const ASTRA = bech32Chain('ASTRA', 'astra')
 
 export const ethToAstra = (ethAddress: string) => {

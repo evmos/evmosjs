@@ -1,9 +1,7 @@
 {
   "npmClient": "yarn",
-  "name": "evmosjs",
-  "packages": [
-    "packages/*"
-  ],
+  "name": "astrajs",
+  "packages": ["packages/*"],
   "ignoreChanges": [
     "**/CHANGELOG.md",
     "**/node_modules/**",

@@ -48,7 +48,7 @@ describe('converter tests', () => {
     address = ethToEvmos('0x14574a6DFF2Ddf9e07828b4345d3040919AF5652')
     expect(address).toBe('evmos1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw')
 
-    // ETH to Astra
+    // ETH to Astra.
     address = ethToAstra('0xcF758c4039c1655b82cf8b6f267321a3Ac9eb953')
     expect(address).toBe('astra1ea6ccspec9j4hqk03dhjvuep5wkfaw2nshmzkf')
 

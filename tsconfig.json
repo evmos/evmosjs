@@ -3,12 +3,24 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-        "evmosjs":["packages/evmosjs"],
-        "@tharsis/address-converter": ["./packages/address-converter/*"],
-        "@tharsis/eip712":["packages/eip712"],
-        "@tharsis/proto":["packages/proto"],
-        "@tharsis/provider":["./packages/provider/*"],
-        "@tharsis/transactions":["./packages/transactions/*"]
+        "@astraprotocol/astrajs": [
+          "./packages/astrajs"
+        ],
+        "@astraprotocol/address-converter": [
+          "./packages/address-converter/*"
+        ],
+        "@astraprotocol/eip712": [
+          "./packages/eip712"
+        ],
+        "@astraprotocol/proto": [
+          "./packages/proto"
+        ],
+        "@astraprotocol/provider": [
+          "./packages/provider/*"
+        ],
+        "@astraprotocol/transactions": [
+          "./packages/transactions/*"
+        ]
     }
   }
 }

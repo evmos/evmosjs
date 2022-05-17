@@ -6,7 +6,7 @@ import {
   MsgWithdrawDelegatorRewardProtoInterface,
   createTransaction,
   createTransactionWithMultipleMessages,
-} from '@tharsis/proto'
+} from '@astraprotocol/proto'
 
 import {
   createEIP712,
@@ -23,7 +23,7 @@ import {
   MSG_WITHDRAW_DELEGATOR_REWARD_TYPES,
   createMsgWithdrawDelegatorReward,
   MsgWithdrawDelegatorRewardInterface,
-} from '@tharsis/eip712'
+} from '@astraprotocol/eip712'
 
 import { Chain, Fee, Sender } from './common'
 

@@ -1,6 +1,8 @@
-# evmosjs
+# astrajs
 
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/tharsis/evmosjs.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/tharsis/evmosjs/alerts/) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/tharsis/evmosjs.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/tharsis/evmosjs/context:javascript)
+This project forked from [https://github.com/tharsis/evmosjs](https://github.com/tharsis/evmosjs)
+
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/astraprotocol/evmosjs.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/astraprotocol/evmosjs/alerts/) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/astraprotocol/evmosjs.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/astraprotocol/evmosjs/context:javascript)
 
 JS and TS libs for Evmos
 
@@ -12,8 +14,8 @@ Get the account number, sequence and pubkey from an address.
 NOTE: if the address had not sent any transaction to the blockchain, the pubkey value are going to be empty.
 
 ```ts
-import { ethToEvmos } from '@tharsis/address-converter';
-import { generateEndpointAccount } from '@tharsis/provider';
+import { ethToEvmos } from '@astraprotocol/address-converter';
+import { generateEndpointAccount } from '@astraprotocol/provider';
 
 const sender = 'evmos1...'
 let destination = '0x....'
@@ -36,7 +38,7 @@ let addrRawData = await fetch(
 
 let addrData = await addRawData.json()
 
-// Response format at @tharsis/provider/rest/account/AccountResponse
+// Response format at @astraprotocol/provider/rest/account/AccountResponse
 /*
   account: {
     '@type': string
@@ -59,7 +61,7 @@ let addrData = await addRawData.json()
 The transaction can be signed using EIP712 on Metamask and SignDirect on Keplr.
 
 ```ts
-import { createMessageSend } from '@tharsis/transactions'
+import { createMessageSend } from '@astraprotocol/transactions'
 
 const chain = {
     chainId: 9000,
@@ -101,9 +103,9 @@ After creating the transaction we need to send the payload to metamask so it can
 
 ```ts
 // Follow the previous step to generate the msg object
-import { evmosToEth } from '@tharsis/address-converter'
-import { generateEndpointBroadcast, generatePostBodyBroadcast } from '@tharsis/provider'
-import { createTxRawEIP712, signatureToWeb3Extension } from '@tharsis/transactions'
+import { evmosToEth } from '@astraprotocol/address-converter'
+import { generateEndpointBroadcast, generatePostBodyBroadcast } from '@astraprotocol/provider'
+import { createTxRawEIP712, signatureToWeb3Extension } from '@astraprotocol/transactions'
 
 // Init Metamask
 await window.ethereum.enable();
