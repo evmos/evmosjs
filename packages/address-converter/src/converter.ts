@@ -100,3 +100,15 @@ export const cosmosToEth = (evmosAddress: string) => {
   const data = COSMOS.decoder(evmosAddress)
   return ETH.encoder(data)
 }
+
+export const KYVE = bech32Chain('KORELLIA', 'kyve')
+
+export const ethToKyve = (ethAddress: string) => {
+  const data = ETH.decoder(ethAddress)
+  return KYVE.encoder(data)
+}
+
+export const kyveToEth = (kyveAddress: string) => {
+  const data = KYVE.decoder(kyveAddress)
+  return ETH.encoder(data)
+}
