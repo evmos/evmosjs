@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2022-05-23)
+
+### Features
+
+* added multiple transactions support for withdraw rewards ([#26](https://github.com/astraprotocol/astrajs/issues/26)) ([9cddd62](https://github.com/astraprotocol/astrajs/commit/9cddd62bdeec00d50791df8fbaa0c1301d08d4ca))
+* delegate message ([#15](https://github.com/astraprotocol/astrajs/issues/15)) ([1e68b10](https://github.com/astraprotocol/astrajs/commit/1e68b10d107edef6d54358447cee60af84d46053))
+* ibc transactions added ([#14](https://github.com/astraprotocol/astrajs/issues/14)) ([3809f28](https://github.com/astraprotocol/astrajs/commit/3809f289e4e54c5013d3027578bde5c244ec8736))
+* msgSend added ([#4](https://github.com/astraprotocol/astrajs/issues/4)) ([fe40011](https://github.com/astraprotocol/astrajs/commit/fe40011fedad558d6666674b3001e34cc86ae30d))
+* proto objects for EIP712 ([#7](https://github.com/astraprotocol/astrajs/issues/7)) ([6ecd900](https://github.com/astraprotocol/astrajs/commit/6ecd9004f081c6a70b80d903878877d378ff6c75))
+* redelegate/undelegate/claim transactions added ([#23](https://github.com/astraprotocol/astrajs/issues/23)) ([3b536c3](https://github.com/astraprotocol/astrajs/commit/3b536c321f7c304f79d121af346f16d6cca74b47))
+* use the same naming style across all packages ([#24](https://github.com/astraprotocol/astrajs/issues/24)) ([348db46](https://github.com/astraprotocol/astrajs/commit/348db46ac299655257addc7a381e4ac1eb88f20a))
+* vote on proposals ([#17](https://github.com/astraprotocol/astrajs/issues/17)) ([d0db5f9](https://github.com/astraprotocol/astrajs/commit/d0db5f9d2fba521a3cd20192d8d24c54f7f7fa4c))
+
 # 0.3.0 (2022-05-13)
 
 ### Features

@@ -1,7 +1,7 @@
 {
   "name": "@astraprotocol/eip712",
   "description": "EIP712 transaction creator for Astra.",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
