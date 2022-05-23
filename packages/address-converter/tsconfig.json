@@ -1,6 +1,6 @@
 {
   "name": "@astraprotocol/address-converter",
-  "description": "Address converter, convert ETH address to Ethermint/evmos address.",
+  "description": "Address converter, convert ETH address to Ethermint/astra address.",
   "dist-tags": {
     "latest": "0.2.2"
   },
@@ -23,7 +23,7 @@
         "link-module-alias": "^1.2.0",
         "shx": "^0.3.4"
       },
-      "description": "Address converter, convert ETH address to Ethermint/evmos address.",
+      "description": "Address converter, convert ETH address to Ethermint/astra address.",
       "devDependencies": null,
       "dist": {
         "integrity": "sha512-nCHNAtu92QTOCvl/yIkQfGTe4E8q1Zq9tMekWBARn2v9HEjDVhgh1cY1M6oupWIak4y9fzOsjxb89zmj8jK5RA==",

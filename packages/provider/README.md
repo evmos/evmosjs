@@ -1,3 +1,3 @@
 # Provider
 
-Simple provider to query the EVMOS rest api.
+Simple provider to query the Astra rest api.

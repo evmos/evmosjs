@@ -1,6 +1,6 @@
 {
   "name": "@astraprotocol/provider",
-  "description": "Simple provider to query the EVMOS rest api.",
+  "description": "Simple provider to query the Astra rest api.",
   "version": "0.3.0",
   "license": "MIT",
   "main": "dist/index.js",

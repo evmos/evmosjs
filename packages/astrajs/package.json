@@ -1,6 +1,6 @@
 {
   "name": "@astraprotocol/astrajs",
-  "description": "JS and TS libs for Evmos",
+  "description": "JS and TS libs for Astra",
   "version": "0.2.10",
   "license": "MIT",
   "main": "dist/index.js",

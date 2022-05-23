@@ -1,6 +1,6 @@
 {
   "name": "@astraprotocol/proto",
-  "description": "Protobuf files for EVMOS.",
+  "description": "Protobuf files for Astra.",
   "version": "0.2.0",
   "license": "MIT",
   "eslintIgnore": [

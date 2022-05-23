@@ -1,6 +1,6 @@
 {
   "name": "@astraprotocol/address-converter",
-  "description": "Address converter, convert ETH address to Ethermint/evmos address.",
+  "description": "Address converter, convert ETH address to Ethermint/astra address.",
   "version": "0.2.3",
   "license": "MIT",
   "main": "dist/index.js",
