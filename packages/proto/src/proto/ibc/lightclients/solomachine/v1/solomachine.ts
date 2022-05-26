@@ -23,6 +23,7 @@ export namespace ibc.lightclients.solomachine.v1 {
         DATA_TYPE_HEADER = 9
     }
     export class ClientState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             sequence?: number;
             frozen_sequence?: number;
@@ -30,7 +31,7 @@ export namespace ibc.lightclients.solomachine.v1 {
             allow_update_after_proposal?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("sequence" in data && data.sequence != undefined) {
                     this.sequence = data.sequence;
@@ -158,13 +159,14 @@ export namespace ibc.lightclients.solomachine.v1 {
         }
     }
     export class ConsensusState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             public_key?: dependency_4.google.protobuf.Any;
             diversifier?: string;
             timestamp?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("public_key" in data && data.public_key != undefined) {
                     this.public_key = data.public_key;
@@ -270,6 +272,7 @@ export namespace ibc.lightclients.solomachine.v1 {
         }
     }
     export class Header extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             sequence?: number;
             timestamp?: number;
@@ -278,7 +281,7 @@ export namespace ibc.lightclients.solomachine.v1 {
             new_diversifier?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("sequence" in data && data.sequence != undefined) {
                     this.sequence = data.sequence;
@@ -428,6 +431,7 @@ export namespace ibc.lightclients.solomachine.v1 {
         }
     }
     export class Misbehaviour extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             client_id?: string;
             sequence?: number;
@@ -435,7 +439,7 @@ export namespace ibc.lightclients.solomachine.v1 {
             signature_two?: SignatureAndData;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("client_id" in data && data.client_id != undefined) {
                     this.client_id = data.client_id;
@@ -563,6 +567,7 @@ export namespace ibc.lightclients.solomachine.v1 {
         }
     }
     export class SignatureAndData extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             signature?: Uint8Array;
             data_type?: DataType;
@@ -570,7 +575,7 @@ export namespace ibc.lightclients.solomachine.v1 {
             timestamp?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("signature" in data && data.signature != undefined) {
                     this.signature = data.signature;
@@ -698,12 +703,13 @@ export namespace ibc.lightclients.solomachine.v1 {
         }
     }
     export class TimestampedSignatureData extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             signature_data?: Uint8Array;
             timestamp?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("signature_data" in data && data.signature_data != undefined) {
                     this.signature_data = data.signature_data;
@@ -787,6 +793,7 @@ export namespace ibc.lightclients.solomachine.v1 {
         }
     }
     export class SignBytes extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             sequence?: number;
             timestamp?: number;
@@ -795,7 +802,7 @@ export namespace ibc.lightclients.solomachine.v1 {
             data?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("sequence" in data && data.sequence != undefined) {
                     this.sequence = data.sequence;
@@ -945,12 +952,13 @@ export namespace ibc.lightclients.solomachine.v1 {
         }
     }
     export class HeaderData extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             new_pub_key?: dependency_4.google.protobuf.Any;
             new_diversifier?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("new_pub_key" in data && data.new_pub_key != undefined) {
                     this.new_pub_key = data.new_pub_key;
@@ -1034,12 +1042,13 @@ export namespace ibc.lightclients.solomachine.v1 {
         }
     }
     export class ClientStateData extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             path?: Uint8Array;
             client_state?: dependency_4.google.protobuf.Any;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("path" in data && data.path != undefined) {
                     this.path = data.path;
@@ -1123,12 +1132,13 @@ export namespace ibc.lightclients.solomachine.v1 {
         }
     }
     export class ConsensusStateData extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             path?: Uint8Array;
             consensus_state?: dependency_4.google.protobuf.Any;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("path" in data && data.path != undefined) {
                     this.path = data.path;
@@ -1212,12 +1222,13 @@ export namespace ibc.lightclients.solomachine.v1 {
         }
     }
     export class ConnectionStateData extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             path?: Uint8Array;
             connection?: dependency_1.ibc.core.connection.v1.ConnectionEnd;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("path" in data && data.path != undefined) {
                     this.path = data.path;
@@ -1301,12 +1312,13 @@ export namespace ibc.lightclients.solomachine.v1 {
         }
     }
     export class ChannelStateData extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             path?: Uint8Array;
             channel?: dependency_2.ibc.core.channel.v1.Channel;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("path" in data && data.path != undefined) {
                     this.path = data.path;
@@ -1390,12 +1402,13 @@ export namespace ibc.lightclients.solomachine.v1 {
         }
     }
     export class PacketCommitmentData extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             path?: Uint8Array;
             commitment?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("path" in data && data.path != undefined) {
                     this.path = data.path;
@@ -1479,12 +1492,13 @@ export namespace ibc.lightclients.solomachine.v1 {
         }
     }
     export class PacketAcknowledgementData extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             path?: Uint8Array;
             acknowledgement?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("path" in data && data.path != undefined) {
                     this.path = data.path;
@@ -1568,11 +1582,12 @@ export namespace ibc.lightclients.solomachine.v1 {
         }
     }
     export class PacketReceiptAbsenceData extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             path?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("path" in data && data.path != undefined) {
                     this.path = data.path;
@@ -1634,12 +1649,13 @@ export namespace ibc.lightclients.solomachine.v1 {
         }
     }
     export class NextSequenceRecvData extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             path?: Uint8Array;
             next_seq_recv?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("path" in data && data.path != undefined) {
                     this.path = data.path;

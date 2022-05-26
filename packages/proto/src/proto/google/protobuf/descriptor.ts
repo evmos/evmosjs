@@ -8,11 +8,12 @@
 import * as pb_1 from "google-protobuf";
 export namespace google.protobuf {
     export class FileDescriptorSet extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             file: FileDescriptorProto[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 this.file = data.file;
             }
@@ -70,6 +71,7 @@ export namespace google.protobuf {
         }
     }
     export class FileDescriptorProto extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             name?: string;
             package?: string;
@@ -85,7 +87,7 @@ export namespace google.protobuf {
             syntax?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3, 10, 11, 4, 5, 6, 7], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3, 10, 11, 4, 5, 6, 7], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("name" in data && data.name != undefined) {
                     this.name = data.name;
@@ -349,6 +351,7 @@ export namespace google.protobuf {
         }
     }
     export class DescriptorProto extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             name?: string;
             field: FieldDescriptorProto[];
@@ -362,7 +365,7 @@ export namespace google.protobuf {
             reserved_name: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2, 6, 3, 4, 5, 8, 9, 10], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2, 6, 3, 4, 5, 8, 9, 10], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("name" in data && data.name != undefined) {
                     this.name = data.name;
@@ -577,13 +580,14 @@ export namespace google.protobuf {
     }
     export namespace DescriptorProto {
         export class ExtensionRange extends pb_1.Message {
+            #one_of_decls = [];
             constructor(data?: any[] | {
                 start?: number;
                 end?: number;
                 options?: ExtensionRangeOptions;
             }) {
                 super();
-                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
                 if (!Array.isArray(data) && typeof data == "object") {
                     if ("start" in data && data.start != undefined) {
                         this.start = data.start;
@@ -689,12 +693,13 @@ export namespace google.protobuf {
             }
         }
         export class ReservedRange extends pb_1.Message {
+            #one_of_decls = [];
             constructor(data?: any[] | {
                 start?: number;
                 end?: number;
             }) {
                 super();
-                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
                 if (!Array.isArray(data) && typeof data == "object") {
                     if ("start" in data && data.start != undefined) {
                         this.start = data.start;
@@ -779,11 +784,12 @@ export namespace google.protobuf {
         }
     }
     export class ExtensionRangeOptions extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             uninterpreted_option: UninterpretedOption[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 this.uninterpreted_option = data.uninterpreted_option;
             }
@@ -841,6 +847,7 @@ export namespace google.protobuf {
         }
     }
     export class FieldDescriptorProto extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             name?: string;
             number?: number;
@@ -855,7 +862,7 @@ export namespace google.protobuf {
             proto3_optional?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("name" in data && data.name != undefined) {
                     this.name = data.name;
@@ -1164,12 +1171,13 @@ export namespace google.protobuf {
         }
     }
     export class OneofDescriptorProto extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             name?: string;
             options?: OneofOptions;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("name" in data && data.name != undefined) {
                     this.name = data.name;
@@ -1253,6 +1261,7 @@ export namespace google.protobuf {
         }
     }
     export class EnumDescriptorProto extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             name?: string;
             value: EnumValueDescriptorProto[];
@@ -1261,7 +1270,7 @@ export namespace google.protobuf {
             reserved_name: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2, 4, 5], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2, 4, 5], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("name" in data && data.name != undefined) {
                     this.name = data.name;
@@ -1396,12 +1405,13 @@ export namespace google.protobuf {
     }
     export namespace EnumDescriptorProto {
         export class EnumReservedRange extends pb_1.Message {
+            #one_of_decls = [];
             constructor(data?: any[] | {
                 start?: number;
                 end?: number;
             }) {
                 super();
-                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
                 if (!Array.isArray(data) && typeof data == "object") {
                     if ("start" in data && data.start != undefined) {
                         this.start = data.start;
@@ -1486,13 +1496,14 @@ export namespace google.protobuf {
         }
     }
     export class EnumValueDescriptorProto extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             name?: string;
             number?: number;
             options?: EnumValueOptions;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("name" in data && data.name != undefined) {
                     this.name = data.name;
@@ -1598,13 +1609,14 @@ export namespace google.protobuf {
         }
     }
     export class ServiceDescriptorProto extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             name?: string;
             method: MethodDescriptorProto[];
             options?: ServiceOptions;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("name" in data && data.name != undefined) {
                     this.name = data.name;
@@ -1706,6 +1718,7 @@ export namespace google.protobuf {
         }
     }
     export class MethodDescriptorProto extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             name?: string;
             input_type?: string;
@@ -1715,7 +1728,7 @@ export namespace google.protobuf {
             server_streaming?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("name" in data && data.name != undefined) {
                     this.name = data.name;
@@ -1887,6 +1900,7 @@ export namespace google.protobuf {
         }
     }
     export class FileOptions extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             java_package?: string;
             java_outer_classname?: string;
@@ -1912,7 +1926,7 @@ export namespace google.protobuf {
             uninterpreted_option: UninterpretedOption[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("java_package" in data && data.java_package != undefined) {
                     this.java_package = data.java_package;
@@ -2419,6 +2433,7 @@ export namespace google.protobuf {
         }
     }
     export class MessageOptions extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             message_set_wire_format?: boolean;
             no_standard_descriptor_accessor?: boolean;
@@ -2427,7 +2442,7 @@ export namespace google.protobuf {
             uninterpreted_option: UninterpretedOption[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("message_set_wire_format" in data && data.message_set_wire_format != undefined) {
                     this.message_set_wire_format = data.message_set_wire_format;
@@ -2573,6 +2588,7 @@ export namespace google.protobuf {
         }
     }
     export class FieldOptions extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             ctype?: FieldOptions.CType;
             packed?: boolean;
@@ -2583,7 +2599,7 @@ export namespace google.protobuf {
             uninterpreted_option: UninterpretedOption[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("ctype" in data && data.ctype != undefined) {
                     this.ctype = data.ctype;
@@ -2785,11 +2801,12 @@ export namespace google.protobuf {
         }
     }
     export class OneofOptions extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             uninterpreted_option: UninterpretedOption[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 this.uninterpreted_option = data.uninterpreted_option;
             }
@@ -2847,13 +2864,14 @@ export namespace google.protobuf {
         }
     }
     export class EnumOptions extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             allow_alias?: boolean;
             deprecated?: boolean;
             uninterpreted_option: UninterpretedOption[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("allow_alias" in data && data.allow_alias != undefined) {
                     this.allow_alias = data.allow_alias;
@@ -2955,12 +2973,13 @@ export namespace google.protobuf {
         }
     }
     export class EnumValueOptions extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             deprecated?: boolean;
             uninterpreted_option: UninterpretedOption[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("deprecated" in data && data.deprecated != undefined) {
                     this.deprecated = data.deprecated;
@@ -3040,12 +3059,13 @@ export namespace google.protobuf {
         }
     }
     export class ServiceOptions extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             deprecated?: boolean;
             uninterpreted_option: UninterpretedOption[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("deprecated" in data && data.deprecated != undefined) {
                     this.deprecated = data.deprecated;
@@ -3125,13 +3145,14 @@ export namespace google.protobuf {
         }
     }
     export class MethodOptions extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             deprecated?: boolean;
             idempotency_level?: MethodOptions.IdempotencyLevel;
             uninterpreted_option: UninterpretedOption[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("deprecated" in data && data.deprecated != undefined) {
                     this.deprecated = data.deprecated;
@@ -3240,6 +3261,7 @@ export namespace google.protobuf {
         }
     }
     export class UninterpretedOption extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             name: UninterpretedOption.NamePart[];
             identifier_value?: string;
@@ -3250,7 +3272,7 @@ export namespace google.protobuf {
             aggregate_value?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 this.name = data.name;
                 if ("identifier_value" in data && data.identifier_value != undefined) {
@@ -3441,12 +3463,13 @@ export namespace google.protobuf {
     }
     export namespace UninterpretedOption {
         export class NamePart extends pb_1.Message {
+            #one_of_decls = [];
             constructor(data?: any[] | {
                 name_part: string;
                 is_extension: boolean;
             }) {
                 super();
-                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
                 if (!Array.isArray(data) && typeof data == "object") {
                     this.name_part = data.name_part;
                     this.is_extension = data.is_extension;
@@ -3521,11 +3544,12 @@ export namespace google.protobuf {
         }
     }
     export class SourceCodeInfo extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             location: SourceCodeInfo.Location[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 this.location = data.location;
             }
@@ -3584,6 +3608,7 @@ export namespace google.protobuf {
     }
     export namespace SourceCodeInfo {
         export class Location extends pb_1.Message {
+            #one_of_decls = [];
             constructor(data?: any[] | {
                 path: number[];
                 span: number[];
@@ -3592,7 +3617,7 @@ export namespace google.protobuf {
                 leading_detached_comments: string[];
             }) {
                 super();
-                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2, 6], []);
+                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2, 6], this.#one_of_decls);
                 if (!Array.isArray(data) && typeof data == "object") {
                     this.path = data.path;
                     this.span = data.span;
@@ -3727,11 +3752,12 @@ export namespace google.protobuf {
         }
     }
     export class GeneratedCodeInfo extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             annotation: GeneratedCodeInfo.Annotation[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 this.annotation = data.annotation;
             }
@@ -3790,6 +3816,7 @@ export namespace google.protobuf {
     }
     export namespace GeneratedCodeInfo {
         export class Annotation extends pb_1.Message {
+            #one_of_decls = [];
             constructor(data?: any[] | {
                 path: number[];
                 source_file?: string;
@@ -3797,7 +3824,7 @@ export namespace google.protobuf {
                 end?: number;
             }) {
                 super();
-                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
                 if (!Array.isArray(data) && typeof data == "object") {
                     this.path = data.path;
                     if ("source_file" in data && data.source_file != undefined) {

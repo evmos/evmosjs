@@ -10,6 +10,7 @@ import * as dependency_3 from "./../../auth/v1beta1/auth";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.vesting.v1beta1 {
     export class BaseVestingAccount extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             base_account?: dependency_3.cosmos.auth.v1beta1.BaseAccount;
             original_vesting?: dependency_2.cosmos.base.v1beta1.Coin[];
@@ -18,7 +19,7 @@ export namespace cosmos.vesting.v1beta1 {
             end_time?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2, 3, 4], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2, 3, 4], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("base_account" in data && data.base_account != undefined) {
                     this.base_account = data.base_account;
@@ -168,12 +169,13 @@ export namespace cosmos.vesting.v1beta1 {
         }
     }
     export class ContinuousVestingAccount extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             base_vesting_account?: BaseVestingAccount;
             start_time?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("base_vesting_account" in data && data.base_vesting_account != undefined) {
                     this.base_vesting_account = data.base_vesting_account;
@@ -257,11 +259,12 @@ export namespace cosmos.vesting.v1beta1 {
         }
     }
     export class DelayedVestingAccount extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             base_vesting_account?: BaseVestingAccount;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("base_vesting_account" in data && data.base_vesting_account != undefined) {
                     this.base_vesting_account = data.base_vesting_account;
@@ -323,12 +326,13 @@ export namespace cosmos.vesting.v1beta1 {
         }
     }
     export class Period extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             length?: number;
             amount?: dependency_2.cosmos.base.v1beta1.Coin[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("length" in data && data.length != undefined) {
                     this.length = data.length;
@@ -412,13 +416,14 @@ export namespace cosmos.vesting.v1beta1 {
         }
     }
     export class PeriodicVestingAccount extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             base_vesting_account?: BaseVestingAccount;
             start_time?: number;
             vesting_periods?: Period[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("base_vesting_account" in data && data.base_vesting_account != undefined) {
                     this.base_vesting_account = data.base_vesting_account;
@@ -524,11 +529,12 @@ export namespace cosmos.vesting.v1beta1 {
         }
     }
     export class PermanentLockedAccount extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             base_vesting_account?: BaseVestingAccount;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("base_vesting_account" in data && data.base_vesting_account != undefined) {
                     this.base_vesting_account = data.base_vesting_account;

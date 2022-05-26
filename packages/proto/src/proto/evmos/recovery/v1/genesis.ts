@@ -9,11 +9,12 @@ import * as dependency_2 from "./../../../google/protobuf/duration";
 import * as pb_1 from "google-protobuf";
 export namespace evmos.recovery.v1 {
     export class GenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             params?: Params;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;
@@ -75,12 +76,13 @@ export namespace evmos.recovery.v1 {
         }
     }
     export class Params extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             enable_recovery?: boolean;
             packet_timeout_duration?: dependency_2.google.protobuf.Duration;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("enable_recovery" in data && data.enable_recovery != undefined) {
                     this.enable_recovery = data.enable_recovery;

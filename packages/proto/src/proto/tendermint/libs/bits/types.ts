@@ -8,12 +8,13 @@
 import * as pb_1 from "google-protobuf";
 export namespace tendermint.libs.bits {
     export class BitArray extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             bits?: number;
             elems?: number[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("bits" in data && data.bits != undefined) {
                     this.bits = data.bits;

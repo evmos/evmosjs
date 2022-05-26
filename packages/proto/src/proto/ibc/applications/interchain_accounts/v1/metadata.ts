@@ -8,6 +8,7 @@
 import * as pb_1 from "google-protobuf";
 export namespace ibc.applications.interchain_accounts.v1 {
     export class Metadata extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             version?: string;
             controller_connection_id?: string;
@@ -17,7 +18,7 @@ export namespace ibc.applications.interchain_accounts.v1 {
             tx_type?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("version" in data && data.version != undefined) {
                     this.version = data.version;

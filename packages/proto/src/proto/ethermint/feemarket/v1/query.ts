@@ -9,9 +9,10 @@ import * as dependency_3 from "./feemarket";
 import * as pb_1 from "google-protobuf";
 export namespace ethermint.feemarket.v1 {
     export class QueryParamsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -48,11 +49,12 @@ export namespace ethermint.feemarket.v1 {
         }
     }
     export class QueryParamsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             params?: dependency_3.ethermint.feemarket.v1.Params;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;
@@ -114,9 +116,10 @@ export namespace ethermint.feemarket.v1 {
         }
     }
     export class QueryBaseFeeRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -153,11 +156,12 @@ export namespace ethermint.feemarket.v1 {
         }
     }
     export class QueryBaseFeeResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             base_fee?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("base_fee" in data && data.base_fee != undefined) {
                     this.base_fee = data.base_fee;
@@ -219,9 +223,10 @@ export namespace ethermint.feemarket.v1 {
         }
     }
     export class QueryBlockGasRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -258,11 +263,12 @@ export namespace ethermint.feemarket.v1 {
         }
     }
     export class QueryBlockGasResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             gas?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("gas" in data && data.gas != undefined) {
                     this.gas = data.gas;

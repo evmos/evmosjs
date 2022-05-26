@@ -10,6 +10,7 @@ import * as dependency_3 from "./../../../cosmos/base/v1beta1/coin";
 import * as pb_1 from "google-protobuf";
 export namespace evmos.incentives.v1 {
     export class Incentive extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             contract?: string;
             allocations?: dependency_3.cosmos.base.v1beta1.DecCoin[];
@@ -18,7 +19,7 @@ export namespace evmos.incentives.v1 {
             total_gas?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("contract" in data && data.contract != undefined) {
                     this.contract = data.contract;
@@ -168,13 +169,14 @@ export namespace evmos.incentives.v1 {
         }
     }
     export class GasMeter extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             contract?: string;
             participant?: string;
             cumulative_gas?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("contract" in data && data.contract != undefined) {
                     this.contract = data.contract;
@@ -280,6 +282,7 @@ export namespace evmos.incentives.v1 {
         }
     }
     export class RegisterIncentiveProposal extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             title?: string;
             description?: string;
@@ -288,7 +291,7 @@ export namespace evmos.incentives.v1 {
             epochs?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("title" in data && data.title != undefined) {
                     this.title = data.title;
@@ -438,13 +441,14 @@ export namespace evmos.incentives.v1 {
         }
     }
     export class CancelIncentiveProposal extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             title?: string;
             description?: string;
             contract?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("title" in data && data.title != undefined) {
                     this.title = data.title;

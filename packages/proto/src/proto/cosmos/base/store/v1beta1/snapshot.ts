@@ -8,6 +8,7 @@
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.base.store.v1beta1 {
     export class SnapshotItem extends pb_1.Message {
+        #one_of_decls = [[1, 2]];
         constructor(data?: any[] | ({} & (({
             store?: SnapshotStoreItem;
             iavl?: never;
@@ -16,7 +17,7 @@ export namespace cosmos.base.store.v1beta1 {
             iavl?: SnapshotIAVLItem;
         })))) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], [[1, 2]]);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("store" in data && data.store != undefined) {
                     this.store = data.store;
@@ -30,13 +31,13 @@ export namespace cosmos.base.store.v1beta1 {
             return pb_1.Message.getWrapperField(this, SnapshotStoreItem, 1) as SnapshotStoreItem;
         }
         set store(value: SnapshotStoreItem) {
-            pb_1.Message.setOneofWrapperField(this, 1, [1, 2], value);
+            pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
         }
         get iavl() {
             return pb_1.Message.getWrapperField(this, SnapshotIAVLItem, 2) as SnapshotIAVLItem;
         }
         set iavl(value: SnapshotIAVLItem) {
-            pb_1.Message.setOneofWrapperField(this, 2, [1, 2], value);
+            pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
         }
         get item() {
             const cases: {
@@ -110,11 +111,12 @@ export namespace cosmos.base.store.v1beta1 {
         }
     }
     export class SnapshotStoreItem extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             name?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("name" in data && data.name != undefined) {
                     this.name = data.name;
@@ -176,6 +178,7 @@ export namespace cosmos.base.store.v1beta1 {
         }
     }
     export class SnapshotIAVLItem extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             key?: Uint8Array;
             value?: Uint8Array;
@@ -183,7 +186,7 @@ export namespace cosmos.base.store.v1beta1 {
             height?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("key" in data && data.key != undefined) {
                     this.key = data.key;

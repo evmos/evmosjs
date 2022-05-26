@@ -8,6 +8,7 @@
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.base.query.v1beta1 {
     export class PageRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             key?: Uint8Array;
             offset?: number;
@@ -16,7 +17,7 @@ export namespace cosmos.base.query.v1beta1 {
             reverse?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("key" in data && data.key != undefined) {
                     this.key = data.key;
@@ -166,12 +167,13 @@ export namespace cosmos.base.query.v1beta1 {
         }
     }
     export class PageResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             next_key?: Uint8Array;
             total?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("next_key" in data && data.next_key != undefined) {
                     this.next_key = data.next_key;

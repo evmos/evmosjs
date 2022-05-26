@@ -8,13 +8,14 @@
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.crisis.v1beta1 {
     export class MsgVerifyInvariant extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             sender?: string;
             invariant_module_name?: string;
             invariant_route?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("sender" in data && data.sender != undefined) {
                     this.sender = data.sender;
@@ -120,9 +121,10 @@ export namespace cosmos.crisis.v1beta1 {
         }
     }
     export class MsgVerifyInvariantResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {

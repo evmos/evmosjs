@@ -9,6 +9,7 @@ import * as dependency_2 from "./../../base/v1beta1/coin";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.vesting.v1beta1 {
     export class MsgCreateVestingAccount extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             from_address?: string;
             to_address?: string;
@@ -17,7 +18,7 @@ export namespace cosmos.vesting.v1beta1 {
             delayed?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("from_address" in data && data.from_address != undefined) {
                     this.from_address = data.from_address;
@@ -167,9 +168,10 @@ export namespace cosmos.vesting.v1beta1 {
         }
     }
     export class MsgCreateVestingAccountResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {

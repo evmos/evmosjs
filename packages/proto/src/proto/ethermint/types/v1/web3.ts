@@ -8,13 +8,14 @@
 import * as pb_1 from "google-protobuf";
 export namespace ethermint.types.v1 {
     export class ExtensionOptionsWeb3Tx extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             typed_data_chain_id?: number;
             fee_payer?: string;
             fee_payer_sig?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("typed_data_chain_id" in data && data.typed_data_chain_id != undefined) {
                     this.typed_data_chain_id = data.typed_data_chain_id;

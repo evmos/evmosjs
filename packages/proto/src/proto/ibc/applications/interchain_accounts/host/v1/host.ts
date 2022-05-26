@@ -8,12 +8,13 @@
 import * as pb_1 from "google-protobuf";
 export namespace ibc.applications.interchain_accounts.host.v1 {
     export class Params extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             host_enabled?: boolean;
             allow_messages?: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("host_enabled" in data && data.host_enabled != undefined) {
                     this.host_enabled = data.host_enabled;

@@ -10,13 +10,14 @@ import * as dependency_3 from "./bank";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.bank.v1beta1 {
     export class MsgSend extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             from_address?: string;
             to_address?: string;
             amount?: dependency_2.cosmos.base.v1beta1.Coin[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("from_address" in data && data.from_address != undefined) {
                     this.from_address = data.from_address;
@@ -122,9 +123,10 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class MsgSendResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -161,12 +163,13 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class MsgMultiSend extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             inputs?: dependency_3.cosmos.bank.v1beta1.Input[];
             outputs?: dependency_3.cosmos.bank.v1beta1.Output[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("inputs" in data && data.inputs != undefined) {
                     this.inputs = data.inputs;
@@ -250,9 +253,10 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class MsgMultiSendResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {

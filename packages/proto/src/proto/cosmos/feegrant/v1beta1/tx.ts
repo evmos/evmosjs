@@ -9,13 +9,14 @@ import * as dependency_2 from "./../../../google/protobuf/any";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.feegrant.v1beta1 {
     export class MsgGrantAllowance extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             granter?: string;
             grantee?: string;
             allowance?: dependency_2.google.protobuf.Any;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("granter" in data && data.granter != undefined) {
                     this.granter = data.granter;
@@ -121,9 +122,10 @@ export namespace cosmos.feegrant.v1beta1 {
         }
     }
     export class MsgGrantAllowanceResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -160,12 +162,13 @@ export namespace cosmos.feegrant.v1beta1 {
         }
     }
     export class MsgRevokeAllowance extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             granter?: string;
             grantee?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("granter" in data && data.granter != undefined) {
                     this.granter = data.granter;
@@ -249,9 +252,10 @@ export namespace cosmos.feegrant.v1beta1 {
         }
     }
     export class MsgRevokeAllowanceResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {

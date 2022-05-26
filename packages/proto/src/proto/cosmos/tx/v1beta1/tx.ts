@@ -12,13 +12,14 @@ import * as dependency_5 from "./../../../google/protobuf/any";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.tx.v1beta1 {
     export class Tx extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             body?: TxBody;
             auth_info?: AuthInfo;
             signatures?: Uint8Array[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("body" in data && data.body != undefined) {
                     this.body = data.body;
@@ -124,13 +125,14 @@ export namespace cosmos.tx.v1beta1 {
         }
     }
     export class TxRaw extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             body_bytes?: Uint8Array;
             auth_info_bytes?: Uint8Array;
             signatures?: Uint8Array[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("body_bytes" in data && data.body_bytes != undefined) {
                     this.body_bytes = data.body_bytes;
@@ -236,6 +238,7 @@ export namespace cosmos.tx.v1beta1 {
         }
     }
     export class SignDoc extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             body_bytes?: Uint8Array;
             auth_info_bytes?: Uint8Array;
@@ -243,7 +246,7 @@ export namespace cosmos.tx.v1beta1 {
             account_number?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("body_bytes" in data && data.body_bytes != undefined) {
                     this.body_bytes = data.body_bytes;
@@ -371,6 +374,7 @@ export namespace cosmos.tx.v1beta1 {
         }
     }
     export class TxBody extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             messages?: dependency_5.google.protobuf.Any[];
             memo?: string;
@@ -379,7 +383,7 @@ export namespace cosmos.tx.v1beta1 {
             non_critical_extension_options?: dependency_5.google.protobuf.Any[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 1023, 2047], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 1023, 2047], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("messages" in data && data.messages != undefined) {
                     this.messages = data.messages;
@@ -529,12 +533,13 @@ export namespace cosmos.tx.v1beta1 {
         }
     }
     export class AuthInfo extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             signer_infos?: SignerInfo[];
             fee?: Fee;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("signer_infos" in data && data.signer_infos != undefined) {
                     this.signer_infos = data.signer_infos;
@@ -618,13 +623,14 @@ export namespace cosmos.tx.v1beta1 {
         }
     }
     export class SignerInfo extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             public_key?: dependency_5.google.protobuf.Any;
             mode_info?: ModeInfo;
             sequence?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("public_key" in data && data.public_key != undefined) {
                     this.public_key = data.public_key;
@@ -730,6 +736,7 @@ export namespace cosmos.tx.v1beta1 {
         }
     }
     export class ModeInfo extends pb_1.Message {
+        #one_of_decls = [[1, 2]];
         constructor(data?: any[] | ({} & (({
             single?: ModeInfo.Single;
             multi?: never;
@@ -738,7 +745,7 @@ export namespace cosmos.tx.v1beta1 {
             multi?: ModeInfo.Multi;
         })))) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], [[1, 2]]);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("single" in data && data.single != undefined) {
                     this.single = data.single;
@@ -752,13 +759,13 @@ export namespace cosmos.tx.v1beta1 {
             return pb_1.Message.getWrapperField(this, ModeInfo.Single, 1) as ModeInfo.Single;
         }
         set single(value: ModeInfo.Single) {
-            pb_1.Message.setOneofWrapperField(this, 1, [1, 2], value);
+            pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
         }
         get multi() {
             return pb_1.Message.getWrapperField(this, ModeInfo.Multi, 2) as ModeInfo.Multi;
         }
         set multi(value: ModeInfo.Multi) {
-            pb_1.Message.setOneofWrapperField(this, 2, [1, 2], value);
+            pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
         }
         get sum() {
             const cases: {
@@ -833,11 +840,12 @@ export namespace cosmos.tx.v1beta1 {
     }
     export namespace ModeInfo {
         export class Single extends pb_1.Message {
+            #one_of_decls = [];
             constructor(data?: any[] | {
                 mode?: dependency_4.cosmos.tx.signing.v1beta1.SignMode;
             }) {
                 super();
-                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
                 if (!Array.isArray(data) && typeof data == "object") {
                     if ("mode" in data && data.mode != undefined) {
                         this.mode = data.mode;
@@ -899,12 +907,13 @@ export namespace cosmos.tx.v1beta1 {
             }
         }
         export class Multi extends pb_1.Message {
+            #one_of_decls = [];
             constructor(data?: any[] | {
                 bitarray?: dependency_2.cosmos.crypto.multisig.v1beta1.CompactBitArray;
                 mode_infos?: ModeInfo[];
             }) {
                 super();
-                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
                 if (!Array.isArray(data) && typeof data == "object") {
                     if ("bitarray" in data && data.bitarray != undefined) {
                         this.bitarray = data.bitarray;
@@ -989,6 +998,7 @@ export namespace cosmos.tx.v1beta1 {
         }
     }
     export class Fee extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             amount?: dependency_3.cosmos.base.v1beta1.Coin[];
             gas_limit?: number;
@@ -996,7 +1006,7 @@ export namespace cosmos.tx.v1beta1 {
             granter?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("amount" in data && data.amount != undefined) {
                     this.amount = data.amount;

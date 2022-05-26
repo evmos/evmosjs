@@ -27,12 +27,13 @@ export namespace cosmos.gov.v1beta1 {
         PROPOSAL_STATUS_FAILED = 5
     }
     export class WeightedVoteOption extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             option?: VoteOption;
             weight?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("option" in data && data.option != undefined) {
                     this.option = data.option;
@@ -116,12 +117,13 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class TextProposal extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             title?: string;
             description?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("title" in data && data.title != undefined) {
                     this.title = data.title;
@@ -205,13 +207,14 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class Deposit extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             proposal_id?: number;
             depositor?: string;
             amount?: dependency_1.cosmos.base.v1beta1.Coin[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("proposal_id" in data && data.proposal_id != undefined) {
                     this.proposal_id = data.proposal_id;
@@ -317,6 +320,7 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class Proposal extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             proposal_id?: number;
             content?: dependency_5.google.protobuf.Any;
@@ -329,7 +333,7 @@ export namespace cosmos.gov.v1beta1 {
             voting_end_time?: dependency_4.google.protobuf.Timestamp;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [7], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [7], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("proposal_id" in data && data.proposal_id != undefined) {
                     this.proposal_id = data.proposal_id;
@@ -567,6 +571,7 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class TallyResult extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             yes?: string;
             abstain?: string;
@@ -574,7 +579,7 @@ export namespace cosmos.gov.v1beta1 {
             no_with_veto?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("yes" in data && data.yes != undefined) {
                     this.yes = data.yes;
@@ -702,6 +707,7 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class Vote extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             proposal_id?: number;
             voter?: string;
@@ -710,7 +716,7 @@ export namespace cosmos.gov.v1beta1 {
             options?: WeightedVoteOption[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("proposal_id" in data && data.proposal_id != undefined) {
                     this.proposal_id = data.proposal_id;
@@ -840,12 +846,13 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class DepositParams extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             min_deposit?: dependency_1.cosmos.base.v1beta1.Coin[];
             max_deposit_period?: dependency_6.google.protobuf.Duration;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("min_deposit" in data && data.min_deposit != undefined) {
                     this.min_deposit = data.min_deposit;
@@ -929,11 +936,12 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class VotingParams extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             voting_period?: dependency_6.google.protobuf.Duration;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("voting_period" in data && data.voting_period != undefined) {
                     this.voting_period = data.voting_period;
@@ -995,13 +1003,14 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class TallyParams extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             quorum?: Uint8Array;
             threshold?: Uint8Array;
             veto_threshold?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("quorum" in data && data.quorum != undefined) {
                     this.quorum = data.quorum;

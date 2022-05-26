@@ -8,9 +8,10 @@
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.base.reflection.v1beta1 {
     export class ListAllInterfacesRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -47,11 +48,12 @@ export namespace cosmos.base.reflection.v1beta1 {
         }
     }
     export class ListAllInterfacesResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             interface_names?: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("interface_names" in data && data.interface_names != undefined) {
                     this.interface_names = data.interface_names;
@@ -113,11 +115,12 @@ export namespace cosmos.base.reflection.v1beta1 {
         }
     }
     export class ListImplementationsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             interface_name?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("interface_name" in data && data.interface_name != undefined) {
                     this.interface_name = data.interface_name;
@@ -179,11 +182,12 @@ export namespace cosmos.base.reflection.v1beta1 {
         }
     }
     export class ListImplementationsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             implementation_message_names?: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("implementation_message_names" in data && data.implementation_message_names != undefined) {
                     this.implementation_message_names = data.implementation_message_names;

@@ -2,7 +2,7 @@
 
 This project forked from [https://github.com/tharsis/evmosjs](https://github.com/tharsis/evmosjs)
 
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/astraprotocol/evmosjs.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/astraprotocol/evmosjs/alerts/) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/astraprotocol/evmosjs.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/astraprotocol/evmosjs/context:javascript)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/astraprotocol/astrajs.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/astraprotocol/astrajs/alerts/) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/astraprotocol/astrajs.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/astraprotocol/astrajs/context:javascript)
 
 JS and TS libs for Evmos
 

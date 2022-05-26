@@ -15,6 +15,7 @@ export namespace cosmos.staking.v1beta1 {
         AUTHORIZATION_TYPE_REDELEGATE = 3
     }
     export class StakeAuthorization extends pb_1.Message {
+        #one_of_decls = [[2, 3]];
         constructor(data?: any[] | ({
             max_tokens?: dependency_3.cosmos.base.v1beta1.Coin;
             authorization_type?: AuthorizationType;
@@ -26,7 +27,7 @@ export namespace cosmos.staking.v1beta1 {
             deny_list?: StakeAuthorization.Validators;
         })))) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], [[2, 3]]);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("max_tokens" in data && data.max_tokens != undefined) {
                     this.max_tokens = data.max_tokens;
@@ -52,13 +53,13 @@ export namespace cosmos.staking.v1beta1 {
             return pb_1.Message.getWrapperField(this, StakeAuthorization.Validators, 2) as StakeAuthorization.Validators;
         }
         set allow_list(value: StakeAuthorization.Validators) {
-            pb_1.Message.setOneofWrapperField(this, 2, [2, 3], value);
+            pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
         }
         get deny_list() {
             return pb_1.Message.getWrapperField(this, StakeAuthorization.Validators, 3) as StakeAuthorization.Validators;
         }
         set deny_list(value: StakeAuthorization.Validators) {
-            pb_1.Message.setOneofWrapperField(this, 3, [2, 3], value);
+            pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
         }
         get authorization_type() {
             return pb_1.Message.getField(this, 4) as AuthorizationType;
@@ -165,11 +166,12 @@ export namespace cosmos.staking.v1beta1 {
     }
     export namespace StakeAuthorization {
         export class Validators extends pb_1.Message {
+            #one_of_decls = [];
             constructor(data?: any[] | {
                 address?: string[];
             }) {
                 super();
-                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
                 if (!Array.isArray(data) && typeof data == "object") {
                     if ("address" in data && data.address != undefined) {
                         this.address = data.address;

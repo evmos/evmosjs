@@ -11,12 +11,13 @@ import * as dependency_5 from "./bank";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.bank.v1beta1 {
     export class QueryBalanceRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
             denom?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;
@@ -100,11 +101,12 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QueryBalanceResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             balance?: dependency_4.cosmos.base.v1beta1.Coin;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("balance" in data && data.balance != undefined) {
                     this.balance = data.balance;
@@ -166,12 +168,13 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QueryAllBalancesRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;
@@ -255,12 +258,13 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QueryAllBalancesResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             balances?: dependency_4.cosmos.base.v1beta1.Coin[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("balances" in data && data.balances != undefined) {
                     this.balances = data.balances;
@@ -343,12 +347,193 @@ export namespace cosmos.bank.v1beta1 {
             return QueryAllBalancesResponse.deserialize(bytes);
         }
     }
+    export class QuerySpendableBalancesRequest extends pb_1.Message {
+        #one_of_decls = [];
+        constructor(data?: any[] | {
+            address?: string;
+            pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("address" in data && data.address != undefined) {
+                    this.address = data.address;
+                }
+                if ("pagination" in data && data.pagination != undefined) {
+                    this.pagination = data.pagination;
+                }
+            }
+        }
+        get address() {
+            return pb_1.Message.getField(this, 1) as string;
+        }
+        set address(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get pagination() {
+            return pb_1.Message.getWrapperField(this, dependency_1.cosmos.base.query.v1beta1.PageRequest, 2) as dependency_1.cosmos.base.query.v1beta1.PageRequest;
+        }
+        set pagination(value: dependency_1.cosmos.base.query.v1beta1.PageRequest) {
+            pb_1.Message.setWrapperField(this, 2, value);
+        }
+        static fromObject(data: {
+            address?: string;
+            pagination?: ReturnType<typeof dependency_1.cosmos.base.query.v1beta1.PageRequest.prototype.toObject>;
+        }) {
+            const message = new QuerySpendableBalancesRequest({});
+            if (data.address != null) {
+                message.address = data.address;
+            }
+            if (data.pagination != null) {
+                message.pagination = dependency_1.cosmos.base.query.v1beta1.PageRequest.fromObject(data.pagination);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                address?: string;
+                pagination?: ReturnType<typeof dependency_1.cosmos.base.query.v1beta1.PageRequest.prototype.toObject>;
+            } = {};
+            if (this.address != null) {
+                data.address = this.address;
+            }
+            if (this.pagination != null) {
+                data.pagination = this.pagination.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (typeof this.address === "string" && this.address.length)
+                writer.writeString(1, this.address);
+            if (this.pagination !== undefined)
+                writer.writeMessage(2, this.pagination, () => this.pagination.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QuerySpendableBalancesRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QuerySpendableBalancesRequest();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.address = reader.readString();
+                        break;
+                    case 2:
+                        reader.readMessage(message.pagination, () => message.pagination = dependency_1.cosmos.base.query.v1beta1.PageRequest.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): QuerySpendableBalancesRequest {
+            return QuerySpendableBalancesRequest.deserialize(bytes);
+        }
+    }
+    export class QuerySpendableBalancesResponse extends pb_1.Message {
+        #one_of_decls = [];
+        constructor(data?: any[] | {
+            balances?: dependency_4.cosmos.base.v1beta1.Coin[];
+            pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("balances" in data && data.balances != undefined) {
+                    this.balances = data.balances;
+                }
+                if ("pagination" in data && data.pagination != undefined) {
+                    this.pagination = data.pagination;
+                }
+            }
+        }
+        get balances() {
+            return pb_1.Message.getRepeatedWrapperField(this, dependency_4.cosmos.base.v1beta1.Coin, 1) as dependency_4.cosmos.base.v1beta1.Coin[];
+        }
+        set balances(value: dependency_4.cosmos.base.v1beta1.Coin[]) {
+            pb_1.Message.setRepeatedWrapperField(this, 1, value);
+        }
+        get pagination() {
+            return pb_1.Message.getWrapperField(this, dependency_1.cosmos.base.query.v1beta1.PageResponse, 2) as dependency_1.cosmos.base.query.v1beta1.PageResponse;
+        }
+        set pagination(value: dependency_1.cosmos.base.query.v1beta1.PageResponse) {
+            pb_1.Message.setWrapperField(this, 2, value);
+        }
+        static fromObject(data: {
+            balances?: ReturnType<typeof dependency_4.cosmos.base.v1beta1.Coin.prototype.toObject>[];
+            pagination?: ReturnType<typeof dependency_1.cosmos.base.query.v1beta1.PageResponse.prototype.toObject>;
+        }) {
+            const message = new QuerySpendableBalancesResponse({});
+            if (data.balances != null) {
+                message.balances = data.balances.map(item => dependency_4.cosmos.base.v1beta1.Coin.fromObject(item));
+            }
+            if (data.pagination != null) {
+                message.pagination = dependency_1.cosmos.base.query.v1beta1.PageResponse.fromObject(data.pagination);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                balances?: ReturnType<typeof dependency_4.cosmos.base.v1beta1.Coin.prototype.toObject>[];
+                pagination?: ReturnType<typeof dependency_1.cosmos.base.query.v1beta1.PageResponse.prototype.toObject>;
+            } = {};
+            if (this.balances != null) {
+                data.balances = this.balances.map((item: dependency_4.cosmos.base.v1beta1.Coin) => item.toObject());
+            }
+            if (this.pagination != null) {
+                data.pagination = this.pagination.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.balances !== undefined)
+                writer.writeRepeatedMessage(1, this.balances, (item: dependency_4.cosmos.base.v1beta1.Coin) => item.serialize(writer));
+            if (this.pagination !== undefined)
+                writer.writeMessage(2, this.pagination, () => this.pagination.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QuerySpendableBalancesResponse {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QuerySpendableBalancesResponse();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.balances, () => pb_1.Message.addToRepeatedWrapperField(message, 1, dependency_4.cosmos.base.v1beta1.Coin.deserialize(reader), dependency_4.cosmos.base.v1beta1.Coin));
+                        break;
+                    case 2:
+                        reader.readMessage(message.pagination, () => message.pagination = dependency_1.cosmos.base.query.v1beta1.PageResponse.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): QuerySpendableBalancesResponse {
+            return QuerySpendableBalancesResponse.deserialize(bytes);
+        }
+    }
     export class QueryTotalSupplyRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pagination" in data && data.pagination != undefined) {
                     this.pagination = data.pagination;
@@ -410,12 +595,13 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QueryTotalSupplyResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             supply?: dependency_4.cosmos.base.v1beta1.Coin[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("supply" in data && data.supply != undefined) {
                     this.supply = data.supply;
@@ -499,11 +685,12 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QuerySupplyOfRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             denom?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("denom" in data && data.denom != undefined) {
                     this.denom = data.denom;
@@ -565,11 +752,12 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QuerySupplyOfResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             amount?: dependency_4.cosmos.base.v1beta1.Coin;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("amount" in data && data.amount != undefined) {
                     this.amount = data.amount;
@@ -631,9 +819,10 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QueryParamsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -670,11 +859,12 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QueryParamsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             params?: dependency_5.cosmos.bank.v1beta1.Params;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;
@@ -736,11 +926,12 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QueryDenomsMetadataRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pagination" in data && data.pagination != undefined) {
                     this.pagination = data.pagination;
@@ -802,12 +993,13 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QueryDenomsMetadataResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             metadatas?: dependency_5.cosmos.bank.v1beta1.Metadata[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("metadatas" in data && data.metadatas != undefined) {
                     this.metadatas = data.metadatas;
@@ -891,11 +1083,12 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QueryDenomMetadataRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             denom?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("denom" in data && data.denom != undefined) {
                     this.denom = data.denom;
@@ -957,11 +1150,12 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QueryDenomMetadataResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             metadata?: dependency_5.cosmos.bank.v1beta1.Metadata;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("metadata" in data && data.metadata != undefined) {
                     this.metadata = data.metadata;

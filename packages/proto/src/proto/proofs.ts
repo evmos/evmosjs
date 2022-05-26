@@ -27,6 +27,7 @@ export namespace ics23 {
         REQUIRE_64_BYTES = 8
     }
     export class ExistenceProof extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             key?: Uint8Array;
             value?: Uint8Array;
@@ -34,7 +35,7 @@ export namespace ics23 {
             path?: InnerOp[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("key" in data && data.key != undefined) {
                     this.key = data.key;
@@ -162,13 +163,14 @@ export namespace ics23 {
         }
     }
     export class NonExistenceProof extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             key?: Uint8Array;
             left?: ExistenceProof;
             right?: ExistenceProof;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("key" in data && data.key != undefined) {
                     this.key = data.key;
@@ -274,6 +276,7 @@ export namespace ics23 {
         }
     }
     export class CommitmentProof extends pb_1.Message {
+        #one_of_decls = [[1, 2, 3, 4]];
         constructor(data?: any[] | ({} & (({
             exist?: ExistenceProof;
             nonexist?: never;
@@ -296,7 +299,7 @@ export namespace ics23 {
             compressed?: CompressedBatchProof;
         })))) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], [[1, 2, 3, 4]]);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("exist" in data && data.exist != undefined) {
                     this.exist = data.exist;
@@ -316,25 +319,25 @@ export namespace ics23 {
             return pb_1.Message.getWrapperField(this, ExistenceProof, 1) as ExistenceProof;
         }
         set exist(value: ExistenceProof) {
-            pb_1.Message.setOneofWrapperField(this, 1, [1, 2, 3, 4], value);
+            pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
         }
         get nonexist() {
             return pb_1.Message.getWrapperField(this, NonExistenceProof, 2) as NonExistenceProof;
         }
         set nonexist(value: NonExistenceProof) {
-            pb_1.Message.setOneofWrapperField(this, 2, [1, 2, 3, 4], value);
+            pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
         }
         get batch() {
             return pb_1.Message.getWrapperField(this, BatchProof, 3) as BatchProof;
         }
         set batch(value: BatchProof) {
-            pb_1.Message.setOneofWrapperField(this, 3, [1, 2, 3, 4], value);
+            pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
         }
         get compressed() {
             return pb_1.Message.getWrapperField(this, CompressedBatchProof, 4) as CompressedBatchProof;
         }
         set compressed(value: CompressedBatchProof) {
-            pb_1.Message.setOneofWrapperField(this, 4, [1, 2, 3, 4], value);
+            pb_1.Message.setOneofWrapperField(this, 4, this.#one_of_decls[0], value);
         }
         get proof() {
             const cases: {
@@ -436,6 +439,7 @@ export namespace ics23 {
         }
     }
     export class LeafOp extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             hash?: HashOp;
             prehash_key?: HashOp;
@@ -444,7 +448,7 @@ export namespace ics23 {
             prefix?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("hash" in data && data.hash != undefined) {
                     this.hash = data.hash;
@@ -594,13 +598,14 @@ export namespace ics23 {
         }
     }
     export class InnerOp extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             hash?: HashOp;
             prefix?: Uint8Array;
             suffix?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("hash" in data && data.hash != undefined) {
                     this.hash = data.hash;
@@ -706,6 +711,7 @@ export namespace ics23 {
         }
     }
     export class ProofSpec extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             leaf_spec?: LeafOp;
             inner_spec?: InnerSpec;
@@ -713,7 +719,7 @@ export namespace ics23 {
             min_depth?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("leaf_spec" in data && data.leaf_spec != undefined) {
                     this.leaf_spec = data.leaf_spec;
@@ -841,6 +847,7 @@ export namespace ics23 {
         }
     }
     export class InnerSpec extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             child_order?: number[];
             child_size?: number;
@@ -850,7 +857,7 @@ export namespace ics23 {
             hash?: HashOp;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("child_order" in data && data.child_order != undefined) {
                     this.child_order = data.child_order;
@@ -1022,11 +1029,12 @@ export namespace ics23 {
         }
     }
     export class BatchProof extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             entries?: BatchEntry[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("entries" in data && data.entries != undefined) {
                     this.entries = data.entries;
@@ -1088,6 +1096,7 @@ export namespace ics23 {
         }
     }
     export class BatchEntry extends pb_1.Message {
+        #one_of_decls = [[1, 2]];
         constructor(data?: any[] | ({} & (({
             exist?: ExistenceProof;
             nonexist?: never;
@@ -1096,7 +1105,7 @@ export namespace ics23 {
             nonexist?: NonExistenceProof;
         })))) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], [[1, 2]]);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("exist" in data && data.exist != undefined) {
                     this.exist = data.exist;
@@ -1110,13 +1119,13 @@ export namespace ics23 {
             return pb_1.Message.getWrapperField(this, ExistenceProof, 1) as ExistenceProof;
         }
         set exist(value: ExistenceProof) {
-            pb_1.Message.setOneofWrapperField(this, 1, [1, 2], value);
+            pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
         }
         get nonexist() {
             return pb_1.Message.getWrapperField(this, NonExistenceProof, 2) as NonExistenceProof;
         }
         set nonexist(value: NonExistenceProof) {
-            pb_1.Message.setOneofWrapperField(this, 2, [1, 2], value);
+            pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
         }
         get proof() {
             const cases: {
@@ -1190,12 +1199,13 @@ export namespace ics23 {
         }
     }
     export class CompressedBatchProof extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             entries?: CompressedBatchEntry[];
             lookup_inners?: InnerOp[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("entries" in data && data.entries != undefined) {
                     this.entries = data.entries;
@@ -1279,6 +1289,7 @@ export namespace ics23 {
         }
     }
     export class CompressedBatchEntry extends pb_1.Message {
+        #one_of_decls = [[1, 2]];
         constructor(data?: any[] | ({} & (({
             exist?: CompressedExistenceProof;
             nonexist?: never;
@@ -1287,7 +1298,7 @@ export namespace ics23 {
             nonexist?: CompressedNonExistenceProof;
         })))) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], [[1, 2]]);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("exist" in data && data.exist != undefined) {
                     this.exist = data.exist;
@@ -1301,13 +1312,13 @@ export namespace ics23 {
             return pb_1.Message.getWrapperField(this, CompressedExistenceProof, 1) as CompressedExistenceProof;
         }
         set exist(value: CompressedExistenceProof) {
-            pb_1.Message.setOneofWrapperField(this, 1, [1, 2], value);
+            pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
         }
         get nonexist() {
             return pb_1.Message.getWrapperField(this, CompressedNonExistenceProof, 2) as CompressedNonExistenceProof;
         }
         set nonexist(value: CompressedNonExistenceProof) {
-            pb_1.Message.setOneofWrapperField(this, 2, [1, 2], value);
+            pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
         }
         get proof() {
             const cases: {
@@ -1381,6 +1392,7 @@ export namespace ics23 {
         }
     }
     export class CompressedExistenceProof extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             key?: Uint8Array;
             value?: Uint8Array;
@@ -1388,7 +1400,7 @@ export namespace ics23 {
             path?: number[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("key" in data && data.key != undefined) {
                     this.key = data.key;
@@ -1516,13 +1528,14 @@ export namespace ics23 {
         }
     }
     export class CompressedNonExistenceProof extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             key?: Uint8Array;
             left?: CompressedExistenceProof;
             right?: CompressedExistenceProof;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("key" in data && data.key != undefined) {
                     this.key = data.key;

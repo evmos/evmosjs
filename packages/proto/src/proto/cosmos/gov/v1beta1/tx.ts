@@ -11,13 +11,14 @@ import * as dependency_5 from "./../../../google/protobuf/any";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.gov.v1beta1 {
     export class MsgSubmitProposal extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             content?: dependency_5.google.protobuf.Any;
             initial_deposit?: dependency_1.cosmos.base.v1beta1.Coin[];
             proposer?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("content" in data && data.content != undefined) {
                     this.content = data.content;
@@ -123,11 +124,12 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class MsgSubmitProposalResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             proposal_id?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("proposal_id" in data && data.proposal_id != undefined) {
                     this.proposal_id = data.proposal_id;
@@ -189,13 +191,14 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class MsgVote extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             proposal_id?: number;
             voter?: string;
             option?: dependency_2.cosmos.gov.v1beta1.VoteOption;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("proposal_id" in data && data.proposal_id != undefined) {
                     this.proposal_id = data.proposal_id;
@@ -301,9 +304,10 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class MsgVoteResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -340,13 +344,14 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class MsgVoteWeighted extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             proposal_id?: number;
             voter?: string;
             options?: dependency_2.cosmos.gov.v1beta1.WeightedVoteOption[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("proposal_id" in data && data.proposal_id != undefined) {
                     this.proposal_id = data.proposal_id;
@@ -452,9 +457,10 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class MsgVoteWeightedResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -491,13 +497,14 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class MsgDeposit extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             proposal_id?: number;
             depositor?: string;
             amount?: dependency_1.cosmos.base.v1beta1.Coin[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("proposal_id" in data && data.proposal_id != undefined) {
                     this.proposal_id = data.proposal_id;
@@ -603,9 +610,10 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class MsgDepositResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {

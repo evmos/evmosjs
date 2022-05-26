@@ -10,12 +10,13 @@ import * as dependency_3 from "./../../../../cosmos/upgrade/v1beta1/upgrade";
 import * as pb_1 from "google-protobuf";
 export namespace ibc.core.client.v1 {
     export class IdentifiedClientState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             client_id?: string;
             client_state?: dependency_2.google.protobuf.Any;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("client_id" in data && data.client_id != undefined) {
                     this.client_id = data.client_id;
@@ -99,12 +100,13 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class ConsensusStateWithHeight extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             height?: Height;
             consensus_state?: dependency_2.google.protobuf.Any;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("height" in data && data.height != undefined) {
                     this.height = data.height;
@@ -188,12 +190,13 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class ClientConsensusStates extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             client_id?: string;
             consensus_states?: ConsensusStateWithHeight[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("client_id" in data && data.client_id != undefined) {
                     this.client_id = data.client_id;
@@ -277,6 +280,7 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class ClientUpdateProposal extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             title?: string;
             description?: string;
@@ -284,7 +288,7 @@ export namespace ibc.core.client.v1 {
             substitute_client_id?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("title" in data && data.title != undefined) {
                     this.title = data.title;
@@ -412,6 +416,7 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class UpgradeProposal extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             title?: string;
             description?: string;
@@ -419,7 +424,7 @@ export namespace ibc.core.client.v1 {
             upgraded_client_state?: dependency_2.google.protobuf.Any;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("title" in data && data.title != undefined) {
                     this.title = data.title;
@@ -547,12 +552,13 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class Height extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             revision_number?: number;
             revision_height?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("revision_number" in data && data.revision_number != undefined) {
                     this.revision_number = data.revision_number;
@@ -636,11 +642,12 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class Params extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             allowed_clients?: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("allowed_clients" in data && data.allowed_clients != undefined) {
                     this.allowed_clients = data.allowed_clients;

@@ -9,12 +9,13 @@ import * as dependency_2 from "./evm";
 import * as pb_1 from "google-protobuf";
 export namespace ethermint.evm.v1 {
     export class GenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             accounts?: GenesisAccount[];
             params?: dependency_2.ethermint.evm.v1.Params;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("accounts" in data && data.accounts != undefined) {
                     this.accounts = data.accounts;
@@ -98,13 +99,14 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class GenesisAccount extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
             code?: string;
             storage?: dependency_2.ethermint.evm.v1.State[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;

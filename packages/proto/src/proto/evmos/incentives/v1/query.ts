@@ -12,11 +12,12 @@ import * as dependency_4 from "./incentives";
 import * as pb_1 from "google-protobuf";
 export namespace evmos.incentives.v1 {
     export class QueryIncentivesRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pagination" in data && data.pagination != undefined) {
                     this.pagination = data.pagination;
@@ -78,12 +79,13 @@ export namespace evmos.incentives.v1 {
         }
     }
     export class QueryIncentivesResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             incentives?: dependency_4.evmos.incentives.v1.Incentive[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("incentives" in data && data.incentives != undefined) {
                     this.incentives = data.incentives;
@@ -167,11 +169,12 @@ export namespace evmos.incentives.v1 {
         }
     }
     export class QueryIncentiveRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             contract?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("contract" in data && data.contract != undefined) {
                     this.contract = data.contract;
@@ -233,11 +236,12 @@ export namespace evmos.incentives.v1 {
         }
     }
     export class QueryIncentiveResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             incentive?: dependency_4.evmos.incentives.v1.Incentive;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("incentive" in data && data.incentive != undefined) {
                     this.incentive = data.incentive;
@@ -299,12 +303,13 @@ export namespace evmos.incentives.v1 {
         }
     }
     export class QueryGasMetersRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             contract?: string;
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("contract" in data && data.contract != undefined) {
                     this.contract = data.contract;
@@ -388,12 +393,13 @@ export namespace evmos.incentives.v1 {
         }
     }
     export class QueryGasMetersResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             gas_meters?: dependency_4.evmos.incentives.v1.GasMeter[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("gas_meters" in data && data.gas_meters != undefined) {
                     this.gas_meters = data.gas_meters;
@@ -477,12 +483,13 @@ export namespace evmos.incentives.v1 {
         }
     }
     export class QueryGasMeterRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             contract?: string;
             participant?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("contract" in data && data.contract != undefined) {
                     this.contract = data.contract;
@@ -566,11 +573,12 @@ export namespace evmos.incentives.v1 {
         }
     }
     export class QueryGasMeterResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             gas_meter?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("gas_meter" in data && data.gas_meter != undefined) {
                     this.gas_meter = data.gas_meter;
@@ -632,11 +640,12 @@ export namespace evmos.incentives.v1 {
         }
     }
     export class QueryAllocationMetersRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pagination" in data && data.pagination != undefined) {
                     this.pagination = data.pagination;
@@ -698,12 +707,13 @@ export namespace evmos.incentives.v1 {
         }
     }
     export class QueryAllocationMetersResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             allocation_meters?: dependency_2.cosmos.base.v1beta1.DecCoin[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("allocation_meters" in data && data.allocation_meters != undefined) {
                     this.allocation_meters = data.allocation_meters;
@@ -787,11 +797,12 @@ export namespace evmos.incentives.v1 {
         }
     }
     export class QueryAllocationMeterRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             denom?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("denom" in data && data.denom != undefined) {
                     this.denom = data.denom;
@@ -853,11 +864,12 @@ export namespace evmos.incentives.v1 {
         }
     }
     export class QueryAllocationMeterResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             allocation_meter?: dependency_2.cosmos.base.v1beta1.DecCoin;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("allocation_meter" in data && data.allocation_meter != undefined) {
                     this.allocation_meter = data.allocation_meter;
@@ -919,9 +931,10 @@ export namespace evmos.incentives.v1 {
         }
     }
     export class QueryParamsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -958,11 +971,12 @@ export namespace evmos.incentives.v1 {
         }
     }
     export class QueryParamsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             params?: dependency_3.evmos.incentives.v1.Params;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;

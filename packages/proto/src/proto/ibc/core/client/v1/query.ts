@@ -11,11 +11,12 @@ import * as dependency_3 from "./../../../../google/protobuf/any";
 import * as pb_1 from "google-protobuf";
 export namespace ibc.core.client.v1 {
     export class QueryClientStateRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             client_id?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("client_id" in data && data.client_id != undefined) {
                     this.client_id = data.client_id;
@@ -77,13 +78,14 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class QueryClientStateResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             client_state?: dependency_3.google.protobuf.Any;
             proof?: Uint8Array;
             proof_height?: dependency_2.ibc.core.client.v1.Height;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("client_state" in data && data.client_state != undefined) {
                     this.client_state = data.client_state;
@@ -189,11 +191,12 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class QueryClientStatesRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pagination" in data && data.pagination != undefined) {
                     this.pagination = data.pagination;
@@ -255,12 +258,13 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class QueryClientStatesResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             client_states?: dependency_2.ibc.core.client.v1.IdentifiedClientState[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("client_states" in data && data.client_states != undefined) {
                     this.client_states = data.client_states;
@@ -344,6 +348,7 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class QueryConsensusStateRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             client_id?: string;
             revision_number?: number;
@@ -351,7 +356,7 @@ export namespace ibc.core.client.v1 {
             latest_height?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("client_id" in data && data.client_id != undefined) {
                     this.client_id = data.client_id;
@@ -479,13 +484,14 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class QueryConsensusStateResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             consensus_state?: dependency_3.google.protobuf.Any;
             proof?: Uint8Array;
             proof_height?: dependency_2.ibc.core.client.v1.Height;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("consensus_state" in data && data.consensus_state != undefined) {
                     this.consensus_state = data.consensus_state;
@@ -591,12 +597,13 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class QueryConsensusStatesRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             client_id?: string;
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("client_id" in data && data.client_id != undefined) {
                     this.client_id = data.client_id;
@@ -680,12 +687,13 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class QueryConsensusStatesResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             consensus_states?: dependency_2.ibc.core.client.v1.ConsensusStateWithHeight[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("consensus_states" in data && data.consensus_states != undefined) {
                     this.consensus_states = data.consensus_states;
@@ -769,11 +777,12 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class QueryClientStatusRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             client_id?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("client_id" in data && data.client_id != undefined) {
                     this.client_id = data.client_id;
@@ -835,11 +844,12 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class QueryClientStatusResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             status?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("status" in data && data.status != undefined) {
                     this.status = data.status;
@@ -901,9 +911,10 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class QueryClientParamsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -940,11 +951,12 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class QueryClientParamsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             params?: dependency_2.ibc.core.client.v1.Params;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;
@@ -1006,9 +1018,10 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class QueryUpgradedClientStateRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -1045,11 +1058,12 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class QueryUpgradedClientStateResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             upgraded_client_state?: dependency_3.google.protobuf.Any;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("upgraded_client_state" in data && data.upgraded_client_state != undefined) {
                     this.upgraded_client_state = data.upgraded_client_state;
@@ -1111,9 +1125,10 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class QueryUpgradedConsensusStateRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -1150,11 +1165,12 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class QueryUpgradedConsensusStateResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             upgraded_consensus_state?: dependency_3.google.protobuf.Any;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("upgraded_consensus_state" in data && data.upgraded_consensus_state != undefined) {
                     this.upgraded_consensus_state = data.upgraded_consensus_state;

@@ -11,12 +11,13 @@ import * as dependency_4 from "./claims";
 import * as pb_1 from "google-protobuf";
 export namespace evmos.claims.v1 {
     export class GenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             params?: Params;
             claims_records?: dependency_4.evmos.claims.v1.ClaimsRecordAddress[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;
@@ -100,6 +101,7 @@ export namespace evmos.claims.v1 {
         }
     }
     export class Params extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             enable_claims?: boolean;
             airdrop_start_time?: dependency_3.google.protobuf.Timestamp;
@@ -110,7 +112,7 @@ export namespace evmos.claims.v1 {
             evm_channels?: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [6, 7], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [6, 7], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("enable_claims" in data && data.enable_claims != undefined) {
                     this.enable_claims = data.enable_claims;

@@ -10,6 +10,7 @@ import * as dependency_3 from "./../../../../google/protobuf/any";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.base.abci.v1beta1 {
     export class TxResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             height?: number;
             txhash?: string;
@@ -26,7 +27,7 @@ export namespace cosmos.base.abci.v1beta1 {
             events?: dependency_2.tendermint.abci.Event[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [7, 13], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [7, 13], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("height" in data && data.height != undefined) {
                     this.height = data.height;
@@ -352,13 +353,14 @@ export namespace cosmos.base.abci.v1beta1 {
         }
     }
     export class ABCIMessageLog extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             msg_index?: number;
             log?: string;
             events?: StringEvent[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("msg_index" in data && data.msg_index != undefined) {
                     this.msg_index = data.msg_index;
@@ -464,12 +466,13 @@ export namespace cosmos.base.abci.v1beta1 {
         }
     }
     export class StringEvent extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             type?: string;
             attributes?: Attribute[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("type" in data && data.type != undefined) {
                     this.type = data.type;
@@ -553,12 +556,13 @@ export namespace cosmos.base.abci.v1beta1 {
         }
     }
     export class Attribute extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             key?: string;
             value?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("key" in data && data.key != undefined) {
                     this.key = data.key;
@@ -642,12 +646,13 @@ export namespace cosmos.base.abci.v1beta1 {
         }
     }
     export class GasInfo extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             gas_wanted?: number;
             gas_used?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("gas_wanted" in data && data.gas_wanted != undefined) {
                     this.gas_wanted = data.gas_wanted;
@@ -731,13 +736,14 @@ export namespace cosmos.base.abci.v1beta1 {
         }
     }
     export class Result extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             data?: Uint8Array;
             log?: string;
             events?: dependency_2.tendermint.abci.Event[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("data" in data && data.data != undefined) {
                     this.data = data.data;
@@ -843,12 +849,13 @@ export namespace cosmos.base.abci.v1beta1 {
         }
     }
     export class SimulationResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             gas_info?: GasInfo;
             result?: Result;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("gas_info" in data && data.gas_info != undefined) {
                     this.gas_info = data.gas_info;
@@ -932,12 +939,13 @@ export namespace cosmos.base.abci.v1beta1 {
         }
     }
     export class MsgData extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             msg_type?: string;
             data?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("msg_type" in data && data.msg_type != undefined) {
                     this.msg_type = data.msg_type;
@@ -1021,11 +1029,12 @@ export namespace cosmos.base.abci.v1beta1 {
         }
     }
     export class TxMsgData extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             data?: MsgData[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("data" in data && data.data != undefined) {
                     this.data = data.data;
@@ -1087,6 +1096,7 @@ export namespace cosmos.base.abci.v1beta1 {
         }
     }
     export class SearchTxsResult extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             total_count?: number;
             count?: number;
@@ -1096,7 +1106,7 @@ export namespace cosmos.base.abci.v1beta1 {
             txs?: TxResponse[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [6], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [6], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("total_count" in data && data.total_count != undefined) {
                     this.total_count = data.total_count;

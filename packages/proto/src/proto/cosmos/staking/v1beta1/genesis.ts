@@ -9,6 +9,7 @@ import * as dependency_2 from "./staking";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.staking.v1beta1 {
     export class GenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             params?: dependency_2.cosmos.staking.v1beta1.Params;
             last_total_power?: Uint8Array;
@@ -20,7 +21,7 @@ export namespace cosmos.staking.v1beta1 {
             exported?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3, 4, 5, 6, 7], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3, 4, 5, 6, 7], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;
@@ -236,12 +237,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class LastValidatorPower extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
             power?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;

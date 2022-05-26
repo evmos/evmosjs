@@ -10,6 +10,7 @@ import * as dependency_4 from "./../../../cosmos/vesting/v1beta1/vesting";
 import * as pb_1 from "google-protobuf";
 export namespace evmos.vesting.v1 {
     export class MsgCreateClawbackVestingAccount extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             from_address?: string;
             to_address?: string;
@@ -19,7 +20,7 @@ export namespace evmos.vesting.v1 {
             merge?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4, 5], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4, 5], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("from_address" in data && data.from_address != undefined) {
                     this.from_address = data.from_address;
@@ -191,9 +192,10 @@ export namespace evmos.vesting.v1 {
         }
     }
     export class MsgCreateClawbackVestingAccountResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -230,13 +232,14 @@ export namespace evmos.vesting.v1 {
         }
     }
     export class MsgClawback extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             funder_address?: string;
             account_address?: string;
             dest_address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("funder_address" in data && data.funder_address != undefined) {
                     this.funder_address = data.funder_address;
@@ -342,9 +345,10 @@ export namespace evmos.vesting.v1 {
         }
     }
     export class MsgClawbackResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {

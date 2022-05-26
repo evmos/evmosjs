@@ -10,11 +10,12 @@ import * as dependency_4 from "./genesis";
 import * as pb_1 from "google-protobuf";
 export namespace evmos.epochs.v1 {
     export class QueryEpochsInfoRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pagination?: dependency_3.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pagination" in data && data.pagination != undefined) {
                     this.pagination = data.pagination;
@@ -76,12 +77,13 @@ export namespace evmos.epochs.v1 {
         }
     }
     export class QueryEpochsInfoResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             epochs?: dependency_4.evmos.epochs.v1.EpochInfo[];
             pagination?: dependency_3.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("epochs" in data && data.epochs != undefined) {
                     this.epochs = data.epochs;
@@ -165,11 +167,12 @@ export namespace evmos.epochs.v1 {
         }
     }
     export class QueryCurrentEpochRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             identifier?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("identifier" in data && data.identifier != undefined) {
                     this.identifier = data.identifier;
@@ -231,11 +234,12 @@ export namespace evmos.epochs.v1 {
         }
     }
     export class QueryCurrentEpochResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             current_epoch?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("current_epoch" in data && data.current_epoch != undefined) {
                     this.current_epoch = data.current_epoch;

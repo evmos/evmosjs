@@ -12,12 +12,13 @@ import * as dependency_6 from "./../../../google/protobuf/duration";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.feegrant.v1beta1 {
     export class BasicAllowance extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             spend_limit?: dependency_4.cosmos.base.v1beta1.Coin[];
             expiration?: dependency_5.google.protobuf.Timestamp;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("spend_limit" in data && data.spend_limit != undefined) {
                     this.spend_limit = data.spend_limit;
@@ -101,6 +102,7 @@ export namespace cosmos.feegrant.v1beta1 {
         }
     }
     export class PeriodicAllowance extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             basic?: BasicAllowance;
             period?: dependency_6.google.protobuf.Duration;
@@ -109,7 +111,7 @@ export namespace cosmos.feegrant.v1beta1 {
             period_reset?: dependency_5.google.protobuf.Timestamp;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3, 4], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3, 4], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("basic" in data && data.basic != undefined) {
                     this.basic = data.basic;
@@ -259,12 +261,13 @@ export namespace cosmos.feegrant.v1beta1 {
         }
     }
     export class AllowedMsgAllowance extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             allowance?: dependency_2.google.protobuf.Any;
             allowed_messages?: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("allowance" in data && data.allowance != undefined) {
                     this.allowance = data.allowance;
@@ -348,13 +351,14 @@ export namespace cosmos.feegrant.v1beta1 {
         }
     }
     export class Grant extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             granter?: string;
             grantee?: string;
             allowance?: dependency_2.google.protobuf.Any;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("granter" in data && data.granter != undefined) {
                     this.granter = data.granter;

@@ -9,13 +9,14 @@ import * as dependency_1 from "./../protobuf/any";
 import * as pb_1 from "google-protobuf";
 export namespace google.api {
     export class HttpBody extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             content_type?: string;
             data?: Uint8Array;
             extensions?: dependency_1.google.protobuf.Any[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("content_type" in data && data.content_type != undefined) {
                     this.content_type = data.content_type;

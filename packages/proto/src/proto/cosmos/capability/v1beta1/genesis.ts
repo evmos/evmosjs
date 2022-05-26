@@ -9,12 +9,13 @@ import * as dependency_2 from "./capability";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.capability.v1beta1 {
     export class GenesisOwners extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             index?: number;
             index_owners?: dependency_2.cosmos.capability.v1beta1.CapabilityOwners;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("index" in data && data.index != undefined) {
                     this.index = data.index;
@@ -98,12 +99,13 @@ export namespace cosmos.capability.v1beta1 {
         }
     }
     export class GenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             index?: number;
             owners?: GenesisOwners[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("index" in data && data.index != undefined) {
                     this.index = data.index;

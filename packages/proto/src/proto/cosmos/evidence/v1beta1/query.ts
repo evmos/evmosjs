@@ -10,11 +10,12 @@ import * as dependency_3 from "./../../../google/protobuf/any";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.evidence.v1beta1 {
     export class QueryEvidenceRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             evidence_hash?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("evidence_hash" in data && data.evidence_hash != undefined) {
                     this.evidence_hash = data.evidence_hash;
@@ -76,11 +77,12 @@ export namespace cosmos.evidence.v1beta1 {
         }
     }
     export class QueryEvidenceResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             evidence?: dependency_3.google.protobuf.Any;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("evidence" in data && data.evidence != undefined) {
                     this.evidence = data.evidence;
@@ -142,11 +144,12 @@ export namespace cosmos.evidence.v1beta1 {
         }
     }
     export class QueryAllEvidenceRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pagination" in data && data.pagination != undefined) {
                     this.pagination = data.pagination;
@@ -208,12 +211,13 @@ export namespace cosmos.evidence.v1beta1 {
         }
     }
     export class QueryAllEvidenceResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             evidence?: dependency_3.google.protobuf.Any[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("evidence" in data && data.evidence != undefined) {
                     this.evidence = data.evidence;

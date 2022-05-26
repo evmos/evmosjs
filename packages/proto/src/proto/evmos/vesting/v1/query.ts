@@ -9,11 +9,12 @@ import * as dependency_1 from "./../../../cosmos/base/v1beta1/coin";
 import * as pb_1 from "google-protobuf";
 export namespace evmos.vesting.v1 {
     export class QueryBalancesRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;
@@ -75,13 +76,14 @@ export namespace evmos.vesting.v1 {
         }
     }
     export class QueryBalancesResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             locked?: dependency_1.cosmos.base.v1beta1.Coin[];
             unvested?: dependency_1.cosmos.base.v1beta1.Coin[];
             vested?: dependency_1.cosmos.base.v1beta1.Coin[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2, 3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2, 3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("locked" in data && data.locked != undefined) {
                     this.locked = data.locked;

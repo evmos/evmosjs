@@ -8,6 +8,7 @@
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.base.store.v1beta1 {
     export class StoreKVPair extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             store_key?: string;
             delete?: boolean;
@@ -15,7 +16,7 @@ export namespace cosmos.base.store.v1beta1 {
             value?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("store_key" in data && data.store_key != undefined) {
                     this.store_key = data.store_key;

@@ -10,6 +10,7 @@ import * as dependency_3 from "./../../../google/protobuf/timestamp";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.slashing.v1beta1 {
     export class ValidatorSigningInfo extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
             start_height?: number;
@@ -19,7 +20,7 @@ export namespace cosmos.slashing.v1beta1 {
             missed_blocks_counter?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;
@@ -191,6 +192,7 @@ export namespace cosmos.slashing.v1beta1 {
         }
     }
     export class Params extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             signed_blocks_window?: number;
             min_signed_per_window?: Uint8Array;
@@ -199,7 +201,7 @@ export namespace cosmos.slashing.v1beta1 {
             slash_fraction_downtime?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("signed_blocks_window" in data && data.signed_blocks_window != undefined) {
                     this.signed_blocks_window = data.signed_blocks_window;

@@ -10,6 +10,7 @@ import * as dependency_3 from "./../../../google/protobuf/timestamp";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.upgrade.v1beta1 {
     export class Plan extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             name?: string;
             /** @deprecated*/
@@ -20,7 +21,7 @@ export namespace cosmos.upgrade.v1beta1 {
             upgraded_client_state?: dependency_1.google.protobuf.Any;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("name" in data && data.name != undefined) {
                     this.name = data.name;
@@ -174,13 +175,14 @@ export namespace cosmos.upgrade.v1beta1 {
         }
     }
     export class SoftwareUpgradeProposal extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             title?: string;
             description?: string;
             plan?: Plan;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("title" in data && data.title != undefined) {
                     this.title = data.title;
@@ -286,12 +288,13 @@ export namespace cosmos.upgrade.v1beta1 {
         }
     }
     export class CancelSoftwareUpgradeProposal extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             title?: string;
             description?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("title" in data && data.title != undefined) {
                     this.title = data.title;
@@ -375,12 +378,13 @@ export namespace cosmos.upgrade.v1beta1 {
         }
     }
     export class ModuleVersion extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             name?: string;
             version?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("name" in data && data.name != undefined) {
                     this.name = data.name;

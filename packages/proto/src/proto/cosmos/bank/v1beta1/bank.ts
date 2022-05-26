@@ -9,12 +9,13 @@ import * as dependency_3 from "./../../base/v1beta1/coin";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.bank.v1beta1 {
     export class Params extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             send_enabled?: SendEnabled[];
             default_send_enabled?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("send_enabled" in data && data.send_enabled != undefined) {
                     this.send_enabled = data.send_enabled;
@@ -98,12 +99,13 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class SendEnabled extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             denom?: string;
             enabled?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("denom" in data && data.denom != undefined) {
                     this.denom = data.denom;
@@ -187,12 +189,13 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class Input extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
             coins?: dependency_3.cosmos.base.v1beta1.Coin[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;
@@ -276,12 +279,13 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class Output extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
             coins?: dependency_3.cosmos.base.v1beta1.Coin[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;
@@ -366,11 +370,12 @@ export namespace cosmos.bank.v1beta1 {
     }
     /** @deprecated*/
     export class Supply extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             total?: dependency_3.cosmos.base.v1beta1.Coin[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("total" in data && data.total != undefined) {
                     this.total = data.total;
@@ -432,13 +437,14 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class DenomUnit extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             denom?: string;
             exponent?: number;
             aliases?: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("denom" in data && data.denom != undefined) {
                     this.denom = data.denom;
@@ -544,6 +550,7 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class Metadata extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             description?: string;
             denom_units?: DenomUnit[];
@@ -553,7 +560,7 @@ export namespace cosmos.bank.v1beta1 {
             symbol?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("description" in data && data.description != undefined) {
                     this.description = data.description;

@@ -9,12 +9,13 @@ import * as dependency_1 from "./erc20";
 import * as pb_1 from "google-protobuf";
 export namespace evmos.erc20.v1 {
     export class GenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             params?: Params;
             token_pairs?: dependency_1.evmos.erc20.v1.TokenPair[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;
@@ -98,12 +99,13 @@ export namespace evmos.erc20.v1 {
         }
     }
     export class Params extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             enable_erc20?: boolean;
             enable_evm_hook?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("enable_erc20" in data && data.enable_erc20 != undefined) {
                     this.enable_erc20 = data.enable_erc20;

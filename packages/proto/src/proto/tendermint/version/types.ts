@@ -8,12 +8,13 @@
 import * as pb_1 from "google-protobuf";
 export namespace tendermint.version {
     export class App extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             protocol?: number;
             software?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("protocol" in data && data.protocol != undefined) {
                     this.protocol = data.protocol;
@@ -97,12 +98,13 @@ export namespace tendermint.version {
         }
     }
     export class Consensus extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             block?: number;
             app?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("block" in data && data.block != undefined) {
                     this.block = data.block;

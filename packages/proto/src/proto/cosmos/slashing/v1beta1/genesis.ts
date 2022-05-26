@@ -9,13 +9,14 @@ import * as dependency_2 from "./slashing";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.slashing.v1beta1 {
     export class GenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             params?: dependency_2.cosmos.slashing.v1beta1.Params;
             signing_infos?: SigningInfo[];
             missed_blocks?: ValidatorMissedBlocks[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2, 3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2, 3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;
@@ -121,12 +122,13 @@ export namespace cosmos.slashing.v1beta1 {
         }
     }
     export class SigningInfo extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
             validator_signing_info?: dependency_2.cosmos.slashing.v1beta1.ValidatorSigningInfo;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;
@@ -210,12 +212,13 @@ export namespace cosmos.slashing.v1beta1 {
         }
     }
     export class ValidatorMissedBlocks extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
             missed_blocks?: MissedBlock[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;
@@ -299,12 +302,13 @@ export namespace cosmos.slashing.v1beta1 {
         }
     }
     export class MissedBlock extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             index?: number;
             missed?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("index" in data && data.index != undefined) {
                     this.index = data.index;

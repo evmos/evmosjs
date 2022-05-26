@@ -12,11 +12,12 @@ import * as dependency_6 from "./../../../../google/protobuf/any";
 import * as pb_1 from "google-protobuf";
 export namespace ibc.core.connection.v1 {
     export class QueryConnectionRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             connection_id?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("connection_id" in data && data.connection_id != undefined) {
                     this.connection_id = data.connection_id;
@@ -78,13 +79,14 @@ export namespace ibc.core.connection.v1 {
         }
     }
     export class QueryConnectionResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             connection?: dependency_4.ibc.core.connection.v1.ConnectionEnd;
             proof?: Uint8Array;
             proof_height?: dependency_3.ibc.core.client.v1.Height;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("connection" in data && data.connection != undefined) {
                     this.connection = data.connection;
@@ -190,11 +192,12 @@ export namespace ibc.core.connection.v1 {
         }
     }
     export class QueryConnectionsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pagination?: dependency_2.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pagination" in data && data.pagination != undefined) {
                     this.pagination = data.pagination;
@@ -256,13 +259,14 @@ export namespace ibc.core.connection.v1 {
         }
     }
     export class QueryConnectionsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             connections?: dependency_4.ibc.core.connection.v1.IdentifiedConnection[];
             pagination?: dependency_2.cosmos.base.query.v1beta1.PageResponse;
             height?: dependency_3.ibc.core.client.v1.Height;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("connections" in data && data.connections != undefined) {
                     this.connections = data.connections;
@@ -368,11 +372,12 @@ export namespace ibc.core.connection.v1 {
         }
     }
     export class QueryClientConnectionsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             client_id?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("client_id" in data && data.client_id != undefined) {
                     this.client_id = data.client_id;
@@ -434,13 +439,14 @@ export namespace ibc.core.connection.v1 {
         }
     }
     export class QueryClientConnectionsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             connection_paths?: string[];
             proof?: Uint8Array;
             proof_height?: dependency_3.ibc.core.client.v1.Height;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("connection_paths" in data && data.connection_paths != undefined) {
                     this.connection_paths = data.connection_paths;
@@ -546,11 +552,12 @@ export namespace ibc.core.connection.v1 {
         }
     }
     export class QueryConnectionClientStateRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             connection_id?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("connection_id" in data && data.connection_id != undefined) {
                     this.connection_id = data.connection_id;
@@ -612,13 +619,14 @@ export namespace ibc.core.connection.v1 {
         }
     }
     export class QueryConnectionClientStateResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             identified_client_state?: dependency_3.ibc.core.client.v1.IdentifiedClientState;
             proof?: Uint8Array;
             proof_height?: dependency_3.ibc.core.client.v1.Height;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("identified_client_state" in data && data.identified_client_state != undefined) {
                     this.identified_client_state = data.identified_client_state;
@@ -724,13 +732,14 @@ export namespace ibc.core.connection.v1 {
         }
     }
     export class QueryConnectionConsensusStateRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             connection_id?: string;
             revision_number?: number;
             revision_height?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("connection_id" in data && data.connection_id != undefined) {
                     this.connection_id = data.connection_id;
@@ -836,6 +845,7 @@ export namespace ibc.core.connection.v1 {
         }
     }
     export class QueryConnectionConsensusStateResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             consensus_state?: dependency_6.google.protobuf.Any;
             client_id?: string;
@@ -843,7 +853,7 @@ export namespace ibc.core.connection.v1 {
             proof_height?: dependency_3.ibc.core.client.v1.Height;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("consensus_state" in data && data.consensus_state != undefined) {
                     this.consensus_state = data.consensus_state;

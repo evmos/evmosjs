@@ -9,6 +9,7 @@ import * as dependency_2 from "./inflation";
 import * as pb_1 from "google-protobuf";
 export namespace evmos.inflation.v1 {
     export class GenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             params?: Params;
             period?: number;
@@ -17,7 +18,7 @@ export namespace evmos.inflation.v1 {
             skipped_epochs?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;
@@ -167,6 +168,7 @@ export namespace evmos.inflation.v1 {
         }
     }
     export class Params extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             mint_denom?: string;
             exponential_calculation?: dependency_2.evmos.inflation.v1.ExponentialCalculation;
@@ -174,7 +176,7 @@ export namespace evmos.inflation.v1 {
             enable_inflation?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("mint_denom" in data && data.mint_denom != undefined) {
                     this.mint_denom = data.mint_denom;

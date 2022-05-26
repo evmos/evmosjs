@@ -12,6 +12,7 @@ import * as dependency_6 from "./staking";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.staking.v1beta1 {
     export class MsgCreateValidator extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             description?: dependency_6.cosmos.staking.v1beta1.Description;
             commission?: dependency_6.cosmos.staking.v1beta1.CommissionRates;
@@ -22,7 +23,7 @@ export namespace cosmos.staking.v1beta1 {
             value?: dependency_5.cosmos.base.v1beta1.Coin;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("description" in data && data.description != undefined) {
                     this.description = data.description;
@@ -216,9 +217,10 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class MsgCreateValidatorResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -255,6 +257,7 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class MsgEditValidator extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             description?: dependency_6.cosmos.staking.v1beta1.Description;
             validator_address?: string;
@@ -262,7 +265,7 @@ export namespace cosmos.staking.v1beta1 {
             min_self_delegation?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("description" in data && data.description != undefined) {
                     this.description = data.description;
@@ -390,9 +393,10 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class MsgEditValidatorResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -429,13 +433,14 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class MsgDelegate extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegator_address?: string;
             validator_address?: string;
             amount?: dependency_5.cosmos.base.v1beta1.Coin;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegator_address" in data && data.delegator_address != undefined) {
                     this.delegator_address = data.delegator_address;
@@ -541,9 +546,10 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class MsgDelegateResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -580,6 +586,7 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class MsgBeginRedelegate extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegator_address?: string;
             validator_src_address?: string;
@@ -587,7 +594,7 @@ export namespace cosmos.staking.v1beta1 {
             amount?: dependency_5.cosmos.base.v1beta1.Coin;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegator_address" in data && data.delegator_address != undefined) {
                     this.delegator_address = data.delegator_address;
@@ -715,11 +722,12 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class MsgBeginRedelegateResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             completion_time?: dependency_2.google.protobuf.Timestamp;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("completion_time" in data && data.completion_time != undefined) {
                     this.completion_time = data.completion_time;
@@ -781,13 +789,14 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class MsgUndelegate extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegator_address?: string;
             validator_address?: string;
             amount?: dependency_5.cosmos.base.v1beta1.Coin;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegator_address" in data && data.delegator_address != undefined) {
                     this.delegator_address = data.delegator_address;
@@ -893,11 +902,12 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class MsgUndelegateResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             completion_time?: dependency_2.google.protobuf.Timestamp;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("completion_time" in data && data.completion_time != undefined) {
                     this.completion_time = data.completion_time;

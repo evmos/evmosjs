@@ -9,6 +9,7 @@ import * as dependency_2 from "./channel";
 import * as pb_1 from "google-protobuf";
 export namespace ibc.core.channel.v1 {
     export class GenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             channels?: dependency_2.ibc.core.channel.v1.IdentifiedChannel[];
             acknowledgements?: dependency_2.ibc.core.channel.v1.PacketState[];
@@ -20,7 +21,7 @@ export namespace ibc.core.channel.v1 {
             next_channel_sequence?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2, 3, 4, 5, 6, 7], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2, 3, 4, 5, 6, 7], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("channels" in data && data.channels != undefined) {
                     this.channels = data.channels;
@@ -236,13 +237,14 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class PacketSequence extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             port_id?: string;
             channel_id?: string;
             sequence?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("port_id" in data && data.port_id != undefined) {
                     this.port_id = data.port_id;

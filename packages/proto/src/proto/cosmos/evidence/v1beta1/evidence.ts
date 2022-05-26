@@ -9,6 +9,7 @@ import * as dependency_2 from "./../../../google/protobuf/timestamp";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.evidence.v1beta1 {
     export class Equivocation extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             height?: number;
             time?: dependency_2.google.protobuf.Timestamp;
@@ -16,7 +17,7 @@ export namespace cosmos.evidence.v1beta1 {
             consensus_address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("height" in data && data.height != undefined) {
                     this.height = data.height;

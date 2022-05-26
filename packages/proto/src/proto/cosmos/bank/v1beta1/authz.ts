@@ -9,11 +9,12 @@ import * as dependency_3 from "./../../base/v1beta1/coin";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.bank.v1beta1 {
     export class SendAuthorization extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             spend_limit?: dependency_3.cosmos.base.v1beta1.Coin[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("spend_limit" in data && data.spend_limit != undefined) {
                     this.spend_limit = data.spend_limit;

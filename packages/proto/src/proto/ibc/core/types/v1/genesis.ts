@@ -11,13 +11,14 @@ import * as dependency_4 from "./../../channel/v1/genesis";
 import * as pb_1 from "google-protobuf";
 export namespace ibc.core.types.v1 {
     export class GenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             client_genesis?: dependency_2.ibc.core.client.v1.GenesisState;
             connection_genesis?: dependency_3.ibc.core.connection.v1.GenesisState;
             channel_genesis?: dependency_4.ibc.core.channel.v1.GenesisState;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("client_genesis" in data && data.client_genesis != undefined) {
                     this.client_genesis = data.client_genesis;

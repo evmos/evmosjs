@@ -8,12 +8,13 @@
 import * as pb_1 from "google-protobuf";
 export namespace google.api {
     export class Http extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             rules?: HttpRule[];
             fully_decode_reserved_expansion?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("rules" in data && data.rules != undefined) {
                     this.rules = data.rules;
@@ -97,6 +98,7 @@ export namespace google.api {
         }
     }
     export class HttpRule extends pb_1.Message {
+        #one_of_decls = [[2, 3, 4, 5, 6, 8]];
         constructor(data?: any[] | ({
             selector?: string;
             body?: string;
@@ -146,7 +148,7 @@ export namespace google.api {
             custom?: CustomHttpPattern;
         })))) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [11], [[2, 3, 4, 5, 6, 8]]);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [11], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("selector" in data && data.selector != undefined) {
                     this.selector = data.selector;
@@ -190,37 +192,37 @@ export namespace google.api {
             return pb_1.Message.getField(this, 2) as string;
         }
         set get(value: string) {
-            pb_1.Message.setOneofField(this, 2, [2, 3, 4, 5, 6, 8], value);
+            pb_1.Message.setOneofField(this, 2, this.#one_of_decls[0], value);
         }
         get put() {
             return pb_1.Message.getField(this, 3) as string;
         }
         set put(value: string) {
-            pb_1.Message.setOneofField(this, 3, [2, 3, 4, 5, 6, 8], value);
+            pb_1.Message.setOneofField(this, 3, this.#one_of_decls[0], value);
         }
         get post() {
             return pb_1.Message.getField(this, 4) as string;
         }
         set post(value: string) {
-            pb_1.Message.setOneofField(this, 4, [2, 3, 4, 5, 6, 8], value);
+            pb_1.Message.setOneofField(this, 4, this.#one_of_decls[0], value);
         }
         get delete() {
             return pb_1.Message.getField(this, 5) as string;
         }
         set delete(value: string) {
-            pb_1.Message.setOneofField(this, 5, [2, 3, 4, 5, 6, 8], value);
+            pb_1.Message.setOneofField(this, 5, this.#one_of_decls[0], value);
         }
         get patch() {
             return pb_1.Message.getField(this, 6) as string;
         }
         set patch(value: string) {
-            pb_1.Message.setOneofField(this, 6, [2, 3, 4, 5, 6, 8], value);
+            pb_1.Message.setOneofField(this, 6, this.#one_of_decls[0], value);
         }
         get custom() {
             return pb_1.Message.getWrapperField(this, CustomHttpPattern, 8) as CustomHttpPattern;
         }
         set custom(value: CustomHttpPattern) {
-            pb_1.Message.setOneofWrapperField(this, 8, [2, 3, 4, 5, 6, 8], value);
+            pb_1.Message.setOneofWrapperField(this, 8, this.#one_of_decls[0], value);
         }
         get body() {
             return pb_1.Message.getField(this, 7) as string;
@@ -420,12 +422,13 @@ export namespace google.api {
         }
     }
     export class CustomHttpPattern extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             kind?: string;
             path?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("kind" in data && data.kind != undefined) {
                     this.kind = data.kind;

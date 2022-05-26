@@ -8,12 +8,13 @@
 import * as pb_1 from "google-protobuf";
 export namespace ibc.applications.transfer.v1 {
     export class DenomTrace extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             path?: string;
             base_denom?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("path" in data && data.path != undefined) {
                     this.path = data.path;
@@ -97,12 +98,13 @@ export namespace ibc.applications.transfer.v1 {
         }
     }
     export class Params extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             send_enabled?: boolean;
             receive_enabled?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("send_enabled" in data && data.send_enabled != undefined) {
                     this.send_enabled = data.send_enabled;

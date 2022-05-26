@@ -8,11 +8,12 @@
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.base.kv.v1beta1 {
     export class Pairs extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pairs?: Pair[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pairs" in data && data.pairs != undefined) {
                     this.pairs = data.pairs;
@@ -74,12 +75,13 @@ export namespace cosmos.base.kv.v1beta1 {
         }
     }
     export class Pair extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             key?: Uint8Array;
             value?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("key" in data && data.key != undefined) {
                     this.key = data.key;

@@ -10,12 +10,13 @@ import * as dependency_3 from "./../host/v1/host";
 import * as pb_1 from "google-protobuf";
 export namespace ibc.applications.interchain_accounts.v1 {
     export class GenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             controller_genesis_state?: ControllerGenesisState;
             host_genesis_state?: HostGenesisState;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("controller_genesis_state" in data && data.controller_genesis_state != undefined) {
                     this.controller_genesis_state = data.controller_genesis_state;
@@ -99,6 +100,7 @@ export namespace ibc.applications.interchain_accounts.v1 {
         }
     }
     export class ControllerGenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             active_channels?: ActiveChannel[];
             interchain_accounts?: RegisteredInterchainAccount[];
@@ -106,7 +108,7 @@ export namespace ibc.applications.interchain_accounts.v1 {
             params?: dependency_2.ibc.applications.interchain_accounts.controller.v1.Params;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2, 3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2, 3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("active_channels" in data && data.active_channels != undefined) {
                     this.active_channels = data.active_channels;
@@ -234,6 +236,7 @@ export namespace ibc.applications.interchain_accounts.v1 {
         }
     }
     export class HostGenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             active_channels?: ActiveChannel[];
             interchain_accounts?: RegisteredInterchainAccount[];
@@ -241,7 +244,7 @@ export namespace ibc.applications.interchain_accounts.v1 {
             params?: dependency_3.ibc.applications.interchain_accounts.host.v1.Params;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("active_channels" in data && data.active_channels != undefined) {
                     this.active_channels = data.active_channels;
@@ -369,13 +372,14 @@ export namespace ibc.applications.interchain_accounts.v1 {
         }
     }
     export class ActiveChannel extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             connection_id?: string;
             port_id?: string;
             channel_id?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("connection_id" in data && data.connection_id != undefined) {
                     this.connection_id = data.connection_id;
@@ -481,13 +485,14 @@ export namespace ibc.applications.interchain_accounts.v1 {
         }
     }
     export class RegisteredInterchainAccount extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             connection_id?: string;
             port_id?: string;
             account_address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("connection_id" in data && data.connection_id != undefined) {
                     this.connection_id = data.connection_id;

@@ -10,6 +10,7 @@ import * as dependency_5 from "./evm";
 import * as pb_1 from "google-protobuf";
 export namespace ethermint.evm.v1 {
     export class MsgEthereumTx extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             data?: dependency_3.google.protobuf.Any;
             size?: number;
@@ -17,7 +18,7 @@ export namespace ethermint.evm.v1 {
             from?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("data" in data && data.data != undefined) {
                     this.data = data.data;
@@ -145,6 +146,7 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class LegacyTx extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             nonce?: number;
             gas_price?: string;
@@ -157,7 +159,7 @@ export namespace ethermint.evm.v1 {
             s?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("nonce" in data && data.nonce != undefined) {
                     this.nonce = data.nonce;
@@ -395,6 +397,7 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class AccessListTx extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             chain_id?: string;
             nonce?: number;
@@ -409,7 +412,7 @@ export namespace ethermint.evm.v1 {
             s?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [8], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [8], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("chain_id" in data && data.chain_id != undefined) {
                     this.chain_id = data.chain_id;
@@ -691,6 +694,7 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class DynamicFeeTx extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             chain_id?: string;
             nonce?: number;
@@ -706,7 +710,7 @@ export namespace ethermint.evm.v1 {
             s?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [9], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [9], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("chain_id" in data && data.chain_id != undefined) {
                     this.chain_id = data.chain_id;
@@ -1010,9 +1014,10 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class ExtensionOptionsEthereumTx extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -1049,6 +1054,7 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class MsgEthereumTxResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             hash?: string;
             logs?: dependency_5.ethermint.evm.v1.Log[];
@@ -1057,7 +1063,7 @@ export namespace ethermint.evm.v1 {
             gas_used?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("hash" in data && data.hash != undefined) {
                     this.hash = data.hash;

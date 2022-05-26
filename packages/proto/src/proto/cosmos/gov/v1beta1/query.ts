@@ -10,11 +10,12 @@ import * as dependency_4 from "./gov";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.gov.v1beta1 {
     export class QueryProposalRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             proposal_id?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("proposal_id" in data && data.proposal_id != undefined) {
                     this.proposal_id = data.proposal_id;
@@ -76,11 +77,12 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class QueryProposalResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             proposal?: dependency_4.cosmos.gov.v1beta1.Proposal;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("proposal" in data && data.proposal != undefined) {
                     this.proposal = data.proposal;
@@ -142,6 +144,7 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class QueryProposalsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             proposal_status?: dependency_4.cosmos.gov.v1beta1.ProposalStatus;
             voter?: string;
@@ -149,7 +152,7 @@ export namespace cosmos.gov.v1beta1 {
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("proposal_status" in data && data.proposal_status != undefined) {
                     this.proposal_status = data.proposal_status;
@@ -277,12 +280,13 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class QueryProposalsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             proposals?: dependency_4.cosmos.gov.v1beta1.Proposal[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("proposals" in data && data.proposals != undefined) {
                     this.proposals = data.proposals;
@@ -366,12 +370,13 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class QueryVoteRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             proposal_id?: number;
             voter?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("proposal_id" in data && data.proposal_id != undefined) {
                     this.proposal_id = data.proposal_id;
@@ -455,11 +460,12 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class QueryVoteResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             vote?: dependency_4.cosmos.gov.v1beta1.Vote;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("vote" in data && data.vote != undefined) {
                     this.vote = data.vote;
@@ -521,12 +527,13 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class QueryVotesRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             proposal_id?: number;
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("proposal_id" in data && data.proposal_id != undefined) {
                     this.proposal_id = data.proposal_id;
@@ -610,12 +617,13 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class QueryVotesResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             votes?: dependency_4.cosmos.gov.v1beta1.Vote[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("votes" in data && data.votes != undefined) {
                     this.votes = data.votes;
@@ -699,11 +707,12 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class QueryParamsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             params_type?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params_type" in data && data.params_type != undefined) {
                     this.params_type = data.params_type;
@@ -765,13 +774,14 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class QueryParamsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             voting_params?: dependency_4.cosmos.gov.v1beta1.VotingParams;
             deposit_params?: dependency_4.cosmos.gov.v1beta1.DepositParams;
             tally_params?: dependency_4.cosmos.gov.v1beta1.TallyParams;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("voting_params" in data && data.voting_params != undefined) {
                     this.voting_params = data.voting_params;
@@ -877,12 +887,13 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class QueryDepositRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             proposal_id?: number;
             depositor?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("proposal_id" in data && data.proposal_id != undefined) {
                     this.proposal_id = data.proposal_id;
@@ -966,11 +977,12 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class QueryDepositResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             deposit?: dependency_4.cosmos.gov.v1beta1.Deposit;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("deposit" in data && data.deposit != undefined) {
                     this.deposit = data.deposit;
@@ -1032,12 +1044,13 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class QueryDepositsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             proposal_id?: number;
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("proposal_id" in data && data.proposal_id != undefined) {
                     this.proposal_id = data.proposal_id;
@@ -1121,12 +1134,13 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class QueryDepositsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             deposits?: dependency_4.cosmos.gov.v1beta1.Deposit[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("deposits" in data && data.deposits != undefined) {
                     this.deposits = data.deposits;
@@ -1210,11 +1224,12 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class QueryTallyResultRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             proposal_id?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("proposal_id" in data && data.proposal_id != undefined) {
                     this.proposal_id = data.proposal_id;
@@ -1276,11 +1291,12 @@ export namespace cosmos.gov.v1beta1 {
         }
     }
     export class QueryTallyResultResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             tally?: dependency_4.cosmos.gov.v1beta1.TallyResult;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("tally" in data && data.tally != undefined) {
                     this.tally = data.tally;

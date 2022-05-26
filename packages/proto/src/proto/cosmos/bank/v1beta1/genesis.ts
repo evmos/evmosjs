@@ -10,6 +10,7 @@ import * as dependency_3 from "./bank";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.bank.v1beta1 {
     export class GenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             params?: dependency_3.cosmos.bank.v1beta1.Params;
             balances?: Balance[];
@@ -17,7 +18,7 @@ export namespace cosmos.bank.v1beta1 {
             denom_metadata?: dependency_3.cosmos.bank.v1beta1.Metadata[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2, 3, 4], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2, 3, 4], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;
@@ -145,12 +146,13 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class Balance extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
             coins?: dependency_2.cosmos.base.v1beta1.Coin[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;

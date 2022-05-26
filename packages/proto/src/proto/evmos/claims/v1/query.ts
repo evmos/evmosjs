@@ -12,9 +12,10 @@ import * as dependency_6 from "./genesis";
 import * as pb_1 from "google-protobuf";
 export namespace evmos.claims.v1 {
     export class QueryTotalUnclaimedRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -51,11 +52,12 @@ export namespace evmos.claims.v1 {
         }
     }
     export class QueryTotalUnclaimedResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             coins?: dependency_4.cosmos.base.v1beta1.Coin[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("coins" in data && data.coins != undefined) {
                     this.coins = data.coins;
@@ -117,9 +119,10 @@ export namespace evmos.claims.v1 {
         }
     }
     export class QueryParamsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -156,11 +159,12 @@ export namespace evmos.claims.v1 {
         }
     }
     export class QueryParamsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             params?: dependency_6.evmos.claims.v1.Params;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;
@@ -222,11 +226,12 @@ export namespace evmos.claims.v1 {
         }
     }
     export class QueryClaimsRecordsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pagination?: dependency_3.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pagination" in data && data.pagination != undefined) {
                     this.pagination = data.pagination;
@@ -288,12 +293,13 @@ export namespace evmos.claims.v1 {
         }
     }
     export class QueryClaimsRecordsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             claims?: dependency_5.evmos.claims.v1.ClaimsRecordAddress[];
             pagination?: dependency_3.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("claims" in data && data.claims != undefined) {
                     this.claims = data.claims;
@@ -377,11 +383,12 @@ export namespace evmos.claims.v1 {
         }
     }
     export class QueryClaimsRecordRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;
@@ -443,12 +450,13 @@ export namespace evmos.claims.v1 {
         }
     }
     export class QueryClaimsRecordResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             initial_claimable_amount?: string;
             claims?: dependency_5.evmos.claims.v1.Claim[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("initial_claimable_amount" in data && data.initial_claimable_amount != undefined) {
                     this.initial_claimable_amount = data.initial_claimable_amount;

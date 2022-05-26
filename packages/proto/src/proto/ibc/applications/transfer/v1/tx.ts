@@ -10,6 +10,7 @@ import * as dependency_3 from "./../../../core/client/v1/client";
 import * as pb_1 from "google-protobuf";
 export namespace ibc.applications.transfer.v1 {
     export class MsgTransfer extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             source_port?: string;
             source_channel?: string;
@@ -20,7 +21,7 @@ export namespace ibc.applications.transfer.v1 {
             timeout_timestamp?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("source_port" in data && data.source_port != undefined) {
                     this.source_port = data.source_port;
@@ -214,9 +215,10 @@ export namespace ibc.applications.transfer.v1 {
         }
     }
     export class MsgTransferResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {

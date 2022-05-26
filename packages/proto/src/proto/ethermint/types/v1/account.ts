@@ -9,12 +9,13 @@ import * as dependency_1 from "./../../../cosmos/auth/v1beta1/auth";
 import * as pb_1 from "google-protobuf";
 export namespace ethermint.types.v1 {
     export class EthAccount extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             base_account?: dependency_1.cosmos.auth.v1beta1.BaseAccount;
             code_hash?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("base_account" in data && data.base_account != undefined) {
                     this.base_account = data.base_account;

@@ -8,13 +8,14 @@
 import * as pb_1 from "google-protobuf";
 export namespace tendermint.p2p {
     export class NetAddress extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             id?: string;
             ip?: string;
             port?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("id" in data && data.id != undefined) {
                     this.id = data.id;
@@ -120,13 +121,14 @@ export namespace tendermint.p2p {
         }
     }
     export class ProtocolVersion extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             p2p?: number;
             block?: number;
             app?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("p2p" in data && data.p2p != undefined) {
                     this.p2p = data.p2p;
@@ -232,6 +234,7 @@ export namespace tendermint.p2p {
         }
     }
     export class DefaultNodeInfo extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             protocol_version?: ProtocolVersion;
             default_node_id?: string;
@@ -243,7 +246,7 @@ export namespace tendermint.p2p {
             other?: DefaultNodeInfoOther;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("protocol_version" in data && data.protocol_version != undefined) {
                     this.protocol_version = data.protocol_version;
@@ -459,12 +462,13 @@ export namespace tendermint.p2p {
         }
     }
     export class DefaultNodeInfoOther extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             tx_index?: string;
             rpc_address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("tx_index" in data && data.tx_index != undefined) {
                     this.tx_index = data.tx_index;

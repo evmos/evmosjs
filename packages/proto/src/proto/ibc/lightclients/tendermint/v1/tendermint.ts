@@ -15,6 +15,7 @@ import * as dependency_7 from "./../../../core/commitment/v1/commitment";
 import * as pb_1 from "google-protobuf";
 export namespace ibc.lightclients.tendermint.v1 {
     export class ClientState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             chain_id?: string;
             trust_level?: Fraction;
@@ -29,7 +30,7 @@ export namespace ibc.lightclients.tendermint.v1 {
             allow_update_after_misbehaviour?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [8, 9], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [8, 9], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("chain_id" in data && data.chain_id != undefined) {
                     this.chain_id = data.chain_id;
@@ -311,13 +312,14 @@ export namespace ibc.lightclients.tendermint.v1 {
         }
     }
     export class ConsensusState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             timestamp?: dependency_5.google.protobuf.Timestamp;
             root?: dependency_7.ibc.core.commitment.v1.MerkleRoot;
             next_validators_hash?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("timestamp" in data && data.timestamp != undefined) {
                     this.timestamp = data.timestamp;
@@ -423,13 +425,14 @@ export namespace ibc.lightclients.tendermint.v1 {
         }
     }
     export class Misbehaviour extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             client_id?: string;
             header_1?: Header;
             header_2?: Header;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("client_id" in data && data.client_id != undefined) {
                     this.client_id = data.client_id;
@@ -535,6 +538,7 @@ export namespace ibc.lightclients.tendermint.v1 {
         }
     }
     export class Header extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             signed_header?: dependency_2.tendermint.types.SignedHeader;
             validator_set?: dependency_1.tendermint.types.ValidatorSet;
@@ -542,7 +546,7 @@ export namespace ibc.lightclients.tendermint.v1 {
             trusted_validators?: dependency_1.tendermint.types.ValidatorSet;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("signed_header" in data && data.signed_header != undefined) {
                     this.signed_header = data.signed_header;
@@ -670,12 +674,13 @@ export namespace ibc.lightclients.tendermint.v1 {
         }
     }
     export class Fraction extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             numerator?: number;
             denominator?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("numerator" in data && data.numerator != undefined) {
                     this.numerator = data.numerator;

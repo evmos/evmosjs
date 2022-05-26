@@ -9,13 +9,14 @@ import * as dependency_1 from "./transfer";
 import * as pb_1 from "google-protobuf";
 export namespace ibc.applications.transfer.v1 {
     export class GenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             port_id?: string;
             denom_traces?: dependency_1.ibc.applications.transfer.v1.DenomTrace[];
             params?: dependency_1.ibc.applications.transfer.v1.Params;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("port_id" in data && data.port_id != undefined) {
                     this.port_id = data.port_id;

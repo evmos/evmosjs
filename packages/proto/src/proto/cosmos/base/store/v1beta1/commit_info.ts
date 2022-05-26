@@ -8,12 +8,13 @@
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.base.store.v1beta1 {
     export class CommitInfo extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             version?: number;
             store_infos?: StoreInfo[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("version" in data && data.version != undefined) {
                     this.version = data.version;
@@ -97,12 +98,13 @@ export namespace cosmos.base.store.v1beta1 {
         }
     }
     export class StoreInfo extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             name?: string;
             commit_id?: CommitID;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("name" in data && data.name != undefined) {
                     this.name = data.name;
@@ -186,12 +188,13 @@ export namespace cosmos.base.store.v1beta1 {
         }
     }
     export class CommitID extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             version?: number;
             hash?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("version" in data && data.version != undefined) {
                     this.version = data.version;

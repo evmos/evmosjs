@@ -9,11 +9,12 @@ import * as dependency_1 from "./../../../google/protobuf/any";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.evidence.v1beta1 {
     export class GenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             evidence?: dependency_1.google.protobuf.Any[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("evidence" in data && data.evidence != undefined) {
                     this.evidence = data.evidence;

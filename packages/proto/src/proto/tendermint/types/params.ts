@@ -9,6 +9,7 @@ import * as dependency_2 from "./../../google/protobuf/duration";
 import * as pb_1 from "google-protobuf";
 export namespace tendermint.types {
     export class ConsensusParams extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             block?: BlockParams;
             evidence?: EvidenceParams;
@@ -16,7 +17,7 @@ export namespace tendermint.types {
             version?: VersionParams;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("block" in data && data.block != undefined) {
                     this.block = data.block;
@@ -144,13 +145,14 @@ export namespace tendermint.types {
         }
     }
     export class BlockParams extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             max_bytes?: number;
             max_gas?: number;
             time_iota_ms?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("max_bytes" in data && data.max_bytes != undefined) {
                     this.max_bytes = data.max_bytes;
@@ -256,13 +258,14 @@ export namespace tendermint.types {
         }
     }
     export class EvidenceParams extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             max_age_num_blocks?: number;
             max_age_duration?: dependency_2.google.protobuf.Duration;
             max_bytes?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("max_age_num_blocks" in data && data.max_age_num_blocks != undefined) {
                     this.max_age_num_blocks = data.max_age_num_blocks;
@@ -368,11 +371,12 @@ export namespace tendermint.types {
         }
     }
     export class ValidatorParams extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pub_key_types?: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pub_key_types" in data && data.pub_key_types != undefined) {
                     this.pub_key_types = data.pub_key_types;
@@ -434,11 +438,12 @@ export namespace tendermint.types {
         }
     }
     export class VersionParams extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             app_version?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("app_version" in data && data.app_version != undefined) {
                     this.app_version = data.app_version;
@@ -500,12 +505,13 @@ export namespace tendermint.types {
         }
     }
     export class HashedParams extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             block_max_bytes?: number;
             block_max_gas?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("block_max_bytes" in data && data.block_max_bytes != undefined) {
                     this.block_max_bytes = data.block_max_bytes;

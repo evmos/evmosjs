@@ -8,12 +8,13 @@
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.base.v1beta1 {
     export class Coin extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             denom?: string;
             amount?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("denom" in data && data.denom != undefined) {
                     this.denom = data.denom;
@@ -97,12 +98,13 @@ export namespace cosmos.base.v1beta1 {
         }
     }
     export class DecCoin extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             denom?: string;
             amount?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("denom" in data && data.denom != undefined) {
                     this.denom = data.denom;
@@ -186,11 +188,12 @@ export namespace cosmos.base.v1beta1 {
         }
     }
     export class IntProto extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             int?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("int" in data && data.int != undefined) {
                     this.int = data.int;
@@ -252,11 +255,12 @@ export namespace cosmos.base.v1beta1 {
         }
     }
     export class DecProto extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             dec?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("dec" in data && data.dec != undefined) {
                     this.dec = data.dec;

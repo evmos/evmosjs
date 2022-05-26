@@ -11,11 +11,12 @@ import * as dependency_3 from "./erc20";
 import * as pb_1 from "google-protobuf";
 export namespace evmos.erc20.v1 {
     export class QueryTokenPairsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pagination" in data && data.pagination != undefined) {
                     this.pagination = data.pagination;
@@ -77,12 +78,13 @@ export namespace evmos.erc20.v1 {
         }
     }
     export class QueryTokenPairsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             token_pairs?: dependency_3.evmos.erc20.v1.TokenPair[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("token_pairs" in data && data.token_pairs != undefined) {
                     this.token_pairs = data.token_pairs;
@@ -166,11 +168,12 @@ export namespace evmos.erc20.v1 {
         }
     }
     export class QueryTokenPairRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             token?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("token" in data && data.token != undefined) {
                     this.token = data.token;
@@ -232,11 +235,12 @@ export namespace evmos.erc20.v1 {
         }
     }
     export class QueryTokenPairResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             token_pair?: dependency_3.evmos.erc20.v1.TokenPair;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("token_pair" in data && data.token_pair != undefined) {
                     this.token_pair = data.token_pair;
@@ -298,9 +302,10 @@ export namespace evmos.erc20.v1 {
         }
     }
     export class QueryParamsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -337,11 +342,12 @@ export namespace evmos.erc20.v1 {
         }
     }
     export class QueryParamsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             params?: dependency_2.evmos.erc20.v1.Params;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;

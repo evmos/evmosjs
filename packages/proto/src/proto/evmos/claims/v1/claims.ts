@@ -15,13 +15,14 @@ export namespace evmos.claims.v1 {
         ACTION_IBC_TRANSFER = 4
     }
     export class Claim extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             action?: Action;
             completed?: boolean;
             claimable_amount?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("action" in data && data.action != undefined) {
                     this.action = data.action;
@@ -127,13 +128,14 @@ export namespace evmos.claims.v1 {
         }
     }
     export class ClaimsRecordAddress extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
             initial_claimable_amount?: string;
             actions_completed?: boolean[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;
@@ -239,12 +241,13 @@ export namespace evmos.claims.v1 {
         }
     }
     export class ClaimsRecord extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             initial_claimable_amount?: string;
             actions_completed?: boolean[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("initial_claimable_amount" in data && data.initial_claimable_amount != undefined) {
                     this.initial_claimable_amount = data.initial_claimable_amount;

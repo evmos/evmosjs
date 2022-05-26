@@ -10,6 +10,7 @@ import * as dependency_3 from "./../../../google/protobuf/timestamp";
 import * as pb_1 from "google-protobuf";
 export namespace evmos.vesting.v1 {
     export class ClawbackVestingAccount extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             base_vesting_account?: dependency_2.cosmos.vesting.v1beta1.BaseVestingAccount;
             funder_address?: string;
@@ -18,7 +19,7 @@ export namespace evmos.vesting.v1 {
             vesting_periods?: dependency_2.cosmos.vesting.v1beta1.Period[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4, 5], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4, 5], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("base_vesting_account" in data && data.base_vesting_account != undefined) {
                     this.base_vesting_account = data.base_vesting_account;

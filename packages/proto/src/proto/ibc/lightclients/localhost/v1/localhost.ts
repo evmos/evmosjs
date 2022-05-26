@@ -9,12 +9,13 @@ import * as dependency_2 from "./../../../core/client/v1/client";
 import * as pb_1 from "google-protobuf";
 export namespace ibc.lightclients.localhost.v1 {
     export class ClientState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             chain_id?: string;
             height?: dependency_2.ibc.core.client.v1.Height;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("chain_id" in data && data.chain_id != undefined) {
                     this.chain_id = data.chain_id;

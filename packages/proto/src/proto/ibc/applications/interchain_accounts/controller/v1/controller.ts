@@ -8,11 +8,12 @@
 import * as pb_1 from "google-protobuf";
 export namespace ibc.applications.interchain_accounts.controller.v1 {
     export class Params extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             controller_enabled?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("controller_enabled" in data && data.controller_enabled != undefined) {
                     this.controller_enabled = data.controller_enabled;

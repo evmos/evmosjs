@@ -9,12 +9,13 @@ import * as dependency_3 from "./../../../../cosmos/auth/v1beta1/auth";
 import * as pb_1 from "google-protobuf";
 export namespace ibc.applications.interchain_accounts.v1 {
     export class InterchainAccount extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             base_account?: dependency_3.cosmos.auth.v1beta1.BaseAccount;
             account_owner?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("base_account" in data && data.base_account != undefined) {
                     this.base_account = data.base_account;

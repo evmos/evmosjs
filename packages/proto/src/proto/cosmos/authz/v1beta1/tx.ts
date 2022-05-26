@@ -10,13 +10,14 @@ import * as dependency_6 from "./authz";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.authz.v1beta1 {
     export class MsgGrant extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             granter?: string;
             grantee?: string;
             grant?: dependency_6.cosmos.authz.v1beta1.Grant;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("granter" in data && data.granter != undefined) {
                     this.granter = data.granter;
@@ -122,11 +123,12 @@ export namespace cosmos.authz.v1beta1 {
         }
     }
     export class MsgExecResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             results?: Uint8Array[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("results" in data && data.results != undefined) {
                     this.results = data.results;
@@ -188,12 +190,13 @@ export namespace cosmos.authz.v1beta1 {
         }
     }
     export class MsgExec extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             grantee?: string;
             msgs?: dependency_4.google.protobuf.Any[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("grantee" in data && data.grantee != undefined) {
                     this.grantee = data.grantee;
@@ -277,9 +280,10 @@ export namespace cosmos.authz.v1beta1 {
         }
     }
     export class MsgGrantResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -316,13 +320,14 @@ export namespace cosmos.authz.v1beta1 {
         }
     }
     export class MsgRevoke extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             granter?: string;
             grantee?: string;
             msg_type_url?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("granter" in data && data.granter != undefined) {
                     this.granter = data.granter;
@@ -428,9 +433,10 @@ export namespace cosmos.authz.v1beta1 {
         }
     }
     export class MsgRevokeResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {

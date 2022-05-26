@@ -9,13 +9,14 @@ import * as dependency_2 from "./../crypto/keys";
 import * as pb_1 from "google-protobuf";
 export namespace tendermint.types {
     export class ValidatorSet extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             validators?: Validator[];
             proposer?: Validator;
             total_voting_power?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("validators" in data && data.validators != undefined) {
                     this.validators = data.validators;
@@ -121,6 +122,7 @@ export namespace tendermint.types {
         }
     }
     export class Validator extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: Uint8Array;
             pub_key?: dependency_2.tendermint.crypto.PublicKey;
@@ -128,7 +130,7 @@ export namespace tendermint.types {
             proposer_priority?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;
@@ -256,12 +258,13 @@ export namespace tendermint.types {
         }
     }
     export class SimpleValidator extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pub_key?: dependency_2.tendermint.crypto.PublicKey;
             voting_power?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pub_key" in data && data.pub_key != undefined) {
                     this.pub_key = data.pub_key;

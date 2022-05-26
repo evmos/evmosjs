@@ -12,12 +12,13 @@ import * as dependency_5 from "./../../../../google/protobuf/any";
 import * as pb_1 from "google-protobuf";
 export namespace ibc.core.channel.v1 {
     export class QueryChannelRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             port_id?: string;
             channel_id?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("port_id" in data && data.port_id != undefined) {
                     this.port_id = data.port_id;
@@ -101,13 +102,14 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryChannelResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             channel?: dependency_3.ibc.core.channel.v1.Channel;
             proof?: Uint8Array;
             proof_height?: dependency_1.ibc.core.client.v1.Height;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("channel" in data && data.channel != undefined) {
                     this.channel = data.channel;
@@ -213,11 +215,12 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryChannelsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pagination?: dependency_2.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pagination" in data && data.pagination != undefined) {
                     this.pagination = data.pagination;
@@ -279,13 +282,14 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryChannelsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             channels?: dependency_3.ibc.core.channel.v1.IdentifiedChannel[];
             pagination?: dependency_2.cosmos.base.query.v1beta1.PageResponse;
             height?: dependency_1.ibc.core.client.v1.Height;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("channels" in data && data.channels != undefined) {
                     this.channels = data.channels;
@@ -391,12 +395,13 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryConnectionChannelsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             connection?: string;
             pagination?: dependency_2.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("connection" in data && data.connection != undefined) {
                     this.connection = data.connection;
@@ -480,13 +485,14 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryConnectionChannelsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             channels?: dependency_3.ibc.core.channel.v1.IdentifiedChannel[];
             pagination?: dependency_2.cosmos.base.query.v1beta1.PageResponse;
             height?: dependency_1.ibc.core.client.v1.Height;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("channels" in data && data.channels != undefined) {
                     this.channels = data.channels;
@@ -592,12 +598,13 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryChannelClientStateRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             port_id?: string;
             channel_id?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("port_id" in data && data.port_id != undefined) {
                     this.port_id = data.port_id;
@@ -681,13 +688,14 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryChannelClientStateResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             identified_client_state?: dependency_1.ibc.core.client.v1.IdentifiedClientState;
             proof?: Uint8Array;
             proof_height?: dependency_1.ibc.core.client.v1.Height;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("identified_client_state" in data && data.identified_client_state != undefined) {
                     this.identified_client_state = data.identified_client_state;
@@ -793,6 +801,7 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryChannelConsensusStateRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             port_id?: string;
             channel_id?: string;
@@ -800,7 +809,7 @@ export namespace ibc.core.channel.v1 {
             revision_height?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("port_id" in data && data.port_id != undefined) {
                     this.port_id = data.port_id;
@@ -928,6 +937,7 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryChannelConsensusStateResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             consensus_state?: dependency_5.google.protobuf.Any;
             client_id?: string;
@@ -935,7 +945,7 @@ export namespace ibc.core.channel.v1 {
             proof_height?: dependency_1.ibc.core.client.v1.Height;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("consensus_state" in data && data.consensus_state != undefined) {
                     this.consensus_state = data.consensus_state;
@@ -1063,13 +1073,14 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryPacketCommitmentRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             port_id?: string;
             channel_id?: string;
             sequence?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("port_id" in data && data.port_id != undefined) {
                     this.port_id = data.port_id;
@@ -1175,13 +1186,14 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryPacketCommitmentResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             commitment?: Uint8Array;
             proof?: Uint8Array;
             proof_height?: dependency_1.ibc.core.client.v1.Height;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("commitment" in data && data.commitment != undefined) {
                     this.commitment = data.commitment;
@@ -1287,13 +1299,14 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryPacketCommitmentsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             port_id?: string;
             channel_id?: string;
             pagination?: dependency_2.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("port_id" in data && data.port_id != undefined) {
                     this.port_id = data.port_id;
@@ -1399,13 +1412,14 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryPacketCommitmentsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             commitments?: dependency_3.ibc.core.channel.v1.PacketState[];
             pagination?: dependency_2.cosmos.base.query.v1beta1.PageResponse;
             height?: dependency_1.ibc.core.client.v1.Height;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("commitments" in data && data.commitments != undefined) {
                     this.commitments = data.commitments;
@@ -1511,13 +1525,14 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryPacketReceiptRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             port_id?: string;
             channel_id?: string;
             sequence?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("port_id" in data && data.port_id != undefined) {
                     this.port_id = data.port_id;
@@ -1623,13 +1638,14 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryPacketReceiptResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             received?: boolean;
             proof?: Uint8Array;
             proof_height?: dependency_1.ibc.core.client.v1.Height;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("received" in data && data.received != undefined) {
                     this.received = data.received;
@@ -1735,13 +1751,14 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryPacketAcknowledgementRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             port_id?: string;
             channel_id?: string;
             sequence?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("port_id" in data && data.port_id != undefined) {
                     this.port_id = data.port_id;
@@ -1847,13 +1864,14 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryPacketAcknowledgementResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             acknowledgement?: Uint8Array;
             proof?: Uint8Array;
             proof_height?: dependency_1.ibc.core.client.v1.Height;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("acknowledgement" in data && data.acknowledgement != undefined) {
                     this.acknowledgement = data.acknowledgement;
@@ -1959,6 +1977,7 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryPacketAcknowledgementsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             port_id?: string;
             channel_id?: string;
@@ -1966,7 +1985,7 @@ export namespace ibc.core.channel.v1 {
             packet_commitment_sequences?: number[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("port_id" in data && data.port_id != undefined) {
                     this.port_id = data.port_id;
@@ -2094,13 +2113,14 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryPacketAcknowledgementsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             acknowledgements?: dependency_3.ibc.core.channel.v1.PacketState[];
             pagination?: dependency_2.cosmos.base.query.v1beta1.PageResponse;
             height?: dependency_1.ibc.core.client.v1.Height;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("acknowledgements" in data && data.acknowledgements != undefined) {
                     this.acknowledgements = data.acknowledgements;
@@ -2206,13 +2226,14 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryUnreceivedPacketsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             port_id?: string;
             channel_id?: string;
             packet_commitment_sequences?: number[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("port_id" in data && data.port_id != undefined) {
                     this.port_id = data.port_id;
@@ -2318,12 +2339,13 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryUnreceivedPacketsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             sequences?: number[];
             height?: dependency_1.ibc.core.client.v1.Height;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("sequences" in data && data.sequences != undefined) {
                     this.sequences = data.sequences;
@@ -2407,13 +2429,14 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryUnreceivedAcksRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             port_id?: string;
             channel_id?: string;
             packet_ack_sequences?: number[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("port_id" in data && data.port_id != undefined) {
                     this.port_id = data.port_id;
@@ -2519,12 +2542,13 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryUnreceivedAcksResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             sequences?: number[];
             height?: dependency_1.ibc.core.client.v1.Height;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("sequences" in data && data.sequences != undefined) {
                     this.sequences = data.sequences;
@@ -2608,12 +2632,13 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryNextSequenceReceiveRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             port_id?: string;
             channel_id?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("port_id" in data && data.port_id != undefined) {
                     this.port_id = data.port_id;
@@ -2697,13 +2722,14 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class QueryNextSequenceReceiveResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             next_sequence_receive?: number;
             proof?: Uint8Array;
             proof_height?: dependency_1.ibc.core.client.v1.Height;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("next_sequence_receive" in data && data.next_sequence_receive != undefined) {
                     this.next_sequence_receive = data.next_sequence_receive;

@@ -9,6 +9,7 @@ import * as dependency_2 from "./gov";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.gov.v1beta1 {
     export class GenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             starting_proposal_id?: number;
             deposits?: dependency_2.cosmos.gov.v1beta1.Deposit[];
@@ -19,7 +20,7 @@ export namespace cosmos.gov.v1beta1 {
             tally_params?: dependency_2.cosmos.gov.v1beta1.TallyParams;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2, 3, 4], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2, 3, 4], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("starting_proposal_id" in data && data.starting_proposal_id != undefined) {
                     this.starting_proposal_id = data.starting_proposal_id;

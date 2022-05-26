@@ -21,6 +21,7 @@ export namespace ibc.core.channel.v1 {
         ORDER_ORDERED = 2
     }
     export class Channel extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             state?: State;
             ordering?: Order;
@@ -29,7 +30,7 @@ export namespace ibc.core.channel.v1 {
             version?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("state" in data && data.state != undefined) {
                     this.state = data.state;
@@ -179,6 +180,7 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class IdentifiedChannel extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             state?: State;
             ordering?: Order;
@@ -189,7 +191,7 @@ export namespace ibc.core.channel.v1 {
             channel_id?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("state" in data && data.state != undefined) {
                     this.state = data.state;
@@ -383,12 +385,13 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class Counterparty extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             port_id?: string;
             channel_id?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("port_id" in data && data.port_id != undefined) {
                     this.port_id = data.port_id;
@@ -472,6 +475,7 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class Packet extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             sequence?: number;
             source_port?: string;
@@ -483,7 +487,7 @@ export namespace ibc.core.channel.v1 {
             timeout_timestamp?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("sequence" in data && data.sequence != undefined) {
                     this.sequence = data.sequence;
@@ -699,6 +703,7 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class PacketState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             port_id?: string;
             channel_id?: string;
@@ -706,7 +711,7 @@ export namespace ibc.core.channel.v1 {
             data?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("port_id" in data && data.port_id != undefined) {
                     this.port_id = data.port_id;
@@ -834,6 +839,7 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class Acknowledgement extends pb_1.Message {
+        #one_of_decls = [[21, 22]];
         constructor(data?: any[] | ({} & (({
             result?: Uint8Array;
             error?: never;
@@ -842,7 +848,7 @@ export namespace ibc.core.channel.v1 {
             error?: string;
         })))) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], [[21, 22]]);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("result" in data && data.result != undefined) {
                     this.result = data.result;
@@ -856,13 +862,13 @@ export namespace ibc.core.channel.v1 {
             return pb_1.Message.getField(this, 21) as Uint8Array;
         }
         set result(value: Uint8Array) {
-            pb_1.Message.setOneofField(this, 21, [21, 22], value);
+            pb_1.Message.setOneofField(this, 21, this.#one_of_decls[0], value);
         }
         get error() {
             return pb_1.Message.getField(this, 22) as string;
         }
         set error(value: string) {
-            pb_1.Message.setOneofField(this, 22, [21, 22], value);
+            pb_1.Message.setOneofField(this, 22, this.#one_of_decls[0], value);
         }
         get response() {
             const cases: {

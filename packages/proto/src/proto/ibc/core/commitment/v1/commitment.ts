@@ -9,11 +9,12 @@ import * as dependency_2 from "./../../../../proofs";
 import * as pb_1 from "google-protobuf";
 export namespace ibc.core.commitment.v1 {
     export class MerkleRoot extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             hash?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("hash" in data && data.hash != undefined) {
                     this.hash = data.hash;
@@ -75,11 +76,12 @@ export namespace ibc.core.commitment.v1 {
         }
     }
     export class MerklePrefix extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             key_prefix?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("key_prefix" in data && data.key_prefix != undefined) {
                     this.key_prefix = data.key_prefix;
@@ -141,11 +143,12 @@ export namespace ibc.core.commitment.v1 {
         }
     }
     export class MerklePath extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             key_path?: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("key_path" in data && data.key_path != undefined) {
                     this.key_path = data.key_path;
@@ -207,11 +210,12 @@ export namespace ibc.core.commitment.v1 {
         }
     }
     export class MerkleProof extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             proofs?: dependency_2.ics23.CommitmentProof[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("proofs" in data && data.proofs != undefined) {
                     this.proofs = data.proofs;

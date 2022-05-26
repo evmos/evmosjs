@@ -13,13 +13,14 @@ export namespace ibc.applications.interchain_accounts.v1 {
         TYPE_EXECUTE_TX = 1
     }
     export class InterchainAccountPacketData extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             type?: Type;
             data?: Uint8Array;
             memo?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("type" in data && data.type != undefined) {
                     this.type = data.type;
@@ -125,11 +126,12 @@ export namespace ibc.applications.interchain_accounts.v1 {
         }
     }
     export class CosmosTx extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             messages?: dependency_1.google.protobuf.Any[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("messages" in data && data.messages != undefined) {
                     this.messages = data.messages;

@@ -22,6 +22,7 @@ export namespace tendermint.abci {
         LIGHT_CLIENT_ATTACK = 2
     }
     export class Request extends pb_1.Message {
+        #one_of_decls = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]];
         constructor(data?: any[] | ({} & (({
             echo?: RequestEcho;
             flush?: never;
@@ -264,7 +265,7 @@ export namespace tendermint.abci {
             apply_snapshot_chunk?: RequestApplySnapshotChunk;
         })))) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]]);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("echo" in data && data.echo != undefined) {
                     this.echo = data.echo;
@@ -317,91 +318,91 @@ export namespace tendermint.abci {
             return pb_1.Message.getWrapperField(this, RequestEcho, 1) as RequestEcho;
         }
         set echo(value: RequestEcho) {
-            pb_1.Message.setOneofWrapperField(this, 1, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], value);
+            pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
         }
         get flush() {
             return pb_1.Message.getWrapperField(this, RequestFlush, 2) as RequestFlush;
         }
         set flush(value: RequestFlush) {
-            pb_1.Message.setOneofWrapperField(this, 2, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], value);
+            pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
         }
         get info() {
             return pb_1.Message.getWrapperField(this, RequestInfo, 3) as RequestInfo;
         }
         set info(value: RequestInfo) {
-            pb_1.Message.setOneofWrapperField(this, 3, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], value);
+            pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
         }
         get set_option() {
             return pb_1.Message.getWrapperField(this, RequestSetOption, 4) as RequestSetOption;
         }
         set set_option(value: RequestSetOption) {
-            pb_1.Message.setOneofWrapperField(this, 4, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], value);
+            pb_1.Message.setOneofWrapperField(this, 4, this.#one_of_decls[0], value);
         }
         get init_chain() {
             return pb_1.Message.getWrapperField(this, RequestInitChain, 5) as RequestInitChain;
         }
         set init_chain(value: RequestInitChain) {
-            pb_1.Message.setOneofWrapperField(this, 5, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], value);
+            pb_1.Message.setOneofWrapperField(this, 5, this.#one_of_decls[0], value);
         }
         get query() {
             return pb_1.Message.getWrapperField(this, RequestQuery, 6) as RequestQuery;
         }
         set query(value: RequestQuery) {
-            pb_1.Message.setOneofWrapperField(this, 6, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], value);
+            pb_1.Message.setOneofWrapperField(this, 6, this.#one_of_decls[0], value);
         }
         get begin_block() {
             return pb_1.Message.getWrapperField(this, RequestBeginBlock, 7) as RequestBeginBlock;
         }
         set begin_block(value: RequestBeginBlock) {
-            pb_1.Message.setOneofWrapperField(this, 7, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], value);
+            pb_1.Message.setOneofWrapperField(this, 7, this.#one_of_decls[0], value);
         }
         get check_tx() {
             return pb_1.Message.getWrapperField(this, RequestCheckTx, 8) as RequestCheckTx;
         }
         set check_tx(value: RequestCheckTx) {
-            pb_1.Message.setOneofWrapperField(this, 8, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], value);
+            pb_1.Message.setOneofWrapperField(this, 8, this.#one_of_decls[0], value);
         }
         get deliver_tx() {
             return pb_1.Message.getWrapperField(this, RequestDeliverTx, 9) as RequestDeliverTx;
         }
         set deliver_tx(value: RequestDeliverTx) {
-            pb_1.Message.setOneofWrapperField(this, 9, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], value);
+            pb_1.Message.setOneofWrapperField(this, 9, this.#one_of_decls[0], value);
         }
         get end_block() {
             return pb_1.Message.getWrapperField(this, RequestEndBlock, 10) as RequestEndBlock;
         }
         set end_block(value: RequestEndBlock) {
-            pb_1.Message.setOneofWrapperField(this, 10, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], value);
+            pb_1.Message.setOneofWrapperField(this, 10, this.#one_of_decls[0], value);
         }
         get commit() {
             return pb_1.Message.getWrapperField(this, RequestCommit, 11) as RequestCommit;
         }
         set commit(value: RequestCommit) {
-            pb_1.Message.setOneofWrapperField(this, 11, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], value);
+            pb_1.Message.setOneofWrapperField(this, 11, this.#one_of_decls[0], value);
         }
         get list_snapshots() {
             return pb_1.Message.getWrapperField(this, RequestListSnapshots, 12) as RequestListSnapshots;
         }
         set list_snapshots(value: RequestListSnapshots) {
-            pb_1.Message.setOneofWrapperField(this, 12, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], value);
+            pb_1.Message.setOneofWrapperField(this, 12, this.#one_of_decls[0], value);
         }
         get offer_snapshot() {
             return pb_1.Message.getWrapperField(this, RequestOfferSnapshot, 13) as RequestOfferSnapshot;
         }
         set offer_snapshot(value: RequestOfferSnapshot) {
-            pb_1.Message.setOneofWrapperField(this, 13, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], value);
+            pb_1.Message.setOneofWrapperField(this, 13, this.#one_of_decls[0], value);
         }
         get load_snapshot_chunk() {
             return pb_1.Message.getWrapperField(this, RequestLoadSnapshotChunk, 14) as RequestLoadSnapshotChunk;
         }
         set load_snapshot_chunk(value: RequestLoadSnapshotChunk) {
-            pb_1.Message.setOneofWrapperField(this, 14, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], value);
+            pb_1.Message.setOneofWrapperField(this, 14, this.#one_of_decls[0], value);
         }
         get apply_snapshot_chunk() {
             return pb_1.Message.getWrapperField(this, RequestApplySnapshotChunk, 15) as RequestApplySnapshotChunk;
         }
         set apply_snapshot_chunk(value: RequestApplySnapshotChunk) {
-            pb_1.Message.setOneofWrapperField(this, 15, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], value);
+            pb_1.Message.setOneofWrapperField(this, 15, this.#one_of_decls[0], value);
         }
         get value() {
             const cases: {
@@ -657,11 +658,12 @@ export namespace tendermint.abci {
         }
     }
     export class RequestEcho extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             message?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("message" in data && data.message != undefined) {
                     this.message = data.message;
@@ -723,9 +725,10 @@ export namespace tendermint.abci {
         }
     }
     export class RequestFlush extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -762,13 +765,14 @@ export namespace tendermint.abci {
         }
     }
     export class RequestInfo extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             version?: string;
             block_version?: number;
             p2p_version?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("version" in data && data.version != undefined) {
                     this.version = data.version;
@@ -874,12 +878,13 @@ export namespace tendermint.abci {
         }
     }
     export class RequestSetOption extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             key?: string;
             value?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("key" in data && data.key != undefined) {
                     this.key = data.key;
@@ -963,6 +968,7 @@ export namespace tendermint.abci {
         }
     }
     export class RequestInitChain extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             time?: dependency_5.google.protobuf.Timestamp;
             chain_id?: string;
@@ -972,7 +978,7 @@ export namespace tendermint.abci {
             initial_height?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("time" in data && data.time != undefined) {
                     this.time = data.time;
@@ -1144,6 +1150,7 @@ export namespace tendermint.abci {
         }
     }
     export class RequestQuery extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             data?: Uint8Array;
             path?: string;
@@ -1151,7 +1158,7 @@ export namespace tendermint.abci {
             prove?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("data" in data && data.data != undefined) {
                     this.data = data.data;
@@ -1279,6 +1286,7 @@ export namespace tendermint.abci {
         }
     }
     export class RequestBeginBlock extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             hash?: Uint8Array;
             header?: dependency_2.tendermint.types.Header;
@@ -1286,7 +1294,7 @@ export namespace tendermint.abci {
             byzantine_validators?: Evidence[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("hash" in data && data.hash != undefined) {
                     this.hash = data.hash;
@@ -1414,12 +1422,13 @@ export namespace tendermint.abci {
         }
     }
     export class RequestCheckTx extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             tx?: Uint8Array;
             type?: CheckTxType;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("tx" in data && data.tx != undefined) {
                     this.tx = data.tx;
@@ -1503,11 +1512,12 @@ export namespace tendermint.abci {
         }
     }
     export class RequestDeliverTx extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             tx?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("tx" in data && data.tx != undefined) {
                     this.tx = data.tx;
@@ -1569,11 +1579,12 @@ export namespace tendermint.abci {
         }
     }
     export class RequestEndBlock extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             height?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("height" in data && data.height != undefined) {
                     this.height = data.height;
@@ -1635,9 +1646,10 @@ export namespace tendermint.abci {
         }
     }
     export class RequestCommit extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -1674,9 +1686,10 @@ export namespace tendermint.abci {
         }
     }
     export class RequestListSnapshots extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -1713,12 +1726,13 @@ export namespace tendermint.abci {
         }
     }
     export class RequestOfferSnapshot extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             snapshot?: Snapshot;
             app_hash?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("snapshot" in data && data.snapshot != undefined) {
                     this.snapshot = data.snapshot;
@@ -1802,13 +1816,14 @@ export namespace tendermint.abci {
         }
     }
     export class RequestLoadSnapshotChunk extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             height?: number;
             format?: number;
             chunk?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("height" in data && data.height != undefined) {
                     this.height = data.height;
@@ -1914,13 +1929,14 @@ export namespace tendermint.abci {
         }
     }
     export class RequestApplySnapshotChunk extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             index?: number;
             chunk?: Uint8Array;
             sender?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("index" in data && data.index != undefined) {
                     this.index = data.index;
@@ -2026,6 +2042,7 @@ export namespace tendermint.abci {
         }
     }
     export class Response extends pb_1.Message {
+        #one_of_decls = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]];
         constructor(data?: any[] | ({} & (({
             exception?: ResponseException;
             echo?: never;
@@ -2300,7 +2317,7 @@ export namespace tendermint.abci {
             apply_snapshot_chunk?: ResponseApplySnapshotChunk;
         })))) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]]);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("exception" in data && data.exception != undefined) {
                     this.exception = data.exception;
@@ -2356,97 +2373,97 @@ export namespace tendermint.abci {
             return pb_1.Message.getWrapperField(this, ResponseException, 1) as ResponseException;
         }
         set exception(value: ResponseException) {
-            pb_1.Message.setOneofWrapperField(this, 1, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], value);
+            pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
         }
         get echo() {
             return pb_1.Message.getWrapperField(this, ResponseEcho, 2) as ResponseEcho;
         }
         set echo(value: ResponseEcho) {
-            pb_1.Message.setOneofWrapperField(this, 2, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], value);
+            pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
         }
         get flush() {
             return pb_1.Message.getWrapperField(this, ResponseFlush, 3) as ResponseFlush;
         }
         set flush(value: ResponseFlush) {
-            pb_1.Message.setOneofWrapperField(this, 3, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], value);
+            pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
         }
         get info() {
             return pb_1.Message.getWrapperField(this, ResponseInfo, 4) as ResponseInfo;
         }
         set info(value: ResponseInfo) {
-            pb_1.Message.setOneofWrapperField(this, 4, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], value);
+            pb_1.Message.setOneofWrapperField(this, 4, this.#one_of_decls[0], value);
         }
         get set_option() {
             return pb_1.Message.getWrapperField(this, ResponseSetOption, 5) as ResponseSetOption;
         }
         set set_option(value: ResponseSetOption) {
-            pb_1.Message.setOneofWrapperField(this, 5, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], value);
+            pb_1.Message.setOneofWrapperField(this, 5, this.#one_of_decls[0], value);
         }
         get init_chain() {
             return pb_1.Message.getWrapperField(this, ResponseInitChain, 6) as ResponseInitChain;
         }
         set init_chain(value: ResponseInitChain) {
-            pb_1.Message.setOneofWrapperField(this, 6, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], value);
+            pb_1.Message.setOneofWrapperField(this, 6, this.#one_of_decls[0], value);
         }
         get query() {
             return pb_1.Message.getWrapperField(this, ResponseQuery, 7) as ResponseQuery;
         }
         set query(value: ResponseQuery) {
-            pb_1.Message.setOneofWrapperField(this, 7, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], value);
+            pb_1.Message.setOneofWrapperField(this, 7, this.#one_of_decls[0], value);
         }
         get begin_block() {
             return pb_1.Message.getWrapperField(this, ResponseBeginBlock, 8) as ResponseBeginBlock;
         }
         set begin_block(value: ResponseBeginBlock) {
-            pb_1.Message.setOneofWrapperField(this, 8, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], value);
+            pb_1.Message.setOneofWrapperField(this, 8, this.#one_of_decls[0], value);
         }
         get check_tx() {
             return pb_1.Message.getWrapperField(this, ResponseCheckTx, 9) as ResponseCheckTx;
         }
         set check_tx(value: ResponseCheckTx) {
-            pb_1.Message.setOneofWrapperField(this, 9, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], value);
+            pb_1.Message.setOneofWrapperField(this, 9, this.#one_of_decls[0], value);
         }
         get deliver_tx() {
             return pb_1.Message.getWrapperField(this, ResponseDeliverTx, 10) as ResponseDeliverTx;
         }
         set deliver_tx(value: ResponseDeliverTx) {
-            pb_1.Message.setOneofWrapperField(this, 10, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], value);
+            pb_1.Message.setOneofWrapperField(this, 10, this.#one_of_decls[0], value);
         }
         get end_block() {
             return pb_1.Message.getWrapperField(this, ResponseEndBlock, 11) as ResponseEndBlock;
         }
         set end_block(value: ResponseEndBlock) {
-            pb_1.Message.setOneofWrapperField(this, 11, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], value);
+            pb_1.Message.setOneofWrapperField(this, 11, this.#one_of_decls[0], value);
         }
         get commit() {
             return pb_1.Message.getWrapperField(this, ResponseCommit, 12) as ResponseCommit;
         }
         set commit(value: ResponseCommit) {
-            pb_1.Message.setOneofWrapperField(this, 12, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], value);
+            pb_1.Message.setOneofWrapperField(this, 12, this.#one_of_decls[0], value);
         }
         get list_snapshots() {
             return pb_1.Message.getWrapperField(this, ResponseListSnapshots, 13) as ResponseListSnapshots;
         }
         set list_snapshots(value: ResponseListSnapshots) {
-            pb_1.Message.setOneofWrapperField(this, 13, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], value);
+            pb_1.Message.setOneofWrapperField(this, 13, this.#one_of_decls[0], value);
         }
         get offer_snapshot() {
             return pb_1.Message.getWrapperField(this, ResponseOfferSnapshot, 14) as ResponseOfferSnapshot;
         }
         set offer_snapshot(value: ResponseOfferSnapshot) {
-            pb_1.Message.setOneofWrapperField(this, 14, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], value);
+            pb_1.Message.setOneofWrapperField(this, 14, this.#one_of_decls[0], value);
         }
         get load_snapshot_chunk() {
             return pb_1.Message.getWrapperField(this, ResponseLoadSnapshotChunk, 15) as ResponseLoadSnapshotChunk;
         }
         set load_snapshot_chunk(value: ResponseLoadSnapshotChunk) {
-            pb_1.Message.setOneofWrapperField(this, 15, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], value);
+            pb_1.Message.setOneofWrapperField(this, 15, this.#one_of_decls[0], value);
         }
         get apply_snapshot_chunk() {
             return pb_1.Message.getWrapperField(this, ResponseApplySnapshotChunk, 16) as ResponseApplySnapshotChunk;
         }
         set apply_snapshot_chunk(value: ResponseApplySnapshotChunk) {
-            pb_1.Message.setOneofWrapperField(this, 16, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], value);
+            pb_1.Message.setOneofWrapperField(this, 16, this.#one_of_decls[0], value);
         }
         get value() {
             const cases: {
@@ -2716,11 +2733,12 @@ export namespace tendermint.abci {
         }
     }
     export class ResponseException extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             error?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("error" in data && data.error != undefined) {
                     this.error = data.error;
@@ -2782,11 +2800,12 @@ export namespace tendermint.abci {
         }
     }
     export class ResponseEcho extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             message?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("message" in data && data.message != undefined) {
                     this.message = data.message;
@@ -2848,9 +2867,10 @@ export namespace tendermint.abci {
         }
     }
     export class ResponseFlush extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -2887,6 +2907,7 @@ export namespace tendermint.abci {
         }
     }
     export class ResponseInfo extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             data?: string;
             version?: string;
@@ -2895,7 +2916,7 @@ export namespace tendermint.abci {
             last_block_app_hash?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("data" in data && data.data != undefined) {
                     this.data = data.data;
@@ -3045,13 +3066,14 @@ export namespace tendermint.abci {
         }
     }
     export class ResponseSetOption extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             code?: number;
             log?: string;
             info?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("code" in data && data.code != undefined) {
                     this.code = data.code;
@@ -3157,13 +3179,14 @@ export namespace tendermint.abci {
         }
     }
     export class ResponseInitChain extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             consensus_params?: ConsensusParams;
             validators?: ValidatorUpdate[];
             app_hash?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("consensus_params" in data && data.consensus_params != undefined) {
                     this.consensus_params = data.consensus_params;
@@ -3269,6 +3292,7 @@ export namespace tendermint.abci {
         }
     }
     export class ResponseQuery extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             code?: number;
             log?: string;
@@ -3281,7 +3305,7 @@ export namespace tendermint.abci {
             codespace?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("code" in data && data.code != undefined) {
                     this.code = data.code;
@@ -3519,11 +3543,12 @@ export namespace tendermint.abci {
         }
     }
     export class ResponseBeginBlock extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             events?: Event[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("events" in data && data.events != undefined) {
                     this.events = data.events;
@@ -3585,6 +3610,7 @@ export namespace tendermint.abci {
         }
     }
     export class ResponseCheckTx extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             code?: number;
             data?: Uint8Array;
@@ -3596,7 +3622,7 @@ export namespace tendermint.abci {
             codespace?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [7], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [7], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("code" in data && data.code != undefined) {
                     this.code = data.code;
@@ -3812,6 +3838,7 @@ export namespace tendermint.abci {
         }
     }
     export class ResponseDeliverTx extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             code?: number;
             data?: Uint8Array;
@@ -3823,7 +3850,7 @@ export namespace tendermint.abci {
             codespace?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [7], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [7], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("code" in data && data.code != undefined) {
                     this.code = data.code;
@@ -4039,13 +4066,14 @@ export namespace tendermint.abci {
         }
     }
     export class ResponseEndBlock extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             validator_updates?: ValidatorUpdate[];
             consensus_param_updates?: ConsensusParams;
             events?: Event[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("validator_updates" in data && data.validator_updates != undefined) {
                     this.validator_updates = data.validator_updates;
@@ -4151,12 +4179,13 @@ export namespace tendermint.abci {
         }
     }
     export class ResponseCommit extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             data?: Uint8Array;
             retain_height?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("data" in data && data.data != undefined) {
                     this.data = data.data;
@@ -4240,11 +4269,12 @@ export namespace tendermint.abci {
         }
     }
     export class ResponseListSnapshots extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             snapshots?: Snapshot[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("snapshots" in data && data.snapshots != undefined) {
                     this.snapshots = data.snapshots;
@@ -4306,11 +4336,12 @@ export namespace tendermint.abci {
         }
     }
     export class ResponseOfferSnapshot extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             result?: ResponseOfferSnapshot.Result;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("result" in data && data.result != undefined) {
                     this.result = data.result;
@@ -4382,11 +4413,12 @@ export namespace tendermint.abci {
         }
     }
     export class ResponseLoadSnapshotChunk extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             chunk?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("chunk" in data && data.chunk != undefined) {
                     this.chunk = data.chunk;
@@ -4448,13 +4480,14 @@ export namespace tendermint.abci {
         }
     }
     export class ResponseApplySnapshotChunk extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             result?: ResponseApplySnapshotChunk.Result;
             refetch_chunks?: number[];
             reject_senders?: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2, 3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2, 3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("result" in data && data.result != undefined) {
                     this.result = data.result;
@@ -4570,6 +4603,7 @@ export namespace tendermint.abci {
         }
     }
     export class ConsensusParams extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             block?: BlockParams;
             evidence?: dependency_4.tendermint.types.EvidenceParams;
@@ -4577,7 +4611,7 @@ export namespace tendermint.abci {
             version?: dependency_4.tendermint.types.VersionParams;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("block" in data && data.block != undefined) {
                     this.block = data.block;
@@ -4705,12 +4739,13 @@ export namespace tendermint.abci {
         }
     }
     export class BlockParams extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             max_bytes?: number;
             max_gas?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("max_bytes" in data && data.max_bytes != undefined) {
                     this.max_bytes = data.max_bytes;
@@ -4794,12 +4829,13 @@ export namespace tendermint.abci {
         }
     }
     export class LastCommitInfo extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             round?: number;
             votes?: VoteInfo[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("round" in data && data.round != undefined) {
                     this.round = data.round;
@@ -4883,12 +4919,13 @@ export namespace tendermint.abci {
         }
     }
     export class Event extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             type?: string;
             attributes?: EventAttribute[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("type" in data && data.type != undefined) {
                     this.type = data.type;
@@ -4972,13 +5009,14 @@ export namespace tendermint.abci {
         }
     }
     export class EventAttribute extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             key?: Uint8Array;
             value?: Uint8Array;
             index?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("key" in data && data.key != undefined) {
                     this.key = data.key;
@@ -5084,6 +5122,7 @@ export namespace tendermint.abci {
         }
     }
     export class TxResult extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             height?: number;
             index?: number;
@@ -5091,7 +5130,7 @@ export namespace tendermint.abci {
             result?: ResponseDeliverTx;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("height" in data && data.height != undefined) {
                     this.height = data.height;
@@ -5219,12 +5258,13 @@ export namespace tendermint.abci {
         }
     }
     export class Validator extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: Uint8Array;
             power?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;
@@ -5308,12 +5348,13 @@ export namespace tendermint.abci {
         }
     }
     export class ValidatorUpdate extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pub_key?: dependency_3.tendermint.crypto.PublicKey;
             power?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pub_key" in data && data.pub_key != undefined) {
                     this.pub_key = data.pub_key;
@@ -5397,12 +5438,13 @@ export namespace tendermint.abci {
         }
     }
     export class VoteInfo extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             validator?: Validator;
             signed_last_block?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("validator" in data && data.validator != undefined) {
                     this.validator = data.validator;
@@ -5486,6 +5528,7 @@ export namespace tendermint.abci {
         }
     }
     export class Evidence extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             type?: EvidenceType;
             validator?: Validator;
@@ -5494,7 +5537,7 @@ export namespace tendermint.abci {
             total_voting_power?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("type" in data && data.type != undefined) {
                     this.type = data.type;
@@ -5644,6 +5687,7 @@ export namespace tendermint.abci {
         }
     }
     export class Snapshot extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             height?: number;
             format?: number;
@@ -5652,7 +5696,7 @@ export namespace tendermint.abci {
             metadata?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("height" in data && data.height != undefined) {
                     this.height = data.height;

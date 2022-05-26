@@ -10,6 +10,7 @@ import * as dependency_3 from "./evidence";
 import * as pb_1 from "google-protobuf";
 export namespace tendermint.types {
     export class Block extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             header?: dependency_2.tendermint.types.Header;
             data?: dependency_2.tendermint.types.Data;
@@ -17,7 +18,7 @@ export namespace tendermint.types {
             last_commit?: dependency_2.tendermint.types.Commit;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("header" in data && data.header != undefined) {
                     this.header = data.header;

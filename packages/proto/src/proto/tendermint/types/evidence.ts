@@ -11,6 +11,7 @@ import * as dependency_4 from "./validator";
 import * as pb_1 from "google-protobuf";
 export namespace tendermint.types {
     export class Evidence extends pb_1.Message {
+        #one_of_decls = [[1, 2]];
         constructor(data?: any[] | ({} & (({
             duplicate_vote_evidence?: DuplicateVoteEvidence;
             light_client_attack_evidence?: never;
@@ -19,7 +20,7 @@ export namespace tendermint.types {
             light_client_attack_evidence?: LightClientAttackEvidence;
         })))) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], [[1, 2]]);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("duplicate_vote_evidence" in data && data.duplicate_vote_evidence != undefined) {
                     this.duplicate_vote_evidence = data.duplicate_vote_evidence;
@@ -33,13 +34,13 @@ export namespace tendermint.types {
             return pb_1.Message.getWrapperField(this, DuplicateVoteEvidence, 1) as DuplicateVoteEvidence;
         }
         set duplicate_vote_evidence(value: DuplicateVoteEvidence) {
-            pb_1.Message.setOneofWrapperField(this, 1, [1, 2], value);
+            pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
         }
         get light_client_attack_evidence() {
             return pb_1.Message.getWrapperField(this, LightClientAttackEvidence, 2) as LightClientAttackEvidence;
         }
         set light_client_attack_evidence(value: LightClientAttackEvidence) {
-            pb_1.Message.setOneofWrapperField(this, 2, [1, 2], value);
+            pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
         }
         get sum() {
             const cases: {
@@ -113,6 +114,7 @@ export namespace tendermint.types {
         }
     }
     export class DuplicateVoteEvidence extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             vote_a?: dependency_3.tendermint.types.Vote;
             vote_b?: dependency_3.tendermint.types.Vote;
@@ -121,7 +123,7 @@ export namespace tendermint.types {
             timestamp?: dependency_2.google.protobuf.Timestamp;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("vote_a" in data && data.vote_a != undefined) {
                     this.vote_a = data.vote_a;
@@ -271,6 +273,7 @@ export namespace tendermint.types {
         }
     }
     export class LightClientAttackEvidence extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             conflicting_block?: dependency_3.tendermint.types.LightBlock;
             common_height?: number;
@@ -279,7 +282,7 @@ export namespace tendermint.types {
             timestamp?: dependency_2.google.protobuf.Timestamp;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("conflicting_block" in data && data.conflicting_block != undefined) {
                     this.conflicting_block = data.conflicting_block;
@@ -429,11 +432,12 @@ export namespace tendermint.types {
         }
     }
     export class EvidenceList extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             evidence?: Evidence[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("evidence" in data && data.evidence != undefined) {
                     this.evidence = data.evidence;

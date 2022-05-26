@@ -9,12 +9,13 @@ import * as dependency_2 from "./../../../google/protobuf/any";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.crypto.multisig {
     export class LegacyAminoPubKey extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             threshold?: number;
             public_keys?: dependency_2.google.protobuf.Any[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("threshold" in data && data.threshold != undefined) {
                     this.threshold = data.threshold;

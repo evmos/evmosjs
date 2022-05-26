@@ -8,6 +8,7 @@
 import * as pb_1 from "google-protobuf";
 export namespace ethermint.feemarket.v1 {
     export class Params extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             no_base_fee?: boolean;
             base_fee_change_denominator?: number;
@@ -16,7 +17,7 @@ export namespace ethermint.feemarket.v1 {
             base_fee?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("no_base_fee" in data && data.no_base_fee != undefined) {
                     this.no_base_fee = data.no_base_fee;

@@ -13,14 +13,16 @@ export namespace cosmos.tx.signing.v1beta1 {
         SIGN_MODE_UNSPECIFIED = 0,
         SIGN_MODE_DIRECT = 1,
         SIGN_MODE_TEXTUAL = 2,
-        SIGN_MODE_LEGACY_AMINO_JSON = 127
+        SIGN_MODE_LEGACY_AMINO_JSON = 127,
+        SIGN_MODE_EIP_191 = 191
     }
     export class SignatureDescriptors extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             signatures?: SignatureDescriptor[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("signatures" in data && data.signatures != undefined) {
                     this.signatures = data.signatures;
@@ -82,13 +84,14 @@ export namespace cosmos.tx.signing.v1beta1 {
         }
     }
     export class SignatureDescriptor extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             public_key?: dependency_2.google.protobuf.Any;
             data?: SignatureDescriptor.Data;
             sequence?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("public_key" in data && data.public_key != undefined) {
                     this.public_key = data.public_key;
@@ -195,6 +198,7 @@ export namespace cosmos.tx.signing.v1beta1 {
     }
     export namespace SignatureDescriptor {
         export class Data extends pb_1.Message {
+            #one_of_decls = [[1, 2]];
             constructor(data?: any[] | ({} & (({
                 single?: SignatureDescriptor.Data.Single;
                 multi?: never;
@@ -203,7 +207,7 @@ export namespace cosmos.tx.signing.v1beta1 {
                 multi?: SignatureDescriptor.Data.Multi;
             })))) {
                 super();
-                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], [[1, 2]]);
+                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
                 if (!Array.isArray(data) && typeof data == "object") {
                     if ("single" in data && data.single != undefined) {
                         this.single = data.single;
@@ -217,13 +221,13 @@ export namespace cosmos.tx.signing.v1beta1 {
                 return pb_1.Message.getWrapperField(this, SignatureDescriptor.Data.Single, 1) as SignatureDescriptor.Data.Single;
             }
             set single(value: SignatureDescriptor.Data.Single) {
-                pb_1.Message.setOneofWrapperField(this, 1, [1, 2], value);
+                pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
             }
             get multi() {
                 return pb_1.Message.getWrapperField(this, SignatureDescriptor.Data.Multi, 2) as SignatureDescriptor.Data.Multi;
             }
             set multi(value: SignatureDescriptor.Data.Multi) {
-                pb_1.Message.setOneofWrapperField(this, 2, [1, 2], value);
+                pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
             }
             get sum() {
                 const cases: {
@@ -298,12 +302,13 @@ export namespace cosmos.tx.signing.v1beta1 {
         }
         export namespace Data {
             export class Single extends pb_1.Message {
+                #one_of_decls = [];
                 constructor(data?: any[] | {
                     mode?: SignMode;
                     signature?: Uint8Array;
                 }) {
                     super();
-                    pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+                    pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
                     if (!Array.isArray(data) && typeof data == "object") {
                         if ("mode" in data && data.mode != undefined) {
                             this.mode = data.mode;
@@ -387,12 +392,13 @@ export namespace cosmos.tx.signing.v1beta1 {
                 }
             }
             export class Multi extends pb_1.Message {
+                #one_of_decls = [];
                 constructor(data?: any[] | {
                     bitarray?: dependency_1.cosmos.crypto.multisig.v1beta1.CompactBitArray;
                     signatures?: SignatureDescriptor.Data[];
                 }) {
                     super();
-                    pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+                    pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
                     if (!Array.isArray(data) && typeof data == "object") {
                         if ("bitarray" in data && data.bitarray != undefined) {
                             this.bitarray = data.bitarray;

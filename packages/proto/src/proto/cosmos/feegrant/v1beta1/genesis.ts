@@ -9,11 +9,12 @@ import * as dependency_2 from "./feegrant";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.feegrant.v1beta1 {
     export class GenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             allowances?: dependency_2.cosmos.feegrant.v1beta1.Grant[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("allowances" in data && data.allowances != undefined) {
                     this.allowances = data.allowances;

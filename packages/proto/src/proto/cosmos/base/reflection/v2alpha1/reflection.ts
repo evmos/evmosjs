@@ -8,6 +8,7 @@
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.base.reflection.v2alpha1 {
     export class AppDescriptor extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             authn?: AuthnDescriptor;
             chain?: ChainDescriptor;
@@ -17,7 +18,7 @@ export namespace cosmos.base.reflection.v2alpha1 {
             tx?: TxDescriptor;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("authn" in data && data.authn != undefined) {
                     this.authn = data.authn;
@@ -189,12 +190,13 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class TxDescriptor extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             fullname?: string;
             msgs?: MsgDescriptor[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("fullname" in data && data.fullname != undefined) {
                     this.fullname = data.fullname;
@@ -278,11 +280,12 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class AuthnDescriptor extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             sign_modes?: SigningModeDescriptor[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("sign_modes" in data && data.sign_modes != undefined) {
                     this.sign_modes = data.sign_modes;
@@ -344,13 +347,14 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class SigningModeDescriptor extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             name?: string;
             number?: number;
             authn_info_provider_method_fullname?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("name" in data && data.name != undefined) {
                     this.name = data.name;
@@ -456,11 +460,12 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class ChainDescriptor extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             id?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("id" in data && data.id != undefined) {
                     this.id = data.id;
@@ -522,11 +527,12 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class CodecDescriptor extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             interfaces?: InterfaceDescriptor[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("interfaces" in data && data.interfaces != undefined) {
                     this.interfaces = data.interfaces;
@@ -588,13 +594,14 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class InterfaceDescriptor extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             fullname?: string;
             interface_accepting_messages?: InterfaceAcceptingMessageDescriptor[];
             interface_implementers?: InterfaceImplementerDescriptor[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2, 3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2, 3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("fullname" in data && data.fullname != undefined) {
                     this.fullname = data.fullname;
@@ -700,12 +707,13 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class InterfaceImplementerDescriptor extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             fullname?: string;
             type_url?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("fullname" in data && data.fullname != undefined) {
                     this.fullname = data.fullname;
@@ -789,12 +797,13 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class InterfaceAcceptingMessageDescriptor extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             fullname?: string;
             field_descriptor_names?: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("fullname" in data && data.fullname != undefined) {
                     this.fullname = data.fullname;
@@ -878,11 +887,12 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class ConfigurationDescriptor extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             bech32_account_address_prefix?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("bech32_account_address_prefix" in data && data.bech32_account_address_prefix != undefined) {
                     this.bech32_account_address_prefix = data.bech32_account_address_prefix;
@@ -944,11 +954,12 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class MsgDescriptor extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             msg_type_url?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("msg_type_url" in data && data.msg_type_url != undefined) {
                     this.msg_type_url = data.msg_type_url;
@@ -1010,9 +1021,10 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class GetAuthnDescriptorRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -1049,11 +1061,12 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class GetAuthnDescriptorResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             authn?: AuthnDescriptor;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("authn" in data && data.authn != undefined) {
                     this.authn = data.authn;
@@ -1115,9 +1128,10 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class GetChainDescriptorRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -1154,11 +1168,12 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class GetChainDescriptorResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             chain?: ChainDescriptor;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("chain" in data && data.chain != undefined) {
                     this.chain = data.chain;
@@ -1220,9 +1235,10 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class GetCodecDescriptorRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -1259,11 +1275,12 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class GetCodecDescriptorResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             codec?: CodecDescriptor;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("codec" in data && data.codec != undefined) {
                     this.codec = data.codec;
@@ -1325,9 +1342,10 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class GetConfigurationDescriptorRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -1364,11 +1382,12 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class GetConfigurationDescriptorResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             config?: ConfigurationDescriptor;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("config" in data && data.config != undefined) {
                     this.config = data.config;
@@ -1430,9 +1449,10 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class GetQueryServicesDescriptorRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -1469,11 +1489,12 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class GetQueryServicesDescriptorResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             queries?: QueryServicesDescriptor;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("queries" in data && data.queries != undefined) {
                     this.queries = data.queries;
@@ -1535,9 +1556,10 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class GetTxDescriptorRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -1574,11 +1596,12 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class GetTxDescriptorResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             tx?: TxDescriptor;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("tx" in data && data.tx != undefined) {
                     this.tx = data.tx;
@@ -1640,11 +1663,12 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class QueryServicesDescriptor extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             query_services?: QueryServiceDescriptor[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("query_services" in data && data.query_services != undefined) {
                     this.query_services = data.query_services;
@@ -1706,13 +1730,14 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class QueryServiceDescriptor extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             fullname?: string;
             is_module?: boolean;
             methods?: QueryMethodDescriptor[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("fullname" in data && data.fullname != undefined) {
                     this.fullname = data.fullname;
@@ -1818,12 +1843,13 @@ export namespace cosmos.base.reflection.v2alpha1 {
         }
     }
     export class QueryMethodDescriptor extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             name?: string;
             full_query_path?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("name" in data && data.name != undefined) {
                     this.name = data.name;

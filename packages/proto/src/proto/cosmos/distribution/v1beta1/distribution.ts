@@ -9,6 +9,7 @@ import * as dependency_2 from "./../../base/v1beta1/coin";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.distribution.v1beta1 {
     export class Params extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             community_tax?: string;
             base_proposer_reward?: string;
@@ -16,7 +17,7 @@ export namespace cosmos.distribution.v1beta1 {
             withdraw_addr_enabled?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("community_tax" in data && data.community_tax != undefined) {
                     this.community_tax = data.community_tax;
@@ -144,12 +145,13 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class ValidatorHistoricalRewards extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             cumulative_reward_ratio?: dependency_2.cosmos.base.v1beta1.DecCoin[];
             reference_count?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("cumulative_reward_ratio" in data && data.cumulative_reward_ratio != undefined) {
                     this.cumulative_reward_ratio = data.cumulative_reward_ratio;
@@ -233,12 +235,13 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class ValidatorCurrentRewards extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             rewards?: dependency_2.cosmos.base.v1beta1.DecCoin[];
             period?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("rewards" in data && data.rewards != undefined) {
                     this.rewards = data.rewards;
@@ -322,11 +325,12 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class ValidatorAccumulatedCommission extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             commission?: dependency_2.cosmos.base.v1beta1.DecCoin[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("commission" in data && data.commission != undefined) {
                     this.commission = data.commission;
@@ -388,11 +392,12 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class ValidatorOutstandingRewards extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             rewards?: dependency_2.cosmos.base.v1beta1.DecCoin[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("rewards" in data && data.rewards != undefined) {
                     this.rewards = data.rewards;
@@ -454,12 +459,13 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class ValidatorSlashEvent extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             validator_period?: number;
             fraction?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("validator_period" in data && data.validator_period != undefined) {
                     this.validator_period = data.validator_period;
@@ -543,11 +549,12 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class ValidatorSlashEvents extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             validator_slash_events?: ValidatorSlashEvent[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("validator_slash_events" in data && data.validator_slash_events != undefined) {
                     this.validator_slash_events = data.validator_slash_events;
@@ -609,11 +616,12 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class FeePool extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             community_pool?: dependency_2.cosmos.base.v1beta1.DecCoin[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("community_pool" in data && data.community_pool != undefined) {
                     this.community_pool = data.community_pool;
@@ -675,6 +683,7 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class CommunityPoolSpendProposal extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             title?: string;
             description?: string;
@@ -682,7 +691,7 @@ export namespace cosmos.distribution.v1beta1 {
             amount?: dependency_2.cosmos.base.v1beta1.Coin[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("title" in data && data.title != undefined) {
                     this.title = data.title;
@@ -810,13 +819,14 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class DelegatorStartingInfo extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             previous_period?: number;
             stake?: string;
             height?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("previous_period" in data && data.previous_period != undefined) {
                     this.previous_period = data.previous_period;
@@ -922,12 +932,13 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class DelegationDelegatorReward extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             validator_address?: string;
             reward?: dependency_2.cosmos.base.v1beta1.DecCoin[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("validator_address" in data && data.validator_address != undefined) {
                     this.validator_address = data.validator_address;
@@ -1011,6 +1022,7 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class CommunityPoolSpendProposalWithDeposit extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             title?: string;
             description?: string;
@@ -1019,7 +1031,7 @@ export namespace cosmos.distribution.v1beta1 {
             deposit?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("title" in data && data.title != undefined) {
                     this.title = data.title;

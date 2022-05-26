@@ -8,13 +8,14 @@
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.authz.v1beta1 {
     export class EventGrant extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             msg_type_url?: string;
             granter?: string;
             grantee?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("msg_type_url" in data && data.msg_type_url != undefined) {
                     this.msg_type_url = data.msg_type_url;
@@ -120,13 +121,14 @@ export namespace cosmos.authz.v1beta1 {
         }
     }
     export class EventRevoke extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             msg_type_url?: string;
             granter?: string;
             grantee?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("msg_type_url" in data && data.msg_type_url != undefined) {
                     this.msg_type_url = data.msg_type_url;

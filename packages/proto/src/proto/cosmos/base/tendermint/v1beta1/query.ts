@@ -13,12 +13,13 @@ import * as dependency_6 from "./../../query/v1beta1/pagination";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.base.tendermint.v1beta1 {
     export class GetValidatorSetByHeightRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             height?: number;
             pagination?: dependency_6.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("height" in data && data.height != undefined) {
                     this.height = data.height;
@@ -102,13 +103,14 @@ export namespace cosmos.base.tendermint.v1beta1 {
         }
     }
     export class GetValidatorSetByHeightResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             block_height?: number;
             validators?: Validator[];
             pagination?: dependency_6.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("block_height" in data && data.block_height != undefined) {
                     this.block_height = data.block_height;
@@ -214,11 +216,12 @@ export namespace cosmos.base.tendermint.v1beta1 {
         }
     }
     export class GetLatestValidatorSetRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pagination?: dependency_6.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pagination" in data && data.pagination != undefined) {
                     this.pagination = data.pagination;
@@ -280,13 +283,14 @@ export namespace cosmos.base.tendermint.v1beta1 {
         }
     }
     export class GetLatestValidatorSetResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             block_height?: number;
             validators?: Validator[];
             pagination?: dependency_6.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("block_height" in data && data.block_height != undefined) {
                     this.block_height = data.block_height;
@@ -392,6 +396,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
         }
     }
     export class Validator extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
             pub_key?: dependency_1.google.protobuf.Any;
@@ -399,7 +404,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
             proposer_priority?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;
@@ -527,11 +532,12 @@ export namespace cosmos.base.tendermint.v1beta1 {
         }
     }
     export class GetBlockByHeightRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             height?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("height" in data && data.height != undefined) {
                     this.height = data.height;
@@ -593,12 +599,13 @@ export namespace cosmos.base.tendermint.v1beta1 {
         }
     }
     export class GetBlockByHeightResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             block_id?: dependency_5.tendermint.types.BlockID;
             block?: dependency_4.tendermint.types.Block;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("block_id" in data && data.block_id != undefined) {
                     this.block_id = data.block_id;
@@ -682,9 +689,10 @@ export namespace cosmos.base.tendermint.v1beta1 {
         }
     }
     export class GetLatestBlockRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -721,12 +729,13 @@ export namespace cosmos.base.tendermint.v1beta1 {
         }
     }
     export class GetLatestBlockResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             block_id?: dependency_5.tendermint.types.BlockID;
             block?: dependency_4.tendermint.types.Block;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("block_id" in data && data.block_id != undefined) {
                     this.block_id = data.block_id;
@@ -810,9 +819,10 @@ export namespace cosmos.base.tendermint.v1beta1 {
         }
     }
     export class GetSyncingRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -849,11 +859,12 @@ export namespace cosmos.base.tendermint.v1beta1 {
         }
     }
     export class GetSyncingResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             syncing?: boolean;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("syncing" in data && data.syncing != undefined) {
                     this.syncing = data.syncing;
@@ -915,9 +926,10 @@ export namespace cosmos.base.tendermint.v1beta1 {
         }
     }
     export class GetNodeInfoRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -954,12 +966,13 @@ export namespace cosmos.base.tendermint.v1beta1 {
         }
     }
     export class GetNodeInfoResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             default_node_info?: dependency_3.tendermint.p2p.DefaultNodeInfo;
             application_version?: VersionInfo;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("default_node_info" in data && data.default_node_info != undefined) {
                     this.default_node_info = data.default_node_info;
@@ -1043,6 +1056,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
         }
     }
     export class VersionInfo extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             name?: string;
             app_name?: string;
@@ -1054,7 +1068,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
             cosmos_sdk_version?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [7], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [7], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("name" in data && data.name != undefined) {
                     this.name = data.name;
@@ -1270,13 +1284,14 @@ export namespace cosmos.base.tendermint.v1beta1 {
         }
     }
     export class Module extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             path?: string;
             version?: string;
             sum?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("path" in data && data.path != undefined) {
                     this.path = data.path;

@@ -9,6 +9,7 @@ import * as dependency_2 from "./connection";
 import * as pb_1 from "google-protobuf";
 export namespace ibc.core.connection.v1 {
     export class GenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             connections?: dependency_2.ibc.core.connection.v1.IdentifiedConnection[];
             client_connection_paths?: dependency_2.ibc.core.connection.v1.ConnectionPaths[];
@@ -16,7 +17,7 @@ export namespace ibc.core.connection.v1 {
             params?: dependency_2.ibc.core.connection.v1.Params;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("connections" in data && data.connections != undefined) {
                     this.connections = data.connections;

@@ -24,13 +24,14 @@ export namespace cosmos.tx.v1beta1 {
         BROADCAST_MODE_ASYNC = 3
     }
     export class GetTxsEventRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             events?: string[];
             pagination?: dependency_5.cosmos.base.query.v1beta1.PageRequest;
             order_by?: OrderBy;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("events" in data && data.events != undefined) {
                     this.events = data.events;
@@ -136,13 +137,14 @@ export namespace cosmos.tx.v1beta1 {
         }
     }
     export class GetTxsEventResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             txs?: dependency_3.cosmos.tx.v1beta1.Tx[];
             tx_responses?: dependency_2.cosmos.base.abci.v1beta1.TxResponse[];
             pagination?: dependency_5.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("txs" in data && data.txs != undefined) {
                     this.txs = data.txs;
@@ -248,12 +250,13 @@ export namespace cosmos.tx.v1beta1 {
         }
     }
     export class BroadcastTxRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             tx_bytes?: Uint8Array;
             mode?: BroadcastMode;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("tx_bytes" in data && data.tx_bytes != undefined) {
                     this.tx_bytes = data.tx_bytes;
@@ -337,11 +340,12 @@ export namespace cosmos.tx.v1beta1 {
         }
     }
     export class BroadcastTxResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             tx_response?: dependency_2.cosmos.base.abci.v1beta1.TxResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("tx_response" in data && data.tx_response != undefined) {
                     this.tx_response = data.tx_response;
@@ -403,13 +407,14 @@ export namespace cosmos.tx.v1beta1 {
         }
     }
     export class SimulateRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             /** @deprecated*/
             tx?: dependency_3.cosmos.tx.v1beta1.Tx;
             tx_bytes?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("tx" in data && data.tx != undefined) {
                     this.tx = data.tx;
@@ -495,12 +500,13 @@ export namespace cosmos.tx.v1beta1 {
         }
     }
     export class SimulateResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             gas_info?: dependency_2.cosmos.base.abci.v1beta1.GasInfo;
             result?: dependency_2.cosmos.base.abci.v1beta1.Result;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("gas_info" in data && data.gas_info != undefined) {
                     this.gas_info = data.gas_info;
@@ -584,11 +590,12 @@ export namespace cosmos.tx.v1beta1 {
         }
     }
     export class GetTxRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             hash?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("hash" in data && data.hash != undefined) {
                     this.hash = data.hash;
@@ -650,12 +657,13 @@ export namespace cosmos.tx.v1beta1 {
         }
     }
     export class GetTxResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             tx?: dependency_3.cosmos.tx.v1beta1.Tx;
             tx_response?: dependency_2.cosmos.base.abci.v1beta1.TxResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("tx" in data && data.tx != undefined) {
                     this.tx = data.tx;
@@ -739,12 +747,13 @@ export namespace cosmos.tx.v1beta1 {
         }
     }
     export class GetBlockWithTxsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             height?: number;
             pagination?: dependency_5.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("height" in data && data.height != undefined) {
                     this.height = data.height;
@@ -828,6 +837,7 @@ export namespace cosmos.tx.v1beta1 {
         }
     }
     export class GetBlockWithTxsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             txs?: dependency_3.cosmos.tx.v1beta1.Tx[];
             block_id?: dependency_7.tendermint.types.BlockID;
@@ -835,7 +845,7 @@ export namespace cosmos.tx.v1beta1 {
             pagination?: dependency_5.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("txs" in data && data.txs != undefined) {
                     this.txs = data.txs;

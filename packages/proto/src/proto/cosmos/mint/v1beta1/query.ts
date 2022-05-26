@@ -9,9 +9,10 @@ import * as dependency_3 from "./mint";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.mint.v1beta1 {
     export class QueryParamsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -48,11 +49,12 @@ export namespace cosmos.mint.v1beta1 {
         }
     }
     export class QueryParamsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             params?: dependency_3.cosmos.mint.v1beta1.Params;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;
@@ -114,9 +116,10 @@ export namespace cosmos.mint.v1beta1 {
         }
     }
     export class QueryInflationRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -153,11 +156,12 @@ export namespace cosmos.mint.v1beta1 {
         }
     }
     export class QueryInflationResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             inflation?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("inflation" in data && data.inflation != undefined) {
                     this.inflation = data.inflation;
@@ -219,9 +223,10 @@ export namespace cosmos.mint.v1beta1 {
         }
     }
     export class QueryAnnualProvisionsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -258,11 +263,12 @@ export namespace cosmos.mint.v1beta1 {
         }
     }
     export class QueryAnnualProvisionsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             annual_provisions?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("annual_provisions" in data && data.annual_provisions != undefined) {
                     this.annual_provisions = data.annual_provisions;
