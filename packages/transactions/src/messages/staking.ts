@@ -26,7 +26,6 @@ import {
   MsgWithdrawDelegatorRewardInterface,
   MSG_WITHDRAW_VALIDATOR_COMMISSION_TYPES,
   createMsgWithdrawValidatorCommission,
-  MsgWithdrawValidatorCommissionInterface,
 } from '@tharsis/eip712'
 
 import { Chain, Fee, Sender } from './common'
@@ -368,10 +367,7 @@ export function createTxMsgWithdrawValidatorCommission(
     sender.accountAddress,
   )
   const types = generateTypes(MSG_WITHDRAW_VALIDATOR_COMMISSION_TYPES)
-  const msg = createMsgWithdrawValidatorCommission(
-    sender.accountAddress,
-    params.validatorAddress,
-  )
+  const msg = createMsgWithdrawValidatorCommission(params.validatorAddress)
   const messages = generateMessage(
     sender.accountNumber.toString(),
     sender.sequence.toString(),
@@ -384,7 +380,6 @@ export function createTxMsgWithdrawValidatorCommission(
 
   // Cosmos
   const protoMessage = protoMsgWithdrawValidatorCommission(
-    sender.accountAddress,
     params.validatorAddress,
   )
   const tx = createTransaction(
