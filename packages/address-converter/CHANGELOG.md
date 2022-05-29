@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.8](https://github.com/tharsis/evmosjs/compare/@tharsis/address-converter@0.1.7...@tharsis/address-converter@0.1.8) (2022-05-29)
+
+### Features
+
+* kyve address converter ([#39](https://github.com/tharsis/evmosjs/issues/39)) ([20aad34](https://github.com/tharsis/evmosjs/commit/20aad344eab10a0d3377341a7651881b9ec0b591))
+
 ## [0.1.7](https://github.com/tharsis/evmosjs/compare/@tharsis/address-converter@0.1.6...@tharsis/address-converter@0.1.7) (2022-03-09)
 
 ### Features

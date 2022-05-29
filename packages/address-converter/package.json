@@ -1,7 +1,7 @@
 {
   "name": "@tharsis/address-converter",
   "description": "Address converter, convert ETH address to Ethermint/evmos address.",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

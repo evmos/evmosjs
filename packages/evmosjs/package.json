@@ -1,7 +1,7 @@
 {
   "name": "evmosjs",
   "description": "JS and TS libs for Evmos",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -26,11 +26,11 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
-    "@tharsis/address-converter": "^0.1.7",
-    "@tharsis/eip712": "^0.2.1",
-    "@tharsis/proto": "^0.1.16",
+    "@tharsis/address-converter": "^0.1.8",
+    "@tharsis/eip712": "^0.2.2",
+    "@tharsis/proto": "^0.1.17",
     "@tharsis/provider": "^0.2.4",
-    "@tharsis/transactions": "^0.2.2",
+    "@tharsis/transactions": "^0.2.3",
     "@types/node": "^17.0.21",
     "link-module-alias": "^1.2.0",
     "shx": "^0.3.4"

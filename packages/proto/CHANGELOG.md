@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.17](https://github.com/tharsis/evmosjs/compare/@tharsis/proto@0.1.16...@tharsis/proto@0.1.17) (2022-05-29)
+
+### Features
+
+* withdrawValidatorCommission message ([#42](https://github.com/tharsis/evmosjs/issues/42)) ([9cc09e3](https://github.com/tharsis/evmosjs/commit/9cc09e34f0f052555d1f9c6e8f3d81dfbbea6d1c))
+
 ## [0.1.16](https://github.com/tharsis/evmosjs/compare/@tharsis/proto@0.1.15...@tharsis/proto@0.1.16) (2022-03-25)
 
 **Note:** Version bump only for package @tharsis/proto
