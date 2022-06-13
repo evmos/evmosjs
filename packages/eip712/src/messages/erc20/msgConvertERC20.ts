@@ -13,7 +13,7 @@ export function createMsgConvertERC20(
   sender: string,
 ) {
   return {
-    type: 'cosmos-sdk/MsgConvertERC20',
+    type: 'evmos/MsgConvertERC20',
     value: {
       contract_address: contractAddress,
       amount,
