@@ -22,7 +22,6 @@ export function createMsgConvertCoin(
         denom,
         amount,
       },
-      amount,
       receiver,
       sender,
     },

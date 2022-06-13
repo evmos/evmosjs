@@ -23,7 +23,7 @@ async function prepareMessageConvertCoin(wallet: Wallet) {
   fee.gas = '3000000'
 
   const sender = await getSender(wallet, 'https://rest.bd.evmos.dev:1317')
-  const txSimple = createTxMsgConvertCoin(TESTNET_CHAIN, sender, fee, '', {
+  const txSimple = createTxMsgConvertCoin(LOCALNET_CHAIN, sender, fee, '', {
     denom: 'erc20/0xe534586c24634215331ec677cd5FE5C8b6Ea8ce1',
     amount: '1',
     receiverHexFormatted: evmosToEth(sender.accountAddress),
@@ -33,12 +33,13 @@ async function prepareMessageConvertCoin(wallet: Wallet) {
 }
 
 async function prepareMessageConvertERC20(wallet: Wallet) {
-  const fee = TESTNET_FEE
+  const fee = LOCALNET_FEE
   fee.gas = '3000000'
+  fee.amount = '300000'
 
-  const sender = await getSender(wallet, 'https://rest.bd.evmos.dev:1317')
+  const sender = await getSender(wallet, 'http://localhost:1317')
   const txSimple = createTxMsgConvertERC20(TESTNET_CHAIN, sender, fee, '', {
-    contract_address: '0xe534586c24634215331ec677cd5FE5C8b6Ea8ce1',
+    contract_address: '0xC7f37A81cE8F11955051E176A15954Fc4777A51B',
     amount: '1',
     receiverEvmosFormatted: sender.accountAddress,
     senderHexFormatted: evmosToEth(sender.accountAddress),
@@ -66,17 +67,14 @@ async function prepareMessageConvertERC20(wallet: Wallet) {
   //   console.log(`Error payload signature: ${JSON.stringify(broadcastRes)}`)
   // }
 
-  const msgMM = await prepareMessageConvertCoin(wallet)
+  const msgMM = await prepareMessageConvertERC20(wallet)
 
   const resMM = await singTransactionUsingEIP712(
     wallet,
     msgMM.sender.accountAddress,
     msgMM.txSimple,
   )
-  const broadcastResMM = await broadcast(
-    resMM,
-    'https://rest.bd.evmos.dev:1317',
-  )
+  const broadcastResMM = await broadcast(resMM, 'http://localhost:1317')
 
   if (broadcastResMM.tx_response.code === 0) {
     console.log('Success sign EIP712 transaction')
