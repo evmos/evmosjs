@@ -16,7 +16,7 @@ export function createMsgConvertCoin(
   sender: string,
 ) {
   return {
-    type: 'cosmos-sdk/MsgConvertCoin',
+    type: 'evmos/MsgConvertCoin',
     value: {
       coin: {
         denom,
