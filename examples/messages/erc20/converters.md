@@ -10,17 +10,18 @@ import {
   broadcast,
   getSender,
   signTransaction,
-  TESTNET_CHAIN,
-  TESTNET_FEE,
+  LOCALNET_CHAIN,
+  LOCALNET_FEE,
 } from '@hanchon/evmos-ts-wallet'
 
 async function prepareMessageConvertCoin(wallet: Wallet) {
-  let fee = TESTNET_FEE
+  const fee = LOCALNET_FEE
   fee.gas = '3000000'
+  fee.amount = '300000'
 
-  const sender = await getSender(wallet, 'https://rest.bd.evmos.dev:1317')
-  const txSimple = createTxMsgConvertCoin(TESTNET_CHAIN, sender, fee, '', {
-    denom: 'erc20/0xe534586c24634215331ec677cd5FE5C8b6Ea8ce1',
+  const sender = await getSender(wallet, 'http://localhost:1317')
+  const txSimple = createTxMsgConvertCoin(LOCALNET_CHAIN, sender, fee, '', {
+    denom: 'erc20/0xC7f37A81cE8F11955051E176A15954Fc4777A51B',
     amount: '1',
     receiverHexFormatted: evmosToEth(sender.accountAddress),
     senderEvmosFormatted: sender.accountAddress,
@@ -29,12 +30,13 @@ async function prepareMessageConvertCoin(wallet: Wallet) {
 }
 
 async function prepareMessageConvertERC20(wallet: Wallet) {
-  let fee = TESTNET_FEE
+  const fee = LOCALNET_FEE
   fee.gas = '3000000'
+  fee.amount = '300000'
 
-  const sender = await getSender(wallet, 'https://rest.bd.evmos.dev:1317')
-  const txSimple = createTxMsgConvertERC20(TESTNET_CHAIN, sender, fee, '', {
-    contract_address: '0xe534586c24634215331ec677cd5FE5C8b6Ea8ce1',
+  const sender = await getSender(wallet, 'http://localhost:1317')
+  const txSimple = createTxMsgConvertERC20(LOCALNET_CHAIN, sender, fee, '', {
+    contract_address: '0xC7f37A81cE8F11955051E176A15954Fc4777A51B',
     amount: '1',
     receiverEvmosFormatted: sender.accountAddress,
     senderHexFormatted: evmosToEth(sender.accountAddress),
@@ -55,7 +57,7 @@ async function prepareMessageConvertERC20(wallet: Wallet) {
 
 
   const resKeplr = await signTransaction(wallet, msgKeplr.txSimple)
-  const broadcastRes = await broadcast(resKeplr, 'https://rest.bd.evmos.dev:1317')
+  const broadcastRes = await broadcast(resKeplr, 'http://localhost:1317')
   console.log(JSON.stringify(broadcastRes))
   if (broadcastRes.tx_response.code === 0) {
     console.log('Success sign transaction')
