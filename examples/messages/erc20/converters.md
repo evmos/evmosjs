@@ -58,7 +58,7 @@ async function prepareMessageConvertERC20(wallet: Wallet) {
 
   const resKeplr = await signTransaction(wallet, msgKeplr.txSimple)
   const broadcastRes = await broadcast(resKeplr, 'http://localhost:1317')
-  console.log(JSON.stringify(broadcastRes))
+
   if (broadcastRes.tx_response.code === 0) {
     console.log('Success sign transaction')
   } else {
