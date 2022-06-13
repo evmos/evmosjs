@@ -27,9 +27,7 @@ export function createMsgEditValidator(
       details: details || NOT_MODIFY,
     }),
     validator_address: validatorAddress,
-    // TODO: this can be null
     commission_rate: commissionRate,
-    // TODO: this can be null
     min_self_delegation: minSelfDelegation,
   })
 
