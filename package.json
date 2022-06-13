@@ -22,7 +22,7 @@
     "build:patch:publish": "yarn build:fresh && yarn patch && yarn lerna:publish",
     "patch": "lerna version patch",
     "clean": "lerna run --parallel clean && shx rm -rf .build-cache *.log coverage junit.xml",
-    "test": "jest",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "test:ci": "jest --coverage --ci --reporters='jest-junit'",
     "test:unit": "jest packages/*/test/unit",
     "test:integration": "jest packages/*/test/integration",
