@@ -34,3 +34,10 @@ Success sign transaction
 - `enabled-unsafe-cors` set as `true` (`~/.evmosd/config/app.toml` or `--api.enabled-unsafe-cors true`)
 - rest api (`1317`) enabled (`~/.evmosd/config/app.toml` or `--api.enabled true`)
 - some coins (`evmosd tx bank send mykey evmos14rajuselkxsvqtqv20lamd08t8zxg8qdrlvp8x 100evmos --keyring-backend test --fees=20aevmos`)
+
+## Note
+
+Wallet address:
+
+- Hex: 0xa8fB2e433fb1A0c02C0C53FFdDB5e759C4641C0D
+- Evmos: evmos14rajuselkxsvqtqv20lamd08t8zxg8qdrlvp8x

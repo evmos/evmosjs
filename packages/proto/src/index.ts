@@ -1,3 +1,5 @@
+export * from './messages/erc20/msgConvertCoin'
+export * from './messages/erc20/msgConvertERC20'
 export * from './messages/ibcMsgTransfer'
 export * from './messages/msgEthereumTx'
 export * from './messages/msgSend'
