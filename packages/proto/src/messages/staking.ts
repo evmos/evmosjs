@@ -93,3 +93,20 @@ export function createMsgWithdrawDelegatorReward(
     path: 'cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward',
   }
 }
+
+export interface MsgWithdrawValidatorCommissionProtoInterface {
+  path: string
+  message: dist.cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission
+}
+
+export function createMsgWithdrawValidatorCommission(validatorAddress: string) {
+  const message =
+    new dist.cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission({
+      validator_address: validatorAddress,
+    })
+
+  return {
+    message,
+    path: 'cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission',
+  }
+}

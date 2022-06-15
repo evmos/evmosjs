@@ -1,7 +1,7 @@
 {
   "name": "@astraprotocol/astrajs",
   "description": "JS and TS libs for Astra",
-  "version": "0.2.12",
+  "version": "0.2.13",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

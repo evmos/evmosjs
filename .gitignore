@@ -28,3 +28,4 @@ build/Release
 .env.test
 .serverless/
 .yarn
+.idea
