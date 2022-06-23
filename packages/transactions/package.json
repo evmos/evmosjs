@@ -1,5 +1,5 @@
 {
-  "name": "@astraprotocol/transactions",
+  "name": "@astradefi/transactions",
   "description": "Transactions generator for Astra",
   "version": "0.5.0",
   "license": "MIT",
@@ -8,10 +8,6 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com"
-  },
   "repository": "https://github.com/astraprotocol/astrajs",
   "_moduleAliases": {
     "~transactions": "dist"
@@ -31,8 +27,8 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
-    "@astraprotocol/eip712": "^0.4.0",
-    "@astraprotocol/proto": "^0.3.2",
+    "@astradefi/eip712": "^0.4.0",
+    "@astradefi/proto": "^0.3.2",
     "@types/node": "^17.0.21",
     "link-module-alias": "^1.2.0",
     "shx": "^0.3.4"

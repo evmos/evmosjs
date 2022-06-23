@@ -2,7 +2,7 @@
 // This dependency is local to the utils project
 
 import { Wallet } from '@ethersproject/wallet'
-import { createMessageSend } from '@astraprotocol/transactions'
+import { createMessageSend } from '@astradefi/transactions'
 import {
   broadcast,
   getSender,

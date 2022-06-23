@@ -7,7 +7,7 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export namespace evmos.fees.v1 {
-    export class MsgRegisterDevFeeInfo extends pb_1.Message {
+    export class MsgRegisterFee extends pb_1.Message {
         #one_of_decls = [];
         constructor(data?: any[] | {
             contract_address?: string;
@@ -62,7 +62,7 @@ export namespace evmos.fees.v1 {
             withdraw_address?: string;
             nonces?: number[];
         }) {
-            const message = new MsgRegisterDevFeeInfo({});
+            const message = new MsgRegisterFee({});
             if (data.contract_address != null) {
                 message.contract_address = data.contract_address;
             }
@@ -113,8 +113,8 @@ export namespace evmos.fees.v1 {
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): MsgRegisterDevFeeInfo {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new MsgRegisterDevFeeInfo();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): MsgRegisterFee {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new MsgRegisterFee();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
@@ -139,11 +139,11 @@ export namespace evmos.fees.v1 {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): MsgRegisterDevFeeInfo {
-            return MsgRegisterDevFeeInfo.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): MsgRegisterFee {
+            return MsgRegisterFee.deserialize(bytes);
         }
     }
-    export class MsgRegisterDevFeeInfoResponse extends pb_1.Message {
+    export class MsgRegisterFeeResponse extends pb_1.Message {
         #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
@@ -151,7 +151,7 @@ export namespace evmos.fees.v1 {
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
-            const message = new MsgRegisterDevFeeInfoResponse({});
+            const message = new MsgRegisterFeeResponse({});
             return message;
         }
         toObject() {
@@ -165,8 +165,8 @@ export namespace evmos.fees.v1 {
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): MsgRegisterDevFeeInfoResponse {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new MsgRegisterDevFeeInfoResponse();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): MsgRegisterFeeResponse {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new MsgRegisterFeeResponse();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
@@ -179,11 +179,11 @@ export namespace evmos.fees.v1 {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): MsgRegisterDevFeeInfoResponse {
-            return MsgRegisterDevFeeInfoResponse.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): MsgRegisterFeeResponse {
+            return MsgRegisterFeeResponse.deserialize(bytes);
         }
     }
-    export class MsgCancelDevFeeInfo extends pb_1.Message {
+    export class MsgCancelFee extends pb_1.Message {
         #one_of_decls = [];
         constructor(data?: any[] | {
             contract_address?: string;
@@ -216,7 +216,7 @@ export namespace evmos.fees.v1 {
             contract_address?: string;
             deployer_address?: string;
         }) {
-            const message = new MsgCancelDevFeeInfo({});
+            const message = new MsgCancelFee({});
             if (data.contract_address != null) {
                 message.contract_address = data.contract_address;
             }
@@ -249,8 +249,8 @@ export namespace evmos.fees.v1 {
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): MsgCancelDevFeeInfo {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new MsgCancelDevFeeInfo();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): MsgCancelFee {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new MsgCancelFee();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
@@ -269,11 +269,11 @@ export namespace evmos.fees.v1 {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): MsgCancelDevFeeInfo {
-            return MsgCancelDevFeeInfo.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): MsgCancelFee {
+            return MsgCancelFee.deserialize(bytes);
         }
     }
-    export class MsgCancelDevFeeInfoResponse extends pb_1.Message {
+    export class MsgCancelFeeResponse extends pb_1.Message {
         #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
@@ -281,7 +281,7 @@ export namespace evmos.fees.v1 {
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
-            const message = new MsgCancelDevFeeInfoResponse({});
+            const message = new MsgCancelFeeResponse({});
             return message;
         }
         toObject() {
@@ -295,8 +295,8 @@ export namespace evmos.fees.v1 {
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): MsgCancelDevFeeInfoResponse {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new MsgCancelDevFeeInfoResponse();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): MsgCancelFeeResponse {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new MsgCancelFeeResponse();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
@@ -309,11 +309,11 @@ export namespace evmos.fees.v1 {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): MsgCancelDevFeeInfoResponse {
-            return MsgCancelDevFeeInfoResponse.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): MsgCancelFeeResponse {
+            return MsgCancelFeeResponse.deserialize(bytes);
         }
     }
-    export class MsgUpdateDevFeeInfo extends pb_1.Message {
+    export class MsgUpdateFee extends pb_1.Message {
         #one_of_decls = [];
         constructor(data?: any[] | {
             contract_address?: string;
@@ -357,7 +357,7 @@ export namespace evmos.fees.v1 {
             deployer_address?: string;
             withdraw_address?: string;
         }) {
-            const message = new MsgUpdateDevFeeInfo({});
+            const message = new MsgUpdateFee({});
             if (data.contract_address != null) {
                 message.contract_address = data.contract_address;
             }
@@ -399,8 +399,8 @@ export namespace evmos.fees.v1 {
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): MsgUpdateDevFeeInfo {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new MsgUpdateDevFeeInfo();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): MsgUpdateFee {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new MsgUpdateFee();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
@@ -422,11 +422,11 @@ export namespace evmos.fees.v1 {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): MsgUpdateDevFeeInfo {
-            return MsgUpdateDevFeeInfo.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): MsgUpdateFee {
+            return MsgUpdateFee.deserialize(bytes);
         }
     }
-    export class MsgUpdateDevFeeInfoResponse extends pb_1.Message {
+    export class MsgUpdateFeeResponse extends pb_1.Message {
         #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
@@ -434,7 +434,7 @@ export namespace evmos.fees.v1 {
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
-            const message = new MsgUpdateDevFeeInfoResponse({});
+            const message = new MsgUpdateFeeResponse({});
             return message;
         }
         toObject() {
@@ -448,8 +448,8 @@ export namespace evmos.fees.v1 {
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): MsgUpdateDevFeeInfoResponse {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new MsgUpdateDevFeeInfoResponse();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): MsgUpdateFeeResponse {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new MsgUpdateFeeResponse();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
@@ -462,8 +462,8 @@ export namespace evmos.fees.v1 {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): MsgUpdateDevFeeInfoResponse {
-            return MsgUpdateDevFeeInfoResponse.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): MsgUpdateFeeResponse {
+            return MsgUpdateFeeResponse.deserialize(bytes);
         }
     }
 }

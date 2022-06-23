@@ -8,11 +8,11 @@
   },
   "dependencies": {
     "@hanchon/evmos-ts-wallet": "^0.1.1",
-    "@astraprotocol/address-converter": "^0.1.8",
-    "@astraprotocol/eip712": "^0.2.2",
-    "@astraprotocol/proto": "^0.1.17",
-    "@astraprotocol/provider": "^0.2.4",
-    "@astraprotocol/transactions": "^0.2.3"
+    "@astradefi/address-converter": "^0.1.8",
+    "@astradefi/eip712": "^0.2.2",
+    "@astradefi/proto": "^0.1.17",
+    "@astradefi/provider": "^0.2.4",
+    "@astradefi/transactions": "^0.2.3"
   },
   "devDependencies": {
     "typescript": "^4.7.3"

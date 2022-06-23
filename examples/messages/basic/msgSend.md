@@ -4,7 +4,7 @@ Send coins to another wallet
 
 ```ts
 import { Wallet } from "@ethersproject/wallet"
-import { createMessageSend } from "@astraprotocol/transactions"
+import { createMessageSend } from '@astradefi/transactions"
 import { broadcast, getSender, LOCALNET_CHAIN, LOCALNET_FEE, signTransaction, singTransactionUsingEIP712 } from "@hanchon/evmos-ts-wallet"
 
 async function prepareMessage(wallet: Wallet) {

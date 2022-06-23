@@ -32,7 +32,7 @@ NOTE: it will only work with signTransaction, right now the eip712 doesn't suppo
 
 ```ts
 import { Wallet } from "@ethersproject/wallet"
-import { createMessageSend } from "@astraprotocol/transactions"
+import { createMessageSend } from '@astradefi/transactions"
 import { broadcast, getSender, LOCALNET_CHAIN, LOCALNET_FEE, signTransaction, singTransactionUsingEIP712 } from "@hanchon/evmos-ts-wallet"
 
 async function prepareMessage(wallet: Wallet) {

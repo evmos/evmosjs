@@ -1,7 +1,7 @@
 import {
   createIBCMsgTransfer as protoCreateIBCMsgTransfer,
   createTransaction,
-} from '@astraprotocol/proto'
+} from '@astradefi/proto'
 
 import {
   createEIP712,
@@ -10,7 +10,7 @@ import {
   generateTypes,
   createIBCMsgTransfer,
   IBC_MSG_TRANSFER_TYPES,
-} from '@astraprotocol/eip712'
+} from '@astradefi/eip712'
 
 import { Chain, Fee, Sender } from './common'
 

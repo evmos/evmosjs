@@ -3,22 +3,22 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-        "@astraprotocol/astrajs": [
+        "@astradefi/astrajs": [
           "./packages/astrajs"
         ],
-        "@astraprotocol/address-converter": [
+        "@astradefi/address-converter": [
           "./packages/address-converter/*"
         ],
-        "@astraprotocol/eip712": [
+        "@astradefi/eip712": [
           "packages/eip712"
         ],
-        "@astraprotocol/proto": [
+        "@astradefi/proto": [
           "packages/proto"
         ],
-        "@astraprotocol/provider": [
+        "@astradefi/provider": [
           "./packages/provider/*"
         ],
-        "@astraprotocol/transactions": [
+        "@astradefi/transactions": [
           "./packages/transactions/*"
         ]
     }

@@ -7,7 +7,7 @@ import {
   MsgWithdrawDelegatorRewardProtoInterface,
   createTransaction,
   createTransactionWithMultipleMessages,
-} from '@astraprotocol/proto'
+} from '@astradefi/proto'
 
 import {
   createEIP712,
@@ -26,7 +26,7 @@ import {
   MsgWithdrawDelegatorRewardInterface,
   MSG_WITHDRAW_VALIDATOR_COMMISSION_TYPES,
   createMsgWithdrawValidatorCommission,
-} from '@astraprotocol/eip712'
+} from '@astradefi/eip712'
 
 import { Chain, Fee, Sender } from './common'
 

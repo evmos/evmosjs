@@ -1,7 +1,7 @@
 import {
   createMsgEditValidator as protoMsgEditValidator,
   createTransaction,
-} from '@astraprotocol/proto'
+} from '@astradefi/proto'
 
 import {
   createEIP712,
@@ -10,7 +10,7 @@ import {
   generateTypes,
   MSG_EDIT_VALIDATOR_TYPES,
   createMsgEditValidator,
-} from '@astraprotocol/eip712'
+} from '@astradefi/eip712'
 
 import { Chain, Fee, Sender } from './common'
 

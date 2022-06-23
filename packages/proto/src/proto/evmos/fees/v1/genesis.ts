@@ -12,7 +12,7 @@ export namespace evmos.fees.v1 {
         #one_of_decls = [];
         constructor(data?: any[] | {
             params?: Params;
-            dev_fee_infos?: dependency_1.evmos.fees.v1.DevFeeInfo[];
+            fees?: dependency_1.evmos.fees.v1.Fee[];
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
@@ -20,8 +20,8 @@ export namespace evmos.fees.v1 {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;
                 }
-                if ("dev_fee_infos" in data && data.dev_fee_infos != undefined) {
-                    this.dev_fee_infos = data.dev_fee_infos;
+                if ("fees" in data && data.fees != undefined) {
+                    this.fees = data.fees;
                 }
             }
         }
@@ -31,35 +31,35 @@ export namespace evmos.fees.v1 {
         set params(value: Params) {
             pb_1.Message.setWrapperField(this, 1, value);
         }
-        get dev_fee_infos() {
-            return pb_1.Message.getRepeatedWrapperField(this, dependency_1.evmos.fees.v1.DevFeeInfo, 2) as dependency_1.evmos.fees.v1.DevFeeInfo[];
+        get fees() {
+            return pb_1.Message.getRepeatedWrapperField(this, dependency_1.evmos.fees.v1.Fee, 2) as dependency_1.evmos.fees.v1.Fee[];
         }
-        set dev_fee_infos(value: dependency_1.evmos.fees.v1.DevFeeInfo[]) {
+        set fees(value: dependency_1.evmos.fees.v1.Fee[]) {
             pb_1.Message.setRepeatedWrapperField(this, 2, value);
         }
         static fromObject(data: {
             params?: ReturnType<typeof Params.prototype.toObject>;
-            dev_fee_infos?: ReturnType<typeof dependency_1.evmos.fees.v1.DevFeeInfo.prototype.toObject>[];
+            fees?: ReturnType<typeof dependency_1.evmos.fees.v1.Fee.prototype.toObject>[];
         }) {
             const message = new GenesisState({});
             if (data.params != null) {
                 message.params = Params.fromObject(data.params);
             }
-            if (data.dev_fee_infos != null) {
-                message.dev_fee_infos = data.dev_fee_infos.map(item => dependency_1.evmos.fees.v1.DevFeeInfo.fromObject(item));
+            if (data.fees != null) {
+                message.fees = data.fees.map(item => dependency_1.evmos.fees.v1.Fee.fromObject(item));
             }
             return message;
         }
         toObject() {
             const data: {
                 params?: ReturnType<typeof Params.prototype.toObject>;
-                dev_fee_infos?: ReturnType<typeof dependency_1.evmos.fees.v1.DevFeeInfo.prototype.toObject>[];
+                fees?: ReturnType<typeof dependency_1.evmos.fees.v1.Fee.prototype.toObject>[];
             } = {};
             if (this.params != null) {
                 data.params = this.params.toObject();
             }
-            if (this.dev_fee_infos != null) {
-                data.dev_fee_infos = this.dev_fee_infos.map((item: dependency_1.evmos.fees.v1.DevFeeInfo) => item.toObject());
+            if (this.fees != null) {
+                data.fees = this.fees.map((item: dependency_1.evmos.fees.v1.Fee) => item.toObject());
             }
             return data;
         }
@@ -69,8 +69,8 @@ export namespace evmos.fees.v1 {
             const writer = w || new pb_1.BinaryWriter();
             if (this.params !== undefined)
                 writer.writeMessage(1, this.params, () => this.params.serialize(writer));
-            if (this.dev_fee_infos !== undefined)
-                writer.writeRepeatedMessage(2, this.dev_fee_infos, (item: dependency_1.evmos.fees.v1.DevFeeInfo) => item.serialize(writer));
+            if (this.fees !== undefined)
+                writer.writeRepeatedMessage(2, this.fees, (item: dependency_1.evmos.fees.v1.Fee) => item.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -84,7 +84,7 @@ export namespace evmos.fees.v1 {
                         reader.readMessage(message.params, () => message.params = Params.deserialize(reader));
                         break;
                     case 2:
-                        reader.readMessage(message.dev_fee_infos, () => pb_1.Message.addToRepeatedWrapperField(message, 2, dependency_1.evmos.fees.v1.DevFeeInfo.deserialize(reader), dependency_1.evmos.fees.v1.DevFeeInfo));
+                        reader.readMessage(message.fees, () => pb_1.Message.addToRepeatedWrapperField(message, 2, dependency_1.evmos.fees.v1.Fee.deserialize(reader), dependency_1.evmos.fees.v1.Fee));
                         break;
                     default: reader.skipField();
                 }
@@ -103,9 +103,7 @@ export namespace evmos.fees.v1 {
         constructor(data?: any[] | {
             enable_fees?: boolean;
             developer_shares?: string;
-            validator_shares?: string;
             addr_derivation_cost_create?: number;
-            min_gas_price?: string;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -116,14 +114,8 @@ export namespace evmos.fees.v1 {
                 if ("developer_shares" in data && data.developer_shares != undefined) {
                     this.developer_shares = data.developer_shares;
                 }
-                if ("validator_shares" in data && data.validator_shares != undefined) {
-                    this.validator_shares = data.validator_shares;
-                }
                 if ("addr_derivation_cost_create" in data && data.addr_derivation_cost_create != undefined) {
                     this.addr_derivation_cost_create = data.addr_derivation_cost_create;
-                }
-                if ("min_gas_price" in data && data.min_gas_price != undefined) {
-                    this.min_gas_price = data.min_gas_price;
                 }
             }
         }
@@ -139,30 +131,16 @@ export namespace evmos.fees.v1 {
         set developer_shares(value: string) {
             pb_1.Message.setField(this, 2, value);
         }
-        get validator_shares() {
-            return pb_1.Message.getField(this, 3) as string;
-        }
-        set validator_shares(value: string) {
-            pb_1.Message.setField(this, 3, value);
-        }
         get addr_derivation_cost_create() {
-            return pb_1.Message.getField(this, 4) as number;
+            return pb_1.Message.getField(this, 3) as number;
         }
         set addr_derivation_cost_create(value: number) {
-            pb_1.Message.setField(this, 4, value);
-        }
-        get min_gas_price() {
-            return pb_1.Message.getField(this, 5) as string;
-        }
-        set min_gas_price(value: string) {
-            pb_1.Message.setField(this, 5, value);
+            pb_1.Message.setField(this, 3, value);
         }
         static fromObject(data: {
             enable_fees?: boolean;
             developer_shares?: string;
-            validator_shares?: string;
             addr_derivation_cost_create?: number;
-            min_gas_price?: string;
         }) {
             const message = new Params({});
             if (data.enable_fees != null) {
@@ -171,14 +149,8 @@ export namespace evmos.fees.v1 {
             if (data.developer_shares != null) {
                 message.developer_shares = data.developer_shares;
             }
-            if (data.validator_shares != null) {
-                message.validator_shares = data.validator_shares;
-            }
             if (data.addr_derivation_cost_create != null) {
                 message.addr_derivation_cost_create = data.addr_derivation_cost_create;
-            }
-            if (data.min_gas_price != null) {
-                message.min_gas_price = data.min_gas_price;
             }
             return message;
         }
@@ -186,9 +158,7 @@ export namespace evmos.fees.v1 {
             const data: {
                 enable_fees?: boolean;
                 developer_shares?: string;
-                validator_shares?: string;
                 addr_derivation_cost_create?: number;
-                min_gas_price?: string;
             } = {};
             if (this.enable_fees != null) {
                 data.enable_fees = this.enable_fees;
@@ -196,14 +166,8 @@ export namespace evmos.fees.v1 {
             if (this.developer_shares != null) {
                 data.developer_shares = this.developer_shares;
             }
-            if (this.validator_shares != null) {
-                data.validator_shares = this.validator_shares;
-            }
             if (this.addr_derivation_cost_create != null) {
                 data.addr_derivation_cost_create = this.addr_derivation_cost_create;
-            }
-            if (this.min_gas_price != null) {
-                data.min_gas_price = this.min_gas_price;
             }
             return data;
         }
@@ -215,12 +179,8 @@ export namespace evmos.fees.v1 {
                 writer.writeBool(1, this.enable_fees);
             if (typeof this.developer_shares === "string" && this.developer_shares.length)
                 writer.writeString(2, this.developer_shares);
-            if (typeof this.validator_shares === "string" && this.validator_shares.length)
-                writer.writeString(3, this.validator_shares);
             if (this.addr_derivation_cost_create !== undefined)
-                writer.writeUint64(4, this.addr_derivation_cost_create);
-            if (typeof this.min_gas_price === "string" && this.min_gas_price.length)
-                writer.writeString(5, this.min_gas_price);
+                writer.writeUint64(3, this.addr_derivation_cost_create);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -237,13 +197,7 @@ export namespace evmos.fees.v1 {
                         message.developer_shares = reader.readString();
                         break;
                     case 3:
-                        message.validator_shares = reader.readString();
-                        break;
-                    case 4:
                         message.addr_derivation_cost_create = reader.readUint64();
-                        break;
-                    case 5:
-                        message.min_gas_price = reader.readString();
                         break;
                     default: reader.skipField();
                 }

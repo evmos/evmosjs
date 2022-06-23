@@ -7,7 +7,7 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export namespace evmos.fees.v1 {
-    export class DevFeeInfo extends pb_1.Message {
+    export class Fee extends pb_1.Message {
         #one_of_decls = [];
         constructor(data?: any[] | {
             contract_address?: string;
@@ -51,7 +51,7 @@ export namespace evmos.fees.v1 {
             deployer_address?: string;
             withdraw_address?: string;
         }) {
-            const message = new DevFeeInfo({});
+            const message = new Fee({});
             if (data.contract_address != null) {
                 message.contract_address = data.contract_address;
             }
@@ -93,8 +93,8 @@ export namespace evmos.fees.v1 {
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): DevFeeInfo {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new DevFeeInfo();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Fee {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Fee();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
@@ -116,8 +116,8 @@ export namespace evmos.fees.v1 {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): DevFeeInfo {
-            return DevFeeInfo.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): Fee {
+            return Fee.deserialize(bytes);
         }
     }
 }

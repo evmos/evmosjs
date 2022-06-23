@@ -1,8 +1,8 @@
-yarn unlink "@astraprotocol/address-converter"
-yarn unlink "@astraprotocol/eip712"
-yarn unlink "@astraprotocol/proto"
-yarn unlink "@astraprotocol/provider"
-yarn unlink "@astraprotocol/transactions"
+yarn unlink "@astradefi/address-converter"
+yarn unlink "@astradefi/eip712"
+yarn unlink "@astradefi/proto"
+yarn unlink "@astradefi/provider"
+yarn unlink "@astradefi/transactions"
 
 cd ..
 cd packages/address-converter
@@ -22,8 +22,8 @@ yarn unlink
 yarn link
 cd ..
 cd utils
-yarn link "@astraprotocol/address-converter"
-yarn link "@astraprotocol/eip712"
-yarn link "@astraprotocol/proto"
-yarn link "@astraprotocol/provider"
-yarn link "@astraprotocol/transactions"
+yarn link "@astradefi/address-converter"
+yarn link "@astradefi/eip712"
+yarn link "@astradefi/proto"
+yarn link "@astradefi/provider"
+yarn link "@astradefi/transactions"

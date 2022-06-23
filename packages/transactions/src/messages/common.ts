@@ -1,4 +1,4 @@
-import { protoTxNamespace } from '@astraprotocol/proto'
+import { protoTxNamespace } from '@astradefi/proto'
 
 export interface EIPToSign {
   types: object

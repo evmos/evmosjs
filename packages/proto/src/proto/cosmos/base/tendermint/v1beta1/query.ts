@@ -5,18 +5,18 @@
  * compiler version: 3.19.4
  * source: cosmos/base/tendermint/v1beta1/query.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
-import * as dependency_1 from "./../../../../google/protobuf/any";
-import * as dependency_3 from "./../../../../tendermint/p2p/types";
-import * as dependency_4 from "./../../../../tendermint/types/block";
-import * as dependency_5 from "./../../../../tendermint/types/types";
-import * as dependency_6 from "./../../query/v1beta1/pagination";
+import * as dependency_2 from "./../../../../google/protobuf/any";
+import * as dependency_4 from "./../../../../tendermint/p2p/types";
+import * as dependency_5 from "./../../../../tendermint/types/block";
+import * as dependency_6 from "./../../../../tendermint/types/types";
+import * as dependency_7 from "./../../query/v1beta1/pagination";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.base.tendermint.v1beta1 {
     export class GetValidatorSetByHeightRequest extends pb_1.Message {
         #one_of_decls = [];
         constructor(data?: any[] | {
             height?: number;
-            pagination?: dependency_6.cosmos.base.query.v1beta1.PageRequest;
+            pagination?: dependency_7.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -36,28 +36,28 @@ export namespace cosmos.base.tendermint.v1beta1 {
             pb_1.Message.setField(this, 1, value);
         }
         get pagination() {
-            return pb_1.Message.getWrapperField(this, dependency_6.cosmos.base.query.v1beta1.PageRequest, 2) as dependency_6.cosmos.base.query.v1beta1.PageRequest;
+            return pb_1.Message.getWrapperField(this, dependency_7.cosmos.base.query.v1beta1.PageRequest, 2) as dependency_7.cosmos.base.query.v1beta1.PageRequest;
         }
-        set pagination(value: dependency_6.cosmos.base.query.v1beta1.PageRequest) {
+        set pagination(value: dependency_7.cosmos.base.query.v1beta1.PageRequest) {
             pb_1.Message.setWrapperField(this, 2, value);
         }
         static fromObject(data: {
             height?: number;
-            pagination?: ReturnType<typeof dependency_6.cosmos.base.query.v1beta1.PageRequest.prototype.toObject>;
+            pagination?: ReturnType<typeof dependency_7.cosmos.base.query.v1beta1.PageRequest.prototype.toObject>;
         }) {
             const message = new GetValidatorSetByHeightRequest({});
             if (data.height != null) {
                 message.height = data.height;
             }
             if (data.pagination != null) {
-                message.pagination = dependency_6.cosmos.base.query.v1beta1.PageRequest.fromObject(data.pagination);
+                message.pagination = dependency_7.cosmos.base.query.v1beta1.PageRequest.fromObject(data.pagination);
             }
             return message;
         }
         toObject() {
             const data: {
                 height?: number;
-                pagination?: ReturnType<typeof dependency_6.cosmos.base.query.v1beta1.PageRequest.prototype.toObject>;
+                pagination?: ReturnType<typeof dependency_7.cosmos.base.query.v1beta1.PageRequest.prototype.toObject>;
             } = {};
             if (this.height != null) {
                 data.height = this.height;
@@ -88,7 +88,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
                         message.height = reader.readInt64();
                         break;
                     case 2:
-                        reader.readMessage(message.pagination, () => message.pagination = dependency_6.cosmos.base.query.v1beta1.PageRequest.deserialize(reader));
+                        reader.readMessage(message.pagination, () => message.pagination = dependency_7.cosmos.base.query.v1beta1.PageRequest.deserialize(reader));
                         break;
                     default: reader.skipField();
                 }
@@ -107,7 +107,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
         constructor(data?: any[] | {
             block_height?: number;
             validators?: Validator[];
-            pagination?: dependency_6.cosmos.base.query.v1beta1.PageResponse;
+            pagination?: dependency_7.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
@@ -136,15 +136,15 @@ export namespace cosmos.base.tendermint.v1beta1 {
             pb_1.Message.setRepeatedWrapperField(this, 2, value);
         }
         get pagination() {
-            return pb_1.Message.getWrapperField(this, dependency_6.cosmos.base.query.v1beta1.PageResponse, 3) as dependency_6.cosmos.base.query.v1beta1.PageResponse;
+            return pb_1.Message.getWrapperField(this, dependency_7.cosmos.base.query.v1beta1.PageResponse, 3) as dependency_7.cosmos.base.query.v1beta1.PageResponse;
         }
-        set pagination(value: dependency_6.cosmos.base.query.v1beta1.PageResponse) {
+        set pagination(value: dependency_7.cosmos.base.query.v1beta1.PageResponse) {
             pb_1.Message.setWrapperField(this, 3, value);
         }
         static fromObject(data: {
             block_height?: number;
             validators?: ReturnType<typeof Validator.prototype.toObject>[];
-            pagination?: ReturnType<typeof dependency_6.cosmos.base.query.v1beta1.PageResponse.prototype.toObject>;
+            pagination?: ReturnType<typeof dependency_7.cosmos.base.query.v1beta1.PageResponse.prototype.toObject>;
         }) {
             const message = new GetValidatorSetByHeightResponse({});
             if (data.block_height != null) {
@@ -154,7 +154,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
                 message.validators = data.validators.map(item => Validator.fromObject(item));
             }
             if (data.pagination != null) {
-                message.pagination = dependency_6.cosmos.base.query.v1beta1.PageResponse.fromObject(data.pagination);
+                message.pagination = dependency_7.cosmos.base.query.v1beta1.PageResponse.fromObject(data.pagination);
             }
             return message;
         }
@@ -162,7 +162,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
             const data: {
                 block_height?: number;
                 validators?: ReturnType<typeof Validator.prototype.toObject>[];
-                pagination?: ReturnType<typeof dependency_6.cosmos.base.query.v1beta1.PageResponse.prototype.toObject>;
+                pagination?: ReturnType<typeof dependency_7.cosmos.base.query.v1beta1.PageResponse.prototype.toObject>;
             } = {};
             if (this.block_height != null) {
                 data.block_height = this.block_height;
@@ -201,7 +201,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
                         reader.readMessage(message.validators, () => pb_1.Message.addToRepeatedWrapperField(message, 2, Validator.deserialize(reader), Validator));
                         break;
                     case 3:
-                        reader.readMessage(message.pagination, () => message.pagination = dependency_6.cosmos.base.query.v1beta1.PageResponse.deserialize(reader));
+                        reader.readMessage(message.pagination, () => message.pagination = dependency_7.cosmos.base.query.v1beta1.PageResponse.deserialize(reader));
                         break;
                     default: reader.skipField();
                 }
@@ -218,7 +218,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
     export class GetLatestValidatorSetRequest extends pb_1.Message {
         #one_of_decls = [];
         constructor(data?: any[] | {
-            pagination?: dependency_6.cosmos.base.query.v1beta1.PageRequest;
+            pagination?: dependency_7.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -229,23 +229,23 @@ export namespace cosmos.base.tendermint.v1beta1 {
             }
         }
         get pagination() {
-            return pb_1.Message.getWrapperField(this, dependency_6.cosmos.base.query.v1beta1.PageRequest, 1) as dependency_6.cosmos.base.query.v1beta1.PageRequest;
+            return pb_1.Message.getWrapperField(this, dependency_7.cosmos.base.query.v1beta1.PageRequest, 1) as dependency_7.cosmos.base.query.v1beta1.PageRequest;
         }
-        set pagination(value: dependency_6.cosmos.base.query.v1beta1.PageRequest) {
+        set pagination(value: dependency_7.cosmos.base.query.v1beta1.PageRequest) {
             pb_1.Message.setWrapperField(this, 1, value);
         }
         static fromObject(data: {
-            pagination?: ReturnType<typeof dependency_6.cosmos.base.query.v1beta1.PageRequest.prototype.toObject>;
+            pagination?: ReturnType<typeof dependency_7.cosmos.base.query.v1beta1.PageRequest.prototype.toObject>;
         }) {
             const message = new GetLatestValidatorSetRequest({});
             if (data.pagination != null) {
-                message.pagination = dependency_6.cosmos.base.query.v1beta1.PageRequest.fromObject(data.pagination);
+                message.pagination = dependency_7.cosmos.base.query.v1beta1.PageRequest.fromObject(data.pagination);
             }
             return message;
         }
         toObject() {
             const data: {
-                pagination?: ReturnType<typeof dependency_6.cosmos.base.query.v1beta1.PageRequest.prototype.toObject>;
+                pagination?: ReturnType<typeof dependency_7.cosmos.base.query.v1beta1.PageRequest.prototype.toObject>;
             } = {};
             if (this.pagination != null) {
                 data.pagination = this.pagination.toObject();
@@ -268,7 +268,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        reader.readMessage(message.pagination, () => message.pagination = dependency_6.cosmos.base.query.v1beta1.PageRequest.deserialize(reader));
+                        reader.readMessage(message.pagination, () => message.pagination = dependency_7.cosmos.base.query.v1beta1.PageRequest.deserialize(reader));
                         break;
                     default: reader.skipField();
                 }
@@ -287,7 +287,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
         constructor(data?: any[] | {
             block_height?: number;
             validators?: Validator[];
-            pagination?: dependency_6.cosmos.base.query.v1beta1.PageResponse;
+            pagination?: dependency_7.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
@@ -316,15 +316,15 @@ export namespace cosmos.base.tendermint.v1beta1 {
             pb_1.Message.setRepeatedWrapperField(this, 2, value);
         }
         get pagination() {
-            return pb_1.Message.getWrapperField(this, dependency_6.cosmos.base.query.v1beta1.PageResponse, 3) as dependency_6.cosmos.base.query.v1beta1.PageResponse;
+            return pb_1.Message.getWrapperField(this, dependency_7.cosmos.base.query.v1beta1.PageResponse, 3) as dependency_7.cosmos.base.query.v1beta1.PageResponse;
         }
-        set pagination(value: dependency_6.cosmos.base.query.v1beta1.PageResponse) {
+        set pagination(value: dependency_7.cosmos.base.query.v1beta1.PageResponse) {
             pb_1.Message.setWrapperField(this, 3, value);
         }
         static fromObject(data: {
             block_height?: number;
             validators?: ReturnType<typeof Validator.prototype.toObject>[];
-            pagination?: ReturnType<typeof dependency_6.cosmos.base.query.v1beta1.PageResponse.prototype.toObject>;
+            pagination?: ReturnType<typeof dependency_7.cosmos.base.query.v1beta1.PageResponse.prototype.toObject>;
         }) {
             const message = new GetLatestValidatorSetResponse({});
             if (data.block_height != null) {
@@ -334,7 +334,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
                 message.validators = data.validators.map(item => Validator.fromObject(item));
             }
             if (data.pagination != null) {
-                message.pagination = dependency_6.cosmos.base.query.v1beta1.PageResponse.fromObject(data.pagination);
+                message.pagination = dependency_7.cosmos.base.query.v1beta1.PageResponse.fromObject(data.pagination);
             }
             return message;
         }
@@ -342,7 +342,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
             const data: {
                 block_height?: number;
                 validators?: ReturnType<typeof Validator.prototype.toObject>[];
-                pagination?: ReturnType<typeof dependency_6.cosmos.base.query.v1beta1.PageResponse.prototype.toObject>;
+                pagination?: ReturnType<typeof dependency_7.cosmos.base.query.v1beta1.PageResponse.prototype.toObject>;
             } = {};
             if (this.block_height != null) {
                 data.block_height = this.block_height;
@@ -381,7 +381,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
                         reader.readMessage(message.validators, () => pb_1.Message.addToRepeatedWrapperField(message, 2, Validator.deserialize(reader), Validator));
                         break;
                     case 3:
-                        reader.readMessage(message.pagination, () => message.pagination = dependency_6.cosmos.base.query.v1beta1.PageResponse.deserialize(reader));
+                        reader.readMessage(message.pagination, () => message.pagination = dependency_7.cosmos.base.query.v1beta1.PageResponse.deserialize(reader));
                         break;
                     default: reader.skipField();
                 }
@@ -399,7 +399,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
         #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
-            pub_key?: dependency_1.google.protobuf.Any;
+            pub_key?: dependency_2.google.protobuf.Any;
             voting_power?: number;
             proposer_priority?: number;
         }) {
@@ -427,9 +427,9 @@ export namespace cosmos.base.tendermint.v1beta1 {
             pb_1.Message.setField(this, 1, value);
         }
         get pub_key() {
-            return pb_1.Message.getWrapperField(this, dependency_1.google.protobuf.Any, 2) as dependency_1.google.protobuf.Any;
+            return pb_1.Message.getWrapperField(this, dependency_2.google.protobuf.Any, 2) as dependency_2.google.protobuf.Any;
         }
-        set pub_key(value: dependency_1.google.protobuf.Any) {
+        set pub_key(value: dependency_2.google.protobuf.Any) {
             pb_1.Message.setWrapperField(this, 2, value);
         }
         get voting_power() {
@@ -446,7 +446,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
         }
         static fromObject(data: {
             address?: string;
-            pub_key?: ReturnType<typeof dependency_1.google.protobuf.Any.prototype.toObject>;
+            pub_key?: ReturnType<typeof dependency_2.google.protobuf.Any.prototype.toObject>;
             voting_power?: number;
             proposer_priority?: number;
         }) {
@@ -455,7 +455,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
                 message.address = data.address;
             }
             if (data.pub_key != null) {
-                message.pub_key = dependency_1.google.protobuf.Any.fromObject(data.pub_key);
+                message.pub_key = dependency_2.google.protobuf.Any.fromObject(data.pub_key);
             }
             if (data.voting_power != null) {
                 message.voting_power = data.voting_power;
@@ -468,7 +468,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
         toObject() {
             const data: {
                 address?: string;
-                pub_key?: ReturnType<typeof dependency_1.google.protobuf.Any.prototype.toObject>;
+                pub_key?: ReturnType<typeof dependency_2.google.protobuf.Any.prototype.toObject>;
                 voting_power?: number;
                 proposer_priority?: number;
             } = {};
@@ -511,7 +511,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
                         message.address = reader.readString();
                         break;
                     case 2:
-                        reader.readMessage(message.pub_key, () => message.pub_key = dependency_1.google.protobuf.Any.deserialize(reader));
+                        reader.readMessage(message.pub_key, () => message.pub_key = dependency_2.google.protobuf.Any.deserialize(reader));
                         break;
                     case 3:
                         message.voting_power = reader.readInt64();
@@ -601,8 +601,8 @@ export namespace cosmos.base.tendermint.v1beta1 {
     export class GetBlockByHeightResponse extends pb_1.Message {
         #one_of_decls = [];
         constructor(data?: any[] | {
-            block_id?: dependency_5.tendermint.types.BlockID;
-            block?: dependency_4.tendermint.types.Block;
+            block_id?: dependency_6.tendermint.types.BlockID;
+            block?: dependency_5.tendermint.types.Block;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -616,34 +616,34 @@ export namespace cosmos.base.tendermint.v1beta1 {
             }
         }
         get block_id() {
-            return pb_1.Message.getWrapperField(this, dependency_5.tendermint.types.BlockID, 1) as dependency_5.tendermint.types.BlockID;
+            return pb_1.Message.getWrapperField(this, dependency_6.tendermint.types.BlockID, 1) as dependency_6.tendermint.types.BlockID;
         }
-        set block_id(value: dependency_5.tendermint.types.BlockID) {
+        set block_id(value: dependency_6.tendermint.types.BlockID) {
             pb_1.Message.setWrapperField(this, 1, value);
         }
         get block() {
-            return pb_1.Message.getWrapperField(this, dependency_4.tendermint.types.Block, 2) as dependency_4.tendermint.types.Block;
+            return pb_1.Message.getWrapperField(this, dependency_5.tendermint.types.Block, 2) as dependency_5.tendermint.types.Block;
         }
-        set block(value: dependency_4.tendermint.types.Block) {
+        set block(value: dependency_5.tendermint.types.Block) {
             pb_1.Message.setWrapperField(this, 2, value);
         }
         static fromObject(data: {
-            block_id?: ReturnType<typeof dependency_5.tendermint.types.BlockID.prototype.toObject>;
-            block?: ReturnType<typeof dependency_4.tendermint.types.Block.prototype.toObject>;
+            block_id?: ReturnType<typeof dependency_6.tendermint.types.BlockID.prototype.toObject>;
+            block?: ReturnType<typeof dependency_5.tendermint.types.Block.prototype.toObject>;
         }) {
             const message = new GetBlockByHeightResponse({});
             if (data.block_id != null) {
-                message.block_id = dependency_5.tendermint.types.BlockID.fromObject(data.block_id);
+                message.block_id = dependency_6.tendermint.types.BlockID.fromObject(data.block_id);
             }
             if (data.block != null) {
-                message.block = dependency_4.tendermint.types.Block.fromObject(data.block);
+                message.block = dependency_5.tendermint.types.Block.fromObject(data.block);
             }
             return message;
         }
         toObject() {
             const data: {
-                block_id?: ReturnType<typeof dependency_5.tendermint.types.BlockID.prototype.toObject>;
-                block?: ReturnType<typeof dependency_4.tendermint.types.Block.prototype.toObject>;
+                block_id?: ReturnType<typeof dependency_6.tendermint.types.BlockID.prototype.toObject>;
+                block?: ReturnType<typeof dependency_5.tendermint.types.Block.prototype.toObject>;
             } = {};
             if (this.block_id != null) {
                 data.block_id = this.block_id.toObject();
@@ -671,10 +671,10 @@ export namespace cosmos.base.tendermint.v1beta1 {
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        reader.readMessage(message.block_id, () => message.block_id = dependency_5.tendermint.types.BlockID.deserialize(reader));
+                        reader.readMessage(message.block_id, () => message.block_id = dependency_6.tendermint.types.BlockID.deserialize(reader));
                         break;
                     case 2:
-                        reader.readMessage(message.block, () => message.block = dependency_4.tendermint.types.Block.deserialize(reader));
+                        reader.readMessage(message.block, () => message.block = dependency_5.tendermint.types.Block.deserialize(reader));
                         break;
                     default: reader.skipField();
                 }
@@ -731,8 +731,8 @@ export namespace cosmos.base.tendermint.v1beta1 {
     export class GetLatestBlockResponse extends pb_1.Message {
         #one_of_decls = [];
         constructor(data?: any[] | {
-            block_id?: dependency_5.tendermint.types.BlockID;
-            block?: dependency_4.tendermint.types.Block;
+            block_id?: dependency_6.tendermint.types.BlockID;
+            block?: dependency_5.tendermint.types.Block;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -746,34 +746,34 @@ export namespace cosmos.base.tendermint.v1beta1 {
             }
         }
         get block_id() {
-            return pb_1.Message.getWrapperField(this, dependency_5.tendermint.types.BlockID, 1) as dependency_5.tendermint.types.BlockID;
+            return pb_1.Message.getWrapperField(this, dependency_6.tendermint.types.BlockID, 1) as dependency_6.tendermint.types.BlockID;
         }
-        set block_id(value: dependency_5.tendermint.types.BlockID) {
+        set block_id(value: dependency_6.tendermint.types.BlockID) {
             pb_1.Message.setWrapperField(this, 1, value);
         }
         get block() {
-            return pb_1.Message.getWrapperField(this, dependency_4.tendermint.types.Block, 2) as dependency_4.tendermint.types.Block;
+            return pb_1.Message.getWrapperField(this, dependency_5.tendermint.types.Block, 2) as dependency_5.tendermint.types.Block;
         }
-        set block(value: dependency_4.tendermint.types.Block) {
+        set block(value: dependency_5.tendermint.types.Block) {
             pb_1.Message.setWrapperField(this, 2, value);
         }
         static fromObject(data: {
-            block_id?: ReturnType<typeof dependency_5.tendermint.types.BlockID.prototype.toObject>;
-            block?: ReturnType<typeof dependency_4.tendermint.types.Block.prototype.toObject>;
+            block_id?: ReturnType<typeof dependency_6.tendermint.types.BlockID.prototype.toObject>;
+            block?: ReturnType<typeof dependency_5.tendermint.types.Block.prototype.toObject>;
         }) {
             const message = new GetLatestBlockResponse({});
             if (data.block_id != null) {
-                message.block_id = dependency_5.tendermint.types.BlockID.fromObject(data.block_id);
+                message.block_id = dependency_6.tendermint.types.BlockID.fromObject(data.block_id);
             }
             if (data.block != null) {
-                message.block = dependency_4.tendermint.types.Block.fromObject(data.block);
+                message.block = dependency_5.tendermint.types.Block.fromObject(data.block);
             }
             return message;
         }
         toObject() {
             const data: {
-                block_id?: ReturnType<typeof dependency_5.tendermint.types.BlockID.prototype.toObject>;
-                block?: ReturnType<typeof dependency_4.tendermint.types.Block.prototype.toObject>;
+                block_id?: ReturnType<typeof dependency_6.tendermint.types.BlockID.prototype.toObject>;
+                block?: ReturnType<typeof dependency_5.tendermint.types.Block.prototype.toObject>;
             } = {};
             if (this.block_id != null) {
                 data.block_id = this.block_id.toObject();
@@ -801,10 +801,10 @@ export namespace cosmos.base.tendermint.v1beta1 {
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        reader.readMessage(message.block_id, () => message.block_id = dependency_5.tendermint.types.BlockID.deserialize(reader));
+                        reader.readMessage(message.block_id, () => message.block_id = dependency_6.tendermint.types.BlockID.deserialize(reader));
                         break;
                     case 2:
-                        reader.readMessage(message.block, () => message.block = dependency_4.tendermint.types.Block.deserialize(reader));
+                        reader.readMessage(message.block, () => message.block = dependency_5.tendermint.types.Block.deserialize(reader));
                         break;
                     default: reader.skipField();
                 }
@@ -968,7 +968,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
     export class GetNodeInfoResponse extends pb_1.Message {
         #one_of_decls = [];
         constructor(data?: any[] | {
-            default_node_info?: dependency_3.tendermint.p2p.DefaultNodeInfo;
+            default_node_info?: dependency_4.tendermint.p2p.DefaultNodeInfo;
             application_version?: VersionInfo;
         }) {
             super();
@@ -983,9 +983,9 @@ export namespace cosmos.base.tendermint.v1beta1 {
             }
         }
         get default_node_info() {
-            return pb_1.Message.getWrapperField(this, dependency_3.tendermint.p2p.DefaultNodeInfo, 1) as dependency_3.tendermint.p2p.DefaultNodeInfo;
+            return pb_1.Message.getWrapperField(this, dependency_4.tendermint.p2p.DefaultNodeInfo, 1) as dependency_4.tendermint.p2p.DefaultNodeInfo;
         }
-        set default_node_info(value: dependency_3.tendermint.p2p.DefaultNodeInfo) {
+        set default_node_info(value: dependency_4.tendermint.p2p.DefaultNodeInfo) {
             pb_1.Message.setWrapperField(this, 1, value);
         }
         get application_version() {
@@ -995,12 +995,12 @@ export namespace cosmos.base.tendermint.v1beta1 {
             pb_1.Message.setWrapperField(this, 2, value);
         }
         static fromObject(data: {
-            default_node_info?: ReturnType<typeof dependency_3.tendermint.p2p.DefaultNodeInfo.prototype.toObject>;
+            default_node_info?: ReturnType<typeof dependency_4.tendermint.p2p.DefaultNodeInfo.prototype.toObject>;
             application_version?: ReturnType<typeof VersionInfo.prototype.toObject>;
         }) {
             const message = new GetNodeInfoResponse({});
             if (data.default_node_info != null) {
-                message.default_node_info = dependency_3.tendermint.p2p.DefaultNodeInfo.fromObject(data.default_node_info);
+                message.default_node_info = dependency_4.tendermint.p2p.DefaultNodeInfo.fromObject(data.default_node_info);
             }
             if (data.application_version != null) {
                 message.application_version = VersionInfo.fromObject(data.application_version);
@@ -1009,7 +1009,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
         }
         toObject() {
             const data: {
-                default_node_info?: ReturnType<typeof dependency_3.tendermint.p2p.DefaultNodeInfo.prototype.toObject>;
+                default_node_info?: ReturnType<typeof dependency_4.tendermint.p2p.DefaultNodeInfo.prototype.toObject>;
                 application_version?: ReturnType<typeof VersionInfo.prototype.toObject>;
             } = {};
             if (this.default_node_info != null) {
@@ -1038,7 +1038,7 @@ export namespace cosmos.base.tendermint.v1beta1 {
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        reader.readMessage(message.default_node_info, () => message.default_node_info = dependency_3.tendermint.p2p.DefaultNodeInfo.deserialize(reader));
+                        reader.readMessage(message.default_node_info, () => message.default_node_info = dependency_4.tendermint.p2p.DefaultNodeInfo.deserialize(reader));
                         break;
                     case 2:
                         reader.readMessage(message.application_version, () => message.application_version = VersionInfo.deserialize(reader));

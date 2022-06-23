@@ -4,7 +4,7 @@ EIP712 transactions creator.
 
 # Installation
 
-- `yarn add @astraprotocol/evmosjs`
+- `yarn add @astradefi/astrajs`
 
 # Example
 
@@ -18,7 +18,7 @@ import {
   generateTypes,
   createMsgSend,
   MSG_SEND_TYPES,
-} from '@astraprotocol/evmosjs/packages/eip712'
+} from '@astradefi/astrajs/packages/eip712'
 
 let fee = generateFee(
   '20',

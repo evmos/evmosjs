@@ -41,9 +41,9 @@ The examples are using `signTransaction` or `singTransactionUsingEIP712` to sign
 NOTE: msg is the result of calling any `createTx...` function using evmosjs
 
 ```ts
-import { evmosToEth } from '@astraprotocol/address-converter'
-import { generateEndpointBroadcast, generatePostBodyBroadcast } from '@astraprotocol/provider'
-import { createTxRawEIP712, signatureToWeb3Extension } from '@astraprotocol/transactions'
+import { evmosToEth } from '@astradefi/address-converter'
+import { generateEndpointBroadcast, generatePostBodyBroadcast } from '@astradefi/provider'
+import { createTxRawEIP712, signatureToWeb3Extension } from '@astradefi/transactions'
 
 // Init Metamask
 await window.ethereum.enable();

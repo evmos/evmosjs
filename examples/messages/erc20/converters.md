@@ -3,9 +3,9 @@
 ```ts
 /* eslint-disable import/no-extraneous-dependencies */
 // This dependency is local to the utils project
-import { evmosToEth } from '@astraprotocol/address-converter'
+import { evmosToEth } from '@astradefi/address-converter'
 import { Wallet } from '@ethersproject/wallet'
-import { createTxMsgConvertCoin, createTxMsgConvertERC20 } from '@astraprotocol/transactions'
+import { createTxMsgConvertCoin, createTxMsgConvertERC20 } from '@astradefi/transactions'
 import {
   broadcast,
   getSender,

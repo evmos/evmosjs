@@ -1,7 +1,7 @@
 import {
   createMsgConvertERC20 as protoMsgConvertERC20,
   createTransaction,
-} from '@astraprotocol/proto'
+} from '@astradefi/proto'
 
 import {
   createEIP712,
@@ -10,7 +10,7 @@ import {
   generateTypes,
   createMsgConvertERC20,
   MSG_CONVERT_ERC20_TYPES,
-} from '@astraprotocol/eip712'
+} from '@astradefi/eip712'
 
 import { Chain, Fee, Sender } from '../common'
 

@@ -10,7 +10,7 @@ import * as dependency_2 from "./genesis";
 import * as dependency_3 from "./fees";
 import * as pb_1 from "google-protobuf";
 export namespace evmos.fees.v1 {
-    export class QueryDevFeeInfosRequest extends pb_1.Message {
+    export class QueryFeesRequest extends pb_1.Message {
         #one_of_decls = [];
         constructor(data?: any[] | {
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
@@ -32,7 +32,7 @@ export namespace evmos.fees.v1 {
         static fromObject(data: {
             pagination?: ReturnType<typeof dependency_1.cosmos.base.query.v1beta1.PageRequest.prototype.toObject>;
         }) {
-            const message = new QueryDevFeeInfosRequest({});
+            const message = new QueryFeesRequest({});
             if (data.pagination != null) {
                 message.pagination = dependency_1.cosmos.base.query.v1beta1.PageRequest.fromObject(data.pagination);
             }
@@ -56,8 +56,8 @@ export namespace evmos.fees.v1 {
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryDevFeeInfosRequest {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryDevFeeInfosRequest();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryFeesRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryFeesRequest();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
@@ -73,14 +73,14 @@ export namespace evmos.fees.v1 {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): QueryDevFeeInfosRequest {
-            return QueryDevFeeInfosRequest.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): QueryFeesRequest {
+            return QueryFeesRequest.deserialize(bytes);
         }
     }
-    export class QueryDevFeeInfosResponse extends pb_1.Message {
+    export class QueryFeesResponse extends pb_1.Message {
         #one_of_decls = [];
         constructor(data?: any[] | {
-            fees?: dependency_3.evmos.fees.v1.DevFeeInfo[];
+            fees?: dependency_3.evmos.fees.v1.Fee[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
@@ -95,9 +95,9 @@ export namespace evmos.fees.v1 {
             }
         }
         get fees() {
-            return pb_1.Message.getRepeatedWrapperField(this, dependency_3.evmos.fees.v1.DevFeeInfo, 1) as dependency_3.evmos.fees.v1.DevFeeInfo[];
+            return pb_1.Message.getRepeatedWrapperField(this, dependency_3.evmos.fees.v1.Fee, 1) as dependency_3.evmos.fees.v1.Fee[];
         }
-        set fees(value: dependency_3.evmos.fees.v1.DevFeeInfo[]) {
+        set fees(value: dependency_3.evmos.fees.v1.Fee[]) {
             pb_1.Message.setRepeatedWrapperField(this, 1, value);
         }
         get pagination() {
@@ -107,12 +107,12 @@ export namespace evmos.fees.v1 {
             pb_1.Message.setWrapperField(this, 2, value);
         }
         static fromObject(data: {
-            fees?: ReturnType<typeof dependency_3.evmos.fees.v1.DevFeeInfo.prototype.toObject>[];
+            fees?: ReturnType<typeof dependency_3.evmos.fees.v1.Fee.prototype.toObject>[];
             pagination?: ReturnType<typeof dependency_1.cosmos.base.query.v1beta1.PageResponse.prototype.toObject>;
         }) {
-            const message = new QueryDevFeeInfosResponse({});
+            const message = new QueryFeesResponse({});
             if (data.fees != null) {
-                message.fees = data.fees.map(item => dependency_3.evmos.fees.v1.DevFeeInfo.fromObject(item));
+                message.fees = data.fees.map(item => dependency_3.evmos.fees.v1.Fee.fromObject(item));
             }
             if (data.pagination != null) {
                 message.pagination = dependency_1.cosmos.base.query.v1beta1.PageResponse.fromObject(data.pagination);
@@ -121,11 +121,11 @@ export namespace evmos.fees.v1 {
         }
         toObject() {
             const data: {
-                fees?: ReturnType<typeof dependency_3.evmos.fees.v1.DevFeeInfo.prototype.toObject>[];
+                fees?: ReturnType<typeof dependency_3.evmos.fees.v1.Fee.prototype.toObject>[];
                 pagination?: ReturnType<typeof dependency_1.cosmos.base.query.v1beta1.PageResponse.prototype.toObject>;
             } = {};
             if (this.fees != null) {
-                data.fees = this.fees.map((item: dependency_3.evmos.fees.v1.DevFeeInfo) => item.toObject());
+                data.fees = this.fees.map((item: dependency_3.evmos.fees.v1.Fee) => item.toObject());
             }
             if (this.pagination != null) {
                 data.pagination = this.pagination.toObject();
@@ -137,20 +137,20 @@ export namespace evmos.fees.v1 {
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
             if (this.fees !== undefined)
-                writer.writeRepeatedMessage(1, this.fees, (item: dependency_3.evmos.fees.v1.DevFeeInfo) => item.serialize(writer));
+                writer.writeRepeatedMessage(1, this.fees, (item: dependency_3.evmos.fees.v1.Fee) => item.serialize(writer));
             if (this.pagination !== undefined)
                 writer.writeMessage(2, this.pagination, () => this.pagination.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryDevFeeInfosResponse {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryDevFeeInfosResponse();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryFeesResponse {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryFeesResponse();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        reader.readMessage(message.fees, () => pb_1.Message.addToRepeatedWrapperField(message, 1, dependency_3.evmos.fees.v1.DevFeeInfo.deserialize(reader), dependency_3.evmos.fees.v1.DevFeeInfo));
+                        reader.readMessage(message.fees, () => pb_1.Message.addToRepeatedWrapperField(message, 1, dependency_3.evmos.fees.v1.Fee.deserialize(reader), dependency_3.evmos.fees.v1.Fee));
                         break;
                     case 2:
                         reader.readMessage(message.pagination, () => message.pagination = dependency_1.cosmos.base.query.v1beta1.PageResponse.deserialize(reader));
@@ -163,11 +163,11 @@ export namespace evmos.fees.v1 {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): QueryDevFeeInfosResponse {
-            return QueryDevFeeInfosResponse.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): QueryFeesResponse {
+            return QueryFeesResponse.deserialize(bytes);
         }
     }
-    export class QueryDevFeeInfoRequest extends pb_1.Message {
+    export class QueryFeeRequest extends pb_1.Message {
         #one_of_decls = [];
         constructor(data?: any[] | {
             contract_address?: string;
@@ -189,7 +189,7 @@ export namespace evmos.fees.v1 {
         static fromObject(data: {
             contract_address?: string;
         }) {
-            const message = new QueryDevFeeInfoRequest({});
+            const message = new QueryFeeRequest({});
             if (data.contract_address != null) {
                 message.contract_address = data.contract_address;
             }
@@ -213,8 +213,8 @@ export namespace evmos.fees.v1 {
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryDevFeeInfoRequest {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryDevFeeInfoRequest();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryFeeRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryFeeRequest();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
@@ -230,14 +230,14 @@ export namespace evmos.fees.v1 {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): QueryDevFeeInfoRequest {
-            return QueryDevFeeInfoRequest.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): QueryFeeRequest {
+            return QueryFeeRequest.deserialize(bytes);
         }
     }
-    export class QueryDevFeeInfoResponse extends pb_1.Message {
+    export class QueryFeeResponse extends pb_1.Message {
         #one_of_decls = [];
         constructor(data?: any[] | {
-            fee?: dependency_3.evmos.fees.v1.DevFeeInfo;
+            fee?: dependency_3.evmos.fees.v1.Fee;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -248,23 +248,23 @@ export namespace evmos.fees.v1 {
             }
         }
         get fee() {
-            return pb_1.Message.getWrapperField(this, dependency_3.evmos.fees.v1.DevFeeInfo, 1) as dependency_3.evmos.fees.v1.DevFeeInfo;
+            return pb_1.Message.getWrapperField(this, dependency_3.evmos.fees.v1.Fee, 1) as dependency_3.evmos.fees.v1.Fee;
         }
-        set fee(value: dependency_3.evmos.fees.v1.DevFeeInfo) {
+        set fee(value: dependency_3.evmos.fees.v1.Fee) {
             pb_1.Message.setWrapperField(this, 1, value);
         }
         static fromObject(data: {
-            fee?: ReturnType<typeof dependency_3.evmos.fees.v1.DevFeeInfo.prototype.toObject>;
+            fee?: ReturnType<typeof dependency_3.evmos.fees.v1.Fee.prototype.toObject>;
         }) {
-            const message = new QueryDevFeeInfoResponse({});
+            const message = new QueryFeeResponse({});
             if (data.fee != null) {
-                message.fee = dependency_3.evmos.fees.v1.DevFeeInfo.fromObject(data.fee);
+                message.fee = dependency_3.evmos.fees.v1.Fee.fromObject(data.fee);
             }
             return message;
         }
         toObject() {
             const data: {
-                fee?: ReturnType<typeof dependency_3.evmos.fees.v1.DevFeeInfo.prototype.toObject>;
+                fee?: ReturnType<typeof dependency_3.evmos.fees.v1.Fee.prototype.toObject>;
             } = {};
             if (this.fee != null) {
                 data.fee = this.fee.toObject();
@@ -280,14 +280,14 @@ export namespace evmos.fees.v1 {
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryDevFeeInfoResponse {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryDevFeeInfoResponse();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryFeeResponse {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryFeeResponse();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        reader.readMessage(message.fee, () => message.fee = dependency_3.evmos.fees.v1.DevFeeInfo.deserialize(reader));
+                        reader.readMessage(message.fee, () => message.fee = dependency_3.evmos.fees.v1.Fee.deserialize(reader));
                         break;
                     default: reader.skipField();
                 }
@@ -297,8 +297,8 @@ export namespace evmos.fees.v1 {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): QueryDevFeeInfoResponse {
-            return QueryDevFeeInfoResponse.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): QueryFeeResponse {
+            return QueryFeeResponse.deserialize(bytes);
         }
     }
     export class QueryParamsRequest extends pb_1.Message {
@@ -408,7 +408,7 @@ export namespace evmos.fees.v1 {
             return QueryParamsResponse.deserialize(bytes);
         }
     }
-    export class QueryDevFeeInfosPerDeployerRequest extends pb_1.Message {
+    export class QueryDeployerFeesRequest extends pb_1.Message {
         #one_of_decls = [];
         constructor(data?: any[] | {
             deployer_address?: string;
@@ -441,7 +441,7 @@ export namespace evmos.fees.v1 {
             deployer_address?: string;
             pagination?: ReturnType<typeof dependency_1.cosmos.base.query.v1beta1.PageRequest.prototype.toObject>;
         }) {
-            const message = new QueryDevFeeInfosPerDeployerRequest({});
+            const message = new QueryDeployerFeesRequest({});
             if (data.deployer_address != null) {
                 message.deployer_address = data.deployer_address;
             }
@@ -474,8 +474,8 @@ export namespace evmos.fees.v1 {
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryDevFeeInfosPerDeployerRequest {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryDevFeeInfosPerDeployerRequest();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryDeployerFeesRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryDeployerFeesRequest();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
@@ -494,14 +494,14 @@ export namespace evmos.fees.v1 {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): QueryDevFeeInfosPerDeployerRequest {
-            return QueryDevFeeInfosPerDeployerRequest.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): QueryDeployerFeesRequest {
+            return QueryDeployerFeesRequest.deserialize(bytes);
         }
     }
-    export class QueryDevFeeInfosPerDeployerResponse extends pb_1.Message {
+    export class QueryDeployerFeesResponse extends pb_1.Message {
         #one_of_decls = [];
         constructor(data?: any[] | {
-            fees?: dependency_3.evmos.fees.v1.DevFeeInfo[];
+            fees?: dependency_3.evmos.fees.v1.Fee[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
@@ -516,9 +516,9 @@ export namespace evmos.fees.v1 {
             }
         }
         get fees() {
-            return pb_1.Message.getRepeatedWrapperField(this, dependency_3.evmos.fees.v1.DevFeeInfo, 1) as dependency_3.evmos.fees.v1.DevFeeInfo[];
+            return pb_1.Message.getRepeatedWrapperField(this, dependency_3.evmos.fees.v1.Fee, 1) as dependency_3.evmos.fees.v1.Fee[];
         }
-        set fees(value: dependency_3.evmos.fees.v1.DevFeeInfo[]) {
+        set fees(value: dependency_3.evmos.fees.v1.Fee[]) {
             pb_1.Message.setRepeatedWrapperField(this, 1, value);
         }
         get pagination() {
@@ -528,12 +528,12 @@ export namespace evmos.fees.v1 {
             pb_1.Message.setWrapperField(this, 2, value);
         }
         static fromObject(data: {
-            fees?: ReturnType<typeof dependency_3.evmos.fees.v1.DevFeeInfo.prototype.toObject>[];
+            fees?: ReturnType<typeof dependency_3.evmos.fees.v1.Fee.prototype.toObject>[];
             pagination?: ReturnType<typeof dependency_1.cosmos.base.query.v1beta1.PageResponse.prototype.toObject>;
         }) {
-            const message = new QueryDevFeeInfosPerDeployerResponse({});
+            const message = new QueryDeployerFeesResponse({});
             if (data.fees != null) {
-                message.fees = data.fees.map(item => dependency_3.evmos.fees.v1.DevFeeInfo.fromObject(item));
+                message.fees = data.fees.map(item => dependency_3.evmos.fees.v1.Fee.fromObject(item));
             }
             if (data.pagination != null) {
                 message.pagination = dependency_1.cosmos.base.query.v1beta1.PageResponse.fromObject(data.pagination);
@@ -542,11 +542,11 @@ export namespace evmos.fees.v1 {
         }
         toObject() {
             const data: {
-                fees?: ReturnType<typeof dependency_3.evmos.fees.v1.DevFeeInfo.prototype.toObject>[];
+                fees?: ReturnType<typeof dependency_3.evmos.fees.v1.Fee.prototype.toObject>[];
                 pagination?: ReturnType<typeof dependency_1.cosmos.base.query.v1beta1.PageResponse.prototype.toObject>;
             } = {};
             if (this.fees != null) {
-                data.fees = this.fees.map((item: dependency_3.evmos.fees.v1.DevFeeInfo) => item.toObject());
+                data.fees = this.fees.map((item: dependency_3.evmos.fees.v1.Fee) => item.toObject());
             }
             if (this.pagination != null) {
                 data.pagination = this.pagination.toObject();
@@ -558,20 +558,20 @@ export namespace evmos.fees.v1 {
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
             if (this.fees !== undefined)
-                writer.writeRepeatedMessage(1, this.fees, (item: dependency_3.evmos.fees.v1.DevFeeInfo) => item.serialize(writer));
+                writer.writeRepeatedMessage(1, this.fees, (item: dependency_3.evmos.fees.v1.Fee) => item.serialize(writer));
             if (this.pagination !== undefined)
                 writer.writeMessage(2, this.pagination, () => this.pagination.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryDevFeeInfosPerDeployerResponse {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryDevFeeInfosPerDeployerResponse();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryDeployerFeesResponse {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryDeployerFeesResponse();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        reader.readMessage(message.fees, () => pb_1.Message.addToRepeatedWrapperField(message, 1, dependency_3.evmos.fees.v1.DevFeeInfo.deserialize(reader), dependency_3.evmos.fees.v1.DevFeeInfo));
+                        reader.readMessage(message.fees, () => pb_1.Message.addToRepeatedWrapperField(message, 1, dependency_3.evmos.fees.v1.Fee.deserialize(reader), dependency_3.evmos.fees.v1.Fee));
                         break;
                     case 2:
                         reader.readMessage(message.pagination, () => message.pagination = dependency_1.cosmos.base.query.v1beta1.PageResponse.deserialize(reader));
@@ -584,8 +584,8 @@ export namespace evmos.fees.v1 {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): QueryDevFeeInfosPerDeployerResponse {
-            return QueryDevFeeInfosPerDeployerResponse.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): QueryDeployerFeesResponse {
+            return QueryDeployerFeesResponse.deserialize(bytes);
         }
     }
 }

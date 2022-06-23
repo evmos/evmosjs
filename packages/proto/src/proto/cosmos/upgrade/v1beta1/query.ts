@@ -5,7 +5,7 @@
  * compiler version: 3.19.4
  * source: cosmos/upgrade/v1beta1/query.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
-import * as dependency_2 from "./upgrade";
+import * as dependency_3 from "./upgrade";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.upgrade.v1beta1 {
     export class QueryCurrentPlanRequest extends pb_1.Message {
@@ -51,7 +51,7 @@ export namespace cosmos.upgrade.v1beta1 {
     export class QueryCurrentPlanResponse extends pb_1.Message {
         #one_of_decls = [];
         constructor(data?: any[] | {
-            plan?: dependency_2.cosmos.upgrade.v1beta1.Plan;
+            plan?: dependency_3.cosmos.upgrade.v1beta1.Plan;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -62,23 +62,23 @@ export namespace cosmos.upgrade.v1beta1 {
             }
         }
         get plan() {
-            return pb_1.Message.getWrapperField(this, dependency_2.cosmos.upgrade.v1beta1.Plan, 1) as dependency_2.cosmos.upgrade.v1beta1.Plan;
+            return pb_1.Message.getWrapperField(this, dependency_3.cosmos.upgrade.v1beta1.Plan, 1) as dependency_3.cosmos.upgrade.v1beta1.Plan;
         }
-        set plan(value: dependency_2.cosmos.upgrade.v1beta1.Plan) {
+        set plan(value: dependency_3.cosmos.upgrade.v1beta1.Plan) {
             pb_1.Message.setWrapperField(this, 1, value);
         }
         static fromObject(data: {
-            plan?: ReturnType<typeof dependency_2.cosmos.upgrade.v1beta1.Plan.prototype.toObject>;
+            plan?: ReturnType<typeof dependency_3.cosmos.upgrade.v1beta1.Plan.prototype.toObject>;
         }) {
             const message = new QueryCurrentPlanResponse({});
             if (data.plan != null) {
-                message.plan = dependency_2.cosmos.upgrade.v1beta1.Plan.fromObject(data.plan);
+                message.plan = dependency_3.cosmos.upgrade.v1beta1.Plan.fromObject(data.plan);
             }
             return message;
         }
         toObject() {
             const data: {
-                plan?: ReturnType<typeof dependency_2.cosmos.upgrade.v1beta1.Plan.prototype.toObject>;
+                plan?: ReturnType<typeof dependency_3.cosmos.upgrade.v1beta1.Plan.prototype.toObject>;
             } = {};
             if (this.plan != null) {
                 data.plan = this.plan.toObject();
@@ -101,7 +101,7 @@ export namespace cosmos.upgrade.v1beta1 {
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        reader.readMessage(message.plan, () => message.plan = dependency_2.cosmos.upgrade.v1beta1.Plan.deserialize(reader));
+                        reader.readMessage(message.plan, () => message.plan = dependency_3.cosmos.upgrade.v1beta1.Plan.deserialize(reader));
                         break;
                     default: reader.skipField();
                 }
@@ -455,7 +455,7 @@ export namespace cosmos.upgrade.v1beta1 {
     export class QueryModuleVersionsResponse extends pb_1.Message {
         #one_of_decls = [];
         constructor(data?: any[] | {
-            module_versions?: dependency_2.cosmos.upgrade.v1beta1.ModuleVersion[];
+            module_versions?: dependency_3.cosmos.upgrade.v1beta1.ModuleVersion[];
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
@@ -466,26 +466,26 @@ export namespace cosmos.upgrade.v1beta1 {
             }
         }
         get module_versions() {
-            return pb_1.Message.getRepeatedWrapperField(this, dependency_2.cosmos.upgrade.v1beta1.ModuleVersion, 1) as dependency_2.cosmos.upgrade.v1beta1.ModuleVersion[];
+            return pb_1.Message.getRepeatedWrapperField(this, dependency_3.cosmos.upgrade.v1beta1.ModuleVersion, 1) as dependency_3.cosmos.upgrade.v1beta1.ModuleVersion[];
         }
-        set module_versions(value: dependency_2.cosmos.upgrade.v1beta1.ModuleVersion[]) {
+        set module_versions(value: dependency_3.cosmos.upgrade.v1beta1.ModuleVersion[]) {
             pb_1.Message.setRepeatedWrapperField(this, 1, value);
         }
         static fromObject(data: {
-            module_versions?: ReturnType<typeof dependency_2.cosmos.upgrade.v1beta1.ModuleVersion.prototype.toObject>[];
+            module_versions?: ReturnType<typeof dependency_3.cosmos.upgrade.v1beta1.ModuleVersion.prototype.toObject>[];
         }) {
             const message = new QueryModuleVersionsResponse({});
             if (data.module_versions != null) {
-                message.module_versions = data.module_versions.map(item => dependency_2.cosmos.upgrade.v1beta1.ModuleVersion.fromObject(item));
+                message.module_versions = data.module_versions.map(item => dependency_3.cosmos.upgrade.v1beta1.ModuleVersion.fromObject(item));
             }
             return message;
         }
         toObject() {
             const data: {
-                module_versions?: ReturnType<typeof dependency_2.cosmos.upgrade.v1beta1.ModuleVersion.prototype.toObject>[];
+                module_versions?: ReturnType<typeof dependency_3.cosmos.upgrade.v1beta1.ModuleVersion.prototype.toObject>[];
             } = {};
             if (this.module_versions != null) {
-                data.module_versions = this.module_versions.map((item: dependency_2.cosmos.upgrade.v1beta1.ModuleVersion) => item.toObject());
+                data.module_versions = this.module_versions.map((item: dependency_3.cosmos.upgrade.v1beta1.ModuleVersion) => item.toObject());
             }
             return data;
         }
@@ -494,7 +494,7 @@ export namespace cosmos.upgrade.v1beta1 {
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
             if (this.module_versions !== undefined)
-                writer.writeRepeatedMessage(1, this.module_versions, (item: dependency_2.cosmos.upgrade.v1beta1.ModuleVersion) => item.serialize(writer));
+                writer.writeRepeatedMessage(1, this.module_versions, (item: dependency_3.cosmos.upgrade.v1beta1.ModuleVersion) => item.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -505,7 +505,7 @@ export namespace cosmos.upgrade.v1beta1 {
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        reader.readMessage(message.module_versions, () => pb_1.Message.addToRepeatedWrapperField(message, 1, dependency_2.cosmos.upgrade.v1beta1.ModuleVersion.deserialize(reader), dependency_2.cosmos.upgrade.v1beta1.ModuleVersion));
+                        reader.readMessage(message.module_versions, () => pb_1.Message.addToRepeatedWrapperField(message, 1, dependency_3.cosmos.upgrade.v1beta1.ModuleVersion.deserialize(reader), dependency_3.cosmos.upgrade.v1beta1.ModuleVersion));
                         break;
                     default: reader.skipField();
                 }
