@@ -3,13 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2022-06-23)
+
+### Bug Fixes
+
+* change npm name + update proto ([d734a9e](https://github.com/astraprotocol/astrajs/commit/d734a9ed44b6e784f2448e6e610aef2c0046013c))
+* gh action build ([#8](https://github.com/astraprotocol/astrajs/issues/8)) ([1b2a167](https://github.com/astraprotocol/astrajs/commit/1b2a167846d592bece7ec0a717c92140ce4cdbfc))
+
+### Features
+
+* merge evmosjs for new convert coin/erc20 messages ([#5](https://github.com/astraprotocol/astrajs/issues/5)) ([eb473d4](https://github.com/astraprotocol/astrajs/commit/eb473d4acbfdf62639c090290c0e681a4e802725)), closes [#39](https://github.com/astraprotocol/astrajs/issues/39) [#42](https://github.com/astraprotocol/astrajs/issues/42) [#44](https://github.com/astraprotocol/astrajs/issues/44) [#45](https://github.com/astraprotocol/astrajs/issues/45)
+
 ## [0.2.12](https://github.com/astraprotocol/astrajs/compare/@astraprotocol/astrajs@0.2.11...@astraprotocol/astrajs@0.2.12) (2022-05-26)
 
 **Note:** Version bump only for package @astraprotocol/astrajs
-
-
-
-
 
 ## 0.2.11 (2022-05-23)
 
