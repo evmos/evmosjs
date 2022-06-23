@@ -1,7 +1,7 @@
 {
   "name": "@astradefi/astrajs",
   "description": "JS and TS libs for Astra",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -30,7 +30,7 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
-    "@astradefi/address-converter": "^0.4.0",
+    "@astradefi/address-converter": "^0.4.1",
     "@astradefi/eip712": "^0.4.0",
     "@astradefi/proto": "^0.3.1",
     "@astradefi/provider": "^0.4.0",

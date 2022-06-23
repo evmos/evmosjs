@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/astraprotocol/astrajs/compare/@astradefi/address-converter@0.4.0...@astradefi/address-converter@0.4.1) (2022-06-23)
+
+### Bug Fixes
+
+* nothing ([9b8ddfb](https://github.com/astraprotocol/astrajs/commit/9b8ddfbb3b5b19f84b737c5b604edff4be7f08c1))
+* update package.json ([2108ec3](https://github.com/astraprotocol/astrajs/commit/2108ec308c1abe79ff119d07080ef51fb83279a8))
+
 # 0.4.0 (2022-06-23)
 
 ### Bug Fixes
