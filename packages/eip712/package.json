@@ -1,7 +1,7 @@
 {
   "name": "@tharsis/eip712",
   "description": "EIP712 transaction creator for EVMOS.",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.18](https://github.com/evmos/evmosjs/compare/@tharsis/proto@0.1.17...@tharsis/proto@0.1.18) (2022-06-23)
+
+### Features
+
+* convertCoin and convertERC20 messages ([#45](https://github.com/evmos/evmosjs/issues/45)) ([9b78984](https://github.com/evmos/evmosjs/commit/9b78984c034208c572e519bf080073014e804f13))
+* utils to sign messages locally ([#44](https://github.com/evmos/evmosjs/issues/44)) ([80bdf98](https://github.com/evmos/evmosjs/commit/80bdf980a330630104155d37e4b1a289f94eb10c))
+
 ## [0.1.17](https://github.com/tharsis/evmosjs/compare/@tharsis/proto@0.1.16...@tharsis/proto@0.1.17) (2022-05-29)
 
 ### Features

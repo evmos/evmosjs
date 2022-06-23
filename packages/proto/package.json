@@ -1,7 +1,7 @@
 {
   "name": "@tharsis/proto",
   "description": "Protobuf files for EVMOS.",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "license": "MIT",
   "eslintIgnore": [
     "src/proto/**/*.ts"
