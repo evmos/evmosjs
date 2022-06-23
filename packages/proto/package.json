@@ -6,6 +6,9 @@
   "eslintIgnore": [
     "src/proto/**/*.ts"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -40,5 +43,5 @@
     "sha3": "^2.1.4",
     "shx": "^0.3.4"
   },
-  "gitHead": "fc2045b9357bde146e3374429453eb5d4a48a2ca"
+  "gitHead": "3d1dedb2206e8b606ac0e450ec35f23b4067d236"
 }

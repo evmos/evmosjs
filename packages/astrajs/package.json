@@ -8,6 +8,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": "https://github.com/astraprotocol/astrajs",
   "_moduleAliases": {
     "~astrajs": "dist"
@@ -36,5 +39,5 @@
     "link-module-alias": "^1.2.0",
     "shx": "^0.3.4"
   },
-  "gitHead": "d3aa409d7c04671d2a8c3c5262c9bbfeaa1864b9"
+  "gitHead": "3d1dedb2206e8b606ac0e450ec35f23b4067d236"
 }
