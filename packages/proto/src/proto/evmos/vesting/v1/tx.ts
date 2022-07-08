@@ -17,7 +17,6 @@ export namespace evmos.vesting.v1 {
             start_time?: dependency_3.google.protobuf.Timestamp;
             lockup_periods?: dependency_4.cosmos.vesting.v1beta1.Period[];
             vesting_periods?: dependency_4.cosmos.vesting.v1beta1.Period[];
-            merge?: boolean;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4, 5], this.#one_of_decls);
@@ -36,9 +35,6 @@ export namespace evmos.vesting.v1 {
                 }
                 if ("vesting_periods" in data && data.vesting_periods != undefined) {
                     this.vesting_periods = data.vesting_periods;
-                }
-                if ("merge" in data && data.merge != undefined) {
-                    this.merge = data.merge;
                 }
             }
         }
@@ -72,19 +68,12 @@ export namespace evmos.vesting.v1 {
         set vesting_periods(value: dependency_4.cosmos.vesting.v1beta1.Period[]) {
             pb_1.Message.setRepeatedWrapperField(this, 5, value);
         }
-        get merge() {
-            return pb_1.Message.getField(this, 6) as boolean;
-        }
-        set merge(value: boolean) {
-            pb_1.Message.setField(this, 6, value);
-        }
         static fromObject(data: {
             from_address?: string;
             to_address?: string;
             start_time?: ReturnType<typeof dependency_3.google.protobuf.Timestamp.prototype.toObject>;
             lockup_periods?: ReturnType<typeof dependency_4.cosmos.vesting.v1beta1.Period.prototype.toObject>[];
             vesting_periods?: ReturnType<typeof dependency_4.cosmos.vesting.v1beta1.Period.prototype.toObject>[];
-            merge?: boolean;
         }) {
             const message = new MsgCreateClawbackVestingAccount({});
             if (data.from_address != null) {
@@ -102,9 +91,6 @@ export namespace evmos.vesting.v1 {
             if (data.vesting_periods != null) {
                 message.vesting_periods = data.vesting_periods.map(item => dependency_4.cosmos.vesting.v1beta1.Period.fromObject(item));
             }
-            if (data.merge != null) {
-                message.merge = data.merge;
-            }
             return message;
         }
         toObject() {
@@ -114,7 +100,6 @@ export namespace evmos.vesting.v1 {
                 start_time?: ReturnType<typeof dependency_3.google.protobuf.Timestamp.prototype.toObject>;
                 lockup_periods?: ReturnType<typeof dependency_4.cosmos.vesting.v1beta1.Period.prototype.toObject>[];
                 vesting_periods?: ReturnType<typeof dependency_4.cosmos.vesting.v1beta1.Period.prototype.toObject>[];
-                merge?: boolean;
             } = {};
             if (this.from_address != null) {
                 data.from_address = this.from_address;
@@ -130,9 +115,6 @@ export namespace evmos.vesting.v1 {
             }
             if (this.vesting_periods != null) {
                 data.vesting_periods = this.vesting_periods.map((item: dependency_4.cosmos.vesting.v1beta1.Period) => item.toObject());
-            }
-            if (this.merge != null) {
-                data.merge = this.merge;
             }
             return data;
         }
@@ -150,8 +132,6 @@ export namespace evmos.vesting.v1 {
                 writer.writeRepeatedMessage(4, this.lockup_periods, (item: dependency_4.cosmos.vesting.v1beta1.Period) => item.serialize(writer));
             if (this.vesting_periods !== undefined)
                 writer.writeRepeatedMessage(5, this.vesting_periods, (item: dependency_4.cosmos.vesting.v1beta1.Period) => item.serialize(writer));
-            if (this.merge !== undefined)
-                writer.writeBool(6, this.merge);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -175,9 +155,6 @@ export namespace evmos.vesting.v1 {
                         break;
                     case 5:
                         reader.readMessage(message.vesting_periods, () => pb_1.Message.addToRepeatedWrapperField(message, 5, dependency_4.cosmos.vesting.v1beta1.Period.deserialize(reader), dependency_4.cosmos.vesting.v1beta1.Period));
-                        break;
-                    case 6:
-                        message.merge = reader.readBool();
                         break;
                     default: reader.skipField();
                 }

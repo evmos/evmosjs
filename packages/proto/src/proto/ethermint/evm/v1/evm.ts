@@ -15,6 +15,7 @@ export namespace ethermint.evm.v1 {
             enable_call?: boolean;
             extra_eips?: number[];
             chain_config?: ChainConfig;
+            allow_unprotected_txs?: boolean;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], this.#one_of_decls);
@@ -33,6 +34,9 @@ export namespace ethermint.evm.v1 {
                 }
                 if ("chain_config" in data && data.chain_config != undefined) {
                     this.chain_config = data.chain_config;
+                }
+                if ("allow_unprotected_txs" in data && data.allow_unprotected_txs != undefined) {
+                    this.allow_unprotected_txs = data.allow_unprotected_txs;
                 }
             }
         }
@@ -66,12 +70,19 @@ export namespace ethermint.evm.v1 {
         set chain_config(value: ChainConfig) {
             pb_1.Message.setWrapperField(this, 5, value);
         }
+        get allow_unprotected_txs() {
+            return pb_1.Message.getField(this, 6) as boolean;
+        }
+        set allow_unprotected_txs(value: boolean) {
+            pb_1.Message.setField(this, 6, value);
+        }
         static fromObject(data: {
             evm_denom?: string;
             enable_create?: boolean;
             enable_call?: boolean;
             extra_eips?: number[];
             chain_config?: ReturnType<typeof ChainConfig.prototype.toObject>;
+            allow_unprotected_txs?: boolean;
         }) {
             const message = new Params({});
             if (data.evm_denom != null) {
@@ -89,6 +100,9 @@ export namespace ethermint.evm.v1 {
             if (data.chain_config != null) {
                 message.chain_config = ChainConfig.fromObject(data.chain_config);
             }
+            if (data.allow_unprotected_txs != null) {
+                message.allow_unprotected_txs = data.allow_unprotected_txs;
+            }
             return message;
         }
         toObject() {
@@ -98,6 +112,7 @@ export namespace ethermint.evm.v1 {
                 enable_call?: boolean;
                 extra_eips?: number[];
                 chain_config?: ReturnType<typeof ChainConfig.prototype.toObject>;
+                allow_unprotected_txs?: boolean;
             } = {};
             if (this.evm_denom != null) {
                 data.evm_denom = this.evm_denom;
@@ -113,6 +128,9 @@ export namespace ethermint.evm.v1 {
             }
             if (this.chain_config != null) {
                 data.chain_config = this.chain_config.toObject();
+            }
+            if (this.allow_unprotected_txs != null) {
+                data.allow_unprotected_txs = this.allow_unprotected_txs;
             }
             return data;
         }
@@ -130,6 +148,8 @@ export namespace ethermint.evm.v1 {
                 writer.writePackedInt64(4, this.extra_eips);
             if (this.chain_config !== undefined)
                 writer.writeMessage(5, this.chain_config, () => this.chain_config.serialize(writer));
+            if (this.allow_unprotected_txs !== undefined)
+                writer.writeBool(6, this.allow_unprotected_txs);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -153,6 +173,9 @@ export namespace ethermint.evm.v1 {
                         break;
                     case 5:
                         reader.readMessage(message.chain_config, () => message.chain_config = ChainConfig.deserialize(reader));
+                        break;
+                    case 6:
+                        message.allow_unprotected_txs = reader.readBool();
                         break;
                     default: reader.skipField();
                 }

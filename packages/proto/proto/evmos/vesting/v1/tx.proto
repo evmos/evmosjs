@@ -6,7 +6,7 @@ import "gogoproto/gogo.proto";
 import "google/protobuf/timestamp.proto";
 import "cosmos/vesting/v1beta1/vesting.proto";
 
-option go_package = "github.com/evmos/evmos/v5/x/vesting/types";
+option go_package = "github.com/evmos/evmos/v6/x/vesting/types";
 
 // Msg defines the vesting Msg service.
 service Msg {
@@ -48,12 +48,6 @@ message MsgCreateClawbackVestingAccount {
     (gogoproto.castrepeated) =
         "github.com/cosmos/cosmos-sdk/x/auth/vesting/types.Periods"
   ];
-  // merge specifies a the creation mechanism for existing
-  // ClawbackVestingAccounts. If true, merge this new grant into an existing
-  // ClawbackVestingAccount, or create it if it does not exist. If false,
-  // creates a new account. New grants to an existing account must be from the
-  // same from_address.
-  bool merge = 6;
 }
 
 // MsgCreateClawbackVestingAccountResponse defines the
