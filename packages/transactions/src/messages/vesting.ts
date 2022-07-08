@@ -14,13 +14,21 @@ import {
 
 import { Chain, Fee, Sender } from './common'
 
+interface Coin {
+  denom: string
+  amount: string
+}
+
+interface Period {
+  length: string
+  amount: Coin[]
+}
+
 export interface VestingSendParams {
   destinationAddress: string
   startTime: string
-  vestingPeriod: {
-    length: string
-    amount: { denom: string; amount: string }[]
-  }[]
+  lockupPeriod: Period[]
+  vestingPeriod: Period[]
 }
 
 export function createMessageVesting(
@@ -45,6 +53,7 @@ export function createMessageVesting(
     sender.accountAddress,
     params.destinationAddress,
     params.startTime,
+    params.lockupPeriod,
     params.vestingPeriod,
   )
 
@@ -65,6 +74,7 @@ export function createMessageVesting(
     sender.accountAddress,
     params.destinationAddress,
     params.startTime,
+    params.lockupPeriod,
     params.vestingPeriod,
   )
 
