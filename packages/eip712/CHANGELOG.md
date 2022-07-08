@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/astraprotocol/astrajs/compare/@astradefi/eip712@0.6.0...@astradefi/eip712@0.7.0) (2022-07-08)
+
+### Bug Fixes
+
+* update package.json ([2108ec3](https://github.com/astraprotocol/astrajs/commit/2108ec308c1abe79ff119d07080ef51fb83279a8))
+
+### Features
+
+* vesting module (eip712) ([9124a2f](https://github.com/astraprotocol/astrajs/commit/9124a2febd00e60eb9aa8604daf9d4f39e271487))
+
 # 0.6.0 (2022-06-23)
 
 ### Bug Fixes

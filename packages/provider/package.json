@@ -1,7 +1,7 @@
 {
   "name": "@astradefi/provider",
   "description": "Simple provider to query the Astra rest api.",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

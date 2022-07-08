@@ -1,7 +1,7 @@
 {
   "name": "@astradefi/transactions",
   "description": "Transactions generator for Astra",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

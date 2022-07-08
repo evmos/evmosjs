@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/astraprotocol/astrajs/compare/@astradefi/proto@0.5.0...@astradefi/proto@0.6.0) (2022-07-08)
+
+### Bug Fixes
+
+* update package.json ([2108ec3](https://github.com/astraprotocol/astrajs/commit/2108ec308c1abe79ff119d07080ef51fb83279a8))
+
+### Features
+
+* add vesting module ([6704f9b](https://github.com/astraprotocol/astrajs/commit/6704f9b101a16bb8f66f4c19e5866491a62d3fea))
+
 # 0.5.0 (2022-06-23)
 
 ### Bug Fixes
