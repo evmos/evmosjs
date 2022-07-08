@@ -13,7 +13,7 @@
           "packages/eip712"
         ],
         "@astradefi/proto": [
-          "packages/proto"
+          "./packages/proto"
         ],
         "@astradefi/provider": [
           "./packages/provider/*"
