@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.3](https://github.com/astraprotocol/astrajs/compare/@astradefi/astrajs@0.4.1...@astradefi/astrajs@0.4.3) (2022-07-11)
+
+### Bug Fixes
+
+* upgrade astrajs ([0dac790](https://github.com/astraprotocol/astrajs/commit/0dac790f58b2a7f58dacf8ac6093f70a09bee0d8))
+* upgrade astrajs version ([3b1e865](https://github.com/astraprotocol/astrajs/commit/3b1e865e9a7276da1591bc926923e3d9a7086311))
+
 ## [0.4.1](https://github.com/astraprotocol/astrajs/compare/@astradefi/astrajs@0.4.0...@astradefi/astrajs@0.4.1) (2022-06-23)
 
 ### Bug Fixes

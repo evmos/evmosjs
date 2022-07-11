@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://github.com/astraprotocol/astrajs/compare/@astradefi/provider@0.7.0...@astradefi/provider@0.7.1) (2022-07-11)
+
+### Bug Fixes
+
+* missing import vesting module in provider package ([ede6be8](https://github.com/astraprotocol/astrajs/commit/ede6be8ee0ab956e60c87859284db56c3e2b3f44))
+
 # [0.7.0](https://github.com/astraprotocol/astrajs/compare/@astradefi/provider@0.6.0...@astradefi/provider@0.7.0) (2022-07-08)
 
 ### Bug Fixes
