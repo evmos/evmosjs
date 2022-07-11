@@ -11,47 +11,19 @@
     "@jridgewell/trace-mapping" "^0.3.9"
 
 "@astradefi/eip712@^0.4.0":
-  version "0.6.1"
+  version "0.7.0"
   dependencies:
     link-module-alias "^1.2.0"
-    shx "^0.3.4"
-
-"@astradefi/proto@^0.3.1":
-  version "0.5.1"
-  dependencies:
-    "@types/google-protobuf" "^3.15.5"
-    "@types/node" "^17.0.21"
-    google-protobuf "^3.19.4"
-    link-module-alias "^1.2.0"
-    sha3 "^2.1.4"
     shx "^0.3.4"
 
 "@astradefi/proto@^0.3.2":
-  version "0.5.1"
+  version "0.6.0"
   dependencies:
     "@types/google-protobuf" "^3.15.5"
     "@types/node" "^17.0.21"
     google-protobuf "^3.19.4"
     link-module-alias "^1.2.0"
     sha3 "^2.1.4"
-    shx "^0.3.4"
-
-"@astradefi/provider@^0.4.0":
-  version "0.6.0"
-  dependencies:
-    "@types/node" "^17.0.21"
-    link-module-alias "^1.2.0"
-    shx "^0.3.4"
-
-"@astradefi/transactions@^0.4.1":
-  version "0.6.1-beta"
-  resolved "https://registry.yarnpkg.com/@astradefi/transactions/-/transactions-0.6.1-beta.tgz#791ad039174bcd8b598eb233e06b5de8bcda6ede"
-  integrity sha512-43R2WLyaN/mUgp6Ns1ITn0IXwWc6aTAEF6JDVnjyYgCx85fWR7LYMV0FbfDoKtnA4AVLSF5vOYD7TTsJl8q4BQ==
-  dependencies:
-    "@astradefi/eip712" "^0.4.0"
-    "@astradefi/proto" "^0.3.2"
-    "@types/node" "^17.0.21"
-    link-module-alias "^1.2.0"
     shx "^0.3.4"
 
 "@babel/code-frame@7.12.11":
