@@ -6,7 +6,7 @@ export function generateEndpointVestingBalance(address: string) {
 }
 
 /* eslint-disable camelcase */
-export interface BalancesResponse {
+export interface BalancesVestingResponse {
   locked: Coin[]
   unvested: Coin[]
   vested: Coin[]
