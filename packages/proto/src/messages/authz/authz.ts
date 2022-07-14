@@ -1,9 +1,7 @@
-import * as coin from '../../proto/cosmos/base/v1beta1/coin'
 import * as authz from '../../proto/cosmos/authz/v1beta1/tx'
 import * as authzUtils from '../../proto/cosmos/authz/v1beta1/authz'
 import { createAnyMessage, MessageGenerated } from '../utils'
 import * as google from '../../proto/google/protobuf/timestamp'
-import * as authzStake from '../../proto/cosmos/staking/v1beta1/authz'
 
 export function createMsgGrant(
   granter: string,
@@ -28,28 +26,23 @@ export function createMsgGrant(
   }
 }
 
-export const stakeAuthTypes =
-  authzStake.cosmos.staking.v1beta1.AuthorizationType
+export enum RevokeMessages {
+  REVOKE_MSG_DELEGATE = '/cosmos.staking.v1beta1.MsgDelegate',
+  REVOKE_MSG_WITHDRAW_DELEGATOR_REWARDS = '/cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward',
+}
 
-export function createStakeAuthorization(
-  allowAddress: string,
-  denom: string,
-  maxTokens: string,
-  authorizationType: authzStake.cosmos.staking.v1beta1.AuthorizationType,
+export function createMsgRevoke(
+  granter: string,
+  grantee: string,
+  type: string | RevokeMessages,
 ) {
-  const msg = new authzStake.cosmos.staking.v1beta1.StakeAuthorization({
-    allow_list:
-      new authzStake.cosmos.staking.v1beta1.StakeAuthorization.Validators({
-        address: [allowAddress],
-      }),
-    max_tokens: new coin.cosmos.base.v1beta1.Coin({
-      denom,
-      amount: maxTokens,
-    }),
-    authorization_type: authorizationType,
+  const msg = new authz.cosmos.authz.v1beta1.MsgRevoke({
+    granter,
+    grantee,
+    msg_type_url: type,
   })
   return {
     message: msg,
-    path: 'cosmos.staking.v1beta1.StakeAuthorization',
+    path: 'cosmos.authz.v1beta1.MsgRevoke',
   }
 }

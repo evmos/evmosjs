@@ -1,43 +1,31 @@
 import {
-  createMsgGrant,
-  createStakeAuthorization,
-  stakeAuthTypes,
   createTransaction,
+  createMsgRevoke,
+  RevokeMessages,
 } from '@tharsis/proto'
 
 import { Chain, Fee, Sender } from '../common'
 
 /* eslint-disable camelcase */
-export interface AuthzStakeParams {
+export interface MsgStakeRevokeAuthorizationParams {
   bot_address: string
-  validator_address: string
-  denom: string
-  maxTokens: string
-  duration_in_seconds: number
 }
 
-export function createTxMsgStakeAuthorization(
+export function createTxMsgStakeRevokeAuthorization(
   chain: Chain,
   sender: Sender,
   fee: Fee,
   memo: string,
-  params: AuthzStakeParams,
+  params: MsgStakeRevokeAuthorizationParams,
 ) {
   // EIP712
   // This is blocked until EvmosV7 is released with the eip712 any messages fixes!
 
   // Cosmos
-  const msgStakeGrant = createStakeAuthorization(
-    params.validator_address,
-    params.denom,
-    params.maxTokens,
-    stakeAuthTypes.AUTHORIZATION_TYPE_DELEGATE,
-  )
-  const msgCosmos = createMsgGrant(
+  const msgCosmos = createMsgRevoke(
     sender.accountAddress,
     params.bot_address,
-    msgStakeGrant,
-    params.duration_in_seconds,
+    RevokeMessages.REVOKE_MSG_DELEGATE,
   )
   const tx = createTransaction(
     msgCosmos,
