@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://github.com/astraprotocol/astrajs/compare/@astradefi/transactions@0.7.0...@astradefi/transactions@0.7.1) (2022-07-18)
+
+### Bug Fixes
+
+* mismatch npm version /transactions with /proto ([09ab161](https://github.com/astraprotocol/astrajs/commit/09ab161af05b1187e3b95d7959b1b161424d0092))
+
 # [0.7.0](https://github.com/astraprotocol/astrajs/compare/@astradefi/transactions@0.6.0...@astradefi/transactions@0.7.0) (2022-07-08)
 
 ### Bug Fixes
