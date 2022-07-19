@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.8](https://github.com/evmos/evmosjs/compare/evmosjs@0.2.7...evmosjs@0.2.8) (2022-07-19)
+
+**Note:** Version bump only for package evmosjs
+
 ## [0.2.7](https://github.com/evmos/evmosjs/compare/evmosjs@0.2.6...evmosjs@0.2.7) (2022-06-23)
 
 **Note:** Version bump only for package evmosjs
