@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.5](https://github.com/evmos/evmosjs/compare/@tharsis/transactions@0.2.4...@tharsis/transactions@0.2.5) (2022-07-19)
+
+### Features
+
+* authz for Staking Authorization added ([#47](https://github.com/evmos/evmosjs/issues/47)) ([0170a2d](https://github.com/evmos/evmosjs/commit/0170a2d9a889061e5d0d492a05b4f2a915701206))
+
 ## [0.2.4](https://github.com/evmos/evmosjs/compare/@tharsis/transactions@0.2.3...@tharsis/transactions@0.2.4) (2022-06-23)
 
 ### Features

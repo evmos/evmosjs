@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.19](https://github.com/evmos/evmosjs/compare/@tharsis/proto@0.1.18...@tharsis/proto@0.1.19) (2022-07-19)
+
+### Features
+
+* authz for Staking Authorization added ([#47](https://github.com/evmos/evmosjs/issues/47)) ([0170a2d](https://github.com/evmos/evmosjs/commit/0170a2d9a889061e5d0d492a05b4f2a915701206))
+
 ## [0.1.18](https://github.com/evmos/evmosjs/compare/@tharsis/proto@0.1.17...@tharsis/proto@0.1.18) (2022-06-23)
 
 ### Features
