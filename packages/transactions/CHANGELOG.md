@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/astraprotocol/astrajs/compare/@astradefi/transactions@0.7.1...@astradefi/transactions@0.8.0) (2022-07-22)
+
+### Features
+
+* **vesting:** add multiple messeage vesting ([ec48413](https://github.com/astraprotocol/astrajs/commit/ec48413902c96d90871c9c0b3b3cabe47f0b1dc4))
+
 ## [0.7.1](https://github.com/astraprotocol/astrajs/compare/@astradefi/transactions@0.7.0...@astradefi/transactions@0.7.1) (2022-07-18)
 
 ### Bug Fixes
