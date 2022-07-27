@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/astraprotocol/astrajs/compare/@astradefi/transactions@0.8.0...@astradefi/transactions@0.9.0) (2022-07-27)
+
+### Features
+
+* authz for Staking Authorization added ([01e3576](https://github.com/astraprotocol/astrajs/commit/01e357647bd7612a7b76c8d8e7ab913f8fe8f5af))
+
 # [0.8.0](https://github.com/astraprotocol/astrajs/compare/@astradefi/transactions@0.7.1...@astradefi/transactions@0.8.0) (2022-07-22)
 
 ### Features

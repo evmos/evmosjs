@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.6](https://github.com/astraprotocol/astrajs/compare/@astradefi/astrajs@0.4.5...@astradefi/astrajs@0.4.6) (2022-07-27)
+
+**Note:** Version bump only for package @astradefi/astrajs
+
 ## [0.4.5](https://github.com/astraprotocol/astrajs/compare/@astradefi/astrajs@0.4.4...@astradefi/astrajs@0.4.5) (2022-07-22)
 
 **Note:** Version bump only for package @astradefi/astrajs
