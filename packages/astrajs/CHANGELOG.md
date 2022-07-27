@@ -67,31 +67,31 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package astrajs
 
-## [0.2.5](https://github.com/tharsis/evmosjs/compare/evmosjs@0.2.4...evmosjs@0.2.5) (2022-03-25)
+## [0.2.5](https://github.com/astraprotocol/astrajs/compare/evmosjs@0.2.4...evmosjs@0.2.5) (2022-03-25)
 
 **Note:** Version bump only for package evmosjs
 
-## [0.2.4](https://github.com/tharsis/evmosjs/compare/evmosjs@0.2.3...evmosjs@0.2.4) (2022-03-25)
+## [0.2.4](https://github.com/astraprotocol/astrajs/compare/evmosjs@0.2.3...evmosjs@0.2.4) (2022-03-25)
 
 **Note:** Version bump only for package evmosjs
 
-## [0.2.3](https://github.com/tharsis/evmosjs/compare/evmosjs@0.2.2...evmosjs@0.2.3) (2022-03-24)
+## [0.2.3](https://github.com/astraprotocol/astrajs/compare/evmosjs@0.2.2...evmosjs@0.2.3) (2022-03-24)
 
 **Note:** Version bump only for package evmosjs
 
-## [0.2.2](https://github.com/tharsis/evmosjs/compare/evmosjs@0.2.1...evmosjs@0.2.2) (2022-03-23)
+## [0.2.2](https://github.com/astraprotocol/astrajs/compare/evmosjs@0.2.1...evmosjs@0.2.2) (2022-03-23)
 
 **Note:** Version bump only for package evmosjs
 
-## [0.2.1](https://github.com/tharsis/evmosjs/compare/evmosjs@0.2.0...evmosjs@0.2.1) (2022-03-14)
+## [0.2.1](https://github.com/astraprotocol/astrajs/compare/evmosjs@0.2.0...evmosjs@0.2.1) (2022-03-14)
 
 **Note:** Version bump only for package evmosjs
 
-# [0.2.0](https://github.com/tharsis/evmosjs/compare/evmosjs@0.1.2...evmosjs@0.2.0) (2022-03-11)
+# [0.2.0](https://github.com/astraprotocol/astrajs/compare/evmosjs@0.1.2...evmosjs@0.2.0) (2022-03-11)
 
 **Note:** Version bump only for package evmosjs
 
-## [0.1.2](https://github.com/tharsis/evmosjs/compare/evmosjs@0.1.1...evmosjs@0.1.2) (2022-03-11)
+## [0.1.2](https://github.com/astraprotocol/astrajs/compare/evmosjs@0.1.1...evmosjs@0.1.2) (2022-03-11)
 
 **Note:** Version bump only for package evmosjs
 
@@ -99,4 +99,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* create the evmosjs package on npm ([#22](https://github.com/tharsis/evmosjs/issues/22)) ([5446ca4](https://github.com/tharsis/evmosjs/commit/5446ca4e6fc027c6d26d5fce598ba1a5d1480e54))
+* create the evmosjs package on npm ([#22](https://github.com/astraprotocol/astrajs/issues/22)) ([5446ca4](https://github.com/astraprotocol/astrajs/commit/5446ca4e6fc027c6d26d5fce598ba1a5d1480e54))

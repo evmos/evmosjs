@@ -1,10 +1,10 @@
 # astrajs
 
-This project forked from [https://github.com/tharsis/evmosjs](https://github.com/tharsis/evmosjs)
+This project forked from [https://github.com/astraprotocol/astrajs](https://github.com/astraprotocol/astrajs)
 
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/astraprotocol/astrajs.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/astraprotocol/astrajs/alerts/) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/astraprotocol/astrajs.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/astraprotocol/astrajs/context:javascript)
 
-JS and TS libs for Evmos
+JS and TS libs for Astra
 
 ## Example
 
@@ -99,7 +99,7 @@ const msg = createMessageSend(chain, sender, fee, memo, params)
 
 ### Signing with Metamask
 
-After creating the transaction we need to send the payload to metamask so it can be signed. With that signature we are going to add a Web3Extension to the Cosmos Transactions and broadcast it to the Evmos node.
+After creating the transaction we need to send the payload to metamask so it can be signed. With that signature we are going to add a Web3Extension to the Cosmos Transactions and broadcast it to the Astra node.
 
 ```ts
 // Follow the previous step to generate the msg object

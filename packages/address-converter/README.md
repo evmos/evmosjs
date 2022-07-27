@@ -1,6 +1,6 @@
 # Address converter
 
-A simple converter between `ETH` address and `Ethermint`/`evmos` addresses.
+A simple converter between `ETH` address and `Ethermint`/`astra` addresses.
 
 ## Installation
 

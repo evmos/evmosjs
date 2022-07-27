@@ -41,3 +41,4 @@ Wallet address:
 
 - Hex: 0xa8fB2e433fb1A0c02C0C53FFdDB5e759C4641C0D
 - Evmos: evmos14rajuselkxsvqtqv20lamd08t8zxg8qdrlvp8x
+- Astra: astra14rajuselkxsvqtqv20lamd08t8zxg8qdz5sv9j

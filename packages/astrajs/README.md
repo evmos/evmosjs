@@ -1,3 +1,3 @@
-# Evmosjs
+# Astrajs
 
 Main package

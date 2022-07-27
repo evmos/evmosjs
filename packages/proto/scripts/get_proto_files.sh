@@ -11,7 +11,7 @@ cp -r ./third_party/proto/* $MYFOLDER/proto
 cd /tmp
 rm -rf ethermint
 
-# Evmos
+# Astra
 cd /tmp
 git clone https://github.com/astraprotocol/astra/
 cd astra/
