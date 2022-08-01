@@ -147,7 +147,7 @@ let response = await broadcastPost.json()
 
 ```ts
 // Follow the previous step to generate the msg object
-import { createTxRaw } from '@tharsis/proto';
+import { createTxRaw } from '@tharsis/proto'
 import {
   generateEndpointBroadcast,
   generatePostBodyBroadcast,
@@ -159,7 +159,7 @@ let sign = await window?.keplr?.signDirect(
   {
     bodyBytes: msg.signDirect.body.serializeBinary(),
     authInfoBytes: msg.signDirect.authInfo.serializeBinary(),
-     chainId:  chain.cosmosChainId,
+    chainId: chain.cosmosChainId,
     accountNumber: new Long(sender.accountNumber),
   },
   // @ts-expect-error the types are not updated on Keplr side
@@ -167,7 +167,7 @@ let sign = await window?.keplr?.signDirect(
 )
 
 if (sign !== undefined) {
-  let rawTx =  createTxRaw(sign.signed.bodyBytes, sign.signed.authInfoBytes, [
+  let rawTx = createTxRaw(sign.signed.bodyBytes, sign.signed.authInfoBytes, [
     new Uint8Array(Buffer.from(sign.signature.signature, 'base64')),
   ])
 
