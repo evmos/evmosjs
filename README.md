@@ -159,7 +159,7 @@ let sign = await window?.keplr?.signDirect(
   {
     bodyBytes: msg.signDirect.body.serializeBinary(),
     authInfoBytes: msg.signDirect.authInfo.serializeBinary(),
-   chainId:  chain.cosmosChainId,
+     chainId:  chain.cosmosChainId,
     accountNumber: new Long(sender.accountNumber),
   },
   // @ts-expect-error the types are not updated on Keplr side
