@@ -5,20 +5,20 @@ export const stakeAuthTypes =
   authzStake.cosmos.staking.v1beta1.AuthorizationType
 
 export function createStakeAuthorization(
-  allowAddress: string,
-  denom: string,
-  maxTokens: string | undefined,
+  allowAddresses: string[] | undefined,
+  maxTokens: { denom: string; amount: string } | undefined,
   authorizationType: authzStake.cosmos.staking.v1beta1.AuthorizationType,
 ) {
   const msg = new authzStake.cosmos.staking.v1beta1.StakeAuthorization({
-    allow_list:
-      new authzStake.cosmos.staking.v1beta1.StakeAuthorization.Validators({
-        address: [allowAddress],
-      }),
+    allow_list: allowAddresses
+      ? new authzStake.cosmos.staking.v1beta1.StakeAuthorization.Validators({
+          address: allowAddresses,
+        })
+      : undefined,
     max_tokens: maxTokens
       ? new coin.cosmos.base.v1beta1.Coin({
-          denom,
-          amount: maxTokens,
+          denom: maxTokens.denom,
+          amount: maxTokens.amount,
         })
       : undefined,
     authorization_type: authorizationType,
