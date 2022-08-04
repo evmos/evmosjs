@@ -1,4 +1,5 @@
 import {
+  createGenericAuthorization,
   createMsgGrant,
   createStakeAuthorization,
   stakeAuthTypes,
@@ -39,6 +40,51 @@ export function createTxMsgStakeAuthorization(
     msgStakeGrant,
     params.duration_in_seconds,
   )
+  const tx = createTransaction(
+    msgCosmos,
+    memo,
+    fee.amount,
+    fee.denom,
+    parseInt(fee.gas, 10),
+    'ethsecp256',
+    sender.pubkey,
+    sender.sequence,
+    sender.accountNumber,
+    chain.cosmosChainId,
+  )
+
+  return {
+    signDirect: tx.signDirect,
+    legacyAmino: tx.legacyAmino,
+  }
+}
+
+export interface MsgGenericAuthorizationParams {
+  bot_address: string
+  typeUrl: string
+  expires: number
+}
+
+export const createTxMsgGenericGrant = (
+  chain: Chain,
+  sender: Sender,
+  fee: Fee,
+  memo: string,
+  params: MsgGenericAuthorizationParams,
+) => {
+  // EIP712
+  // This is blocked until EvmosV7 is released with the eip712 any messages fixes!
+
+  // Cosmos
+  const msgGenericGrant = createGenericAuthorization(params.typeUrl)
+
+  const msgCosmos = createMsgGrant(
+    sender.accountAddress,
+    params.bot_address,
+    msgGenericGrant,
+    params.expires,
+  )
+
   const tx = createTransaction(
     msgCosmos,
     memo,
