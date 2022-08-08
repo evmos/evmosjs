@@ -138,7 +138,42 @@ let response = await broadcastPost.json();
 
 ### Signing with Keplr
 
-TODO: after the keplr release for chain type `60`
+```ts
+ // Follow the previous step to generate the msg object
+ import { createTxRaw } from '@tharsis/proto'
+ import {
+   generateEndpointBroadcast,
+   generatePostBodyBroadcast,
+ } from '@tharsis/provider'
+ let sign = await window?.keplr?.signDirect(
+   chain.cosmosChainId,
+   sender.accountAddress,
+   {
+     bodyBytes: msg.signDirect.body.serializeBinary(),
+     authInfoBytes: msg.signDirect.authInfo.serializeBinary(),
+     chainId: chain.cosmosChainId,
+     accountNumber: new Long(sender.accountNumber),
+   },
+   // @ts-expect-error the types are not updated on Keplr side
+   { isEthereum: true },
+ )
+ if (sign !== undefined) {
+   let rawTx = createTxRaw(sign.signed.bodyBytes, sign.signed.authInfoBytes, [
+     new Uint8Array(Buffer.from(sign.signature.signature, 'base64')),
+   ])
+   // Broadcast it
+   const postOptions = {
+     method: 'POST',
+     headers: { 'Content-Type': 'application/json' },
+     body: generatePostBodyBroadcast(rawTx),
+   }
+   let broadcastPost = await fetch(
+     `http://localhost:1317${generateEndpointBroadcast()}`,
+     postOptions,
+   )
+   let response = await broadcastPost.json()
+ }
+ ```
 
 ## TODO
 
