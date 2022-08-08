@@ -12,7 +12,7 @@ export interface MsgStakeAuthorizationParams {
   bot_address: string
   validator_address: string
   denom: string
-  maxTokens: string
+  maxTokens: string | undefined
   duration_in_seconds: number
 }
 
