@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.5](https://github.com/evmos/evmosjs/compare/@tharsis/transactions@0.2.4...@tharsis/transactions@0.2.5) (2022-07-19)
+
+### Features
+
+* authz for Staking Authorization added ([#47](https://github.com/evmos/evmosjs/issues/47)) ([0170a2d](https://github.com/evmos/evmosjs/commit/0170a2d9a889061e5d0d492a05b4f2a915701206))
+
+## [0.2.4](https://github.com/evmos/evmosjs/compare/@tharsis/transactions@0.2.3...@tharsis/transactions@0.2.4) (2022-06-23)
+
+### Features
+
+* convertCoin and convertERC20 messages ([#45](https://github.com/evmos/evmosjs/issues/45)) ([9b78984](https://github.com/evmos/evmosjs/commit/9b78984c034208c572e519bf080073014e804f13))
+* utils to sign messages locally ([#44](https://github.com/evmos/evmosjs/issues/44)) ([80bdf98](https://github.com/evmos/evmosjs/commit/80bdf980a330630104155d37e4b1a289f94eb10c))
+
+## [0.2.3](https://github.com/tharsis/evmosjs/compare/@tharsis/transactions@0.2.2...@tharsis/transactions@0.2.3) (2022-05-29)
+
+### Features
+
+* withdrawValidatorCommission message ([#42](https://github.com/tharsis/evmosjs/issues/42)) ([9cc09e3](https://github.com/tharsis/evmosjs/commit/9cc09e34f0f052555d1f9c6e8f3d81dfbbea6d1c))
+
 ## [0.2.2](https://github.com/tharsis/evmosjs/compare/@tharsis/transactions@0.2.1...@tharsis/transactions@0.2.2) (2022-03-25)
 
 **Note:** Version bump only for package @tharsis/transactions

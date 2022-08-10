@@ -1,0 +1,20 @@
+{
+  "name": "utils",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsc index.ts && node index.js"
+  },
+  "dependencies": {
+    "@hanchon/evmos-ts-wallet": "^0.1.1",
+    "@tharsis/address-converter": "^0.1.8",
+    "@tharsis/eip712": "^0.2.2",
+    "@tharsis/proto": "^0.1.17",
+    "@tharsis/provider": "^0.2.4",
+    "@tharsis/transactions": "^0.2.3"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.3"
+  }
+}
