@@ -10,6 +10,6 @@ export function createMsgCancelFeeSplit(
   })
   return {
     message: msg,
-    path: 'feesplit.erc20.v1.MsgCancelFeeSplit',
+    path: 'evmos.feesplit.v1.MsgCancelFeeSplit',
   }
 }
