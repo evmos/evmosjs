@@ -13,7 +13,8 @@ export namespace cosmos.tx.signing.v1beta1 {
         SIGN_MODE_UNSPECIFIED = 0,
         SIGN_MODE_DIRECT = 1,
         SIGN_MODE_TEXTUAL = 2,
-        SIGN_MODE_LEGACY_AMINO_JSON = 127
+        SIGN_MODE_LEGACY_AMINO_JSON = 127,
+        SIGN_MODE_EIP_191 = 191
     }
     export class SignatureDescriptors extends pb_1.Message {
         constructor(data?: any[] | {

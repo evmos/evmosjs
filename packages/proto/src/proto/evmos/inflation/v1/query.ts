@@ -324,14 +324,14 @@ export namespace evmos.inflation.v1 {
             return QuerySkippedEpochsResponse.deserialize(bytes);
         }
     }
-    export class QueryTotalSupplyRequest extends pb_1.Message {
+    export class QueryCirculatingSupplyRequest extends pb_1.Message {
         constructor(data?: any[] | {}) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
-            const message = new QueryTotalSupplyRequest({});
+            const message = new QueryCirculatingSupplyRequest({});
             return message;
         }
         toObject() {
@@ -345,8 +345,8 @@ export namespace evmos.inflation.v1 {
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryTotalSupplyRequest {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryTotalSupplyRequest();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryCirculatingSupplyRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryCirculatingSupplyRequest();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
@@ -359,43 +359,43 @@ export namespace evmos.inflation.v1 {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): QueryTotalSupplyRequest {
-            return QueryTotalSupplyRequest.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): QueryCirculatingSupplyRequest {
+            return QueryCirculatingSupplyRequest.deserialize(bytes);
         }
     }
-    export class QueryTotalSupplyResponse extends pb_1.Message {
+    export class QueryCirculatingSupplyResponse extends pb_1.Message {
         constructor(data?: any[] | {
-            total_supply?: dependency_3.cosmos.base.v1beta1.DecCoin;
+            circulating_supply?: dependency_3.cosmos.base.v1beta1.DecCoin;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
             if (!Array.isArray(data) && typeof data == "object") {
-                if ("total_supply" in data && data.total_supply != undefined) {
-                    this.total_supply = data.total_supply;
+                if ("circulating_supply" in data && data.circulating_supply != undefined) {
+                    this.circulating_supply = data.circulating_supply;
                 }
             }
         }
-        get total_supply() {
+        get circulating_supply() {
             return pb_1.Message.getWrapperField(this, dependency_3.cosmos.base.v1beta1.DecCoin, 1) as dependency_3.cosmos.base.v1beta1.DecCoin;
         }
-        set total_supply(value: dependency_3.cosmos.base.v1beta1.DecCoin) {
+        set circulating_supply(value: dependency_3.cosmos.base.v1beta1.DecCoin) {
             pb_1.Message.setWrapperField(this, 1, value);
         }
         static fromObject(data: {
-            total_supply?: ReturnType<typeof dependency_3.cosmos.base.v1beta1.DecCoin.prototype.toObject>;
+            circulating_supply?: ReturnType<typeof dependency_3.cosmos.base.v1beta1.DecCoin.prototype.toObject>;
         }) {
-            const message = new QueryTotalSupplyResponse({});
-            if (data.total_supply != null) {
-                message.total_supply = dependency_3.cosmos.base.v1beta1.DecCoin.fromObject(data.total_supply);
+            const message = new QueryCirculatingSupplyResponse({});
+            if (data.circulating_supply != null) {
+                message.circulating_supply = dependency_3.cosmos.base.v1beta1.DecCoin.fromObject(data.circulating_supply);
             }
             return message;
         }
         toObject() {
             const data: {
-                total_supply?: ReturnType<typeof dependency_3.cosmos.base.v1beta1.DecCoin.prototype.toObject>;
+                circulating_supply?: ReturnType<typeof dependency_3.cosmos.base.v1beta1.DecCoin.prototype.toObject>;
             } = {};
-            if (this.total_supply != null) {
-                data.total_supply = this.total_supply.toObject();
+            if (this.circulating_supply != null) {
+                data.circulating_supply = this.circulating_supply.toObject();
             }
             return data;
         }
@@ -403,19 +403,19 @@ export namespace evmos.inflation.v1 {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.total_supply !== undefined)
-                writer.writeMessage(1, this.total_supply, () => this.total_supply.serialize(writer));
+            if (this.circulating_supply !== undefined)
+                writer.writeMessage(1, this.circulating_supply, () => this.circulating_supply.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryTotalSupplyResponse {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryTotalSupplyResponse();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QueryCirculatingSupplyResponse {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QueryCirculatingSupplyResponse();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        reader.readMessage(message.total_supply, () => message.total_supply = dependency_3.cosmos.base.v1beta1.DecCoin.deserialize(reader));
+                        reader.readMessage(message.circulating_supply, () => message.circulating_supply = dependency_3.cosmos.base.v1beta1.DecCoin.deserialize(reader));
                         break;
                     default: reader.skipField();
                 }
@@ -425,8 +425,8 @@ export namespace evmos.inflation.v1 {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): QueryTotalSupplyResponse {
-            return QueryTotalSupplyResponse.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): QueryCirculatingSupplyResponse {
+            return QueryCirculatingSupplyResponse.deserialize(bytes);
         }
     }
     export class QueryInflationRateRequest extends pb_1.Message {
