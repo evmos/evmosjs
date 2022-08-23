@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4](https://github.com/evmos/evmosjs/compare/@tharsis/eip712@0.2.3...@tharsis/eip712@0.2.4) (2022-08-23)
+
+### Bug Fixes
+
+* use the correct values after the evmos pr ([#60](https://github.com/evmos/evmosjs/issues/60)) ([9c06327](https://github.com/evmos/evmosjs/commit/9c06327b25a01024efb862d7bd80c9329299ae1d))
+
+### Features
+
+* add feesplit to transactions pkg and eip712 rename ([#58](https://github.com/evmos/evmosjs/issues/58)) ([1dfefbd](https://github.com/evmos/evmosjs/commit/1dfefbd906a9674453c91c9adaf4273cc92c93b8))
+* feesplit included in eip712 package ([#56](https://github.com/evmos/evmosjs/issues/56)) ([102c1b0](https://github.com/evmos/evmosjs/commit/102c1b0873e2feedacb51b416a819c3fd8e8898f))
+
 ## [0.2.3](https://github.com/evmos/evmosjs/compare/@tharsis/eip712@0.2.2...@tharsis/eip712@0.2.3) (2022-06-23)
 
 ### Features
