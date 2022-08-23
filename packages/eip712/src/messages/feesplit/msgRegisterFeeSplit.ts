@@ -15,7 +15,7 @@ export function createMsgRegisterFeeSplit(
   nonces: number[],
 ) {
   return {
-    type: 'evmos/RegisterFeeSplit',
+    type: 'evmos/MsgRegisterFeeSplit',
     value: {
       contract_address,
       deployer_address,

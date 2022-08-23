@@ -13,7 +13,7 @@ export function createMsgUpdateFeeSplit(
   withdrawer_address: string,
 ) {
   return {
-    type: 'evmos/UpdateFeeSplit',
+    type: 'evmos/MsgUpdateFeeSplit',
     value: {
       contract_address,
       deployer_address,
