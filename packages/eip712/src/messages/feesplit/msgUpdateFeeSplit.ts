@@ -7,7 +7,7 @@ export const MSG_UPDATE_FEE_SPLIT_TYPES = {
 }
 
 /* eslint-disable camelcase */
-export function createUpdateFeeSplit(
+export function createMsgUpdateFeeSplit(
   contract_address: string,
   deployer_address: string,
   withdrawer_address: string,

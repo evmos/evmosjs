@@ -6,7 +6,7 @@ export const MSG_CANCEL_FEE_SPLIT_TYPES = {
 }
 
 /* eslint-disable camelcase */
-export function createCancelSplit(
+export function createMsgCancelFeeSplit(
   contract_address: string,
   deployer_address: string,
 ) {

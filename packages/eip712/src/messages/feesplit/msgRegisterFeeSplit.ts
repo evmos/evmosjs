@@ -8,11 +8,11 @@ export const MSG_REGISTER_FEE_SPLIT_TYPES = {
 }
 
 /* eslint-disable camelcase */
-export function createRegisterFeeSplit(
+export function createMsgRegisterFeeSplit(
   contract_address: string,
   deployer_address: string,
   withdrawer_address: string,
-  nonces: string,
+  nonces: number[],
 ) {
   return {
     type: 'evmos/RegisterFeeSplit',
