@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.6](https://github.com/evmos/evmosjs/compare/@tharsis/transactions@0.2.4...@tharsis/transactions@0.2.6) (2022-08-23)
+
+### Features
+
+* add feesplit to transactions pkg and eip712 rename ([#58](https://github.com/evmos/evmosjs/issues/58)) ([1dfefbd](https://github.com/evmos/evmosjs/commit/1dfefbd906a9674453c91c9adaf4273cc92c93b8))
+* allow empty maxTokens on authz message ([#49](https://github.com/evmos/evmosjs/issues/49)) ([7a4a611](https://github.com/evmos/evmosjs/commit/7a4a611abd7b23bfb47c175e090ed7940e334305))
+* authz for Staking Authorization added ([#47](https://github.com/evmos/evmosjs/issues/47)) ([0170a2d](https://github.com/evmos/evmosjs/commit/0170a2d9a889061e5d0d492a05b4f2a915701206))
+
 ## [0.2.5](https://github.com/evmos/evmosjs/compare/@tharsis/transactions@0.2.4...@tharsis/transactions@0.2.5) (2022-07-19)
 
 ### Features

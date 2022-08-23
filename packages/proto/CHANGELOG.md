@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.20](https://github.com/evmos/evmosjs/compare/@tharsis/proto@0.1.18...@tharsis/proto@0.1.20) (2022-08-23)
+
+### Bug Fixes
+
+* feeSplit names ([#59](https://github.com/evmos/evmosjs/issues/59)) ([e461ead](https://github.com/evmos/evmosjs/commit/e461ead33f99781926cac03c7ec4fad0887c9cbc))
+
+### Features
+
+* add feesplit msg creation to proto pkg ([#57](https://github.com/evmos/evmosjs/issues/57)) ([e4c9f53](https://github.com/evmos/evmosjs/commit/e4c9f536e0bade7cc1de22257697ce7083e40642))
+* allow empty maxTokens on authz message ([#49](https://github.com/evmos/evmosjs/issues/49)) ([7a4a611](https://github.com/evmos/evmosjs/commit/7a4a611abd7b23bfb47c175e090ed7940e334305))
+* authz for Staking Authorization added ([#47](https://github.com/evmos/evmosjs/issues/47)) ([0170a2d](https://github.com/evmos/evmosjs/commit/0170a2d9a889061e5d0d492a05b4f2a915701206))
+* update to evmos v8 ([#55](https://github.com/evmos/evmosjs/issues/55)) ([34510a6](https://github.com/evmos/evmosjs/commit/34510a6dd8d34e92a2097e6557046fb8389c5350))
+
 ## [0.1.19](https://github.com/evmos/evmosjs/compare/@tharsis/proto@0.1.18...@tharsis/proto@0.1.19) (2022-07-19)
 
 ### Features
