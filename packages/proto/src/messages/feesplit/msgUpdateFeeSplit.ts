@@ -12,6 +12,6 @@ export function createMsgUpdateFeeSplit(
   })
   return {
     message: msg,
-    path: 'feesplit.erc20.v1.MsgUpdateFeeSplit',
+    path: 'evmos.feesplit.v1.MsgUpdateFeeSplit',
   }
 }

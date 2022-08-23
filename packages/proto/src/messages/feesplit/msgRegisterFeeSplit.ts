@@ -14,6 +14,6 @@ export function createMsgRegisterFeeSplit(
   })
   return {
     message: msg,
-    path: 'feesplit.erc20.v1.MsgRegisterFeeSplit',
+    path: 'evmos.feesplit.v1.MsgRegisterFeeSplit',
   }
 }
