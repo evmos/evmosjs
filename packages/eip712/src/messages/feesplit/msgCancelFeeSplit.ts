@@ -11,7 +11,7 @@ export function createMsgCancelFeeSplit(
   deployer_address: string,
 ) {
   return {
-    type: 'evmos/CancelFeeSplit',
+    type: 'evmos/MsgCancelFeeSplit',
     value: {
       contract_address,
       deployer_address,
