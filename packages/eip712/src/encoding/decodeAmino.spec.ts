@@ -140,4 +140,36 @@ describe('decoding amino', () => {
       decodeAminoSignDoc(bytes)
     }).toThrow(Error)
   })
+
+  it('fills blank feePayers', () => {
+    const signDoc = {
+      account_number: '0',
+      chain_id: 'evmos_9000-1',
+      fee: {
+        amount: [{ amount: '2000', denom: 'aevmos' }],
+        gas: '200000',
+        feePayer: '',
+      },
+      memo: '',
+      msgs: [
+        {
+          type: 'cosmos-sdk/MsgVote',
+          value: {
+            option: 1,
+            proposal_id: '1',
+            voter: 'evmos1ygxq25vlp3u4lqyys6vrsdaz9ww9kgrx7xlhty',
+          },
+        },
+      ],
+      sequence: '1',
+    }
+
+    const bytes = Buffer.from(JSON.stringify(signDoc))
+    const eip712 = decodeAminoSignDoc(bytes)
+    const message = eip712.message as any
+
+    expect(message.fee.feePayer).toBe(
+      'evmos1ygxq25vlp3u4lqyys6vrsdaz9ww9kgrx7xlhty',
+    )
+  })
 })
