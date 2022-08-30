@@ -27,11 +27,16 @@ export function getFeePayerFromMsg(msg: any) {
   }
 }
 
-// Return the formatted SignDoc. Throws on error.
+// Return the SignDoc post-formatting. Throws on error.
 function formatSignDoc(signDoc: any) {
   const signDocCpy: any = {}
   Object.assign(signDocCpy, signDoc)
-  if (!Object.keys(signDoc.fee).includes('feePayer')) {
+
+  // Fill in the feePayer if the field is blank or unset
+  if (
+    !Object.keys(signDoc.fee).includes('feePayer') ||
+    signDoc.fee.feePayer === ''
+  ) {
     signDocCpy.fee.feePayer = getFeePayerFromMsg(signDoc.msgs[0])
   }
 
