@@ -28,20 +28,30 @@ function protobufTypeUrlToAminoType(typeUrl: string) {
   }
 }
 
+// Convert a Protobuf Message to its corresponding Amino representation since
+// EIP-712 types require messages to be in Amino form.
 function convertProtobufMsgToAminoMsg(obj: any) {
+  // Return primitive types
   if (typeof obj !== 'object') {
     return obj
   }
 
+  // Format all elements within the array
   if (Array.isArray(obj)) {
-    return obj
+    const formattedArray: any[] = []
+    obj.forEach((el) => {
+      formattedArray.push(convertProtobufMsgToAminoMsg(el))
+    })
+    return formattedArray
   }
 
+  // Convert Long objects to string, since Longs are not recognized
+  // by EIP-712 types.
   if (isLong(obj)) {
-    // Convert Long objects to string
     return new Long(obj).toString()
   }
 
+  // Recursively convert camel case instances to snake case to match expected fields
   const camelToSnakeCase = (str: string) =>
     str.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`)
 
@@ -88,13 +98,20 @@ export function decodeProtobufSignDoc(bytes: Uint8Array) {
   }
   const signer = authInfo.signerInfos[0]
 
+  // Enforce presence of fee
+  if (!authInfo.fee) {
+    throw new Error(
+      'Expected fee object to be included in payload, got undefined',
+    )
+  }
+
   // Enforce single fee
-  if (authInfo.fee?.amount.length !== 1) {
+  if (authInfo.fee.amount.length !== 1) {
     throw new Error(
       `Expected single fee in Protobuf SignDoc but received ${authInfo.fee?.amount.length}`,
     )
   }
-  const amount = authInfo.fee?.amount[0]
+  const amount = authInfo.fee.amount[0]
 
   // Parse SignDoc fields
   const accountNumber = signDoc.accountNumber.toString()
@@ -117,12 +134,9 @@ export function decodeProtobufSignDoc(bytes: Uint8Array) {
     feePayer = getFeePayerFromMsg(aminoMsg)
   }
 
-  const fee = generateFee(
-    amount.amount,
-    amount.denom,
-    authInfo.fee?.gasLimit.toString(),
-    feePayer,
-  )
+  const gasLimit = authInfo.fee.gasLimit.toString()
+
+  const fee = generateFee(amount.amount, amount.denom, gasLimit, feePayer)
 
   const type = eip712MessageType(aminoMsg)
 
