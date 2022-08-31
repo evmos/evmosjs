@@ -57,3 +57,19 @@ export function createMsgVesting(
     path: 'evmos.vesting.v1.MsgCreateClawbackVestingAccount',
   }
 }
+
+export function createMsgClawback(
+  funderAddress: string,
+  accountAddress: string,
+  destAddress: string,
+) {
+  const message = new vestingEvmos.evmos.vesting.v1.MsgClawback({
+    funder_address: funderAddress,
+    account_address: accountAddress,
+    dest_address: destAddress,
+  })
+  return {
+    message,
+    path: 'evmos.vesting.v1.MsgClawback',
+  }
+}

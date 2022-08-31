@@ -1,5 +1,6 @@
 import {
   createMsgVesting as protoMsgVesting,
+  createMsgClawback as protoMsgClawback,
   createTransaction,
   createTransactionWithMultipleMessages,
 } from '@astradefi/proto'
@@ -10,7 +11,9 @@ import {
   generateMessage,
   generateTypes,
   createMsgVesting,
+  createMsgClawback,
   MSG_VESTING_TYPES,
+  MSG_CLAWBACK_TYPES,
   generateMessageWithMultipleTransactions,
 } from '@astradefi/eip712'
 
@@ -31,6 +34,11 @@ export interface VestingSendParams {
   startTime: string
   lockupPeriod: Period[]
   vestingPeriod: Period[]
+}
+
+export interface VestingClawbackParams {
+  accountAddress: string
+  destAddress: string
 }
 
 export function createMessageVesting(
@@ -82,6 +90,69 @@ export function createMessageVesting(
 
   const tx = createTransaction(
     msgVesting,
+    memo,
+    fee.amount,
+    fee.denom,
+    parseInt(fee.gas, 10),
+    'ethsecp256',
+    sender.pubkey,
+    sender.sequence,
+    sender.accountNumber,
+    chain.cosmosChainId,
+  )
+
+  return {
+    signDirect: tx.signDirect,
+    legacyAmino: tx.legacyAmino,
+    eipToSign,
+  }
+}
+
+export function createMessageClawback(
+  chain: Chain,
+  sender: Sender,
+  fee: Fee,
+  memo: string,
+  params: VestingClawbackParams,
+) {
+  /**
+   * EIP712
+   */
+  const feeObject = generateFee(
+    fee.amount,
+    fee.denom,
+    fee.gas,
+    sender.accountAddress,
+  )
+  const types = generateTypes(MSG_CLAWBACK_TYPES)
+
+  const msg = createMsgClawback(
+    sender.accountAddress,
+    params.accountAddress,
+    params.destAddress,
+  )
+
+  const messages = generateMessage(
+    sender.accountNumber.toString(),
+    sender.sequence.toString(),
+    chain.cosmosChainId,
+    memo,
+    feeObject,
+    msg,
+  )
+  const eipToSign = createEIP712(types, chain.chainId, messages)
+
+  /**
+   * Cosmos
+   */
+  const msgClawback = protoMsgClawback(
+    sender.accountAddress,
+    params.accountAddress,
+    params.destAddress,
+  )
+
+  const tx = createTransaction(
+    msgClawback,
     memo,
     fee.amount,
     fee.denom,
@@ -153,6 +224,73 @@ export function createMultipleMessageVestings(
 
   const tx = createTransactionWithMultipleMessages(
     msgVestings,
+    memo,
+    fee.amount,
+    fee.denom,
+    parseInt(fee.gas, 10),
+    'ethsecp256',
+    sender.pubkey,
+    sender.sequence,
+    sender.accountNumber,
+    chain.cosmosChainId,
+  )
+
+  return {
+    signDirect: tx.signDirect,
+    legacyAmino: tx.legacyAmino,
+    eipToSign,
+  }
+}
+
+export function createMultipleMessageClawbacks(
+  chain: Chain,
+  sender: Sender,
+  fee: Fee,
+  memo: string,
+  params: VestingClawbackParams[],
+) {
+  /**
+   * EIP712
+   */
+  const feeObject = generateFee(
+    fee.amount,
+    fee.denom,
+    fee.gas,
+    sender.accountAddress,
+  )
+  const types = generateTypes(MSG_VESTING_TYPES)
+
+  const msgs = params.map((param) =>
+    createMsgClawback(
+      sender.accountAddress,
+      param.accountAddress,
+      param.destAddress,
+    ),
+  )
+
+  const messages = generateMessageWithMultipleTransactions(
+    sender.accountNumber.toString(),
+    sender.sequence.toString(),
+    chain.cosmosChainId,
+    memo,
+    feeObject,
+    msgs,
+  )
+  const eipToSign = createEIP712(types, chain.chainId, messages)
+
+  /**
+   * Cosmos
+   */
+  const msgClawbacks = params.map((param) =>
+    protoMsgClawback(
+      sender.accountAddress,
+      param.accountAddress,
+      param.destAddress,
+    ),
+  )
+
+  const tx = createTransactionWithMultipleMessages(
+    msgClawbacks,
     memo,
     fee.amount,
     fee.denom,
