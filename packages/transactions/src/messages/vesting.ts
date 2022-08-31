@@ -258,7 +258,7 @@ export function createMultipleMessageClawbacks(
     fee.gas,
     sender.accountAddress,
   )
-  const types = generateTypes(MSG_VESTING_TYPES)
+  const types = generateTypes(MSG_CLAWBACK_TYPES)
 
   const msgs = params.map((param) =>
     createMsgClawback(
