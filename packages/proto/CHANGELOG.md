@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/astraprotocol/astrajs/compare/@astradefi/proto@0.7.1...@astradefi/proto@0.8.0) (2022-08-31)
+
+### Features
+
+* add msgClawback fn ([0180213](https://github.com/astraprotocol/astrajs/commit/01802130adba560ce6b30d02bdd7637fdd5d1270))
+* allow empty maxTokens on authz message ([717c64b](https://github.com/astraprotocol/astrajs/commit/717c64bdaf1a0443b8f1cb43a13fdf439743e952))
+
 ## [0.7.1](https://github.com/astraprotocol/astrajs/compare/@astradefi/proto@0.7.0...@astradefi/proto@0.7.1) (2022-07-27)
 
 **Note:** Version bump only for package @astradefi/proto

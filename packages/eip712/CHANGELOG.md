@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/astraprotocol/astrajs/compare/@astradefi/eip712@0.7.0...@astradefi/eip712@0.8.0) (2022-08-31)
+
+### Features
+
+* add msgClawback fn ([0180213](https://github.com/astraprotocol/astrajs/commit/01802130adba560ce6b30d02bdd7637fdd5d1270))
+
 # [0.7.0](https://github.com/astraprotocol/astrajs/compare/@astradefi/eip712@0.6.0...@astradefi/eip712@0.7.0) (2022-07-08)
 
 ### Bug Fixes
