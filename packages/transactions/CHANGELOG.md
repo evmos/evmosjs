@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1](https://github.com/astraprotocol/astrajs/compare/@astradefi/transactions@0.10.0...@astradefi/transactions@0.10.1) (2022-08-31)
+
+### Bug Fixes
+
+* **eip712:** wrong msgClawback types ([2fa3fb3](https://github.com/astraprotocol/astrajs/commit/2fa3fb3eed1bcd7986cda55f03220b87311e1eeb))
+
 # [0.10.0](https://github.com/astraprotocol/astrajs/compare/@astradefi/transactions@0.9.1...@astradefi/transactions@0.10.0) (2022-08-31)
 
 ### Features
