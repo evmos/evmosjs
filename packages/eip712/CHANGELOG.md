@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/astraprotocol/astrajs/compare/@astradefi/eip712@0.8.0...@astradefi/eip712@0.8.1) (2022-09-05)
+
+### Bug Fixes
+
+* **vesting:** wrong field name ([ba007e7](https://github.com/astraprotocol/astrajs/commit/ba007e7e45a608e06e8e1086bfb70ef652d073d4))
+
 # [0.8.0](https://github.com/astraprotocol/astrajs/compare/@astradefi/eip712@0.7.0...@astradefi/eip712@0.8.0) (2022-08-31)
 
 ### Features
