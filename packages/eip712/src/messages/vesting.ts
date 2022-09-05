@@ -36,7 +36,7 @@ export const MSG_VESTING_TYPES = {
 
 export const MSG_CLAWBACK_TYPES = {
   MsgValue: [
-    { name: 'funder_ddress', type: 'string' },
+    { name: 'funder_address', type: 'string' },
     { name: 'account_address', type: 'string' },
     { name: 'dest_address', type: 'string' },
   ],
@@ -69,7 +69,7 @@ export function createMsgClawback(
   return {
     type: 'astra/MsgClawback',
     value: {
-      funder_ddress: funderAddress,
+      funder_address: funderAddress,
       account_address: accountAddress,
       dest_address: destAddress,
     },
