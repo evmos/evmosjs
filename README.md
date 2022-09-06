@@ -1,8 +1,6 @@
 # astrajs
 
-This project forked from [https://github.com/astraprotocol/astrajs](https://github.com/astraprotocol/astrajs)
-
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/astraprotocol/astrajs.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/astraprotocol/astrajs/alerts/) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/astraprotocol/astrajs.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/astraprotocol/astrajs/context:javascript)
+This project forked from [https://github.com/evmos/evmosjs](https://github.com/evmos/evmosjs)
 
 JS and TS libs for Astra
 
@@ -14,14 +12,14 @@ Get the account number, sequence and pubkey from an address.
 NOTE: if the address had not sent any transaction to the blockchain, the pubkey value are going to be empty.
 
 ```ts
-import { ethToEvmos } from '@astradefi/address-converter';
+import { ethToAstra } from '@astradefi/address-converter';
 import { generateEndpointAccount } from '@astradefi/provider';
 
-const sender = 'evmos1...'
+const sender = 'astra1...'
 let destination = '0x....'
 // The address must be bech32 encoded
 if (destination.split('0x').length == 2) {
-    destination = ethToEvmos(destination)
+    destination = ethToAstra(destination)
 }
 
 // Query the node
