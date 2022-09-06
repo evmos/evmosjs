@@ -61,32 +61,32 @@ let addrData = await addRawData.json()
 The transaction can be signed using EIP712 on Metamask and SignDirect on Keplr.
 
 ```ts
-import { createMessageSend } from '@astradefi/transactions'
+import { createMessageSend } from @astradefi/transactions
 
 const chain = {
-    chainId: 9000,
-    cosmosChainId: 'evmos_9000-1',
+    chainId: 11110,
+    cosmosChainId: 'astra_11110-1',
 }
 
 const sender = {
-    accountAddress: 'ethm1tfegf50n5xl0hd5cxfzjca3ylsfpg0fned5gqm',
+    accountAddress: 'astra198g5t8ct4udcgflfkc07htnctp945sjwaagwf2',
     sequence: 1,
     accountNumber: 9,
-    pubkey: 'AgTw+4v0daIrxsNSW4FcQ+IoingPseFwHO1DnssyoOqZ',
+    pubkey: 'A8OsUq+hI7+SQSopU7TssYaD69tQImP3qUACUsFS57Gk',
 }
 
 const fee = {
     amount: '20',
-    denom: 'aevmos',
+    denom: 'aastra',
     gas: '200000',
 }
 
 const memo = ''
 
 const params = {
-    destinationAddress: 'evmos1pmk2r32ssqwps42y3c9d4clqlca403yd9wymgr',
+    destinationAddress: 'astra1uqayy4cwyuu6xxedy48jd7ldua3x0uahrd78dt',
     amount: '1',
-    denom: 'aevmos',
+    denom: 'aastra',
 }
 
 const msg = createMessageSend(chain, sender, fee, memo, params)
@@ -103,7 +103,7 @@ After creating the transaction we need to send the payload to metamask so it can
 
 ```ts
 // Follow the previous step to generate the msg object
-import { evmosToEth } from '@astradefi/address-converter'
+import { astraToEth } from '@astradefi/address-converter'
 import { generateEndpointBroadcast, generatePostBodyBroadcast } from '@astradefi/provider'
 import { createTxRawEIP712, signatureToWeb3Extension } from '@astradefi/transactions'
 
@@ -113,7 +113,7 @@ await window.ethereum.enable();
 // Request the signature
 let signature = await window.ethereum.request({
     method: 'eth_signTypedData_v4',
-    params: [evmosToEth(sender.accountAddress), JSON.stringify(msg.eipToSign)],
+    params: [astraToEth(sender.accountAddress), JSON.stringify(msg.eipToSign)],
 });
 
 // The chain and sender objects are the same as the previous example
@@ -140,11 +140,11 @@ let response = await broadcastPost.json();
 
 ```ts
  // Follow the previous step to generate the msg object
- import { createTxRaw } from '@tharsis/proto'
+ import { createTxRaw } from '@astradefi/proto'
  import {
    generateEndpointBroadcast,
    generatePostBodyBroadcast,
- } from '@tharsis/provider'
+ } from '@astradefi/provider'
  let sign = await window?.keplr?.signDirect(
    chain.cosmosChainId,
    sender.accountAddress,
