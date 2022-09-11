@@ -13,9 +13,10 @@
   },
   "scripts": {
     "postinstall": "shx mkdir -p dist && link-module-alias",
-    "build": "tsc --build tsconfig.build.json && link-module-alias",
+    "build": "npm run build:api && tsc --build tsconfig.build.json && link-module-alias",
     "build:watch": "tsc --build -w tsconfig.build.json && link-module-alias",
-    "clean": "tsc --build tsconfig.build.json --clean  && shx rm -rf coverage *.log junit.xml dist && jest --clearCache",
+    "build:api": "npx swagger-typescript-api --axios --single-http-client --modular -p https://api.evmos.org/openapi.json -o ./src/generated",
+    "clean": "tsc --build tsconfig.build.json --clean && shx rm -rf coverage *.log junit.xml dist && jest --clearCache",
     "test": "jest",
     "test:unit": "jest test/unit",
     "test:integration": "jest test/unit",
@@ -27,8 +28,12 @@
   },
   "dependencies": {
     "@types/node": "^17.0.21",
+    "axios": "^0.27.2",
     "link-module-alias": "^1.2.0",
     "shx": "^0.3.4"
   },
-  "gitHead": "fc2045b9357bde146e3374429453eb5d4a48a2ca"
+  "gitHead": "fc2045b9357bde146e3374429453eb5d4a48a2ca",
+  "devDependencies": {
+    "swagger-typescript-api": "^9.3.1"
+  }
 }
