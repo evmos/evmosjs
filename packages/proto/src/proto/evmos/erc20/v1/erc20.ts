@@ -372,7 +372,7 @@ export namespace evmos.erc20.v1 {
             return RegisterERC20Proposal.deserialize(bytes);
         }
     }
-    export class ToggleTokenRelayProposal extends pb_1.Message {
+    export class ToggleTokenConversionProposal extends pb_1.Message {
         constructor(data?: any[] | {
             title?: string;
             description?: string;
@@ -415,7 +415,7 @@ export namespace evmos.erc20.v1 {
             description?: string;
             token?: string;
         }) {
-            const message = new ToggleTokenRelayProposal({});
+            const message = new ToggleTokenConversionProposal({});
             if (data.title != null) {
                 message.title = data.title;
             }
@@ -457,8 +457,8 @@ export namespace evmos.erc20.v1 {
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): ToggleTokenRelayProposal {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new ToggleTokenRelayProposal();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): ToggleTokenConversionProposal {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new ToggleTokenConversionProposal();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
@@ -480,143 +480,8 @@ export namespace evmos.erc20.v1 {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): ToggleTokenRelayProposal {
-            return ToggleTokenRelayProposal.deserialize(bytes);
-        }
-    }
-    export class UpdateTokenPairERC20Proposal extends pb_1.Message {
-        constructor(data?: any[] | {
-            title?: string;
-            description?: string;
-            erc20_address?: string;
-            new_erc20_address?: string;
-        }) {
-            super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
-            if (!Array.isArray(data) && typeof data == "object") {
-                if ("title" in data && data.title != undefined) {
-                    this.title = data.title;
-                }
-                if ("description" in data && data.description != undefined) {
-                    this.description = data.description;
-                }
-                if ("erc20_address" in data && data.erc20_address != undefined) {
-                    this.erc20_address = data.erc20_address;
-                }
-                if ("new_erc20_address" in data && data.new_erc20_address != undefined) {
-                    this.new_erc20_address = data.new_erc20_address;
-                }
-            }
-        }
-        get title() {
-            return pb_1.Message.getField(this, 1) as string;
-        }
-        set title(value: string) {
-            pb_1.Message.setField(this, 1, value);
-        }
-        get description() {
-            return pb_1.Message.getField(this, 2) as string;
-        }
-        set description(value: string) {
-            pb_1.Message.setField(this, 2, value);
-        }
-        get erc20_address() {
-            return pb_1.Message.getField(this, 3) as string;
-        }
-        set erc20_address(value: string) {
-            pb_1.Message.setField(this, 3, value);
-        }
-        get new_erc20_address() {
-            return pb_1.Message.getField(this, 4) as string;
-        }
-        set new_erc20_address(value: string) {
-            pb_1.Message.setField(this, 4, value);
-        }
-        static fromObject(data: {
-            title?: string;
-            description?: string;
-            erc20_address?: string;
-            new_erc20_address?: string;
-        }) {
-            const message = new UpdateTokenPairERC20Proposal({});
-            if (data.title != null) {
-                message.title = data.title;
-            }
-            if (data.description != null) {
-                message.description = data.description;
-            }
-            if (data.erc20_address != null) {
-                message.erc20_address = data.erc20_address;
-            }
-            if (data.new_erc20_address != null) {
-                message.new_erc20_address = data.new_erc20_address;
-            }
-            return message;
-        }
-        toObject() {
-            const data: {
-                title?: string;
-                description?: string;
-                erc20_address?: string;
-                new_erc20_address?: string;
-            } = {};
-            if (this.title != null) {
-                data.title = this.title;
-            }
-            if (this.description != null) {
-                data.description = this.description;
-            }
-            if (this.erc20_address != null) {
-                data.erc20_address = this.erc20_address;
-            }
-            if (this.new_erc20_address != null) {
-                data.new_erc20_address = this.new_erc20_address;
-            }
-            return data;
-        }
-        serialize(): Uint8Array;
-        serialize(w: pb_1.BinaryWriter): void;
-        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
-            const writer = w || new pb_1.BinaryWriter();
-            if (typeof this.title === "string" && this.title.length)
-                writer.writeString(1, this.title);
-            if (typeof this.description === "string" && this.description.length)
-                writer.writeString(2, this.description);
-            if (typeof this.erc20_address === "string" && this.erc20_address.length)
-                writer.writeString(3, this.erc20_address);
-            if (typeof this.new_erc20_address === "string" && this.new_erc20_address.length)
-                writer.writeString(4, this.new_erc20_address);
-            if (!w)
-                return writer.getResultBuffer();
-        }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): UpdateTokenPairERC20Proposal {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new UpdateTokenPairERC20Proposal();
-            while (reader.nextField()) {
-                if (reader.isEndGroup())
-                    break;
-                switch (reader.getFieldNumber()) {
-                    case 1:
-                        message.title = reader.readString();
-                        break;
-                    case 2:
-                        message.description = reader.readString();
-                        break;
-                    case 3:
-                        message.erc20_address = reader.readString();
-                        break;
-                    case 4:
-                        message.new_erc20_address = reader.readString();
-                        break;
-                    default: reader.skipField();
-                }
-            }
-            return message;
-        }
-        serializeBinary(): Uint8Array {
-            return this.serialize();
-        }
-        static deserializeBinary(bytes: Uint8Array): UpdateTokenPairERC20Proposal {
-            return UpdateTokenPairERC20Proposal.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): ToggleTokenConversionProposal {
+            return ToggleTokenConversionProposal.deserialize(bytes);
         }
     }
 }
