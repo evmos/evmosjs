@@ -39,5 +39,8 @@
     "sha3": "^2.1.4",
     "shx": "^0.3.4"
   },
-  "gitHead": "fc2045b9357bde146e3374429453eb5d4a48a2ca"
+  "gitHead": "fc2045b9357bde146e3374429453eb5d4a48a2ca",
+  "publishConfig": {
+    "access": "public"
+  }
 }
