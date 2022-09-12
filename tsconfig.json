@@ -4,11 +4,11 @@
     "baseUrl": ".",
     "paths": {
         "evmosjs":["packages/evmosjs"],
-        "@tharsis/address-converter": ["./packages/address-converter/*"],
-        "@tharsis/eip712":["packages/eip712"],
-        "@tharsis/proto":["packages/proto"],
-        "@tharsis/provider":["./packages/provider/*"],
-        "@tharsis/transactions":["./packages/transactions/*"]
+        "@evmos/address-converter": ["./packages/address-converter/*"],
+        "@evmos/eip712":["packages/eip712"],
+        "@evmos/proto":["packages/proto"],
+        "@evmos/provider":["./packages/provider/*"],
+        "@evmos/transactions":["./packages/transactions/*"]
     }
   }
 }

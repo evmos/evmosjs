@@ -1,5 +1,5 @@
 {
-  "name": "@tharsis/provider",
+  "name": "@evmos/provider",
   "description": "Simple provider to query the EVMOS rest api.",
   "version": "0.2.4",
   "license": "MIT",
@@ -30,5 +30,8 @@
     "link-module-alias": "^1.2.0",
     "shx": "^0.3.4"
   },
-  "gitHead": "fc2045b9357bde146e3374429453eb5d4a48a2ca"
+  "gitHead": "fc2045b9357bde146e3374429453eb5d4a48a2ca",
+  "publishConfig": {
+    "access": "public"
+  }
 }

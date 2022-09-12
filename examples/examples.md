@@ -4,7 +4,7 @@ All examples are using the function `getSender` that will return a valid account
 
 Type:
 
-``` ts
+```ts
 interface Sender {
   accountAddress: string
   sequence: number
@@ -19,7 +19,7 @@ All the message will also required the chain information and the fee to pay:
 
 Types
 
-``` ts
+```ts
 export interface Fee {
   amount: string
   denom: string
@@ -41,37 +41,47 @@ The examples are using `signTransaction` or `singTransactionUsingEIP712` to sign
 NOTE: msg is the result of calling any `createTx...` function using evmosjs
 
 ```ts
-import { evmosToEth } from '@tharsis/address-converter'
-import { generateEndpointBroadcast, generatePostBodyBroadcast } from '@tharsis/provider'
-import { createTxRawEIP712, signatureToWeb3Extension } from '@tharsis/transactions'
+import { evmosToEth } from '@evmos/address-converter'
+import {
+  generateEndpointBroadcast,
+  generatePostBodyBroadcast,
+} from '@evmos/provider'
+import {
+  createTxRawEIP712,
+  signatureToWeb3Extension,
+} from '@evmos/transactions'
 
 // Init Metamask
-await window.ethereum.enable();
+await window.ethereum.enable()
 
 // Request the signature
 let signature = await window.ethereum.request({
-    method: 'eth_signTypedData_v4',
-    params: [evmosToEth(sender.accountAddress), JSON.stringify(msg.eipToSign)],
-});
+  method: 'eth_signTypedData_v4',
+  params: [evmosToEth(sender.accountAddress), JSON.stringify(msg.eipToSign)],
+})
 
 // The chain and sender objects are the same as the previous example
 let extension = signatureToWeb3Extension(chain, sender, signature)
 
 // Create the txRaw
-let rawTx = createTxRawEIP712(msg.legacyAmino.body, msg.legacyAmino.authInfo, extension)
+let rawTx = createTxRawEIP712(
+  msg.legacyAmino.body,
+  msg.legacyAmino.authInfo,
+  extension,
+)
 
 // Broadcast it
 const postOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: generatePostBodyBroadcast(rawTx),
-};
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: generatePostBodyBroadcast(rawTx),
+}
 
 let broadcastPost = await fetch(
-    `http://localhost:1317${generateEndpointBroadcast()}`,
-    postOptions
-);
-let response = await broadcastPost.json();
+  `http://localhost:1317${generateEndpointBroadcast()}`,
+  postOptions,
+)
+let response = await broadcastPost.json()
 ```
 
 ### Keplr
