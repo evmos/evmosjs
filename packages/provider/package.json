@@ -1,7 +1,7 @@
 {
   "name": "@evmos/provider",
   "description": "Simple provider to query the EVMOS rest api.",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
