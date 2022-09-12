@@ -1,5 +1,5 @@
 {
-  "name": "@tharsis/eip712",
+  "name": "@evmos/eip712",
   "description": "EIP712 transaction creator for EVMOS.",
   "version": "0.2.4",
   "license": "MIT",

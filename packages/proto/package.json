@@ -1,5 +1,5 @@
 {
-  "name": "@tharsis/proto",
+  "name": "@evmos/proto",
   "description": "Protobuf files for EVMOS.",
   "version": "0.1.20",
   "license": "MIT",

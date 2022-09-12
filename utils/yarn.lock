@@ -274,9 +274,9 @@
     "@ethersproject/wallet" "^5.6.2"
     "@hanchon/signature-to-pubkey" "^1.0.0"
     "@metamask/eth-sig-util" "^4.0.1"
-    "@tharsis/address-converter" "^0.1.8"
-    "@tharsis/proto" "^0.1.17"
-    "@tharsis/transactions" "^0.2.3"
+    "@evmos/address-converter" "^0.1.8"
+    "@evmos/proto" "^0.1.17"
+    "@evmos/transactions" "^0.2.3"
     node-fetch "2"
 
 "@hanchon/signature-to-pubkey@^1.0.0":
@@ -297,9 +297,9 @@
     tweetnacl "^1.0.3"
     tweetnacl-util "^0.15.1"
 
-"@tharsis/address-converter@^0.1.8":
+"@evmos/address-converter@^0.1.8":
   version "0.1.8"
-  resolved "https://registry.yarnpkg.com/@tharsis/address-converter/-/address-converter-0.1.8.tgz#15323e25f6b41d9a4741627f5a1b4ed4547d23f6"
+  resolved "https://registry.yarnpkg.com/@evmos/address-converter/-/address-converter-0.1.8.tgz#15323e25f6b41d9a4741627f5a1b4ed4547d23f6"
   integrity sha512-z7zdNczV8RIzBNxzIzRFhC5ujiQ3Lt04At9rooo2pL6QONDDMMLxsqH3o28ie80k5DXSXaMJ6gffATeehxwAkw==
   dependencies:
     bech32 "^2.0.0"
@@ -307,17 +307,17 @@
     link-module-alias "^1.2.0"
     shx "^0.3.4"
 
-"@tharsis/eip712@^0.2.2":
+"@evmos/eip712@^0.2.2":
   version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@tharsis/eip712/-/eip712-0.2.2.tgz#1b458433bfe153e49e2dd9eecff55a373804296f"
+  resolved "https://registry.yarnpkg.com/@evmos/eip712/-/eip712-0.2.2.tgz#1b458433bfe153e49e2dd9eecff55a373804296f"
   integrity sha512-NRCMEGLAeddrRi0orWPRDiwtXt2089prodlpT23jxUKaLrdDxE9JFjXWo25BUxjflftsh39BTXXVwTWnwCJgDA==
   dependencies:
     link-module-alias "^1.2.0"
     shx "^0.3.4"
 
-"@tharsis/proto@^0.1.17":
+"@evmos/proto@^0.1.17":
   version "0.1.17"
-  resolved "https://registry.yarnpkg.com/@tharsis/proto/-/proto-0.1.17.tgz#c8f2285ddd94a4eb111152dffae7221f82a258bb"
+  resolved "https://registry.yarnpkg.com/@evmos/proto/-/proto-0.1.17.tgz#c8f2285ddd94a4eb111152dffae7221f82a258bb"
   integrity sha512-v3pQ8Bleuqtrw0dSWkL1KNbjglFGL336jPhdE/HtC+zlvY0ux7D4gHc+TnEo2A0m+ZGDxAqHqWd8+8zs+MBCzQ==
   dependencies:
     "@types/google-protobuf" "^3.15.5"
@@ -327,22 +327,22 @@
     sha3 "^2.1.4"
     shx "^0.3.4"
 
-"@tharsis/provider@^0.2.4":
+"@evmos/provider@^0.2.4":
   version "0.2.4"
-  resolved "https://registry.yarnpkg.com/@tharsis/provider/-/provider-0.2.4.tgz#6caf21af1b7416a27712cb7b5f230c79c53ef202"
+  resolved "https://registry.yarnpkg.com/@evmos/provider/-/provider-0.2.4.tgz#6caf21af1b7416a27712cb7b5f230c79c53ef202"
   integrity sha512-gAVKhQfeDmcdp4nCFPfuR0BZkbPaqozMG7wL5gLo+KhuzzeIs4VZvUt4gFCZph1dvsqPy2KLU+4h2/eiWroeMA==
   dependencies:
     "@types/node" "^17.0.21"
     link-module-alias "^1.2.0"
     shx "^0.3.4"
 
-"@tharsis/transactions@^0.2.3":
+"@evmos/transactions@^0.2.3":
   version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@tharsis/transactions/-/transactions-0.2.3.tgz#b18bc2c4ed1e3d43e6adfa2ca1376e81bb6ced40"
+  resolved "https://registry.yarnpkg.com/@evmos/transactions/-/transactions-0.2.3.tgz#b18bc2c4ed1e3d43e6adfa2ca1376e81bb6ced40"
   integrity sha512-RXm2LWrHclSg+cGju+1REIrYf4TsBi1WlME5XjaEPwW7Uo1b6CUfqd3lSfoWWzE5xoc5D7q5apC+yu2xUSJzag==
   dependencies:
-    "@tharsis/eip712" "^0.2.2"
-    "@tharsis/proto" "^0.1.17"
+    "@evmos/eip712" "^0.2.2"
+    "@evmos/proto" "^0.1.17"
     "@types/node" "^17.0.21"
     link-module-alias "^1.2.0"
     shx "^0.3.4"

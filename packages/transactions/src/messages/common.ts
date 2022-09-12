@@ -1,4 +1,4 @@
-import { protoTxNamespace } from '@tharsis/proto'
+import { protoTxNamespace } from '@evmos/proto'
 
 export interface EIPToSign {
   types: object

@@ -1,7 +1,7 @@
 import {
   createMsgEditValidator as protoMsgEditValidator,
   createTransaction,
-} from '@tharsis/proto'
+} from '@evmos/proto'
 
 import {
   createEIP712,
@@ -10,7 +10,7 @@ import {
   generateTypes,
   MSG_EDIT_VALIDATOR_TYPES,
   createMsgEditValidator,
-} from '@tharsis/eip712'
+} from '@evmos/eip712'
 
 import { Chain, Fee, Sender } from './common'
 
