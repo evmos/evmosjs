@@ -65,10 +65,6 @@ export const MSG_CREATE_VALIDATOR_TYPES = {
     { name: 'max_rate', type: 'string' },
     { name: 'max_change_rate', type: 'string' },
   ],
-  TypePubkey: [
-    { name: 'type', type: 'string' },
-    { name: 'value', type: 'TypePubkeyValue' },
-  ],
   MsgValue: [
     { name: 'description', type: 'TypeDescription' },
     { name: 'commission', type: 'TypeCommission' },
@@ -78,7 +74,7 @@ export const MSG_CREATE_VALIDATOR_TYPES = {
     { name: 'pubkey', type: 'TypePubkey' },
     { name: 'value', type: 'TypeValue' },
   ],
-  TypePubkeyValue: [{ name: 'key', type: 'uint8[]' }],
+  TypePubkey: [{ name: 'key', type: 'string' }],
   TypeValue: [
     { name: 'denom', type: 'string' },
     { name: 'amount', type: 'string' },
@@ -103,7 +99,7 @@ export function createMsgCreateValidator(
   validatorAddress: string,
   amount: string,
   denom: string,
-  pubkey: Uint8Array,
+  pubkey: string,
 ) {
   return {
     type: 'cosmos-sdk/MsgCreateValidator',

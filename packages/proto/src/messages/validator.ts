@@ -57,8 +57,9 @@ export function createMsgCreateValidator(
   validatorAddress: string,
   amount: string,
   denom: string,
-  pubkey: Uint8Array,
+  pubkey: string,
 ) {
+  const pubkeyEncoded = new Uint8Array(Buffer.from(pubkey, 'base64'))
   const commission = new stakingTypes.cosmos.staking.v1beta1.CommissionRates({
     rate: validatorCommission.rate,
     max_rate: validatorCommission.maxRate,
@@ -83,7 +84,7 @@ export function createMsgCreateValidator(
     delegator_address: delegatorAddress,
     validator_address: validatorAddress,
     value,
-    pubkey: createAnyMessage(createPubKey(pubkey)),
+    pubkey: createAnyMessage(createPubKey(pubkeyEncoded)),
     description,
     commission,
   })

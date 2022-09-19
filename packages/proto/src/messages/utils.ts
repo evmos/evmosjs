@@ -16,7 +16,7 @@ export function createAnyMessage(msg: MessageGenerated) {
 
 export function createPubKey(key: Uint8Array) {
   return {
-    path: '/cosmos.crypto.ed25519.PubKey',
+    path: 'cosmos.crypto.ed25519.PubKey',
     message: new pubkey.cosmos.crypto.ed25519.PubKey({
       key,
     }),
