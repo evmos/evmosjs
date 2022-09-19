@@ -1,4 +1,4 @@
-export const MSG_DELEGATE_TYPES = {
+export const MSG_CREATE_VALIDATOR_TYPES = {
   TypeDescription: [
     { name: 'moniker', type: 'string' },
     { name: 'identity', type: 'string' },
@@ -24,7 +24,7 @@ export const MSG_DELEGATE_TYPES = {
     { name: 'pubkey', type: 'TypePubkey' },
     { name: 'value', type: 'TypeValue' },
   ],
-  TypePubkeyValue: [{ name: 'key', type: 'uint8' }],
+  TypePubkeyValue: [{ name: 'key', type: 'uint8[]' }],
   TypeValue: [
     { name: 'denom', type: 'string' },
     { name: 'amount', type: 'string' },
@@ -73,7 +73,7 @@ export function createMsgCreateValidator(
         max_change_rate: validatorCommission.maxChangeRate,
       },
       min_self_delegation: minSelfDelegation,
-      pubkey,
+      pubkey: { key: pubkey },
     },
   }
 }

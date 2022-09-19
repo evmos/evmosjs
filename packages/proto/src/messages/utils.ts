@@ -1,6 +1,6 @@
 import { Message } from 'google-protobuf'
 import * as google from '../proto/google/protobuf/any'
-import * as pubkey from '../proto/ethermint/crypto/v1/ethsecp256k1/keys'
+import * as pubkey from '../proto/cosmos/crypto/ed25519/keys'
 
 export interface MessageGenerated {
   message: Message
@@ -16,8 +16,8 @@ export function createAnyMessage(msg: MessageGenerated) {
 
 export function createPubKey(key: Uint8Array) {
   return {
-    path: '/ethermint.crypto.v1.ethsecp256k1.PubKey',
-    message: new pubkey.ethermint.crypto.v1.ethsecp256k1.PubKey({
+    path: '/cosmos.crypto.ed25519.PubKey',
+    message: new pubkey.cosmos.crypto.ed25519.PubKey({
       key,
     }),
   }
