@@ -1,7 +1,4 @@
-import {
-  createMsgSend as protoMsgSend,
-  createTransaction,
-} from '@tharsis/proto'
+import { createMsgSend as protoMsgSend, createTransaction } from '@evmos/proto'
 
 import {
   createEIP712,
@@ -10,7 +7,7 @@ import {
   generateTypes,
   createMsgSend,
   MSG_SEND_TYPES,
-} from '@tharsis/eip712'
+} from '@evmos/eip712'
 
 import { Chain, Fee, Sender } from './common'
 

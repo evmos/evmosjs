@@ -14,6 +14,8 @@ export namespace ethermint.feemarket.v1 {
             elasticity_multiplier?: number;
             enable_height?: number;
             base_fee?: string;
+            min_gas_price?: string;
+            min_gas_multiplier?: string;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
@@ -32,6 +34,12 @@ export namespace ethermint.feemarket.v1 {
                 }
                 if ("base_fee" in data && data.base_fee != undefined) {
                     this.base_fee = data.base_fee;
+                }
+                if ("min_gas_price" in data && data.min_gas_price != undefined) {
+                    this.min_gas_price = data.min_gas_price;
+                }
+                if ("min_gas_multiplier" in data && data.min_gas_multiplier != undefined) {
+                    this.min_gas_multiplier = data.min_gas_multiplier;
                 }
             }
         }
@@ -65,12 +73,26 @@ export namespace ethermint.feemarket.v1 {
         set base_fee(value: string) {
             pb_1.Message.setField(this, 6, value);
         }
+        get min_gas_price() {
+            return pb_1.Message.getField(this, 7) as string;
+        }
+        set min_gas_price(value: string) {
+            pb_1.Message.setField(this, 7, value);
+        }
+        get min_gas_multiplier() {
+            return pb_1.Message.getField(this, 8) as string;
+        }
+        set min_gas_multiplier(value: string) {
+            pb_1.Message.setField(this, 8, value);
+        }
         static fromObject(data: {
             no_base_fee?: boolean;
             base_fee_change_denominator?: number;
             elasticity_multiplier?: number;
             enable_height?: number;
             base_fee?: string;
+            min_gas_price?: string;
+            min_gas_multiplier?: string;
         }) {
             const message = new Params({});
             if (data.no_base_fee != null) {
@@ -88,6 +110,12 @@ export namespace ethermint.feemarket.v1 {
             if (data.base_fee != null) {
                 message.base_fee = data.base_fee;
             }
+            if (data.min_gas_price != null) {
+                message.min_gas_price = data.min_gas_price;
+            }
+            if (data.min_gas_multiplier != null) {
+                message.min_gas_multiplier = data.min_gas_multiplier;
+            }
             return message;
         }
         toObject() {
@@ -97,6 +125,8 @@ export namespace ethermint.feemarket.v1 {
                 elasticity_multiplier?: number;
                 enable_height?: number;
                 base_fee?: string;
+                min_gas_price?: string;
+                min_gas_multiplier?: string;
             } = {};
             if (this.no_base_fee != null) {
                 data.no_base_fee = this.no_base_fee;
@@ -112,6 +142,12 @@ export namespace ethermint.feemarket.v1 {
             }
             if (this.base_fee != null) {
                 data.base_fee = this.base_fee;
+            }
+            if (this.min_gas_price != null) {
+                data.min_gas_price = this.min_gas_price;
+            }
+            if (this.min_gas_multiplier != null) {
+                data.min_gas_multiplier = this.min_gas_multiplier;
             }
             return data;
         }
@@ -129,6 +165,10 @@ export namespace ethermint.feemarket.v1 {
                 writer.writeInt64(5, this.enable_height);
             if (typeof this.base_fee === "string" && this.base_fee.length)
                 writer.writeString(6, this.base_fee);
+            if (typeof this.min_gas_price === "string" && this.min_gas_price.length)
+                writer.writeString(7, this.min_gas_price);
+            if (typeof this.min_gas_multiplier === "string" && this.min_gas_multiplier.length)
+                writer.writeString(8, this.min_gas_multiplier);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -152,6 +192,12 @@ export namespace ethermint.feemarket.v1 {
                         break;
                     case 6:
                         message.base_fee = reader.readString();
+                        break;
+                    case 7:
+                        message.min_gas_price = reader.readString();
+                        break;
+                    case 8:
+                        message.min_gas_multiplier = reader.readString();
                         break;
                     default: reader.skipField();
                 }

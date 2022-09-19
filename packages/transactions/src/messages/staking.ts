@@ -3,10 +3,11 @@ import {
   createMsgDelegate as protoMsgDelegate,
   createMsgUndelegate as protoMsgUndelegate,
   createMsgWithdrawDelegatorReward as protoeMsgWithdrawDelegatorReward,
+  createMsgWithdrawValidatorCommission as protoMsgWithdrawValidatorCommission,
   MsgWithdrawDelegatorRewardProtoInterface,
   createTransaction,
   createTransactionWithMultipleMessages,
-} from '@tharsis/proto'
+} from '@evmos/proto'
 
 import {
   createEIP712,
@@ -23,7 +24,9 @@ import {
   MSG_WITHDRAW_DELEGATOR_REWARD_TYPES,
   createMsgWithdrawDelegatorReward,
   MsgWithdrawDelegatorRewardInterface,
-} from '@tharsis/eip712'
+  MSG_WITHDRAW_VALIDATOR_COMMISSION_TYPES,
+  createMsgWithdrawValidatorCommission,
+} from '@evmos/eip712'
 
 import { Chain, Fee, Sender } from './common'
 
@@ -327,6 +330,60 @@ export function createTxMsgMultipleWithdrawDelegatorReward(
   // Cosmos
   const tx = createTransactionWithMultipleMessages(
     protoMsgs,
+    memo,
+    fee.amount,
+    fee.denom,
+    parseInt(fee.gas, 10),
+    'ethsecp256',
+    sender.pubkey,
+    sender.sequence,
+    sender.accountNumber,
+    chain.cosmosChainId,
+  )
+
+  return {
+    signDirect: tx.signDirect,
+    legacyAmino: tx.legacyAmino,
+    eipToSign,
+  }
+}
+
+export interface MsgWithdrawValidatorCommissionParams {
+  validatorAddress: string
+}
+
+export function createTxMsgWithdrawValidatorCommission(
+  chain: Chain,
+  sender: Sender,
+  fee: Fee,
+  memo: string,
+  params: MsgWithdrawValidatorCommissionParams,
+) {
+  // EIP712
+  const feeObject = generateFee(
+    fee.amount,
+    fee.denom,
+    fee.gas,
+    sender.accountAddress,
+  )
+  const types = generateTypes(MSG_WITHDRAW_VALIDATOR_COMMISSION_TYPES)
+  const msg = createMsgWithdrawValidatorCommission(params.validatorAddress)
+  const messages = generateMessage(
+    sender.accountNumber.toString(),
+    sender.sequence.toString(),
+    chain.cosmosChainId,
+    memo,
+    feeObject,
+    msg,
+  )
+  const eipToSign = createEIP712(types, chain.chainId, messages)
+
+  // Cosmos
+  const protoMessage = protoMsgWithdrawValidatorCommission(
+    params.validatorAddress,
+  )
+  const tx = createTransaction(
+    protoMessage,
     memo,
     fee.amount,
     fee.denom,

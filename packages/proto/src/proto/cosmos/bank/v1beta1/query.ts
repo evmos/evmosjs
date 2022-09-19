@@ -343,6 +343,184 @@ export namespace cosmos.bank.v1beta1 {
             return QueryAllBalancesResponse.deserialize(bytes);
         }
     }
+    export class QuerySpendableBalancesRequest extends pb_1.Message {
+        constructor(data?: any[] | {
+            address?: string;
+            pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("address" in data && data.address != undefined) {
+                    this.address = data.address;
+                }
+                if ("pagination" in data && data.pagination != undefined) {
+                    this.pagination = data.pagination;
+                }
+            }
+        }
+        get address() {
+            return pb_1.Message.getField(this, 1) as string;
+        }
+        set address(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get pagination() {
+            return pb_1.Message.getWrapperField(this, dependency_1.cosmos.base.query.v1beta1.PageRequest, 2) as dependency_1.cosmos.base.query.v1beta1.PageRequest;
+        }
+        set pagination(value: dependency_1.cosmos.base.query.v1beta1.PageRequest) {
+            pb_1.Message.setWrapperField(this, 2, value);
+        }
+        static fromObject(data: {
+            address?: string;
+            pagination?: ReturnType<typeof dependency_1.cosmos.base.query.v1beta1.PageRequest.prototype.toObject>;
+        }) {
+            const message = new QuerySpendableBalancesRequest({});
+            if (data.address != null) {
+                message.address = data.address;
+            }
+            if (data.pagination != null) {
+                message.pagination = dependency_1.cosmos.base.query.v1beta1.PageRequest.fromObject(data.pagination);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                address?: string;
+                pagination?: ReturnType<typeof dependency_1.cosmos.base.query.v1beta1.PageRequest.prototype.toObject>;
+            } = {};
+            if (this.address != null) {
+                data.address = this.address;
+            }
+            if (this.pagination != null) {
+                data.pagination = this.pagination.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (typeof this.address === "string" && this.address.length)
+                writer.writeString(1, this.address);
+            if (this.pagination !== undefined)
+                writer.writeMessage(2, this.pagination, () => this.pagination.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QuerySpendableBalancesRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QuerySpendableBalancesRequest();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.address = reader.readString();
+                        break;
+                    case 2:
+                        reader.readMessage(message.pagination, () => message.pagination = dependency_1.cosmos.base.query.v1beta1.PageRequest.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): QuerySpendableBalancesRequest {
+            return QuerySpendableBalancesRequest.deserialize(bytes);
+        }
+    }
+    export class QuerySpendableBalancesResponse extends pb_1.Message {
+        constructor(data?: any[] | {
+            balances?: dependency_4.cosmos.base.v1beta1.Coin[];
+            pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("balances" in data && data.balances != undefined) {
+                    this.balances = data.balances;
+                }
+                if ("pagination" in data && data.pagination != undefined) {
+                    this.pagination = data.pagination;
+                }
+            }
+        }
+        get balances() {
+            return pb_1.Message.getRepeatedWrapperField(this, dependency_4.cosmos.base.v1beta1.Coin, 1) as dependency_4.cosmos.base.v1beta1.Coin[];
+        }
+        set balances(value: dependency_4.cosmos.base.v1beta1.Coin[]) {
+            pb_1.Message.setRepeatedWrapperField(this, 1, value);
+        }
+        get pagination() {
+            return pb_1.Message.getWrapperField(this, dependency_1.cosmos.base.query.v1beta1.PageResponse, 2) as dependency_1.cosmos.base.query.v1beta1.PageResponse;
+        }
+        set pagination(value: dependency_1.cosmos.base.query.v1beta1.PageResponse) {
+            pb_1.Message.setWrapperField(this, 2, value);
+        }
+        static fromObject(data: {
+            balances?: ReturnType<typeof dependency_4.cosmos.base.v1beta1.Coin.prototype.toObject>[];
+            pagination?: ReturnType<typeof dependency_1.cosmos.base.query.v1beta1.PageResponse.prototype.toObject>;
+        }) {
+            const message = new QuerySpendableBalancesResponse({});
+            if (data.balances != null) {
+                message.balances = data.balances.map(item => dependency_4.cosmos.base.v1beta1.Coin.fromObject(item));
+            }
+            if (data.pagination != null) {
+                message.pagination = dependency_1.cosmos.base.query.v1beta1.PageResponse.fromObject(data.pagination);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                balances?: ReturnType<typeof dependency_4.cosmos.base.v1beta1.Coin.prototype.toObject>[];
+                pagination?: ReturnType<typeof dependency_1.cosmos.base.query.v1beta1.PageResponse.prototype.toObject>;
+            } = {};
+            if (this.balances != null) {
+                data.balances = this.balances.map((item: dependency_4.cosmos.base.v1beta1.Coin) => item.toObject());
+            }
+            if (this.pagination != null) {
+                data.pagination = this.pagination.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.balances !== undefined)
+                writer.writeRepeatedMessage(1, this.balances, (item: dependency_4.cosmos.base.v1beta1.Coin) => item.serialize(writer));
+            if (this.pagination !== undefined)
+                writer.writeMessage(2, this.pagination, () => this.pagination.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): QuerySpendableBalancesResponse {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new QuerySpendableBalancesResponse();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.balances, () => pb_1.Message.addToRepeatedWrapperField(message, 1, dependency_4.cosmos.base.v1beta1.Coin.deserialize(reader), dependency_4.cosmos.base.v1beta1.Coin));
+                        break;
+                    case 2:
+                        reader.readMessage(message.pagination, () => message.pagination = dependency_1.cosmos.base.query.v1beta1.PageResponse.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): QuerySpendableBalancesResponse {
+            return QuerySpendableBalancesResponse.deserialize(bytes);
+        }
+    }
     export class QueryTotalSupplyRequest extends pb_1.Message {
         constructor(data?: any[] | {
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;

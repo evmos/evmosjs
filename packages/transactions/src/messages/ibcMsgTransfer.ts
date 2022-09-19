@@ -1,7 +1,7 @@
 import {
   createIBCMsgTransfer as protoCreateIBCMsgTransfer,
   createTransaction,
-} from '@tharsis/proto'
+} from '@evmos/proto'
 
 import {
   createEIP712,
@@ -10,7 +10,7 @@ import {
   generateTypes,
   createIBCMsgTransfer,
   IBC_MSG_TRANSFER_TYPES,
-} from '@tharsis/eip712'
+} from '@evmos/eip712'
 
 import { Chain, Fee, Sender } from './common'
 
