@@ -60,6 +60,7 @@ export function createMsgCreateValidator(
   pubkey: string,
 ) {
   const pubkeyEncoded = new Uint8Array(Buffer.from(pubkey, 'base64'))
+  console.log(pubkeyEncoded)
   const commission = new stakingTypes.cosmos.staking.v1beta1.CommissionRates({
     rate: validatorCommission.rate,
     max_rate: validatorCommission.maxRate,

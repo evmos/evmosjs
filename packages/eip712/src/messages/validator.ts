@@ -65,6 +65,10 @@ export const MSG_CREATE_VALIDATOR_TYPES = {
     { name: 'max_rate', type: 'string' },
     { name: 'max_change_rate', type: 'string' },
   ],
+  TypePubkey: [
+    { name: 'type', type: 'string' },
+    { name: 'value', type: 'string' },
+  ],
   MsgValue: [
     { name: 'description', type: 'TypeDescription' },
     { name: 'commission', type: 'TypeCommission' },
@@ -74,7 +78,7 @@ export const MSG_CREATE_VALIDATOR_TYPES = {
     { name: 'pubkey', type: 'TypePubkey' },
     { name: 'value', type: 'TypeValue' },
   ],
-  TypePubkey: [{ name: 'key', type: 'string' }],
+  // TypePubkeyValue: [{ name: 'key', type: 'string' }],
   TypeValue: [
     { name: 'denom', type: 'string' },
     { name: 'amount', type: 'string' },
@@ -104,26 +108,30 @@ export function createMsgCreateValidator(
   return {
     type: 'cosmos-sdk/MsgCreateValidator',
     value: {
-      amount: {
-        amount,
-        denom,
-      },
-      delegator_address: delegatorAddress,
-      validator_address: validatorAddress,
-      validator_description: {
+      description: {
         moniker: validatorDescription.moniker,
         identity: validatorDescription.identity,
         website: validatorDescription.website,
-        security_contract: validatorDescription.securityContact,
+        security_contact: validatorDescription.securityContact,
         details: validatorDescription.details,
       },
-      validator_commission: {
+      commission: {
         rate: validatorCommission.rate,
         max_rate: validatorCommission.maxRate,
         max_change_rate: validatorCommission.maxChangeRate,
       },
       min_self_delegation: minSelfDelegation,
-      pubkey: { key: pubkey },
+      delegator_address: delegatorAddress,
+      validator_address: validatorAddress,
+      // pubkey: { key: pubkey },
+      pubkey: {
+        type: 'tendermint/PubKeyEd25519',
+        value: pubkey,
+      },
+      value: {
+        amount,
+        denom,
+      },
     },
   }
 }
