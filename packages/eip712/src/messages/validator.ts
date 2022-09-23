@@ -78,7 +78,6 @@ export const MSG_CREATE_VALIDATOR_TYPES = {
     { name: 'pubkey', type: 'TypePubkey' },
     { name: 'value', type: 'TypeValue' },
   ],
-  // TypePubkeyValue: [{ name: 'key', type: 'string' }],
   TypeValue: [
     { name: 'denom', type: 'string' },
     { name: 'amount', type: 'string' },
@@ -108,26 +107,25 @@ export function createMsgCreateValidator(
   return {
     type: 'cosmos-sdk/MsgCreateValidator',
     value: {
-      description: {
-        moniker: validatorDescription.moniker,
-        identity: validatorDescription.identity,
-        website: validatorDescription.website,
-        security_contact: validatorDescription.securityContact,
-        details: validatorDescription.details,
-      },
       commission: {
-        rate: validatorCommission.rate,
-        max_rate: validatorCommission.maxRate,
         max_change_rate: validatorCommission.maxChangeRate,
+        max_rate: validatorCommission.maxRate,
+        rate: validatorCommission.rate,
+      },
+      delegator_address: delegatorAddress,
+      description: {
+        details: validatorDescription.details,
+        identity: validatorDescription.identity,
+        moniker: validatorDescription.moniker,
+        security_contact: validatorDescription.securityContact,
+        website: validatorDescription.website,
       },
       min_self_delegation: minSelfDelegation,
-      delegator_address: delegatorAddress,
-      validator_address: validatorAddress,
-      // pubkey: { key: pubkey },
       pubkey: {
         type: 'tendermint/PubKeyEd25519',
         value: pubkey,
       },
+      validator_address: validatorAddress,
       value: {
         amount,
         denom,
