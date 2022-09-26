@@ -1,4 +1,4 @@
-export const MSG_CANCEL_FEE_SPLIT_TYPES = {
+export const MSG_CANCEL_REVENUE_TYPES = {
   MsgValue: [
     { name: 'contract_address', type: 'string' },
     { name: 'deployer_address', type: 'string' },
@@ -6,12 +6,12 @@ export const MSG_CANCEL_FEE_SPLIT_TYPES = {
 }
 
 /* eslint-disable camelcase */
-export function createMsgCancelFeeSplit(
+export function createMsgCancelRevenue(
   contract_address: string,
   deployer_address: string,
 ) {
   return {
-    type: 'evmos/MsgCancelFeeSplit',
+    type: 'evmos/MsgCancelRevenue',
     value: {
       contract_address,
       deployer_address,

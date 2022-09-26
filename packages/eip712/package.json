@@ -1,7 +1,7 @@
 {
-  "name": "@tharsis/eip712",
+  "name": "@evmos/eip712",
   "description": "EIP712 transaction creator for EVMOS.",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -36,5 +36,8 @@
     "shx": "^0.3.4",
     "ts-jest": "^28.0.8"
   },
-  "gitHead": "fc2045b9357bde146e3374429453eb5d4a48a2ca"
+  "gitHead": "fc2045b9357bde146e3374429453eb5d4a48a2ca",
+  "publishConfig": {
+    "access": "public"
+  }
 }

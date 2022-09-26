@@ -3,7 +3,7 @@ import {
   createStakeAuthorization,
   stakeAuthTypes,
   createTransaction,
-} from '@tharsis/proto'
+} from '@evmos/proto'
 
 import { Chain, Fee, Sender } from '../common'
 

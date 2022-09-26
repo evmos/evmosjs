@@ -2,7 +2,7 @@ import {
   createTransaction,
   createMsgRevoke,
   RevokeMessages,
-} from '@tharsis/proto'
+} from '@evmos/proto'
 
 import { Chain, Fee, Sender } from '../common'
 

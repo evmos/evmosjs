@@ -2,7 +2,7 @@
 // This dependency is local to the utils project
 
 import { Wallet } from '@ethersproject/wallet'
-import { createMessageSend } from '@tharsis/transactions'
+import { createMessageSend } from '@evmos/transactions'
 import {
   broadcast,
   getSender,
@@ -25,7 +25,7 @@ async function prepareMessage(wallet: Wallet) {
 /* eslint-disable jest/require-hook */
 // This code is just for testing purposes
 
-;(async () => {
+; (async () => {
   const privateMnemonic =
     'pluck view carry maid bamboo river major where dutch wood certain oval order wise awkward clerk adult summer because number raven coil crunch hat'
   const wallet = Wallet.fromMnemonic(privateMnemonic)

@@ -31,28 +31,41 @@ evmosd tx staking create-validator \
 NOTE: it will only work with signTransaction, right now the eip712 doesn't support optional parameters and I need to double check the `sdk.Dec` EIP712 encoding to make sure that it's correctly supported.
 
 ```ts
-import { Wallet } from "@ethersproject/wallet"
-import { createMessageSend } from "@tharsis/transactions"
-import { broadcast, getSender, LOCALNET_CHAIN, LOCALNET_FEE, signTransaction, singTransactionUsingEIP712 } from "@hanchon/evmos-ts-wallet"
+import { Wallet } from '@ethersproject/wallet'
+import { createMessageSend } from '@evmos/transactions'
+import {
+  broadcast,
+  getSender,
+  LOCALNET_CHAIN,
+  LOCALNET_FEE,
+  signTransaction,
+  singTransactionUsingEIP712,
+} from '@hanchon/evmos-ts-wallet'
 
 async function prepareMessage(wallet: Wallet) {
   const sender = await getSender(wallet)
   const validatorAddress = 'evmosvaloper14rajuselkxsvqtqv20lamd08t8zxg8qdw3r3xm'
 
-  const txSimple = createTxMsgEditValidator(LOCALNET_CHAIN, sender, LOCALNET_FEE, '', {
-    moniker: 'a',
-    identity: 'b',
-    website: 'c',
-    securityContact: 'd',
-    details: 'e',
-    validatorAddress: validatorAddress,
-    commissionRate: undefined,
-    minSelfDelegation: undefined
-  })
+  const txSimple = createTxMsgEditValidator(
+    LOCALNET_CHAIN,
+    sender,
+    LOCALNET_FEE,
+    '',
+    {
+      moniker: 'a',
+      identity: 'b',
+      website: 'c',
+      securityContact: 'd',
+      details: 'e',
+      validatorAddress: validatorAddress,
+      commissionRate: undefined,
+      minSelfDelegation: undefined,
+    },
+  )
   return { sender, txSimple }
 }
 
-(async () => {
+;(async () => {
   const privateMnemonic =
     'pluck view carry maid bamboo river major where dutch wood certain oval order wise awkward clerk adult summer because number raven coil crunch hat'
   const wallet = Wallet.fromMnemonic(privateMnemonic)

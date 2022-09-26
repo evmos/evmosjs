@@ -1,30 +1,32 @@
 import {
-  createMsgCancelFeeSplit as protoMsgCancelFeeSplit,
+  createMsgRegisterRevenue as protoMsgRegisterRevenue,
   createTransaction,
-} from '@tharsis/proto'
+} from '@evmos/proto'
 
 import {
   createEIP712,
   generateFee,
   generateMessage,
   generateTypes,
-  createMsgCancelFeeSplit,
-  MSG_CANCEL_FEE_SPLIT_TYPES,
-} from '@tharsis/eip712'
+  createMsgRegisterRevenue,
+  MSG_REGISTER_REVENUE_TYPES,
+} from '@evmos/eip712'
 
 import { Chain, Fee, Sender } from '../common'
 
-export interface MessageMsgCancelFeeSplit {
+export interface MessageMsgRegisterRevenue {
   contractAddress: string
   deployerAddress: string
+  withdrawerAddress: string
+  nonces: number[]
 }
 
-export function createTxMsgCancelFeeSplit(
+export function createTxMsgRegisterRevenue(
   chain: Chain,
   sender: Sender,
   fee: Fee,
   memo: string,
-  params: MessageMsgCancelFeeSplit,
+  params: MessageMsgRegisterRevenue,
 ) {
   // EIP712
   const feeObject = generateFee(
@@ -33,11 +35,13 @@ export function createTxMsgCancelFeeSplit(
     fee.gas,
     sender.accountAddress,
   )
-  const types = generateTypes(MSG_CANCEL_FEE_SPLIT_TYPES)
+  const types = generateTypes(MSG_REGISTER_REVENUE_TYPES)
 
-  const msg = createMsgCancelFeeSplit(
+  const msg = createMsgRegisterRevenue(
     params.contractAddress,
     params.deployerAddress,
+    params.withdrawerAddress,
+    params.nonces,
   )
   const messages = generateMessage(
     sender.accountNumber.toString(),
@@ -50,9 +54,11 @@ export function createTxMsgCancelFeeSplit(
   const eipToSign = createEIP712(types, chain.chainId, messages)
 
   // Cosmos
-  const msgCosmos = protoMsgCancelFeeSplit(
+  const msgCosmos = protoMsgRegisterRevenue(
     params.contractAddress,
     params.deployerAddress,
+    params.withdrawerAddress,
+    params.nonces,
   )
   const tx = createTransaction(
     msgCosmos,

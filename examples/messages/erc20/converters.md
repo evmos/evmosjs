@@ -3,9 +3,12 @@
 ```ts
 /* eslint-disable import/no-extraneous-dependencies */
 // This dependency is local to the utils project
-import { evmosToEth } from '@tharsis/address-converter'
+import { evmosToEth } from '@evmos/address-converter'
 import { Wallet } from '@ethersproject/wallet'
-import { createTxMsgConvertCoin, createTxMsgConvertERC20 } from '@tharsis/transactions'
+import {
+  createTxMsgConvertCoin,
+  createTxMsgConvertERC20,
+} from '@evmos/transactions'
 import {
   broadcast,
   getSender,
@@ -47,14 +50,13 @@ async function prepareMessageConvertERC20(wallet: Wallet) {
 /* eslint-disable jest/require-hook */
 // This code is just for testing purposes
 
-; (async () => {
+;(async () => {
   const privateMnemonic =
     'pluck view carry maid bamboo river major where dutch wood certain oval order wise awkward clerk adult summer because number raven coil crunch hat'
   const wallet = Wallet.fromMnemonic(privateMnemonic)
 
   // You can use prepareMessageConvertERC20 here
   const msgKeplr = await prepareMessageConvertCoin(wallet)
-
 
   const resKeplr = await signTransaction(wallet, msgKeplr.txSimple)
   const broadcastRes = await broadcast(resKeplr, 'http://localhost:1317')
