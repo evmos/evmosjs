@@ -1,3 +1,10 @@
+// Encondings
+export * from './encoding/decodeAmino'
+export * from './encoding/decodeProtobuf'
+export * from './encoding/encoding'
+export * from './encoding/utils'
+
+// Messages
 export * from './messages/revenue/msgCancelRevenue'
 export * from './messages/revenue/msgUpdateRevenue'
 export * from './messages/revenue/msgRegisterRevenue'
