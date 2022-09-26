@@ -28,7 +28,7 @@
   "dependencies": {
     "@cosmjs/proto-signing": "^0.28.13",
     "@metamask/eth-sig-util": "^4.0.1",
-    "@tharsis/proto": "^0.1.20",
+    "@evmos/proto": "^0.1.21",
     "cosmjs-types": "^0.5.1",
     "link-module-alias": "^1.2.0",
     "long": "^5.2.0",
