@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.8 (2022-09-26)
+
+### Features
+
+* add feesplit to transactions pkg and eip712 rename ([#58](https://github.com/evmos/evmosjs/issues/58)) ([1dfefbd](https://github.com/evmos/evmosjs/commit/1dfefbd906a9674453c91c9adaf4273cc92c93b8))
+* added multiple transactions support for withdraw rewards ([#26](https://github.com/evmos/evmosjs/issues/26)) ([9cddd62](https://github.com/evmos/evmosjs/commit/9cddd62bdeec00d50791df8fbaa0c1301d08d4ca))
+* allow empty maxTokens on authz message ([#49](https://github.com/evmos/evmosjs/issues/49)) ([7a4a611](https://github.com/evmos/evmosjs/commit/7a4a611abd7b23bfb47c175e090ed7940e334305))
+* authz for Staking Authorization added ([#47](https://github.com/evmos/evmosjs/issues/47)) ([0170a2d](https://github.com/evmos/evmosjs/commit/0170a2d9a889061e5d0d492a05b4f2a915701206))
+* convertCoin and convertERC20 messages ([#45](https://github.com/evmos/evmosjs/issues/45)) ([9b78984](https://github.com/evmos/evmosjs/commit/9b78984c034208c572e519bf080073014e804f13))
+* delegate message ([#15](https://github.com/evmos/evmosjs/issues/15)) ([1e68b10](https://github.com/evmos/evmosjs/commit/1e68b10d107edef6d54358447cee60af84d46053))
+* evmos.me functions migration ([#10](https://github.com/evmos/evmosjs/issues/10)) ([c0fbd87](https://github.com/evmos/evmosjs/commit/c0fbd87f6979e07420daf7344ea392c284a878cd))
+* feesplit renamed to revenue ([#73](https://github.com/evmos/evmosjs/issues/73)) ([75cc699](https://github.com/evmos/evmosjs/commit/75cc699fd318715d3f21da72ec83130ac858f661))
+* ibc transactions added ([#14](https://github.com/evmos/evmosjs/issues/14)) ([3809f28](https://github.com/evmos/evmosjs/commit/3809f289e4e54c5013d3027578bde5c244ec8736))
+* redelegate/undelegate/claim transactions added ([#23](https://github.com/evmos/evmosjs/issues/23)) ([3b536c3](https://github.com/evmos/evmosjs/commit/3b536c321f7c304f79d121af346f16d6cca74b47))
+* use the same naming style across all packages ([#24](https://github.com/evmos/evmosjs/issues/24)) ([348db46](https://github.com/evmos/evmosjs/commit/348db46ac299655257addc7a381e4ac1eb88f20a))
+* utils to sign messages locally ([#44](https://github.com/evmos/evmosjs/issues/44)) ([80bdf98](https://github.com/evmos/evmosjs/commit/80bdf980a330630104155d37e4b1a289f94eb10c))
+* vote on proposals ([#17](https://github.com/evmos/evmosjs/issues/17)) ([d0db5f9](https://github.com/evmos/evmosjs/commit/d0db5f9d2fba521a3cd20192d8d24c54f7f7fa4c))
+* withdrawValidatorCommission message ([#42](https://github.com/evmos/evmosjs/issues/42)) ([9cc09e3](https://github.com/evmos/evmosjs/commit/9cc09e34f0f052555d1f9c6e8f3d81dfbbea6d1c))
+
 ## 0.2.7 (2022-09-12)
 
 ### Features
