@@ -1,11 +1,11 @@
 syntax = "proto3";
-package evmos.feesplit.v1;
+package evmos.revenue.v1;
 
-option go_package = "github.com/evmos/evmos/v8/x/feesplit/types";
+option go_package = "github.com/evmos/evmos/v8/x/revenue/types";
 
-// FeeSplit defines an instance that organizes fee distribution conditions for
+// Revenue defines an instance that organizes fee distribution conditions for
 // the owner of a given smart contract
-message FeeSplit {
+message Revenue {
   // hex address of registered contract
   string contract_address = 1;
   // bech32 address of contract deployer
