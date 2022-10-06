@@ -60,14 +60,6 @@ export const MSG_SET_WITHDRAW_ADDRESS_TYPES = {
   ],
 }
 
-export interface MsgSetWitdrawAddressInterface {
-  type: string
-  value: {
-    delegator_address: string
-    withdraw_address: string
-  }
-}
-
 export function createMsgSetWithdrawAddress(
   delegatorAddress: string,
   withdrawAddress: string,
