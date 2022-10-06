@@ -65,10 +65,10 @@ export function createMsgSetWithdrawAddress(
   withdrawAddress: string,
 ) {
   return {
-    type: 'cosmos-sdk/MsgSetWithdrawAddress',
+    type: 'cosmos-sdk/MsgModifyWithdrawAddress',
     value: {
       delegator_address: delegatorAddress,
-      withdraw_addresss: withdrawAddress,
+      withdraw_address: withdrawAddress,
     },
   }
 }

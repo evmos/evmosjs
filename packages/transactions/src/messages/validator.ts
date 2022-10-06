@@ -94,7 +94,7 @@ export function createTxMsgEditValidator(
   }
 }
 
-export interface MsgSetWithdrawAdressParams {
+export interface MsgSetWithdrawAddressParams {
   delegatorAddress: string
   withdrawAddress: string
 }
@@ -104,7 +104,7 @@ export function createTxMsgSetWithdrawAddress(
   sender: Sender,
   fee: Fee,
   memo: string,
-  params: MsgSetWithdrawAdressParams,
+  params: MsgSetWithdrawAddressParams,
 ) {
   // EIP712
   const feeObject = generateFee(
