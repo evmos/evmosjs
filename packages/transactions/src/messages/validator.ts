@@ -1,5 +1,6 @@
 import {
   createMsgEditValidator as protoMsgEditValidator,
+  createMsgSetWithdrawAddress as protoMsgSetWithdrawAddress,
   createTransaction,
 } from '@evmos/proto'
 
@@ -10,6 +11,8 @@ import {
   generateTypes,
   MSG_EDIT_VALIDATOR_TYPES,
   createMsgEditValidator,
+  MSG_SET_WITHDRAW_ADDRESS_TYPES,
+  createMsgSetWithdrawAddress,
 } from '@evmos/eip712'
 
 import { Chain, Fee, Sender } from './common'
@@ -70,6 +73,65 @@ export function createTxMsgEditValidator(
     params.validatorAddress,
     params.commissionRate,
     params.minSelfDelegation,
+  )
+  const tx = createTransaction(
+    protoMessage,
+    memo,
+    fee.amount,
+    fee.denom,
+    parseInt(fee.gas, 10),
+    'ethsecp256',
+    sender.pubkey,
+    sender.sequence,
+    sender.accountNumber,
+    chain.cosmosChainId,
+  )
+
+  return {
+    signDirect: tx.signDirect,
+    legacyAmino: tx.legacyAmino,
+    eipToSign,
+  }
+}
+
+export interface MsgSetWithdrawAdressParams {
+  delegatorAddress: string
+  withdrawAddress: string
+}
+
+export function createTxMsgSetWithdrawAddress(
+  chain: Chain,
+  sender: Sender,
+  fee: Fee,
+  memo: string,
+  params: MsgSetWithdrawAdressParams,
+) {
+  // EIP712
+  const feeObject = generateFee(
+    fee.amount,
+    fee.denom,
+    fee.gas,
+    sender.accountAddress,
+  )
+  const types = generateTypes(MSG_SET_WITHDRAW_ADDRESS_TYPES)
+  const msg = createMsgSetWithdrawAddress(
+    params.delegatorAddress,
+    params.withdrawAddress,
+  )
+  const messages = generateMessage(
+    sender.accountNumber.toString(),
+    sender.sequence.toString(),
+    chain.cosmosChainId,
+    memo,
+    feeObject,
+    msg,
+  )
+  const eipToSign = createEIP712(types, chain.chainId, messages)
+
+  // Cosmos
+  const protoMessage = protoMsgSetWithdrawAddress(
+    params.delegatorAddress,
+    params.withdrawAddress,
   )
   const tx = createTransaction(
     protoMessage,
