@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.8](https://github.com/evmos/evmosjs/compare/@evmos/eip712@0.2.6...@evmos/eip712@0.2.8) (2022-10-10)
+
+### Features
+
+- support for MsgSetWithdrawAddress ([#75](https://github.com/evmos/evmosjs/issues/75)) ([a879799](https://github.com/evmos/evmosjs/commit/a879799f06e57b2959b6a0c9bc622f540e3d8920))
+
 ## [0.2.7](https://github.com/evmos/evmosjs/compare/@evmos/eip712@0.2.6...@evmos/eip712@0.2.7) (2022-10-06)
 
 ### Features

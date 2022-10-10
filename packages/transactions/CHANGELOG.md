@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.10](https://github.com/evmos/evmosjs/compare/@evmos/transactions@0.2.8...@evmos/transactions@0.2.10) (2022-10-10)
+
+### Features
+
+- multiple delegations in just on transaction ([ed7df71](https://github.com/evmos/evmosjs/commit/ed7df719f4ab43c8c901fc88def74bfcb063abee))
+- support for MsgSetWithdrawAddress ([#75](https://github.com/evmos/evmosjs/issues/75)) ([a879799](https://github.com/evmos/evmosjs/commit/a879799f06e57b2959b6a0c9bc622f540e3d8920))
+
 ## [0.2.9](https://github.com/evmos/evmosjs/compare/@evmos/transactions@0.2.8...@evmos/transactions@0.2.9) (2022-10-06)
 
 ### Features
