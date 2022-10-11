@@ -1,4 +1,4 @@
-import * as govTx from '../proto/cosmos/gov/v1beta1/tx'
+import * as govTx from '../../proto/cosmos/gov/v1beta1/tx'
 
 export function createMsgVote(
   proposalId: number,
