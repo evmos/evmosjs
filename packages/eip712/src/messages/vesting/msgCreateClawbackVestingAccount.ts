@@ -43,11 +43,12 @@ export function createMsgCreateClawbackVestingAccount(
   vesting_periods: Period[],
   merge: boolean,
 ) {
+  // EIP712 requires the date to be a string in format YYYY-MM-DDTHH:MM:SSZ
   const date = new Date()
   date.setTime(start_time * 1000)
   let startTime = date.toISOString()
   startTime = startTime.replace('.000Z', 'Z')
-  console.log(startTime)
+
   return {
     type: 'evmos/MsgCreateClawbackVestingAccount',
     value: {
