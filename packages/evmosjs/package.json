@@ -30,7 +30,9 @@
     "@evmos/eip712": "^0.2.8",
     "@evmos/proto": "^0.1.24",
     "@evmos/provider": "^0.2.6",
-    "@evmos/transactions": "^0.2.10",
+    "@evmos/transactions": "^0.2.10"
+  },
+  "devDependencies": {
     "@types/node": "^17.0.21",
     "link-module-alias": "^1.2.0",
     "shx": "^0.3.4"
