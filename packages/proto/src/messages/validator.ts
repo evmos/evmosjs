@@ -1,6 +1,8 @@
 import * as stakingTypes from '../proto/cosmos/staking/v1beta1/staking'
 import * as staking from '../proto/cosmos/staking/v1beta1/tx'
 import * as coin from '../proto/cosmos/base/v1beta1/coin'
+import * as distribution from '../proto/cosmos/distribution/v1beta1/tx'
+
 import { createAnyMessage, createPubKey } from './utils'
 
 const NOT_MODIFY = '[do-not-modify]'
@@ -39,6 +41,11 @@ export function createMsgEditValidator(
   }
 }
 
+export interface MsgCreateValidatorInterface {
+  path: string
+  message: staking.cosmos.staking.v1beta1.MsgCreateValidator
+}
+
 export function createMsgCreateValidator(
   validatorDescription: {
     moniker: string
@@ -60,7 +67,7 @@ export function createMsgCreateValidator(
   pubkey: string,
 ) {
   const pubkeyEncoded = new Uint8Array(Buffer.from(pubkey, 'base64'))
-  console.log(pubkeyEncoded)
+
   const commission = new stakingTypes.cosmos.staking.v1beta1.CommissionRates({
     rate: validatorCommission.rate,
     max_rate: validatorCommission.maxRate,
@@ -93,5 +100,26 @@ export function createMsgCreateValidator(
   return {
     message,
     path: 'cosmos.staking.v1beta1.MsgCreateValidator',
+  }
+}
+
+export interface MsgSetWithdrawAddressProtoInterface {
+  path: string
+  message: distribution.cosmos.distribution.v1beta1.MsgSetWithdrawAddress
+}
+
+export function createMsgSetWithdrawAddress(
+  delegatorAddress: string,
+  withdrawAddress: string,
+) {
+  const message =
+    new distribution.cosmos.distribution.v1beta1.MsgSetWithdrawAddress({
+      delegator_address: delegatorAddress,
+      withdraw_address: withdrawAddress,
+    })
+
+  return {
+    message,
+    path: 'cosmos.distribution.v1beta1.MsgSetWithdrawAddress',
   }
 }

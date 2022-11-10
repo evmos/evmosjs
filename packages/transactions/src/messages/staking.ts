@@ -401,3 +401,79 @@ export function createTxMsgWithdrawValidatorCommission(
     eipToSign,
   }
 }
+
+// Multiple MsgDelegate
+export interface MsgMultipleDelegateParams {
+  values: MsgDelegateParams[]
+}
+
+export function createTxMsgMultipleDelegate(
+  chain: Chain,
+  sender: Sender,
+  fee: Fee,
+  memo: string,
+  params: MsgMultipleDelegateParams,
+) {
+  // EIP712
+  const feeObject = generateFee(
+    fee.amount,
+    fee.denom,
+    fee.gas,
+    sender.accountAddress,
+  )
+  const types = generateTypes(MSG_DELEGATE_TYPES)
+  // EIP712
+  const msgs: any[] = []
+  // Cosmos
+  const protoMsgs: any[] = []
+
+  params.values.forEach((msgDelegate) => {
+    msgs.push(
+      createMsgDelegate(
+        sender.accountAddress,
+        msgDelegate.validatorAddress,
+        msgDelegate.amount,
+        msgDelegate.denom,
+      ),
+    )
+
+    protoMsgs.push(
+      protoMsgDelegate(
+        sender.accountAddress,
+        msgDelegate.validatorAddress,
+        msgDelegate.amount,
+        msgDelegate.denom,
+      ),
+    )
+  })
+
+  const messages = generateMessageWithMultipleTransactions(
+    sender.accountNumber.toString(),
+    sender.sequence.toString(),
+    chain.cosmosChainId,
+    memo,
+    feeObject,
+    msgs,
+  )
+  const eipToSign = createEIP712(types, chain.chainId, messages)
+
+  // Cosmos
+  const tx = createTransactionWithMultipleMessages(
+    protoMsgs,
+    memo,
+    fee.amount,
+    fee.denom,
+    parseInt(fee.gas, 10),
+    'ethsecp256',
+    sender.pubkey,
+    sender.sequence,
+    sender.accountNumber,
+    chain.cosmosChainId,
+  )
+
+  return {
+    signDirect: tx.signDirect,
+    legacyAmino: tx.legacyAmino,
+    eipToSign,
+  }
+}

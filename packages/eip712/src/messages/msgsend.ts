@@ -9,6 +9,7 @@ export const MSG_SEND_TYPES = {
     { name: 'amount', type: 'string' },
   ],
 }
+
 export function createMsgSend(
   amount: string,
   denom: string,

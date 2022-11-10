@@ -1,7 +1,7 @@
 {
   "name": "@evmos/provider",
   "description": "Simple provider to query the EVMOS rest api.",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -25,7 +25,7 @@
     "dev": "ts-node-dev -r tsconfig-paths/register src/index.ts",
     "start": "node dist/index.js"
   },
-  "dependencies": {
+  "devDependencies": {
     "@types/node": "^17.0.21",
     "link-module-alias": "^1.2.0",
     "shx": "^0.3.4"
