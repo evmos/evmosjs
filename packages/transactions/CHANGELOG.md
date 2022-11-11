@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.11](https://github.com/evmos/evmosjs/compare/@evmos/transactions@0.2.8...@evmos/transactions@0.2.11) (2022-11-11)
+
+### Features
+
+- governance MsgSubmitProposal ([#80](https://github.com/evmos/evmosjs/issues/80)) ([419bae1](https://github.com/evmos/evmosjs/commit/419bae1f6dbf1e4d1a77d83f50a358f4fc91708a))
+- multiple delegations in just on transaction ([ed7df71](https://github.com/evmos/evmosjs/commit/ed7df719f4ab43c8c901fc88def74bfcb063abee))
+- proposal deposit message ([#86](https://github.com/evmos/evmosjs/issues/86)) ([5410c1f](https://github.com/evmos/evmosjs/commit/5410c1fe042c13a77beb5629a07371dd905559de))
+- support for MsgSetWithdrawAddress ([#75](https://github.com/evmos/evmosjs/issues/75)) ([a879799](https://github.com/evmos/evmosjs/commit/a879799f06e57b2959b6a0c9bc622f540e3d8920))
+- vesting messages ([#85](https://github.com/evmos/evmosjs/issues/85)) ([ca75041](https://github.com/evmos/evmosjs/commit/ca750417ea7db5487de424d65d5d17517443ee01))
+
 ## [0.2.10](https://github.com/evmos/evmosjs/compare/@evmos/transactions@0.2.8...@evmos/transactions@0.2.10) (2022-10-10)
 
 ### Features
