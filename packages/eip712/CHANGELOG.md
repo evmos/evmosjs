@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.10](https://github.com/evmos/evmosjs/compare/@evmos/eip712@0.2.9...@evmos/eip712@0.2.10) (2022-11-14)
+
+### Features
+
+- createValidator message ([#88](https://github.com/evmos/evmosjs/issues/88)) ([85df493](https://github.com/evmos/evmosjs/commit/85df493d5283b836e08aada2593f90c5fcfad516))
+
 ## [0.2.9](https://github.com/evmos/evmosjs/compare/@evmos/eip712@0.2.6...@evmos/eip712@0.2.9) (2022-11-11)
 
 ### Features

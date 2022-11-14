@@ -1,7 +1,7 @@
 {
   "name": "evmosjs",
   "description": "JS and TS libs for Evmos",
-  "version": "0.2.14",
+  "version": "0.2.15",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -27,10 +27,10 @@
   },
   "dependencies": {
     "@evmos/address-converter": "^0.1.8",
-    "@evmos/eip712": "^0.2.9",
-    "@evmos/proto": "^0.1.25",
+    "@evmos/eip712": "^0.2.10",
+    "@evmos/proto": "^0.1.26",
     "@evmos/provider": "^0.2.7",
-    "@evmos/transactions": "^0.2.11",
+    "@evmos/transactions": "^0.2.12",
     "link-module-alias": "^1.2.0",
     "shx": "^0.3.4"
   },

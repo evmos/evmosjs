@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.26](https://github.com/evmos/evmosjs/compare/@evmos/proto@0.1.25...@evmos/proto@0.1.26) (2022-11-14)
+
+### Bug Fixes
+
+- shx and link-module-alias change reverted ([#87](https://github.com/evmos/evmosjs/issues/87)) ([d4eeda5](https://github.com/evmos/evmosjs/commit/d4eeda59c8f5549d661e6bedd7a25df0b11afb9c))
+
+### Features
+
+- createValidator message ([#88](https://github.com/evmos/evmosjs/issues/88)) ([85df493](https://github.com/evmos/evmosjs/commit/85df493d5283b836e08aada2593f90c5fcfad516))
+
 ## [0.1.25](https://github.com/evmos/evmosjs/compare/@evmos/proto@0.1.22...@evmos/proto@0.1.25) (2022-11-11)
 
 ### Features

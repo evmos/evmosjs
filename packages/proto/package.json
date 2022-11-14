@@ -1,7 +1,7 @@
 {
   "name": "@evmos/proto",
   "description": "Protobuf files for EVMOS.",
-  "version": "0.1.25",
+  "version": "0.1.26",
   "license": "MIT",
   "eslintIgnore": [
     "src/proto/**/*.ts"
@@ -30,8 +30,8 @@
   },
   "dependencies": {
     "google-protobuf": "^3.19.4",
-    "sha3": "^2.1.4",
     "link-module-alias": "^1.2.0",
+    "sha3": "^2.1.4",
     "shx": "^0.3.4"
   },
   "devDependencies": {
