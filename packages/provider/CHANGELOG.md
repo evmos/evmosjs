@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.8](https://github.com/evmos/evmosjs/compare/@evmos/provider@0.2.7...@evmos/provider@0.2.8) (2022-11-14)
+
+### Bug Fixes
+
+- shx and link-module-alias change reverted ([#87](https://github.com/evmos/evmosjs/issues/87)) ([d4eeda5](https://github.com/evmos/evmosjs/commit/d4eeda59c8f5549d661e6bedd7a25df0b11afb9c))
+
+### Features
+
+- add balanceByDenom to recreate the pkg ([#90](https://github.com/evmos/evmosjs/issues/90)) ([4169620](https://github.com/evmos/evmosjs/commit/4169620cb0ee4401aa122b5bfbc446a7de1174cd))
+
 ## [0.2.7](https://github.com/evmos/evmosjs/compare/@evmos/provider@0.2.6...@evmos/provider@0.2.7) (2022-11-11)
 
 ### Features
