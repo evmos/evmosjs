@@ -30,12 +30,12 @@
     "@evmos/eip712": "^0.2.9",
     "@evmos/proto": "^0.1.25",
     "@evmos/provider": "^0.2.7",
-    "@evmos/transactions": "^0.2.11"
-  },
-  "devDependencies": {
-    "@types/node": "^17.0.21",
+    "@evmos/transactions": "^0.2.11",
     "link-module-alias": "^1.2.0",
     "shx": "^0.3.4"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21"
   },
   "publishConfig": {
     "access": "public"
