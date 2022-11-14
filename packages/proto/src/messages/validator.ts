@@ -3,7 +3,7 @@ import * as staking from '../proto/cosmos/staking/v1beta1/tx'
 import * as coin from '../proto/cosmos/base/v1beta1/coin'
 import * as distribution from '../proto/cosmos/distribution/v1beta1/tx'
 
-import { createAnyMessage, createPubKey } from './utils'
+import { createAnyMessage, createed25519pubkey } from './utils'
 
 const NOT_MODIFY = '[do-not-modify]'
 
@@ -92,7 +92,7 @@ export function createMsgCreateValidator(
     delegator_address: delegatorAddress,
     validator_address: validatorAddress,
     value,
-    pubkey: createAnyMessage(createPubKey(pubkeyEncoded)),
+    pubkey: createAnyMessage(createed25519pubkey(pubkeyEncoded)),
     description,
     commission,
   })
