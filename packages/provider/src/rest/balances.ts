@@ -13,3 +13,11 @@ export interface BalancesResponse {
     total: number
   }
 }
+
+export function generateEndpointBalanceByDenom(address: string, denom: string) {
+  return `/cosmos/bank/v1beta1/balances/${address}/by_denom?denom=${denom}`
+}
+
+export interface BalanceByDenomResponse {
+  balance: Coin
+}
