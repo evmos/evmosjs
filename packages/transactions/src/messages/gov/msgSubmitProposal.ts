@@ -1,5 +1,5 @@
 import {
-  createMsgVote as protoCreateMsgVote,
+  createMsgSubmitProposal as protoCreateMsgSubmitProposal,
   createTransaction,
 } from '@astradefi/proto'
 
@@ -8,23 +8,25 @@ import {
   generateFee,
   generateMessage,
   generateTypes,
-  createMsgVote,
+  createMsgSubmitProposal,
   MSG_VOTE_TYPES,
 } from '@astradefi/eip712'
 
-import { Chain, Fee, Sender } from './common'
+import { Chain, Fee, Sender } from '../common'
 
-export interface MessageMsgVote {
-  proposalId: number
-  option: number
+export interface MessageMsgSubmitProposal {
+  content: any
+  initialDepositDenom: string
+  initialDepositAmount: string
+  proposer: string
 }
 
-export function createTxMsgVote(
+export function createTxMsgSubmitProposal(
   chain: Chain,
   sender: Sender,
   fee: Fee,
   memo: string,
-  params: MessageMsgVote,
+  params: MessageMsgSubmitProposal,
 ) {
   // EIP712
   const feeObject = generateFee(
@@ -35,9 +37,10 @@ export function createTxMsgVote(
   )
   const types = generateTypes(MSG_VOTE_TYPES)
 
-  const msg = createMsgVote(
-    params.proposalId,
-    params.option,
+  const msg = createMsgSubmitProposal(
+    params.content,
+    params.initialDepositDenom,
+    params.initialDepositAmount,
     sender.accountAddress,
   )
   const messages = generateMessage(
@@ -51,9 +54,10 @@ export function createTxMsgVote(
   const eipToSign = createEIP712(types, chain.chainId, messages)
 
   // Cosmos
-  const msgCosmos = protoCreateMsgVote(
-    params.proposalId,
-    params.option,
+  const msgCosmos = protoCreateMsgSubmitProposal(
+    params.content,
+    params.initialDepositDenom,
+    params.initialDepositAmount,
     sender.accountAddress,
   )
   const tx = createTransaction(
