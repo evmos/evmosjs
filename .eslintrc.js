@@ -5,8 +5,8 @@ const common = {
     browser: true,
     'jest/globals': true,
   },
-  plugins: ['prettier', 'jest'],
-  extends: ['airbnb-base', 'prettier', 'plugin:jest/all'],
+  plugins: ['jest', 'prettier'],
+  extends: ['airbnb-base', 'plugin:jest/all', 'plugin:prettier/recommended'],
   rules: {
     'prettier/prettier': 'error',
     'jest/no-disabled-tests': 'warn',

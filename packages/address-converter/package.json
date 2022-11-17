@@ -36,7 +36,9 @@
   },
   "dependencies": {
     "bech32": "^2.0.0",
-    "crypto-addr-codec": "^0.1.7",
+    "crypto-addr-codec": "^0.1.7"
+  },
+  "devDependencies": {
     "link-module-alias": "^1.2.0",
     "shx": "^0.3.4"
   },

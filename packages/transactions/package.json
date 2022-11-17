@@ -31,12 +31,12 @@
   },
   "dependencies": {
     "@astradefi/eip712": "^0.8.1",
-    "@astradefi/proto": "^0.8.0",
-    "@types/node": "^17.0.21",
-    "link-module-alias": "^1.2.0",
-    "shx": "^0.3.4"
+    "@astradefi/proto": "^0.8.0"
   },
   "devDependencies": {
+    "@types/node": "^17.0.21",
+    "link-module-alias": "^1.2.0",
+    "shx": "^0.3.4",
     "@babel/core": "^7.18.2",
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-typescript": "^7.17.12",

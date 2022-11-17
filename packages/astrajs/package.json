@@ -34,7 +34,9 @@
     "@astradefi/eip712": "^0.8.1",
     "@astradefi/proto": "^0.8.0",
     "@astradefi/provider": "^0.7.1",
-    "@astradefi/transactions": "^0.10.2",
+    "@astradefi/transactions": "^0.10.2"
+  },
+  "devDependencies": {
     "@types/node": "^17.0.21",
     "link-module-alias": "^1.2.0",
     "shx": "^0.3.4"
