@@ -3,7 +3,7 @@
 ```ts
 /* eslint-disable import/no-extraneous-dependencies */
 // This dependency is local to the utils project
-import { evmosToEth } from '@astradefi/address-converter'
+import { astraToEth } from '@astradefi/address-converter'
 import { Wallet } from '@ethersproject/wallet'
 import { createTxMsgConvertCoin, createTxMsgConvertERC20 } from '@astradefi/transactions'
 import {
@@ -23,7 +23,7 @@ async function prepareMessageConvertCoin(wallet: Wallet) {
   const txSimple = createTxMsgConvertCoin(LOCALNET_CHAIN, sender, fee, '', {
     denom: 'erc20/0xC7f37A81cE8F11955051E176A15954Fc4777A51B',
     amount: '1',
-    receiverHexFormatted: evmosToEth(sender.accountAddress),
+    receiverHexFormatted: astraToEth(sender.accountAddress),
     senderEvmosFormatted: sender.accountAddress,
   })
   return { sender, txSimple }
@@ -39,7 +39,7 @@ async function prepareMessageConvertERC20(wallet: Wallet) {
     contract_address: '0xC7f37A81cE8F11955051E176A15954Fc4777A51B',
     amount: '1',
     receiverEvmosFormatted: sender.accountAddress,
-    senderHexFormatted: evmosToEth(sender.accountAddress),
+    senderHexFormatted: astraToEth(sender.accountAddress),
   })
   return { sender, txSimple }
 }

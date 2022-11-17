@@ -1,0 +1,42 @@
+{
+  "name": "@astradefi/utils",
+  "description": "Typescript Utilities for Astra Blockchain",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "astradefi",
+    "astrajs",
+    "astra"
+  ],
+  "repository": "https://github.com/astraprotocol/astrajs",
+  "_moduleAliases": {
+    "~utils": "dist"
+  },
+  "scripts": {
+    "postinstall": "shx mkdir -p dist && link-module-alias",
+    "build": "tsc --build tsconfig.build.json && link-module-alias",
+    "build:watch": "tsc --build -w tsconfig.build.json && link-module-alias",
+    "clean": "tsc --build tsconfig.build.json --clean  && shx rm -rf coverage *.log junit.xml dist && jest --clearCache",
+    "test": "jest",
+    "test:unit": "jest test/unit",
+    "test:integration": "jest test/unit",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --coverage --ci --reporters='jest-junit'",
+    "coverage": "jest --coverage",
+    "dev": "ts-node-dev -r tsconfig-paths/register src/index.ts",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "link-module-alias": "^1.2.0",
+    "shx": "^0.3.4"
+  },
+  "gitHead": "3d1dedb2206e8b606ac0e450ec35f23b4067d236"
+}

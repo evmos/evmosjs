@@ -4,7 +4,7 @@ Send coins to another wallet and check wallet balance
 
 ```ts
 
-import { ethToEvmos } from '@astradefi/address-converter'
+import { ethToAstra } from '@astradefi/address-converter'
 
 import { Wallet } from '@ethersproject/wallet'
 

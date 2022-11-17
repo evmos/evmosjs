@@ -15,9 +15,9 @@ async function prepareMessage(wallet: Wallet) {
     LOCALNET_FEE,
     '',
     {
-      destinationAddress: 'evmos1pmk2r32ssqwps42y3c9d4clqlca403yd9wymgr',
+      destinationAddress: 'astra198g5t8ct4udcgflfkc07htnctp945sjwaagwf2',
       amount: '1',
-      denom: 'aevmos',
+      denom: 'aastra',
     },
   )
   return { sender, txSimple }

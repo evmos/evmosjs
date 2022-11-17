@@ -38,10 +38,10 @@ The examples are using `signTransaction` or `singTransactionUsingEIP712` to sign
 
 ### Metamask
 
-NOTE: msg is the result of calling any `createTx...` function using evmosjs
+NOTE: msg is the result of calling any `createTx...` function using astrajs
 
 ```ts
-import { evmosToEth } from '@astradefi/address-converter'
+import { astraToEth } from '@astradefi/address-converter'
 import { generateEndpointBroadcast, generatePostBodyBroadcast } from '@astradefi/provider'
 import { createTxRawEIP712, signatureToWeb3Extension } from '@astradefi/transactions'
 
@@ -51,7 +51,7 @@ await window.ethereum.enable();
 // Request the signature
 let signature = await window.ethereum.request({
     method: 'eth_signTypedData_v4',
-    params: [evmosToEth(sender.accountAddress), JSON.stringify(msg.eipToSign)],
+    params: [astraToEth(sender.accountAddress), JSON.stringify(msg.eipToSign)],
 });
 
 // The chain and sender objects are the same as the previous example
