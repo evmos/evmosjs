@@ -152,3 +152,5 @@ export function createTxMsgSetWithdrawAddress(
     eipToSign,
   }
 }
+
+// TODO: add MsgCreateValidator when it's supported on evmos
