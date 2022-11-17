@@ -1,7 +1,7 @@
 {
   "name": "@astradefi/proto",
   "description": "Protobuf files for Astra.",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "license": "MIT",
   "eslintIgnore": [
     "src/proto/**/*.ts"
@@ -34,8 +34,8 @@
   },
   "dependencies": {
     "google-protobuf": "^3.19.4",
-    "sha3": "^2.1.4",
     "link-module-alias": "^1.2.0",
+    "sha3": "^2.1.4",
     "shx": "^0.3.4"
   },
   "devDependencies": {

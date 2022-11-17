@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/astraprotocol/astrajs/compare/@astradefi/astrajs@0.4.10...@astradefi/astrajs@0.5.0) (2022-11-17)
+
+### Bug Fixes
+
+- shx and link-module-alias change reverted ([cbb7e39](https://github.com/astraprotocol/astrajs/commit/cbb7e396f88f87f32f349c0c2d740902ce15be49))
+
+### Features
+
+- astra utils ([42c5d85](https://github.com/astraprotocol/astrajs/commit/42c5d859027b190701d797d8d70ccd9cccd33abe))
+- proposal deposit message ([5ad75fa](https://github.com/astraprotocol/astrajs/commit/5ad75fad7c46f5ce416078550a7ca95209046fac))
+
 ## [0.4.10](https://github.com/astraprotocol/astrajs/compare/@astradefi/astrajs@0.4.9...@astradefi/astrajs@0.4.10) (2022-09-05)
 
 **Note:** Version bump only for package @astradefi/astrajs
@@ -35,25 +46,25 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* upgrade astrajs ([0dac790](https://github.com/astraprotocol/astrajs/commit/0dac790f58b2a7f58dacf8ac6093f70a09bee0d8))
-* upgrade astrajs version ([3b1e865](https://github.com/astraprotocol/astrajs/commit/3b1e865e9a7276da1591bc926923e3d9a7086311))
+- upgrade astrajs ([0dac790](https://github.com/astraprotocol/astrajs/commit/0dac790f58b2a7f58dacf8ac6093f70a09bee0d8))
+- upgrade astrajs version ([3b1e865](https://github.com/astraprotocol/astrajs/commit/3b1e865e9a7276da1591bc926923e3d9a7086311))
 
 ## [0.4.1](https://github.com/astraprotocol/astrajs/compare/@astradefi/astrajs@0.4.0...@astradefi/astrajs@0.4.1) (2022-06-23)
 
 ### Bug Fixes
 
-* update package.json ([2108ec3](https://github.com/astraprotocol/astrajs/commit/2108ec308c1abe79ff119d07080ef51fb83279a8))
+- update package.json ([2108ec3](https://github.com/astraprotocol/astrajs/commit/2108ec308c1abe79ff119d07080ef51fb83279a8))
 
 # 0.4.0 (2022-06-23)
 
 ### Bug Fixes
 
-* change npm name + update proto ([d734a9e](https://github.com/astraprotocol/astrajs/commit/d734a9ed44b6e784f2448e6e610aef2c0046013c))
-* gh action build ([#8](https://github.com/astraprotocol/astrajs/issues/8)) ([1b2a167](https://github.com/astraprotocol/astrajs/commit/1b2a167846d592bece7ec0a717c92140ce4cdbfc))
+- change npm name + update proto ([d734a9e](https://github.com/astraprotocol/astrajs/commit/d734a9ed44b6e784f2448e6e610aef2c0046013c))
+- gh action build ([#8](https://github.com/astraprotocol/astrajs/issues/8)) ([1b2a167](https://github.com/astraprotocol/astrajs/commit/1b2a167846d592bece7ec0a717c92140ce4cdbfc))
 
 ### Features
 
-* merge evmosjs for new convert coin/erc20 messages ([#5](https://github.com/astraprotocol/astrajs/issues/5)) ([eb473d4](https://github.com/astraprotocol/astrajs/commit/eb473d4acbfdf62639c090290c0e681a4e802725)), closes [#39](https://github.com/astraprotocol/astrajs/issues/39) [#42](https://github.com/astraprotocol/astrajs/issues/42) [#44](https://github.com/astraprotocol/astrajs/issues/44) [#45](https://github.com/astraprotocol/astrajs/issues/45)
+- merge evmosjs for new convert coin/erc20 messages ([#5](https://github.com/astraprotocol/astrajs/issues/5)) ([eb473d4](https://github.com/astraprotocol/astrajs/commit/eb473d4acbfdf62639c090290c0e681a4e802725)), closes [#39](https://github.com/astraprotocol/astrajs/issues/39) [#42](https://github.com/astraprotocol/astrajs/issues/42) [#44](https://github.com/astraprotocol/astrajs/issues/44) [#45](https://github.com/astraprotocol/astrajs/issues/45)
 
 ## [0.2.12](https://github.com/astraprotocol/astrajs/compare/@astraprotocol/astrajs@0.2.11...@astraprotocol/astrajs@0.2.12) (2022-05-26)
 
@@ -115,4 +126,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* create the evmosjs package on npm ([#22](https://github.com/astraprotocol/astrajs/issues/22)) ([5446ca4](https://github.com/astraprotocol/astrajs/commit/5446ca4e6fc027c6d26d5fce598ba1a5d1480e54))
+- create the evmosjs package on npm ([#22](https://github.com/astraprotocol/astrajs/issues/22)) ([5446ca4](https://github.com/astraprotocol/astrajs/commit/5446ca4e6fc027c6d26d5fce598ba1a5d1480e54))
