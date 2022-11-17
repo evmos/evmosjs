@@ -1,3 +1,10 @@
+// Encondings
+export * from './encoding/decodeAmino'
+export * from './encoding/decodeProtobuf'
+export * from './encoding/encoding'
+export * from './encoding/utils'
+
+// Messages
 export * from './messages/erc20/msgConvertCoin'
 export * from './messages/erc20/msgConvertERC20'
 export * from './messages/base'

@@ -30,8 +30,17 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
+    "@cosmjs/proto-signing": "^0.28.13",
+    "@evmos/proto": "^0.1.21",
+    "@metamask/eth-sig-util": "^4.0.1",
+    "cosmjs-types": "^0.5.1",
     "link-module-alias": "^1.2.0",
+    "long": "^5.2.0",
     "shx": "^0.3.4"
   },
-  "gitHead": "3d1dedb2206e8b606ac0e450ec35f23b4067d236"
+  "gitHead": "3d1dedb2206e8b606ac0e450ec35f23b4067d236",
+  "devDependencies": {
+    "@types/jest": "^29.2.3",
+    "@types/mocha": "^10.0.0"
+  }
 }
