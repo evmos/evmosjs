@@ -34,12 +34,12 @@
     "@astradefi/eip712": "^0.8.1",
     "@astradefi/proto": "^0.8.0",
     "@astradefi/provider": "^0.7.1",
-    "@astradefi/transactions": "^0.10.2"
-  },
-  "devDependencies": {
-    "@types/node": "^17.0.21",
+    "@astradefi/transactions": "^0.10.2",
     "link-module-alias": "^1.2.0",
     "shx": "^0.3.4"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21"
   },
   "gitHead": "3d1dedb2206e8b606ac0e450ec35f23b4067d236"
 }

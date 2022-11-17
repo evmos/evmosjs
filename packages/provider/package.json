@@ -29,10 +29,12 @@
     "dev": "ts-node-dev -r tsconfig-paths/register src/index.ts",
     "start": "node dist/index.js"
   },
-  "devDependencies": {
-    "@types/node": "^17.0.21",
+  "dependencies": {
     "link-module-alias": "^1.2.0",
     "shx": "^0.3.4"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21"
   },
   "gitHead": "3d1dedb2206e8b606ac0e450ec35f23b4067d236"
 }
