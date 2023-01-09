@@ -10,9 +10,11 @@ import { Chain, Fee, Sender } from '../common'
 /* eslint-disable camelcase */
 export interface MsgStakeAuthorizationParams {
   bot_address: string
-  validator_address: string
-  denom: string
-  maxTokens: string | undefined
+  validator_addresses?: string[]
+  maxTokens?: {
+    denom: string
+    amount: string
+  }
   duration_in_seconds: number
 }
 
@@ -28,8 +30,7 @@ export function createTxMsgStakeAuthorization(
 
   // Cosmos
   const msgStakeGrant = createStakeAuthorization(
-    params.validator_address,
-    params.denom,
+    params.validator_addresses,
     params.maxTokens,
     stakeAuthTypes.AUTHORIZATION_TYPE_DELEGATE,
   )
