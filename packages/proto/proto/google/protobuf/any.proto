@@ -35,7 +35,7 @@ package google.protobuf;
 import "gogoproto/gogo.proto";
 
 option csharp_namespace = "Google.Protobuf.WellKnownTypes";
-option go_package = "github.com/cosmos/cosmos-sdk/codec/types";
+option go_package = "types";
 option java_package = "com.google.protobuf";
 option java_outer_classname = "AnyProto";
 option java_multiple_files = true;
@@ -156,6 +156,9 @@ message Any {
   bytes value = 2;
 
   option (gogoproto.typedecl) = false;
+  option (gogoproto.goproto_stringer) = false;
+  option (gogoproto.gostring) = false;
+  option (gogoproto.stringer) = false;
 }
 
 option (gogoproto.goproto_registration) = false;

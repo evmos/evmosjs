@@ -9,7 +9,7 @@ import {
   generateMessage,
   generateTypes,
   createMsgSubmitProposal,
-  MSG_VOTE_TYPES,
+  MSG_SUBMIT_TYPES,
 } from '@evmos/eip712'
 
 import { Chain, Fee, Sender } from '../common'
@@ -19,6 +19,7 @@ export interface MessageMsgSubmitProposal {
   initialDepositDenom: string
   initialDepositAmount: string
   proposer: string
+  extraEip: any
 }
 
 export function createTxMsgSubmitProposal(
@@ -35,7 +36,10 @@ export function createTxMsgSubmitProposal(
     fee.gas,
     sender.accountAddress,
   )
-  const types = generateTypes(MSG_VOTE_TYPES)
+  const submitTypes = MSG_SUBMIT_TYPES
+  submitTypes.MsgValue[0].type = 'ProposalType'
+  const types = generateTypes(submitTypes)
+  Object.assign(types, params.extraEip)
 
   const msg = createMsgSubmitProposal(
     params.content,
