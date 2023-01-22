@@ -6,7 +6,7 @@ export const MSG_GENERIC_AUTHORIZATION_TYPES = {
   ],
   TypeGrant: [
     { name: 'authorization', type: 'TypeGrantAuthorization' },
-    { name: '"expiration"', type: 'string' },
+    { name: 'expiration', type: 'string' },
   ],
   TypeGrantAuthorization: [
     { name: 'type', type: 'string' },
