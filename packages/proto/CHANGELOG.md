@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.27](https://github.com/evmos/evmosjs/compare/@evmos/proto@0.1.26...@evmos/proto@0.1.27) (2023-01-22)
+
+### Features
+
+- support for generic grants ([#100](https://github.com/evmos/evmosjs/issues/100)) ([b622e15](https://github.com/evmos/evmosjs/commit/b622e15848622abf0ee26f76dfe4a3d3a849a514))
+
 ## [0.1.26](https://github.com/evmos/evmosjs/compare/@evmos/proto@0.1.25...@evmos/proto@0.1.26) (2022-11-14)
 
 ### Bug Fixes

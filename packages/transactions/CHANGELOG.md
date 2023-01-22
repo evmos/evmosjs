@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.13](https://github.com/evmos/evmosjs/compare/@evmos/transactions@0.2.12...@evmos/transactions@0.2.13) (2023-01-22)
+
+### Features
+
+- support for generic grants ([#100](https://github.com/evmos/evmosjs/issues/100)) ([b622e15](https://github.com/evmos/evmosjs/commit/b622e15848622abf0ee26f76dfe4a3d3a849a514))
+
 ## [0.2.12](https://github.com/evmos/evmosjs/compare/@evmos/transactions@0.2.11...@evmos/transactions@0.2.12) (2022-11-14)
 
 ### Bug Fixes
