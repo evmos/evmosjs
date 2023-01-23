@@ -31,6 +31,8 @@ describe('msgEthereumTx tests', () => {
           },
         ],
         gas_limit: 1200000,
+        granter: '',
+        payer: '',
       },
     })
 
