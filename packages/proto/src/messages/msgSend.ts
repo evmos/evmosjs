@@ -1,5 +1,5 @@
-import * as bank from '../proto/cosmos/bank/v1beta1/tx'
-import * as coin from '../proto/cosmos/base/v1beta1/coin'
+import { MsgSend } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/bank/v1beta1/tx_pb.js'
+import { Coin } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/base/v1beta1/coin_pb.js'
 
 export function createMsgSend(
   fromAddress: string,
@@ -7,14 +7,14 @@ export function createMsgSend(
   amount: string,
   denom: string,
 ) {
-  const value = new coin.cosmos.base.v1beta1.Coin({
+  const value = new Coin({
     denom,
     amount,
   })
 
-  const message = new bank.cosmos.bank.v1beta1.MsgSend({
-    from_address: fromAddress,
-    to_address: toAddress,
+  const message = new MsgSend({
+    fromAddress,
+    toAddress,
     amount: [value],
   })
   return {

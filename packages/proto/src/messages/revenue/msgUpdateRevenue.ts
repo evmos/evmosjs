@@ -1,17 +1,17 @@
-import * as revenue from '../../proto/evmos/revenue/v1/tx'
+import { MsgUpdateFeeSplit } from '@buf/evmos_evmos.bufbuild_es/evmos/feesplit/v1/tx_pb'
 
-export function createMsgUpdateRevenue(
+export function createMsgUpdateFeeSplit(
   contractAddress: string,
   deployerAddress: string,
   withdrawerAddress: string,
 ) {
-  const msg = new revenue.evmos.revenue.v1.MsgUpdateRevenue({
-    contract_address: contractAddress,
-    deployer_address: deployerAddress,
-    withdrawer_address: withdrawerAddress,
+  const msg = new MsgUpdateFeeSplit({
+    contractAddress,
+    deployerAddress,
+    withdrawerAddress,
   })
   return {
     message: msg,
-    path: 'evmos.revenue.v1.MsgUpdateRevenue',
+    path: 'evmos.feesplit.v1.MsgUpdateFeeSplit',
   }
 }

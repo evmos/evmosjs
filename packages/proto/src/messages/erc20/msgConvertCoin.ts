@@ -1,5 +1,5 @@
-import * as erc20 from '../../proto/evmos/erc20/v1/tx'
-import * as coin from '../../proto/cosmos/base/v1beta1/coin'
+import { MsgConvertCoin } from '@buf/evmos_evmos.bufbuild_es/evmos/erc20/v1/tx_pb'
+import { Coin } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/base/v1beta1/coin_pb'
 
 export function createMsgConvertCoin(
   denom: string,
@@ -7,8 +7,8 @@ export function createMsgConvertCoin(
   receiver: string,
   sender: string,
 ) {
-  const msg = new erc20.evmos.erc20.v1.MsgConvertCoin({
-    coin: new coin.cosmos.base.v1beta1.Coin({
+  const msg = new MsgConvertCoin({
+    coin: new Coin({
       denom,
       amount,
     }),

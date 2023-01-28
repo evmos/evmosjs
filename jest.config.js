@@ -11,7 +11,8 @@ module.exports = {
     ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
   },
   // A preset that is used as a base for Jest's configuration
-  preset: 'ts-jest',
+  preset: 'ts-jest/presets/default-esm',
   // The test environment that will be used for testing
   testEnvironment: 'node',
+  transform: {},
 }

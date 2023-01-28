@@ -1,3 +1,4 @@
+import { Any } from '@bufbuild/protobuf/'
 import {
   bytesToLegacyTx,
   bytesToMsgEthereumTx,
@@ -7,7 +8,7 @@ import {
   bytesToTxBody,
   bytesToTxRaw,
 } from '../../src/messages/txRaw'
-import * as google from '../../src/proto/google/protobuf/any'
+import { JSONOptions } from '../types'
 
 describe('msgEthereumTx tests', () => {
   const blockchainTx =
@@ -17,11 +18,11 @@ describe('msgEthereumTx tests', () => {
     const txRawProto = bytesToTxRaw(Buffer.from(blockchainTx, 'base64'))
 
     // Create body
-    const bodyProto = bytesToTxBody(txRawProto.body_bytes)
+    const bodyProto = bytesToTxBody(txRawProto.bodyBytes)
 
     // Create the authInfo
-    const authInfoProto = bytesToAuthInfo(txRawProto.auth_info_bytes)
-    expect(authInfoProto.toObject()).toStrictEqual({
+    const authInfoProto = bytesToAuthInfo(txRawProto.authInfoBytes)
+    expect(authInfoProto.toJson(JSONOptions)).toStrictEqual({
       signer_infos: [],
       fee: {
         amount: [
@@ -30,41 +31,40 @@ describe('msgEthereumTx tests', () => {
             denom: 'basecro',
           },
         ],
-        gas_limit: 1200000,
+        gas_limit: '1200000',
+        granter: '',
+        payer: '',
       },
     })
 
     // Get the messages
-    const bodyProtoMessages = bodyProto.messages as google.google.protobuf.Any[]
+    const bodyProtoMessages = bodyProto.messages as Any[]
     expect(bodyProtoMessages).toBeDefined()
     expect(bodyProtoMessages.length).toBeGreaterThan(0)
 
     // Make sure that the message is MsgEthTx
-    expect(bodyProtoMessages[0].type_url).toBe(
-      '/ethermint.evm.v1.MsgEthereumTx',
-    )
+    expect(bodyProtoMessages[0].typeUrl).toBe('/ethermint.evm.v1.MsgEthereumTx')
 
     // Create the MsgEthTx proto
     expect(bodyProtoMessages[0].value).toBeDefined()
     const msgEthereumTxProto = bytesToMsgEthereumTx(
       bodyProtoMessages[0].value as Uint8Array,
     )
-    const msgEthTx = msgEthereumTxProto.toObject()
+    const msgEthTx = msgEthereumTxProto
 
     // Create the LegacyTx/AccessListTx/DynamicFeeTx depending on the type_url
-    expect(msgEthTx.data?.type_url).toBe('/ethermint.evm.v1.LegacyTx')
+    expect(msgEthTx.data?.typeUrl).toBe('/ethermint.evm.v1.LegacyTx')
 
     // Create the LegacyTX
-    const ethTx = bytesToLegacyTx(msgEthTx.data?.value as Uint8Array).toObject()
-    expect(ethTx.nonce as number).toBe(1036)
-    expect(ethTx.gas_price as string).toBe('5000000000000')
-    expect(ethTx.gas as number).toBe(1200000)
-    expect(ethTx.to as string).toBe(
-      '0x752a21aB63fc2C7887747e754405d975CD351D54',
-    )
-    expect(ethTx.value as string).toBe('0')
-    expect(ethTx.data as Uint8Array).toStrictEqual(
-      new Uint8Array([
+    const ethTx = bytesToLegacyTx(msgEthTx.data?.value as Uint8Array)
+
+    expect(ethTx.nonce).toBe(BigInt(1036))
+    expect(ethTx.gasPrice).toBe('5000000000000')
+    expect(ethTx.gas).toBe(BigInt(1200000))
+    expect(ethTx.to).toBe('0x752a21aB63fc2C7887747e754405d975CD351D54')
+    expect(ethTx.value).toBe('0')
+    expect(ethTx.data).toStrictEqual(
+      Buffer.from([
         162, 171, 229, 78, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 139, 136, 20, 89, 132, 77, 83, 89, 154, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 229, 250, 66,

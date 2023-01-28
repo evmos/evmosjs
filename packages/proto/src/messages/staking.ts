@@ -1,6 +1,13 @@
-import * as staking from '../proto/cosmos/staking/v1beta1/tx'
-import * as coin from '../proto/cosmos/base/v1beta1/coin'
-import * as dist from '../proto/cosmos/distribution/v1beta1/tx'
+import {
+  MsgDelegate,
+  MsgBeginRedelegate,
+  MsgUndelegate,
+} from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/staking/v1beta1/tx_pb'
+import {
+  MsgWithdrawDelegatorReward,
+  MsgWithdrawValidatorCommission,
+} from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/distribution/v1beta1/tx_pb'
+import { Coin } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/base/v1beta1/coin_pb'
 
 export function createMsgDelegate(
   delegatorAddress: string,
@@ -8,14 +15,14 @@ export function createMsgDelegate(
   amount: string,
   denom: string,
 ) {
-  const value = new coin.cosmos.base.v1beta1.Coin({
+  const value = new Coin({
     denom,
     amount,
   })
 
-  const message = new staking.cosmos.staking.v1beta1.MsgDelegate({
-    delegator_address: delegatorAddress,
-    validator_address: validatorAddress,
+  const message = new MsgDelegate({
+    delegatorAddress,
+    validatorAddress,
     amount: value,
   })
 
@@ -32,15 +39,15 @@ export function createMsgBeginRedelegate(
   amount: string,
   denom: string,
 ) {
-  const value = new coin.cosmos.base.v1beta1.Coin({
+  const value = new Coin({
     denom,
     amount,
   })
 
-  const message = new staking.cosmos.staking.v1beta1.MsgBeginRedelegate({
-    delegator_address: delegatorAddress,
-    validator_src_address: validatorSrcAddress,
-    validator_dst_address: validatorDstAddress,
+  const message = new MsgBeginRedelegate({
+    delegatorAddress,
+    validatorSrcAddress,
+    validatorDstAddress,
     amount: value,
   })
 
@@ -56,14 +63,14 @@ export function createMsgUndelegate(
   amount: string,
   denom: string,
 ) {
-  const value = new coin.cosmos.base.v1beta1.Coin({
+  const value = new Coin({
     denom,
     amount,
   })
 
-  const message = new staking.cosmos.staking.v1beta1.MsgUndelegate({
-    delegator_address: delegatorAddress,
-    validator_address: validatorAddress,
+  const message = new MsgUndelegate({
+    delegatorAddress,
+    validatorAddress,
     amount: value,
   })
 
@@ -75,18 +82,17 @@ export function createMsgUndelegate(
 
 export interface MsgWithdrawDelegatorRewardProtoInterface {
   path: string
-  message: dist.cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward
+  message: MsgWithdrawDelegatorReward
 }
 
 export function createMsgWithdrawDelegatorReward(
   delegatorAddress: string,
   validatorAddress: string,
 ) {
-  const message =
-    new dist.cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward({
-      delegator_address: delegatorAddress,
-      validator_address: validatorAddress,
-    })
+  const message = new MsgWithdrawDelegatorReward({
+    delegatorAddress,
+    validatorAddress,
+  })
 
   return {
     message,
@@ -96,14 +102,13 @@ export function createMsgWithdrawDelegatorReward(
 
 export interface MsgWithdrawValidatorCommissionProtoInterface {
   path: string
-  message: dist.cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission
+  message: MsgWithdrawValidatorCommission
 }
 
 export function createMsgWithdrawValidatorCommission(validatorAddress: string) {
-  const message =
-    new dist.cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission({
-      validator_address: validatorAddress,
-    })
+  const message = new MsgWithdrawValidatorCommission({
+    validatorAddress,
+  })
 
   return {
     message,

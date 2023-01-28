@@ -9,8 +9,8 @@ describe('msgSend tests', () => {
       'aphoton',
     )
     const expectedObject = {
-      from_address: 'evmos18lw704zeyg5zs098lq7x6ypfkfjqlzzln5qh89',
-      to_address: 'evmos1ndfagggdkgv9vc7wha5gj2zzrnyqd3r704lr4q',
+      fromAddress: 'evmos18lw704zeyg5zs098lq7x6ypfkfjqlzzln5qh89',
+      toAddress: 'evmos1ndfagggdkgv9vc7wha5gj2zzrnyqd3r704lr4q',
       amount: [
         {
           denom: 'aphoton',
@@ -19,7 +19,7 @@ describe('msgSend tests', () => {
       ],
     }
 
-    expect(message.message.toObject()).toStrictEqual(expectedObject)
+    expect(message.message.toJson()).toStrictEqual(expectedObject)
     expect(message.path).toBe('cosmos.bank.v1beta1.MsgSend')
   })
 })

@@ -1,0 +1,8 @@
+{
+  "globals": {
+    "BigInt": true
+  },
+  "rules": {
+    "no-extend-native": "off"
+  }
+}

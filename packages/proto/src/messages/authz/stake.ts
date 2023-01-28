@@ -1,27 +1,33 @@
-import * as coin from '../../proto/cosmos/base/v1beta1/coin'
-import * as authzStake from '../../proto/cosmos/staking/v1beta1/authz'
+import { Coin } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/base/v1beta1/coin_pb'
+import {
+  StakeAuthorization,
+  AuthorizationType,
+  // eslint-disable-next-line camelcase
+  StakeAuthorization_Validators,
+} from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/staking/v1beta1/authz_pb'
 
-export const stakeAuthTypes =
-  authzStake.cosmos.staking.v1beta1.AuthorizationType
+export const stakeAuthTypes = AuthorizationType
 
 export function createStakeAuthorization(
   allowAddress: string,
   denom: string,
   maxTokens: string | undefined,
-  authorizationType: authzStake.cosmos.staking.v1beta1.AuthorizationType,
+  authorizationType: AuthorizationType,
 ) {
-  const msg = new authzStake.cosmos.staking.v1beta1.StakeAuthorization({
-    allow_list:
-      new authzStake.cosmos.staking.v1beta1.StakeAuthorization.Validators({
+  const msg = new StakeAuthorization({
+    validators: {
+      value: new StakeAuthorization_Validators({
         address: [allowAddress],
       }),
-    max_tokens: maxTokens
-      ? new coin.cosmos.base.v1beta1.Coin({
+      case: 'allowList',
+    },
+    maxTokens: maxTokens
+      ? new Coin({
           denom,
           amount: maxTokens,
         })
       : undefined,
-    authorization_type: authorizationType,
+    authorizationType,
   })
 
   return {

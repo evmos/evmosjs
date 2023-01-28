@@ -64,7 +64,7 @@ describe('txRaw tests', () => {
       2, 50, 48, 16, 192, 154, 12, 26, 0,
     ])
     const message = createTxRaw(body, auth, sig)
-    expect(message.message.serializeBinary()).toStrictEqual(txRaw)
+    expect(message.message.toBinary()).toStrictEqual(txRaw)
     expect(message.path).toBe('cosmos.tx.v1beta1.TxRaw')
   })
 })

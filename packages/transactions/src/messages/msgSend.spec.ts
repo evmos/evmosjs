@@ -30,14 +30,12 @@ describe('msgSend tests', () => {
 
     const msg = createMessageSend(chain, sender, fee, memo, params)
     expect(
-      Buffer.from(msg.legacyAmino.body.serializeBinary()).toString('base64'),
+      Buffer.from(msg.legacyAmino.body.toBinary()).toString('base64'),
     ).toBe(
       'CogBChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5kEmgKK2V0aG0xdGZlZ2Y1MG41eGwwaGQ1Y3hmempjYTN5bHNmcGcwZm5lZDVncW0SLGV2bW9zMXBtazJyMzJzc3F3cHM0MnkzYzlkNGNscWxjYTQwM3lkOXd5bWdyGgsKBmFldm1vcxIBMQ==',
     )
     expect(
-      Buffer.from(msg.legacyAmino.authInfo.serializeBinary()).toString(
-        'base64',
-      ),
+      Buffer.from(msg.legacyAmino.authInfo.toBinary()).toString('base64'),
     ).toBe(
       'ClkKTwooL2V0aGVybWludC5jcnlwdG8udjEuZXRoc2VjcDI1NmsxLlB1YktleRIjCiECBPD7i/R1oivGw1JbgVxD4iiKeA+x4XAc7UOeyzKg6pkSBAoCCH8YARISCgwKBmFldm1vcxICMjAQwJoM',
     )
@@ -45,13 +43,11 @@ describe('msgSend tests', () => {
       '2XbbRbgd5cQ05gDxc1xxKAH++HXulj5JSrwLI51R0ss=',
     )
 
-    expect(
-      Buffer.from(msg.signDirect.body.serializeBinary()).toString('base64'),
-    ).toBe(
+    expect(Buffer.from(msg.signDirect.body.toBinary()).toString('base64')).toBe(
       'CogBChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5kEmgKK2V0aG0xdGZlZ2Y1MG41eGwwaGQ1Y3hmempjYTN5bHNmcGcwZm5lZDVncW0SLGV2bW9zMXBtazJyMzJzc3F3cHM0MnkzYzlkNGNscWxjYTQwM3lkOXd5bWdyGgsKBmFldm1vcxIBMQ==',
     )
     expect(
-      Buffer.from(msg.signDirect.authInfo.serializeBinary()).toString('base64'),
+      Buffer.from(msg.signDirect.authInfo.toBinary()).toString('base64'),
     ).toBe(
       'ClkKTwooL2V0aGVybWludC5jcnlwdG8udjEuZXRoc2VjcDI1NmsxLlB1YktleRIjCiECBPD7i/R1oivGw1JbgVxD4iiKeA+x4XAc7UOeyzKg6pkSBAoCCAEYARISCgwKBmFldm1vcxICMjAQwJoM',
     )

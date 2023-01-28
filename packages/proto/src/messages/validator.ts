@@ -1,12 +1,12 @@
-import * as stakingtypes from '../proto/cosmos/staking/v1beta1/staking'
-import * as staking from '../proto/cosmos/staking/v1beta1/tx'
-import * as distribution from '../proto/cosmos/distribution/v1beta1/tx'
+import { MsgEditValidator } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/staking/v1beta1/tx_pb'
+import { Description } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/staking/v1beta1/staking_pb'
+import { MsgSetWithdrawAddress } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/distribution/v1beta1/tx_pb'
 
 const NOT_MODIFY = '[do-not-modify]'
 
 export interface MsgEditValidatorProtoInterface {
   path: string
-  message: staking.cosmos.staking.v1beta1.MsgEditValidator
+  message: MsgEditValidator
 }
 
 export function createMsgEditValidator(
@@ -19,17 +19,17 @@ export function createMsgEditValidator(
   commissionRate: string | undefined,
   minSelfDelegation: string | undefined,
 ) {
-  const message = new staking.cosmos.staking.v1beta1.MsgEditValidator({
-    description: new stakingtypes.cosmos.staking.v1beta1.Description({
+  const message = new MsgEditValidator({
+    description: new Description({
       moniker: moniker || NOT_MODIFY,
       identity: identity || NOT_MODIFY,
       website: website || NOT_MODIFY,
-      security_contact: securityContact || NOT_MODIFY,
+      securityContact: securityContact || NOT_MODIFY,
       details: details || NOT_MODIFY,
     }),
-    validator_address: validatorAddress,
-    commission_rate: commissionRate,
-    min_self_delegation: minSelfDelegation,
+    validatorAddress,
+    commissionRate,
+    minSelfDelegation,
   })
 
   return {
@@ -40,18 +40,17 @@ export function createMsgEditValidator(
 
 export interface MsgSetWithdrawAddressProtoInterface {
   path: string
-  message: distribution.cosmos.distribution.v1beta1.MsgSetWithdrawAddress
+  message: MsgSetWithdrawAddress
 }
 
 export function createMsgSetWithdrawAddress(
   delegatorAddress: string,
   withdrawAddress: string,
 ) {
-  const message =
-    new distribution.cosmos.distribution.v1beta1.MsgSetWithdrawAddress({
-      delegator_address: delegatorAddress,
-      withdraw_address: withdrawAddress,
-    })
+  const message = new MsgSetWithdrawAddress({
+    delegatorAddress,
+    withdrawAddress,
+  })
 
   return {
     message,

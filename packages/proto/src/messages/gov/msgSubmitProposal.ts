@@ -1,5 +1,5 @@
-import * as govTx from '../../proto/cosmos/gov/v1beta1/tx'
-import * as coin from '../../proto/cosmos/base/v1beta1/coin'
+import { Coin } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/base/v1beta1/coin_pb'
+import { MsgSubmitProposal } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/gov/v1beta1/tx_pb'
 
 export function createMsgSubmitProposal(
   content: any,
@@ -7,13 +7,13 @@ export function createMsgSubmitProposal(
   initialDepositAmount: string,
   proposer: string,
 ) {
-  const initialDeposit = new coin.cosmos.base.v1beta1.Coin({
+  const initialDeposit = new Coin({
     denom: initialDepositDenom,
     amount: initialDepositAmount,
   })
-  const msg = new govTx.cosmos.gov.v1beta1.MsgSubmitProposal({
+  const msg = new MsgSubmitProposal({
     content,
-    initial_deposit: [initialDeposit],
+    initialDeposit: [initialDeposit],
     proposer,
   })
 

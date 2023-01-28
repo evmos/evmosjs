@@ -1,5 +1,4 @@
-import { Message } from 'google-protobuf'
-import * as google from '../proto/google/protobuf/any'
+import { Any, Message } from '@bufbuild/protobuf/'
 
 export interface MessageGenerated {
   message: Message
@@ -7,8 +6,8 @@ export interface MessageGenerated {
 }
 
 export function createAnyMessage(msg: MessageGenerated) {
-  return new google.google.protobuf.Any({
-    type_url: `/${msg.path}`,
-    value: msg.message.serializeBinary(),
+  return new Any({
+    typeUrl: `/${msg.path}`,
+    value: msg.message.toBinary(),
   })
 }
