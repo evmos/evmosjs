@@ -13,8 +13,9 @@ import { SignMode } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/tx/signing/v
 import * as tx from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/tx/v1beta1/tx_pb'
 import { Coin } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/base/v1beta1/coin_pb'
 import { PubKey } from '@buf/evmos_ethermint.bufbuild_es/ethermint/crypto/v1/ethsecp256k1/keys_pb'
+import { PubKey as SECP256k1 } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/crypto/secp256k1/keys_pb'
 
-import { createAnyMessage } from '../messages/utils'
+import { createAnyMessage, MessageGenerated } from '../messages/utils'
 
 export const SIGN_DIRECT = SignMode.DIRECT
 export const LEGACY_AMINO = SignMode.LEGACY_AMINO_JSON
@@ -56,15 +57,29 @@ export function createFee(fee: string, denom: string, gasLimit: number) {
 }
 
 export function createSignerInfo(
+  algo: string,
   publicKey: Uint8Array,
-  sequence: bigint,
+  sequence: number,
   mode: number,
 ) {
-  const pubkey = {
-    message: new PubKey({
-      key: publicKey,
-    }),
-    path: 'ethermint.crypto.v1.ethsecp256k1.PubKey',
+  let pubkey: MessageGenerated
+
+  // NOTE: secp256k1 is going to be removed from evmos
+  if (algo === 'secp256k1') {
+    pubkey = {
+      message: new SECP256k1({
+        key: publicKey,
+      }),
+      path: 'cosmos.crypto.secp256k1.PubKey',
+    }
+  } else {
+    // NOTE: assume ethsecp256k1 by default because after mainnet is the only one that is going to be supported
+    pubkey = {
+      message: new PubKey({
+        key: publicKey,
+      }),
+      path: 'ethermint.crypto.v1.ethsecp256k1.PubKey',
+    }
   }
 
   const signerInfo = new SignerInfo({
@@ -77,7 +92,7 @@ export function createSignerInfo(
         case: 'single',
       },
     }),
-    sequence,
+    sequence: BigInt(sequence),
   })
 
   return signerInfo
@@ -111,8 +126,9 @@ export function createTransactionWithMultipleMessages(
   fee: string,
   denom: string,
   gasLimit: number,
+  algo: string,
   pubKey: string,
-  sequence: bigint,
+  sequence: number,
   accountNumber: number,
   chainId: string,
 ) {
@@ -122,6 +138,7 @@ export function createTransactionWithMultipleMessages(
 
   // AMINO
   const signInfoAmino = createSignerInfo(
+    algo,
     new Uint8Array(pubKeyDecoded),
     sequence,
     LEGACY_AMINO,
@@ -142,6 +159,7 @@ export function createTransactionWithMultipleMessages(
 
   // SignDirect
   const signInfoDirect = createSignerInfo(
+    algo,
     new Uint8Array(pubKeyDecoded),
     sequence,
     SIGN_DIRECT,
@@ -180,8 +198,9 @@ export function createTransaction(
   fee: string,
   denom: string,
   gasLimit: number,
+  algo: string,
   pubKey: string,
-  sequence: bigint,
+  sequence: number,
   accountNumber: number,
   chainId: string,
 ) {
@@ -191,6 +210,7 @@ export function createTransaction(
     fee,
     denom,
     gasLimit,
+    algo,
     pubKey,
     sequence,
     accountNumber,

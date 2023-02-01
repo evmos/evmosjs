@@ -1,17 +1,17 @@
-import { MsgUpdateFeeSplit } from '@buf/evmos_evmos.bufbuild_es/evmos/feesplit/v1/tx_pb'
+import { MsgUpdateRevenue } from '../../types/evmos/revenue/tx'
 
-export function createMsgUpdateFeeSplit(
+export function createMsgUpdateRevenue(
   contractAddress: string,
   deployerAddress: string,
   withdrawerAddress: string,
 ) {
-  const msg = new MsgUpdateFeeSplit({
+  const msg = new MsgUpdateRevenue({
     contractAddress,
     deployerAddress,
     withdrawerAddress,
   })
   return {
     message: msg,
-    path: 'evmos.feesplit.v1.MsgUpdateFeeSplit',
+    path: 'evmos.revenue.v1.MsgUpdateRevenue',
   }
 }

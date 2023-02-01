@@ -1,12 +1,10 @@
-import { Coin } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/base/v1beta1/coin_pb'
+import { Coin } from '../../types/cosmos/base'
 import {
-  StakeAuthorization,
   AuthorizationType,
-  // eslint-disable-next-line camelcase
+  StakeAuthorization,
+  // eslint-disable-next-line
   StakeAuthorization_Validators,
-} from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/staking/v1beta1/authz_pb'
-
-export const stakeAuthTypes = AuthorizationType
+} from '../../types/cosmos/staking/authz'
 
 export function createStakeAuthorization(
   allowAddress: string,
@@ -22,7 +20,7 @@ export function createStakeAuthorization(
       case: 'allowList',
     },
     maxTokens: maxTokens
-      ? new Coin({
+      ? new Coin.Coin({
           denom,
           amount: maxTokens,
         })

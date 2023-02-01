@@ -1,8 +1,8 @@
 import {
   createMsgGrant,
   createStakeAuthorization,
-  stakeAuthTypes,
   createTransaction,
+  Proto,
 } from '@evmos/proto'
 
 import { Chain, Fee, Sender } from '../common'
@@ -31,7 +31,7 @@ export function createTxMsgStakeAuthorization(
     params.validator_address,
     params.denom,
     params.maxTokens,
-    stakeAuthTypes.AUTHORIZATION_TYPE_DELEGATE,
+    Proto.Cosmos.Staking.Authz.AuthorizationType.DELEGATE,
   )
   const msgCosmos = createMsgGrant(
     sender.accountAddress,

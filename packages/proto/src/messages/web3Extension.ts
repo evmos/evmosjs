@@ -1,4 +1,4 @@
-import { ExtensionOptionsWeb3Tx } from '@buf/evmos_ethermint.bufbuild_es/ethermint/types/v1/web3_pb'
+import { ExtensionOptionsWeb3Tx } from '../types/ethermint/types/web3'
 
 export function createWeb3Extension(
   chainId: number,

@@ -1,7 +1,5 @@
-const config = {
-  preset: 'ts-jest/presets/default-esm', // or other ESM presets
-  testEnvironment: 'node',
-  transform: {},
-}
+const baseConfig = require('../../jest.config.js')
 
-export default config
+module.exports = {
+  ...baseConfig,
+}

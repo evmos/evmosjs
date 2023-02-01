@@ -1,4 +1,4 @@
-import { MsgConvertERC20 } from '@buf/evmos_evmos.bufbuild_es/evmos/erc20/v1/tx_pb'
+import { MsgConvertERC20 } from '../../types/evmos/erc20/tx'
 
 export function createMsgConvertERC20(
   contractAddress: string,

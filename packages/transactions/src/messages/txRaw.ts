@@ -10,9 +10,7 @@ export function createTxRawEIP712(
   authInfo: protoTxNamespace.txn.AuthInfo,
   extension: MessageGenerated,
 ) {
-  body.extension_options.push(createAnyMessage(extension))
+  body.extensionOptions.push(createAnyMessage(extension))
 
-  return createTxRaw(body.serializeBinary(), authInfo.serializeBinary(), [
-    new Uint8Array(),
-  ])
+  return createTxRaw(body.toBinary(), authInfo.toBinary(), [new Uint8Array()])
 }

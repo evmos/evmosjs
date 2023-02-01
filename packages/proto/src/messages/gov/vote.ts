@@ -1,4 +1,4 @@
-import { MsgVote } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/gov/v1beta1/tx_pb'
+import { MsgVote } from '../../types/cosmos/gov/tx'
 
 export function createMsgVote(
   proposalId: number,

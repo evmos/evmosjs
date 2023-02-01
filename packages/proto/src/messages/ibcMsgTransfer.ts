@@ -1,6 +1,6 @@
-import { Coin } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/base/v1beta1/coin_pb'
-import { MsgTransfer } from '@buf/cosmos_ibc.bufbuild_es/ibc/applications/transfer/v1/tx_pb'
-import { Height } from '@buf/cosmos_ibc.bufbuild_es/ibc/core/client/v1/client_pb'
+import { Coin } from '../types/cosmos/base/coin'
+import { Height } from '../types/cosmos-ibc/ibc/core/client'
+import { MsgTransfer } from '../types/cosmos-ibc/ibc/applications/tx'
 
 export function createIBCMsgTransfer(
   // Channel

@@ -65,8 +65,8 @@ describe('transaction tests', () => {
       37, 92, 174, 75, 160, 196, 188, 55, 202, 114, 97, 5, 178, 20, 10, 253, 14,
       105, 23,
     ])
-    const sequence = BigInt(0)
-    const info = createSignerInfo(pubkey, sequence, SIGN_DIRECT)
+    const sequence = 0
+    const info = createSignerInfo('ethsecp256', pubkey, sequence, SIGN_DIRECT)
     expect(info.toJson(JSONOptions)).toStrictEqual({
       public_key: {
         '@type': '/ethermint.crypto.v1.ethsecp256k1.PubKey',
@@ -83,8 +83,8 @@ describe('transaction tests', () => {
       37, 92, 174, 75, 160, 196, 188, 55, 202, 114, 97, 5, 178, 20, 10, 253, 14,
       105, 23,
     ])
-    const sequence = BigInt(10)
-    const info = createSignerInfo(pubkey, sequence, SIGN_DIRECT)
+    const sequence = 10
+    const info = createSignerInfo('ethsecp256', pubkey, sequence, SIGN_DIRECT)
     const value = '20'
     const denom = 'aphoton'
     const gas = 20000
@@ -129,8 +129,8 @@ describe('transaction tests', () => {
       37, 92, 174, 75, 160, 196, 188, 55, 202, 114, 97, 5, 178, 20, 10, 253, 14,
       105, 23,
     ])
-    const sequence = BigInt(0)
-    const info = createSignerInfo(pubkey, sequence, 1)
+    const sequence = 0
+    const info = createSignerInfo('ethsecp256', pubkey, sequence, 1)
     const value = '20'
     const denom = 'aphoton'
     const gas = 20000
@@ -192,8 +192,9 @@ describe('transaction eip712', () => {
       '20',
       'aphoton',
       200000,
+      'ethsecp256',
       'AgTw+4v0daIrxsNSW4FcQ+IoingPseFwHO1DnssyoOqZ',
-      BigInt(1),
+      1,
       9,
       '',
     )

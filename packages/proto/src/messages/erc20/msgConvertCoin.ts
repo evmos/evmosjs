@@ -1,5 +1,5 @@
-import { MsgConvertCoin } from '@buf/evmos_evmos.bufbuild_es/evmos/erc20/v1/tx_pb'
-import { Coin } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/base/v1beta1/coin_pb'
+import { Coin } from '../../types/cosmos/base/coin'
+import { MsgConvertCoin } from '../../types/evmos/erc20/tx'
 
 export function createMsgConvertCoin(
   denom: string,

@@ -1,13 +1,13 @@
+import { Coin } from '../types/cosmos/base/coin'
 import {
   MsgDelegate,
   MsgBeginRedelegate,
   MsgUndelegate,
-} from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/staking/v1beta1/tx_pb'
+} from '../types/cosmos/staking/tx'
 import {
   MsgWithdrawDelegatorReward,
   MsgWithdrawValidatorCommission,
-} from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/distribution/v1beta1/tx_pb'
-import { Coin } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/base/v1beta1/coin_pb'
+} from '../types/cosmos/distribution/tx'
 
 export function createMsgDelegate(
   delegatorAddress: string,

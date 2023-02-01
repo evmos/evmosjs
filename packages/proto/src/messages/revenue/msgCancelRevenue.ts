@@ -1,10 +1,10 @@
-import { MsgCancelFeeSplit } from '@buf/evmos_evmos.bufbuild_es/evmos/feesplit/v1/tx_pb'
+import { MsgCancelRevenue } from '../../types/evmos/revenue/tx'
 
 export function createMsgCancelRevenue(
   contractAddress: string,
   deployerAddress: string,
 ) {
-  const msg = new MsgCancelFeeSplit({
+  const msg = new MsgCancelRevenue({
     contractAddress,
     deployerAddress,
   })

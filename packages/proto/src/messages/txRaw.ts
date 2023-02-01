@@ -1,8 +1,4 @@
-import {
-  TxRaw,
-  TxBody,
-  AuthInfo,
-} from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/tx/v1beta1/tx_pb'
+import { TxRaw, TxBody, AuthInfo } from '../types/cosmos/transactions/tx'
 
 export function bytesToTxRaw(bytes: Uint8Array) {
   return TxRaw.fromBinary(bytes)

@@ -1,9 +1,6 @@
-import {
-  MsgGrant,
-  MsgRevoke,
-} from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/authz/v1beta1/tx_pb'
-import { Grant } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/authz/v1beta1/authz_pb'
 import { Timestamp } from '@bufbuild/protobuf'
+import { MsgGrant, MsgRevoke } from '../../types/cosmos/authz/tx'
+import { Grant } from '../../types/cosmos/authz/authz'
 import { createAnyMessage, MessageGenerated } from '../utils'
 
 export function createMsgGrant(

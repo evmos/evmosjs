@@ -1,5 +1,5 @@
-import { MsgSend } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/bank/v1beta1/tx_pb.js'
-import { Coin } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/base/v1beta1/coin_pb.js'
+import { Coin } from '../types/cosmos/base/coin'
+import { MsgSend } from '../types/cosmos/bank/tx'
 
 export function createMsgSend(
   fromAddress: string,

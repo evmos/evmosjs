@@ -1,6 +1,6 @@
-import { MsgEditValidator } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/staking/v1beta1/tx_pb'
-import { Description } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/staking/v1beta1/staking_pb'
-import { MsgSetWithdrawAddress } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/distribution/v1beta1/tx_pb'
+import { MsgEditValidator } from '../types/cosmos/staking/tx'
+import { Description } from '../types/cosmos/staking/staking'
+import { MsgSetWithdrawAddress } from '../types/cosmos/distribution/tx'
 
 const NOT_MODIFY = '[do-not-modify]'
 

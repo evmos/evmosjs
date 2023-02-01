@@ -1,12 +1,12 @@
-import { MsgRegisterFeeSplit } from '@buf/evmos_evmos.bufbuild_es/evmos/feesplit/v1/tx_pb'
+import { MsgRegisterRevenue } from '../../types/evmos/revenue/tx'
 
-export function createMsgRegisterFeeSplit(
+export function createMsgRegisterRevenue(
   contractAddress: string,
   deployerAddress: string,
   withdrawerAddress: string,
   nonces: number[],
 ) {
-  const msg = new MsgRegisterFeeSplit({
+  const msg = new MsgRegisterRevenue({
     contractAddress,
     deployerAddress,
     withdrawerAddress,
@@ -14,6 +14,6 @@ export function createMsgRegisterFeeSplit(
   })
   return {
     message: msg,
-    path: 'evmos.feesplit.v1.MsgRegisterFeeSplit',
+    path: 'evmos.revenue.v1.MsgRegisterRevenue',
   }
 }

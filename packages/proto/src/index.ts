@@ -16,3 +16,5 @@ export * from './messages/gov/vote'
 export * from './messages/gov/msgSubmitProposal'
 export * from './messages/web3Extension'
 export * from './transaction/transaction'
+
+export * as Proto from './types'

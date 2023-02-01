@@ -1,5 +1,5 @@
-import { Coin } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/base/v1beta1/coin_pb'
-import { MsgSubmitProposal } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/gov/v1beta1/tx_pb'
+import { Coin } from '../../types/cosmos/base/coin'
+import { MsgSubmitProposal } from '../../types/cosmos/gov/tx'
 
 export function createMsgSubmitProposal(
   content: any,
