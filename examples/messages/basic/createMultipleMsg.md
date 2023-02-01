@@ -102,7 +102,7 @@ async function prepareTx(wallet: Wallet) {
     msgs,
   )
 
-  // We are not generating the eip712 to sign because it will fail. Eip712 does not support differente types of messages
+  // We are not generating the eip712 to sign because it will fail. Eip712 does not support different types of messages
   // const eipToSign = createEIP712(types, LOCALNET_CHAIN.chainId, messages);
 
   const protoMsgs: any[] = []
