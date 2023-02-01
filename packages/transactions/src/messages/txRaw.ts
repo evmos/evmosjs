@@ -1,13 +1,13 @@
 import {
   createTxRaw,
   createAnyMessage,
-  protoTxNamespace,
   MessageGenerated,
+  Proto,
 } from '@evmos/proto'
 
 export function createTxRawEIP712(
-  body: protoTxNamespace.txn.TxBody,
-  authInfo: protoTxNamespace.txn.AuthInfo,
+  body: Proto.Cosmos.Transactions.Tx.TxBody,
+  authInfo: Proto.Cosmos.Transactions.Tx.AuthInfo,
   extension: MessageGenerated,
 ) {
   body.extensionOptions.push(createAnyMessage(extension))

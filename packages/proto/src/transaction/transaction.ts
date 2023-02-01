@@ -1,4 +1,5 @@
 import { Keccak } from 'sha3'
+import { Coin } from '../types/cosmos/base/coin'
 import {
   TxBody,
   Fee,
@@ -8,23 +9,15 @@ import {
   ModeInfo_Single,
   AuthInfo,
   SignDoc,
-} from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/tx/v1beta1/tx_pb'
-import { SignMode } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/tx/signing/v1beta1/signing_pb'
-import * as tx from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/tx/v1beta1/tx_pb'
-import { Coin } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/base/v1beta1/coin_pb'
-import { PubKey } from '@buf/evmos_ethermint.bufbuild_es/ethermint/crypto/v1/ethsecp256k1/keys_pb'
-import { PubKey as SECP256k1 } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/crypto/secp256k1/keys_pb'
+} from '../types/cosmos/transactions/tx'
+import { PubKey } from '../types/ethermint/crypto/keys'
+import { PubKey as SECP256k1 } from '../types/cosmos/crypto/keys'
+import { SignMode } from '../types/cosmos/transactions/signing'
 
 import { createAnyMessage, MessageGenerated } from '../messages/utils'
 
 export const SIGN_DIRECT = SignMode.DIRECT
 export const LEGACY_AMINO = SignMode.LEGACY_AMINO_JSON
-
-export namespace protoTxNamespace {
-  /* global cosmos */
-  /* eslint no-undef: "error" */
-  export import txn = tx
-}
 
 // TODO: messages should be typed as proto message. A types package is needed to export that type without problems
 export function createBodyWithMultipleMessages(messages: any[], memo: string) {
