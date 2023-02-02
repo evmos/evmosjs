@@ -13,9 +13,6 @@ module.exports = {
   // A preset that is used as a base for Jest's configuration.
   // Use Default-ESM to support imports from node_modules.
   preset: 'ts-jest/presets/default-esm',
-  extensionsToTreatAsEsm: ['.ts'],
   testEnvironment: 'node',
   transform: {},
-  transformIgnorePatterns: ['/node_modules/(?!(@buf|@bufbuild|@evmos)/)'],
-  testPathIgnorePatterns: ['^.+\\/dist'],
 }
