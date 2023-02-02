@@ -22,7 +22,8 @@
     "types": ["jest", "node", "@types/jest"],
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
-    "allowJs": true
+    "allowJs": true,
+    "noImplicitAny": false
   },
   "ts-node": {
     "esm": true,

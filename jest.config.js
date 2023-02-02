@@ -62,7 +62,7 @@ module.exports = {
   //   '<rootDir>/packages/transactions/*',
   //   '<rootDir>/packages/proto/*',
   // ],
-  transformIgnorePatterns: ['/node_modules/(?!(@buf|@bufbuild)/)'],
+  transformIgnorePatterns: ['/node_modules/(?!(@buf|@bufbuild|@evmos)/)'],
   testPathIgnorePatterns: ['^.+\\/dist'],
 }
 

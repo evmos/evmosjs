@@ -1,5 +1,3 @@
-jest.useFakeTimers()
-// eslint-disable-next-line
 import { createMessageSend } from './msgSend'
 
 describe('msgSend tests', () => {

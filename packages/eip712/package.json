@@ -11,6 +11,7 @@
   "_moduleAliases": {
     "~eip712": "dist"
   },
+  "type": "module",
   "scripts": {
     "postinstall": "shx mkdir -p dist && link-module-alias",
     "build": "tsc --build tsconfig.build.json && link-module-alias",
@@ -33,6 +34,11 @@
     "link-module-alias": "^1.2.0",
     "long": "^5.2.0",
     "shx": "^0.3.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.4.0",
+    "jest": "^29.4.1",
+    "ts-jest": "^29.0.5"
   },
   "gitHead": "fc2045b9357bde146e3374429453eb5d4a48a2ca",
   "publishConfig": {
