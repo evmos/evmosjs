@@ -1,9 +1,7 @@
-// const baseConfig = require('../../jest.config.js')
+import baseConfig from '../../jest.config.js'
 
-// module.exports = {
-//   ...baseConfig,
-// }
-
-import config from '../../jest.config.js'
+const config = {
+  ...baseConfig,
+}
 
 export default config

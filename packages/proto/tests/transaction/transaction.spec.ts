@@ -95,7 +95,6 @@ describe('transaction tests', () => {
         {
           public_key: {
             '@type': '/ethermint.crypto.v1.ethsecp256k1.PubKey',
-            // value: 'CiMKIQKIsfUxuHhx28A3KVGHJVyuS6DEvDfKcmEFshQK/Q5pFw=='
             key: Buffer.from(pubkey).toString('base64'),
           },
           mode_info: { single: { mode: 1 } },
@@ -136,7 +135,7 @@ describe('transaction tests', () => {
     const gas = 20000
     const fee = createFee(value, denom, gas)
     const authInfo = createAuthInfo(info, fee)
-    const chainId = 'evmos-9000_1'
+    const chainId = 'evmos_9000-1'
     const accountNumber = 0
     const res = createSigDoc(
       body.toBinary(),
@@ -145,33 +144,10 @@ describe('transaction tests', () => {
       accountNumber,
     )
     expect(res.toJson(JSONOptions)).toStrictEqual({
-      body_bytes: Buffer.from(
-        new Uint8Array([
-          10, 142, 1, 10, 28, 47, 99, 111, 115, 109, 111, 115, 46, 98, 97, 110,
-          107, 46, 118, 49, 98, 101, 116, 97, 49, 46, 77, 115, 103, 83, 101,
-          110, 100, 18, 110, 10, 44, 101, 118, 109, 111, 115, 49, 56, 108, 119,
-          55, 48, 52, 122, 101, 121, 103, 53, 122, 115, 48, 57, 56, 108, 113,
-          55, 120, 54, 121, 112, 102, 107, 102, 106, 113, 108, 122, 122, 108,
-          110, 53, 113, 104, 56, 57, 18, 44, 101, 118, 109, 111, 115, 49, 110,
-          100, 102, 97, 103, 103, 103, 100, 107, 103, 118, 57, 118, 99, 55, 119,
-          104, 97, 53, 103, 106, 50, 122, 122, 114, 110, 121, 113, 100, 51, 114,
-          55, 48, 52, 108, 114, 52, 113, 26, 16, 10, 7, 97, 112, 104, 111, 116,
-          111, 110, 18, 5, 54, 57, 52, 50, 48, 18, 14, 116, 104, 105, 115, 32,
-          105, 115, 32, 97, 32, 116, 101, 115, 116,
-        ]),
-      ).toString('base64'),
-      auth_info_bytes: Buffer.from(
-        new Uint8Array([
-          10, 91, 10, 81, 10, 40, 47, 101, 116, 104, 101, 114, 109, 105, 110,
-          116, 46, 99, 114, 121, 112, 116, 111, 46, 118, 49, 46, 101, 116, 104,
-          115, 101, 99, 112, 50, 53, 54, 107, 49, 46, 80, 117, 98, 75, 101, 121,
-          18, 37, 10, 35, 10, 33, 2, 136, 177, 245, 49, 184, 120, 113, 219, 192,
-          55, 41, 81, 135, 37, 92, 174, 75, 160, 196, 188, 55, 202, 114, 97, 5,
-          178, 20, 10, 253, 14, 105, 23, 18, 4, 10, 2, 8, 1, 24, 0, 18, 19, 10,
-          13, 10, 7, 97, 112, 104, 111, 116, 111, 110, 18, 2, 50, 48, 16, 160,
-          156, 1,
-        ]),
-      ).toString('base64'),
+      body_bytes:
+        'Co4BChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5kEm4KLGV2bW9zMThsdzcwNHpleWc1enMwOThscTd4NnlwZmtmanFsenpsbjVxaDg5Eixldm1vczFuZGZhZ2dnZGtndjl2Yzd3aGE1Z2oyenpybnlxZDNyNzA0bHI0cRoQCgdhcGhvdG9uEgU2OTQyMBIOdGhpcyBpcyBhIHRlc3Q=',
+      auth_info_bytes:
+        'ClkKUQooL2V0aGVybWludC5jcnlwdG8udjEuZXRoc2VjcDI1NmsxLlB1YktleRIlCiMKIQKIsfUxuHhx28A3KVGHJVyuS6DEvDfKcmEFshQK/Q5pFxIECgIIARITCg0KB2FwaG90b24SAjIwEKCcAQ==',
       chain_id: chainId,
       account_number: accountNumber.toString(),
     })
