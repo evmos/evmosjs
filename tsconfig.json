@@ -9,6 +9,24 @@
         "@evmos/proto":["packages/proto"],
         "@evmos/provider":["./packages/provider/*"],
         "@evmos/transactions":["./packages/transactions/*"]
-    }
-  }
+    },
+    "composite": true,
+    "lib": ["ES2022"],
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "node",
+    "declaration": true,
+    "declarationMap": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "types": ["jest", "node", "@types/jest"],
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  },
+  "include": ["./src/**/*", "./tests/**/*"]
 }

@@ -1,7 +1,9 @@
+jest.useFakeTimers()
+// eslint-disable-next-line
 import { createMessageSend } from './msgSend'
 
 describe('msgSend tests', () => {
-  it('valid', async () => {
+  it('valid', () => {
     const chain = {
       chainId: 9000,
       cosmosChainId: 'evmos_9000-1',
