@@ -8,7 +8,7 @@ import {
   bytesToTxBody,
   bytesToTxRaw,
 } from '../../src/messages/txRaw'
-import { JSONOptions } from '../types'
+import { JSONOptions } from '../common'
 
 describe('msgEthereumTx tests', () => {
   const blockchainTx =
