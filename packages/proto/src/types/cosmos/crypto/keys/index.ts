@@ -1,1 +1,2 @@
-export * from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/crypto/secp256k1/keys_pb'
+export * as ED25519 from './ed25519'
+export * as SECP256k1 from './secp256k1'

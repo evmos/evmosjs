@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.16](https://github.com/evmos/evmosjs/compare/evmosjs@0.2.15...evmosjs@0.2.16) (2022-11-14)
+
+**Note:** Version bump only for package evmosjs
+
+## [0.2.15](https://github.com/evmos/evmosjs/compare/evmosjs@0.2.14...evmosjs@0.2.15) (2022-11-14)
+
+### Bug Fixes
+
+- shx and link-module-alias change reverted ([#87](https://github.com/evmos/evmosjs/issues/87)) ([d4eeda5](https://github.com/evmos/evmosjs/commit/d4eeda59c8f5549d661e6bedd7a25df0b11afb9c))
+
+## [0.2.14](https://github.com/evmos/evmosjs/compare/evmosjs@0.2.11...evmosjs@0.2.14) (2022-11-11)
+
+### Features
+
+- proposal deposit message ([#86](https://github.com/evmos/evmosjs/issues/86)) ([5410c1f](https://github.com/evmos/evmosjs/commit/5410c1fe042c13a77beb5629a07371dd905559de))
+
 ## [0.2.13](https://github.com/evmos/evmosjs/compare/evmosjs@0.2.11...evmosjs@0.2.13) (2022-10-10)
 
 **Note:** Version bump only for package evmosjs

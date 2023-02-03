@@ -112,3 +112,15 @@ export const kyveToEth = (kyveAddress: string) => {
   const data = KYVE.decoder(kyveAddress)
   return ETH.encoder(data)
 }
+
+export const AKASH = bech32Chain('AKASH', 'akash')
+
+export const ethToAkash = (ethAddress: string) => {
+  const data = ETH.decoder(ethAddress)
+  return AKASH.encoder(data)
+}
+
+export const akashToEth = (akashAddress: string) => {
+  const data = AKASH.decoder(akashAddress)
+  return ETH.encoder(data)
+}

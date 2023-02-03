@@ -11,7 +11,7 @@ import {
   SignDoc,
 } from '../types/cosmos/transactions/tx'
 import { PubKey } from '../types/ethermint/crypto/keys'
-import { PubKey as SECP256k1 } from '../types/cosmos/crypto/keys'
+import { PubKey as SECP256k1 } from '../types/cosmos/crypto/keys/secp256k1'
 import { SignMode } from '../types/cosmos/transactions/signing'
 
 import { createAnyMessage, MessageGenerated } from '../messages/utils'

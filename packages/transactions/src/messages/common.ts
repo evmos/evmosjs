@@ -42,3 +42,13 @@ export interface TxGenerated {
   }
   eipToSign: EIPToSign
 }
+
+export type Coin = {
+  denom: string
+  amount: string
+}
+
+export type Period = {
+  length: number
+  amount: Coin[]
+}
