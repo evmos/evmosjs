@@ -1,4 +1,4 @@
-import { MsgVote } from '../../types/cosmos/gov/tx'
+import { MsgVote } from '../../proto/cosmos/gov/tx'
 
 export function createMsgVote(
   proposalId: number,
@@ -13,6 +13,6 @@ export function createMsgVote(
 
   return {
     message: voteMessage,
-    path: 'cosmos.gov.v1beta1.MsgVote',
+    path: MsgVote.typeName,
   }
 }

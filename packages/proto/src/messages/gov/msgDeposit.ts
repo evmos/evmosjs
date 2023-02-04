@@ -1,5 +1,5 @@
-import { Coin } from '../../types/cosmos/base/coin'
-import { MsgDeposit } from '../../types/cosmos/gov/tx'
+import { Coin } from '../../proto/cosmos/base/coin'
+import { MsgDeposit } from '../../proto/cosmos/gov/tx'
 
 export function createMsgDeposit(
   proposalId: number,

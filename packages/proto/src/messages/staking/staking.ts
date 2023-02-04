@@ -1,13 +1,9 @@
-import { Coin } from '../../types/cosmos/base/coin'
+import { Coin } from '../../proto/cosmos/base/coin'
 import {
   MsgDelegate,
   MsgBeginRedelegate,
   MsgUndelegate,
-} from '../../types/cosmos/staking/tx'
-import {
-  MsgWithdrawDelegatorReward,
-  MsgWithdrawValidatorCommission,
-} from '../../types/cosmos/distribution/tx'
+} from '../../proto/cosmos/staking/tx'
 
 export function createMsgDelegate(
   delegatorAddress: string,
@@ -28,7 +24,7 @@ export function createMsgDelegate(
 
   return {
     message,
-    path: 'cosmos.staking.v1beta1.MsgDelegate',
+    path: MsgDelegate.typeName,
   }
 }
 
@@ -53,7 +49,7 @@ export function createMsgBeginRedelegate(
 
   return {
     message,
-    path: 'cosmos.staking.v1beta1.MsgBeginRedelegate',
+    path: MsgBeginRedelegate.typeName,
   }
 }
 
@@ -76,42 +72,6 @@ export function createMsgUndelegate(
 
   return {
     message,
-    path: 'cosmos.staking.v1beta1.MsgUndelegate',
-  }
-}
-
-export interface MsgWithdrawDelegatorRewardProtoInterface {
-  path: string
-  message: MsgWithdrawDelegatorReward
-}
-
-export function createMsgWithdrawDelegatorReward(
-  delegatorAddress: string,
-  validatorAddress: string,
-) {
-  const message = new MsgWithdrawDelegatorReward({
-    delegatorAddress,
-    validatorAddress,
-  })
-
-  return {
-    message,
-    path: 'cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward',
-  }
-}
-
-export interface MsgWithdrawValidatorCommissionProtoInterface {
-  path: string
-  message: MsgWithdrawValidatorCommission
-}
-
-export function createMsgWithdrawValidatorCommission(validatorAddress: string) {
-  const message = new MsgWithdrawValidatorCommission({
-    validatorAddress,
-  })
-
-  return {
-    message,
-    path: 'cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission',
+    path: MsgUndelegate.typeName,
   }
 }

@@ -1,8 +1,9 @@
-import { Coin } from '../../types/cosmos/base/coin'
-import { MsgSubmitProposal } from '../../types/cosmos/gov/tx'
+import { Any } from '@bufbuild/protobuf'
+import { Coin } from '../../proto/cosmos/base/coin'
+import { MsgSubmitProposal } from '../../proto/cosmos/gov/tx'
 
 export function createMsgSubmitProposal(
-  content: any,
+  content: Any,
   initialDepositDenom: string,
   initialDepositAmount: string,
   proposer: string,

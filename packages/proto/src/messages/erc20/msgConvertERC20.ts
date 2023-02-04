@@ -1,4 +1,4 @@
-import { MsgConvertERC20 } from '../../types/evmos/erc20/tx'
+import { MsgConvertERC20 } from '../../proto/evmos/erc20/tx'
 
 export function createMsgConvertERC20(
   contractAddress: string,

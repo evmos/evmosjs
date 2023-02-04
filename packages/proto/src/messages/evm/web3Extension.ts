@@ -1,4 +1,4 @@
-import { ExtensionOptionsWeb3Tx } from '../../types/ethermint/types/web3'
+import { ExtensionOptionsWeb3Tx } from '../../proto/ethermint/types/web3'
 
 export function createWeb3Extension(
   chainId: number,
@@ -12,6 +12,6 @@ export function createWeb3Extension(
   })
   return {
     message,
-    path: 'ethermint.types.v1.ExtensionOptionsWeb3Tx',
+    path: ExtensionOptionsWeb3Tx.typeName,
   }
 }

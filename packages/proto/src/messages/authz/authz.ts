@@ -1,6 +1,6 @@
 import { Timestamp } from '@bufbuild/protobuf'
-import { MsgGrant, MsgRevoke } from '../../types/cosmos/authz/tx'
-import { Grant } from '../../types/cosmos/authz/authz'
+import { MsgGrant, MsgRevoke } from '../../proto/cosmos/authz/tx'
+import { Grant } from '../../proto/cosmos/authz/authz'
 import { createAnyMessage, MessageGenerated } from '../common'
 
 export function createMsgGrant(

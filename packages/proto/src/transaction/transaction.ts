@@ -1,5 +1,5 @@
 import { Keccak } from 'sha3'
-import { Coin } from '../types/cosmos/base/coin'
+import { Coin } from '../proto/cosmos/base/coin'
 import {
   TxBody,
   Fee,
@@ -9,10 +9,10 @@ import {
   ModeInfo_Single,
   AuthInfo,
   SignDoc,
-} from '../types/cosmos/transactions/tx'
-import { PubKey } from '../types/ethermint/crypto/keys'
-import { PubKey as SECP256k1 } from '../types/cosmos/crypto/keys/secp256k1'
-import { SignMode } from '../types/cosmos/transactions/signing'
+} from '../proto/cosmos/transactions/tx'
+import { PubKey } from '../proto/ethermint/crypto/keys'
+import { PubKey as SECP256k1 } from '../proto/cosmos/crypto/secp256k1/keys'
+import { SignMode } from '../proto/cosmos/transactions/signing'
 
 import { createAnyMessage, MessageGenerated } from '../messages/common'
 

@@ -1,4 +1,4 @@
-import { MsgClawback } from '../../types/evmos/vesting/tx'
+import { MsgClawback } from '../../proto/evmos/vesting/tx'
 
 export function createMsgClawback(
   funderAddress: string,

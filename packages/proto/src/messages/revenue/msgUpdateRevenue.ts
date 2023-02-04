@@ -1,4 +1,4 @@
-import { MsgUpdateRevenue } from '../../types/evmos/revenue/tx'
+import { MsgUpdateRevenue } from '../../proto/evmos/revenue/tx'
 
 export function createMsgUpdateRevenue(
   contractAddress: string,

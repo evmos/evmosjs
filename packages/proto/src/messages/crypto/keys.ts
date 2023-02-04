@@ -1,4 +1,4 @@
-import { PubKey } from '../../types/cosmos/crypto/keys/ed25519'
+import { PubKey } from '../../proto/cosmos/crypto/ed25519/keys'
 
 export function createED25519PubKey(key: Uint8Array) {
   return {

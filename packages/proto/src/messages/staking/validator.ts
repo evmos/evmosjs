@@ -1,13 +1,12 @@
-import { Coin } from '../../types/cosmos/base/coin'
+import { Coin } from '../../proto/cosmos/base/coin'
 import {
   MsgEditValidator,
   MsgCreateValidator,
-} from '../../types/cosmos/staking/tx'
+} from '../../proto/cosmos/staking/tx'
 import {
   Description,
   CommissionRates,
-} from '../../types/cosmos/staking/staking'
-import { MsgSetWithdrawAddress } from '../../types/cosmos/distribution/tx'
+} from '../../proto/cosmos/staking/staking'
 
 import { createAnyMessage } from '../common'
 import { createED25519PubKey } from '../crypto/keys'
@@ -44,7 +43,7 @@ export function createMsgEditValidator(
 
   return {
     message,
-    path: 'cosmos.staking.v1beta1.MsgEditValidator',
+    path: MsgEditValidator.typeName,
   }
 }
 
@@ -106,26 +105,6 @@ export function createMsgCreateValidator(
 
   return {
     message,
-    path: 'cosmos.staking.v1beta1.MsgCreateValidator',
-  }
-}
-
-export interface MsgSetWithdrawAddressProtoInterface {
-  path: string
-  message: MsgSetWithdrawAddress
-}
-
-export function createMsgSetWithdrawAddress(
-  delegatorAddress: string,
-  withdrawAddress: string,
-) {
-  const message = new MsgSetWithdrawAddress({
-    delegatorAddress,
-    withdrawAddress,
-  })
-
-  return {
-    message,
-    path: 'cosmos.distribution.v1beta1.MsgSetWithdrawAddress',
+    path: MsgCreateValidator.typeName,
   }
 }

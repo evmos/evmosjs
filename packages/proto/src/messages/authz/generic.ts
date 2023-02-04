@@ -1,5 +1,5 @@
 import { MessageGenerated } from '../common'
-import { GenericAuthorization } from '../../types/cosmos/authz/authz'
+import { GenericAuthorization } from '../../proto/cosmos/authz/authz'
 
 export const createGenericAuthorization = (
   typeUrl: string,

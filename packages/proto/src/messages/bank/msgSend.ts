@@ -1,5 +1,5 @@
-import { Coin } from '../../types/cosmos/base/coin'
-import { MsgSend } from '../../types/cosmos/bank/tx'
+import { Coin } from '../../proto/cosmos/base/coin'
+import { MsgSend } from '../../proto/cosmos/bank/tx'
 
 export function createMsgSend(
   fromAddress: string,
@@ -19,6 +19,6 @@ export function createMsgSend(
   })
   return {
     message,
-    path: 'cosmos.bank.v1beta1.MsgSend',
+    path: MsgSend.typeName,
   }
 }
