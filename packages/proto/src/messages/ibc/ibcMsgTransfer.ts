@@ -1,6 +1,6 @@
-import { Coin } from '../types/cosmos/base/coin'
-import { Height } from '../types/cosmos-ibc/ibc/core/client'
-import { MsgTransfer } from '../types/cosmos-ibc/ibc/applications/tx'
+import { Coin } from '../../types/cosmos/base/coin'
+import { Height } from '../../types/cosmos-ibc/ibc/core/client'
+import { MsgTransfer } from '../../types/cosmos-ibc/ibc/applications/tx'
 
 export function createIBCMsgTransfer(
   // Channel
@@ -39,6 +39,6 @@ export function createIBCMsgTransfer(
 
   return {
     message: ibcMessage,
-    path: 'ibc.applications.transfer.v1.MsgTransfer',
+    path: MsgTransfer.typeName,
   }
 }

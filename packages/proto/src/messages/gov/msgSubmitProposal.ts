@@ -19,6 +19,6 @@ export function createMsgSubmitProposal(
 
   return {
     message: msg,
-    path: 'cosmos.gov.v1beta1.MsgSubmitProposal',
+    path: MsgSubmitProposal.typeName,
   }
 }

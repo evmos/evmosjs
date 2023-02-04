@@ -1,13 +1,16 @@
-import { Coin } from '../types/cosmos/base/coin'
+import { Coin } from '../../types/cosmos/base/coin'
 import {
   MsgEditValidator,
   MsgCreateValidator,
-} from '../types/cosmos/staking/tx'
-import { Description, CommissionRates } from '../types/cosmos/staking/staking'
-import { MsgSetWithdrawAddress } from '../types/cosmos/distribution/tx'
+} from '../../types/cosmos/staking/tx'
+import {
+  Description,
+  CommissionRates,
+} from '../../types/cosmos/staking/staking'
+import { MsgSetWithdrawAddress } from '../../types/cosmos/distribution/tx'
 
-import { createAnyMessage } from './utils'
-import { createED25519PubKey } from './keys'
+import { createAnyMessage } from '../common'
+import { createED25519PubKey } from '../crypto/keys'
 
 const NOT_MODIFY = '[do-not-modify]'
 

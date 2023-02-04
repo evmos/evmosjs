@@ -2,12 +2,12 @@ import { Any } from '@bufbuild/protobuf/'
 import {
   bytesToLegacyTx,
   bytesToMsgEthereumTx,
-} from '../../src/messages/msgEthereumTx'
+} from '../../src/messages/evm/msgEthereumTx'
 import {
   bytesToAuthInfo,
   bytesToTxBody,
   bytesToTxRaw,
-} from '../../src/messages/txRaw'
+} from '../../src/messages/transactions/txRaw'
 import { JSONOptions } from '../common'
 
 describe('msgEthereumTx tests', () => {

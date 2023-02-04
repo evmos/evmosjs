@@ -14,6 +14,6 @@ export function createMsgConvertERC20(
   })
   return {
     message: msg,
-    path: 'evmos.erc20.v1.MsgConvertERC20',
+    path: MsgConvertERC20.typeName,
   }
 }

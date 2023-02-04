@@ -10,6 +10,6 @@ export function createMsgCancelRevenue(
   })
   return {
     message: msg,
-    path: 'evmos.revenue.v1.MsgCancelRevenue',
+    path: MsgCancelRevenue.typeName,
   }
 }

@@ -30,6 +30,6 @@ export function createStakeAuthorization(
 
   return {
     message: msg,
-    path: 'cosmos.staking.v1beta1.StakeAuthorization',
+    path: StakeAuthorization.typeName,
   }
 }

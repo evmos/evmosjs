@@ -1,7 +1,7 @@
 import { Timestamp } from '@bufbuild/protobuf'
 import { MsgGrant, MsgRevoke } from '../../types/cosmos/authz/tx'
 import { Grant } from '../../types/cosmos/authz/authz'
-import { createAnyMessage, MessageGenerated } from '../utils'
+import { createAnyMessage, MessageGenerated } from '../common'
 
 export function createMsgGrant(
   granter: string,
@@ -22,7 +22,7 @@ export function createMsgGrant(
   })
   return {
     message: msg,
-    path: 'cosmos.authz.v1beta1.MsgGrant',
+    path: MsgGrant.typeName,
   }
 }
 
@@ -43,6 +43,6 @@ export function createMsgRevoke(
   })
   return {
     message: msg,
-    path: 'cosmos.authz.v1beta1.MsgRevoke',
+    path: MsgRevoke.typeName,
   }
 }

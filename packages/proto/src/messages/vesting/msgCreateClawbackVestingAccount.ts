@@ -1,7 +1,7 @@
 import { Timestamp } from '@bufbuild/protobuf'
 import { Coin as ProtoCoin } from '../../types/cosmos/base/coin'
 import { MsgCreateClawbackVestingAccount } from '../../types/evmos/vesting/tx'
-import { Period as ProtoPeriod } from '../../types/cosmos/vesting'
+import { Period as ProtoPeriod } from '../../types/cosmos/vesting/vesting'
 
 type Coin = {
   denom: string

@@ -1,4 +1,4 @@
-import { MessageGenerated } from '../utils'
+import { MessageGenerated } from '../common'
 import { GenericAuthorization } from '../../types/cosmos/authz/authz'
 
 export const createGenericAuthorization = (

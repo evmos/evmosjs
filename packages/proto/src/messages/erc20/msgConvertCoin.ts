@@ -17,6 +17,6 @@ export function createMsgConvertCoin(
   })
   return {
     message: msg,
-    path: 'evmos.erc20.v1.MsgConvertCoin',
+    path: MsgConvertCoin.typeName,
   }
 }

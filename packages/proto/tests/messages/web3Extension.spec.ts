@@ -1,4 +1,4 @@
-import { createTxRaw } from '../../src/messages/txRaw'
+import { createTxRaw } from '../../src/messages/transactions/txRaw'
 
 describe('txRaw tests', () => {
   it('create tx raw', async () => {

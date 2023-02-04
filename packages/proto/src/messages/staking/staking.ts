@@ -1,13 +1,13 @@
-import { Coin } from '../types/cosmos/base/coin'
+import { Coin } from '../../types/cosmos/base/coin'
 import {
   MsgDelegate,
   MsgBeginRedelegate,
   MsgUndelegate,
-} from '../types/cosmos/staking/tx'
+} from '../../types/cosmos/staking/tx'
 import {
   MsgWithdrawDelegatorReward,
   MsgWithdrawValidatorCommission,
-} from '../types/cosmos/distribution/tx'
+} from '../../types/cosmos/distribution/tx'
 
 export function createMsgDelegate(
   delegatorAddress: string,

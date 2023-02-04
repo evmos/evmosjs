@@ -1,5 +1,5 @@
-import { Coin } from '../types/cosmos/base/coin'
-import { MsgSend } from '../types/cosmos/bank/tx'
+import { Coin } from '../../types/cosmos/base/coin'
+import { MsgSend } from '../../types/cosmos/bank/tx'
 
 export function createMsgSend(
   fromAddress: string,

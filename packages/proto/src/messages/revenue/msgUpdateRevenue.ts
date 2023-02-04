@@ -12,6 +12,6 @@ export function createMsgUpdateRevenue(
   })
   return {
     message: msg,
-    path: 'evmos.revenue.v1.MsgUpdateRevenue',
+    path: MsgUpdateRevenue.typeName,
   }
 }

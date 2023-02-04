@@ -1,4 +1,4 @@
-import { createMsgSend } from '../../src/messages/msgSend'
+import { createMsgSend } from '../../src/messages/bank/msgSend'
 
 describe('msgSend tests', () => {
   it('create message send', async () => {

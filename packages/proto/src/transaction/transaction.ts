@@ -14,7 +14,7 @@ import { PubKey } from '../types/ethermint/crypto/keys'
 import { PubKey as SECP256k1 } from '../types/cosmos/crypto/keys/secp256k1'
 import { SignMode } from '../types/cosmos/transactions/signing'
 
-import { createAnyMessage, MessageGenerated } from '../messages/utils'
+import { createAnyMessage, MessageGenerated } from '../messages/common'
 
 export const SIGN_DIRECT = SignMode.DIRECT
 export const LEGACY_AMINO = SignMode.LEGACY_AMINO_JSON
