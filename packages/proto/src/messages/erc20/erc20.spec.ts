@@ -3,7 +3,7 @@ import { createMsgConvertERC20 } from './msgConvertERC20'
 import { from, to, denom, hex } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
-describe('erc20 messages', () => {
+describe('test erc20 message generation', () => {
   it('msgConvertCoin', () => {
     const amount = '10000000'
     const msg = createMsgConvertCoin(denom, amount, hex, from)

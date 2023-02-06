@@ -6,7 +6,7 @@ import { MsgVote } from '../../proto/cosmos/gov/tx'
 import { from, denom } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
-describe('gov messages', () => {
+describe('test gov message generation', () => {
   it('msgVote', () => {
     const proposalId = 60
     const vote = 1
@@ -39,12 +39,13 @@ describe('gov messages', () => {
   })
 
   it('msgSubmitProposal', () => {
-    const msgVote = createMsgVote(60, 1, from)
-    const msgVoteAny = createAnyMessage(msgVote)
-
-    const amount = '1000'
     const proposalId = 60
     const vote = 1
+    const amount = '1000'
+
+    const msgVote = createMsgVote(proposalId, vote, from)
+    const msgVoteAny = createAnyMessage(msgVote)
+
     const msg = createMsgSubmitProposal(msgVoteAny, denom, amount, from)
 
     expect(msg.message.toJson(JSONOptions)).toStrictEqual({

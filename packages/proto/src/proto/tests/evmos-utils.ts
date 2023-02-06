@@ -5,6 +5,8 @@ import { MsgRegisterRevenue } from '../evmos/revenue/tx'
 import { MsgClawback } from '../evmos/vesting/tx'
 import { TestMessage, from, to, to2, denom, hex } from './utils'
 
+// See ./cosmos-utils.ts for bytecode generation
+
 export const genTestETHSECP256k1PubKey = (): TestMessage => [
   new PubKey({
     key: new Uint8Array([

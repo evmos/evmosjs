@@ -6,7 +6,7 @@ import { JSONOptions } from '../../proto/tests/common'
 
 const msgType = 'cosmos-sdk/MsgSend'
 
-describe('authz messages', () => {
+describe('test authz message generation', () => {
   it('msgGrant', () => {
     const seconds = 42
     const secondsTimeStamp = '1970-01-01T00:00:42Z'

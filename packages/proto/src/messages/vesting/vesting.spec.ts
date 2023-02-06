@@ -4,7 +4,7 @@ import { createMsgCreateClawbackVestingAccount } from './msgCreateClawbackVestin
 import { from, to, to2, denom } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
-describe('vesting messages', () => {
+describe('test vesting message generation', () => {
   it('msgClawback', () => {
     const msg = createMsgClawback(from, to, to2)
 

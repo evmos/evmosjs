@@ -7,7 +7,7 @@ import {
 import { from, to, val } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
-describe('distribution messages', () => {
+describe('test distribution message generation', () => {
   it('msgWithdrawDelegatorReward', () => {
     const msg = createMsgWithdrawDelegatorReward(from, val)
 

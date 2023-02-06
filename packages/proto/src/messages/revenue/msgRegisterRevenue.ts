@@ -6,11 +6,13 @@ export function createMsgRegisterRevenue(
   withdrawerAddress: string,
   nonces: number[],
 ) {
+  const bigIntNonces = nonces.map((n) => BigInt(n))
+
   const msg = new MsgRegisterRevenue({
     contractAddress,
     deployerAddress,
     withdrawerAddress,
-    nonces: nonces.map((n) => BigInt(n)),
+    nonces: bigIntNonces,
   })
   return {
     message: msg,

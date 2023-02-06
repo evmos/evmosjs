@@ -7,14 +7,14 @@ import {
 import { testMessageEncodeDecode } from './utils'
 
 // Test Encode/Decode serialization against Cosmos SDK encodings in Go.
-describe('ethermint encode/decode', () => {
+describe('test ethermint encode/decode', () => {
   it('handles pubkey types', () => {
     const [msg, expBase64] = genTestETHSECP256k1PubKey()
     testMessageEncodeDecode(msg, expBase64)
   })
 })
 
-describe('evmos encode/decode', () => {
+describe('test evmos encode/decode', () => {
   it('handles erc20 types', () => {
     const [msg, expBase64] = genTestMsgConvertCoin()
     testMessageEncodeDecode(msg, expBase64)

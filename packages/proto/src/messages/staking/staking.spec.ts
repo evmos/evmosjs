@@ -10,7 +10,7 @@ import { PubKey } from '../../proto/cosmos/crypto/ed25519/keys'
 import { from, val, val2, denom } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
-describe('staking messages', () => {
+describe('test staking message generation', () => {
   it('msgDelegate', () => {
     const amount = '10000'
     const msg = createMsgDelegate(from, val, amount, denom)
@@ -58,7 +58,7 @@ describe('staking messages', () => {
   })
 })
 
-describe('validator messages', () => {
+describe('test validator message generation', () => {
   it('msgCreateValidator', () => {
     const description = {
       moniker: 'validator moniker',

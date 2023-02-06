@@ -2,7 +2,7 @@ import { createMsgSend } from './msgSend'
 import { from, to, denom } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
-describe('bank messages', () => {
+describe('test bank message generation', () => {
   it('msgSend', () => {
     const amount = '10000000'
     const msg = createMsgSend(from, to, amount, denom)

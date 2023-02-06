@@ -2,7 +2,7 @@ import { createIBCMsgTransfer } from './ibcMsgTransfer'
 import { from, to, denom } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
-describe('iBC messages', () => {
+describe('test IBC message generation', () => {
   it('msgTransfer', () => {
     const params = {
       sourcePort: 'transfer',

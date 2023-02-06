@@ -12,7 +12,11 @@ import { TestMessage, from, to, val, denom } from './utils'
 
 export const genTestEmptyMsg = () => new MsgSend()
 
-// All expected bytestreams are generated using the Cosmos SDK in Go.
+// All expected bytestreams were generated from the client in Go. These tests verify that Protobuf encoding
+// behaves as expected and do not contain any surprises.
+//
+// Find the Go code used to generate this output here:
+// https://gist.github.com/austinchandra/dddc8a05a8d4666257cb257cb188e124
 
 export const genTestGrantAuthorization = (): TestMessage => {
   const auth = new GenericAuthorization({

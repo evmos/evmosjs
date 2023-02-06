@@ -3,8 +3,5 @@
   "references": [
     {"path": "../eip712/tsconfig.json"},
     {"path": "../proto/tsconfig.json"},
-  ],
-  "compilerOptions": {
-    "preserveSymlinks": true
-  }
+  ]
 }

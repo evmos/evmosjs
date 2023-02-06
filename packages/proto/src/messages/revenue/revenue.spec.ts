@@ -5,7 +5,7 @@ import { createMsgUpdateRevenue } from './msgUpdateRevenue'
 import { from, hex, to } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
-describe('revenue messages', () => {
+describe('test revenue message generation', () => {
   it('msgRegisterRevenue', () => {
     const nonces = [10, 15]
     const msg = createMsgRegisterRevenue(hex, from, to, nonces)

@@ -1,7 +1,7 @@
 import { createED25519PubKey } from './keys'
 import { JSONOptions } from '../../proto/tests/common'
 
-describe('crypto messages', () => {
+describe('test crypto message generation', () => {
   it('createED25519PubKey', () => {
     const bytes = new Uint8Array([
       10, 33, 2, 136, 177, 245, 49, 184, 120, 113, 219, 192, 55, 41, 81, 135,

@@ -14,7 +14,7 @@ import { testMessageEncodeDecode } from './utils'
 // that is larger than necessary and thus consumes extra gas for end-users.
 
 // Test Encode/Decode serialization against Cosmos SDK encodings in Go.
-describe('encode/decode', () => {
+describe('test Protobuf encode/decode', () => {
   it('handles authz types', () => {
     const [msg, expBase64] = genTestGrantAuthorization()
     testMessageEncodeDecode(msg, expBase64)
