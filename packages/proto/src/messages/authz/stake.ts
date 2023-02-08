@@ -1,4 +1,4 @@
-import { Coin } from '../../proto/cosmos/base'
+import { Coin } from '../../proto/cosmos/base/coin'
 import {
   AuthorizationType,
   StakeAuthorization,
@@ -20,7 +20,7 @@ export function createStakeAuthorization(
       case: 'allowList',
     },
     maxTokens: maxTokens
-      ? new Coin.Coin({
+      ? new Coin({
           denom,
           amount: maxTokens,
         })

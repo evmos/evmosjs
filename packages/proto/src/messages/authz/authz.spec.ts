@@ -1,6 +1,7 @@
 import { createMsgGrant, createMsgRevoke } from './authz'
 import { createGenericAuthorization } from './generic'
 import { GenericAuthorization } from '../../proto/cosmos/authz/authz'
+import { MsgGrant, MsgRevoke } from '../../proto/cosmos/authz/tx'
 import { from, to } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
@@ -15,7 +16,7 @@ describe('test authz message generation', () => {
     expect(auth.message.toJson(JSONOptions)).toStrictEqual({
       msg: msgType,
     })
-    expect(auth.path).toStrictEqual(auth.message.getType().typeName)
+    expect(auth.path).toStrictEqual(GenericAuthorization.typeName)
 
     const msg = createMsgGrant(from, to, auth, seconds)
 
@@ -30,7 +31,7 @@ describe('test authz message generation', () => {
         expiration: secondsTimeStamp,
       },
     })
-    expect(msg.path).toStrictEqual(msg.message.getType().typeName)
+    expect(msg.path).toStrictEqual(MsgGrant.typeName)
   })
 
   it('msgRevoke', () => {
@@ -41,6 +42,6 @@ describe('test authz message generation', () => {
       grantee: to,
       msg_type_url: msgType,
     })
-    expect(msg.path).toStrictEqual(msg.message.getType().typeName)
+    expect(msg.path).toStrictEqual(MsgRevoke.typeName)
   })
 })

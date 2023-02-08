@@ -1,4 +1,5 @@
 import { createMsgSend } from './msgSend'
+import { MsgSend } from '../../proto/cosmos/bank/tx'
 import { from, to, denom } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
@@ -17,6 +18,6 @@ describe('test bank message generation', () => {
         },
       ],
     })
-    expect(msg.path).toStrictEqual(msg.message.getType().typeName)
+    expect(msg.path).toStrictEqual(MsgSend.typeName)
   })
 })

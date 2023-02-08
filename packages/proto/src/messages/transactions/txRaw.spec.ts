@@ -1,4 +1,5 @@
 import { createTxRaw, bytesToTxRaw } from './txRaw'
+import { TxRaw } from '../../proto/cosmos/transactions/tx'
 
 describe('txRaw tests', () => {
   it('create tx raw', async () => {
@@ -65,7 +66,7 @@ describe('txRaw tests', () => {
     ])
     const message = createTxRaw(body, auth, sig)
     expect(message.message.toBinary()).toStrictEqual(txRaw)
-    expect(message.path).toBe('cosmos.tx.v1beta1.TxRaw')
+    expect(message.path).toBe(TxRaw.typeName)
   })
 })
 

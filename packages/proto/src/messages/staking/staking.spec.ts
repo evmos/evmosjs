@@ -5,6 +5,14 @@ import {
 } from './staking'
 import { createMsgCreateValidator, createMsgEditValidator } from './validator'
 
+import {
+  MsgDelegate,
+  MsgBeginRedelegate,
+  MsgUndelegate,
+  MsgEditValidator,
+  MsgCreateValidator,
+} from '../../proto/cosmos/staking/tx'
+
 import { PubKey } from '../../proto/cosmos/crypto/ed25519/keys'
 
 import { from, val, val2, denom } from '../../proto/tests/utils'
@@ -23,7 +31,7 @@ describe('test staking message generation', () => {
         denom,
       },
     })
-    expect(msg.path).toStrictEqual(msg.message.getType().typeName)
+    expect(msg.path).toStrictEqual(MsgDelegate.typeName)
   })
 
   it('msgBeginRedelegate', () => {
@@ -39,7 +47,7 @@ describe('test staking message generation', () => {
         denom,
       },
     })
-    expect(msg.path).toStrictEqual(msg.message.getType().typeName)
+    expect(msg.path).toStrictEqual(MsgBeginRedelegate.typeName)
   })
 
   it('msgUndelegate', () => {
@@ -54,7 +62,7 @@ describe('test staking message generation', () => {
         denom,
       },
     })
-    expect(msg.path).toStrictEqual(msg.message.getType().typeName)
+    expect(msg.path).toStrictEqual(MsgUndelegate.typeName)
   })
 })
 
@@ -111,7 +119,7 @@ describe('test validator message generation', () => {
         denom,
       },
     })
-    expect(msg.path).toStrictEqual(msg.message.getType().typeName)
+    expect(msg.path).toStrictEqual(MsgCreateValidator.typeName)
   })
 
   it('msgEditValidator', () => {
@@ -143,11 +151,11 @@ describe('test validator message generation', () => {
         security_contact: newSecurityContact,
         details: newDetails,
       },
+      validator_address: newValAddr,
       commission_rate: newCommissionRate,
       min_self_delegation: newMinSelfDelegation,
-      validator_address: newValAddr,
     })
-    expect(msg.path).toStrictEqual(msg.message.getType().typeName)
+    expect(msg.path).toStrictEqual(MsgEditValidator.typeName)
   })
 
   it('msgEditValidator with missing values', () => {
@@ -175,10 +183,10 @@ describe('test validator message generation', () => {
         security_contact: doNotModify,
         details: doNotModify,
       },
+      validator_address: '',
       commission_rate: '',
       min_self_delegation: '',
-      validator_address: '',
     })
-    expect(msg.path).toStrictEqual(msg.message.getType().typeName)
+    expect(msg.path).toStrictEqual(MsgEditValidator.typeName)
   })
 })

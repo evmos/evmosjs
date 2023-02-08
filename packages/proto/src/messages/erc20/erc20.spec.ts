@@ -1,5 +1,8 @@
 import { createMsgConvertCoin } from './msgConvertCoin'
 import { createMsgConvertERC20 } from './msgConvertERC20'
+
+import { MsgConvertCoin, MsgConvertERC20 } from '../../proto/evmos/erc20/tx'
+
 import { from, to, denom, hex } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
@@ -16,7 +19,7 @@ describe('test erc20 message generation', () => {
       receiver: hex,
       sender: from,
     })
-    expect(msg.path).toStrictEqual(msg.message.getType().typeName)
+    expect(msg.path).toStrictEqual(MsgConvertCoin.typeName)
   })
 
   it('msgConvertERC20', () => {
@@ -29,6 +32,6 @@ describe('test erc20 message generation', () => {
       receiver: to,
       sender: from,
     })
-    expect(msg.path).toStrictEqual(msg.message.getType().typeName)
+    expect(msg.path).toStrictEqual(MsgConvertERC20.typeName)
   })
 })

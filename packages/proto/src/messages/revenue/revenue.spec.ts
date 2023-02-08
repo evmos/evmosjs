@@ -2,6 +2,12 @@ import { createMsgRegisterRevenue } from './msgRegisterRevenue'
 import { createMsgCancelRevenue } from './msgCancelRevenue'
 import { createMsgUpdateRevenue } from './msgUpdateRevenue'
 
+import {
+  MsgRegisterRevenue,
+  MsgCancelRevenue,
+  MsgUpdateRevenue,
+} from '../../proto/evmos/revenue/tx'
+
 import { from, hex, to } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
@@ -16,7 +22,7 @@ describe('test revenue message generation', () => {
       withdrawer_address: to,
       nonces: nonces.map((n) => n.toString()),
     })
-    expect(msg.path).toStrictEqual(msg.message.getType().typeName)
+    expect(msg.path).toStrictEqual(MsgRegisterRevenue.typeName)
   })
 
   it('msgCancelRevenue', () => {
@@ -26,7 +32,7 @@ describe('test revenue message generation', () => {
       contract_address: hex,
       deployer_address: from,
     })
-    expect(msg.path).toStrictEqual(msg.message.getType().typeName)
+    expect(msg.path).toStrictEqual(MsgCancelRevenue.typeName)
   })
 
   it('msgUpdateRevenue', () => {
@@ -37,6 +43,6 @@ describe('test revenue message generation', () => {
       deployer_address: from,
       withdrawer_address: to,
     })
-    expect(msg.path).toStrictEqual(msg.message.getType().typeName)
+    expect(msg.path).toStrictEqual(MsgUpdateRevenue.typeName)
   })
 })

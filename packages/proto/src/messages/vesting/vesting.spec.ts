@@ -1,6 +1,11 @@
 import { createMsgClawback } from './msgClawback'
 import { createMsgCreateClawbackVestingAccount } from './msgCreateClawbackVestingAccount'
 
+import {
+  MsgCreateClawbackVestingAccount,
+  MsgClawback,
+} from '../../proto/evmos/vesting/tx'
+
 import { from, to, to2, denom } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
@@ -13,18 +18,18 @@ describe('test vesting message generation', () => {
       account_address: to,
       dest_address: to2,
     })
-    expect(msg.path).toStrictEqual(msg.message.getType().typeName)
+    expect(msg.path).toStrictEqual(MsgClawback.typeName)
   })
 
   it('msgClawback without dest address', () => {
-    const msg = createMsgClawback(from, to, undefined)
+    const msg = createMsgClawback(from, to)
 
     expect(msg.message.toJson(JSONOptions)).toStrictEqual({
       funder_address: from,
       account_address: to,
       dest_address: '',
     })
-    expect(msg.path).toStrictEqual(msg.message.getType().typeName)
+    expect(msg.path).toStrictEqual(MsgClawback.typeName)
   })
 
   it('msgCreateClawbackVestingAccount', () => {
@@ -47,6 +52,7 @@ describe('test vesting message generation', () => {
       from,
       to,
       startTime: 1000,
+      // 1000 seconds is 16 minutes, 40 seconds
       timestamp: '1970-01-01T00:16:40Z',
       lockupPeriods,
       vestingPeriods,
@@ -75,6 +81,6 @@ describe('test vesting message generation', () => {
       })),
       merge: params.merge,
     })
-    expect(msg.path).toStrictEqual(msg.message.getType().typeName)
+    expect(msg.path).toStrictEqual(MsgCreateClawbackVestingAccount.typeName)
   })
 })

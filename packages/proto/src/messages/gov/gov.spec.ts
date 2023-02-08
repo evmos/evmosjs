@@ -1,8 +1,12 @@
-import { createMsgVote } from './vote'
+import { createMsgVote } from './msgVote'
 import { createMsgDeposit } from './msgDeposit'
 import { createMsgSubmitProposal } from './msgSubmitProposal'
 import { createAnyMessage } from '../common'
-import { MsgVote } from '../../proto/cosmos/gov/tx'
+import {
+  MsgVote,
+  MsgSubmitProposal,
+  MsgDeposit,
+} from '../../proto/cosmos/gov/tx'
 import { from, denom } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
@@ -17,7 +21,7 @@ describe('test gov message generation', () => {
       voter: from,
       option: vote,
     })
-    expect(msg.path).toStrictEqual(msg.message.getType().typeName)
+    expect(msg.path).toStrictEqual(MsgVote.typeName)
   })
 
   it('msgDeposit', () => {
@@ -35,7 +39,7 @@ describe('test gov message generation', () => {
         },
       ],
     })
-    expect(msg.path).toStrictEqual(msg.message.getType().typeName)
+    expect(msg.path).toStrictEqual(MsgDeposit.typeName)
   })
 
   it('msgSubmitProposal', () => {
@@ -63,6 +67,6 @@ describe('test gov message generation', () => {
       ],
       proposer: from,
     })
-    expect(msg.path).toStrictEqual(msg.message.getType().typeName)
+    expect(msg.path).toStrictEqual(MsgSubmitProposal.typeName)
   })
 })

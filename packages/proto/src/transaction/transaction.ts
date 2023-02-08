@@ -1,4 +1,5 @@
 import { Keccak } from 'sha3'
+import { Any } from '@bufbuild/protobuf/'
 import { Coin } from '../proto/cosmos/base/coin'
 import {
   TxBody,
@@ -21,7 +22,7 @@ export const LEGACY_AMINO = SignMode.LEGACY_AMINO_JSON
 
 // TODO: messages should be typed as proto message. A types package is needed to export that type without problems
 export function createBodyWithMultipleMessages(messages: any[], memo: string) {
-  const content: any[] = []
+  const content: Any[] = []
 
   messages.forEach((message) => {
     content.push(createAnyMessage(message))

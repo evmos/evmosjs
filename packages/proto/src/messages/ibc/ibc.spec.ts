@@ -1,4 +1,7 @@
 import { createIBCMsgTransfer } from './ibcMsgTransfer'
+
+import { MsgTransfer } from '../../proto/cosmos-ibc/ibc/applications/tx'
+
 import { from, to, denom } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
@@ -44,6 +47,6 @@ describe('test IBC message generation', () => {
       timeout_timestamp: params.timeoutTimestamp.toString(),
       memo: '',
     })
-    expect(msg.path).toStrictEqual(msg.message.getType().typeName)
+    expect(msg.path).toStrictEqual(MsgTransfer.typeName)
   })
 })

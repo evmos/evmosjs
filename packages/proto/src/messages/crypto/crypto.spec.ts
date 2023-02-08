@@ -1,4 +1,5 @@
 import { createED25519PubKey } from './keys'
+import { PubKey } from '../../proto/cosmos/crypto/ed25519/keys'
 import { JSONOptions } from '../../proto/tests/common'
 
 describe('test crypto message generation', () => {
@@ -14,6 +15,6 @@ describe('test crypto message generation', () => {
     expect(pubkey.message.toJson(JSONOptions)).toStrictEqual({
       key: Buffer.from(bytes).toString('base64'),
     })
-    expect(pubkey.path).toStrictEqual(pubkey.message.getType().typeName)
+    expect(pubkey.path).toStrictEqual(PubKey.typeName)
   })
 })

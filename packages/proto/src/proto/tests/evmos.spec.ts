@@ -1,5 +1,5 @@
 import {
-  genTestETHSECP256k1PubKey,
+  genTestEthSecp256k1PubKey,
   genTestMsgClawback,
   genTestMsgConvertCoin,
   genTestMsgRegisterRevenue,
@@ -9,7 +9,7 @@ import { testMessageEncodeDecode } from './utils'
 // Test Encode/Decode serialization against Cosmos SDK encodings in Go.
 describe('test ethermint encode/decode', () => {
   it('handles pubkey types', () => {
-    const [msg, expBase64] = genTestETHSECP256k1PubKey()
+    const [msg, expBase64] = genTestEthSecp256k1PubKey()
     testMessageEncodeDecode(msg, expBase64)
   })
 })

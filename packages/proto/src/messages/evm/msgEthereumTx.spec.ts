@@ -5,6 +5,9 @@ import {
   bytesToTxBody,
   bytesToTxRaw,
 } from '../transactions/txRaw'
+
+import { MsgEthereumTx, LegacyTx } from '../../proto/ethermint/evm/tx'
+
 import { JSONOptions } from '../../proto/tests/common'
 
 describe('msgEthereumTx tests', () => {
@@ -40,7 +43,7 @@ describe('msgEthereumTx tests', () => {
     expect(bodyProtoMessages.length).toBeGreaterThan(0)
 
     // Make sure that the message is MsgEthTx
-    expect(bodyProtoMessages[0].typeUrl).toBe('/ethermint.evm.v1.MsgEthereumTx')
+    expect(bodyProtoMessages[0].typeUrl).toBe(`/${MsgEthereumTx.typeName}`)
 
     // Create the MsgEthTx proto
     expect(bodyProtoMessages[0].value).toBeDefined()
@@ -50,7 +53,7 @@ describe('msgEthereumTx tests', () => {
     const msgEthTx = msgEthereumTxProto
 
     // Create the LegacyTx/AccessListTx/DynamicFeeTx depending on the type_url
-    expect(msgEthTx.data?.typeUrl).toBe('/ethermint.evm.v1.LegacyTx')
+    expect(msgEthTx.data?.typeUrl).toBe(`/${LegacyTx.typeName}`)
 
     // Create the LegacyTX
     const ethTx = bytesToLegacyTx(msgEthTx.data?.value as Uint8Array)

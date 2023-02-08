@@ -24,6 +24,6 @@ export function createTxRaw(
   })
   return {
     message,
-    path: 'cosmos.tx.v1beta1.TxRaw',
+    path: TxRaw.typeName,
   }
 }
