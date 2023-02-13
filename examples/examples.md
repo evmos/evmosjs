@@ -13,9 +13,9 @@ interface Sender {
 }
 ```
 
-An example on how to implement it can be found in the [README.md](https://github.com/tharsis/evmosjs/blob/main/README.md) example.
+An example of how to implement it can be found in the [README.md](https://github.com/tharsis/evmosjs/blob/main/README.md) example.
 
-All the message will also required the chain information and the fee to pay:
+All the messages will also require the chain information and the fee to pay:
 
 Types
 
