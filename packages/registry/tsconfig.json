@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "noUnusedLocals": false,
+
+    "outDir": "dist"
+  },
+  "include": ["src/**/*", "test/**/*", "lib/**/*"]
+}
