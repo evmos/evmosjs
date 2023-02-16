@@ -37,3 +37,4 @@ Ref: https://keepachangelog.com/en/1.0.0/
 ## Unreleased
 
 - (transactions)[#109](https://github.com/evmos/evmosjs/pull/109) Add base and testing infrastructure to Transactions package
+- (transactions)[#110](https://github.com/evmos/evmosjs/pull/110) Refactor authz package using Transactions infrastructure
