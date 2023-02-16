@@ -10,7 +10,7 @@ export interface MsgStakeAuthorizationParams {
   validatorAddress: string
   denom: string
   maxTokens: string | undefined
-  durationInSeconds: number
+  expiration: number
 }
 
 const createEIP712MsgStakeAuthorization = () => {
@@ -37,7 +37,7 @@ const createCosmosMsgStakeAuthorization = (
     context.sender.accountAddress,
     params.granteeAddress,
     auth,
-    params.durationInSeconds,
+    params.expiration,
   )
 }
 

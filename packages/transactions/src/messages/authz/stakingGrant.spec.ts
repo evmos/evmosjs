@@ -15,14 +15,14 @@ const { context, denom } = TestUtils
 const granteeAddress = TestUtils.addr1
 const validatorAddress = TestUtils.addrVal1
 const maxTokens = TestUtils.amount1
-const durationInSeconds = 10000
+const expiration = 10000
 
 const params: MsgStakeAuthorizationParams = {
   granteeAddress,
   validatorAddress,
   denom,
   maxTokens,
-  durationInSeconds,
+  expiration,
 }
 
 describe('test tx payload', () => {
@@ -43,7 +43,7 @@ describe('test tx payload', () => {
       context.sender.accountAddress,
       params.granteeAddress,
       auth,
-      params.durationInSeconds,
+      params.expiration,
     )
 
     const payload = createTxMsgStakeAuthorization(context, params)
