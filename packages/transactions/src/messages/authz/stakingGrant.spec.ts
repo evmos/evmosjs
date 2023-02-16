@@ -11,10 +11,9 @@ import {
 } from './stakingGrant'
 import TestUtils from '../../tests/utils'
 
-const { context } = TestUtils
+const { context, denom } = TestUtils
 const granteeAddress = TestUtils.addr1
 const validatorAddress = TestUtils.addrVal1
-const { denom } = TestUtils
 const maxTokens = TestUtils.amount1
 const durationInSeconds = 10000
 

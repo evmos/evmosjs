@@ -27,10 +27,7 @@ class TestingClient {
   public readonly memo = 'Transaction Memo'
 
   get context(): TxContext {
-    const { chain } = this
-    const { sender } = this
-    const { fee } = this
-    const { memo } = this
+    const { chain, sender, fee, memo } = this
 
     return {
       chain,
