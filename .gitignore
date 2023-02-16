@@ -30,3 +30,4 @@ build/Release
 .yarn
 .idea
 coverage
+.vscode
