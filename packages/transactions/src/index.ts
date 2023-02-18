@@ -1,3 +1,4 @@
+export * from './messages/distribution'
 export * from './messages/revenue/msgCancelRevenue'
 export * from './messages/revenue/msgUpdateRevenue'
 export * from './messages/revenue/msgRegisterRevenue'

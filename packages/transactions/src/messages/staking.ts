@@ -225,64 +225,6 @@ export function createTxMsgUndelegate(
   }
 }
 
-export interface MsgWithdrawDelegatorRewardParams {
-  validatorAddress: string
-}
-
-export function createTxMsgWithdrawDelegatorReward(
-  chain: Chain,
-  sender: Sender,
-  fee: Fee,
-  memo: string,
-  params: MsgWithdrawDelegatorRewardParams,
-) {
-  // EIP712
-  const feeObject = generateFee(
-    fee.amount,
-    fee.denom,
-    fee.gas,
-    sender.accountAddress,
-  )
-  const types = generateTypes(MSG_WITHDRAW_DELEGATOR_REWARD_TYPES)
-  const msg = createMsgWithdrawDelegatorReward(
-    sender.accountAddress,
-    params.validatorAddress,
-  )
-  const messages = generateMessage(
-    sender.accountNumber.toString(),
-    sender.sequence.toString(),
-    chain.cosmosChainId,
-    memo,
-    feeObject,
-    msg,
-  )
-  const eipToSign = createEIP712(types, chain.chainId, messages)
-
-  // Cosmos
-  const protoMessage = protoeMsgWithdrawDelegatorReward(
-    sender.accountAddress,
-    params.validatorAddress,
-  )
-  const tx = createTransaction(
-    protoMessage,
-    memo,
-    fee.amount,
-    fee.denom,
-    parseInt(fee.gas, 10),
-    'ethsecp256',
-    sender.pubkey,
-    sender.sequence,
-    sender.accountNumber,
-    chain.cosmosChainId,
-  )
-
-  return {
-    signDirect: tx.signDirect,
-    legacyAmino: tx.legacyAmino,
-    eipToSign,
-  }
-}
-
 // Multiple WithdrawRewards
 export interface MsgMultipleWithdrawDelegatorRewardParams {
   validatorAddresses: string[]
