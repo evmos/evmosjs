@@ -46,7 +46,7 @@ module.exports = {
       files: ['**/*.ts'],
       parser: '@typescript-eslint/parser',
       env: common.env,
-      plugins: [...common.plugins, '@typescript-eslint'],
+      plugins: [...common.plugins, '@typescript-eslint', 'eslint-plugin-tsdoc'],
       extends: [
         ...common.extends,
         'plugin:import/errors',
@@ -56,6 +56,7 @@ module.exports = {
       rules: {
         ...common.rules,
         '@typescript-eslint/explicit-function-return-type': 'off',
+        'tsdoc/syntax': 'warn',
       },
       settings: {
         'import/resolver': {
