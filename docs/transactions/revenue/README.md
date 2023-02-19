@@ -57,3 +57,30 @@ export const createTxMsgRegisterRevenue: (
   params: MsgRegisterRevenueParams,
 ): TxPayload
 ```
+
+### MsgUpdateRevenue
+
+```ts
+export interface MsgUpdateRevenueParams {
+  contractAddress: string
+  deployerAddress: string
+  withdrawerAddress: string
+}
+
+/**
+ * Creates a transaction for a `MsgUpdateRevenue` object.
+ *
+ * @remarks
+ * This method creates a transaction wrapping the Evmos
+ * {@link https://docs.evmos.org/modules/revenue/04_transactions.html#msgupdaterevenue | MsgUpdateRevenue}
+ *
+ * @param context - Transaction Context
+ * @param params - MsgUpdateRevenue Params
+ * @returns Transaction with the MsgUpdateRevenue payload
+ *
+ */
+export const createTxMsgUpdateRevenue: (
+  context: TxContext,
+  params: MsgUpdateRevenueParams,
+): TxPayload 
+```
