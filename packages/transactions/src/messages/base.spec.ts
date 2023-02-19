@@ -1,5 +1,6 @@
 import {
   createMsgSend as protoMsgSend,
+  createMsgDelegate as protoMsgDelegate,
   createTransaction,
   createTransactionWithMultipleMessages,
 } from '@evmos/proto'
@@ -16,33 +17,35 @@ import {
 import { createTransactionPayload } from './base'
 import TestUtils from '../tests/utils'
 
-const { context } = TestUtils
+const { context, denom } = TestUtils
 const senderAddress = TestUtils.addr1
+const validatorAddress = TestUtils.addrVal1
+const amount = TestUtils.amount1
 
-const msgParams = {
+const msgSendParams = {
   destinationAddress: TestUtils.addr2,
-  amount: TestUtils.amount1,
-  denom: TestUtils.denom,
+  amount,
+  denom,
 }
 
-const cosmosMessage = protoMsgSend(
-  context.sender.accountAddress,
-  msgParams.destinationAddress,
-  msgParams.amount,
-  msgParams.denom,
+const cosmosMsgSend = protoMsgSend(
+  senderAddress,
+  msgSendParams.destinationAddress,
+  msgSendParams.amount,
+  msgSendParams.denom,
 )
 
-const multipleCosmosMessages = [cosmosMessage, cosmosMessage]
+const multipleCosmosMsgSends = [cosmosMsgSend, cosmosMsgSend]
 
 describe('test creating and wrapping a transaction', () => {
   it('handles EIP-712 fields correctly', () => {
     const types = generateTypes(MSG_SEND_TYPES)
 
     const msgSend = createMsgSend(
-      msgParams.amount,
-      msgParams.denom,
+      msgSendParams.amount,
+      msgSendParams.denom,
       senderAddress,
-      msgParams.destinationAddress,
+      msgSendParams.destinationAddress,
     )
 
     const fee = generateFee(
@@ -71,7 +74,7 @@ describe('test creating and wrapping a transaction', () => {
     const basePayload = createTransactionPayload(
       context,
       typedData,
-      cosmosMessage,
+      cosmosMsgSend,
     )
 
     expect(basePayload.eipToSign).toStrictEqual(eip712Payload)
@@ -84,7 +87,7 @@ describe('test creating and wrapping a transaction', () => {
     }
 
     const tx = createTransaction(
-      cosmosMessage,
+      cosmosMsgSend,
       context.memo,
       context.fee.amount,
       context.fee.denom,
@@ -99,7 +102,7 @@ describe('test creating and wrapping a transaction', () => {
     const basePayload = createTransactionPayload(
       context,
       typedData,
-      cosmosMessage,
+      cosmosMsgSend,
     )
 
     expect(basePayload.signDirect).toStrictEqual(tx.signDirect)
@@ -112,10 +115,10 @@ describe('test creating and wrapping transactions with multiple messages of the 
     const types = generateTypes(MSG_SEND_TYPES)
 
     const msgSend = createMsgSend(
-      msgParams.amount,
-      msgParams.denom,
+      msgSendParams.amount,
+      msgSendParams.denom,
       senderAddress,
-      msgParams.destinationAddress,
+      msgSendParams.destinationAddress,
     )
     const multipleMsgSends = [msgSend, msgSend]
 
@@ -145,7 +148,7 @@ describe('test creating and wrapping transactions with multiple messages of the 
     const basePayload = createTransactionPayload(
       context,
       typedData,
-      multipleCosmosMessages,
+      multipleCosmosMsgSends,
     )
 
     expect(basePayload.eipToSign).toStrictEqual(eip712Payload)
@@ -158,7 +161,7 @@ describe('test creating and wrapping transactions with multiple messages of the 
     }
 
     const tx = createTransactionWithMultipleMessages(
-      multipleCosmosMessages,
+      multipleCosmosMsgSends,
       context.memo,
       context.fee.amount,
       context.fee.denom,
@@ -173,8 +176,46 @@ describe('test creating and wrapping transactions with multiple messages of the 
     const basePayload = createTransactionPayload(
       context,
       typedData,
-      multipleCosmosMessages,
+      multipleCosmosMsgSends,
     )
+
+    expect(basePayload.signDirect).toStrictEqual(tx.signDirect)
+    expect(basePayload.legacyAmino).toStrictEqual(tx.legacyAmino)
+  })
+})
+
+describe('test creating and wrapping transactions with multiple messages of different types', () => {
+  // Note that different types with EIP-712 are not currently supported,
+  // so we only test Protobuf.
+  it('handles Protobuf fields correctly', () => {
+    const typedData = {
+      types: {},
+      message: {},
+    }
+
+    const msgDelegate = protoMsgDelegate(
+      senderAddress,
+      validatorAddress,
+      amount,
+      denom,
+    )
+
+    const msgs = [cosmosMsgSend, msgDelegate]
+
+    const tx = createTransactionWithMultipleMessages(
+      msgs,
+      context.memo,
+      context.fee.amount,
+      context.fee.denom,
+      parseInt(context.fee.gas, 10),
+      'ethsecp256',
+      context.sender.pubkey,
+      context.sender.sequence,
+      context.sender.accountNumber,
+      context.chain.cosmosChainId,
+    )
+
+    const basePayload = createTransactionPayload(context, typedData, msgs)
 
     expect(basePayload.signDirect).toStrictEqual(tx.signDirect)
     expect(basePayload.legacyAmino).toStrictEqual(tx.legacyAmino)
