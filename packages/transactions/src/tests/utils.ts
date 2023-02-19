@@ -26,6 +26,8 @@ class TestingClient {
 
   public readonly memo = 'Transaction Memo'
 
+  public readonly proposalId1 = 42
+
   get context(): TxContext {
     const { chain, sender, fee, memo } = this
 
