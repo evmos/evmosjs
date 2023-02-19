@@ -12,7 +12,7 @@ import {
   IBC_MSG_TRANSFER_TYPES,
 } from '@evmos/eip712'
 
-import { Chain, Fee, Sender } from './common'
+import { Chain, Fee, Sender } from '../common'
 
 export interface MessageIBCMsgTransfer {
   // Channel
