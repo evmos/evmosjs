@@ -32,3 +32,34 @@ export const createTxMsgDeposit: (
   params: MsgDepositParams,
 ): TxPayload
 ```
+
+### MsgSubmitProposal
+
+Use `@evmos/proto` to generate a Protobuf message type to pass in for the content field.
+
+```ts
+export interface MsgSubmitProposalParams {
+  content: any
+  denom: string
+  amount: string
+  proposer: string
+}
+
+/**
+ * Creates a transaction for a MsgSubmitProposal object.
+ *
+ * @remarks
+ * This method creates a transaction wrapping the Cosmos SDK's
+ * {@link https://docs.cosmos.network/v0.47/modules/gov#proposal-submission-1 | MsgSubmitProposal}
+ *
+ * @param context Transaction Context
+ * @param params MsgSubmitProposal Params
+ * @returns Transaction with the MsgSubmitProposal payload
+ *
+ */
+
+export const createTxMsgSubmitProposal: (
+  context: TxContext,
+  params: MsgSubmitProposalParams,
+): TxPayload
+```

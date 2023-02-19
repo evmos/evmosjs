@@ -1,81 +1,68 @@
 import {
-  createMsgSubmitProposal as protoCreateMsgSubmitProposal,
-  createTransaction,
+  createMsgSubmitProposal as protoMsgSubmitProposal,
+  createAnyMessage,
 } from '@evmos/proto'
-
 import {
-  createEIP712,
-  generateFee,
-  generateMessage,
   generateTypes,
   createMsgSubmitProposal,
-  MSG_VOTE_TYPES,
+  MSG_SUBMIT_TYPES,
 } from '@evmos/eip712'
+import { createTransactionPayload, TxContext } from '../base'
 
-import { Chain, Fee, Sender } from '../common'
-
-export interface MessageMsgSubmitProposal {
-  content: any
-  initialDepositDenom: string
-  initialDepositAmount: string
+export interface MsgSubmitProposalParams {
+  content: any // TODO: Use Protobuf Generic Type
+  denom: string
+  amount: string
   proposer: string
 }
 
-export function createTxMsgSubmitProposal(
-  chain: Chain,
-  sender: Sender,
-  fee: Fee,
-  memo: string,
-  params: MessageMsgSubmitProposal,
-) {
-  // EIP712
-  const feeObject = generateFee(
-    fee.amount,
-    fee.denom,
-    fee.gas,
-    sender.accountAddress,
-  )
-  const types = generateTypes(MSG_VOTE_TYPES)
+const createEIP712MsgSubmitProposal = (params: MsgSubmitProposalParams) => {
+  const types = generateTypes(MSG_SUBMIT_TYPES)
 
-  const msg = createMsgSubmitProposal(
-    params.content,
-    params.initialDepositDenom,
-    params.initialDepositAmount,
-    sender.accountAddress,
-  )
-  const messages = generateMessage(
-    sender.accountNumber.toString(),
-    sender.sequence.toString(),
-    chain.cosmosChainId,
-    memo,
-    feeObject,
-    msg,
-  )
-  const eipToSign = createEIP712(types, chain.chainId, messages)
+  const contentAsJSON = params.content.message.toObject() // TODO: replace with Proto's toJSON()
 
-  // Cosmos
-  const msgCosmos = protoCreateMsgSubmitProposal(
-    params.content,
-    params.initialDepositDenom,
-    params.initialDepositAmount,
-    sender.accountAddress,
-  )
-  const tx = createTransaction(
-    msgCosmos,
-    memo,
-    fee.amount,
-    fee.denom,
-    parseInt(fee.gas, 10),
-    'ethsecp256',
-    sender.pubkey,
-    sender.sequence,
-    sender.accountNumber,
-    chain.cosmosChainId,
+  const message = createMsgSubmitProposal(
+    contentAsJSON,
+    params.denom,
+    params.amount,
+    params.proposer,
   )
 
   return {
-    signDirect: tx.signDirect,
-    legacyAmino: tx.legacyAmino,
-    eipToSign,
+    types,
+    message,
   }
+}
+
+const createCosmosMsgSubmitProposal = (params: MsgSubmitProposalParams) => {
+  const contentAsAny = createAnyMessage(params.content)
+
+  return protoMsgSubmitProposal(
+    contentAsAny,
+    params.denom,
+    params.amount,
+    params.proposer,
+  )
+}
+
+/**
+ * Creates a transaction for a MsgSubmitProposal object.
+ *
+ * @remarks
+ * This method creates a transaction wrapping the Cosmos SDK's
+ * {@link https://docs.cosmos.network/v0.47/modules/gov#proposal-submission-1 | MsgSubmitProposal}
+ *
+ * @param context Transaction Context
+ * @param params MsgSubmitProposal Params
+ * @returns Transaction with the MsgSubmitProposal payload
+ *
+ */
+export const createTxMsgSubmitProposal = (
+  context: TxContext,
+  params: MsgSubmitProposalParams,
+) => {
+  const typedData = createEIP712MsgSubmitProposal(params)
+  const cosmosMsg = createCosmosMsgSubmitProposal(params)
+
+  return createTransactionPayload(context, typedData, cosmosMsg)
 }

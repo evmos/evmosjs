@@ -28,6 +28,8 @@ class TestingClient {
 
   public readonly proposalId1 = 42
 
+  public readonly voteOption1 = 1
+
   get context(): TxContext {
     const { chain, sender, fee, memo } = this
 
