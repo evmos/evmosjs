@@ -37,3 +37,4 @@ Ref: https://keepachangelog.com/en/1.0.0/
 ## Unreleased
 
 - (transactions)[#109](https://github.com/evmos/evmosjs/pull/109) Add base and testing infrastructure to Transactions package
+- (transactions)[#119](https://github.com/evmos/evmosjs/pull/119) Refactor Transactions `IBC` module using base infrastructure and add unit tests
