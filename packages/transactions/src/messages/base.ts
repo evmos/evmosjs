@@ -14,6 +14,26 @@ export interface TxContext {
 }
 
 /**
+ * TxPayload is a transaction object with signable payloads
+ * in multiple formats.
+ *
+ * @remarks
+ * TxPayload includes signable payloads for Evmos `EIP-712`,
+ * `SignDirect`, and `SignLegacyAmino`.
+ *
+ * Evmos uses the {@link https://eips.ethereum.org/EIPS/eip-712 | EIP-712 Specification}
+ * to wrap and sign Cosmos payloads using Ethereum signers.
+ *
+ * See {@link https://docs.cosmos.network/main/core/encoding} for more
+ * on `SignDirect` and `SignLegacyAmino`.
+ */
+export interface TxPayload {
+  eipToSign: object
+  signDirect: object
+  legacyAmino: object
+}
+
+/**
  * EIP712TypedData represents a signable EIP-712 typed data object,
  * including both the types and message object.
  *
@@ -75,9 +95,9 @@ const createCosmosPayload = (
  * Creates a signable transaction with SignDirect,
  * LegacyAmino, and EIP-712 components.
  *
- * @param context Transaction Context
- * @param typedData EIP-712 Typed Data
- * @param cosmosMessage Cosmos SDK Message to sign
+ * @param context - Transaction Context
+ * @param typedData - EIP-712 Typed Data
+ * @param cosmosMessage - Cosmos SDK Message to sign
  * @returns Signable Payload
  *
  */
@@ -85,7 +105,7 @@ export const createTransactionPayload = (
   context: TxContext,
   typedData: EIP712TypedData,
   cosmosMessage: any, // TODO: re-export Protobuf Message type from /proto
-) => {
+): TxPayload => {
   const eip712Payload = createEIP712Payload(context, typedData)
 
   const cosmosPayload = createCosmosPayload(context, cosmosMessage)
