@@ -1,20 +1,13 @@
-import {
-  createIBCMsgTransfer as protoCreateIBCMsgTransfer,
-  createTransaction,
-} from '@evmos/proto'
+import { createIBCMsgTransfer as protoIBCMsgTransfer } from '@evmos/proto'
 
 import {
-  createEIP712,
-  generateFee,
-  generateMessage,
   generateTypes,
   createIBCMsgTransfer,
   IBC_MSG_TRANSFER_TYPES,
 } from '@evmos/eip712'
+import { createTransactionPayload, TxContext } from '../base'
 
-import { Chain, Fee, Sender } from '../common'
-
-export interface MessageIBCMsgTransfer {
+export interface IBCMsgTransferParams {
   // Channel
   sourcePort: string
   sourceChannel: string
@@ -29,25 +22,15 @@ export interface MessageIBCMsgTransfer {
   timeoutTimestamp: string
 }
 
-export function createTxIBCMsgTransfer(
-  chain: Chain,
-  sender: Sender,
-  fee: Fee,
-  memo: string,
-  params: MessageIBCMsgTransfer,
-) {
-  // EIP712
-  const feeObject = generateFee(
-    fee.amount,
-    fee.denom,
-    fee.gas,
-    sender.accountAddress,
-  )
+const createEIP712IBCMsgTransfer = (
+  context: TxContext,
+  params: IBCMsgTransferParams,
+) => {
   const types = generateTypes(IBC_MSG_TRANSFER_TYPES)
 
-  const msg = createIBCMsgTransfer(
+  const message = createIBCMsgTransfer(
     params.receiver,
-    sender.accountAddress,
+    context.sender.accountAddress,
     params.sourceChannel,
     params.sourcePort,
     params.revisionHeight,
@@ -55,45 +38,49 @@ export function createTxIBCMsgTransfer(
     params.timeoutTimestamp,
     params.amount,
     params.denom,
-  )
-  const messages = generateMessage(
-    sender.accountNumber.toString(),
-    sender.sequence.toString(),
-    chain.cosmosChainId,
-    memo,
-    feeObject,
-    msg,
-  )
-  const eipToSign = createEIP712(types, chain.chainId, messages)
-
-  // Cosmos
-  const msgCosmos = protoCreateIBCMsgTransfer(
-    params.sourcePort,
-    params.sourceChannel,
-    params.amount,
-    params.denom,
-    sender.accountAddress,
-    params.receiver,
-    params.revisionNumber,
-    params.revisionHeight,
-    params.timeoutTimestamp,
-  )
-  const tx = createTransaction(
-    msgCosmos,
-    memo,
-    fee.amount,
-    fee.denom,
-    parseInt(fee.gas, 10),
-    'ethsecp256',
-    sender.pubkey,
-    sender.sequence,
-    sender.accountNumber,
-    chain.cosmosChainId,
   )
 
   return {
-    signDirect: tx.signDirect,
-    legacyAmino: tx.legacyAmino,
-    eipToSign,
+    types,
+    message,
   }
+}
+
+const createCosmosIBCMsgTransfer = (
+  context: TxContext,
+  params: IBCMsgTransferParams,
+) => {
+  return protoIBCMsgTransfer(
+    params.sourcePort,
+    params.sourceChannel,
+    params.amount,
+    params.denom,
+    context.sender.accountAddress,
+    params.receiver,
+    params.revisionNumber,
+    params.revisionHeight,
+    params.timeoutTimestamp,
+  )
+}
+
+/**
+ * Creates a transaction for a `IBCMsgTransfer` object.
+ *
+ * @remarks
+ * This method creates a transaction wrapping the Cosmos SDK
+ * {@link https://github.com/cosmos/ibc-go/blob/main/docs/apps/transfer/messages.md | IBCMsgTransfer}
+ *
+ * @param context - Transaction Context
+ * @param params - IBCMsgTransfer Params
+ * @returns Transaction with the IBCMsgTransfer payload
+ *
+ */
+export const createTxIBCMsgTransfer = (
+  context: TxContext,
+  params: IBCMsgTransferParams,
+) => {
+  const typedData = createEIP712IBCMsgTransfer(context, params)
+  const cosmosMsg = createCosmosIBCMsgTransfer(context, params)
+
+  return createTransactionPayload(context, typedData, cosmosMsg)
 }
