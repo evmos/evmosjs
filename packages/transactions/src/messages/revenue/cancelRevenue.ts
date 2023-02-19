@@ -1,75 +1,53 @@
-import {
-  createMsgCancelRevenue as protoMsgCancelRevenue,
-  createTransaction,
-} from '@evmos/proto'
+import { createMsgCancelRevenue as protoMsgCancelRevenue } from '@evmos/proto'
 
 import {
-  createEIP712,
-  generateFee,
-  generateMessage,
   generateTypes,
   createMsgCancelRevenue,
   MSG_CANCEL_REVENUE_TYPES,
 } from '@evmos/eip712'
+import { createTransactionPayload, TxContext } from '../base'
 
-import { Chain, Fee, Sender } from '../common'
-
-export interface MessageMsgCancelRevenue {
+export interface MsgCancelRevenueParams {
   contractAddress: string
   deployerAddress: string
 }
 
-export function createTxMsgCancelRevenue(
-  chain: Chain,
-  sender: Sender,
-  fee: Fee,
-  memo: string,
-  params: MessageMsgCancelRevenue,
-) {
-  // EIP712
-  const feeObject = generateFee(
-    fee.amount,
-    fee.denom,
-    fee.gas,
-    sender.accountAddress,
-  )
+const createEIP712MsgCancelRevenue = (params: MsgCancelRevenueParams) => {
   const types = generateTypes(MSG_CANCEL_REVENUE_TYPES)
 
-  const msg = createMsgCancelRevenue(
+  const message = createMsgCancelRevenue(
     params.contractAddress,
     params.deployerAddress,
-  )
-  const messages = generateMessage(
-    sender.accountNumber.toString(),
-    sender.sequence.toString(),
-    chain.cosmosChainId,
-    memo,
-    feeObject,
-    msg,
-  )
-  const eipToSign = createEIP712(types, chain.chainId, messages)
-
-  // Cosmos
-  const msgCosmos = protoMsgCancelRevenue(
-    params.contractAddress,
-    params.deployerAddress,
-  )
-  const tx = createTransaction(
-    msgCosmos,
-    memo,
-    fee.amount,
-    fee.denom,
-    parseInt(fee.gas, 10),
-    'ethsecp256',
-    sender.pubkey,
-    sender.sequence,
-    sender.accountNumber,
-    chain.cosmosChainId,
   )
 
   return {
-    signDirect: tx.signDirect,
-    legacyAmino: tx.legacyAmino,
-    eipToSign,
+    types,
+    message,
   }
+}
+
+const createCosmosMsgCancelRevenue = (params: MsgCancelRevenueParams) => {
+  return protoMsgCancelRevenue(params.contractAddress, params.deployerAddress)
+}
+
+/**
+ * Creates a transaction for a `MsgCancelRevenue` object.
+ *
+ * @remarks
+ * This method creates a transaction wrapping the Evmos
+ * {@link https://docs.evmos.org/modules/revenue/04_transactions.html#msgcancelrevenue | MsgCancelRevenue}
+ *
+ * @param context - Transaction Context
+ * @param params - MsgCancelRevenue Params
+ * @returns Transaction with the MsgCancelRevenue payload
+ *
+ */
+export const createTxMsgCancelRevenue = (
+  context: TxContext,
+  params: MsgCancelRevenueParams,
+) => {
+  const typedData = createEIP712MsgCancelRevenue(params)
+  const cosmosMsg = createCosmosMsgCancelRevenue(params)
+
+  return createTransactionPayload(context, typedData, cosmosMsg)
 }
