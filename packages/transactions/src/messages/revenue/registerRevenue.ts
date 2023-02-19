@@ -1,81 +1,62 @@
-import {
-  createMsgRegisterRevenue as protoMsgRegisterRevenue,
-  createTransaction,
-} from '@evmos/proto'
+import { createMsgRegisterRevenue as protoMsgRegisterRevenue } from '@evmos/proto'
 
 import {
-  createEIP712,
-  generateFee,
-  generateMessage,
   generateTypes,
   createMsgRegisterRevenue,
   MSG_REGISTER_REVENUE_TYPES,
 } from '@evmos/eip712'
+import { createTransactionPayload, TxContext } from '../base'
 
-import { Chain, Fee, Sender } from '../common'
-
-export interface MessageMsgRegisterRevenue {
+export interface MsgRegisterRevenueParams {
   contractAddress: string
   deployerAddress: string
   withdrawerAddress: string
   nonces: number[]
 }
 
-export function createTxMsgRegisterRevenue(
-  chain: Chain,
-  sender: Sender,
-  fee: Fee,
-  memo: string,
-  params: MessageMsgRegisterRevenue,
-) {
-  // EIP712
-  const feeObject = generateFee(
-    fee.amount,
-    fee.denom,
-    fee.gas,
-    sender.accountAddress,
-  )
+const createEIP712MsgRegisterRevenue = (params: MsgRegisterRevenueParams) => {
   const types = generateTypes(MSG_REGISTER_REVENUE_TYPES)
 
-  const msg = createMsgRegisterRevenue(
+  const message = createMsgRegisterRevenue(
     params.contractAddress,
     params.deployerAddress,
     params.withdrawerAddress,
     params.nonces,
-  )
-  const messages = generateMessage(
-    sender.accountNumber.toString(),
-    sender.sequence.toString(),
-    chain.cosmosChainId,
-    memo,
-    feeObject,
-    msg,
-  )
-  const eipToSign = createEIP712(types, chain.chainId, messages)
-
-  // Cosmos
-  const msgCosmos = protoMsgRegisterRevenue(
-    params.contractAddress,
-    params.deployerAddress,
-    params.withdrawerAddress,
-    params.nonces,
-  )
-  const tx = createTransaction(
-    msgCosmos,
-    memo,
-    fee.amount,
-    fee.denom,
-    parseInt(fee.gas, 10),
-    'ethsecp256',
-    sender.pubkey,
-    sender.sequence,
-    sender.accountNumber,
-    chain.cosmosChainId,
   )
 
   return {
-    signDirect: tx.signDirect,
-    legacyAmino: tx.legacyAmino,
-    eipToSign,
+    types,
+    message,
   }
+}
+
+const createCosmosMsgRegisterRevenue = (params: MsgRegisterRevenueParams) => {
+  return protoMsgRegisterRevenue(
+    params.contractAddress,
+    params.deployerAddress,
+    params.withdrawerAddress,
+    params.nonces,
+  )
+}
+
+/**
+ * Creates a transaction for a `MsgRegisterRevenue` object.
+ *
+ * @remarks
+ * This method creates a transaction wrapping the Evmos
+ * {@link https://docs.evmos.org/modules/revenue/04_transactions.html#msgregisterrevenue | MsgRegisterRevenue}
+ *
+ * @param context - Transaction Context
+ * @param params - MsgRegisterRevenue Params
+ * @returns Transaction with the MsgRegisterRevenue payload
+ *
+ */
+export const createTxMsgRegisterRevenue = (
+  context: TxContext,
+  params: MsgRegisterRevenueParams,
+) => {
+  const typedData = createEIP712MsgRegisterRevenue(params)
+  const cosmosMsg = createCosmosMsgRegisterRevenue(params)
+
+  return createTransactionPayload(context, typedData, cosmosMsg)
 }
