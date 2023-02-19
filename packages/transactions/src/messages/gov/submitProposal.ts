@@ -52,8 +52,8 @@ const createCosmosMsgSubmitProposal = (params: MsgSubmitProposalParams) => {
  * This method creates a transaction wrapping the Cosmos SDK's
  * {@link https://docs.cosmos.network/v0.47/modules/gov#proposal-submission-1 | MsgSubmitProposal}
  *
- * @param context Transaction Context
- * @param params MsgSubmitProposal Params
+ * @param context - Transaction Context
+ * @param params - MsgSubmitProposal Params
  * @returns Transaction with the MsgSubmitProposal payload
  *
  */

@@ -63,3 +63,29 @@ export const createTxMsgSubmitProposal: (
   params: MsgSubmitProposalParams,
 ): TxPayload
 ```
+
+### MsgVote
+
+```ts
+export interface MsgVoteParams {
+  proposalId: number
+  option: number
+}
+
+/**
+ * Creates a transaction for a MsgVote object.
+ *
+ * @remarks
+ * This method creates a transaction wrapping the Cosmos SDK's
+ * {@link https://docs.cosmos.network/v0.47/modules/gov#vote-1 | MsgVote}
+ *
+ * @param context - Transaction Context
+ * @param params - MsgVote Params
+ * @returns Transaction with the MsgVote payload
+ *
+ */
+export const createTxMsgVote: (
+  context: TxContext,
+  params: MsgVoteParams,
+): TxPayload
+```

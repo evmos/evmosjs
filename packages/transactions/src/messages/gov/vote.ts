@@ -1,77 +1,51 @@
-import {
-  createMsgVote as protoCreateMsgVote,
-  createTransaction,
-} from '@evmos/proto'
+import { createMsgVote as protoMsgVote } from '@evmos/proto'
 
-import {
-  createEIP712,
-  generateFee,
-  generateMessage,
-  generateTypes,
-  createMsgVote,
-  MSG_VOTE_TYPES,
-} from '@evmos/eip712'
+import { generateTypes, createMsgVote, MSG_VOTE_TYPES } from '@evmos/eip712'
+import { createTransactionPayload, TxContext } from '../base'
 
-import { Chain, Fee, Sender } from '../common'
-
-export interface MessageMsgVote {
+export interface MsgVoteParams {
   proposalId: number
   option: number
 }
 
-export function createTxMsgVote(
-  chain: Chain,
-  sender: Sender,
-  fee: Fee,
-  memo: string,
-  params: MessageMsgVote,
-) {
-  // EIP712
-  const feeObject = generateFee(
-    fee.amount,
-    fee.denom,
-    fee.gas,
-    sender.accountAddress,
-  )
+const createEIP712MsgVote = (context: TxContext, params: MsgVoteParams) => {
   const types = generateTypes(MSG_VOTE_TYPES)
 
-  const msg = createMsgVote(
+  const message = createMsgVote(
     params.proposalId,
     params.option,
-    sender.accountAddress,
-  )
-  const messages = generateMessage(
-    sender.accountNumber.toString(),
-    sender.sequence.toString(),
-    chain.cosmosChainId,
-    memo,
-    feeObject,
-    msg,
-  )
-  const eipToSign = createEIP712(types, chain.chainId, messages)
-
-  // Cosmos
-  const msgCosmos = protoCreateMsgVote(
-    params.proposalId,
-    params.option,
-    sender.accountAddress,
-  )
-  const tx = createTransaction(
-    msgCosmos,
-    memo,
-    fee.amount,
-    fee.denom,
-    parseInt(fee.gas, 10),
-    'ethsecp256',
-    sender.pubkey,
-    sender.sequence,
-    sender.accountNumber,
-    chain.cosmosChainId,
+    context.sender.accountAddress,
   )
 
   return {
-    signDirect: tx.signDirect,
-    legacyAmino: tx.legacyAmino,
-    eipToSign,
+    types,
+    message,
   }
+}
+
+const createCosmosMsgVote = (context: TxContext, params: MsgVoteParams) => {
+  return protoMsgVote(
+    params.proposalId,
+    params.option,
+    context.sender.accountAddress,
+  )
+}
+
+/**
+ * Creates a transaction for a MsgVote object.
+ *
+ * @remarks
+ * This method creates a transaction wrapping the Cosmos SDK's
+ * {@link https://docs.cosmos.network/v0.47/modules/gov#vote-1 | MsgVote}
+ *
+ * @param context - Transaction Context
+ * @param params - MsgVote Params
+ * @returns Transaction with the MsgVote payload
+ *
+ */
+export const createTxMsgVote = (context: TxContext, params: MsgVoteParams) => {
+  const typedData = createEIP712MsgVote(context, params)
+  const cosmosMsg = createCosmosMsgVote(context, params)
+
+  return createTransactionPayload(context, typedData, cosmosMsg)
 }
