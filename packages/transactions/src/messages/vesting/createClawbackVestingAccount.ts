@@ -1,20 +1,14 @@
-import {
-  createMsgCreateClawbackVestingAccount as protoMsgCreateClawbackVestingAccount,
-  createTransaction,
-} from '@evmos/proto'
+import { createMsgCreateClawbackVestingAccount as protoMsgCreateClawbackVestingAccount } from '@evmos/proto'
 
 import {
-  createEIP712,
-  generateFee,
-  generateMessage,
   generateTypes,
   createMsgCreateClawbackVestingAccount,
   MSG_CREATE_CLAWBACK_VESTING_ACCOUNT,
 } from '@evmos/eip712'
+import { createTransactionPayload, TxContext } from '../base'
+import { Period } from '../common'
 
-import { Chain, Fee, Period, Sender } from '../common'
-
-export interface MessageMsgCreateClawbackVestingAccount {
+export interface MsgCreateClawbackVestingAccountParams {
   fromAddress: string
   toAddress: string
   startTime: number
@@ -23,65 +17,57 @@ export interface MessageMsgCreateClawbackVestingAccount {
   merge: boolean
 }
 
-export function createTxCreateClawbackVestingAccount(
-  chain: Chain,
-  sender: Sender,
-  fee: Fee,
-  memo: string,
-  params: MessageMsgCreateClawbackVestingAccount,
-) {
-  // EIP712
-  const feeObject = generateFee(
-    fee.amount,
-    fee.denom,
-    fee.gas,
-    sender.accountAddress,
-  )
+const createEIP712MsgCreateClawbackVestingAccount = (
+  params: MsgCreateClawbackVestingAccountParams,
+) => {
   const types = generateTypes(MSG_CREATE_CLAWBACK_VESTING_ACCOUNT)
 
-  const msg = createMsgCreateClawbackVestingAccount(
+  const message = createMsgCreateClawbackVestingAccount(
     params.fromAddress,
     params.toAddress,
     params.startTime,
     params.lockupPeriods,
     params.vestingPeriods,
     params.merge,
-  )
-  const messages = generateMessage(
-    sender.accountNumber.toString(),
-    sender.sequence.toString(),
-    chain.cosmosChainId,
-    memo,
-    feeObject,
-    msg,
-  )
-  const eipToSign = createEIP712(types, chain.chainId, messages)
-
-  // Cosmos
-  const msgCosmos = protoMsgCreateClawbackVestingAccount(
-    params.fromAddress,
-    params.toAddress,
-    params.startTime,
-    params.lockupPeriods,
-    params.vestingPeriods,
-    params.merge,
-  )
-  const tx = createTransaction(
-    msgCosmos,
-    memo,
-    fee.amount,
-    fee.denom,
-    parseInt(fee.gas, 10),
-    'ethsecp256',
-    sender.pubkey,
-    sender.sequence,
-    sender.accountNumber,
-    chain.cosmosChainId,
   )
 
   return {
-    signDirect: tx.signDirect,
-    legacyAmino: tx.legacyAmino,
-    eipToSign,
+    types,
+    message,
   }
+}
+
+const createCosmosMsgCreateClawbackVestingAccount = (
+  params: MsgCreateClawbackVestingAccountParams,
+) => {
+  return protoMsgCreateClawbackVestingAccount(
+    params.fromAddress,
+    params.toAddress,
+    params.startTime,
+    params.lockupPeriods,
+    params.vestingPeriods,
+    params.merge,
+  )
+}
+
+/**
+ * Creates a transaction for a MsgCreateClawbackVestingAccount object.
+ *
+ * @remarks
+ * This method creates a transaction wrapping the Evmos
+ * {@link https://docs.evmos.org/modules/vesting/04_transactions.html#createclawbackvestingaccount | MsgCreateClawbackVestingAccount}
+ *
+ * @param context Transaction Context
+ * @param params MsgCreateClawbackVestingAccount Params
+ * @returns Transaction with the MsgCreateClawbackVestingAccount payload
+ *
+ */
+export const createTxMsgCreateClawbackVestingAccount = (
+  context: TxContext,
+  params: MsgCreateClawbackVestingAccountParams,
+) => {
+  const typedData = createEIP712MsgCreateClawbackVestingAccount(params)
+  const cosmosMsg = createCosmosMsgCreateClawbackVestingAccount(params)
+
+  return createTransactionPayload(context, typedData, cosmosMsg)
 }
