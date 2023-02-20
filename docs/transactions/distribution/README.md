@@ -29,3 +29,28 @@ export const createTxMsgSetWithdrawAddress: (
   params: MsgSetWithdrawAddressParams,
 ): TxPayload 
 ```
+
+### MsgWithdrawDelegatorReward
+
+```ts
+export interface MsgWithdrawDelegatorRewardParams {
+  validatorAddress: string
+}
+
+/**
+ * Creates a transaction for a MsgWithdrawRewards object.
+ *
+ * @remarks
+ * This method creates a transaction wrapping the Cosmos SDK's
+ * {@link https://docs.cosmos.network/v0.47/modules/distribution#msgwithdrawdelegatorreward| MsgWithdrawDelegatorReward}
+ *
+ * @param context Transaction Context
+ * @param params MsgWithdrawDelegatorReward Params
+ * @returns Transaction with the MsgWithdrawDelegatorReward payload
+ *
+ */
+export const createTxMsgWithdrawDelegatorReward: (
+  context: TxContext,
+  params: MsgWithdrawDelegatorRewardParams,
+): TxPayload 
+```
