@@ -29,6 +29,7 @@ export interface Chain {
   chainId: number
   cosmosChainId: string
 }
+
 export interface TxGenerated {
   signDirect: {
     body: protoTxNamespace.txn.TxBody
