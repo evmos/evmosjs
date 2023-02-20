@@ -6778,7 +6778,7 @@ just-diff@^5.0.1:
   resolved "https://registry.yarnpkg.com/just-diff/-/just-diff-5.2.0.tgz#60dca55891cf24cd4a094e33504660692348a241"
   integrity sha512-6ufhP9SHjb7jibNFrNxyFZ6od3g+An6Ai9mhGRvcYe8UJlH0prseN64M+6ZBBUoKYHZsitDP42gAJ8+eVWr3lw==
 
-keccak@^3.0.0, keccak@^3.0.2:
+keccak@^3.0.0:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/keccak/-/keccak-3.0.3.tgz#4bc35ad917be1ef54ff246f904c2bbbf9ac61276"
   integrity sha512-JZrLIAJWuZxKbCilMpNz5Vj7Vtb4scDG3dMXLOsbzBmQGyjwE61BbW7bJkfKKCShXiQZt3T6sBgALRtmd+nZaQ==
