@@ -1,5 +1,5 @@
-import { Fee, Chain, Sender } from '../messages/common'
-import { TxContext } from '../messages/base'
+import { Fee, Chain, Sender } from '../../messages/common'
+import { TxContext } from '../../messages/base'
 
 export class TestingClient {
   public readonly denom = 'aevmos'

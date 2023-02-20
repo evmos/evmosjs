@@ -31,7 +31,7 @@ const common = {
     'import/no-extraneous-dependencies': [
       'error',
       {
-        devDependencies: ['**/*.spec.ts', '**/tests/*'],
+        devDependencies: ['**/*.spec.ts', '**/tests/**/*'],
       },
     ],
   },
