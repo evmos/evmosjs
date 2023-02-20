@@ -85,3 +85,35 @@ export const createTxMsgUndelegate: (
   params: MsgUndelegateParams,
 ): TxPayload 
 ```
+
+### MsgEditValidator
+
+```ts
+export interface MsgEditValidatorParams {
+  moniker: string | undefined
+  identity: string | undefined
+  website: string | undefined
+  securityContact: string | undefined
+  details: string | undefined
+  validatorAddress: string | undefined
+  commissionRate: string | undefined
+  minSelfDelegation: string | undefined
+}
+
+/**
+ * Creates a transaction for a `MsgEditValidator` object.
+ *
+ * @remarks
+ * This method creates a transaction wrapping the Cosmos SDK's
+ * {@link https://docs.cosmos.network/v0.47/modules/staking#msgeditvalidator | MsgEditValidator}
+ *
+ * @param context - Transaction Context
+ * @param params - MsgEditValidator Params
+ * @returns Transaction with the MsgEditValidator payload
+ *
+ */
+export const createTxMsgEditValidator: (
+  context: TxContext,
+  params: MsgEditValidatorParams,
+): TxPayload 
+```
