@@ -58,3 +58,30 @@ export const createTxMsgDelegate: (
   params: MsgDelegateParams,
 ): TxPayload 
 ```
+
+### MsgUndelegate
+
+```ts
+export interface MsgUndelegateParams {
+  validatorAddress: string
+  amount: string
+  denom: string
+}
+
+/**
+ * Creates a transaction for a MsgUndelegate object.
+ *
+ * @remarks
+ * This method creates a transaction wrapping the Cosmos SDK's
+ * {@link https://docs.cosmos.network/v0.47/modules/staking#msgundelegate | MsgUndelegate}
+ *
+ * @param context Transaction Context
+ * @param params MsgUndelegate Params
+ * @returns Transaction with the MsgUndelegate payload
+ *
+ */
+export const createTxMsgUndelegate: (
+  context: TxContext,
+  params: MsgUndelegateParams,
+): TxPayload 
+```
