@@ -5,10 +5,8 @@ export * from './encoding/encoding'
 export * from './encoding/utils'
 
 // Messages
+export * from './messages/revenue'
 export * from './messages/authz/generic'
-export * from './messages/revenue/msgCancelRevenue'
-export * from './messages/revenue/msgUpdateRevenue'
-export * from './messages/revenue/msgRegisterRevenue'
 export * from './messages/vesting/msgCreateClawbackVestingAccount'
 export * from './messages/vesting/msgClawback'
 export * from './messages/erc20/msgConvertCoin'
