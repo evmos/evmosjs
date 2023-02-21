@@ -5,6 +5,7 @@ export * from './encoding/encoding'
 export * from './encoding/utils'
 
 // Messages
+export * from './messages/staking'
 export * from './messages/authz/generic'
 export * from './messages/revenue/msgCancelRevenue'
 export * from './messages/revenue/msgUpdateRevenue'
@@ -19,5 +20,3 @@ export * from './messages/gov/msgSubmitProposal'
 export * from './messages/gov/msgDeposit'
 export * from './messages/ibcMsgTransfer'
 export * from './messages/msgsend'
-export * from './messages/staking'
-export * from './messages/validator'
