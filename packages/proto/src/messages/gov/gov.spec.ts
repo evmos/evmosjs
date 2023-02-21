@@ -10,8 +10,8 @@ import {
 import { from, denom } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
-describe('test gov message generation', () => {
-  it('msgVote', () => {
+describe('test Gov Module message generation', () => {
+  it('correctly wraps MsgVote', () => {
     const proposalId = 60
     const vote = 1
     const msg = createMsgVote(proposalId, vote, from)
@@ -24,7 +24,7 @@ describe('test gov message generation', () => {
     expect(msg.path).toStrictEqual(MsgVote.typeName)
   })
 
-  it('msgDeposit', () => {
+  it('correctly wraps MsgDeposit', () => {
     const amount = '1000'
     const proposalId = 40
     const msg = createMsgDeposit(proposalId, from, { denom, amount })
@@ -42,7 +42,7 @@ describe('test gov message generation', () => {
     expect(msg.path).toStrictEqual(MsgDeposit.typeName)
   })
 
-  it('msgSubmitProposal', () => {
+  it('correctly wraps MsgSubmitProposal', () => {
     const proposalId = 60
     const vote = 1
     const amount = '1000'

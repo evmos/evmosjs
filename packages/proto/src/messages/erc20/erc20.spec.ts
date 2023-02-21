@@ -6,8 +6,8 @@ import { MsgConvertCoin, MsgConvertERC20 } from '../../proto/evmos/erc20/tx'
 import { from, to, denom, hex } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
-describe('test erc20 message generation', () => {
-  it('msgConvertCoin', () => {
+describe('test ERC20 Module message generation', () => {
+  it('correctly wraps msgConvertCoin', () => {
     const amount = '10000000'
     const msg = createMsgConvertCoin(denom, amount, hex, from)
 
@@ -22,7 +22,7 @@ describe('test erc20 message generation', () => {
     expect(msg.path).toStrictEqual(MsgConvertCoin.typeName)
   })
 
-  it('msgConvertERC20', () => {
+  it('correctly wraps msgConvertERC20', () => {
     const amount = '10000000'
     const msg = createMsgConvertERC20(hex, amount, to, from)
 

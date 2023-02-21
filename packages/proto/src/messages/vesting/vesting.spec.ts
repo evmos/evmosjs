@@ -9,8 +9,8 @@ import {
 import { from, to, to2, denom } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
-describe('test vesting message generation', () => {
-  it('msgClawback', () => {
+describe('test Vesting Module message generation', () => {
+  it('correctly wraps msgClawback', () => {
     const msg = createMsgClawback(from, to, to2)
 
     expect(msg.message.toJson(JSONOptions)).toStrictEqual({
@@ -21,7 +21,7 @@ describe('test vesting message generation', () => {
     expect(msg.path).toStrictEqual(MsgClawback.typeName)
   })
 
-  it('msgClawback without dest address', () => {
+  it('correctly wraps msgClawback without dest address', () => {
     const msg = createMsgClawback(from, to)
 
     expect(msg.message.toJson(JSONOptions)).toStrictEqual({
@@ -32,7 +32,7 @@ describe('test vesting message generation', () => {
     expect(msg.path).toStrictEqual(MsgClawback.typeName)
   })
 
-  it('msgCreateClawbackVestingAccount', () => {
+  it('correctly wraps msgCreateClawbackVestingAccount', () => {
     const vestingPeriods = new Array(10).fill(undefined).map((_, i) => ({
       length: i * 100,
       amount: [

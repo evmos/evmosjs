@@ -13,8 +13,8 @@ import {
 import { from, to, val } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
-describe('test distribution message generation', () => {
-  it('msgWithdrawDelegatorReward', () => {
+describe('test Distribution Module message generation', () => {
+  it('correctly wraps msgWithdrawDelegatorReward', () => {
     const msg = createMsgWithdrawDelegatorReward(from, val)
 
     expect(msg.message.toJson(JSONOptions)).toStrictEqual({
@@ -24,7 +24,7 @@ describe('test distribution message generation', () => {
     expect(msg.path).toStrictEqual(MsgWithdrawDelegatorReward.typeName)
   })
 
-  it('msgWithdrawValidatorCommission', () => {
+  it('correctly wraps msgWithdrawValidatorCommission', () => {
     const msg = createMsgWithdrawValidatorCommission(val)
 
     expect(msg.message.toJson(JSONOptions)).toStrictEqual({
@@ -33,7 +33,7 @@ describe('test distribution message generation', () => {
     expect(msg.path).toStrictEqual(MsgWithdrawValidatorCommission.typeName)
   })
 
-  it('msgSetWithdrawAddress', () => {
+  it('correctly wraps msgSetWithdrawAddress', () => {
     const msg = createMsgSetWithdrawAddress(from, to)
 
     expect(msg.message.toJson(JSONOptions)).toStrictEqual({

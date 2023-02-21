@@ -3,8 +3,8 @@ import { MsgSend } from '../../proto/cosmos/bank/tx'
 import { from, to, denom } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
-describe('test bank message generation', () => {
-  it('msgSend', () => {
+describe('test Bank Module message generation', () => {
+  it('correctly wraps MsgSend', () => {
     const amount = '10000000'
     const msg = createMsgSend(from, to, amount, denom)
 

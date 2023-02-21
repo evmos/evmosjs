@@ -18,8 +18,8 @@ import { PubKey } from '../../proto/cosmos/crypto/ed25519/keys'
 import { from, val, val2, denom } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
-describe('test staking message generation', () => {
-  it('msgDelegate', () => {
+describe('test Staking Module message generation', () => {
+  it('correctly wraps MsgDelegate', () => {
     const amount = '10000'
     const msg = createMsgDelegate(from, val, amount, denom)
 
@@ -34,7 +34,7 @@ describe('test staking message generation', () => {
     expect(msg.path).toStrictEqual(MsgDelegate.typeName)
   })
 
-  it('msgBeginRedelegate', () => {
+  it('correctly wraps MsgBeginRedelegate', () => {
     const amount = '8500'
     const msg = createMsgBeginRedelegate(from, val, val2, amount, denom)
 
@@ -50,7 +50,7 @@ describe('test staking message generation', () => {
     expect(msg.path).toStrictEqual(MsgBeginRedelegate.typeName)
   })
 
-  it('msgUndelegate', () => {
+  it('correctly wraps MsgUndelegate', () => {
     const amount = '99999'
     const msg = createMsgUndelegate(from, val, amount, denom)
 
@@ -66,8 +66,8 @@ describe('test staking message generation', () => {
   })
 })
 
-describe('test validator message generation', () => {
-  it('msgCreateValidator', () => {
+describe('test Staking Module Validator message generation', () => {
+  it('correctly wraps MsgCreateValidator', () => {
     const description = {
       moniker: 'validator moniker',
       identity: 'validator identity',
@@ -122,7 +122,7 @@ describe('test validator message generation', () => {
     expect(msg.path).toStrictEqual(MsgCreateValidator.typeName)
   })
 
-  it('msgEditValidator', () => {
+  it('correctly wraps MsgEditValidator', () => {
     const newMoniker = 'new-moniker'
     const newIdentity = 'new-identity'
     const newWebsite = 'new-website'
@@ -158,7 +158,7 @@ describe('test validator message generation', () => {
     expect(msg.path).toStrictEqual(MsgEditValidator.typeName)
   })
 
-  it('msgEditValidator with missing values', () => {
+  it('correctly wraps MsgEditValidator with missing fields', () => {
     const newMoniker = 'new-moniker'
     const newIdentity = 'new-identity'
     const newWebsite = 'new-website'

@@ -5,8 +5,8 @@ import { ExtensionOptionsWeb3Tx } from '../../proto/ethermint/types/web3'
 import { from } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
-describe('test web3Extension message generation', () => {
-  it('web3Extension', () => {
+describe('test Web3Extension message generation', () => {
+  it('correctly wraps web3Extension', () => {
     const chainId = 9001
     const feePayer = from
     const bytes = new Uint8Array([

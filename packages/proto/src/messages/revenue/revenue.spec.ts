@@ -11,8 +11,8 @@ import {
 import { from, hex, to } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
-describe('test revenue message generation', () => {
-  it('msgRegisterRevenue', () => {
+describe('test Revenue Module message generation', () => {
+  it('correctly wraps MsgRegisterRevenue', () => {
     const nonces = [10, 15]
     const msg = createMsgRegisterRevenue(hex, from, to, nonces)
 
@@ -25,7 +25,7 @@ describe('test revenue message generation', () => {
     expect(msg.path).toStrictEqual(MsgRegisterRevenue.typeName)
   })
 
-  it('msgCancelRevenue', () => {
+  it('correctly wraps MsgCancelRevenue', () => {
     const msg = createMsgCancelRevenue(hex, from)
 
     expect(msg.message.toJson(JSONOptions)).toStrictEqual({
@@ -35,7 +35,7 @@ describe('test revenue message generation', () => {
     expect(msg.path).toStrictEqual(MsgCancelRevenue.typeName)
   })
 
-  it('msgUpdateRevenue', () => {
+  it('correctly wraps MsgUpdateRevenue', () => {
     const msg = createMsgUpdateRevenue(hex, from, to)
 
     expect(msg.message.toJson(JSONOptions)).toStrictEqual({

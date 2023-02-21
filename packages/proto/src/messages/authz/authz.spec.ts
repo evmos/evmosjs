@@ -7,8 +7,8 @@ import { JSONOptions } from '../../proto/tests/common'
 
 const msgType = 'cosmos-sdk/MsgSend'
 
-describe('test authz message generation', () => {
-  it('msgGrant', () => {
+describe('test Authz Module message generation', () => {
+  it('correctly wraps MsgGrant', () => {
     const seconds = 42
     const secondsTimeStamp = '1970-01-01T00:00:42Z'
 
@@ -34,7 +34,7 @@ describe('test authz message generation', () => {
     expect(msg.path).toStrictEqual(MsgGrant.typeName)
   })
 
-  it('msgRevoke', () => {
+  it('correctly wraps MsgRevoke', () => {
     const msg = createMsgRevoke(from, to, msgType)
 
     expect(msg.message.toJson(JSONOptions)).toStrictEqual({

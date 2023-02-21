@@ -5,8 +5,8 @@ import { MsgTransfer } from '../../proto/cosmos-ibc/ibc/applications/tx'
 import { from, to, denom } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
 
-describe('test IBC message generation', () => {
-  it('msgTransfer', () => {
+describe('test IBC Module message generation', () => {
+  it('correctly wraps MsgTransfer', () => {
     const params = {
       sourcePort: 'transfer',
       sourceChannel: 'channel-0',
