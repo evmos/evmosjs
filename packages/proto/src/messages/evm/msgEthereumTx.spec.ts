@@ -1,4 +1,4 @@
-import { Any } from '@bufbuild/protobuf/'
+import { Any } from '@bufbuild/protobuf'
 import { bytesToLegacyTx, bytesToMsgEthereumTx } from './msgEthereumTx'
 import {
   bytesToAuthInfo,
