@@ -1,5 +1,5 @@
 import { Keccak } from 'sha3'
-import { Any } from '@bufbuild/protobuf/'
+import { Any } from '@bufbuild/protobuf'
 import { Coin } from '../proto/cosmos/base/coin'
 import {
   TxBody,
