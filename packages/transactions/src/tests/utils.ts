@@ -22,6 +22,10 @@ class TestingClient {
   public readonly addrVal2 =
     'evmosvaloper1ex3wpda6mpczlgtcm2dsd60ltz39g5a7wqewls'
 
+  public readonly addrHex1 = '0xe2D61e49ff8a9d724CC54d338D8076F878aC6b71'
+
+  public readonly addrHex2 = '0xC1c85eB8278F783C5FE2103F1e4ac041B094160a'
+
   public readonly chainId = 9001
 
   public readonly memo = 'Transaction Memo'
