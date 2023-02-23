@@ -2,12 +2,10 @@ import { Registry } from '@cosmjs/proto-signing'
 import { AuthInfo, SignDoc, TxBody } from 'cosmjs-types/cosmos/tx/v1beta1/tx'
 import { MsgVote } from 'cosmjs-types/cosmos/gov/v1beta1/tx'
 import { MsgDelegate } from 'cosmjs-types/cosmos/staking/v1beta1/tx'
+import Long from 'long'
 import { parseChainId } from './utils'
 import { MSG_TYPES, eip712MessageType, getFeePayerFromMsg } from './decodeAmino'
 import { createEIP712, generateFee, generateMessage } from '../messages/base'
-
-const Long = require('long')
-const { isLong } = require('long')
 
 export const PROTO_MSG_TYPES = {
   MSG_SEND: '/cosmos.bank.v1beta1.MsgSend',
@@ -47,8 +45,8 @@ function convertProtobufMsgToAminoMsg(obj: any) {
 
   // Convert Long objects to string, since Longs are not recognized
   // by EIP-712 types.
-  if (isLong(obj)) {
-    return new Long(obj).toString()
+  if (Long.isLong(obj)) {
+    return obj.toString()
   }
 
   // Recursively convert camel case instances to snake case to match expected fields
