@@ -46,10 +46,10 @@ const createCosmosMsgGenericRevoke = (
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/v0.47/modules/authz#msgrevoke | MsgRevoke}
+ * {@link https://docs.cosmos.network/main/modules/authz#msgrevoke | MsgRevoke}
  *
- * @param context Transaction Context
- * @param params MsgRevoke Generic Auth Params
+ * @param context - Transaction Context
+ * @param params - MsgRevoke Generic Auth Params
  * @returns Transaction with the MsgRevoke payload
  *
  */

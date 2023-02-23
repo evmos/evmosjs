@@ -1,8 +1,4 @@
-import {
-  createMsgGrant,
-  createStakeAuthorization,
-  stakeAuthTypes,
-} from '@evmos/proto'
+import { createMsgGrant, createStakeAuthorization, Proto } from '@evmos/proto'
 import { createTransactionPayload } from '../base'
 
 import {
@@ -32,11 +28,12 @@ describe('test tx payload', () => {
       message: {},
     }
 
+    const stakeAuthType = Proto.Cosmos.Staking.Authz.AuthorizationType.DELEGATE
     const auth = createStakeAuthorization(
       params.validatorAddress,
       params.denom,
       params.maxTokens,
-      stakeAuthTypes.AUTHORIZATION_TYPE_DELEGATE,
+      stakeAuthType,
     )
 
     const messageCosmos = createMsgGrant(

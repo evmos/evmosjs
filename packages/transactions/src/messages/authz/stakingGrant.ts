@@ -1,8 +1,4 @@
-import {
-  createMsgGrant,
-  createStakeAuthorization,
-  stakeAuthTypes,
-} from '@evmos/proto'
+import { createMsgGrant, createStakeAuthorization, Proto } from '@evmos/proto'
 import { createTransactionPayload, TxContext } from '../base'
 
 export interface MsgStakeAuthorizationParams {
@@ -26,11 +22,13 @@ const createCosmosMsgStakeAuthorization = (
   context: TxContext,
   params: MsgStakeAuthorizationParams,
 ) => {
+  const stakeAuthType = Proto.Cosmos.Staking.Authz.AuthorizationType.DELEGATE
+
   const auth = createStakeAuthorization(
     params.validatorAddress,
     params.denom,
     params.maxTokens,
-    stakeAuthTypes.AUTHORIZATION_TYPE_DELEGATE,
+    stakeAuthType,
   )
 
   return createMsgGrant(
@@ -46,10 +44,10 @@ const createCosmosMsgStakeAuthorization = (
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/v0.47/modules/authz#msggrant | MsgGrant}
+ * {@link https://docs.cosmos.network/main/modules/authz#msggrant | MsgGrant}
  *
- * @param context Transaction Context
- * @param params MsgGrant Staking Auth Params
+ * @param context - Transaction Context
+ * @param params - MsgGrant Staking Auth Params
  * @returns Transaction with the MsgGrant payload
  *
  */

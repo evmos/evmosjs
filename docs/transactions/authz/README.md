@@ -18,10 +18,10 @@ export interface MsgGenericAuthorizationParams {
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/v0.47/modules/authz#msggrant | MsgGrant}
+ * {@link https://docs.cosmos.network/main/modules/authz#msggrant | MsgGrant}
  *
- * @param context Transaction Context
- * @param params MsgGrant Generic Auth Params
+ * @param context - Transaction Context
+ * @param params - MsgGrant Generic Auth Params
  * @returns Transaction with the MsgGrant payload
  *
  */
@@ -44,10 +44,10 @@ export interface MsgGenericRevokeParams {
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/v0.47/modules/authz#msgrevoke | MsgRevoke}
+ * {@link https://docs.cosmos.network/main/modules/authz#msgrevoke | MsgRevoke}
  *
- * @param context Transaction Context
- * @param params MsgRevoke Generic Auth Params
+ * @param context - Transaction Context
+ * @param params - MsgRevoke Generic Auth Params
  * @returns Transaction with the MsgRevoke payload
  *
  */
@@ -73,10 +73,10 @@ export interface MsgStakeAuthorizationParams {
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/v0.47/modules/authz#msggrant | MsgGrant}
+ * {@link https://docs.cosmos.network/main/modules/authz#msggrant | MsgGrant}
  *
- * @param context Transaction Context
- * @param params MsgGrant Staking Auth Params
+ * @param context - Transaction Context
+ * @param params - MsgGrant Staking Auth Params
  * @returns Transaction with the MsgGrant payload
  *
  */
@@ -98,10 +98,10 @@ export interface MsgStakeRevokeAuthorizationParams {
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/v0.47/modules/authz#msgrevoke | MsgRevoke}
+ * {@link https://docs.cosmos.network/main/modules/authz#msgrevoke | MsgRevoke}
  *
- * @param context Transaction Context
- * @param params MsgRevoke Staking Auth Params
+ * @param context - Transaction Context
+ * @param params - MsgRevoke Staking Auth Params
  * @returns Transaction with the MsgRevoke payload
  *
  */

@@ -54,10 +54,10 @@ const createCosmosMsgGenericGrant = (
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/v0.47/modules/authz#msggrant | MsgGrant}
+ * {@link https://docs.cosmos.network/main/modules/authz#msggrant | MsgGrant}
  *
- * @param context Transaction Context
- * @param params MsgGrant Generic Auth Params
+ * @param context - Transaction Context
+ * @param params - MsgGrant Generic Auth Params
  * @returns Transaction with the MsgGrant payload
  *
  */
