@@ -24,9 +24,15 @@ class TestingClient {
 
   public readonly addrHex1 = '0xe2D61e49ff8a9d724CC54d338D8076F878aC6b71'
 
+  public readonly addrHex2 = '0xC1c85eB8278F783C5FE2103F1e4ac041B094160a'
+
   public readonly chainId = 9001
 
   public readonly memo = 'Transaction Memo'
+
+  public readonly proposalId1 = 42
+
+  public readonly voteOption1 = 1
 
   get context(): TxContext {
     const { chain, sender, fee, memo } = this
