@@ -59,6 +59,31 @@ export const createTxMsgDelegate: (
 ): TxPayload 
 ```
 
+### Multiple MsgDelegate
+
+```ts
+export interface MultipleMsgDelegateParams {
+  values: MsgDelegateParams[]
+}
+
+/**
+ * Creates a transaction for multiple MsgDelegate objects.
+ *
+ * @remarks
+ * This method creates a transaction wrapping the Cosmos SDK's
+ * {@link https://docs.cosmos.network/main/modules/staking#msgdelegate | MsgDelegate}
+ *
+ * @param context - Transaction Context
+ * @param params - MultipleMsgDelegate Params
+ * @returns Transaction with multiple MsgDelegate objects in the payload
+ *
+ */
+export const createTxMultipleMsgDelegate: (
+  context: TxContext,
+  params: MultipleMsgDelegateParams,
+): TxPayload
+```
+
 ### MsgUndelegate
 
 ```ts
