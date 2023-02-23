@@ -36,5 +36,18 @@ Ref: https://keepachangelog.com/en/1.0.0/
 
 ## Unreleased
 
+### API Breaking
+
+- (transactions)[#123](https://github.com/evmos/evmosjs/pull/123) Remove Transactions `web3Extension` and `txRaw` since they are no longer necessary
+
+### Improvements
+
 - (transactions)[#109](https://github.com/evmos/evmosjs/pull/109) Add base and testing infrastructure to Transactions package
+- (transactions)[#110](https://github.com/evmos/evmosjs/pull/110) Refactor Transactions `Authz` module using base infrastructure and add unit tests
+- (transactions)[#111](https://github.com/evmos/evmosjs/pull/111) Refactor Transactions `Bank` module using base infrastructure and add unit tests
+- (transactions)[#117](https://github.com/evmos/evmosjs/pull/117) Refactor Transactions `ERC-20` module using base infrastructure and add unit tests
+- (transactions)[#118](https://github.com/evmos/evmosjs/pull/118) Refactor Transactions `Gov` module using base infrastructure and add unit tests
+- (transactions)[#119](https://github.com/evmos/evmosjs/pull/119) Refactor Transactions `IBC` module using base infrastructure and add unit tests
+- (transactions)[#120](https://github.com/evmos/evmosjs/pull/120) Refactor Transactions `Revenue` module using base infrastructure and add unit tests
+- (transactions)[#122](https://github.com/evmos/evmosjs/pull/122) Refactor Transactions `Vesting` module using base infrastructure and add unit tests
 - (transactions)[#128](https://github.com/evmos/evmosjs/pull/128) Refactor EIP-712 `ERC-20` package internally
