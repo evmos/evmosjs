@@ -43,10 +43,10 @@ const createCosmosMsgWithdrawDelegatorReward = (
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/v0.47/modules/distribution#msgwithdrawdelegatorreward| MsgWithdrawDelegatorReward}
+ * {@link https://docs.cosmos.network/main/modules/distribution#msgwithdrawdelegatorreward| MsgWithdrawDelegatorReward}
  *
- * @param context Transaction Context
- * @param params MsgWithdrawDelegatorReward Params
+ * @param context - Transaction Context
+ * @param params - MsgWithdrawDelegatorReward Params
  * @returns Transaction with the MsgWithdrawDelegatorReward payload
  *
  */

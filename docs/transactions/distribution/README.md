@@ -1,6 +1,6 @@
 # Distribution
 
-This package creates transaction payloads with messages from the [Distribution Module](https://docs.cosmos.network/v0.47/modules/distribution).
+This package creates transaction payloads with messages from the [Distribution Module](https://docs.cosmos.network/main/modules/distribution).
 
 Find the `TxContext` and `TxPayload` types in the Transaction Docs.
 
@@ -17,10 +17,10 @@ export interface MsgSetWithdrawAddressParams {
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/v0.47/modules/distribution#msgsetwithdrawaddress| MsgSetWithdrawAddress}
+ * {@link https://docs.cosmos.network/main/modules/distribution#msgsetwithdrawaddress| MsgSetWithdrawAddress}
  *
- * @param context Transaction Context
- * @param params MsgSetWithdrawAddress Params
+ * @param context - Transaction Context
+ * @param params - MsgSetWithdrawAddress Params
  * @returns Transaction with the MsgSetWithdrawAddress payload
  *
  */
@@ -42,10 +42,10 @@ export interface MsgWithdrawDelegatorRewardParams {
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/v0.47/modules/distribution#msgwithdrawdelegatorreward| MsgWithdrawDelegatorReward}
+ * {@link https://docs.cosmos.network/main/modules/distribution#msgwithdrawdelegatorreward| MsgWithdrawDelegatorReward}
  *
- * @param context Transaction Context
- * @param params MsgWithdrawDelegatorReward Params
+ * @param context - Transaction Context
+ * @param params - MsgWithdrawDelegatorReward Params
  * @returns Transaction with the MsgWithdrawDelegatorReward payload
  *
  */
