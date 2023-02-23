@@ -42,7 +42,7 @@ const createCosmosMsgSetWithdrawAddress = (
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/main/modules/distribution#msgsetwithdrawaddress| MsgSetWithdrawAddress}
+ * {@link https://docs.cosmos.network/main/modules/distribution#msgsetwithdrawaddress | MsgSetWithdrawAddress}
  *
  * @param context - Transaction Context
  * @param params - MsgSetWithdrawAddress Params

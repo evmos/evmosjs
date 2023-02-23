@@ -17,7 +17,7 @@ export interface MsgSetWithdrawAddressParams {
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/main/modules/distribution#msgsetwithdrawaddress| MsgSetWithdrawAddress}
+ * {@link https://docs.cosmos.network/main/modules/distribution#msgsetwithdrawaddress | MsgSetWithdrawAddress}
  *
  * @param context - Transaction Context
  * @param params - MsgSetWithdrawAddress Params
@@ -42,7 +42,7 @@ export interface MsgWithdrawDelegatorRewardParams {
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/main/modules/distribution#msgwithdrawdelegatorreward| MsgWithdrawDelegatorReward}
+ * {@link https://docs.cosmos.network/main/modules/distribution#msgwithdrawdelegatorreward | MsgWithdrawDelegatorReward}
  *
  * @param context - Transaction Context
  * @param params - MsgWithdrawDelegatorReward Params
@@ -53,4 +53,29 @@ export const createTxMsgWithdrawDelegatorReward: (
   context: TxContext,
   params: MsgWithdrawDelegatorRewardParams,
 ): TxPayload 
+```
+
+### Multiple MsgWithdrawDelegatorReward
+
+```ts
+export interface MultipleMsgWithdrawDelegatorRewardParams {
+  validatorAddresses: string[]
+}
+
+/**
+ * Creates a transaction for multiple MsgWithdrawDelegatorReward objects.
+ *
+ * @remarks
+ * This method creates a transaction wrapping the Cosmos SDK's
+ * {@link https://docs.cosmos.network/main/modules/distribution#msgwithdrawdelegatorreward | MsgWithdrawDelegatorReward}
+ *
+ * @param context - Transaction Context
+ * @param params - MultipleMsgWithdrawDelegatorReward Params
+ * @returns Transaction with multiple MsgWithdrawDelegatorReward objects in the payload
+ *
+ */
+export const createTxMultipleMsgWithdrawDelegatorReward: (
+  context: TxContext,
+  params: MultipleMsgWithdrawDelegatorRewardParams,
+): TxPayload
 ```
