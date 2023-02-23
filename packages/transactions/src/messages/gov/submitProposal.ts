@@ -5,7 +5,7 @@ import {
 import {
   generateTypes,
   createMsgSubmitProposal,
-  MSG_SUBMIT_TYPES,
+  MSG_SUBMIT_PROPOSAL_TYPES,
 } from '@evmos/eip712'
 import { createTransactionPayload, TxContext } from '../base'
 
@@ -17,7 +17,7 @@ export interface MsgSubmitProposalParams {
 }
 
 const createEIP712MsgSubmitProposal = (params: MsgSubmitProposalParams) => {
-  const types = generateTypes(MSG_SUBMIT_TYPES)
+  const types = generateTypes(MSG_SUBMIT_PROPOSAL_TYPES)
 
   const contentAsJSON = params.content.message.toJSON({
     useProtoFieldName: true,
