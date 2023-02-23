@@ -57,7 +57,7 @@ const createCosmosMsgEditValidator = (params: MsgEditValidatorParams) => {
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/v0.47/modules/staking#msgeditvalidator | MsgEditValidator}
+ * {@link https://docs.cosmos.network/main/modules/staking#msgeditvalidator | MsgEditValidator}
  *
  * @param context - Transaction Context
  * @param params - MsgEditValidator Params

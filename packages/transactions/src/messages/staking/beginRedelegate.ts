@@ -53,7 +53,7 @@ const createCosmosMsgBeginRedelegate = (
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/v0.47/modules/staking#msgbeginredelegate | MsgBeginRedelegate}
+ * {@link https://docs.cosmos.network/main/modules/staking#msgbeginredelegate | MsgBeginRedelegate}
  *
  * @param context - Transaction Context
  * @param params - MsgBeginRedelegate Params

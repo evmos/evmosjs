@@ -50,7 +50,7 @@ const createCosmosMsgDelegate = (
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/v0.47/modules/staking#msgdelegate | MsgDelegate}
+ * {@link https://docs.cosmos.network/main/modules/staking#msgdelegate | MsgDelegate}
  *
  * @param context - Transaction Context
  * @param params - MsgDelegate Params
