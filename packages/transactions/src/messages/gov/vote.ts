@@ -36,7 +36,7 @@ const createCosmosMsgVote = (context: TxContext, params: MsgVoteParams) => {
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/v0.47/modules/gov#vote-1 | MsgVote}
+ * {@link https://docs.cosmos.network/main/modules/gov#vote-1 | MsgVote}
  *
  * @param context - Transaction Context
  * @param params - MsgVote Params

@@ -34,7 +34,9 @@ describe('test tx payload', () => {
   it('produces tx payloads as expected', () => {
     const types = generateTypes(MSG_SUBMIT_TYPES)
 
-    const contentAsJSON = params.content.message.toObject()
+    const contentAsJSON = params.content.message.toJSON({
+      useProtoFieldName: true,
+    })
     const message = createMsgSubmitProposal(
       contentAsJSON,
       params.denom,

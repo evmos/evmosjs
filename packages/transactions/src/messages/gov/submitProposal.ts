@@ -19,7 +19,9 @@ export interface MsgSubmitProposalParams {
 const createEIP712MsgSubmitProposal = (params: MsgSubmitProposalParams) => {
   const types = generateTypes(MSG_SUBMIT_TYPES)
 
-  const contentAsJSON = params.content.message.toObject() // TODO: replace with Proto's toJSON()
+  const contentAsJSON = params.content.message.toJSON({
+    useProtoFieldName: true,
+  }) // TODO: Replace with Common JsonWriteOptions
 
   const message = createMsgSubmitProposal(
     contentAsJSON,
@@ -50,7 +52,7 @@ const createCosmosMsgSubmitProposal = (params: MsgSubmitProposalParams) => {
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/v0.47/modules/gov#proposal-submission-1 | MsgSubmitProposal}
+ * {@link https://docs.cosmos.network/main/modules/gov#proposal-submission-1 | MsgSubmitProposal}
  *
  * @param context - Transaction Context
  * @param params - MsgSubmitProposal Params

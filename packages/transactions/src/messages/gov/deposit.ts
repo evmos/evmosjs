@@ -48,7 +48,7 @@ const createCosmosMsgDeposit = (
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/v0.47/modules/gov#deposit-2 | MsgDeposit}
+ * {@link https://docs.cosmos.network/main/modules/gov#deposit-2 | MsgDeposit}
  *
  * @param context - Transaction Context
  * @param params - MsgDeposit Params

@@ -1,6 +1,6 @@
-# Gov
+# Governance
 
-This package creates transaction payloads with messages from the [Gov Module](https://docs.cosmos.network/v0.47/modules/gov).
+This package creates transaction payloads with messages from the [Gov Module](https://docs.cosmos.network/main/modules/gov).
 
 Find the `TxContext` and `TxPayload` types in the Transaction Docs.
 
@@ -20,7 +20,7 @@ export interface MsgDepositParams {
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/v0.47/modules/gov#deposit-2 | MsgDeposit}
+ * {@link https://docs.cosmos.network/main/modules/gov#deposit-2 | MsgDeposit}
  *
  * @param context Transaction Context
  * @param params MsgDeposit Params
@@ -50,7 +50,7 @@ export interface MsgSubmitProposalParams {
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/v0.47/modules/gov#proposal-submission-1 | MsgSubmitProposal}
+ * {@link https://docs.cosmos.network/main/modules/gov#proposal-submission-1 | MsgSubmitProposal}
  *
  * @param context Transaction Context
  * @param params MsgSubmitProposal Params
@@ -77,7 +77,7 @@ export interface MsgVoteParams {
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/v0.47/modules/gov#vote-1 | MsgVote}
+ * {@link https://docs.cosmos.network/main/modules/gov#vote-1 | MsgVote}
  *
  * @param context - Transaction Context
  * @param params - MsgVote Params
