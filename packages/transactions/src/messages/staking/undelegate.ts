@@ -52,8 +52,8 @@ const createCosmosMsgUndelegate = (
  * This method creates a transaction wrapping the Cosmos SDK's
  * {@link https://docs.cosmos.network/v0.47/modules/staking#msgundelegate | MsgUndelegate}
  *
- * @param context Transaction Context
- * @param params MsgUndelegate Params
+ * @param context - Transaction Context
+ * @param params - MsgUndelegate Params
  * @returns Transaction with the MsgUndelegate payload
  *
  */
