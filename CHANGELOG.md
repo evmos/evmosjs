@@ -42,3 +42,4 @@ Ref: https://keepachangelog.com/en/1.0.0/
 - (transactions)[#117](https://github.com/evmos/evmosjs/pull/117) Refactor Transactions `ERC-20` module using base infrastructure and add unit tests
 - (transactions)[#118](https://github.com/evmos/evmosjs/pull/118) Refactor Transactions `Gov` module using base infrastructure and add unit tests
 - (transactions)[#119](https://github.com/evmos/evmosjs/pull/119) Refactor Transactions `IBC` module using base infrastructure and add unit tests
+- (transactions)[#120](https://github.com/evmos/evmosjs/pull/120) Refactor Transactions `Revenue` module using base infrastructure and add unit tests
