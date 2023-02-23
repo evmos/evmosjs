@@ -32,14 +32,12 @@ describe('msgDeposit tests', () => {
 
     const msg = createTxMsgDeposit(chain, sender, fee, memo, params)
     expect(
-      Buffer.from(msg.legacyAmino.body.serializeBinary()).toString('base64'),
+      Buffer.from(msg.legacyAmino.body.toBinary()).toString('base64'),
     ).toBe(
       'Cl4KHi9jb3Ntb3MuZ292LnYxYmV0YTEuTXNnRGVwb3NpdBI8CCoSK2V0aG0xdGZlZ2Y1MG41eGwwaGQ1Y3hmempjYTN5bHNmcGcwZm5lZDVncW0aCwoGYWV2bW9zEgEx',
     )
     expect(
-      Buffer.from(msg.legacyAmino.authInfo.serializeBinary()).toString(
-        'base64',
-      ),
+      Buffer.from(msg.legacyAmino.authInfo.toBinary()).toString('base64'),
     ).toBe(
       'ClkKTwooL2V0aGVybWludC5jcnlwdG8udjEuZXRoc2VjcDI1NmsxLlB1YktleRIjCiECBPD7i/R1oivGw1JbgVxD4iiKeA+x4XAc7UOeyzKg6pkSBAoCCH8YARISCgwKBmFldm1vcxICMjAQwJoM',
     )
@@ -47,13 +45,11 @@ describe('msgDeposit tests', () => {
       'rPuR5O7Omn7EdM790sDbISuhQB1GGZz3YIzq34HBh3k=',
     )
 
-    expect(
-      Buffer.from(msg.signDirect.body.serializeBinary()).toString('base64'),
-    ).toBe(
+    expect(Buffer.from(msg.signDirect.body.toBinary()).toString('base64')).toBe(
       'Cl4KHi9jb3Ntb3MuZ292LnYxYmV0YTEuTXNnRGVwb3NpdBI8CCoSK2V0aG0xdGZlZ2Y1MG41eGwwaGQ1Y3hmempjYTN5bHNmcGcwZm5lZDVncW0aCwoGYWV2bW9zEgEx',
     )
     expect(
-      Buffer.from(msg.signDirect.authInfo.serializeBinary()).toString('base64'),
+      Buffer.from(msg.signDirect.authInfo.toBinary()).toString('base64'),
     ).toBe(
       'ClkKTwooL2V0aGVybWludC5jcnlwdG8udjEuZXRoc2VjcDI1NmsxLlB1YktleRIjCiECBPD7i/R1oivGw1JbgVxD4iiKeA+x4XAc7UOeyzKg6pkSBAoCCAEYARISCgwKBmFldm1vcxICMjAQwJoM',
     )
