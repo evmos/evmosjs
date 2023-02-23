@@ -1,4 +1,4 @@
-import { protoTxNamespace } from '@evmos/proto'
+import { Proto } from '@evmos/proto'
 
 export interface EIPToSign {
   types: object
@@ -29,15 +29,16 @@ export interface Chain {
   chainId: number
   cosmosChainId: string
 }
+
 export interface TxGenerated {
   signDirect: {
-    body: protoTxNamespace.txn.TxBody
-    authInfo: protoTxNamespace.txn.AuthInfo
+    body: Proto.Cosmos.Transactions.Tx.TxBody
+    authInfo: Proto.Cosmos.Transactions.Tx.AuthInfo
     signBytes: string
   }
   legacyAmino: {
-    body: protoTxNamespace.txn.TxBody
-    authInfo: protoTxNamespace.txn.AuthInfo
+    body: Proto.Cosmos.Transactions.Tx.TxBody
+    authInfo: Proto.Cosmos.Transactions.Tx.AuthInfo
     signBytes: string
   }
   eipToSign: EIPToSign
