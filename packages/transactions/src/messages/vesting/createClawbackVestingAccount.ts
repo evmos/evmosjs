@@ -55,10 +55,10 @@ const createCosmosMsgCreateClawbackVestingAccount = (
  *
  * @remarks
  * This method creates a transaction wrapping the Evmos
- * {@link https://docs.evmos.org/modules/vesting/04_transactions.html#createclawbackvestingaccount | MsgCreateClawbackVestingAccount}
+ * {@link https://docs.evmos.org/protocol/modules/vesting/transactions#createclawbackvestingaccount | MsgCreateClawbackVestingAccount}
  *
- * @param context Transaction Context
- * @param params MsgCreateClawbackVestingAccount Params
+ * @param context - Transaction Context
+ * @param params - MsgCreateClawbackVestingAccount Params
  * @returns Transaction with the MsgCreateClawbackVestingAccount payload
  *
  */

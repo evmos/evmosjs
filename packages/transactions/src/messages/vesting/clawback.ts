@@ -36,10 +36,10 @@ const createCosmosMsgClawback = (params: MsgClawbackParams) => {
  *
  * @remarks
  * This method creates a transaction wrapping the Evmos
- * {@link https://docs.evmos.org/modules/vesting/04_transactions.html#clawback | MsgClawback}
+ * {@link https://docs.evmos.org/protocol/modules/vesting/transactions#clawback | MsgClawback}
  *
- * @param context Transaction Context
- * @param params MsgClawback Params
+ * @param context - Transaction Context
+ * @param params - MsgClawback Params
  * @returns Transaction with the MsgClawback payload
  *
  */
