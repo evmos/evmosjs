@@ -23,13 +23,13 @@ jobs:
             yarn.lock
 
       - name: Install modules
-        run: yarn install
+        run: npm install
         if: env.GIT_DIFF
 
-      - name: Yarn build is needed because the packages inter-dependencies
-        run: yarn build
+      - name: NPM build is needed because the packages inter-dependencies
+        run: npm run build
         if: env.GIT_DIFF
 
       - name: Run tests
-        run: yarn test
+        run: npm run test
         if: env.GIT_DIFF

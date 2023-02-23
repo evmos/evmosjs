@@ -19,7 +19,7 @@ describe('web3Extension tests', () => {
 
     const res = signatureToWeb3Extension(chain, sender, signature)
     expect(res.path).toBe('ethermint.types.v1.ExtensionOptionsWeb3Tx')
-    expect(Buffer.from(res.message.serializeBinary()).toString('base64')).toBe(
+    expect(Buffer.from(res.message.toBinary()).toString('base64')).toBe(
       'CKhGEitldGhtMXRmZWdmNTBuNXhsMGhkNWN4ZnpqY2EzeWxzZnBnMGZuZWQ1Z3FtGkHuVDzFpQ0lpbq02gYJv2MJWAQoKuuC8/0W4DeE2xlyOnJ/UVuNjntSxvBZ8yTsWmUckoKfFeOOTQ2zeI4jAxikHA==',
     )
   })
