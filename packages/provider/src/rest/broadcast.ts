@@ -7,7 +7,7 @@ export function generateEndpointBroadcast() {
 // the complete package to just type the functions
 export interface TxToSend {
   message: {
-    serializeBinary: () => Uint8Array
+    toBinary: () => Uint8Array
   }
   path: string
 }
@@ -24,7 +24,7 @@ export function generatePostBodyBroadcast(
   broadcastMode: string = BroadcastMode.Sync,
 ) {
   return `{ "tx_bytes": [${txRaw.message
-    .serializeBinary()
+    .toBinary()
     .toString()}], "mode": "${broadcastMode}" }`
 }
 
