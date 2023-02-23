@@ -44,7 +44,7 @@ const createCosmosMsgConvertCoin = (params: MsgConvertCoinParams) => {
  *
  * @remarks
  * This method creates a transaction wrapping the Evmos
- * {@link https://docs.evmos.org/modules/erc20/04_transactions.html#msgconvertcoin | MsgConvertCoin}
+ * {@link https://docs.evmos.org/protocol/modules/erc20/transactions#msgconvertcoin | MsgConvertCoin}
  *
  * @param context - Transaction Context
  * @param params - MsgConvertCoin Params
