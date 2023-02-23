@@ -17,7 +17,7 @@ export const MSG_GENERIC_AUTHORIZATION_TYPES = {
 
 export function createMsgGenericAuthorization(
   sender: string,
-  botAddress: string,
+  granteeAddress: string,
   typeUrl: string,
   expires: number,
 ) {
@@ -38,7 +38,7 @@ export function createMsgGenericAuthorization(
         },
         expiration: time,
       },
-      grantee: botAddress,
+      grantee: granteeAddress,
       granter: sender,
     },
   }

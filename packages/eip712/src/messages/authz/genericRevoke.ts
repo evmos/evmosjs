@@ -8,14 +8,14 @@ export const MSG_REVOKE_GENERIC_AUTHORIZATION_TYPES = {
 
 export function createMsgRevokeGenericAuthorization(
   sender: string,
-  botAddress: string,
+  granteeAddress: string,
   typeUrl: string,
 ) {
   return {
     type: 'cosmos-sdk/MsgRevoke',
     value: {
       msg_type_url: typeUrl,
-      grantee: botAddress,
+      grantee: granteeAddress,
       granter: sender,
     },
   }
