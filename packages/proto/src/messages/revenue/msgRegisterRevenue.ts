@@ -1,4 +1,4 @@
-import * as revenue from '../../proto/evmos/revenue/v1/tx'
+import { MsgRegisterRevenue } from '../../proto/evmos/revenue/tx'
 
 export function createMsgRegisterRevenue(
   contractAddress: string,
@@ -6,14 +6,16 @@ export function createMsgRegisterRevenue(
   withdrawerAddress: string,
   nonces: number[],
 ) {
-  const msg = new revenue.evmos.revenue.v1.MsgRegisterRevenue({
-    contract_address: contractAddress,
-    deployer_address: deployerAddress,
-    withdrawer_address: withdrawerAddress,
-    nonces,
+  const noncesBigInt = nonces.map((n) => BigInt(n))
+
+  const msg = new MsgRegisterRevenue({
+    contractAddress,
+    deployerAddress,
+    withdrawerAddress,
+    nonces: noncesBigInt,
   })
   return {
     message: msg,
-    path: 'evmos.revenue.v1.MsgRegisterRevenue',
+    path: MsgRegisterRevenue.typeName,
   }
 }
