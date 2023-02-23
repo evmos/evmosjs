@@ -18,10 +18,10 @@ export interface MsgSendParams {
  *
  * @remarks
  * This method creates a transaction wrapping the Cosmos SDK's
- * {@link https://docs.cosmos.network/v0.47/modules/bank#msgsend | MsgSend}
+ * {@link https://docs.cosmos.network/main/modules/bank#msgsend | MsgSend}
  *
- * @param context Transaction Context
- * @param params MsgSend Params
+ * @param context - Transaction Context
+ * @param params - MsgSend Params
  * @returns Transaction with the MsgSend payload
  *
  */
