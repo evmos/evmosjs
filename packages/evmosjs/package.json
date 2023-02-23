@@ -28,7 +28,7 @@
   "dependencies": {
     "@evmos/address-converter": "^0.1.9",
     "@evmos/eip712": "^0.2.10",
-    "@evmos/proto": "^0.1.26",
+    "@evmos/proto": "^0.2.0",
     "@evmos/provider": "^0.2.8",
     "@evmos/transactions": "^0.2.12",
     "link-module-alias": "^1.2.0",
