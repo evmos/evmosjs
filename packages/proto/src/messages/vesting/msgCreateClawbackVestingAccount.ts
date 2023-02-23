@@ -1,7 +1,7 @@
-import * as vesting from '../../proto/evmos/vesting/v1/tx'
-import * as cosmosVesting from '../../proto/cosmos/vesting/v1beta1/vesting'
-import * as base from '../../proto/cosmos/base/v1beta1/coin'
-import { google } from '../../proto/google/protobuf/timestamp'
+import { Timestamp } from '@bufbuild/protobuf'
+import { Coin as ProtoCoin } from '../../proto/cosmos/base/coin'
+import { MsgCreateClawbackVestingAccount } from '../../proto/evmos/vesting/tx'
+import { Period as ProtoPeriod } from '../../proto/cosmos/vesting/vesting'
 
 type Coin = {
   denom: string
@@ -14,11 +14,11 @@ type Period = {
 }
 
 const toProtoPeriod = ({ length, amount }: Period) =>
-  new cosmosVesting.cosmos.vesting.v1beta1.Period({
-    length,
+  new ProtoPeriod({
+    length: BigInt(length),
     amount: amount.map(
       ({ denom, amount }) =>
-        new base.cosmos.base.v1beta1.Coin({
+        new ProtoCoin({
           denom,
           amount,
         }),
@@ -33,18 +33,18 @@ export function createMsgCreateClawbackVestingAccount(
   vestingPeriods: Period[],
   merge: boolean,
 ) {
-  const msg = new vesting.evmos.vesting.v1.MsgCreateClawbackVestingAccount({
-    from_address: fromAddress,
-    to_address: toAddress,
-    start_time: new google.protobuf.Timestamp({
-      seconds: startTime,
+  const msg = new MsgCreateClawbackVestingAccount({
+    fromAddress,
+    toAddress,
+    startTime: new Timestamp({
+      seconds: BigInt(startTime),
     }),
-    lockup_periods: lockupPeriods.map(toProtoPeriod),
-    vesting_periods: vestingPeriods.map(toProtoPeriod),
+    lockupPeriods: lockupPeriods.map(toProtoPeriod),
+    vestingPeriods: vestingPeriods.map(toProtoPeriod),
     merge,
   })
   return {
     message: msg,
-    path: 'evmos.vesting.v1.MsgCreateClawbackVestingAccount',
+    path: MsgCreateClawbackVestingAccount.typeName,
   }
 }

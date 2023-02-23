@@ -1,5 +1,9 @@
-import { createEIP712, generateFee, generateMessage } from '@evmos/eip712'
-import { createTransaction } from '@evmos/proto'
+import {
+  createEIP712,
+  generateFee,
+  generateMessageWithMultipleTransactions,
+} from '@evmos/eip712'
+import { createTransactionWithMultipleMessages } from '@evmos/proto'
 import { Chain, Fee, Sender } from './common'
 
 /**
@@ -23,7 +27,16 @@ export interface TxContext {
  */
 export interface EIP712TypedData {
   types: object
-  message: object
+  message: object | object[]
+}
+
+/**
+ * wrapTypeToArray wraps a generic type or array of said type and returns the object wrapped
+ * in an array. This enables our interfaces to indiscriminantly take either pure objects or
+ * arrays to easily support wrapping muliple messages.
+ */
+const wrapTypeToArray = <T>(obj: T | T[]) => {
+  return Array.isArray(obj) ? obj : [obj]
 }
 
 const createEIP712Payload = (
@@ -39,13 +52,15 @@ const createEIP712Payload = (
     sender.accountAddress,
   )
 
-  const messages = generateMessage(
+  const payloadMessages = wrapTypeToArray(typedData.message)
+
+  const messages = generateMessageWithMultipleTransactions(
     sender.accountNumber.toString(),
     sender.sequence.toString(),
     chain.cosmosChainId,
     memo,
     feeObject,
-    typedData.message,
+    payloadMessages,
   )
 
   return createEIP712(typedData.types, chain.chainId, messages)
@@ -53,12 +68,14 @@ const createEIP712Payload = (
 
 const createCosmosPayload = (
   context: TxContext,
-  cosmosMessage: any, // TODO: re-export Protobuf Message type from /proto
+  cosmosPayload: any | any[], // TODO: re-export Protobuf Message type from /proto
 ) => {
   const { fee, sender, chain, memo } = context
 
-  return createTransaction(
-    cosmosMessage,
+  const messages = wrapTypeToArray(cosmosPayload)
+
+  return createTransactionWithMultipleMessages(
+    messages,
     memo,
     fee.amount,
     fee.denom,
@@ -75,9 +92,9 @@ const createCosmosPayload = (
  * Creates a signable transaction with SignDirect,
  * LegacyAmino, and EIP-712 components.
  *
- * @param context Transaction Context
- * @param typedData EIP-712 Typed Data
- * @param cosmosMessage Cosmos SDK Message to sign
+ * @param context - Transaction Context
+ * @param typedData - EIP-712 Typed Data
+ * @param cosmosMessage - Cosmos SDK Message to sign
  * @returns Signable Payload
  *
  */
