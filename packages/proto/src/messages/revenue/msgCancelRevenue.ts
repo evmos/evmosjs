@@ -1,15 +1,15 @@
-import * as revenue from '../../proto/evmos/revenue/v1/tx'
+import { MsgCancelRevenue } from '../../proto/evmos/revenue/tx'
 
 export function createMsgCancelRevenue(
   contractAddress: string,
   deployerAddress: string,
 ) {
-  const msg = new revenue.evmos.revenue.v1.MsgCancelRevenue({
-    contract_address: contractAddress,
-    deployer_address: deployerAddress,
+  const msg = new MsgCancelRevenue({
+    contractAddress,
+    deployerAddress,
   })
   return {
     message: msg,
-    path: 'evmos.revenue.v1.MsgCancelRevenue',
+    path: MsgCancelRevenue.typeName,
   }
 }
