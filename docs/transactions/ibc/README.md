@@ -8,7 +8,7 @@ Find the `TxContext` and `TxPayload` types in the Transaction Docs.
 
 ```ts
 export interface IBCMsgTransferParams {
-  // Channel
+  // Connection
   sourcePort: string
   sourceChannel: string
   // Token

@@ -8,7 +8,7 @@ import {
 import { createTransactionPayload, TxContext } from '../base'
 
 export interface IBCMsgTransferParams {
-  // Channel
+  // Connection
   sourcePort: string
   sourceChannel: string
   // Token
