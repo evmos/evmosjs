@@ -79,3 +79,28 @@ export const createTxMultipleMsgWithdrawDelegatorReward: (
   params: MultipleMsgWithdrawDelegatorRewardParams,
 ): TxPayload
 ```
+
+### MsgWithdrawValidatorCommission
+
+```ts
+export interface MsgWithdrawValidatorCommissionParams {
+  validatorAddress: string
+}
+
+/**
+ * Creates a transaction for a MsgWithdrawValidatorCommission object.
+ *
+ * @remarks
+ * This method creates a transaction wrapping the Cosmos SDK's
+ * {@link https://docs.cosmos.network/main/modules/distribution#withdrawvalidatorcommission | MsgWithdrawValidatorCommission}
+ *
+ * @param context - Transaction Context
+ * @param params - MsgWithdrawValidatorCommission Params
+ * @returns Transaction with the MsgWithdrawValidatorCommission payload
+ *
+ */
+export const createTxMsgWithdrawValidatorCommission: (
+  context: TxContext,
+  params: MsgWithdrawValidatorCommissionParams,
+): TxPayload
+```
