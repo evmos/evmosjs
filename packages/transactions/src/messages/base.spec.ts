@@ -15,7 +15,7 @@ import {
 } from '@evmos/eip712'
 
 import { createTransactionPayload } from './base'
-import TestUtils from '../tests/utils/utils'
+import TestUtils from '../tests/utils'
 
 const { context, denom } = TestUtils
 const senderAddress = TestUtils.addr1

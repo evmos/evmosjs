@@ -1,7 +1,7 @@
 import { TestingClient } from './utils'
 
 class EIP712TestingClient extends TestingClient {
-  private readonly baseTypes = {
+  private createBaseTypes = () => ({
     EIP712Domain: [
       { name: 'name', type: 'string' },
       { name: 'version', type: 'string' },
@@ -30,7 +30,7 @@ class EIP712TestingClient extends TestingClient {
       { name: 'type', type: 'string' },
       { name: 'value', type: 'MsgValue' },
     ],
-  }
+  })
 
   private readonly domain = {
     name: 'Cosmos Web3',
@@ -57,7 +57,7 @@ class EIP712TestingClient extends TestingClient {
   }
 
   generateTypes = (msgTypes: object) => {
-    const types = this.baseTypes
+    const types = this.createBaseTypes()
     Object.assign(types, msgTypes)
 
     return types

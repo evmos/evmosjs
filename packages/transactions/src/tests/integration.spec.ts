@@ -1,8 +1,9 @@
 import ProtoUtils from './utils/proto'
 import EIP712Utils from './utils/eip712'
 import MsgSendUtils from './utils/messages/testSend'
+import MsgVoteUtils from './utils/messages/testVote'
 
-const testMessageClients = [MsgSendUtils]
+const testMessageClients = [MsgSendUtils, MsgVoteUtils]
 
 describe('test transactions package integration', () => {
   it('handles Protobuf encoding', () => {
@@ -18,8 +19,6 @@ describe('test transactions package integration', () => {
       expect(protoTx.authInfo).toStrictEqual(expAuthInfo)
       expect(protoTx.body).toStrictEqual(expBody)
       expect(protoTx.signBytes).toStrictEqual(expSignBytes)
-
-      // TODO: Verify generated payloads against the equivalent in Golang.
     })
   })
 
