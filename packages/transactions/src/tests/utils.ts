@@ -90,16 +90,15 @@ class TestingClient {
     return Buffer.from(bytes).toString('base64')
   }
 
-  // eslint-disable-next-line
   get validatorParams() {
     const moniker = 'test moniker'
     const identity = 'test identity'
     const website = 'test website'
     const securityContact = 'test security contact'
     const details = 'test details'
-    const validatorAddress = 'test validator address'
-    const commissionRate = 'test commission rate'
-    const minSelfDelegation = 'test min self-delegation'
+    const validatorAddress = this.addrVal1
+    const commissionRate = '0.1'
+    const minSelfDelegation = this.amount1
 
     return {
       moniker,
