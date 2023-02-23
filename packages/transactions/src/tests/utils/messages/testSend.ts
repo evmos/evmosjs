@@ -1,6 +1,6 @@
 import { createMsgSend as protoMsgSend } from '@evmos/proto'
 import { createMsgSend as eip712MsgSend, MSG_SEND_TYPES } from '@evmos/eip712'
-import { createMessageSend } from '../../../messages/msgSend'
+import { createTxMsgSend } from '../../../messages/bank'
 import { TestingClient } from '../utils'
 
 // TODO: Define a common MsgTestingClient interface with the following methods
@@ -49,13 +49,7 @@ class MsgSendTestingClient extends TestingClient {
   get payload() {
     const { context, params, protoMsg, eip712TypedData } = this
 
-    const tx = createMessageSend(
-      context.chain,
-      context.sender,
-      context.fee,
-      context.memo,
-      params,
-    )
+    const tx = createTxMsgSend(context, params)
 
     return {
       protoMsg,

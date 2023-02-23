@@ -1,6 +1,6 @@
 import { keccak256 } from '@ethersproject/keccak256'
 import {
-  protoTxNamespace,
+  Proto,
   createSignerInfo,
   createAuthInfo,
   createBody,
@@ -12,7 +12,7 @@ import {
 import { TestingClient } from './utils'
 
 class ProtobufTestingClient extends TestingClient {
-  get signerInfo(): protoTxNamespace.txn.SignerInfo {
+  get signerInfo(): Proto.Cosmos.Transactions.Tx.SignerInfo {
     const { context } = this
     const { sender } = context
     const { sequence, pubkey } = sender
@@ -23,7 +23,7 @@ class ProtobufTestingClient extends TestingClient {
     return createSignerInfo('ethsecp256', pubkeyBytes, sequence, mode)
   }
 
-  get protoFee(): protoTxNamespace.txn.Fee {
+  get protoFee(): Proto.Cosmos.Transactions.Tx.Fee {
     const { context } = this
     const { fee } = context
     const { amount, denom } = fee
@@ -33,7 +33,7 @@ class ProtobufTestingClient extends TestingClient {
     return createFee(amount, denom, gasAsInt)
   }
 
-  get authInfo(): protoTxNamespace.txn.AuthInfo {
+  get authInfo(): Proto.Cosmos.Transactions.Tx.AuthInfo {
     const { signerInfo, protoFee } = this
 
     return createAuthInfo(signerInfo, protoFee)
@@ -48,18 +48,18 @@ class ProtobufTestingClient extends TestingClient {
     return createBody(payload, memo)
   }
 
-  createSignDoc = (body: protoTxNamespace.txn.TxBody) => {
+  createSignDoc = (body: Proto.Cosmos.Transactions.Tx.TxBody) => {
     const { context, authInfo } = this
-    const bodyBytes = body.serializeBinary()
-    const authInfoBytes = authInfo.serializeBinary()
+    const bodyBytes = body.toBinary()
+    const authInfoBytes = authInfo.toBinary()
     const chainId = context.chain.cosmosChainId
     const { accountNumber } = context.sender
 
     return createSigDoc(bodyBytes, authInfoBytes, chainId, accountNumber)
   }
 
-  getSignBytes = (signDoc: protoTxNamespace.txn.SignDoc) => {
-    const hashedSignDocHex = keccak256(signDoc.serializeBinary())
+  getSignBytes = (signDoc: Proto.Cosmos.Transactions.Tx.SignDoc) => {
+    const hashedSignDocHex = keccak256(signDoc.toBinary())
     const hashedSignDocBytes = Buffer.from(
       hashedSignDocHex.replace('0x', ''),
       'hex',
