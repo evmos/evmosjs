@@ -1,5 +1,9 @@
 import { createMsgClawback as protoMsgClawback } from '@evmos/proto'
-import { generateTypes, createMsgClawback, MSG_CLAWBACK } from '@evmos/eip712'
+import {
+  generateTypes,
+  createMsgClawback,
+  MSG_CLAWBACK_TYPES,
+} from '@evmos/eip712'
 import { createTransactionPayload, TxContext } from '../base'
 
 export interface MsgClawbackParams {
@@ -9,7 +13,7 @@ export interface MsgClawbackParams {
 }
 
 const createEIP712MsgClawback = (params: MsgClawbackParams) => {
-  const types = generateTypes(MSG_CLAWBACK)
+  const types = generateTypes(MSG_CLAWBACK_TYPES)
 
   const message = createMsgClawback(
     params.funderAddress,
