@@ -1,4 +1,4 @@
-import { Coin } from './coin'
+import { Coin } from './coin.js'
 
 export enum ProposalStatus {
   Unspecified = 'PROPOSAL_STATUS_UNSPECIFIED',
