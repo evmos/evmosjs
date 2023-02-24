@@ -1,3 +1,3 @@
-export * from './msgCancelRevenue'
-export * from './msgRegisterRevenue'
-export * from './msgUpdateRevenue'
+export * from './msgCancelRevenue.js'
+export * from './msgRegisterRevenue.js'
+export * from './msgUpdateRevenue.js'

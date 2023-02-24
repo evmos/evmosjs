@@ -1,2 +1,2 @@
-export * from './convertCoin'
-export * from './convertERC20'
+export * from './convertCoin.js'
+export * from './convertERC20.js'

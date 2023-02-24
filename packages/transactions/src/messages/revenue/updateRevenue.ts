@@ -6,7 +6,7 @@ import {
   MSG_UPDATE_REVENUE_TYPES,
 } from '@evmos/eip712'
 
-import { createTransactionPayload, TxContext } from '../base'
+import { createTransactionPayload, TxContext } from '../base.js'
 
 export interface MsgUpdateRevenueParams {
   contractAddress: string

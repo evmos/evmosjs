@@ -1,15 +1,15 @@
-import { Coin } from '../../proto/cosmos/base/coin'
+import { Coin } from '../../proto/cosmos/base/coin.js'
 import {
   MsgEditValidator,
   MsgCreateValidator,
-} from '../../proto/cosmos/staking/tx'
+} from '../../proto/cosmos/staking/tx.js'
 import {
   Description,
   CommissionRates,
-} from '../../proto/cosmos/staking/staking'
+} from '../../proto/cosmos/staking/staking.js'
 
-import { createAnyMessage } from '../common'
-import { createED25519PubKey } from '../crypto/keys'
+import { createAnyMessage } from '../common.js'
+import { createED25519PubKey } from '../crypto/keys.js'
 
 const NOT_MODIFY = '[do-not-modify]'
 

@@ -1,11 +1,15 @@
 import { Registry } from '@cosmjs/proto-signing'
-import { AuthInfo, SignDoc, TxBody } from 'cosmjs-types/cosmos/tx/v1beta1/tx'
-import { MsgVote } from 'cosmjs-types/cosmos/gov/v1beta1/tx'
-import { MsgDelegate } from 'cosmjs-types/cosmos/staking/v1beta1/tx'
+import { AuthInfo, SignDoc, TxBody } from 'cosmjs-types/cosmos/tx/v1beta1/tx.js'
+import { MsgVote } from 'cosmjs-types/cosmos/gov/v1beta1/tx.js'
+import { MsgDelegate } from 'cosmjs-types/cosmos/staking/v1beta1/tx.js'
 import Long from 'long'
-import { parseChainId } from './utils'
-import { MSG_TYPES, eip712MessageType, getFeePayerFromMsg } from './decodeAmino'
-import { createEIP712, generateFee, generateMessage } from '../messages/base'
+import { parseChainId } from './utils.js'
+import {
+  MSG_TYPES,
+  eip712MessageType,
+  getFeePayerFromMsg,
+} from './decodeAmino.js'
+import { createEIP712, generateFee, generateMessage } from '../messages/base.js'
 
 export const PROTO_MSG_TYPES = {
   MSG_SEND: '/cosmos.bank.v1beta1.MsgSend',

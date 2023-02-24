@@ -1,3 +1,3 @@
-export * from './messages'
-export * from './transaction'
-export * as Proto from './proto'
+export * from './messages/index.js'
+export * from './transaction/index.js'
+export * as Proto from './proto/index.js'

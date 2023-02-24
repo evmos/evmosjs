@@ -1,4 +1,4 @@
-import { TxRaw, TxBody, AuthInfo } from '../../proto/cosmos/transactions/tx'
+import { TxRaw, TxBody, AuthInfo } from '../../proto/cosmos/transactions/tx.js'
 
 export function bytesToTxRaw(bytes: Uint8Array) {
   return TxRaw.fromBinary(bytes)

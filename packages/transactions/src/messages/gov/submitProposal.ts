@@ -7,7 +7,7 @@ import {
   createMsgSubmitProposal,
   MSG_SUBMIT_PROPOSAL_TYPES,
 } from '@evmos/eip712'
-import { createTransactionPayload, TxContext } from '../base'
+import { createTransactionPayload, TxContext } from '../base.js'
 
 export interface MsgSubmitProposalParams {
   content: any // TODO: Use Protobuf Generic Type

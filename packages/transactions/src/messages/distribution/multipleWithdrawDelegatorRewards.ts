@@ -5,7 +5,7 @@ import {
   MSG_WITHDRAW_DELEGATOR_REWARD_TYPES,
   createMsgWithdrawDelegatorReward,
 } from '@evmos/eip712'
-import { createTransactionPayload, TxContext } from '../base'
+import { createTransactionPayload, TxContext } from '../base.js'
 
 export interface MultipleMsgWithdrawDelegatorRewardParams {
   validatorAddresses: string[]

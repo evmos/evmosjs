@@ -1,1 +1,1 @@
-export * as Coin from './coin'
+export * as Coin from './coin.js'

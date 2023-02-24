@@ -5,7 +5,7 @@ import {
   createMsgConvertERC20,
   MSG_CONVERT_ERC20_TYPES,
 } from '@evmos/eip712'
-import { createTransactionPayload, TxContext } from '../base'
+import { createTransactionPayload, TxContext } from '../base.js'
 
 export interface MsgConvertERC20Params {
   contractAddress: string

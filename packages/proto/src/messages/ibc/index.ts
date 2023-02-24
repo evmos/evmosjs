@@ -1,1 +1,1 @@
-export * from './ibcMsgTransfer'
+export * from './ibcMsgTransfer.js'

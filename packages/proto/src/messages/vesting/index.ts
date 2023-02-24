@@ -1,2 +1,2 @@
-export * from './msgClawback'
-export * from './msgCreateClawbackVestingAccount'
+export * from './msgClawback.js'
+export * from './msgCreateClawbackVestingAccount.js'

@@ -1,5 +1,5 @@
-import { Coin } from '../../proto/cosmos/base/coin'
-import { MsgSend } from '../../proto/cosmos/bank/tx'
+import { Coin } from '../../proto/cosmos/base/coin.js'
+import { MsgSend } from '../../proto/cosmos/bank/tx.js'
 
 export function createMsgSend(
   fromAddress: string,

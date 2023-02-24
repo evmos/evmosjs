@@ -1,3 +1,3 @@
-export * as Authz from './authz'
-export * as Staking from './staking'
-export * as Tx from './tx'
+export * as Authz from './authz.js'
+export * as Staking from './staking.js'
+export * as Tx from './tx.js'
