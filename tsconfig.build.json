@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "target": "es2015",
-    "module": "commonjs",
+    "module": "es2022",
     "moduleResolution": "node",
     "rootDir": ".",
     "lib": [
       "DOM",
       "es2019",
       "es2021",
+      "es2022"
     ],
     "strict": true,
     "noUnusedLocals": true,
