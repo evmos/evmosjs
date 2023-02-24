@@ -9,6 +9,7 @@ export const MSG_CONVERT_COIN_TYPES = {
     { name: 'amount', type: 'string' },
   ],
 }
+
 export function createMsgConvertCoin(
   denom: string,
   amount: string,
