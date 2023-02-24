@@ -6,6 +6,7 @@ export const MSG_CONVERT_ERC20_TYPES = {
     { name: 'sender', type: 'string' },
   ],
 }
+
 export function createMsgConvertERC20(
   contractAddress: string,
   amount: string,

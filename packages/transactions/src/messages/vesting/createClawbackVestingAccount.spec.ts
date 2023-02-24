@@ -2,7 +2,7 @@ import { createMsgCreateClawbackVestingAccount as protoMsgCreateClawbackVestingA
 import {
   generateTypes,
   createMsgCreateClawbackVestingAccount,
-  MSG_CREATE_CLAWBACK_VESTING_ACCOUNT,
+  MSG_CREATE_CLAWBACK_VESTING_ACCOUNT_TYPES,
 } from '@evmos/eip712'
 import {
   MsgCreateClawbackVestingAccountParams,
@@ -41,7 +41,7 @@ const params: MsgCreateClawbackVestingAccountParams = {
 
 describe('test tx payload', () => {
   it('produces tx payloads as expected', () => {
-    const types = generateTypes(MSG_CREATE_CLAWBACK_VESTING_ACCOUNT)
+    const types = generateTypes(MSG_CREATE_CLAWBACK_VESTING_ACCOUNT_TYPES)
     const message = createMsgCreateClawbackVestingAccount(
       params.fromAddress,
       params.toAddress,
