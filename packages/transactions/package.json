@@ -1,7 +1,7 @@
 {
   "name": "@evmos/transactions",
   "description": "Transactions generator for EVMOS",
-  "version": "0.3.0-rc.3",
+  "version": "0.3.0-rc.6",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -27,8 +27,8 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
-    "@evmos/eip712": "0.3.0-rc.2",
-    "@evmos/proto": "0.2.0-rc.1",
+    "@evmos/eip712": "0.3.0-rc.5",
+    "@evmos/proto": "0.2.0-rc.3",
     "link-module-alias": "^1.2.0",
     "shx": "^0.3.4"
   },
