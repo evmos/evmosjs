@@ -4,7 +4,7 @@ JS and TS libs for Evmos.
 
 ## Installation
 
-evmosjs uses [buf.build](https://buf.build/) to manage Protobuf dependencies. To install evmosjs packages in your project,
+evmosjs uses [buf.build](https://buf.build/) to manage [Evmos Protobuf dependencies](https://buf.build/evmos). To install evmosjs packages in your project,
 follow the instructions corresponding to your package manager.
 
 ### NPM
