@@ -1,7 +1,7 @@
-import { Fee, Chain, Sender } from '../messages/common'
-import { TxContext } from '../messages/base'
+import { Fee, Chain, Sender } from '../../messages/common'
+import { TxContext } from '../../messages/base'
 
-class TestingClient {
+export class TestingClient {
   public readonly denom = 'aevmos'
 
   public readonly amount1 = '1000000000000000000'
@@ -88,6 +88,28 @@ class TestingClient {
     ])
 
     return Buffer.from(bytes).toString('base64')
+  }
+
+  get validatorParams() {
+    const moniker = 'test moniker'
+    const identity = 'test identity'
+    const website = 'test website'
+    const securityContact = 'test security contact'
+    const details = 'test details'
+    const validatorAddress = this.addrVal1
+    const commissionRate = '0.1'
+    const minSelfDelegation = this.amount1
+
+    return {
+      moniker,
+      identity,
+      website,
+      securityContact,
+      details,
+      validatorAddress,
+      commissionRate,
+      minSelfDelegation,
+    }
   }
 }
 
