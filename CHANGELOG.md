@@ -56,4 +56,5 @@ Ref: https://keepachangelog.com/en/1.0.0/
 - (transactions)[#126](https://github.com/evmos/evmosjs/pull/126) Refactor EIP-712 `Bank` package internally
 - (transactions)[#127](https://github.com/evmos/evmosjs/pull/127) Refactor EIP-712 `Distribution` package internally
 - (transactions)[#128](https://github.com/evmos/evmosjs/pull/128) Refactor EIP-712 `ERC-20` package internally
+- (transactions)[#129](https://github.com/evmos/evmosjs/pull/129) Refactor EIP-712 `Gov` package internally
 - (transactions)[#133](https://github.com/evmos/evmosjs/pull/133) Refactor EIP-712 `Vesting` package internally

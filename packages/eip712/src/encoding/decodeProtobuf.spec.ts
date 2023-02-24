@@ -1,5 +1,5 @@
 import { generateTypes } from '../messages/base'
-import { MSG_VOTE_TYPES } from '../messages/gov/msgVote'
+import { MSG_VOTE_TYPES } from '../messages/gov'
 import { MSG_SEND_TYPES } from '../messages/bank'
 import { MSG_DELEGATE_TYPES } from '../messages/staking'
 import { decodeProtobufSignDoc } from './decodeProtobuf'
