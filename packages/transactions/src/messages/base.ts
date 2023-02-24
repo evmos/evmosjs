@@ -4,11 +4,11 @@ import {
   generateMessageWithMultipleTransactions,
 } from '@evmos/eip712'
 import { createTransactionWithMultipleMessages } from '@evmos/proto'
-import { Chain, Fee, Sender } from './common.js'
+import { Chain, Fee, Sender, TxPayload } from './common.js'
 
 /**
- * TxContext is the transaction context for a SignDoc, independent
- * from any messages.
+ * TxContext is the transaction context for a SignDoc that is independent
+ * from the transaction payload.
  */
 export interface TxContext {
   chain: Chain
@@ -102,7 +102,7 @@ export const createTransactionPayload = (
   context: TxContext,
   typedData: EIP712TypedData,
   cosmosMessage: any, // TODO: re-export Protobuf Message type from /proto
-) => {
+): TxPayload => {
   const eip712Payload = createEIP712Payload(context, typedData)
 
   const cosmosPayload = createCosmosPayload(context, cosmosMessage)
