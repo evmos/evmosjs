@@ -59,4 +59,5 @@ Ref: https://keepachangelog.com/en/1.0.0/
 - (transactions)[#129](https://github.com/evmos/evmosjs/pull/129) Refactor EIP-712 `Gov` package internally
 - (transactions)[#130](https://github.com/evmos/evmosjs/pull/130) Refactor EIP-712 `IBC` package internally
 - (transactions)[#131](https://github.com/evmos/evmosjs/pull/131) Refactor EIP-712 `Revenue` package internally
+- (transactions)[#132](https://github.com/evmos/evmosjs/pull/132) Refactor EIP-712 `Staking` package internally
 - (transactions)[#133](https://github.com/evmos/evmosjs/pull/133) Refactor EIP-712 `Vesting` package internally
