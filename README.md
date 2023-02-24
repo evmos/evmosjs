@@ -15,7 +15,17 @@ Add the following line to an `.npmrc` file in your project root:
 @buf:registry=https://buf.build/gen/npm/v1
 ```
 
-Then run `npm install evmosjs` (or `npm install @evmosjs/[package]`).
+Then run:
+
+```bash
+npm install evmosjs
+```
+
+Or:
+
+```bash
+npm install @evmosjs/[package]
+```
 
 ### Yarn v2.x or v3.x
 
@@ -27,7 +37,17 @@ npmScopes:
     npmRegistryServer: "https://buf.build/gen/npm/v1"
 ```
 
-Then run `yarn add evmosjs` (or `yarn add @evmosjs/[package]`).
+Then run:
+
+```bash
+yarn add evmosjs
+```
+
+Or:
+
+```bash
+yarn add @evmosjs/[package]
+```
 
 Note that Yarn v1 is not supported ([why not?](https://docs.buf.build/bsr/remote-packages/npm#other-package-managers)).
 
@@ -83,7 +103,7 @@ const result = await rawResult.json()
 
 Create a transaction payload which can be signed using either Metamask or Keplr.
 
-This example uses `MsgSend`. View all signable transaction payloads in the [Transaction docs](https://github.com/evmos/evmosjs/tree/main/docs/transactions).
+This example uses `MsgSend`. View all signable transaction payloads in the [Transaction Docs](https://github.com/evmos/evmosjs/tree/main/docs/transactions).
 
 ```ts
 import { 
@@ -144,6 +164,7 @@ import { createTxRaw } from '@evmos/proto'
 import { evmosToEth } from '@evmos/address-converter'
 
 // First, populate a TxContext object and create a signable Tx payload.
+// (See 'Create a Signable Transaction' to learn how to create these).
 const context = ...
 const tx = ...
 
@@ -182,6 +203,7 @@ EvmosJS supports Cosmos SDK `SignDirect` payloads that can be signed using Keplr
 import { createTxRaw } from '@evmos/proto'
 
 // First, populate a TxContext object and create a signable Tx payload.
+// (See 'Create a Signable Transaction' to learn how to create these).
 const context = ...
 const tx = ...
 
@@ -225,6 +247,7 @@ import { EthSignType } from '@keplr-wallet/types';
 import { createTxRaw } from '@evmos/proto'
 
 // First, populate a TxContext object and create a signable Tx payload.
+// (See 'Create a Signable Transaction' to learn how to create these).
 const context = ...
 const tx = ...
 

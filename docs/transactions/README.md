@@ -2,7 +2,7 @@
 
 `@evmos/transactions` exports methods that create transaction payloads that can be signed using MetaMask or Keplr.
 
-View the documentation within each module for the supported transaction payloads. For example, find `MsgSend` types and capabilities within the `Bank` module documentation.
+View the documentation within each module for the supported transaction payloads. For example, find `MsgSend` types and capabilities within the `Bank` [module documentation](https://github.com/evmos/evmosjs/tree/main/docs/transactions/bank).
 
 ## Types
 
