@@ -1,7 +1,7 @@
 {
   "name": "@evmos/transactions",
   "description": "Transactions generator for EVMOS",
-  "version": "0.3.0-rc.0",
+  "version": "0.3.0-rc.1",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -27,8 +27,8 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
-    "@evmos/eip712": "^0.3.0",
-    "@evmos/proto": "^0.2.0",
+    "@evmos/eip712": "0.3.0-rc.1",
+    "@evmos/proto": "0.2.0-rc.0",
     "link-module-alias": "^1.2.0",
     "shx": "^0.3.4"
   },
@@ -38,15 +38,16 @@
     "@babel/preset-typescript": "^7.17.12",
     "@ethersproject/keccak256": "^5.7.0",
     "@metamask/eth-sig-util": "^4.0.1",
+    "@types/jest": "^29.4.0",
     "@types/node": "^17.0.21",
     "ethers": "^5.6.8",
     "ethers-eip712": "^0.2.0",
-    "keccak": "^3.0.2",
-    "@types/jest": "^29.4.0",
     "jest": "^29.4.1",
+    "keccak": "^3.0.2",
     "ts-jest": "^29.0.5"
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "0557ac302db9ae82cbc58bd9d2187a228855ad27"
 }
