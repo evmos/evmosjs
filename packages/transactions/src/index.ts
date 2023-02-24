@@ -1,5 +1,6 @@
 export * from './messages/authz'
 export * from './messages/bank'
+export * from './messages/base'
 export * from './messages/common'
 export * from './messages/distribution'
 export * from './messages/erc20'
