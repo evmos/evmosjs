@@ -1,7 +1,7 @@
 {
   "name": "@evmos/proto",
   "description": "Protobuf files for EVMOS.",
-  "version": "0.2.0-rc.3",
+  "version": "0.2.0",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
