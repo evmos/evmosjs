@@ -1,4 +1,4 @@
-export const MSG_CREATE_CLAWBACK_VESTING_ACCOUNT = {
+export const MSG_CREATE_CLAWBACK_VESTING_ACCOUNT_TYPES = {
   MsgValue: [
     { name: 'from_address', type: 'string' },
     { name: 'to_address', type: 'string' },

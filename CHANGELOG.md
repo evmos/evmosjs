@@ -50,3 +50,4 @@ Ref: https://keepachangelog.com/en/1.0.0/
 - (transactions)[#119](https://github.com/evmos/evmosjs/pull/119) Refactor Transactions `IBC` module using base infrastructure and add unit tests
 - (transactions)[#120](https://github.com/evmos/evmosjs/pull/120) Refactor Transactions `Revenue` module using base infrastructure and add unit tests
 - (transactions)[#122](https://github.com/evmos/evmosjs/pull/122) Refactor Transactions `Vesting` module using base infrastructure and add unit tests
+- (transactions)[#133](https://github.com/evmos/evmosjs/pull/133) Refactor EIP-712 `Vesting` package internally
