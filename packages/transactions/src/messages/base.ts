@@ -92,9 +92,9 @@ const createCosmosPayload = (
  * Creates a signable transaction with SignDirect,
  * LegacyAmino, and EIP-712 components.
  *
- * @param context Transaction Context
- * @param typedData EIP-712 Typed Data
- * @param cosmosMessage Cosmos SDK Message to sign
+ * @param context - Transaction Context
+ * @param typedData - EIP-712 Typed Data
+ * @param cosmosMessage - Cosmos SDK Message to sign
  * @returns Signable Payload
  *
  */
