@@ -6,7 +6,7 @@ import {
 import {
   generateTypes,
   createMsgSubmitProposal,
-  MSG_SUBMIT_TYPES,
+  MSG_SUBMIT_PROPOSAL_TYPES,
 } from '@evmos/eip712'
 import {
   MsgSubmitProposalParams,
@@ -32,7 +32,7 @@ const params: MsgSubmitProposalParams = {
 
 describe('test tx payload', () => {
   it('produces tx payloads as expected', () => {
-    const types = generateTypes(MSG_SUBMIT_TYPES)
+    const types = generateTypes(MSG_SUBMIT_PROPOSAL_TYPES)
 
     const contentAsJSON = params.content.message.toJSON({
       useProtoFieldName: true,

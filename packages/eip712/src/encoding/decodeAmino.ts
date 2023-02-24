@@ -1,5 +1,5 @@
 import { parseChainId } from './utils'
-import { MSG_VOTE_TYPES } from '../messages/gov/msgVote'
+import { MSG_VOTE_TYPES } from '../messages/gov'
 import { MSG_SEND_TYPES } from '../messages/bank'
 import { generateTypes, createEIP712 } from '../messages/base'
 import { MSG_DELEGATE_TYPES } from '../messages/staking'

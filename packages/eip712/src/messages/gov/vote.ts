@@ -5,6 +5,7 @@ export const MSG_VOTE_TYPES = {
     { name: 'option', type: 'int32' },
   ],
 }
+
 export function createMsgVote(
   proposalId: number,
   option: number,
