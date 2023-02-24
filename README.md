@@ -4,7 +4,7 @@ JS and TS libs for Evmos.
 
 ## Installation
 
-evmosjs uses [buf.build](https://buf.build/) to manage Protobuf dependencies. To install evmosjs packages in your project,
+evmosjs uses [buf.build](https://buf.build/) to manage [Evmos Protobuf dependencies](https://buf.build/evmos). To install evmosjs packages in your project,
 follow the instructions corresponding to your package manager.
 
 ### NPM
@@ -49,7 +49,7 @@ Or:
 yarn add @evmosjs/[package]
 ```
 
-Note that Yarn v1 is not supported ([why not?](https://docs.buf.build/bsr/remote-packages/npm#other-package-managers)).
+Note that Yarn v1 is not supported ([see explanation](https://docs.buf.build/bsr/remote-packages/npm#other-package-managers)).
 
 ## Usage and Examples
 
@@ -240,7 +240,7 @@ const signedTx = createTxRaw(
 
 ### Sign the Transaction with Keplr (EIP-712)
 
-EvmosJS also supports signing EIP-712 payloads using Keplr. This is necessary for Ledger users on Keplr, since the Ledger cannot sign SignDirect payloads.
+EvmosJS also supports signing [EIP-712](https://eips.ethereum.org/EIPS/eip-712) payloads using Keplr. This is necessary for Ledger users on Keplr, since the Ledger device cannot sign `SignDirect` payloads.
 
 ```ts
 import { EthSignType } from '@keplr-wallet/types';
