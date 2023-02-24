@@ -132,7 +132,7 @@ const sender: Sender = {
 }
 
 const fee: Fee = {
-  amount: '3000000000000000',
+  amount: '4000000000000000',
   denom: 'aevmos',
   gas: '200000',
 }
