@@ -1,40 +1,67 @@
 # evmosjs
 
-JS and TS libs for Evmos
+JS and TS libs for Evmos.
 
-## Example
+## Installation
 
-### Get account information
+evmosjs uses [buf.build](https://buf.build/) to manage Protobuf dependencies. To install evmosjs packages in your project,
+follow the instructions corresponding to your package manager.
 
-Get the account number, sequence and pubkey from an address.
-NOTE: if the address had not sent any transaction to the blockchain, the pubkey value are going to be empty.
+### NPM
+
+Add the following line to an `.npmrc` file in your project root:
+
+```ini
+@buf:registry=https://buf.build/gen/npm/v1
+```
+
+Then run `npm install evmosjs` (or `npm install @evmosjs/[package]`).
+
+### Yarn v2.x or v3.x
+
+Add the following to an `.yarnrc.yml` file in your project root:
+
+```yaml
+npmScopes:
+  buf:
+    npmRegistryServer: "https://buf.build/gen/npm/v1"
+```
+
+Then run `yarn add evmosjs` (or `yarn add @evmosjs/[package]`).
+
+Note that Yarn v1 is not supported ([why not?](https://docs.buf.build/bsr/remote-packages/npm#other-package-managers)).
+
+## Usage and Examples
+
+### Query an Account
+
+Query the account number, sequence, and pubkey for a given address.
 
 ```ts
-import { ethToEvmos } from '@evmos/address-converter'
 import { generateEndpointAccount } from '@evmos/provider'
 
-const sender = 'evmos1...'
-let destination = '0x....'
-// The address must be bech32 encoded
-if (destination.split('0x').length == 2) {
-  destination = ethToEvmos(destination)
-}
+const address = 'evmos1...'
 
-// Query the node
-const options = {
+// Find node urls for either mainnet or testnet here:
+// https://docs.evmos.org/develop/api/networks.
+const nodeUrl = '...'
+const queryEndpoint = `${nodeUrl}${generateEndpointAccount(address)}`
+
+const restOptions = {
   method: 'GET',
   headers: { 'Content-Type': 'application/json' },
 }
 
-let addrRawData = await fetch(
-  `http://127.0.0.1:1317${generateEndpointAccount(sender)}`,
+// Note that the node will return a 400 status code if the account does not exist.
+const rawResult = await fetch(
+  queryEndpoint,
   options,
 )
-// NOTE: the node returns status code 400 if the wallet doesn't exist, catch that error
 
-let addrData = await addRawData.json()
+const result = await rawResult.json()
 
-// Response format at @evmos/provider/rest/account/AccountResponse
+// The response format is available at @evmos/provider/rest/account/AccountResponse.
+// Note that the `pub_key` will be `null` if the address has not sent any transactions. 
 /*
   account: {
     '@type': string
@@ -52,139 +79,208 @@ let addrData = await addRawData.json()
 */
 ```
 
-### Create a MsgSend Transaction
+### Create a Signable Transaction
 
-The transaction can be signed using EIP712 on Metamask and SignDirect on Keplr.
+Create a transaction payload which can be signed using either Metamask or Keplr.
+
+This example uses `MsgSend`. View all signable transaction payloads in the [Transaction docs](https://github.com/evmos/evmosjs/tree/main/docs/transactions).
 
 ```ts
-import { createMessageSend } from '@evmos/transactions'
+import { 
+  Chain,
+  Sender,
+  Fee,
+  TxContext,
+  MsgSendParams,
+  createTxMsgSend,
+  TxPayload,
+} from '@evmos/transactions'
 
-const chain = {
-  chainId: 9000,
-  cosmosChainId: 'evmos_9000-1',
+const chain: Chain = {
+  chainId: 9001,
+  cosmosChainId: 'evmos_9001-2',
 }
 
-const sender = {
-  accountAddress: 'ethm1tfegf50n5xl0hd5cxfzjca3ylsfpg0fned5gqm',
-  sequence: 1,
-  accountNumber: 9,
-  pubkey: 'AgTw+4v0daIrxsNSW4FcQ+IoingPseFwHO1DnssyoOqZ',
+// Populate the transaction sender parameters using the
+// query API.
+const sender: Sender = {
+  accountAddress: [sender_account_address],
+  sequence: [sender_sequence],
+  accountNumber: [sender_account_number],
+  // Use an empty string if the pubkey is unknown.
+  pubkey: [sender_pub_key], 
 }
 
-const fee = {
-  amount: '20',
+const fee: Fee = {
+  amount: '3000000000000000',
   denom: 'aevmos',
   gas: '200000',
 }
 
 const memo = ''
 
-const params = {
-  destinationAddress: 'evmos1pmk2r32ssqwps42y3c9d4clqlca403yd9wymgr',
-  amount: '1',
+const context: TxContext = {
+  chain,
+  sender,
+  fee,
+  memo,
+}
+
+const params: MsgSendParams = {
+  destinationAddress: [destination_address],
+  amount: [transaction_amount],
   denom: 'aevmos',
 }
 
-const msg = createMessageSend(chain, sender, fee, memo, params)
-
-// msg.signDirect is the transaction in Keplr format
-// msg.legacyAmino is the transaction with legacy amino
-// msg.eipToSign is the EIP712 data to sign with metamask
+const tx: TxPayload = createTxMsgSend(context, params)
 ```
 
-### Signing with Metamask
+### Sign the Transaction with MetaMask
 
-After creating the transaction we need to send the payload to metamask so it can be signed. With that signature we are going to add a Web3Extension to the Cosmos Transactions and broadcast it to the Evmos node.
+Evmos supports EIP-712 signatures for Cosmos payloads to be signed using Ethereum wallets such as MetaMask.
 
 ```ts
-// Follow the previous step to generate the msg object
+import { createTxRaw } from '@evmos/proto'
 import { evmosToEth } from '@evmos/address-converter'
-import {
-  generateEndpointBroadcast,
-  generatePostBodyBroadcast,
-} from '@evmos/provider'
-import {
-  createTxRawEIP712,
-  signatureToWeb3Extension,
-} from '@evmos/transactions'
 
-// Init Metamask
+// First, populate a TxContext object and create a signable Tx payload.
+const context = ...
+const tx = ...
+
+const { sender } = context
+
+// Initialize MetaMask and sign the EIP-712 payload.
 await window.ethereum.enable()
 
-// Request the signature
-let signature = await window.ethereum.request({
+const senderHexAddress = evmosToEth(sender.accountAddress)
+const eip712Payload = JSON.stringify(tx.eipToSign)
+
+const signature = await window.ethereum.request({
   method: 'eth_signTypedData_v4',
-  params: [evmosToEth(sender.accountAddress), JSON.stringify(msg.eipToSign)],
+  params: [senderHexAddress, eip712Payload],
 })
 
-// The chain and sender objects are the same as the previous example
-let extension = signatureToWeb3Extension(chain, sender, signature)
+// Create a signed Tx payload that can be broadcast to a node.
+const signatureBytes = Buffer.from(signature.replace('0x', ''), 'hex')
 
-// Create the txRaw
-let rawTx = createTxRawEIP712(
-  msg.legacyAmino.body,
-  msg.legacyAmino.authInfo,
-  extension,
+const { signDirect } = tx
+const bodyBytes = signDirect.body.toBinary()
+const authInfoBytes = signDirect.authInfo.toBinary()
+
+const signedTx = createTxRaw(
+  bodyBytes,
+  authInfoBytes,
+  [signatureBytes],
 )
-
-// Broadcast it
-const postOptions = {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: generatePostBodyBroadcast(rawTx),
-}
-
-let broadcastPost = await fetch(
-  `http://localhost:1317${generateEndpointBroadcast()}`,
-  postOptions,
-)
-let response = await broadcastPost.json()
 ```
 
-### Signing with Keplr
+### Sign the Transaction with Keplr (SignDirect)
+
+EvmosJS supports Cosmos SDK `SignDirect` payloads that can be signed using Keplr.
 
 ```ts
-// Follow the previous step to generate the msg object
 import { createTxRaw } from '@evmos/proto'
-import {
-  generateEndpointBroadcast,
-  generatePostBodyBroadcast,
-} from '@evmos/provider'
 
-let sign = await window?.keplr?.signDirect(
+// First, populate a TxContext object and create a signable Tx payload.
+const context = ...
+const tx = ...
+
+const { chain, sender } = context
+const { signDirect } = tx
+
+const signResponse = await window?.keplr?.signDirect(
   chain.cosmosChainId,
   sender.accountAddress,
   {
-    bodyBytes: msg.signDirect.body.serializeBinary(),
-    authInfoBytes: msg.signDirect.authInfo.serializeBinary(),
+    bodyBytes: signDirect.body.toBinary(),
+    authInfoBytes: signDirect.authInfo.toBinary(),
     chainId: chain.cosmosChainId,
     accountNumber: new Long(sender.accountNumber),
   },
-  // @ts-expect-error the types are not updated on Keplr side
-  { isEthereum: true },
 )
 
-if (sign !== undefined) {
-  let rawTx = createTxRaw(sign.signed.bodyBytes, sign.signed.authInfoBytes, [
-    new Uint8Array(Buffer.from(sign.signature.signature, 'base64')),
-  ])
-
-  // Broadcast it
-  const postOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: generatePostBodyBroadcast(rawTx),
-  }
-
-  let broadcastPost = await fetch(
-    `http://localhost:1317${generateEndpointBroadcast()}`,
-    postOptions,
-  )
-  let response = await broadcastPost.json()
+if (!signResponse) {
+  // Handle signature failure here.
 }
+
+const signatures = [
+  new Uint8Array(Buffer.from(signResponse.signature.signature, 'base64')),
+]
+
+const { signed } = signResponse
+
+const signedTx = createTxRaw(
+  signed.bodyBytes,
+  signed.authInfoBytes,
+  signatures,
+])
 ```
 
-## TODO
+### Sign the Transaction with Keplr (EIP-712)
 
-- Add docs and examples to all the packages.
-- Add more cosmos messages
+EvmosJS also supports signing EIP-712 payloads using Keplr. This is necessary for Ledger users on Keplr, since the Ledger cannot sign SignDirect payloads.
+
+```ts
+import { EthSignType } from '@keplr-wallet/types';
+import { createTxRaw } from '@evmos/proto'
+
+// First, populate a TxContext object and create a signable Tx payload.
+const context = ...
+const tx = ...
+
+const { chain, sender } = context
+
+const eip712Payload = JSON.stringify(tx.eipToSign)
+const signature = await window?.keplr?.signEthereum(
+  chain.cosmosChainId,
+  sender.accountAddress,
+  eip712Payload,
+  EthSignType.EIP712,
+)
+
+if (!signature) {
+  // Handle signature failure here.
+}
+
+const { signDirect } = tx
+const bodyBytes = signDirect.body.toBinary()
+const authInfoBytes = signDirect.authInfo.toBinary()
+
+const signedTx = createTxRaw(
+  bodyBytes,
+  authInfoBytes,
+  [signature],
+])
+```
+
+### Broadcast the Signed Transaction
+
+Regardless of how the transaction is signed, broadcasting takes place the same way.
+
+```ts
+import {
+  generateEndpointBroadcast,
+  generatePostBodyBroadcast,
+} from '@evmos/provider'
+
+// First, sign a transaction using MetaMask or Keplr.
+const signedTx = createTxRaw(...)
+
+// Find a node URL from a network endpoint:
+// https://docs.evmos.org/develop/api/networks.
+const nodeUrl = ...
+
+const postOptions = {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: generatePostBodyBroadcast(signedTx),
+}
+
+const broadcastEndpoint = `${nodeUrl}${generateEndpointBroadcast()}`
+const broadcastPost = await fetch(
+  broadcastEndpoint,
+  postOptions,
+)
+
+const response = await broadcastPost.json()
+```
