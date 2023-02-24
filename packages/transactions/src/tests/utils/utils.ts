@@ -89,6 +89,28 @@ export class TestingClient {
 
     return Buffer.from(bytes).toString('base64')
   }
+
+  get validatorParams() {
+    const moniker = 'test moniker'
+    const identity = 'test identity'
+    const website = 'test website'
+    const securityContact = 'test security contact'
+    const details = 'test details'
+    const validatorAddress = this.addrVal1
+    const commissionRate = '0.1'
+    const minSelfDelegation = this.amount1
+
+    return {
+      moniker,
+      identity,
+      website,
+      securityContact,
+      details,
+      validatorAddress,
+      commissionRate,
+      minSelfDelegation,
+    }
+  }
 }
 
 const client = new TestingClient()
