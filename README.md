@@ -29,7 +29,7 @@ npmScopes:
 
 Then run `yarn add evmosjs` (or `yarn add @evmosjs/[package]`).
 
-Note that Yarn v1 is not supported ([why not?](https://docs.buf.build/bsr/remote-packages/npm#other-package-managers)).
+Note that Yarn v1 is not supported ([see explanation](https://docs.buf.build/bsr/remote-packages/npm#other-package-managers)).
 
 ## Usage and Examples
 
