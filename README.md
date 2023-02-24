@@ -218,7 +218,7 @@ const signedTx = createTxRaw(
 
 ### Sign the Transaction with Keplr (EIP-712)
 
-EvmosJS also supports signing EIP-712 payloads using Keplr. This is necessary for Ledger users on Keplr, since the Ledger cannot sign SignDirect payloads.
+EvmosJS also supports signing [EIP-712](https://eips.ethereum.org/EIPS/eip-712) payloads using Keplr. This is necessary for Ledger users on Keplr, since the Ledger device cannot sign `SignDirect` payloads.
 
 ```ts
 import { EthSignType } from '@keplr-wallet/types';
