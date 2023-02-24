@@ -53,4 +53,5 @@ Ref: https://keepachangelog.com/en/1.0.0/
 - (transactions)[#121](https://github.com/evmos/evmosjs/pull/121) Refactor Transactions `Staking` module using base infrastructure and add unit tests
 - (transactions)[#122](https://github.com/evmos/evmosjs/pull/122) Refactor Transactions `Vesting` module using base infrastructure and add unit tests
 - (transactions)[#125](https://github.com/evmos/evmosjs/pull/125) Refactor EIP-712 `Authz` package internally
+- (transactions)[#126](https://github.com/evmos/evmosjs/pull/126) Refactor EIP-712 `Bank` package internally
 - (transactions)[#133](https://github.com/evmos/evmosjs/pull/133) Refactor EIP-712 `Vesting` package internally
