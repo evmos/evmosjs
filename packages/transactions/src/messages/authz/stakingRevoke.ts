@@ -1,6 +1,6 @@
 import { createMsgRevoke, RevokeMessages } from '@evmos/proto'
 
-import { createTransactionPayload, TxContext } from '../base'
+import { createTransactionPayload, TxContext } from '../base.js'
 
 export interface MsgStakeRevokeAuthorizationParams {
   granteeAddress: string

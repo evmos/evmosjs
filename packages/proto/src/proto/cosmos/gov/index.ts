@@ -1,2 +1,2 @@
-export * as Tx from './tx'
-export * as Gov from './gov'
+export * as Tx from './tx.js'
+export * as Gov from './gov.js'

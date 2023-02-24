@@ -1,1 +1,1 @@
-export * from './msgSend'
+export * from './msgSend.js'

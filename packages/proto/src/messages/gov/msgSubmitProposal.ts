@@ -1,6 +1,6 @@
 import { Any } from '@bufbuild/protobuf'
-import { Coin } from '../../proto/cosmos/base/coin'
-import { MsgSubmitProposal } from '../../proto/cosmos/gov/tx'
+import { Coin } from '../../proto/cosmos/base/coin.js'
+import { MsgSubmitProposal } from '../../proto/cosmos/gov/tx.js'
 
 export function createMsgSubmitProposal(
   content: Any,

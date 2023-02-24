@@ -6,7 +6,7 @@ import {
   createMsgDelegate,
 } from '@evmos/eip712'
 import { MsgDelegateParams } from './delegate'
-import { createTransactionPayload, TxContext } from '../base'
+import { createTransactionPayload, TxContext } from '../base.js'
 
 export interface MultipleMsgDelegateParams {
   values: MsgDelegateParams[]

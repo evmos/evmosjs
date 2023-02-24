@@ -5,7 +5,7 @@ import {
   createMsgCancelRevenue,
   MSG_CANCEL_REVENUE_TYPES,
 } from '@evmos/eip712'
-import { createTransactionPayload, TxContext } from '../base'
+import { createTransactionPayload, TxContext } from '../base.js'
 
 export interface MsgCancelRevenueParams {
   contractAddress: string

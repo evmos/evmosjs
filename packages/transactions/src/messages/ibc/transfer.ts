@@ -5,7 +5,7 @@ import {
   createIBCMsgTransfer,
   IBC_MSG_TRANSFER_TYPES,
 } from '@evmos/eip712'
-import { createTransactionPayload, TxContext } from '../base'
+import { createTransactionPayload, TxContext } from '../base.js'
 
 export interface IBCMsgTransferParams {
   // Connection

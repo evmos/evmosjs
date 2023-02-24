@@ -9,6 +9,7 @@ module.exports = {
 
   moduleNameMapper: {
     ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
+    '^(\\.{1,2}/.*)\\.js$': '$1',
   },
   // A preset that is used as a base for Jest's configuration.
   // Use Default-ESM to support imports from node_modules.

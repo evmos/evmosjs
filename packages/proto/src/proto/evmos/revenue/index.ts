@@ -1,1 +1,1 @@
-export * as Tx from './tx'
+export * as Tx from './tx.js'

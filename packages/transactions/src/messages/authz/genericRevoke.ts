@@ -5,7 +5,7 @@ import {
   createMsgRevokeGenericAuthorization,
   MSG_REVOKE_GENERIC_AUTHORIZATION_TYPES,
 } from '@evmos/eip712'
-import { createTransactionPayload, TxContext } from '../base'
+import { createTransactionPayload, TxContext } from '../base.js'
 
 export interface MsgGenericRevokeParams {
   granteeAddress: string

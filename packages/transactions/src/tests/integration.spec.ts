@@ -5,7 +5,7 @@ import {
   MsgVoteUtils,
   MsgConvertERC20Utils,
   IBCMsgTransferUtils,
-} from './utils/messages'
+} from './utils'
 
 const messageClients = [
   MsgSendUtils,

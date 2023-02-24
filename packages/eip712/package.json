@@ -1,7 +1,7 @@
 {
   "name": "@evmos/eip712",
   "description": "EIP712 transaction creator for EVMOS.",
-  "version": "0.3.0-rc.1",
+  "version": "0.3.0-rc.2",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@cosmjs/proto-signing": "^0.28.13",
-    "@evmos/proto": "0.2.0-rc.0",
+    "@evmos/proto": "0.2.0-rc.1",
     "@metamask/eth-sig-util": "^4.0.1",
     "cosmjs-types": "^0.5.1",
     "link-module-alias": "^1.2.0",

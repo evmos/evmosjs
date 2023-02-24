@@ -1,6 +1,6 @@
-import { Coin } from '../../proto/cosmos/base/coin'
-import { Height } from '../../proto/cosmos-ibc/ibc/core/client'
-import { MsgTransfer } from '../../proto/cosmos-ibc/ibc/applications/tx'
+import { Coin } from '../../proto/cosmos/base/coin.js'
+import { Height } from '../../proto/cosmos-ibc/ibc/core/client.js'
+import { MsgTransfer } from '../../proto/cosmos-ibc/ibc/applications/tx.js'
 
 export function createIBCMsgTransfer(
   // Channel

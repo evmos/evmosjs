@@ -1,3 +1,3 @@
-export * from './msgDeposit'
-export * from './msgSubmitProposal'
-export * from './msgVote'
+export * from './msgDeposit.js'
+export * from './msgSubmitProposal.js'
+export * from './msgVote.js'

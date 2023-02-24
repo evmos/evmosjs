@@ -4,7 +4,7 @@ import {
   generateMessageWithMultipleTransactions,
 } from '@evmos/eip712'
 import { createTransactionWithMultipleMessages } from '@evmos/proto'
-import { Chain, Fee, Sender } from './common'
+import { Chain, Fee, Sender } from './common.js'
 
 /**
  * TxContext is the transaction context for a SignDoc, independent

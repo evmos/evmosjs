@@ -1,6 +1,6 @@
 import { Keccak } from 'sha3'
 import { Any } from '@bufbuild/protobuf'
-import { Coin } from '../proto/cosmos/base/coin'
+import { Coin } from '../proto/cosmos/base/coin.js'
 import {
   TxBody,
   Fee,
@@ -10,12 +10,12 @@ import {
   ModeInfo_Single,
   AuthInfo,
   SignDoc,
-} from '../proto/cosmos/transactions/tx'
-import { PubKey } from '../proto/ethermint/crypto/keys'
-import { PubKey as SECP256k1 } from '../proto/cosmos/crypto/secp256k1/keys'
-import { SignMode } from '../proto/cosmos/transactions/signing'
+} from '../proto/cosmos/transactions/tx.js'
+import { PubKey } from '../proto/ethermint/crypto/keys.js'
+import { PubKey as SECP256k1 } from '../proto/cosmos/crypto/secp256k1/keys.js'
+import { SignMode } from '../proto/cosmos/transactions/signing.js'
 
-import { createAnyMessage, MessageGenerated } from '../messages/common'
+import { createAnyMessage, MessageGenerated } from '../messages/common.js'
 
 export const SIGN_DIRECT = SignMode.DIRECT
 export const LEGACY_AMINO = SignMode.LEGACY_AMINO_JSON

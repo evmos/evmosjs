@@ -5,7 +5,7 @@ import {
   createMsgConvertCoin,
   MSG_CONVERT_COIN_TYPES,
 } from '@evmos/eip712'
-import { createTransactionPayload, TxContext } from '../base'
+import { createTransactionPayload, TxContext } from '../base.js'
 
 export interface MsgConvertCoinParams {
   denom: string
