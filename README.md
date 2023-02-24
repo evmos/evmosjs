@@ -235,7 +235,7 @@ const signedTx = createTxRaw(
   signed.bodyBytes,
   signed.authInfoBytes,
   signatures,
-])
+)
 ```
 
 ### Sign the Transaction with Keplr (EIP-712)
@@ -273,7 +273,7 @@ const signedTx = createTxRaw(
   bodyBytes,
   authInfoBytes,
   [signature],
-])
+)
 ```
 
 ### Broadcast the Signed Transaction
