@@ -4,37 +4,17 @@ import {
   generateMessageWithMultipleTransactions,
 } from '@evmos/eip712'
 import { createTransactionWithMultipleMessages } from '@evmos/proto'
-import { Chain, Fee, Sender } from './common'
+import { Chain, Fee, Sender, TxPayload } from './common'
 
 /**
- * TxContext is the transaction context for a SignDoc, independent
- * from any messages.
+ * TxContext is the transaction context for a SignDoc that is independent
+ * from the transaction payload.
  */
 export interface TxContext {
   chain: Chain
   sender: Sender
   fee: Fee
   memo: string
-}
-
-/**
- * TxPayload is a transaction object with signable payloads
- * in multiple formats.
- *
- * @remarks
- * TxPayload includes signable payloads for Evmos `EIP-712`,
- * `SignDirect`, and `SignLegacyAmino`.
- *
- * Evmos uses the {@link https://eips.ethereum.org/EIPS/eip-712 | EIP-712 Specification}
- * to wrap and sign Cosmos payloads using Ethereum signers.
- *
- * See {@link https://docs.cosmos.network/main/core/encoding} for more
- * on `SignDirect` and `SignLegacyAmino`.
- */
-export interface TxPayload {
-  eipToSign: object
-  signDirect: object
-  legacyAmino: object
 }
 
 /**
