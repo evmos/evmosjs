@@ -28,6 +28,12 @@ const common = {
     'no-unused-vars': 'off',
     'no-useless-constructor': 'off',
     '@typescript-eslint/no-useless-constructor': 'error',
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: ['**/*.spec.ts', '**/tests/**/*', 'jest.config.js'],
+      },
+    ],
   },
 }
 

@@ -26,6 +26,8 @@ class TestingClient {
   public readonly memo = 'Transaction Memo'
 
   public readonly typeUrl1 = 'cosmos-sdk/MsgSend'
+
+  public readonly proposalId1 = 42
 }
 
 const client = new TestingClient()

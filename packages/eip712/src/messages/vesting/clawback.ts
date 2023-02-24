@@ -1,4 +1,4 @@
-export const MSG_CLAWBACK = {
+export const MSG_CLAWBACK_TYPES = {
   MsgValue: [
     { name: 'funder_address', type: 'string' },
     { name: 'account_address', type: 'string' },
