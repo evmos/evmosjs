@@ -1,4 +1,4 @@
-export const MSG_SUBMIT_TYPES = {
+export const MSG_SUBMIT_PROPOSAL_TYPES = {
   MsgValue: [
     { name: 'content', type: 'any' },
     { name: 'proposer', type: 'string' },

@@ -36,6 +36,7 @@
     "@babel/core": "^7.18.2",
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-typescript": "^7.17.12",
+    "@ethersproject/keccak256": "^5.7.0",
     "@metamask/eth-sig-util": "^4.0.1",
     "@types/node": "^17.0.21",
     "ethers": "^5.6.8",
