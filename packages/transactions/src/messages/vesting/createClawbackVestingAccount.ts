@@ -3,7 +3,7 @@ import { createMsgCreateClawbackVestingAccount as protoMsgCreateClawbackVestingA
 import {
   generateTypes,
   createMsgCreateClawbackVestingAccount,
-  MSG_CREATE_CLAWBACK_VESTING_ACCOUNT,
+  MSG_CREATE_CLAWBACK_VESTING_ACCOUNT_TYPES,
 } from '@evmos/eip712'
 import { createTransactionPayload, TxContext } from '../base'
 import { Period } from '../common'
@@ -20,7 +20,7 @@ export interface MsgCreateClawbackVestingAccountParams {
 const createEIP712MsgCreateClawbackVestingAccount = (
   params: MsgCreateClawbackVestingAccountParams,
 ) => {
-  const types = generateTypes(MSG_CREATE_CLAWBACK_VESTING_ACCOUNT)
+  const types = generateTypes(MSG_CREATE_CLAWBACK_VESTING_ACCOUNT_TYPES)
 
   const message = createMsgCreateClawbackVestingAccount(
     params.fromAddress,
