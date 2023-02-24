@@ -10,6 +10,7 @@ export const MSG_BEGIN_REDELEGATE_TYPES = {
     { name: 'amount', type: 'string' },
   ],
 }
+
 export function createMsgBeginRedelegate(
   delegatorAddress: string,
   validatorSrcAddress: string,

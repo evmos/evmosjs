@@ -9,6 +9,7 @@ export const MSG_UNDELEGATE_TYPES = {
     { name: 'amount', type: 'string' },
   ],
 }
+
 export function createMsgUndelegate(
   delegatorAddress: string,
   validatorAddress: string,
