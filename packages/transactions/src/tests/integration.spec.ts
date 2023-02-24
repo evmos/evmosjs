@@ -1,13 +1,22 @@
 import ProtoUtils from './utils/proto'
 import EIP712Utils from './utils/eip712'
-import MsgSendUtils from './utils/messages/testSend'
-import MsgVoteUtils from './utils/messages/testVote'
+import {
+  MsgSendUtils,
+  MsgVoteUtils,
+  MsgConvertERC20Utils,
+  IBCMsgTransferUtils,
+} from './utils/messages'
 
-const testMessageClients = [MsgSendUtils, MsgVoteUtils]
+const messageClients = [
+  MsgSendUtils,
+  MsgVoteUtils,
+  MsgConvertERC20Utils,
+  IBCMsgTransferUtils,
+]
 
 describe('test transactions package integration', () => {
   it('handles Protobuf encoding', () => {
-    testMessageClients.forEach((msgClient) => {
+    messageClients.forEach((msgClient) => {
       const { tx, protoMsg } = msgClient.payload
       const protoTx = tx.signDirect
 
@@ -23,7 +32,7 @@ describe('test transactions package integration', () => {
   })
 
   it('handles EIP-712 encoding', () => {
-    testMessageClients.forEach((msgClient) => {
+    messageClients.forEach((msgClient) => {
       const { tx, eip712TypedData } = msgClient.payload
       const { types, message } = eip712TypedData
 
