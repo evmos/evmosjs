@@ -75,7 +75,7 @@ const restOptions = {
 // Note that the node will return a 400 status code if the account does not exist.
 const rawResult = await fetch(
   queryEndpoint,
-  options,
+  restOptions,
 )
 
 const result = await rawResult.json()
