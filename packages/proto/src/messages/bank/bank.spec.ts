@@ -1,7 +1,7 @@
-import { createMsgSend } from './msgSend.js'
-import { MsgSend } from '../../proto/cosmos/bank/tx.js'
-import { from, to, denom } from '../../proto/tests/utils.js'
-import { JSONOptions } from '../../proto/tests/common.js'
+import { createMsgSend } from './msgSend'
+import { MsgSend } from '../../proto/cosmos/bank/tx'
+import { from, to, denom } from '../../proto/tests/utils'
+import { JSONOptions } from '../../proto/tests/common'
 
 describe('test Bank Module message generation', () => {
   it('correctly wraps MsgSend', () => {

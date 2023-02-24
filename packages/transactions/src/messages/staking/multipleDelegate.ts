@@ -5,7 +5,7 @@ import {
   MSG_DELEGATE_TYPES,
   createMsgDelegate,
 } from '@evmos/eip712'
-import { MsgDelegateParams } from './delegate'
+import { MsgDelegateParams } from './delegate.js'
 import { createTransactionPayload, TxContext } from '../base.js'
 
 export interface MultipleMsgDelegateParams {
