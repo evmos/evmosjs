@@ -7,6 +7,7 @@ export * from './encoding/utils'
 // Messages
 export * from './messages/authz'
 export * from './messages/bank'
+export * from './messages/distribution'
 export * from './messages/vesting'
 export * from './messages/revenue/msgCancelRevenue'
 export * from './messages/revenue/msgUpdateRevenue'
