@@ -1,7 +1,7 @@
 {
   "name": "evmosjs",
   "description": "JS and TS libs for Evmos",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,6 +11,7 @@
   "_moduleAliases": {
     "~evmosjs": "dist"
   },
+  "type": "module",
   "scripts": {
     "postinstall": "shx mkdir -p dist && link-module-alias",
     "build": "tsc --build tsconfig.build.json && link-module-alias",
@@ -29,7 +30,7 @@
     "@evmos/address-converter": "^0.1.9",
     "@evmos/eip712": "^0.3.0",
     "@evmos/proto": "^0.2.0",
-    "@evmos/provider": "^0.3.0",
+    "@evmos/provider": "^0.3.1",
     "@evmos/transactions": "^0.3.0",
     "link-module-alias": "^1.2.0",
     "shx": "^0.3.4"
