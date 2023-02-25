@@ -1,5 +1,5 @@
 import { createMsgGrant, createStakeAuthorization, Proto } from '@evmos/proto'
-import { createTransactionPayload, TxContext } from '../base'
+import { createTransactionPayload, TxContext } from '../base.js'
 
 export interface MsgStakeAuthorizationParams {
   granteeAddress: string

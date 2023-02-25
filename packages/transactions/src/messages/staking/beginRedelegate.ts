@@ -6,7 +6,7 @@ import {
   createMsgBeginRedelegate,
 } from '@evmos/eip712'
 
-import { createTransactionPayload, TxContext } from '../base'
+import { createTransactionPayload, TxContext } from '../base.js'
 
 export interface MsgBeginRedelegateParams {
   validatorSrcAddress: string

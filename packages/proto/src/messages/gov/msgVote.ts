@@ -1,4 +1,4 @@
-import { MsgVote } from '../../proto/cosmos/gov/tx'
+import { MsgVote } from '../../proto/cosmos/gov/tx.js'
 
 export function createMsgVote(
   proposalId: number,

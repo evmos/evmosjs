@@ -1,3 +1,3 @@
-export * as Crypto from './crypto'
-export * as EVM from './evm'
-export * as Types from './types'
+export * as Crypto from './crypto/index.js'
+export * as EVM from './evm/index.js'
+export * as Types from './types/index.js'

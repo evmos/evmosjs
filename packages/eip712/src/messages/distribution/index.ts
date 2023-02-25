@@ -1,3 +1,3 @@
-export * from './setWithdrawAddress'
-export * from './withdrawDelegatorReward'
-export * from './withdrawValidatorCommission'
+export * from './setWithdrawAddress.js'
+export * from './withdrawDelegatorReward.js'
+export * from './withdrawValidatorCommission.js'

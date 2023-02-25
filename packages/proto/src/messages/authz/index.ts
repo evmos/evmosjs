@@ -1,3 +1,3 @@
-export * from './authz'
-export * from './generic'
-export * from './stake'
+export * from './authz.js'
+export * from './generic.js'
+export * from './stake.js'

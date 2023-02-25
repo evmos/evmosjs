@@ -31,3 +31,4 @@ build/Release
 .idea
 coverage
 .vscode
+*.tgz

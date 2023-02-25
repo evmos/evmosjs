@@ -1,2 +1,2 @@
-export * from './msgEthereumTx'
-export * from './web3Extension'
+export * from './msgEthereumTx.js'
+export * from './web3Extension.js'

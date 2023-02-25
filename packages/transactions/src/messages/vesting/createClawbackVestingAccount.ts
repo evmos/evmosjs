@@ -5,8 +5,8 @@ import {
   createMsgCreateClawbackVestingAccount,
   MSG_CREATE_CLAWBACK_VESTING_ACCOUNT_TYPES,
 } from '@evmos/eip712'
-import { createTransactionPayload, TxContext } from '../base'
-import { Period } from '../common'
+import { createTransactionPayload, TxContext } from '../base.js'
+import { Period } from '../common.js'
 
 export interface MsgCreateClawbackVestingAccountParams {
   fromAddress: string

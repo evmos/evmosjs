@@ -6,7 +6,7 @@ import {
   createMsgUndelegate,
 } from '@evmos/eip712'
 
-import { createTransactionPayload, TxContext } from '../base'
+import { createTransactionPayload, TxContext } from '../base.js'
 
 export interface MsgUndelegateParams {
   validatorAddress: string

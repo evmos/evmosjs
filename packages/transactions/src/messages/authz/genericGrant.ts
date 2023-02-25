@@ -8,7 +8,7 @@ import {
   createMsgGenericAuthorization,
   MSG_GENERIC_AUTHORIZATION_TYPES,
 } from '@evmos/eip712'
-import { createTransactionPayload, TxContext } from '../base'
+import { createTransactionPayload, TxContext } from '../base.js'
 
 export interface MsgGenericAuthorizationParams {
   granteeAddress: string

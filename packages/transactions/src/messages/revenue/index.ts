@@ -1,3 +1,3 @@
-export * from './cancelRevenue'
-export * from './registerRevenue'
-export * from './updateRevenue'
+export * from './cancelRevenue.js'
+export * from './registerRevenue.js'
+export * from './updateRevenue.js'

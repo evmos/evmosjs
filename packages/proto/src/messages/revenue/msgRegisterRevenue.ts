@@ -1,4 +1,4 @@
-import { MsgRegisterRevenue } from '../../proto/evmos/revenue/tx'
+import { MsgRegisterRevenue } from '../../proto/evmos/revenue/tx.js'
 
 export function createMsgRegisterRevenue(
   contractAddress: string,

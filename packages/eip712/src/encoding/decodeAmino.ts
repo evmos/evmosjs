@@ -1,8 +1,8 @@
-import { parseChainId } from './utils'
-import { MSG_VOTE_TYPES } from '../messages/gov'
-import { MSG_SEND_TYPES } from '../messages/bank'
-import { generateTypes, createEIP712 } from '../messages/base'
-import { MSG_DELEGATE_TYPES } from '../messages/staking'
+import { parseChainId } from './utils.js'
+import { MSG_VOTE_TYPES } from '../messages/gov/index.js'
+import { MSG_SEND_TYPES } from '../messages/bank/index.js'
+import { MSG_DELEGATE_TYPES } from '../messages/staking/index.js'
+import { generateTypes, createEIP712 } from '../messages/base.js'
 
 export const MSG_TYPES = {
   MSG_SEND: 'cosmos-sdk/MsgSend',

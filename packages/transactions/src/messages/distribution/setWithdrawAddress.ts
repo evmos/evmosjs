@@ -5,7 +5,7 @@ import {
   MSG_SET_WITHDRAW_ADDRESS_TYPES,
   createMsgSetWithdrawAddress,
 } from '@evmos/eip712'
-import { createTransactionPayload, TxContext } from '../base'
+import { createTransactionPayload, TxContext } from '../base.js'
 
 export interface MsgSetWithdrawAddressParams {
   delegatorAddress: string
