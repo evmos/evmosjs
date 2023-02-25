@@ -9,6 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install modules
-        run: npm install --save-dev
+        run: npm install -g
       - name: Run ESLint
         run: eslint ./packages/**/*.{ts,js}
