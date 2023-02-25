@@ -1,11 +1,16 @@
 name: ESLint
-on: push
+on:
+  push:
+    branches: [ main ]
+    pull_request:
+      # The branches below must be a subset of the branches above
+      branches: [ main ]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Install modules
-        run: yarn
+        run: npm install -g eslint
       - name: Run ESLint
         run: eslint -c ./.eslintrc.js ./packages/**/*.{ts,js}
