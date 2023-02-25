@@ -11,4 +11,4 @@ jobs:
       - name: Install modules
         run: npm install -g eslint eslint-config-airbnb-base
       - name: Run ESLint
-        run: eslint -c ./packages/**/*.{ts,js}
+        run: eslint ./packages/**/*.{ts,js}
