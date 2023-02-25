@@ -9,6 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install modules
-        run: npm install -g eslint
+        run: npm install -g eslint eslint-config-airbnb-base
       - name: Run ESLint
         run: eslint -c ./.eslintrc.js ./packages/**/*.{ts,js}
