@@ -65,6 +65,7 @@ module.exports = {
       files: ['**/*.ts'],
       parser: '@typescript-eslint/parser',
       parserOptions: {
+        ecmaVersion: 'latest',
         project: './tsconfig.json',
       },
       env: common.env,
