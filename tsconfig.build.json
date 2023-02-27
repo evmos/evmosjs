@@ -8,7 +8,6 @@
       "DOM",
       "es2019",
       "es2021",
-      "es2022"
     ],
     "strict": true,
     "noUnusedLocals": true,
