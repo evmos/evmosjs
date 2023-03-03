@@ -21,6 +21,12 @@ class TestingClient {
 
   public readonly addrHex2 = '0xC1c85eB8278F783C5FE2103F1e4ac041B094160a'
 
+  public readonly ibcDenom1 =
+    'ibc/748375B5DD168C6C4DCBF54B3D54DCF20C2B41572C9603B1B9774419326A5A43'
+
+  public readonly ibcDenom2 =
+    'ibc/C9364B2C453F0428D04FD40B6CF486BA138FA462FE43A116268A7B695AFCFE7F'
+
   public readonly chainId = 9001
 
   public readonly memo = 'Transaction Memo'
