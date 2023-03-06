@@ -1,7 +1,8 @@
 {
   "name": "@evmos/evmosjs",
   "version": "0.1.0",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "private": "false",
   "publishConfig": {
