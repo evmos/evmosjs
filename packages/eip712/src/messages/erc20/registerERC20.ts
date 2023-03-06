@@ -6,7 +6,7 @@ export const REGISTER_ERC20_TYPES = {
   ],
 }
 
-export function createRegisterErc20(
+export function createRegisterERC20(
   title: string,
   description: string,
   erc20addresses: string[],

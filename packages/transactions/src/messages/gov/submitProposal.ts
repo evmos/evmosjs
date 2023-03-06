@@ -19,9 +19,10 @@ export interface MsgSubmitProposalParams {
 const createEIP712MsgSubmitProposal = (params: MsgSubmitProposalParams) => {
   const types = generateTypes(MSG_SUBMIT_PROPOSAL_TYPES)
 
-  const contentAsJSON = params.content.message.toJSON({
+  const contentAsJSON = {
+    ...params.content.message,
     useProtoFieldName: true,
-  }) // TODO: Replace with Common JsonWriteOptions
+  } // TODO: Replace with Common JsonWriteOptions
 
   const message = createMsgSubmitProposal(
     contentAsJSON,
