@@ -1,3 +1,5 @@
+import { Metadata } from '@evmos/proto/dist/proto/cosmos/bank/bank'
+
 export const REGISTER_COIN_TYPES = {
   ContentValue: [
     { name: 'title', type: 'string' },
@@ -19,23 +21,6 @@ export const REGISTER_COIN_TYPES = {
     { name: 'exponent', type: 'string' },
     { name: 'aliases', type: 'string[]' },
   ],
-}
-
-export interface DenomUnit {
-  denom: string
-  exponent: string
-  aliases: string[]
-}
-
-export interface Metadata {
-  description: string
-  denomUnits: DenomUnit[]
-  base: string
-  display: string
-  name: string
-  symbol: string
-  uri: string
-  uriHash: string
 }
 
 export function createRegisterCoin(

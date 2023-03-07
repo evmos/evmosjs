@@ -1,8 +1,5 @@
-import {
-  REGISTER_COIN_TYPES,
-  createRegisterCoin,
-  Metadata,
-} from './registerCoin'
+import { Metadata } from '@evmos/proto/dist/proto/cosmos/bank/bank'
+import { REGISTER_COIN_TYPES, createRegisterCoin } from './registerCoin'
 import TestUtils from '../../tests/utils'
 
 describe('test RegisterERC20 type', () => {
@@ -37,11 +34,11 @@ describe('test RegisterERC20 type', () => {
     const title = 'Register ERC20s for IBC coins'
     const description = title
     const { ibcDenom1, ibcDenom2 } = TestUtils
-    const meta1: Metadata = {
+    const meta1 = new Metadata({
       description: 'This is one IBC coin',
       denomUnits: [
-        { denom: ibcDenom1, exponent: '0', aliases: ['stuosmo'] },
-        { denom: 'stosmo', exponent: '6', aliases: [] },
+        { denom: ibcDenom1, exponent: 0, aliases: ['stuosmo'] },
+        { denom: 'stosmo', exponent: 6, aliases: [] },
       ],
       base: ibcDenom1,
       display: 'stosmo',
@@ -49,12 +46,12 @@ describe('test RegisterERC20 type', () => {
       symbol: 'stOSMO',
       uri: '',
       uriHash: '',
-    }
-    const meta2: Metadata = {
+    })
+    const meta2 = new Metadata({
       description: 'This is another IBC coin',
       denomUnits: [
-        { denom: ibcDenom2, exponent: '0', aliases: ['stujuno'] },
-        { denom: 'stjuno', exponent: '6', aliases: [] },
+        { denom: ibcDenom2, exponent: 0, aliases: ['stujuno'] },
+        { denom: 'stjuno', exponent: 6, aliases: [] },
       ],
       base: ibcDenom2,
       display: 'stjuno',
@@ -62,7 +59,7 @@ describe('test RegisterERC20 type', () => {
       symbol: 'stJUNO',
       uri: '',
       uriHash: '',
-    }
+    })
     const metadata = [meta1, meta2]
 
     const msg = createRegisterCoin(title, description, metadata)
