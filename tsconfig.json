@@ -5,8 +5,8 @@
     "paths": {
         "evmosjs":["packages/evmosjs"],
         "@evmos/address-converter": ["./packages/address-converter/*"],
-        "@evmos/eip712":["./packages/eip712"],
-        "@evmos/proto":["./packages/proto"],
+        "@evmos/eip712":["packages/eip712"],
+        "@evmos/proto":["packages/proto"],
         "@evmos/provider":["./packages/provider/*"],
         "@evmos/transactions":["./packages/transactions/*"]
     }
