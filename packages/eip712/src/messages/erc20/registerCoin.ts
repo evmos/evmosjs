@@ -1,5 +1,3 @@
-import { Proto } from '@evmos/proto'
-
 export const REGISTER_COIN_TYPES = {
   ContentValue: [
     { name: 'title', type: 'string' },
@@ -18,15 +16,32 @@ export const REGISTER_COIN_TYPES = {
   ],
   TypeDenomUnit: [
     { name: 'denom', type: 'string' },
-    { name: 'exponent', type: 'string' },
+    { name: 'exponent', type: 'number' },
     { name: 'aliases', type: 'string[]' },
   ],
+}
+
+export interface DenomUnit {
+  denom: string
+  exponent: number
+  aliases: string[]
+}
+
+export interface Metadata {
+  description: string
+  denomUnits: DenomUnit[]
+  base: string
+  display: string
+  name: string
+  symbol: string
+  uri: string
+  uriHash: string
 }
 
 export function createRegisterCoin(
   title: string,
   description: string,
-  metadata: Proto.Cosmos.Bank.Bank.Metadata[],
+  metadata: Metadata[],
 ) {
   return {
     type: 'erc20/RegisterCoinProposal',

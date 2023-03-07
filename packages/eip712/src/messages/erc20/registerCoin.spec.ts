@@ -1,5 +1,8 @@
-import { Proto } from '@evmos/proto'
-import { REGISTER_COIN_TYPES, createRegisterCoin } from './registerCoin'
+import {
+  REGISTER_COIN_TYPES,
+  createRegisterCoin,
+  Metadata,
+} from './registerCoin'
 import TestUtils from '../../tests/utils'
 
 describe('test RegisterERC20 type', () => {
@@ -22,7 +25,7 @@ describe('test RegisterERC20 type', () => {
       ],
       TypeDenomUnit: [
         { name: 'denom', type: 'string' },
-        { name: 'exponent', type: 'string' },
+        { name: 'exponent', type: 'number' },
         { name: 'aliases', type: 'string[]' },
       ],
     }
@@ -34,7 +37,7 @@ describe('test RegisterERC20 type', () => {
     const title = 'Register ERC20s for IBC coins'
     const description = title
     const { ibcDenom1, ibcDenom2 } = TestUtils
-    const meta1 = new Proto.Cosmos.Bank.Bank.Metadata({
+    const meta1: Metadata = {
       description: 'This is one IBC coin',
       denomUnits: [
         { denom: ibcDenom1, exponent: 0, aliases: ['stuosmo'] },
@@ -46,8 +49,8 @@ describe('test RegisterERC20 type', () => {
       symbol: 'stOSMO',
       uri: '',
       uriHash: '',
-    })
-    const meta2 = new Proto.Cosmos.Bank.Bank.Metadata({
+    }
+    const meta2: Metadata = {
       description: 'This is another IBC coin',
       denomUnits: [
         { denom: ibcDenom2, exponent: 0, aliases: ['stujuno'] },
@@ -59,7 +62,7 @@ describe('test RegisterERC20 type', () => {
       symbol: 'stJUNO',
       uri: '',
       uriHash: '',
-    })
+    }
     const metadata = [meta1, meta2]
 
     const msg = createRegisterCoin(title, description, metadata)
