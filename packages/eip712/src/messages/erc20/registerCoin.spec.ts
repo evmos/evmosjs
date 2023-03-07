@@ -1,4 +1,4 @@
-import { Metadata } from '@evmos/proto/dist/proto/cosmos/bank/bank'
+import { Metadata } from '@evmos/proto'
 import { REGISTER_COIN_TYPES, createRegisterCoin } from './registerCoin'
 import TestUtils from '../../tests/utils'
 

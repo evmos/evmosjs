@@ -1,4 +1,4 @@
-import { Metadata } from '@evmos/proto/dist/proto/cosmos/bank/bank'
+import { Metadata } from '@evmos/proto'
 
 export const REGISTER_COIN_TYPES = {
   ContentValue: [

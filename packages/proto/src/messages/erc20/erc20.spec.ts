@@ -1,4 +1,4 @@
-import { Metadata } from '@buf/cosmos_cosmos-sdk.bufbuild_es/cosmos/bank/v1beta1/bank_pb'
+import { Metadata } from '../../proto/cosmos/bank/bank'
 import { createMsgConvertCoin } from './msgConvertCoin'
 import { createMsgConvertERC20 } from './msgConvertERC20'
 import { createMsgRegisterERC20 } from './msgRegisterERC20'
