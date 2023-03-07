@@ -1,4 +1,4 @@
-import { Metadata } from '@evmos/proto'
+import { Proto } from '@evmos/proto'
 
 export const REGISTER_COIN_TYPES = {
   ContentValue: [
@@ -26,7 +26,7 @@ export const REGISTER_COIN_TYPES = {
 export function createRegisterCoin(
   title: string,
   description: string,
-  metadata: Metadata[],
+  metadata: Proto.Cosmos.Bank.Bank.Metadata[],
 ) {
   return {
     type: 'erc20/RegisterCoinProposal',
