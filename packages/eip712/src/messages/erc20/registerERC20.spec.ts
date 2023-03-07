@@ -1,4 +1,4 @@
-import { REGISTER_ERC20_TYPES, createRegisterErc20 } from './registerERC20'
+import { REGISTER_ERC20_TYPES, createRegisterERC20 } from './registerERC20'
 import TestUtils from '../../tests/utils'
 
 describe('test RegisterERC20 type', () => {
@@ -20,7 +20,7 @@ describe('test RegisterERC20 type', () => {
     const { addrHex1, addrHex2 } = TestUtils
     const erc20addresses = [addrHex1, addrHex2]
 
-    const msg = createRegisterErc20(title, description, erc20addresses)
+    const msg = createRegisterERC20(title, description, erc20addresses)
 
     const expMsg = {
       type: 'erc20/RegisterERC20Proposal',

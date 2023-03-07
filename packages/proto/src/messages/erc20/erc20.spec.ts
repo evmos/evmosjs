@@ -1,7 +1,9 @@
 import { createMsgConvertCoin } from './msgConvertCoin'
 import { createMsgConvertERC20 } from './msgConvertERC20'
+import { createMsgRegisterERC20 } from './msgRegisterERC20'
 
-import { MsgConvertCoin, MsgConvertERC20 } from '../../proto/evmos/erc20/tx'
+import { MsgConvertCoin, MsgConvertERC20 } from '../../proto/evmos/erc20/tx.js'
+import { RegisterERC20Proposal } from '../../proto/evmos/erc20/erc20.js'
 
 import { from, to, denom, hex } from '../../proto/tests/utils'
 import { JSONOptions } from '../../proto/tests/common'
@@ -33,5 +35,17 @@ describe('test ERC20 Module message generation', () => {
       sender: from,
     })
     expect(msg.path).toStrictEqual(MsgConvertERC20.typeName)
+  })
+
+  it('correctly wraps msgRegisterERC20', () => {
+    const title = 'Register Test Coin'
+    const msg = createMsgRegisterERC20(title, title, [hex])
+
+    expect(msg.message.toJson(JSONOptions)).toStrictEqual({
+      title,
+      description: title,
+      erc20addresses: [hex],
+    })
+    expect(msg.path).toStrictEqual(RegisterERC20Proposal.typeName)
   })
 })
