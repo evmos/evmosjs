@@ -6,7 +6,7 @@ import {
 import TestUtils from '../../tests/utils'
 
 describe('test RegisterERC20 type', () => {
-  it('creates msg as expected', () => {
+  it('creates type as expected', () => {
     const expTypes = {
       ContentValue: [
         { name: 'title', type: 'string' },

@@ -14,7 +14,7 @@ describe('test RegisterERC20 type', () => {
     expect(REGISTER_ERC20_TYPES).toStrictEqual(expTypes)
   })
 
-  it('creates type as expected using the create function', () => {
+  it('creates msg as expected using the create function', () => {
     const title = 'Register ERC20s'
     const description = title
     const { addrHex1, addrHex2 } = TestUtils
