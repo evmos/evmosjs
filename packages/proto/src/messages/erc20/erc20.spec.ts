@@ -44,7 +44,8 @@ describe('test ERC20 Module message generation', () => {
 
   it('correctly wraps msgRegisterERC20', () => {
     const title = 'Register Test ERC20'
-    const msg = createMsgRegisterERC20(title, title, [hex])
+    const description = title
+    const msg = createMsgRegisterERC20(title, description, [hex])
 
     expect(msg.message.toJson(JSONOptions)).toStrictEqual({
       title,
@@ -56,34 +57,39 @@ describe('test ERC20 Module message generation', () => {
 
   it('correctly wraps msgRegisterCoin', () => {
     const title = 'Register Test IBC Coin'
+    const description = title
+    const metadataDescr = 'This is one IBC coin'
+    const denomUnit1 = { denom: ibcDenom, exponent: 0, aliases: ['stuosmo'] }
+    const denomUnit2 = { denom: 'stosmo', exponent: 6, aliases: [] }
+    const denomUnits = [denomUnit1, denomUnit2]
+    const displayName = 'stosmo'
+    const completeName = 'Stride Staked Osmo'
+    const symbol = 'stOSMO'
+    const uri = ''
+    const uriHash = ''
+
     const metadata = new Metadata({
-      description: 'This is one IBC coin',
-      denomUnits: [
-        { denom: ibcDenom, exponent: 0, aliases: ['stuosmo'] },
-        { denom: 'stosmo', exponent: 6, aliases: [] },
-      ],
+      description: metadataDescr,
+      denomUnits,
       base: ibcDenom,
-      display: 'stosmo',
-      name: 'Stride Staked Osmo',
-      symbol: 'stOSMO',
-      uri: '',
-      uriHash: '',
+      display: displayName,
+      name: completeName,
+      symbol,
+      uri,
+      uriHash,
     })
-    const msg = createMsgRegisterCoin(title, title, [metadata])
+    const msg = createMsgRegisterCoin(title, description, [metadata])
 
     // expected output uses snake_case naming instead of camelCase
     const expMeta = {
-      description: 'This is one IBC coin',
-      denom_units: [
-        { denom: ibcDenom, exponent: 0, aliases: ['stuosmo'] },
-        { denom: 'stosmo', exponent: 6, aliases: [] },
-      ],
+      description: metadataDescr,
+      denom_units: denomUnits,
       base: ibcDenom,
-      display: 'stosmo',
-      name: 'Stride Staked Osmo',
-      symbol: 'stOSMO',
-      uri: '',
-      uri_hash: '',
+      display: displayName,
+      name: completeName,
+      symbol,
+      uri,
+      uri_hash: uriHash,
     }
 
     expect(msg.message.toJson(JSONOptions)).toStrictEqual({

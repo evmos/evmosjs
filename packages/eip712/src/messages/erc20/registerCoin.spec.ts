@@ -6,7 +6,7 @@ import {
 import TestUtils from '../../tests/utils'
 
 describe('test RegisterERC20 type', () => {
-  it('creates type as expected', () => {
+  it('creates msg as expected', () => {
     const expTypes = {
       ContentValue: [
         { name: 'title', type: 'string' },
@@ -33,7 +33,7 @@ describe('test RegisterERC20 type', () => {
     expect(REGISTER_COIN_TYPES).toStrictEqual(expTypes)
   })
 
-  it('creates type as expected using the create function', () => {
+  it('creates msg as expected using the create function', () => {
     const title = 'Register ERC20s for IBC coins'
     const description = title
     const { ibcDenom1, ibcDenom2 } = TestUtils
