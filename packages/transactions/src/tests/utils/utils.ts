@@ -1,4 +1,5 @@
-import { Fee, Chain, Sender, TxContext } from '@evmos/transactions'
+import { Fee, Chain, Sender } from '../../messages/common'
+import { TxContext } from '../../messages/base'
 
 export class TestingClient {
   public readonly denom = 'aevmos'
