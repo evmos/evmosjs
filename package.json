@@ -1,8 +1,10 @@
 {
-  "name": "@evmos/evmosjs",
+  "name": "@evmos/monorepo",
+  "description": "This is the monorepo that contains all the evmosjs packages: evmosjs, @evmos/address-converter, @evmos/eip712, @evmos/proto, @evmos/provider & @evmos/transactions. Do NOT publish package releases using this package.json. To do so, do it the corresponding package directory under the path ./packages/<pkg_name>",
   "version": "0.1.0",
   "main": "index.js",
   "types": "dist/index.d.ts",
+  "type": "module",
   "license": "MIT",
   "private": "false",
   "publishConfig": {
@@ -30,7 +32,7 @@
     "coverage": "jest --coverage",
     "coverage:unit": "yarn test:unit --coverage",
     "coverage:integration": "yarn test:integration --coverage",
-    "lint": "eslint -c './.eslintrc.js' './packages/**/*.{ts,js}'",
+    "lint": "eslint -c './.eslintrc.cjs' './packages/**/*.{ts,js}'",
     "lint:ci": "yarn lint . --format junit",
     "lint:md": "markdownlint --ignore node_modules --ignore .git",
     "format": "yarn lint --fix",

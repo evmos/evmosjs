@@ -1,5 +1,5 @@
-const { pathsToModuleNameMapper } = require('ts-jest')
-const { compilerOptions } = require('./tsconfig')
+import { pathsToModuleNameMapper } from 'ts-jest'
+import { compilerOptions } from './tsconfig'
 
 module.exports = {
   // A list of reporter names that Jest uses when writing coverage reports
