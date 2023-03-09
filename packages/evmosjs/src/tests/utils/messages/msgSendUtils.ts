@@ -1,6 +1,6 @@
 import { createMsgSend as protoMsgSend } from '@evmos/proto'
 import { createMsgSend as eip712MsgSend, MSG_SEND_TYPES } from '@evmos/eip712'
-import { createTxMsgSend } from '../../../messages/bank'
+import { createTxMsgSend } from '@evmos/transactions'
 import { TestingClient } from '../utils'
 
 // TODO: Define a common MsgTestingClient interface with the following methods

@@ -1,6 +1,6 @@
 import { createMsgVote as protoMsgVote } from '@evmos/proto'
 import { createMsgVote as eip712MsgVote, MSG_VOTE_TYPES } from '@evmos/eip712'
-import { createTxMsgVote } from '../../../messages/gov'
+import { createTxMsgVote } from '@evmos/transactions'
 import { TestingClient } from '../utils'
 
 class MsgVoteTestingClient extends TestingClient {

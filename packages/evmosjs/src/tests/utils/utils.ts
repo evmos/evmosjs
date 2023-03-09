@@ -1,7 +1,12 @@
 import { Fee, Chain, Sender, TxContext } from '@evmos/transactions'
+import {
+  chainId as networkChainId,
+  cosmosChainId as networkCosmosChainId,
+  denom as networkDenom,
+} from '../network/params'
 
 export class TestingClient {
-  public readonly denom = 'aevmos'
+  public readonly denom = networkDenom
 
   public readonly amount1 = '1000000000000000000'
 
@@ -25,7 +30,7 @@ export class TestingClient {
 
   public readonly addrHex2 = '0xC1c85eB8278F783C5FE2103F1e4ac041B094160a'
 
-  public readonly chainId = 9001
+  public readonly chainId = networkChainId
 
   public readonly memo = 'Transaction Memo'
 
@@ -58,7 +63,7 @@ export class TestingClient {
 
   get chain(): Chain {
     const { chainId } = this
-    const cosmosChainId = `evmos_${chainId}-2`
+    const cosmosChainId = networkCosmosChainId
 
     return {
       chainId,
@@ -87,28 +92,6 @@ export class TestingClient {
     ])
 
     return Buffer.from(bytes).toString('base64')
-  }
-
-  get validatorParams() {
-    const moniker = 'test moniker'
-    const identity = 'test identity'
-    const website = 'test website'
-    const securityContact = 'test security contact'
-    const details = 'test details'
-    const validatorAddress = this.addrVal1
-    const commissionRate = '0.1'
-    const minSelfDelegation = this.amount1
-
-    return {
-      moniker,
-      identity,
-      website,
-      securityContact,
-      details,
-      validatorAddress,
-      commissionRate,
-      minSelfDelegation,
-    }
   }
 }
 
