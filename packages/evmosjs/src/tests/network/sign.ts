@@ -1,28 +1,33 @@
-import { createTxRaw } from '@evmos/proto'
-import { TxContext } from '@evmos/transactions'
-import { wallet, senderAddress } from './params'
+import { createTxRaw, Proto } from '@evmos/proto'
+import { wallet } from './params'
 
-export const signDirect = async (context: TxContext, tx: any) => {
-  const { sender } = context
-  const { signBytes } = tx.signDirect
-
-  if (sender.accountAddress !== senderAddress) {
-    throw new Error('Unexpected sender for transaction')
+interface TxPayload {
+  signDirect: {
+    body: Proto.Cosmos.Transactions.Tx.TxBody
+    authInfo: Proto.Cosmos.Transactions.Tx.AuthInfo
+    signBytes: string
   }
+}
 
+// Signs a hashed digest in base64 format and returns a 64-byte
+// signature (excluding the parity byte).
+const signDigest32 = (digestBase64: string) => {
   // eslint-disable-next-line no-underscore-dangle
   const signature = wallet
     ._signingKey()
-    .signDigest(Buffer.from(signBytes, 'base64'))
+    .signDigest(Buffer.from(digestBase64, 'base64'))
 
-  const signatureBytes = Buffer.concat([
+  return Buffer.concat([
     Buffer.from(signature.r.replace('0x', ''), 'hex'),
     Buffer.from(signature.s.replace('0x', ''), 'hex'),
   ])
+}
 
-  const { signDirect } = tx
-  const bodyBytes = signDirect.body.toBinary()
-  const authInfoBytes = signDirect.authInfo.toBinary()
+export const signDirect = async (tx: TxPayload) => {
+  const signatureBytes = signDigest32(tx.signDirect.signBytes)
+
+  const bodyBytes = tx.signDirect.body.toBinary()
+  const authInfoBytes = tx.signDirect.authInfo.toBinary()
 
   return createTxRaw(bodyBytes, authInfoBytes, [signatureBytes])
 }

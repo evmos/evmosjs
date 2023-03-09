@@ -19,14 +19,16 @@ class NetworkTestClient {
   private readonly createTxPayload: CreatePayloadFn
 
   constructor(createTxPayload: CreatePayloadFn) {
+    // Instantiate an instance of NetworkTestClient with a payload generator function
+    // to sign and broadcast a generic input message.
     this.createTxPayload = createTxPayload
   }
 
   signDirectAndBroadcast = async () => {
     const context = await this.createTxContext()
-    const tx = this.createTxPayload(context)
+    const payload = this.createTxPayload(context)
 
-    const signedTx = await signDirect(context, tx)
+    const signedTx = await signDirect(payload)
     const response = (await broadcastTx(signedTx)) as TxResponse
 
     return response
