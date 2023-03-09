@@ -1,4 +1,3 @@
-// import { publicKeyConvert } from 'secp256k1'
 import secp256k1 from 'secp256k1'
 import { fetchSenderInfo } from './query'
 import { createTx } from './payload'
@@ -28,6 +27,7 @@ class TestClient {
     let pubkey = baseAccount.pub_key?.key
 
     if (!pubkey) {
+      // Derive compressed public key from wallet
       const pubKeyUncompressed = Buffer.from(
         wallet.publicKey.replace('0x', ''),
         'hex',

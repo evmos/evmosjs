@@ -24,13 +24,10 @@ export const createTx = (
     cosmosChainId,
   }
 
-  // Populate the transaction sender parameters using the
-  // query API.
   const sender: Sender = {
     accountAddress: senderAddress,
     sequence: parseInt(sequence, 10),
     accountNumber: parseInt(accountNumber, 10),
-    // Use an empty string if the pubkey is unknown.
     pubkey: pubKey,
   }
 

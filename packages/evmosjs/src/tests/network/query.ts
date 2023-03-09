@@ -12,7 +12,6 @@ export const fetchSenderInfo = async () => {
     headers: { 'Content-Type': 'application/json' },
   }
 
-  // Note that the node will return a 400 status code if the account does not exist.
   const rawResult = await fetch(queryEndpoint, restOptions)
 
   const result = await rawResult.json()
