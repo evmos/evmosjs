@@ -11,4 +11,4 @@ jobs:
       - name: Install modules
         run: npm install
       - name: Run ESLint
-        run: npx eslint ./packages/**/*.{ts,js}
+        run: npx eslint ./packages/*/{src,tests}/
