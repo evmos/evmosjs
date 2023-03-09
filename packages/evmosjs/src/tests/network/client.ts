@@ -1,6 +1,7 @@
 import secp256k1 from 'secp256k1'
+import { TxContext, TxPayload } from '@evmos/transactions'
 import { fetchSenderInfo } from './query'
-import { createTx } from './payload'
+import { createTxContext } from './payload'
 import { signDirect } from './sign'
 import { broadcastTx } from './broadcast'
 import { wallet } from './params'
@@ -12,35 +13,48 @@ export interface TxResponse {
   }
 }
 
-class TestClient {
-  signDirectAndBroadcast = async () => {
-    const [context, tx] = await this.createPayload()
-    const signedTx = await signDirect(context, tx)
-    const response = await broadcastTx(signedTx)
-    return response as TxResponse
+export type CreatePayloadFn = (context: TxContext) => TxPayload
+
+class NetworkTestClient {
+  private readonly createTxPayload: CreatePayloadFn
+
+  constructor(createTxPayload: CreatePayloadFn) {
+    this.createTxPayload = createTxPayload
   }
 
-  private createPayload = async () => {
-    const senderInfo = (await fetchSenderInfo()) as any
+  signDirectAndBroadcast = async () => {
+    const context = await this.createTxContext()
+    const tx = this.createTxPayload(context)
 
-    const baseAccount = senderInfo.account.base_account
-    let pubkey = baseAccount.pub_key?.key
+    const signedTx = await signDirect(context, tx)
+    const response = (await broadcastTx(signedTx)) as TxResponse
 
-    if (!pubkey) {
-      // Derive compressed public key from wallet
-      const pubKeyUncompressed = Buffer.from(
-        wallet.publicKey.replace('0x', ''),
-        'hex',
-      )
-      pubkey = Buffer.from(
-        secp256k1.publicKeyConvert(pubKeyUncompressed, true),
-      ).toString('base64')
+    return response
+  }
+
+  private createTxContext = async () => {
+    const senderInfo = await fetchSenderInfo()
+
+    if (!senderInfo) {
+      throw new Error('Expected sender info from node')
     }
 
-    return createTx(baseAccount.account_number, pubkey, baseAccount.sequence)
+    // eslint-disable-next-line camelcase
+    const { account_number, sequence, pub_key } =
+      senderInfo.account.base_account
+    const pk = pub_key?.key ?? this.getSignerPubKey()
+
+    return createTxContext(account_number, pk, sequence)
+  }
+
+  private getSignerPubKey = () => {
+    const pkUncompressed = Buffer.from(
+      wallet.publicKey.replace('0x', ''),
+      'hex',
+    )
+    const pk = Buffer.from(secp256k1.publicKeyConvert(pkUncompressed, true))
+    return pk.toString('base64')
   }
 }
 
-const client = new TestClient()
-
-export default client
+export default NetworkTestClient

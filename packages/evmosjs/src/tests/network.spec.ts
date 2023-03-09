@@ -1,4 +1,5 @@
-import client, { TxResponse } from './network/client'
+import NetworkClient, { TxResponse } from './network/client'
+import { MsgSendUtils } from './utils'
 
 const expectSuccess = (response: TxResponse) => {
   // eslint-disable-next-line camelcase
@@ -7,7 +8,9 @@ const expectSuccess = (response: TxResponse) => {
 
 describe('evmosjs e2e integration tests', () => {
   it('fulfills msgsend transactions', async () => {
+    const client = new NetworkClient(MsgSendUtils.generateTx)
     const response = await client.signDirectAndBroadcast()
+
     expectSuccess(response)
   })
 })

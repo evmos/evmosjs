@@ -1,24 +1,11 @@
-import {
-  Chain,
-  Sender,
-  Fee,
-  TxContext,
-  MsgSendParams,
-  createTxMsgSend,
-  TxPayload,
-} from '@evmos/transactions'
-import {
-  senderAddress,
-  destinationAddress,
-  chainId,
-  cosmosChainId,
-} from './params'
+import { Chain, Sender, Fee, TxContext } from '@evmos/transactions'
+import { senderAddress, chainId, cosmosChainId } from './params'
 
-export const createTx = (
+export const createTxContext = (
   accountNumber: string,
   pubKey: string,
   sequence: string,
-): [TxContext, TxPayload] => {
+): TxContext => {
   const chain: Chain = {
     chainId,
     cosmosChainId,
@@ -46,13 +33,5 @@ export const createTx = (
     memo,
   }
 
-  const params: MsgSendParams = {
-    destinationAddress,
-    amount: '1000',
-    denom: 'aevmos',
-  }
-
-  const tx: TxPayload = createTxMsgSend(context, params)
-
-  return [context, tx]
+  return context
 }
