@@ -73,9 +73,15 @@ module.exports = {
         'tsdoc/syntax': 'warn',
       },
       settings: {
+        'import/parsers': {
+          '@typescript-eslint/parser': ['.ts', '.tsx'],
+        },
         'import/resolver': {
           typescript: {
-            project: 'packages/*/tsconfig.json',
+            project: ['./tsconfig.json', 'packages/*/tsconfig.json'],
+          },
+          node: {
+            project: ['./tsconfig.json', 'packages/*/tsconfig.json'],
           },
         },
       },
