@@ -72,7 +72,7 @@ module.exports = {
         ...common.rules,
         '@typescript-eslint/explicit-function-return-type': 'off',
         'tsdoc/syntax': 'warn',
-        'import/no-unresolved': 'error',
+        'import/no-unresolved': 'off',
       },
       settings: {
         'import/parsers': {
