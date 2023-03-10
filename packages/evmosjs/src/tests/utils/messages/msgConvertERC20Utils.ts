@@ -3,7 +3,7 @@ import {
   createMsgConvertERC20 as eip712MsgConvertERC20,
   MSG_CONVERT_ERC20_TYPES,
 } from '@evmos/eip712'
-import { createTxMsgConvertERC20 } from '../../../messages/erc20'
+import { createTxMsgConvertERC20 } from '@evmos/transactions'
 import { TestingClient } from '../utils'
 
 class MsgConvertERC20TestingClient extends TestingClient {
