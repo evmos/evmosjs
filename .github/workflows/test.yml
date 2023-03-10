@@ -30,6 +30,19 @@ jobs:
         run: npm run build
         if: env.GIT_DIFF
 
+      - name: Start Docker network tests
+        run: >-
+          cd packages/evmosjs/src/tests &&
+          docker build -t evmosjs-test . &&
+          docker create -p 1317:1317 --name evmos -t evmosjs-test &&
+          docker start evmos &&
+          cd ../../../..
+        if: env.GIT_DIFF
+
+      - name: Wait for Docker to spin up
+        run: sleep 30s
+        if: env.GIT_DIFF
+
       - name: Run tests
         run: npm run test
         if: env.GIT_DIFF
