@@ -50,17 +50,11 @@ module.exports = {
     {
       files: ['**/*.ts'],
       parser: '@typescript-eslint/parser',
-      parserOptions: {
-        project: 'tsconfig.json',
-        sourceType: 'module',
-      },
-      env: common.env,
       plugins: [
         ...common.plugins,
         '@typescript-eslint',
         'eslint-plugin-tsdoc',
         'import',
-        'eslint-plugin-import',
       ],
       extends: [
         ...common.extends,
@@ -72,7 +66,6 @@ module.exports = {
         ...common.rules,
         '@typescript-eslint/explicit-function-return-type': 'off',
         'tsdoc/syntax': 'warn',
-        'import/no-unresolved': 'off',
       },
       settings: {
         'import/parsers': {
@@ -80,10 +73,12 @@ module.exports = {
         },
         'import/resolver': {
           typescript: {
-            project: ['./tsconfig.json', 'packages/**/tsconfig.json'],
+            project: ['./tsconfig.json', 'packages/*/tsconfig.json'],
+          },
+          node: {
+            project: ['./tsconfig.json', 'packages/*/tsconfig.json'],
           },
         },
-        'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
   ],
