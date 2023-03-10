@@ -51,7 +51,12 @@ module.exports = {
       files: ['**/*.ts'],
       parser: '@typescript-eslint/parser',
       env: common.env,
-      plugins: [...common.plugins, '@typescript-eslint', 'eslint-plugin-tsdoc'],
+      plugins: [
+        ...common.plugins,
+        '@typescript-eslint',
+        'eslint-plugin-tsdoc',
+        'import',
+      ],
       extends: [
         ...common.extends,
         'plugin:import/errors',
