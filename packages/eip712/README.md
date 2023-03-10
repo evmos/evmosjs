@@ -4,7 +4,13 @@ EIP712 transactions creator.
 
 # Installation
 
-- `yarn add @evmos/evmosjs`
+## `npm`
+
+- `npm i @evmos/eip712`
+
+## `yarn`
+
+- `yarn add @evmos/eip712`
 
 # Example
 

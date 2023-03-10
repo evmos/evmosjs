@@ -1,4 +1,4 @@
-# evmosjs
+# EvmosJS
 
 JS and TS libs for Evmos.
 
