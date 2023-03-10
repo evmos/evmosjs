@@ -24,7 +24,7 @@ npm install evmosjs
 Or:
 
 ```bash
-npm install @evmosjs/[package]
+npm install @evmos/[package]
 ```
 
 ### Yarn v2.x or v3.x
@@ -46,7 +46,7 @@ yarn add evmosjs
 Or:
 
 ```bash
-yarn add @evmosjs/[package]
+yarn add @evmos/[package]
 ```
 
 Note that Yarn v1 is not supported ([see explanation](https://docs.buf.build/bsr/remote-packages/npm#other-package-managers)).
@@ -81,7 +81,7 @@ const rawResult = await fetch(
 const result = await rawResult.json()
 
 // The response format is available at @evmos/provider/rest/account/AccountResponse.
-// Note that the `pub_key` will be `null` if the address has not sent any transactions. 
+// Note that the `pub_key` will be `null` if the address has not sent any transactions.
 /*
   account: {
     '@type': string
@@ -106,7 +106,7 @@ Create a transaction payload which can be signed using either Metamask or Keplr.
 This example uses `MsgSend`. View all signable transaction payloads in the [Transaction Docs](https://github.com/evmos/evmosjs/tree/main/docs/transactions).
 
 ```ts
-import { 
+import {
   Chain,
   Sender,
   Fee,
@@ -128,7 +128,7 @@ const sender: Sender = {
   sequence: [sender_sequence],
   accountNumber: [sender_account_number],
   // Use an empty string if the pubkey is unknown.
-  pubkey: [sender_pub_key], 
+  pubkey: [sender_pub_key],
 }
 
 const fee: Fee = {
