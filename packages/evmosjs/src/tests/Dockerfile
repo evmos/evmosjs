@@ -8,8 +8,6 @@ WORKDIR /go/src/github.com/evmos/evmos
 
 RUN apt-get update -y
 
-RUN git checkout main
-
 RUN make build
 
 FROM golang:1.20.0-bullseye
