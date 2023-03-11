@@ -3,7 +3,7 @@ import {
   createIBCMsgTransfer as eip712IBCMsgTransfer,
   IBC_MSG_TRANSFER_TYPES,
 } from '@evmos/eip712'
-import { createTxIBCMsgTransfer } from '../../../messages/ibc'
+import { createTxIBCMsgTransfer } from '@evmos/transactions'
 import { TestingClient } from '../utils'
 
 class IBCMsgTransferTestingClient extends TestingClient {
