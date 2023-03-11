@@ -40,7 +40,15 @@ module.exports = {
   root: true,
   overrides: [
     {
-      files: ['**/*.ts', '**/*.js'],
+      /*
+      eslint-plugin-markdown only finds javascript code block snippet.
+      For specific spec, refer to https://github.com/eslint/eslint-plugin-markdown
+      */
+      files: ['**/*.js', '**/*.md'],
+      ...common,
+    },
+    {
+      files: ['**/*.ts'],
       parser: '@typescript-eslint/parser',
       plugins: [
         ...common.plugins,
@@ -65,6 +73,16 @@ module.exports = {
         },
         'import/resolver': {
           typescript: {},
+          alias: {
+            map: [
+              ['@evmos/address-converter', './packages/address-converter/*'],
+              ['@evmos/eip712', 'packages/eip712'],
+              ['@evmos/proto', 'packages/proto'],
+              ['@evmos/provider', 'packages/provider/*'],
+              ['@evmos/transactions', 'packages/transactions/*'],
+            ],
+            extensions: ['.ts', '.js', '.json'],
+          },
         },
       },
     },
