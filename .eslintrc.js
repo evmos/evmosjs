@@ -40,15 +40,7 @@ module.exports = {
   root: true,
   overrides: [
     {
-      /*
-      eslint-plugin-markdown only finds javascript code block snippet.
-      For specific spec, refer to https://github.com/eslint/eslint-plugin-markdown
-      */
-      files: ['**/*.js', '**/*.md'],
-      ...common,
-    },
-    {
-      files: ['**/*.ts'],
+      files: ['**/*.ts', '**/*.js'],
       parser: '@typescript-eslint/parser',
       plugins: [
         ...common.plugins,
@@ -72,12 +64,7 @@ module.exports = {
           '@typescript-eslint/parser': ['.ts', '.tsx'],
         },
         'import/resolver': {
-          typescript: {
-            project: ['./tsconfig.json', 'packages/*/tsconfig.json'],
-          },
-          node: {
-            project: ['./tsconfig.json', 'packages/*/tsconfig.json'],
-          },
+          typescript: {},
         },
       },
     },
