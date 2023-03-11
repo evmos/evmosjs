@@ -50,6 +50,7 @@ module.exports = {
     {
       files: ['**/*.ts'],
       parser: '@typescript-eslint/parser',
+      env: common.env,
       plugins: [
         ...common.plugins,
         '@typescript-eslint',
@@ -66,6 +67,7 @@ module.exports = {
         ...common.rules,
         '@typescript-eslint/explicit-function-return-type': 'off',
         'tsdoc/syntax': 'warn',
+        'import/no-unresolved': 'warn',
       },
       settings: {
         'import/parsers': {
@@ -73,16 +75,6 @@ module.exports = {
         },
         'import/resolver': {
           typescript: {},
-          alias: {
-            map: [
-              ['@evmos/address-converter', './packages/address-converter/*'],
-              ['@evmos/eip712', 'packages/eip712'],
-              ['@evmos/proto', 'packages/proto'],
-              ['@evmos/provider', 'packages/provider/*'],
-              ['@evmos/transactions', 'packages/transactions/*'],
-            ],
-            extensions: ['.ts', '.js', '.json'],
-          },
         },
       },
     },
