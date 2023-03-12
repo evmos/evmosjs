@@ -37,7 +37,10 @@ jobs:
           cd ../../../..
 
       - name: Wait for Docker to spin up
-        run: sleep 30
+        run: sleep 180
+
+      - name: Log open ports after sleep
+        run: lsof -i -P -n
 
       - name: Run tests
         run: npm run test
