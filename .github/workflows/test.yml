@@ -37,7 +37,7 @@ jobs:
           cd ../../../..
 
       - name: Wait for Docker to spin up
-        run: sleep 60s
+        run: sleep 300s
 
       - name: Run tests
         run: npm run test
