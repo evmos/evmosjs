@@ -42,5 +42,8 @@ jobs:
       - name: Log open ports after sleep
         run: lsof -i -P -n
 
+      - name: Log Docker ports after spinup
+        run: docker ps -a
+
       - name: Run tests
         run: npm run test
