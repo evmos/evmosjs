@@ -8,7 +8,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    if: env.GIT_DIFF
     steps:
       - uses: actions/checkout@v2
 
