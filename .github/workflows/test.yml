@@ -8,6 +8,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    container: ubuntu
     steps:
       - uses: actions/checkout@v2
 
@@ -37,7 +38,7 @@ jobs:
           cd ../../../..
 
       - name: Wait for Docker to spin up
-        run: sleep 300s
+        run: sleep 60s
 
       - name: Run tests
         run: npm run test
