@@ -29,10 +29,11 @@ jobs:
         run: npm run build
 
       - name: Start Docker local node
-        run: cd packages/evmosjs/src/tests && \
-          docker build -t evmosjs-test . && \
-          docker create -p 1317:1317 --name evmos -t evmosjs-test && \
-          docker start evmos && \
+        run: >-
+          cd packages/evmosjs/src/tests &&
+          docker build -t evmosjs-test . &&
+          docker create -p 1317:1317 --name evmos -t evmosjs-test &&
+          docker start evmos &&
           cd ../../../..
 
       - name: Wait for Docker to spin up
