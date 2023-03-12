@@ -8,7 +8,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    container: ubuntu
     steps:
       - uses: actions/checkout@v2
 
@@ -29,7 +28,7 @@ jobs:
       - name: NPM build is needed because the packages inter-dependencies
         run: npm run build
 
-      - name: Start Docker network tests
+      - name: Start Docker local node
         run: >-
           cd packages/evmosjs/src/tests &&
           docker build -t evmosjs-test . &&
@@ -38,7 +37,7 @@ jobs:
           cd ../../../..
 
       - name: Wait for Docker to spin up
-        run: sleep 60s
+        run: sleep 30
 
       - name: Run tests
         run: npm run test
