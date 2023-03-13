@@ -15,9 +15,9 @@ EvmosJS contains a total of 6 different packages:
       [EIP-712 TypedData Payloads](https://eips.ethereum.org/EIPS/eip-712),
       to be used to sign Cosmos transactions from Ethereum signers
 4. [proto](https://github.com/evmos/evmosjs/tree/main/packages/proto)
-    - Creating signable low-level [Protobuf Payloads](https://protobuf.dev/),
+    - Create signable low-level [Protobuf Payloads](https://protobuf.dev/),
       to be used to sign native Cosmos transactions using `SignDirect`, and access
-      exposes Protobuf types used by Evmos
+      Protobuf types used by Evmos
 5. [transactions](https://github.com/evmos/evmosjs/tree/main/packages/transactions)
     - Create signable high-level payloads
       that include both Protobuf- and EIP-712-signable transactions
