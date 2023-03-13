@@ -99,11 +99,11 @@ const result = await rawResult.json()
 */
 ```
 
-### Get the Public Key
+### Get an Account's Public Key
 
-Use Keplr or MetaMask to retrieve an account's public key as a base64 string when the field is `null` in the query response.
+Use Keplr or MetaMask to retrieve an account's public key if it is not returned in the query response.
 
-```
+```ts
 import { hashMessage } from '@ethersproject/hash';
 import {
   computePublicKey,
@@ -145,7 +145,6 @@ const getMetaMaskPubKey = async () => {
 
   return pk;
 }
-
 ```
 
 ### Create a Signable Transaction
@@ -176,6 +175,8 @@ const sender: Sender = {
   accountAddress: [sender_account_address],
   sequence: [sender_sequence],
   accountNumber: [sender_account_number],
+  // Use the public key from the account query, or retrieve
+  // the public key from the code snippet above.
   pubkey: [sender_pub_key],
 }
 
