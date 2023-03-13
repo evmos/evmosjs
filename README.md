@@ -99,6 +99,55 @@ const result = await rawResult.json()
 */
 ```
 
+### Get the Public Key
+
+Use Keplr or MetaMask to retrieve an account's public key as a base64 string when the field is `null` in the query response.
+
+```
+import { hashMessage } from '@ethersproject/hash';
+import {
+  computePublicKey,
+  recoverPublicKey,
+} from '@ethersproject/signing-key';
+
+const getKeplrPubKey = async () => {
+  const account = await window?.keplr?.getKey([chainID]);
+  const pk = Buffer.from(account.pubKey).toString('base64');
+
+  return pk;
+}
+
+const getMetaMaskPubKey = async () => {
+  const accounts = await window?.ethereum?.request({
+    method: 'eth_requestAccounts',
+  });
+  
+  // Handle errors if MetaMask fails to return any accounts.
+  // Since MetaMask does not provide an interface to retrieve a user's
+  // public key, we must sign a message and ecrecover the key.
+
+  const message = 'Verify Public Key';
+
+  const signature = await window?.ethereum?.request({
+    method: 'personal_sign',
+    params: [message, accounts[0], ''],
+  });
+
+  const uncompressedPk = recoverPublicKey(
+    hashMessage(message),
+    signature,
+  );
+
+  const hexPk = computePublicKey(uncompressedPk, true);
+  const pk = Buffer.from(
+    hexPk.replace('0x', ''), 'hex',
+  ).toString('base64');
+
+  return pk;
+}
+
+```
+
 ### Create a Signable Transaction
 
 Create a transaction payload which can be signed using either Metamask or Keplr.
@@ -127,7 +176,6 @@ const sender: Sender = {
   accountAddress: [sender_account_address],
   sequence: [sender_sequence],
   accountNumber: [sender_account_number],
-  // Use an empty string if the pubkey is unknown.
   pubkey: [sender_pub_key],
 }
 
