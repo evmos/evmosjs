@@ -25,7 +25,7 @@ jobs:
       - name: Install modules
         run: npm install
 
-      - name: NPM build is needed because the packages inter-dependencies
+      - name: Build and link packages
         run: npm run build
 
       - name: Start Docker local node
@@ -37,16 +37,7 @@ jobs:
           cd ../../../..
 
       - name: Wait for Docker to spin up
-        run: sleep 600
-
-      - name: Log open ports after sleep
-        run: lsof -i -P -n
-
-      - name: Log Docker ports after spinup
-        run: docker ps -a
-
-      - name: Log Docker version after spinup
-        run: docker -v
+        run: sleep 30
 
       - name: Run tests
         run: npm run test
