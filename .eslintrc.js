@@ -27,7 +27,6 @@ const common = {
     'no-shadow': 'off',
     'no-unused-vars': 'off',
     'no-useless-constructor': 'off',
-    '@typescript-eslint/no-useless-constructor': 'error',
     'import/no-extraneous-dependencies': [
       'error',
       {
@@ -52,7 +51,12 @@ module.exports = {
       files: ['**/*.ts'],
       parser: '@typescript-eslint/parser',
       env: common.env,
-      plugins: [...common.plugins, '@typescript-eslint', 'eslint-plugin-tsdoc'],
+      plugins: [
+        ...common.plugins,
+        '@typescript-eslint',
+        'eslint-plugin-tsdoc',
+        'import',
+      ],
       extends: [
         ...common.extends,
         'plugin:import/errors',
@@ -63,8 +67,12 @@ module.exports = {
         ...common.rules,
         '@typescript-eslint/explicit-function-return-type': 'off',
         'tsdoc/syntax': 'warn',
+        'import/no-unresolved': 'warn',
       },
       settings: {
+        'import/parsers': {
+          '@typescript-eslint/parser': ['.ts', '.tsx'],
+        },
         'import/resolver': {
           typescript: {},
         },
