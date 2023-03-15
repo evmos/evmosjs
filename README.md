@@ -103,48 +103,47 @@ const result = await rawResult.json()
 
 Use Keplr or MetaMask to retrieve an account's public key if it is not returned in the query response.
 
+#### Keplr
+
 ```ts
-import { hashMessage } from '@ethersproject/hash';
+const cosmosChainID = 'evmos_9001-2' // Use 'evmos_9000-4' for testnet
+const account = await window?.keplr?.getKey(cosmosChainID)
+const pk = Buffer.from(account.pubKey).toString('base64')
+```
+
+#### MetaMask
+
+```ts
+import { hashMessage } from '@ethersproject/hash'
 import {
   computePublicKey,
   recoverPublicKey,
-} from '@ethersproject/signing-key';
+} from '@ethersproject/signing-key'
 
-const getKeplrPubKey = async () => {
-  const account = await window?.keplr?.getKey([chainID]);
-  const pk = Buffer.from(account.pubKey).toString('base64');
+const accounts = await window?.ethereum?.request({
+  method: 'eth_requestAccounts',
+})
 
-  return pk;
-}
+// Handle errors if MetaMask fails to return any accounts.
+// Since MetaMask does not provide an interface to retrieve a user's
+// public key, we must sign a message and ecrecover the key.
 
-const getMetaMaskPubKey = async () => {
-  const accounts = await window?.ethereum?.request({
-    method: 'eth_requestAccounts',
-  });
-  
-  // Handle errors if MetaMask fails to return any accounts.
-  // Since MetaMask does not provide an interface to retrieve a user's
-  // public key, we must sign a message and ecrecover the key.
+const message = 'Verify Public Key'
 
-  const message = 'Verify Public Key';
+const signature = await window?.ethereum?.request({
+  method: 'personal_sign',
+  params: [message, accounts[0], ''],
+})
 
-  const signature = await window?.ethereum?.request({
-    method: 'personal_sign',
-    params: [message, accounts[0], ''],
-  });
+const uncompressedPk = recoverPublicKey(
+  hashMessage(message),
+  signature,
+)
 
-  const uncompressedPk = recoverPublicKey(
-    hashMessage(message),
-    signature,
-  );
-
-  const hexPk = computePublicKey(uncompressedPk, true);
-  const pk = Buffer.from(
-    hexPk.replace('0x', ''), 'hex',
-  ).toString('base64');
-
-  return pk;
-}
+const hexPk = computePublicKey(uncompressedPk, true)
+const pk = Buffer.from(
+  hexPk.replace('0x', ''), 'hex',
+).toString('base64')
 ```
 
 ### Create a Signable Transaction
