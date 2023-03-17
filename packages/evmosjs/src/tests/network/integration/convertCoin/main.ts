@@ -1,64 +1,45 @@
-import { expectSuccess } from '../../common'
-import NetworkClient from '../../client'
+import { expectSuccess, delay } from '../../common'
+import { NetworkClientHost } from '../types'
 import SubmitProposalClient from './submitProposal'
 import DelegateClient from './delegate'
 import VoteClient from './vote'
 import ConvertCoinClient from './convertCoin'
 
-class ConvertCoinIntegrationClient {
-  public networkClient: NetworkClient
-
-  constructor() {
-    this.networkClient = new NetworkClient()
-  }
-
+class ConvertCoinIntegrationClient extends NetworkClientHost {
   testIntegration = async () => {
-    await this.submitConvertCoinProposal()
-    await this.bondTokens()
-    await this.voteOnProposal()
-    await this.convertCoin()
-  }
+    const { networkClient } = this
 
-  private submitConvertCoinProposal = async () => {
-    const integrationClient = new SubmitProposalClient(this.networkClient)
+    const proposalClient = new SubmitProposalClient(networkClient)
+    const delegateClient = new DelegateClient(networkClient)
+    const voteClient = new VoteClient(networkClient)
+    const convertCoinClient = new ConvertCoinClient(networkClient)
 
-    const response = await integrationClient.sendTx()
-
+    let response = await proposalClient.sendTx()
     expectSuccess(response)
 
-    await new Promise((resolve) => setTimeout(resolve, 5000))
-    await integrationClient.verifyStateChange()
-  }
-
-  private bondTokens = async () => {
-    const integrationClient = new DelegateClient(this.networkClient)
-
-    const response = await integrationClient.sendTx()
-
+    response = await delegateClient.sendTx()
     expectSuccess(response)
 
-    await new Promise((resolve) => setTimeout(resolve, 5000))
-    await integrationClient.verifyStateChange()
-  }
+    const proposalId = proposalClient.getProposalId()
+    voteClient.setProposalId(proposalId)
 
-  private voteOnProposal = async () => {
-    const integrationClient = new VoteClient(this.networkClient)
-    const response = await integrationClient.sendTx()
-
+    response = await voteClient.sendTx()
     expectSuccess(response)
 
-    await new Promise((resolve) => setTimeout(resolve, 20000))
-    await integrationClient.verifyStateChange()
-  }
+    // Wait for voting period to expire and token pair to be added.
+    await delay(10000)
 
-  private convertCoin = async () => {
-    const integrationClient = new ConvertCoinClient(this.networkClient)
-    const response = await integrationClient.sendTx()
-
+    response = await convertCoinClient.sendTx()
     expectSuccess(response)
 
-    await new Promise((resolve) => setTimeout(resolve, 5000))
-    await integrationClient.verifyStateChange()
+    // Wait for state changes to propogate to API
+    await delay(15000)
+
+    // Verify state changes for each client.
+    await proposalClient.verifyStateChange()
+    await delegateClient.verifyStateChange()
+    await voteClient.verifyStateChange()
+    await convertCoinClient.verifyStateChange()
   }
 }
 

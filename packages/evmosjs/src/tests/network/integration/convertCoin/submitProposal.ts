@@ -62,17 +62,28 @@ class ConvertCoinSubmitProposalClient extends IntegrationClientBase {
     }
   }
 
+  getProposalId = () => {
+    const previousProposals = this.getPreviousProposals()
+    return previousProposals.proposals.length + 1
+  }
+
   verifyStateChange = async () => {
     const proposals = await fetchProposals()
+    const previousProposals = this.getPreviousProposals()
+
+    expect(proposals.proposals).toHaveLength(
+      previousProposals.proposals.length + 1,
+    )
+  }
+
+  private getPreviousProposals = () => {
     const { previousProposals } = this
 
     if (!previousProposals) {
       throw new Error('must fetch previous proposals before verifying state')
     }
 
-    expect(proposals.proposals).toHaveLength(
-      previousProposals.proposals.length + 1,
-    )
+    return previousProposals
   }
 }
 

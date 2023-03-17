@@ -43,8 +43,8 @@ jq '.app_state.evm.params.evm_denom="aevmos"' "$GENESIS" > "$TMP_GENESIS" && mv 
 jq '.app_state.inflation.params.mint_denom="aevmos"' "$GENESIS" > "$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
 
 # set gov proposing && voting period
-jq '.app_state.gov.deposit_params.max_deposit_period="15s"' "$GENESIS" > "$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
-jq '.app_state.gov.voting_params.voting_period="15s"' "$GENESIS" > "$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
+jq '.app_state.gov.deposit_params.max_deposit_period="10s"' "$GENESIS" > "$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
+jq '.app_state.gov.voting_params.voting_period="10s"' "$GENESIS" > "$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
 
 # Set gas limit in genesis
 jq '.consensus_params.block.max_gas="10000000"' "$GENESIS" > "$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"

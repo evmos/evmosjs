@@ -28,7 +28,7 @@ class NetworkTestClient {
 
     console.log(response)
 
-    if (this.nonce) {
+    if (this.nonce !== undefined) {
       this.nonce += 1
     }
 
