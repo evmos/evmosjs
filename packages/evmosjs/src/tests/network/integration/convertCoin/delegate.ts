@@ -1,11 +1,11 @@
 import { TxContext, createTxMsgDelegate } from '@evmos/transactions'
 import { GetValidatorsResponse } from '@evmos/provider'
 import { BigNumber } from '@ethersproject/bignumber'
-import NetworkClient from '../../client'
+import IntegrationClientBase from '../types'
 import { denom } from '../../params'
 import { fetchValidators } from '../../query'
 
-class ConvertCoinDelegateClient {
+class ConvertCoinDelegateClient extends IntegrationClientBase {
   private previousValidators: GetValidatorsResponse | undefined
 
   private stakeAmount = '500000000000000000000000000'
@@ -13,11 +13,10 @@ class ConvertCoinDelegateClient {
   sendTx = async () => {
     this.previousValidators = await fetchValidators()
 
-    const client = new NetworkClient(this.generator)
-    return client.signDirectAndBroadcast()
+    return this.networkClient.signDirectAndBroadcast(this.createPayload)
   }
 
-  private generator = (context: TxContext) => {
+  private createPayload = (context: TxContext) => {
     const validatorAddress = this.getValidatorAddress()
     const params = this.getParams(validatorAddress)
 

@@ -1,21 +1,20 @@
 import { TxContext, createTxMsgSubmitProposal } from '@evmos/transactions'
 import { createMsgRegisterCoin, Proto } from '@evmos/proto'
 import { ProposalsResponse } from '@evmos/provider'
-import NetworkClient from '../../client'
+import IntegrationClientBase from '../types'
 import { ibcDenom, denom } from '../../params'
 import { fetchProposals } from '../../query'
 
-class ConvertCoinSubmitProposalClient {
+class ConvertCoinSubmitProposalClient extends IntegrationClientBase {
   private previousProposals: ProposalsResponse | undefined
 
   sendTx = async () => {
     this.previousProposals = await fetchProposals()
 
-    const client = new NetworkClient(this.generator)
-    return client.signDirectAndBroadcast()
+    return this.networkClient.signDirectAndBroadcast(this.createPayload)
   }
 
-  private generator = (context: TxContext) => {
+  private createPayload = (context: TxContext) => {
     const params = this.getParams(context)
     return createTxMsgSubmitProposal(context, params)
   }

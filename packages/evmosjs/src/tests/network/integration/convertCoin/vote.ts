@@ -1,20 +1,19 @@
 import { TxContext, createTxMsgVote } from '@evmos/transactions'
 import { Proposal } from '@evmos/provider'
-import NetworkClient from '../../client'
+import IntegrationClientBase from '../types'
 import { fetchProposals } from '../../query'
 
-class ConvertCoinVoteClient {
+class ConvertCoinVoteClient extends IntegrationClientBase {
   private proposalId: number | undefined
 
   sendTx = async () => {
     const query = await fetchProposals()
     this.proposalId = query.proposals.length
 
-    const client = new NetworkClient(this.generator)
-    return client.signDirectAndBroadcast()
+    return this.networkClient.signDirectAndBroadcast(this.createPayload)
   }
 
-  private generator = (context: TxContext) => {
+  private createPayload = (context: TxContext) => {
     const { proposalId } = this
     if (!proposalId) {
       throw new Error('must fetch proposal id before generating')

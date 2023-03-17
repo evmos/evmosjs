@@ -17,39 +17,45 @@ export interface TxResponse {
 export type CreatePayloadFn = (context: TxContext) => TxPayload
 
 class NetworkTestClient {
-  private readonly createTxPayload: CreatePayloadFn
+  private nonce: number | undefined
 
-  constructor(createTxPayload: CreatePayloadFn) {
-    // Instantiate an instance of NetworkTestClient with a payload generator function
-    // to sign and broadcast a generic input message.
-    this.createTxPayload = createTxPayload
-  }
-
-  signDirectAndBroadcast = async () => {
+  signDirectAndBroadcast = async (createTxPayload: CreatePayloadFn) => {
     const context = await this.createTxContext()
-    const payload = this.createTxPayload(context)
+    const payload = createTxPayload(context)
 
     const signedTx = await signDirect(payload)
     const response = await broadcastTx(signedTx)
 
     console.log(response)
 
+    if (this.nonce) {
+      this.nonce += 1
+    }
+
     return response as TxResponse
   }
 
   private createTxContext = async () => {
+    // eslint-disable-next-line camelcase
+    const { account_number, sequence, pub_key } = await this.getSenderAccount()
+
+    const pk = pub_key?.key ?? this.getSignerPubKey()
+
+    if (this.nonce === undefined) {
+      this.nonce = parseInt(sequence, 10)
+    }
+
+    return createTxContext(account_number, pk, this.nonce.toString())
+  }
+
+  private getSenderAccount = async () => {
     const senderInfo = await fetchSenderInfo()
 
     if (!senderInfo) {
       throw new Error('Expected sender info from node')
     }
 
-    // eslint-disable-next-line camelcase
-    const { account_number, sequence, pub_key } =
-      senderInfo.account.base_account
-    const pk = pub_key?.key ?? this.getSignerPubKey()
-
-    return createTxContext(account_number, pk, sequence)
+    return senderInfo.account.base_account
   }
 
   private getSignerPubKey = () => {

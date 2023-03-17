@@ -1,11 +1,11 @@
 import { TxContext, createTxMsgConvertCoin } from '@evmos/transactions'
 import { BalanceByDenomResponse, Coin } from '@evmos/provider'
 import { BigNumber } from '@ethersproject/bignumber'
-import NetworkClient from '../../client'
+import IntegrationClientBase from '../types'
 import { ibcDenom, senderAddress, senderHex } from '../../params'
 import { fetchBalanceByDenom } from '../../query'
 
-class ConvertCoinConvertCoinClient {
+class ConvertCoinConvertCoinClient extends IntegrationClientBase {
   private previousBalanceResponse: BalanceByDenomResponse | undefined
 
   private transferAmount: string = '1000'
@@ -16,11 +16,10 @@ class ConvertCoinConvertCoinClient {
       ibcDenom,
     )
 
-    const client = new NetworkClient(this.generator)
-    return client.signDirectAndBroadcast()
+    return this.networkClient.signDirectAndBroadcast(this.createPayload)
   }
 
-  private generator = (context: TxContext) => {
+  private createPayload = (context: TxContext) => {
     const params = this.getParams()
     return createTxMsgConvertCoin(context, params)
   }
