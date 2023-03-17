@@ -1,5 +1,13 @@
 /* eslint-disable camelcase */
-import { generateEndpointAccount } from '@evmos/provider'
+import {
+  generateEndpointAccount,
+  generateEndpointGetValidators,
+  generateEndpointProposals,
+  generateEndpointBalanceByDenom,
+  GetValidatorsResponse,
+  ProposalsResponse,
+  BalanceByDenomResponse,
+} from '@evmos/provider'
 import fetch from 'node-fetch'
 import { senderAddress, nodeUrl } from './params'
 
@@ -18,19 +26,48 @@ export interface SenderInfo {
   }
 }
 
+const restOptions = {
+  method: 'GET',
+  headers: { 'Content-Type': 'application/json' },
+}
+
 export const fetchSenderInfo = async () => {
   const address = senderAddress
 
   const queryEndpoint = `${nodeUrl}${generateEndpointAccount(address)}`
-
-  const restOptions = {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-  }
-
   const rawResult = await fetch(queryEndpoint, restOptions)
 
   const result = (await rawResult.json()) as SenderInfo | undefined
+
+  return result
+}
+
+export const fetchProposals = async () => {
+  const queryEndpoint = `${nodeUrl}${generateEndpointProposals()}`
+  const rawResult = await fetch(queryEndpoint, restOptions)
+
+  const result = (await rawResult.json()) as ProposalsResponse
+
+  return result
+}
+
+export const fetchValidators = async () => {
+  const queryEndpoint = `${nodeUrl}${generateEndpointGetValidators()}`
+  const rawResult = await fetch(queryEndpoint, restOptions)
+
+  const result = (await rawResult.json()) as GetValidatorsResponse
+
+  return result
+}
+
+export const fetchBalanceByDenom = async (address: string, denom: string) => {
+  const queryEndpoint = `${nodeUrl}${generateEndpointBalanceByDenom(
+    address,
+    denom,
+  )}`
+  const rawResult = await fetch(queryEndpoint, restOptions)
+
+  const result = (await rawResult.json()) as BalanceByDenomResponse
 
   return result
 }

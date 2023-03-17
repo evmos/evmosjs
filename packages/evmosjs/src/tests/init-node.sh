@@ -43,8 +43,8 @@ jq '.app_state.evm.params.evm_denom="aevmos"' "$GENESIS" > "$TMP_GENESIS" && mv 
 jq '.app_state.inflation.params.mint_denom="aevmos"' "$GENESIS" > "$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
 
 # set gov proposing && voting period
-jq '.app_state.gov.deposit_params.max_deposit_period="30s"' "$GENESIS" > "$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
-jq '.app_state.gov.voting_params.voting_period="30s"' "$GENESIS" > "$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
+jq '.app_state.gov.deposit_params.max_deposit_period="15s"' "$GENESIS" > "$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
+jq '.app_state.gov.voting_params.voting_period="15s"' "$GENESIS" > "$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
 
 # Set gas limit in genesis
 jq '.consensus_params.block.max_gas="10000000"' "$GENESIS" > "$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
@@ -71,13 +71,43 @@ sed -i 's/create_empty_blocks = true/create_empty_blocks = false/g' "$CONFIG_TOM
 
 # Allocate genesis accounts (cosmos formatted addresses)
 evmosd add-genesis-account $KEY 100000000000000000000000000aevmos --keyring-backend $KEYRING
-evmosd add-genesis-account $SENDER 100000000000000000000000000aevmos
+
+ibc_denom=ibc/14F9BC3E44B8A9C1BE1FB08980FAB87034C9905EF17CF2F5008FC085218811CC
+ibc_denom_amt=100000000000000
+
+jq -r \
+  --arg sender "$SENDER" \
+  --arg ibc_denom "$ibc_denom" \
+  --arg ibc_denom_amt "$ibc_denom_amt" \
+  '.app_state.bank.balances += [{"address":$sender,"coins":[{"denom":"aevmos", "amount":"1000000000000000000000000000"}, {"denom": $ibc_denom, "amount": $ibc_denom_amt}]}]' \
+  "$GENESIS" > "$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
+
+jq -r \
+  --arg sender "$SENDER" \
+  '.app_state.auth.accounts += [{
+    "@type": "/ethermint.types.v1.EthAccount",
+    "base_account": {
+      "address": $sender,
+      "pub_key": null,
+      "account_number": "0",
+      "sequence": "0"
+    },
+    "code_hash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
+  }]' \
+  "$GENESIS" > "$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
+
 
 # Update total supply with claim values
 # Bc is required to add this big numbers
 # total_supply=$(bc <<< "$amount_to_claim+$validators_supply")
-total_supply=200000000000000000000010000
+total_supply=1100000000000000000000010000
 jq -r --arg total_supply "$total_supply" '.app_state.bank.supply[0].amount=$total_supply' "$GENESIS" > "$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
+
+jq -r \
+  --arg ibc_denom "$ibc_denom" \
+  --arg ibc_denom_amt "$ibc_denom_amt" \
+  '.app_state.bank.supply += [{"denom": $ibc_denom, "amount": $ibc_denom_amt}]' \
+  "$GENESIS" > "$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
 
 # set custom pruning settings
 if [ "$PRUNING" = "custom" ]; then

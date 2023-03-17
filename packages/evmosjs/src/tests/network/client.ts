@@ -10,6 +10,7 @@ export interface TxResponse {
   // eslint-disable-next-line camelcase
   tx_response: {
     code: number
+    txhash: string
   }
 }
 
@@ -29,9 +30,11 @@ class NetworkTestClient {
     const payload = this.createTxPayload(context)
 
     const signedTx = await signDirect(payload)
-    const response = (await broadcastTx(signedTx)) as TxResponse
+    const response = await broadcastTx(signedTx)
 
-    return response
+    console.log(response)
+
+    return response as TxResponse
   }
 
   private createTxContext = async () => {
