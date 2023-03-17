@@ -26,6 +26,17 @@ export interface SenderInfo {
   }
 }
 
+export interface TokenPairResponse {
+  token_pairs: [
+    {
+      erc20_address: string
+      denom: string
+      enabled: boolean
+      contract_owner: string
+    },
+  ]
+}
+
 const restOptions = {
   method: 'GET',
   headers: { 'Content-Type': 'application/json' },
@@ -68,6 +79,15 @@ export const fetchBalanceByDenom = async (address: string, denom: string) => {
   const rawResult = await fetch(queryEndpoint, restOptions)
 
   const result = (await rawResult.json()) as BalanceByDenomResponse
+
+  return result
+}
+
+export const fetchERC20ContractAddress = async () => {
+  const queryEndpoint = `${nodeUrl}/evmos/erc20/v1/token_pairs`
+  const rawResult = await fetch(queryEndpoint, restOptions)
+
+  const result = (await rawResult.json()) as TokenPairResponse
 
   return result
 }
