@@ -1,16 +1,20 @@
-import NetworkClient, { TxResponse } from './network/client'
+import NetworkClient from './network/client'
+import { expectSuccess } from './network/common'
 import { MsgSendUtils } from './utils'
+import ConvertCoinClient from './network/integration/convertCoin/main'
 
-const expectSuccess = (response: TxResponse) => {
-  // eslint-disable-next-line camelcase
-  expect(response.tx_response.code).toBe(0)
-}
+const networkClient = new NetworkClient()
 
 describe('evmosjs e2e integration tests', () => {
   it('fulfills msgsend transactions', async () => {
-    const client = new NetworkClient(MsgSendUtils.generateTx)
-    const response = await client.signDirectAndBroadcast()
-
+    const response = await networkClient.signDirectAndBroadcast(
+      MsgSendUtils.generateTx,
+    )
     expectSuccess(response)
   })
+
+  it('fulfills msgconverterc20 transactions', async () => {
+    const client = new ConvertCoinClient(networkClient)
+    await client.testIntegration()
+  }, 30000)
 })
