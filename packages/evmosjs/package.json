@@ -1,7 +1,7 @@
 {
   "name": "evmosjs",
   "description": "JS and TS libs for Evmos",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -31,7 +31,7 @@
     "@evmos/eip712": "^0.3.0",
     "@evmos/proto": "^0.2.0",
     "@evmos/provider": "^0.3.1",
-    "@evmos/transactions": "^0.3.0",
+    "@evmos/transactions": "^0.3.1",
     "link-module-alias": "^1.2.0",
     "shx": "^0.3.4"
   },
