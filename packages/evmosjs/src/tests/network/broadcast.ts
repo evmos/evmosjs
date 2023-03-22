@@ -2,14 +2,9 @@ import {
   generateEndpointBroadcast,
   generatePostBodyBroadcast,
 } from '@evmos/provider'
-import { Proto } from '@evmos/proto'
 import fetch from 'node-fetch'
-import { nodeUrl } from './params.js'
-
-interface SignedTx {
-  message: Proto.Cosmos.Transactions.Tx.TxRaw
-  path: string
-}
+import { nodeUrl } from './params'
+import { SignedTx } from './types'
 
 export const broadcastTx = async (signedTx: SignedTx) => {
   const postOptions = {

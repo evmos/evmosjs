@@ -13,6 +13,13 @@ describe('evmosjs e2e integration tests', () => {
     expectSuccess(response)
   })
 
+  it('fulfills legacy eip-712 signatures', async () => {
+    const response = await networkClient.signEIP712AndBroadcast(
+      MsgSendUtils.generateTx,
+    )
+    expectSuccess(response)
+  })
+
   it('fulfills msgconverterc20 transactions', async () => {
     const client = new ConvertCoinClient(networkClient)
     await client.testIntegration()
