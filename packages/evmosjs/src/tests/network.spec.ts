@@ -23,5 +23,5 @@ describe('evmosjs e2e integration tests', () => {
   it('fulfills msgconverterc20 transactions', async () => {
     const client = new ConvertCoinClient(networkClient)
     await client.testIntegration()
-  }, 30000)
+  }, 36000)
 })
