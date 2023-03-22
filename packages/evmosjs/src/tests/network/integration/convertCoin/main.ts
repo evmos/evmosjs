@@ -33,7 +33,7 @@ class ConvertCoinIntegrationClient extends NetworkClientHost {
     expectSuccess(response)
 
     // Wait for state changes to propogate to API
-    await delay(18000)
+    await delay(21000)
 
     // Verify state changes for each client.
     await proposalClient.verifyStateChange()
