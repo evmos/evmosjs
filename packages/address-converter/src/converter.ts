@@ -124,3 +124,15 @@ export const akashToEth = (akashAddress: string) => {
   const data = AKASH.decoder(akashAddress)
   return ETH.encoder(data)
 }
+
+export const PLANQ = bech32Chain('PLANQ', 'plq')
+
+export const ethToPlanq = (ethAddress: string) => {
+  const data = ETH.decoder(ethAddress)
+  return PLANQ.encoder(data)
+}
+
+export const planqToEth = (planqAddress: string) => {
+  const data = PLANQ.decoder(planqAddress)
+  return ETH.encoder(data)
+}
