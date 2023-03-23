@@ -1,6 +1,6 @@
 import { SignTypedDataVersion, TypedDataUtils } from '@metamask/eth-sig-util'
-import { decodeAminoSignDoc } from './decodeAmino'
-import { decodeProtobufSignDoc } from './decodeProtobuf'
+import { decodeAminoSignDoc } from './decodeAmino.js'
+import { decodeProtobufSignDoc } from './decodeProtobuf.js'
 
 // Decode Amino StdSignDoc or Protobuf SignDoc bytes into the corresponding
 // EIP-712 TypedData representation. Throws on errors.

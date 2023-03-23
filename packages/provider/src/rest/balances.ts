@@ -1,4 +1,4 @@
-import { Coin } from './coin'
+import { Coin } from './coin.js'
 
 // TODO: add pagination to the request
 export function generateEndpointBalances(address: string) {

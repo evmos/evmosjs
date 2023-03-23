@@ -1,16 +1,14 @@
 {
   "name": "@evmos/proto",
   "description": "Protobuf files for EVMOS.",
-  "version": "0.1.26",
+  "version": "0.2.0",
   "license": "MIT",
-  "eslintIgnore": [
-    "src/proto/**/*.ts"
-  ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "type": "module",
   "_moduleAliases": {
     "~proto": "dist"
   },
@@ -19,7 +17,7 @@
     "build": "tsc --build tsconfig.build.json && link-module-alias",
     "build:watch": "tsc --build -w tsconfig.build.json && link-module-alias",
     "clean": "tsc --build tsconfig.build.json --clean  && shx rm -rf coverage *.log junit.xml dist && jest --clearCache",
-    "test": "jest",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "test:unit": "jest test/unit",
     "test:integration": "jest test/unit",
     "test:watch": "jest --watch",
@@ -29,17 +27,23 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
-    "google-protobuf": "^3.19.4",
+    "@buf/cosmos_cosmos-sdk.bufbuild_es": "^1.0.0-20230125164018-54d184078b88.1",
+    "@buf/cosmos_ibc.bufbuild_es": "^1.0.0-20230127093016-72d4bdec25a0.1",
+    "@buf/evmos_ethermint.bufbuild_es": "^1.0.0-20221117114055-f0f1df1cd49a.1",
+    "@buf/evmos_evmos.bufbuild_es": "^1.0.0-20230131074124-0a9333a60b2d.1",
+    "@bufbuild/protobuf": "^1.0.0",
+    "@types/node": "^17.0.21",
     "link-module-alias": "^1.2.0",
     "sha3": "^2.1.4",
     "shx": "^0.3.4"
   },
   "devDependencies": {
-    "@types/google-protobuf": "^3.15.5",
+    "@types/jest": "^29.4.0",
     "@types/node": "^17.0.21",
-    "protoc-gen-ts": "^0.8.2"
+    "jest": "^29.4.1",
+    "ts-jest": "^29.0.5"
   },
-  "gitHead": "fc2045b9357bde146e3374429453eb5d4a48a2ca",
+  "gitHead": "0557ac302db9ae82cbc58bd9d2187a228855ad27",
   "publishConfig": {
     "access": "public"
   }

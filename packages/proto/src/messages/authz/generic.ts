@@ -1,11 +1,11 @@
-import { MessageGenerated } from '../utils'
-import * as authzGeneric from '../../proto/cosmos/authz/v1beta1/authz'
+import { MessageGenerated } from '../common.js'
+import { GenericAuthorization } from '../../proto/cosmos/authz/authz.js'
 
 export const createGenericAuthorization = (
   typeUrl: string,
 ): MessageGenerated => ({
-  message: new authzGeneric.cosmos.authz.v1beta1.GenericAuthorization({
+  message: new GenericAuthorization({
     msg: typeUrl,
   }),
-  path: 'cosmos.authz.v1beta1.GenericAuthorization',
+  path: GenericAuthorization.typeName,
 })

@@ -1,4 +1,4 @@
-import * as erc20 from '../../proto/evmos/erc20/v1/tx'
+import { MsgConvertERC20 } from '../../proto/evmos/erc20/tx.js'
 
 export function createMsgConvertERC20(
   contractAddress: string,
@@ -6,14 +6,14 @@ export function createMsgConvertERC20(
   receiver: string,
   sender: string,
 ) {
-  const msg = new erc20.evmos.erc20.v1.MsgConvertERC20({
-    contract_address: contractAddress,
+  const msg = new MsgConvertERC20({
+    contractAddress,
     amount,
     receiver,
     sender,
   })
   return {
     message: msg,
-    path: 'evmos.erc20.v1.MsgConvertERC20',
+    path: MsgConvertERC20.typeName,
   }
 }

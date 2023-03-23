@@ -1,17 +1,17 @@
-import * as vesting from '../../proto/evmos/vesting/v1/tx'
+import { MsgClawback } from '../../proto/evmos/vesting/tx.js'
 
 export function createMsgClawback(
   funderAddress: string,
   accountAddress: string,
   destAddress?: string,
 ) {
-  const msg = new vesting.evmos.vesting.v1.MsgClawback({
-    funder_address: funderAddress,
-    account_address: accountAddress,
-    dest_address: destAddress,
+  const msg = new MsgClawback({
+    funderAddress,
+    accountAddress,
+    destAddress,
   })
   return {
     message: msg,
-    path: 'evmos.vesting.v1.MsgClawback',
+    path: MsgClawback.typeName,
   }
 }
