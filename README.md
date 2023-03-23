@@ -24,7 +24,7 @@ npm install evmosjs
 Or:
 
 ```bash
-npm install @evmos/[package]
+npm install @evmos/<package>
 ```
 
 ### Yarn v2.x or v3.x
@@ -46,7 +46,7 @@ yarn add evmosjs
 Or:
 
 ```bash
-yarn add @evmos/[package]
+yarn add @evmos/<package>
 ```
 
 Note that Yarn v1 is not supported ([see explanation](https://docs.buf.build/bsr/remote-packages/npm#other-package-managers)).
@@ -179,12 +179,12 @@ const chain: Chain = {
 // Populate the transaction sender parameters using the
 // query API.
 const sender: Sender = {
-  accountAddress: [sender_account_address],
-  sequence: [sender_sequence],
-  accountNumber: [sender_account_number],
+  accountAddress: <sender_account_address>,
+  sequence: <sender_sequence>,
+  accountNumber: <sender_account_number>,
   // Use the public key from the account query, or retrieve
   // the public key from the code snippet above.
-  pubkey: [sender_pub_key],
+  pubkey: <sender_pub_key>,
 }
 
 const fee: Fee = {
@@ -203,8 +203,8 @@ const context: TxContext = {
 }
 
 const params: MsgSendParams = {
-  destinationAddress: [destination_address],
-  amount: [transaction_amount],
+  destinationAddress: <destination_address>,
+  amount: <transaction_amount>,
   denom: 'aevmos',
 }
 
