@@ -1,33 +1,33 @@
-import { createTxRaw, Proto } from '@evmos/proto'
+import { createTxRaw } from '@evmos/proto'
+import { TxPayload } from '@evmos/transactions'
+import { eip712Digest } from './eip712'
 import { wallet } from './params'
+import { hexToBytes, base64ToBytes } from './common'
 
-interface TxPayload {
-  signDirect: {
-    body: Proto.Cosmos.Transactions.Tx.TxBody
-    authInfo: Proto.Cosmos.Transactions.Tx.AuthInfo
-    signBytes: string
-  }
-}
-
-// Signs a hashed digest in base64 format and returns a 64-byte
-// signature (excluding the parity byte).
-const signDigest32 = (digestBase64: string) => {
+const signDigest32 = (digest: Buffer) => {
   // eslint-disable-next-line no-underscore-dangle
-  const signature = wallet
-    ._signingKey()
-    .signDigest(Buffer.from(digestBase64, 'base64'))
+  const signature = wallet._signingKey().signDigest(digest)
 
-  return Buffer.concat([
-    Buffer.from(signature.r.replace('0x', ''), 'hex'),
-    Buffer.from(signature.s.replace('0x', ''), 'hex'),
-  ])
+  return Buffer.concat([hexToBytes(signature.r), hexToBytes(signature.s)])
 }
 
-export const signDirect = async (tx: TxPayload) => {
-  const signatureBytes = signDigest32(tx.signDirect.signBytes)
-
+const signedPayload = (tx: TxPayload, signature: Buffer) => {
   const bodyBytes = tx.signDirect.body.toBinary()
   const authInfoBytes = tx.signDirect.authInfo.toBinary()
 
-  return createTxRaw(bodyBytes, authInfoBytes, [signatureBytes])
+  return createTxRaw(bodyBytes, authInfoBytes, [signature])
+}
+
+export const signDirect = (tx: TxPayload) => {
+  const digest = base64ToBytes(tx.signDirect.signBytes)
+  const signature = signDigest32(digest)
+
+  return signedPayload(tx, signature)
+}
+
+export const signEIP712 = (tx: TxPayload) => {
+  const digest = eip712Digest(tx.eipToSign)
+  const signature = signDigest32(digest)
+
+  return signedPayload(tx, signature)
 }
