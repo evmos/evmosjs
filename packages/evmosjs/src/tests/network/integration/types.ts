@@ -1,5 +1,6 @@
 /* eslint-disable max-classes-per-file */
-import NetworkClient, { TxResponse } from '../client'
+import NetworkClient from '../client'
+import { TxResponse } from '../types'
 
 export abstract class NetworkClientHost {
   public networkClient: NetworkClient
