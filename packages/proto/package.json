@@ -29,8 +29,7 @@
   "dependencies": {
     "@buf/cosmos_cosmos-sdk.bufbuild_es": "^1.0.0-20230125164018-54d184078b88.1",
     "@buf/cosmos_ibc.bufbuild_es": "^1.0.0-20230127093016-72d4bdec25a0.1",
-    "@buf/evmos_ethermint.bufbuild_es": "^1.0.0-20221117114055-f0f1df1cd49a.1",
-    "@buf/evmos_evmos.bufbuild_es": "^1.0.0-20230131074124-0a9333a60b2d.1",
+    "@buf/evmos_evmos.bufbuild_es": "^1.2.0-20230315212311-c66c6f141d04.1",
     "@bufbuild/protobuf": "^1.0.0",
     "@types/node": "^17.0.21",
     "link-module-alias": "^1.2.0",

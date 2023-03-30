@@ -1,1 +1,1 @@
-export * from '@buf/evmos_ethermint.bufbuild_es/ethermint/evm/v1/tx_pb.js'
+export * from '@buf/evmos_evmos.bufbuild_es/ethermint/evm/v1/tx_pb.js'
