@@ -2,7 +2,7 @@ import { createIBCMsgTransfer as protoIBCMsgTransfer } from '@evmos/proto'
 import {
   generateTypes,
   createIBCMsgTransfer,
-  IBC_MSG_TRANSFER_TYPES,
+  CREATE_IBC_MSG_TRANSFER_TYPES,
 } from '@evmos/eip712'
 import { IBCMsgTransferParams, createTxIBCMsgTransfer } from './transfer'
 import { createTransactionPayload } from '../base'
@@ -30,43 +30,59 @@ const params: IBCMsgTransferParams = {
   timeoutTimestamp,
 }
 
+const validatePayload = (params: IBCMsgTransferParams) => {
+  const types = generateTypes(CREATE_IBC_MSG_TRANSFER_TYPES(params.memo))
+  const message = createIBCMsgTransfer(
+    params.receiver,
+    sender,
+    params.sourceChannel,
+    params.sourcePort,
+    params.revisionHeight,
+    params.revisionNumber,
+    params.timeoutTimestamp,
+    params.amount,
+    params.denom,
+    params.memo,
+  )
+  const typedData = {
+    types,
+    message,
+  }
+
+  const messageCosmos = protoIBCMsgTransfer(
+    params.sourcePort,
+    params.sourceChannel,
+    params.amount,
+    params.denom,
+    sender,
+    params.receiver,
+    params.revisionNumber,
+    params.revisionHeight,
+    params.timeoutTimestamp,
+    params.memo,
+  )
+
+  const payload = createTxIBCMsgTransfer(context, params)
+  const expectedPayload = createTransactionPayload(
+    context,
+    typedData,
+    messageCosmos,
+  )
+  expect(payload).toStrictEqual(expectedPayload)
+}
+
 describe('test tx payload', () => {
-  it('produces tx payloads as expected', () => {
-    const types = generateTypes(IBC_MSG_TRANSFER_TYPES)
-    const message = createIBCMsgTransfer(
-      params.receiver,
-      sender,
-      params.sourceChannel,
-      params.sourcePort,
-      params.revisionHeight,
-      params.revisionNumber,
-      params.timeoutTimestamp,
-      params.amount,
-      params.denom,
-    )
-    const typedData = {
-      types,
-      message,
-    }
+  it('produces tx payloads as expected without memo', () => {
+    validatePayload(params)
+  })
 
-    const messageCosmos = protoIBCMsgTransfer(
-      params.sourcePort,
-      params.sourceChannel,
-      params.amount,
-      params.denom,
-      sender,
-      params.receiver,
-      params.revisionNumber,
-      params.revisionHeight,
-      params.timeoutTimestamp,
-    )
+  it('produces tx payloads as expected with empty memo', () => {
+    const paramsWithEmptyMemo = { ...params, memo: '' }
+    validatePayload(paramsWithEmptyMemo)
+  })
 
-    const payload = createTxIBCMsgTransfer(context, params)
-    const expectedPayload = createTransactionPayload(
-      context,
-      typedData,
-      messageCosmos,
-    )
-    expect(payload).toStrictEqual(expectedPayload)
+  it('produces tx payloads as expected with memo', () => {
+    const paramsWithMemo = { ...params, memo: 'ibc memo' }
+    validatePayload(paramsWithMemo)
   })
 })

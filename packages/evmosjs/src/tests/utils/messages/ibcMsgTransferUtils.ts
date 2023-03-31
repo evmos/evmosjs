@@ -1,7 +1,7 @@
 import { createIBCMsgTransfer as protoIBCMsgTransfer } from '@evmos/proto'
 import {
   createIBCMsgTransfer as eip712IBCMsgTransfer,
-  IBC_MSG_TRANSFER_TYPES,
+  CREATE_IBC_MSG_TRANSFER_TYPES,
 } from '@evmos/eip712'
 import { createTxIBCMsgTransfer } from '@evmos/transactions'
 import { TestingClient } from '../utils'
@@ -48,7 +48,7 @@ class IBCMsgTransferTestingClient extends TestingClient {
   get eip712TypedData() {
     const { context, params } = this
 
-    const types = IBC_MSG_TRANSFER_TYPES
+    const types = CREATE_IBC_MSG_TRANSFER_TYPES()
     const message = eip712IBCMsgTransfer(
       params.receiver,
       context.sender.accountAddress,
