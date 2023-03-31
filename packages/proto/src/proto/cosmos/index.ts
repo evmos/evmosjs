@@ -1,3 +1,4 @@
+export * as Auth from './auth/index.js'
 export * as Authz from './authz/index.js'
 export * as Bank from './bank/index.js'
 export * as Base from './base/index.js'
