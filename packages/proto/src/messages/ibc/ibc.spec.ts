@@ -1,5 +1,4 @@
 import { createIBCMsgTransfer } from './ibcMsgTransfer'
-import { MessageGenerated } from '../common'
 
 import { MsgTransfer } from '../../proto/cosmos-ibc/ibc/applications/tx'
 
@@ -19,7 +18,7 @@ interface MsgTransferParams {
   memo?: string
 }
 
-const params: MsgTransferParams = {
+const createParams = (memo?: string) => ({
   sourcePort: 'transfer',
   sourceChannel: 'channel-0',
   amount: '1000000',
@@ -29,7 +28,8 @@ const params: MsgTransferParams = {
   revisionNumber: 10,
   revisionHeight: 60,
   timeoutTimestamp: '999',
-}
+  ...(memo && { memo }),
+})
 
 const createMsg = (params: MsgTransferParams) => {
   return createIBCMsgTransfer(
@@ -46,10 +46,10 @@ const createMsg = (params: MsgTransferParams) => {
   )
 }
 
-const verifyMsg = (
-  msg: MessageGenerated<MsgTransfer>,
-  params: MsgTransferParams,
-) => {
+const validateMsgForMemo = (memo?: string) => {
+  const params = createParams(memo)
+  const msg = createMsg(params)
+
   expect(msg.message.toJson(JSONOptions)).toStrictEqual({
     source_port: params.sourcePort,
     source_channel: params.sourceChannel,
@@ -71,16 +71,10 @@ const verifyMsg = (
 
 describe('test IBC Module message generation', () => {
   it('correctly wraps MsgTransfer with memo', () => {
-    const paramsWithMemo: MsgTransferParams = {
-      ...params,
-      memo: 'ibc memo',
-    }
-    const msg = createMsg(paramsWithMemo)
-    verifyMsg(msg, paramsWithMemo)
+    validateMsgForMemo('ibc memo')
   })
 
   it('correctly wraps MsgTransfer without memo', () => {
-    const msg = createMsg(params)
-    verifyMsg(msg, params)
+    validateMsgForMemo()
   })
 })

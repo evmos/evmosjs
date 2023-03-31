@@ -1,7 +1,7 @@
 import { CREATE_IBC_MSG_TRANSFER_TYPES, createIBCMsgTransfer } from './transfer'
 import TestUtils from '../../tests/utils'
 
-const baseTypes = {
+const createExpTypes = (memo?: string) => ({
   MsgValue: [
     { name: 'source_port', type: 'string' },
     { name: 'source_channel', type: 'string' },
@@ -10,6 +10,7 @@ const baseTypes = {
     { name: 'receiver', type: 'string' },
     { name: 'timeout_height', type: 'TypeTimeoutHeight' },
     { name: 'timeout_timestamp', type: 'uint64' },
+    ...(memo ? [{ name: 'memo', type: 'string' }] : []),
   ],
   TypeToken: [
     { name: 'denom', type: 'string' },
@@ -19,7 +20,7 @@ const baseTypes = {
     { name: 'revision_number', type: 'uint64' },
     { name: 'revision_height', type: 'uint64' },
   ],
-}
+})
 
 const { denom } = TestUtils
 const receiver = TestUtils.addr1
@@ -66,8 +67,12 @@ const createExpMsg = (memo?: string) => ({
   },
 })
 
-const validateTypes = (types: object, memo?: string) => {
-  expect(CREATE_IBC_MSG_TRANSFER_TYPES(memo)).toStrictEqual(types)
+const validateTypes = (memo?: string) => {
+  const expTypes = createExpTypes(memo)
+  expect(CREATE_IBC_MSG_TRANSFER_TYPES(memo)).toStrictEqual(expTypes)
+
+  // Sanity check that the memo type is parsed as expected:
+  expect(expTypes.MsgValue).toHaveLength(memo && memo !== '' ? 8 : 7)
 }
 
 const validateMsg = (memo?: string) => {
@@ -75,22 +80,25 @@ const validateMsg = (memo?: string) => {
   const expMsg = createExpMsg(memo)
 
   expect(msg).toStrictEqual(expMsg)
+
+  // Sanity check that the memo field is parsed as expected:
+  expect(expMsg.value.memo).toStrictEqual(
+    memo && memo !== '' ? memo : undefined,
+  )
 }
 
 describe('test IBCMsgTransfer types', () => {
   it('creates types as expected with memo', () => {
-    const expTypes = JSON.parse(JSON.stringify(baseTypes))
-    expTypes.MsgValue.push({ name: 'memo', type: 'string' })
-
-    validateTypes(expTypes, 'ibc memo')
+    const memo = 'ibc memo'
+    validateTypes(memo)
   })
 
   it('creates types as expected with empty memo', () => {
-    validateTypes(baseTypes, '')
+    validateTypes('')
   })
 
   it('creates types as expected with no memo', () => {
-    validateTypes(baseTypes)
+    validateTypes()
   })
 })
 
