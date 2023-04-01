@@ -2,7 +2,7 @@ import { createMsgCancelUnbondingDelegation as protoMsgCancelUnbondingDelegation
 import {
   generateTypes,
   createMsgCancelUnbondingDelegation,
-  CREATE_MSG_CANCEL_UNBONDING_DELEGATION_TYPES,
+  MSG_CANCEL_UNBONDING_DELEGATION_TYPES,
 } from '@evmos/eip712'
 import {
   MsgCancelUnbondingDelegationParams,
@@ -14,62 +14,46 @@ import TestUtils from '../../tests/utils'
 const { context, denom } = TestUtils
 const delegatorAddress = TestUtils.addr1
 const validatorAddress = TestUtils.addrVal1
-const creationHeight = TestUtils.amount2
+const creationHeight = '2000'
 const amount = TestUtils.amount1
 
-const createParams = (amount?: string, denom?: string) => ({
+const params: MsgCancelUnbondingDelegationParams = {
   delegatorAddress,
   validatorAddress,
   creationHeight,
   amount,
   denom,
-})
-
-const createAndValidatePayload = (
-  params: MsgCancelUnbondingDelegationParams,
-) => {
-  const msgTypes = CREATE_MSG_CANCEL_UNBONDING_DELEGATION_TYPES(
-    params.amount,
-    params.denom,
-  )
-  const types = generateTypes(msgTypes)
-  const message = createMsgCancelUnbondingDelegation(
-    params.delegatorAddress,
-    params.validatorAddress,
-    params.creationHeight,
-    params.amount,
-    params.denom,
-  )
-  const typedData = {
-    types,
-    message,
-  }
-
-  const messageCosmos = protoMsgCancelUnbondingDelegation(
-    context.sender.accountAddress,
-    params.validatorAddress,
-    params.creationHeight,
-    params.amount,
-    params.denom,
-  )
-
-  const payload = createTxMsgCancelUnbondingDelegation(context, params)
-  const expectedPayload = createTransactionPayload(
-    context,
-    typedData,
-    messageCosmos,
-  )
-  expect(payload).toStrictEqual(expectedPayload)
 }
 
 describe('test tx payload', () => {
-  it('produces tx payloads as expected with balance', () => {
-    const params = createParams(amount, denom)
-    createAndValidatePayload(params)
-  })
+  it('produces tx payloads as expected', () => {
+    const types = generateTypes(MSG_CANCEL_UNBONDING_DELEGATION_TYPES)
+    const message = createMsgCancelUnbondingDelegation(
+      params.delegatorAddress,
+      params.validatorAddress,
+      params.amount,
+      params.denom,
+      params.creationHeight,
+    )
+    const typedData = {
+      types,
+      message,
+    }
 
-  it('produces tx payloads as expected without balance', () => {
-    const params = createParams()
-    createAndValidatePayload(params)
+    const messageCosmos = protoMsgCancelUnbondingDelegation(
+      params.delegatorAddress,
+      params.validatorAddress,
+      params.amount,
+      params.denom,
+      params.creationHeight,
+    )
+
+    const payload = createTxMsgCancelUnbondingDelegation(context, params)
+    const expectedPayload = createTransactionPayload(
+      context,
+      typedData,
+      messageCosmos,
+    )
+    expect(payload).toStrictEqual(expectedPayload)
   })
 })

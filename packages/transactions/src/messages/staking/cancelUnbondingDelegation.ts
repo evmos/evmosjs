@@ -2,7 +2,7 @@ import { createMsgCancelUnbondingDelegation as protoMsgCancelUnbondingDelegation
 
 import {
   generateTypes,
-  CREATE_MSG_CANCEL_UNBONDING_DELEGATION_TYPES,
+  MSG_CANCEL_UNBONDING_DELEGATION_TYPES,
   createMsgCancelUnbondingDelegation,
 } from '@evmos/eip712'
 
@@ -11,26 +11,22 @@ import { createTransactionPayload, TxContext } from '../base.js'
 export interface MsgCancelUnbondingDelegationParams {
   delegatorAddress: string
   validatorAddress: string
+  amount: string
+  denom: string
   creationHeight: string
-  amount?: string
-  denom?: string
 }
 
 const createEIP712MsgCancelUnbondingDelegation = (
   params: MsgCancelUnbondingDelegationParams,
 ) => {
-  const msgTypes = CREATE_MSG_CANCEL_UNBONDING_DELEGATION_TYPES(
-    params.amount,
-    params.denom,
-  )
-  const types = generateTypes(msgTypes)
+  const types = generateTypes(MSG_CANCEL_UNBONDING_DELEGATION_TYPES)
 
   const message = createMsgCancelUnbondingDelegation(
     params.delegatorAddress,
     params.validatorAddress,
-    params.creationHeight,
     params.amount,
     params.denom,
+    params.creationHeight,
   )
 
   return {
@@ -45,9 +41,9 @@ const createCosmosMsgCancelUnbondingDelegation = (
   return protoMsgCancelUnbondingDelegation(
     params.delegatorAddress,
     params.validatorAddress,
-    params.creationHeight,
     params.amount,
     params.denom,
+    params.creationHeight,
   )
 }
 

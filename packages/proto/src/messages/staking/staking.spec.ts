@@ -67,15 +67,15 @@ describe('test Staking Module message generation', () => {
     expect(msg.path).toStrictEqual(MsgUndelegate.typeName)
   })
 
-  it('correctly wraps MsgCancelUnbonding with coin', () => {
+  it('correctly wraps MsgCancelUnbonding', () => {
     const amount = '120000'
     const creationHeight = '1000'
     const msg = createMsgCancelUnbondingDelegation(
       from,
       val,
-      creationHeight,
       amount,
       denom,
+      creationHeight,
     )
 
     expect(msg.message.toJson(JSONOptions)).toStrictEqual({
@@ -85,18 +85,6 @@ describe('test Staking Module message generation', () => {
         amount,
         denom,
       },
-      creation_height: creationHeight,
-    })
-    expect(msg.path).toStrictEqual(MsgCancelUnbondingDelegation.typeName)
-  })
-
-  it('correctly wraps MsgCancelUnbonding without coin', () => {
-    const creationHeight = '2000'
-    const msg = createMsgCancelUnbondingDelegation(from, val, creationHeight)
-
-    expect(msg.message.toJson(JSONOptions)).toStrictEqual({
-      delegator_address: from,
-      validator_address: val,
       creation_height: creationHeight,
     })
     expect(msg.path).toStrictEqual(MsgCancelUnbondingDelegation.typeName)

@@ -80,18 +80,14 @@ export function createMsgUndelegate(
 export function createMsgCancelUnbondingDelegation(
   delegatorAddress: string,
   validatorAddress: string,
+  amount: string,
+  denom: string,
   creationHeight: string,
-  amount?: string,
-  denom?: string,
 ) {
-  let value: Coin | undefined
-
-  if (amount && denom) {
-    value = new Coin({
-      denom,
-      amount,
-    })
-  }
+  const value = new Coin({
+    denom,
+    amount,
+  })
 
   const message = new MsgCancelUnbondingDelegation({
     delegatorAddress,
