@@ -2,6 +2,7 @@ import {
   createMsgDelegate,
   createMsgBeginRedelegate,
   createMsgUndelegate,
+  createMsgCancelUnbondingDelegation,
 } from './staking'
 import { createMsgCreateValidator, createMsgEditValidator } from './validator'
 
@@ -11,6 +12,7 @@ import {
   MsgUndelegate,
   MsgEditValidator,
   MsgCreateValidator,
+  MsgCancelUnbondingDelegation,
 } from '../../proto/cosmos/staking/tx'
 
 import { PubKey } from '../../proto/cosmos/crypto/ed25519/keys'
@@ -63,6 +65,41 @@ describe('test Staking Module message generation', () => {
       },
     })
     expect(msg.path).toStrictEqual(MsgUndelegate.typeName)
+  })
+
+  it('correctly wraps MsgCancelUnbonding with coin', () => {
+    const amount = '120000'
+    const creationHeight = '1000'
+    const msg = createMsgCancelUnbondingDelegation(
+      from,
+      val,
+      creationHeight,
+      amount,
+      denom,
+    )
+
+    expect(msg.message.toJson(JSONOptions)).toStrictEqual({
+      delegator_address: from,
+      validator_address: val,
+      amount: {
+        amount,
+        denom,
+      },
+      creation_height: creationHeight,
+    })
+    expect(msg.path).toStrictEqual(MsgCancelUnbondingDelegation.typeName)
+  })
+
+  it('correctly wraps MsgCancelUnbonding without coin', () => {
+    const creationHeight = '2000'
+    const msg = createMsgCancelUnbondingDelegation(from, val, creationHeight)
+
+    expect(msg.message.toJson(JSONOptions)).toStrictEqual({
+      delegator_address: from,
+      validator_address: val,
+      creation_height: creationHeight,
+    })
+    expect(msg.path).toStrictEqual(MsgCancelUnbondingDelegation.typeName)
   })
 })
 
