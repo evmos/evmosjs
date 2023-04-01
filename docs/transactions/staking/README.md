@@ -39,8 +39,8 @@ export interface MsgCancelUnbondingDelegationParams {
   delegatorAddress: string
   validatorAddress: string
   creationHeight: string
-  amount?: string
-  denom?: string
+  amount: string
+  denom: string
 }
 
 /**
