@@ -67,6 +67,9 @@ const testCreateMsg = (memo?: string) => {
     memo: params.memo ?? '',
   })
   expect(msg.path).toStrictEqual(MsgTransfer.typeName)
+
+  // Sanity check that memo is parsed:
+  expect(params.memo).toStrictEqual(memo)
 }
 
 describe('test IBC Module message generation', () => {
