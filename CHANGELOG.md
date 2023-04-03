@@ -34,7 +34,14 @@ Ref: https://keepachangelog.com/en/1.0.0/
 
 # Changelog
 
-## Unreleased
+## evmosjs v0.3.3
+
+- (proto)[#157](https://github.com/evmos/evmosjs/pull/157) Refactor to use Ethermint Protobuf types exported from Evmos
+- (proto)[#159](https://github.com/evmos/evmosjs/pull/159) Add decoding utilities useful for Stargate
+- (transactions)[#160](https://github.com/evmos/evmosjs/pull/160) Add memo to IBC `MsgTransfer` payload
+- (transactions)[#161](https://github.com/evmos/evmosjs/pull/161) Add `MsgCancelUnbondingDelegation` payload
+
+## evmosjs v0.3.0
 
 ### API Breaking
 
