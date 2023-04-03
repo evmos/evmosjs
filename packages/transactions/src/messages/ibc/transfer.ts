@@ -3,7 +3,7 @@ import { createIBCMsgTransfer as protoIBCMsgTransfer } from '@evmos/proto'
 import {
   generateTypes,
   createIBCMsgTransfer,
-  IBC_MSG_TRANSFER_TYPES,
+  CREATE_IBC_MSG_TRANSFER_TYPES,
 } from '@evmos/eip712'
 import { createTransactionPayload, TxContext } from '../base.js'
 
@@ -20,13 +20,16 @@ export interface IBCMsgTransferParams {
   revisionNumber: number
   revisionHeight: number
   timeoutTimestamp: string
+  // Optional Memo
+  memo?: string
 }
 
 const createEIP712IBCMsgTransfer = (
   context: TxContext,
   params: IBCMsgTransferParams,
 ) => {
-  const types = generateTypes(IBC_MSG_TRANSFER_TYPES)
+  const msgTransferTypes = CREATE_IBC_MSG_TRANSFER_TYPES(params.memo)
+  const types = generateTypes(msgTransferTypes)
 
   const message = createIBCMsgTransfer(
     params.receiver,
@@ -38,6 +41,7 @@ const createEIP712IBCMsgTransfer = (
     params.timeoutTimestamp,
     params.amount,
     params.denom,
+    params.memo,
   )
 
   return {
@@ -60,6 +64,7 @@ const createCosmosIBCMsgTransfer = (
     params.revisionNumber,
     params.revisionHeight,
     params.timeoutTimestamp,
+    params.memo,
   )
 }
 

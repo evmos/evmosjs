@@ -16,6 +16,8 @@ export function createIBCMsgTransfer(
   revisionNumber: number,
   revisionHeight: number,
   timeoutTimestamp: string,
+  // Optional Memo
+  memo?: string,
 ) {
   const token = new Coin({
     denom,
@@ -35,6 +37,7 @@ export function createIBCMsgTransfer(
     receiver,
     timeoutHeight,
     timeoutTimestamp: BigInt(parseInt(timeoutTimestamp, 10)),
+    memo: memo ?? '',
   })
 
   return {

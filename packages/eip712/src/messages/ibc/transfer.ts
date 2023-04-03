@@ -1,4 +1,4 @@
-export const IBC_MSG_TRANSFER_TYPES = {
+export const CREATE_IBC_MSG_TRANSFER_TYPES = (memo?: string) => ({
   MsgValue: [
     { name: 'source_port', type: 'string' },
     { name: 'source_channel', type: 'string' },
@@ -7,6 +7,7 @@ export const IBC_MSG_TRANSFER_TYPES = {
     { name: 'receiver', type: 'string' },
     { name: 'timeout_height', type: 'TypeTimeoutHeight' },
     { name: 'timeout_timestamp', type: 'uint64' },
+    ...(memo ? [{ name: 'memo', type: 'string' }] : []),
   ],
   TypeToken: [
     { name: 'denom', type: 'string' },
@@ -16,7 +17,7 @@ export const IBC_MSG_TRANSFER_TYPES = {
     { name: 'revision_number', type: 'uint64' },
     { name: 'revision_height', type: 'uint64' },
   ],
-}
+})
 
 export function createIBCMsgTransfer(
   receiver: string,
@@ -28,6 +29,7 @@ export function createIBCMsgTransfer(
   timeoutTimestamp: string,
   amount: string,
   denom: string,
+  memo?: string,
 ) {
   /* eslint-disable camelcase */
   return {
@@ -46,6 +48,7 @@ export function createIBCMsgTransfer(
         amount,
         denom,
       },
+      ...(memo && { memo }),
     },
   }
 }
