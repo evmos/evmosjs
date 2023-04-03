@@ -67,7 +67,7 @@ const createExpMsg = (memo?: string) => ({
   },
 })
 
-const validateTypes = (memo?: string) => {
+const testCreateTypes = (memo?: string) => {
   const types = CREATE_IBC_MSG_TRANSFER_TYPES(memo)
   const expTypes = createExpTypes(memo)
   expect(types).toStrictEqual(expTypes)
@@ -77,7 +77,7 @@ const validateTypes = (memo?: string) => {
   expect(expTypes.MsgValue).toHaveLength(expMsgValueLen)
 }
 
-const validateMsg = (memo?: string) => {
+const testCreateMsg = (memo?: string) => {
   const msg = createMsg(memo)
   const expMsg = createExpMsg(memo)
 
@@ -90,28 +90,28 @@ const validateMsg = (memo?: string) => {
 
 describe('test IBCMsgTransfer types', () => {
   it('creates types as expected with memo', () => {
-    validateTypes(memo)
+    testCreateTypes(memo)
   })
 
   it('creates types as expected with empty memo', () => {
-    validateTypes('')
+    testCreateTypes('')
   })
 
   it('creates types as expected with no memo', () => {
-    validateTypes()
+    testCreateTypes()
   })
 })
 
 describe('test IBCMsgTransfer message', () => {
   it('creates messages as expected with memo', () => {
-    validateMsg(memo)
+    testCreateMsg(memo)
   })
 
   it('creates messages as expected with empty memo', () => {
-    validateMsg('')
+    testCreateMsg('')
   })
 
   it('creates messages as expected without memo', () => {
-    validateMsg()
+    testCreateMsg()
   })
 })

@@ -46,7 +46,7 @@ const createMsg = (params: MsgTransferParams) => {
   )
 }
 
-const validateMsg = (memo?: string) => {
+const testCreateMsg = (memo?: string) => {
   const params = createParams(memo)
   const msg = createMsg(params)
 
@@ -71,10 +71,10 @@ const validateMsg = (memo?: string) => {
 
 describe('test IBC Module message generation', () => {
   it('correctly wraps MsgTransfer with memo', () => {
-    validateMsg('ibc memo')
+    testCreateMsg('ibc memo')
   })
 
   it('correctly wraps MsgTransfer without memo', () => {
-    validateMsg()
+    testCreateMsg()
   })
 })

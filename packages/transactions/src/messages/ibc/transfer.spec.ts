@@ -32,7 +32,7 @@ const params: IBCMsgTransferParams = {
   memo,
 }
 
-const validatePayload = (params: IBCMsgTransferParams) => {
+const testCreatePayload = (params: IBCMsgTransferParams) => {
   const msgTypes = CREATE_IBC_MSG_TRANSFER_TYPES(params.memo)
   const types = generateTypes(msgTypes)
 
@@ -77,17 +77,17 @@ const validatePayload = (params: IBCMsgTransferParams) => {
 
 describe('test tx payload', () => {
   it('produces tx payloads as expected with memo', () => {
-    validatePayload(params)
+    testCreatePayload(params)
   })
 
   it('produces tx payloads as expected with empty memo', () => {
     const paramsWithEmptyMemo = { ...params, memo: '' }
-    validatePayload(paramsWithEmptyMemo)
+    testCreatePayload(paramsWithEmptyMemo)
   })
 
   it('produces tx payloads as expected without memo', () => {
     const paramsWithNoMemo = JSON.parse(JSON.stringify(params))
     delete paramsWithNoMemo.memo
-    validatePayload(paramsWithNoMemo)
+    testCreatePayload(paramsWithNoMemo)
   })
 })
