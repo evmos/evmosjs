@@ -34,7 +34,7 @@ Ref: https://keepachangelog.com/en/1.0.0/
 
 # Changelog
 
-## evmosjs v0.3.2
+## evmosjs v0.3.3
 
 - (proto)[#157](https://github.com/evmos/evmosjs/pull/157) Refactor to use Ethermint Protobuf types exported from Evmos
 - (proto)[#159](https://github.com/evmos/evmosjs/pull/159) Add decoding utilities useful for Stargate
