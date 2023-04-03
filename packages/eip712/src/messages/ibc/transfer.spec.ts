@@ -1,6 +1,17 @@
 import { CREATE_IBC_MSG_TRANSFER_TYPES, createIBCMsgTransfer } from './transfer'
 import TestUtils from '../../tests/utils'
 
+const { denom } = TestUtils
+const receiver = TestUtils.addr1
+const sender = TestUtils.addr2
+const sourcePort = 'transfer'
+const sourceChannel = 'channel-0'
+const revisionHeight = 400
+const revisionNumber = 20
+const timeoutTimestamp = '1000'
+const amount = TestUtils.amount1
+const memo = 'ibc memo'
+
 const createExpTypes = (memo?: string) => ({
   MsgValue: [
     { name: 'source_port', type: 'string' },
@@ -21,17 +32,6 @@ const createExpTypes = (memo?: string) => ({
     { name: 'revision_height', type: 'uint64' },
   ],
 })
-
-const { denom } = TestUtils
-const receiver = TestUtils.addr1
-const sender = TestUtils.addr2
-const sourcePort = 'transfer'
-const sourceChannel = 'channel-0'
-const revisionHeight = 400
-const revisionNumber = 20
-const timeoutTimestamp = '1000'
-const amount = TestUtils.amount1
-const memo = 'ibc memo'
 
 const createMsg = (memo?: string) =>
   createIBCMsgTransfer(
@@ -68,11 +68,13 @@ const createExpMsg = (memo?: string) => ({
 })
 
 const validateTypes = (memo?: string) => {
+  const types = CREATE_IBC_MSG_TRANSFER_TYPES(memo)
   const expTypes = createExpTypes(memo)
-  expect(CREATE_IBC_MSG_TRANSFER_TYPES(memo)).toStrictEqual(expTypes)
+  expect(types).toStrictEqual(expTypes)
 
-  // Sanity check that the memo type is parsed as expected:
-  expect(expTypes.MsgValue).toHaveLength(memo && memo !== '' ? 8 : 7)
+  // Sanity check that memo is parsed as expected:
+  const expMsgValueLen = memo && memo !== '' ? 8 : 7
+  expect(expTypes.MsgValue).toHaveLength(expMsgValueLen)
 }
 
 const validateMsg = (memo?: string) => {
@@ -81,15 +83,13 @@ const validateMsg = (memo?: string) => {
 
   expect(msg).toStrictEqual(expMsg)
 
-  // Sanity check that the memo field is parsed as expected:
-  expect(expMsg.value.memo).toStrictEqual(
-    memo && memo !== '' ? memo : undefined,
-  )
+  // Sanity check that memo is parsed as expected:
+  const expMsgMemo = memo && memo !== '' ? memo : undefined
+  expect(expMsg.value.memo).toStrictEqual(expMsgMemo)
 }
 
 describe('test IBCMsgTransfer types', () => {
   it('creates types as expected with memo', () => {
-    const memo = 'ibc memo'
     validateTypes(memo)
   })
 
@@ -103,7 +103,7 @@ describe('test IBCMsgTransfer types', () => {
 })
 
 describe('test IBCMsgTransfer message', () => {
-  it('creates messages as expected with', () => {
+  it('creates messages as expected with memo', () => {
     validateMsg(memo)
   })
 

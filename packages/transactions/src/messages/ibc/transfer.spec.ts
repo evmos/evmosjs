@@ -18,6 +18,7 @@ const receiver = TestUtils.addr2
 const revisionNumber = 42
 const revisionHeight = 84
 const timeoutTimestamp = '10000'
+const memo = 'ibc transfer memo'
 
 const params: IBCMsgTransferParams = {
   sourcePort,
@@ -28,10 +29,13 @@ const params: IBCMsgTransferParams = {
   revisionNumber,
   revisionHeight,
   timeoutTimestamp,
+  memo,
 }
 
 const validatePayload = (params: IBCMsgTransferParams) => {
-  const types = generateTypes(CREATE_IBC_MSG_TRANSFER_TYPES(params.memo))
+  const msgTypes = CREATE_IBC_MSG_TRANSFER_TYPES(params.memo)
+  const types = generateTypes(msgTypes)
+
   const message = createIBCMsgTransfer(
     params.receiver,
     sender,
@@ -72,7 +76,7 @@ const validatePayload = (params: IBCMsgTransferParams) => {
 }
 
 describe('test tx payload', () => {
-  it('produces tx payloads as expected without memo', () => {
+  it('produces tx payloads as expected with memo', () => {
     validatePayload(params)
   })
 
@@ -81,8 +85,9 @@ describe('test tx payload', () => {
     validatePayload(paramsWithEmptyMemo)
   })
 
-  it('produces tx payloads as expected with memo', () => {
-    const paramsWithMemo = { ...params, memo: 'ibc memo' }
-    validatePayload(paramsWithMemo)
+  it('produces tx payloads as expected without memo', () => {
+    const paramsWithNoMemo = JSON.parse(JSON.stringify(params))
+    delete paramsWithNoMemo.memo
+    validatePayload(paramsWithNoMemo)
   })
 })
