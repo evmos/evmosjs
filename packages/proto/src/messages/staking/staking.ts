@@ -3,6 +3,7 @@ import {
   MsgDelegate,
   MsgBeginRedelegate,
   MsgUndelegate,
+  MsgCancelUnbondingDelegation,
 } from '../../proto/cosmos/staking/tx.js'
 
 export function createMsgDelegate(
@@ -73,5 +74,30 @@ export function createMsgUndelegate(
   return {
     message,
     path: MsgUndelegate.typeName,
+  }
+}
+
+export function createMsgCancelUnbondingDelegation(
+  delegatorAddress: string,
+  validatorAddress: string,
+  amount: string,
+  denom: string,
+  creationHeight: string,
+) {
+  const value = new Coin({
+    denom,
+    amount,
+  })
+
+  const message = new MsgCancelUnbondingDelegation({
+    delegatorAddress,
+    validatorAddress,
+    amount: value,
+    creationHeight: BigInt(creationHeight),
+  })
+
+  return {
+    message,
+    path: MsgCancelUnbondingDelegation.typeName,
   }
 }

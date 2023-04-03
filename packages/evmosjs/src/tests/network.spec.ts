@@ -1,6 +1,10 @@
 import NetworkClient from './network/client'
 import { expectSuccess } from './network/common'
-import { MsgSendUtils, IBCMsgTransferUtils } from './utils'
+import {
+  MsgSendUtils,
+  MsgCancelUnbondingPayload,
+  IBCMsgTransferUtils,
+} from './utils'
 import ConvertCoinClient from './network/integration/convertCoin/main'
 
 const networkClient = new NetworkClient()
@@ -53,6 +57,22 @@ describe('ibc msgtransfer integration tests', () => {
   it('fulfills legacy eip-712 ibc msgtransfer without memo', async () => {
     const response = await networkClient.signEIP712AndBroadcast(
       IBCMsgTransferUtils.generateTxWithoutMemo,
+    )
+    expectSuccess(response)
+  })
+})
+
+describe('msgcancelunbonding integration tests', () => {
+  it('fulfills msgcancelunbonding transactions', async () => {
+    const response = await networkClient.signDirectAndBroadcast(
+      MsgCancelUnbondingPayload.generateTx,
+    )
+    expectSuccess(response)
+  })
+
+  it('fulfills legacy eip-712 msgcancelunbonding transactions', async () => {
+    const response = await networkClient.signEIP712AndBroadcast(
+      MsgCancelUnbondingPayload.generateTx,
     )
     expectSuccess(response)
   })

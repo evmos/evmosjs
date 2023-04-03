@@ -32,6 +32,35 @@ export const createTxMsgBeginRedelegate: (
 ): TxPayload
 ```
 
+### MsgCancelUnbondingDelegation
+
+```ts
+export interface MsgCancelUnbondingDelegationParams {
+  delegatorAddress: string
+  validatorAddress: string
+  amount: string
+  denom: string
+  creationHeight: string
+}
+
+/**
+ * Creates a transaction for a MsgCancelUnbondingDelegation object.
+ *
+ * @remarks
+ * This method creates a transaction wrapping the Cosmos SDK's
+ * {@link https://docs.cosmos.network/main/modules/staking#msgcancelunbondingdelegation | MsgCancelUnbondingDelegation}
+ *
+ * @param context - Transaction Context
+ * @param params - MsgCancelUnbondingDelegation Params
+ * @returns Transaction with the MsgCancelUnbondingDelegation payload
+ *
+ */
+export const createTxMsgCancelUnbondingDelegation = (
+  context: TxContext,
+  params: MsgCancelUnbondingDelegationParams,
+): TxPayload
+```
+
 ### MsgDelegate
 
 ```ts
