@@ -6,10 +6,10 @@ import { TestingClient } from '../utils'
 
 class MsgCancelUnbondingTestingClient extends TestingClient {
   private params = (context: TxContext) => {
-    const { denom } = this
     const delegatorAddress = context.sender.accountAddress
     const validatorAddress = this.addrVal1
     const amount = this.amount1
+    const { denom } = this
     const creationHeight = '1000'
 
     return {

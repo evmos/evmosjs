@@ -14,15 +14,15 @@ import TestUtils from '../../tests/utils'
 const { context, denom } = TestUtils
 const delegatorAddress = TestUtils.addr1
 const validatorAddress = TestUtils.addrVal1
-const creationHeight = '2000'
 const amount = TestUtils.amount1
+const creationHeight = '2000'
 
 const params: MsgCancelUnbondingDelegationParams = {
   delegatorAddress,
   validatorAddress,
-  creationHeight,
   amount,
   denom,
+  creationHeight,
 }
 
 describe('test tx payload', () => {

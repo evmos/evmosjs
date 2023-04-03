@@ -23,11 +23,11 @@ describe('test MsgCancelUnbondingDelegation types and messages', () => {
   })
 
   it('creates messages as expected', () => {
-    const { denom } = TestUtils
     const delegatorAddress = TestUtils.addr1
     const validatorAddress = TestUtils.addrVal1
-    const creationHeight = '1000'
     const amount = TestUtils.amount1
+    const { denom } = TestUtils
+    const creationHeight = '1000'
 
     const msg = createMsgCancelUnbondingDelegation(
       delegatorAddress,
