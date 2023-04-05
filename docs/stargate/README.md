@@ -1,10 +1,11 @@
 # Stargate
 
-See the following in order to use `Stargate` to query for client accounts.
-Since Evmos uses Ethereum-style signing (using the `keccak256` hash),
-`StargateSigningClient` cannot be used with Evmos.
+Use `Stargate` to query for client accounts and sign Evmos payloads.
 
-### Parse Ethermint Accounts
+### Decode Ethermint Accounts
+
+Create a custom `accountParser` to decode Ethermint type accounts
+from `Stargate` client queries.
 
 ```ts
 import { decodeEthermintAccount } from '@evmos/proto';
@@ -33,3 +34,14 @@ export const queryClient = async () => {
   console.log(account)
 }
 ```
+
+### Sign Payloads
+
+To enable users to sign Evmos transactions using the `StargateSigningClient`,
+be sure its `OfflineSigner` parameter supports Ethereum-style signing.
+In particular, note that we use the `keccak256` hash over `sha256` (the rest
+is identical).
+
+By default, this will work with [Keplr](https://wallet.keplr.app/)'s offline
+signer for Evmos, but note that it may not work with other Cosmos signing
+solutions without modification.
