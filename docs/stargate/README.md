@@ -42,6 +42,6 @@ be sure its `OfflineSigner` parameter supports Ethereum-style signing.
 In particular, note that we use the `keccak256` hash over `sha256` (the rest
 is identical).
 
-By default, this will work with [Keplr](https://wallet.keplr.app/)'s offline
-signer for Evmos, but note that it may not work with other Cosmos signing
-solutions without modification.
+By default, `StargateSigningClient` will work with
+[Keplr](https://wallet.keplr.app/)'s offline signer for Evmos, but note that
+it may not work with other Cosmos signing solutions without modification.
