@@ -1,8 +1,10 @@
 import { createTxRaw } from '@evmos/proto'
 import { TxPayload } from '@evmos/transactions'
 import { eip712Digest } from './eip712'
+import { protoDigest } from './proto'
 import { wallet } from './params'
-import { hexToBytes, base64ToBytes } from './common'
+import { TxExtensionParams } from './types'
+import { hexToBytes } from './common'
 
 const signDigest32 = (digest: Buffer) => {
   // eslint-disable-next-line no-underscore-dangle
@@ -18,14 +20,23 @@ const signedPayload = (tx: TxPayload, signature: Buffer) => {
   return createTxRaw(bodyBytes, authInfoBytes, [signature])
 }
 
-export const signDirect = (tx: TxPayload) => {
-  const digest = base64ToBytes(tx.signDirect.signBytes)
+export const signDirect = (
+  tx: TxPayload,
+  extensionParams?: TxExtensionParams,
+) => {
+  const digest = protoDigest(tx, extensionParams)
   const signature = signDigest32(digest)
 
   return signedPayload(tx, signature)
 }
 
-export const signEIP712 = (tx: TxPayload) => {
+export const signEIP712 = (
+  tx: TxPayload,
+  extensionParams?: TxExtensionParams,
+) => {
+  if (extensionParams) {
+    throw new Error('extensions are not supported with eip-712')
+  }
   const digest = eip712Digest(tx.eipToSign)
   const signature = signDigest32(digest)
 

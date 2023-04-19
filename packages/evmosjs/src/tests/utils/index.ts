@@ -7,12 +7,15 @@ import IBCMsgTransferUtils from './messages/ibcMsgTransferUtils'
 
 import MsgCancelUnbondingPayload from './payloads/cancelUnbondingDelegation'
 
+import TxExtensionsUtils from './extensions'
+
 export {
   MsgSendUtils,
   MsgVoteUtils,
   MsgConvertERC20Utils,
   IBCMsgTransferUtils,
   MsgCancelUnbondingPayload,
+  TxExtensionsUtils,
 }
 
 export default Utils

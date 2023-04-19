@@ -14,5 +14,13 @@ export interface SignedTx {
   path: string
 }
 
+export interface TxExtensionParams {
+  extensions: any[]
+  context: TxContext
+}
+
 export type CreatePayloadFn = (context: TxContext) => TxPayload
-export type SignPayloadFn = (payload: TxPayload) => SignedTx
+export type SignPayloadFn = (
+  payload: TxPayload,
+  extensionParams?: TxExtensionParams,
+) => SignedTx
