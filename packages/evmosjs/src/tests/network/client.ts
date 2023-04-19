@@ -1,4 +1,5 @@
 import secp256k1 from 'secp256k1'
+import { TxContext } from '@evmos/transactions'
 import { fetchSenderInfo } from './query'
 import { createTxContext } from './payload'
 import { signDirect, signEIP712 } from './sign'
@@ -9,22 +10,30 @@ import { TxResponse, CreatePayloadFn, SignPayloadFn } from './types'
 class NetworkTestClient {
   private nonce: number | undefined
 
-  signDirectAndBroadcast = async (createTxPayload: CreatePayloadFn) => {
-    return this.signAndBroadcast(createTxPayload, signDirect)
+  signDirectAndBroadcast = async (
+    createTxPayload: CreatePayloadFn,
+    extensions?: any[],
+  ) => {
+    return this.signAndBroadcast(createTxPayload, signDirect, extensions)
   }
 
-  signEIP712AndBroadcast = async (createTxPayload: CreatePayloadFn) => {
-    return this.signAndBroadcast(createTxPayload, signEIP712)
+  signEIP712AndBroadcast = async (
+    createTxPayload: CreatePayloadFn,
+    extensions?: any[],
+  ) => {
+    return this.signAndBroadcast(createTxPayload, signEIP712, extensions)
   }
 
   private signAndBroadcast = async (
     createTxPayload: CreatePayloadFn,
     signPayload: SignPayloadFn,
+    extensions?: any[],
   ) => {
     const context = await this.createTxContext()
     const payload = createTxPayload(context)
 
-    const signedTx = await signPayload(payload)
+    const extParams = this.createExtensionParams(context, extensions)
+    const signedTx = await signPayload(payload, extParams)
     const response = await broadcastTx(signedTx)
 
     console.log(response)
@@ -66,6 +75,17 @@ class NetworkTestClient {
     )
     const pk = Buffer.from(secp256k1.publicKeyConvert(pkUncompressed, true))
     return pk.toString('base64')
+  }
+
+  private createExtensionParams = (context: TxContext, extensions?: any[]) => {
+    if (!extensions) {
+      return undefined
+    }
+
+    return {
+      context,
+      extensions,
+    }
   }
 }
 

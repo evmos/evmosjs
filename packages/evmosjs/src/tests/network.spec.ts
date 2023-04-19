@@ -4,6 +4,7 @@ import {
   MsgSendUtils,
   MsgCancelUnbondingPayload,
   IBCMsgTransferUtils,
+  TxExtensionsUtils,
 } from './utils'
 import ConvertCoinClient from './network/integration/convertCoin/main'
 
@@ -73,6 +74,17 @@ describe('msgcancelunbonding integration tests', () => {
   it('fulfills legacy eip-712 msgcancelunbonding transactions', async () => {
     const response = await networkClient.signEIP712AndBroadcast(
       MsgCancelUnbondingPayload.generateTx,
+    )
+    expectSuccess(response)
+  })
+})
+
+describe('dynamic fee tx tests', () => {
+  it('includes dynamic fee with signdirect', async () => {
+    const extension = TxExtensionsUtils.createDynamicFeeExtension()
+    const response = await networkClient.signDirectAndBroadcast(
+      MsgSendUtils.generateTx,
+      [extension],
     )
     expectSuccess(response)
   })
