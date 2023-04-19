@@ -5,7 +5,7 @@ import {
 } from '@evmos/proto'
 
 class TxExtensionsUtils {
-  public createDynamicFeeExtension = () => {
+  public createDynamicFee = () => {
     const extension = createDynamicFeeExtension('1000000000000')
     return this.wrapExtension(extension)
   }

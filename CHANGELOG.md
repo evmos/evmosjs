@@ -34,6 +34,10 @@ Ref: https://keepachangelog.com/en/1.0.0/
 
 # Changelog
 
+## Unreleased
+
+- (proto)[#166](https://github.com/evmos/evmosjs/pull/166) Expose DynamicFeeExtension Protobuf message
+
 ## evmosjs v0.3.3
 
 - (proto)[#157](https://github.com/evmos/evmosjs/pull/157) Refactor to use Ethermint Protobuf types exported from Evmos

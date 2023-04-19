@@ -81,7 +81,7 @@ describe('msgcancelunbonding integration tests', () => {
 
 describe('dynamic fee tx tests', () => {
   it('includes dynamic fee with signdirect', async () => {
-    const extension = TxExtensionsUtils.createDynamicFeeExtension()
+    const extension = TxExtensionsUtils.createDynamicFee()
     const response = await networkClient.signDirectAndBroadcast(
       MsgSendUtils.generateTx,
       [extension],

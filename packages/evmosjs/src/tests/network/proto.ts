@@ -4,7 +4,7 @@ import { createSigDoc } from '@evmos/proto'
 import { hexToBytes, base64ToBytes } from './common'
 import { TxExtensionParams } from './types'
 
-const protoDigestWithExtensions = (
+const signDocWithExtensions = (
   tx: TxPayload,
   extensionParams: TxExtensionParams,
 ) => {
@@ -12,17 +12,24 @@ const protoDigestWithExtensions = (
   const { extensions, context } = extensionParams
 
   // TODO: expose a utility interface to append extensions
-  const { body } = signDirect
+  const { body, authInfo } = signDirect
   body.extensionOptions.push(...extensions)
 
-  const signDoc = createSigDoc(
-    body.toBinary(),
-    signDirect.authInfo.toBinary(),
-    context.chain.cosmosChainId,
-    context.sender.accountNumber,
-  )
+  const bodyBytes = body.toBinary()
+  const authInfoBytes = authInfo.toBinary()
+  const chainId = context.chain.cosmosChainId
+  const { accountNumber } = context.sender
 
+  return createSigDoc(bodyBytes, authInfoBytes, chainId, accountNumber)
+}
+
+const digestWithExtensions = (
+  tx: TxPayload,
+  extensionParams: TxExtensionParams,
+) => {
+  const signDoc = signDocWithExtensions(tx, extensionParams)
   const digest = keccak256(signDoc.toBinary())
+
   return hexToBytes(digest)
 }
 
@@ -32,5 +39,5 @@ export const protoDigest = (tx: TxPayload, extensions?: TxExtensionParams) => {
     return base64ToBytes(signBytes)
   }
 
-  return protoDigestWithExtensions(tx, extensions)
+  return digestWithExtensions(tx, extensions)
 }
