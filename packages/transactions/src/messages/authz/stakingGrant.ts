@@ -3,7 +3,7 @@ import { createTransactionPayload, TxContext } from '../base.js'
 
 export interface MsgStakeAuthorizationParams {
   granteeAddress: string
-  validatorAddress: string
+  validatorAddress: string | string[]
   denom: string
   maxTokens: string | undefined
   expiration: number
