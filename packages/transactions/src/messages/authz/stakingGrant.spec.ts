@@ -9,47 +9,56 @@ import TestUtils from '../../tests/utils'
 
 const { context, denom } = TestUtils
 const granteeAddress = TestUtils.addr1
-const validatorAddress = TestUtils.addrVal1
 const maxTokens = TestUtils.amount1
 const expiration = 10000
 
-const params: MsgStakeAuthorizationParams = {
+const createParams = (validatorAddress: string | string[]) => ({
   granteeAddress,
   validatorAddress,
   denom,
   maxTokens,
   expiration,
+})
+
+const validatePayload = (params: MsgStakeAuthorizationParams) => {
+  const typedData = {
+    types: {},
+    message: {},
+  }
+
+  const stakeAuthType = Proto.Cosmos.Staking.Authz.AuthorizationType.DELEGATE
+  const auth = createStakeAuthorization(
+    params.validatorAddress,
+    params.denom,
+    params.maxTokens,
+    stakeAuthType,
+  )
+
+  const messageCosmos = createMsgGrant(
+    context.sender.accountAddress,
+    params.granteeAddress,
+    auth,
+    params.expiration,
+  )
+
+  const payload = createTxMsgStakeAuthorization(context, params)
+  const expectedPayload = createTransactionPayload(
+    context,
+    typedData,
+    messageCosmos,
+  )
+
+  expect(payload).toStrictEqual(expectedPayload)
 }
 
 describe('test tx payload', () => {
-  it('produces tx payloads as expected', () => {
-    const typedData = {
-      types: {},
-      message: {},
-    }
+  it('correctly produces tx payloads with single validator', () => {
+    const params = createParams(TestUtils.addrVal1)
+    validatePayload(params)
+  })
 
-    const stakeAuthType = Proto.Cosmos.Staking.Authz.AuthorizationType.DELEGATE
-    const auth = createStakeAuthorization(
-      params.validatorAddress,
-      params.denom,
-      params.maxTokens,
-      stakeAuthType,
-    )
-
-    const messageCosmos = createMsgGrant(
-      context.sender.accountAddress,
-      params.granteeAddress,
-      auth,
-      params.expiration,
-    )
-
-    const payload = createTxMsgStakeAuthorization(context, params)
-    const expectedPayload = createTransactionPayload(
-      context,
-      typedData,
-      messageCosmos,
-    )
-
-    expect(payload).toStrictEqual(expectedPayload)
+  it('correctly produces tx payloads with multiple validators', () => {
+    const params = createParams([TestUtils.addrVal1, TestUtils.addrVal2])
+    validatePayload(params)
   })
 })
