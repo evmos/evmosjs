@@ -53,12 +53,14 @@ const validatePayload = (params: MsgStakeAuthorizationParams) => {
 
 describe('test tx payload', () => {
   it('correctly produces tx payloads with single validator', () => {
-    const params = createParams(TestUtils.addrVal1)
+    const validator = TestUtils.addrVal1
+    const params = createParams(validator)
     validatePayload(params)
   })
 
   it('correctly produces tx payloads with multiple validators', () => {
-    const params = createParams([TestUtils.addrVal1, TestUtils.addrVal2])
+    const validators = [TestUtils.addrVal1, TestUtils.addrVal2]
+    const params = createParams(validators)
     validatePayload(params)
   })
 })
