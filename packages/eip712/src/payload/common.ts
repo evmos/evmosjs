@@ -2,7 +2,7 @@ export interface JSON {
   [key: string]: any
 }
 
-export interface MessagePayload {
+export interface MessageParams {
   payload: object
   numMessages: number
 }

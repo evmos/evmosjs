@@ -1,4 +1,4 @@
-import eip712Message from './message'
+import messageParams from './message'
 import { JSON } from './common'
 
 const expectFlattened = (message: JSON, payload: JSON) => {
@@ -25,14 +25,14 @@ const expectRemainingUnchanged = (message: JSON, payload: JSON) => {
 
 const expectValidMessage = (payload: JSON) => {
   const original = JSON.parse(JSON.stringify(payload))
-  const message = eip712Message(payload).payload
+  const message = messageParams(payload).payload
 
   expectFlattened(message, original)
   expectRemainingUnchanged(message, original)
 }
 
 const expectMessageThrows = (payload: JSON) => {
-  expect(() => eip712Message(payload)).toThrow(TypeError)
+  expect(() => messageParams(payload)).toThrow(TypeError)
 }
 
 describe('test eip712 payload flattening', () => {

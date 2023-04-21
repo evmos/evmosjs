@@ -1,4 +1,4 @@
-import { JSON, MessagePayload } from './common.js'
+import { JSON, MessageParams } from './common.js'
 
 const payloadMessages = (payload: JSON) => {
   const { msgs } = payload
@@ -11,7 +11,9 @@ const payloadMessages = (payload: JSON) => {
   return msgs
 }
 
-const flattenMessages = (payload: JSON, msgs: any[]) => {
+const flattenPayload = (payload: JSON) => {
+  const msgs = payloadMessages(payload)
+
   msgs.forEach((msg, i: number) => {
     const key = `msg${i}`
 
@@ -31,16 +33,17 @@ const flattenMessages = (payload: JSON, msgs: any[]) => {
 
   // eslint-disable-next-line no-param-reassign
   delete payload.msgs
+
+  return msgs.length
 }
 
-const eip712Message = (payload: JSON): MessagePayload => {
-  const msgs = payloadMessages(payload)
-  flattenMessages(payload, msgs)
+const messageParams = (payload: JSON): MessageParams => {
+  const numMessages = flattenPayload(payload)
 
   return {
-    numMessages: msgs.length,
+    numMessages,
     payload,
   }
 }
 
-export default eip712Message
+export default messageParams
