@@ -1,4 +1,4 @@
-import { MessageParams, JSON, EIP712Type } from '../common'
+import { MessageParams, JSONObject, EIP712Type } from '../common'
 import {
   newType,
   rootType,
@@ -11,8 +11,8 @@ import {
 } from './utils'
 
 interface ParseJSONParams {
-  types: JSON
-  payload: JSON
+  types: JSONObject
+  payload: JSONObject
   root: string
   prefix: string
 }
@@ -83,7 +83,11 @@ const parseJSON = (
   return newType(typeDef, key)
 }
 
-const addTypesToRoot = (types: JSON, key: string, newTypes: EIP712Type[]) => {
+const addTypesToRoot = (
+  types: JSONObject,
+  key: string,
+  newTypes: EIP712Type[],
+) => {
   let typedef: string = ''
 
   let i = 0
@@ -142,7 +146,7 @@ const addPayloadTypes = (params: ParseJSONParams) => {
   return addTypesToRoot(types, typedef, newTypes)
 }
 
-const addMsgTypes = (types: JSON, msg: JSON) => {
+const addMsgTypes = (types: JSONObject, msg: JSONObject) => {
   if (!msg) {
     throw new TypeError(`expected JSON message, got ${msg}`)
   }
@@ -169,7 +173,7 @@ const eip712Types = (messageParams: MessageParams) => {
     types.Tx.push(newType(typedef, key))
   }
 
-  return types as JSON
+  return types as JSONObject
 }
 
 export default eip712Types

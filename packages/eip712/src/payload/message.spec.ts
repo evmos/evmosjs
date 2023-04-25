@@ -1,15 +1,15 @@
 import messageParams from './message'
-import { JSON } from './common'
+import { JSONObject } from './common'
 
-const expectFlattened = (message: JSON, payload: JSON) => {
-  payload.msgs.forEach((msg: JSON, i: number) => {
+const expectFlattened = (message: JSONObject, payload: JSONObject) => {
+  payload.msgs.forEach((msg: JSONObject, i: number) => {
     expect(message[`msg${i}`]).toStrictEqual(msg)
   })
 
   expect(message.msgs).toBeUndefined()
 }
 
-const expectRemainingUnchanged = (message: JSON, payload: JSON) => {
+const expectRemainingUnchanged = (message: JSONObject, payload: JSONObject) => {
   const newNumKeys = Object.keys(message).length
   const oldNumKeys = Object.keys(payload).length
   const numMsgs = payload.msgs.length
@@ -23,7 +23,7 @@ const expectRemainingUnchanged = (message: JSON, payload: JSON) => {
   }
 }
 
-const expectValidMessage = (payload: JSON) => {
+const expectValidMessage = (payload: JSONObject) => {
   const original = JSON.parse(JSON.stringify(payload))
   const message = messageParams(payload).payload
 
@@ -31,7 +31,7 @@ const expectValidMessage = (payload: JSON) => {
   expectRemainingUnchanged(message, original)
 }
 
-const expectMessageThrows = (payload: JSON) => {
+const expectMessageThrows = (payload: JSONObject) => {
   expect(() => messageParams(payload)).toThrow(TypeError)
 }
 

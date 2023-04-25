@@ -1,4 +1,4 @@
-export interface JSON {
+export interface JSONObject {
   [key: string]: any
 }
 
@@ -8,6 +8,6 @@ export interface EIP712Type {
 }
 
 export interface MessageParams {
-  payload: JSON
+  payload: JSONObject
   numMessages: number
 }

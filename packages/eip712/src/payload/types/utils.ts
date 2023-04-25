@@ -1,6 +1,4 @@
-import { EIP712Type, JSON } from '../common'
-
-// replace JSON with new type to avoid conflict
+import { EIP712Type, JSONObject } from '../common'
 
 // can separate into eth-utils and parse-utils
 // can use a types folder since this has the most logic
@@ -100,7 +98,7 @@ export const payloadTypedef = (prefix: string, root: string) => {
   return sanitizeType(prefix)
 }
 
-export const rootType = (msg: JSON) => {
+export const rootType = (msg: JSONObject) => {
   const { type } = msg
   if (typeof type !== 'string') {
     throw new TypeError(`field 'type' missing from msg: ${msg}`)

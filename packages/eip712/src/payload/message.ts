@@ -1,6 +1,6 @@
-import { JSON, MessageParams } from './common.js'
+import { JSONObject, MessageParams } from './common.js'
 
-const payloadMessages = (payload: JSON) => {
+const payloadMessages = (payload: JSONObject) => {
   const { msgs } = payload
   if (!msgs || !Array.isArray(msgs)) {
     throw new TypeError(
@@ -11,7 +11,7 @@ const payloadMessages = (payload: JSON) => {
   return msgs
 }
 
-const flattenPayload = (payload: JSON) => {
+const flattenPayload = (payload: JSONObject) => {
   const msgs = payloadMessages(payload)
 
   msgs.forEach((msg, i: number) => {
@@ -37,7 +37,7 @@ const flattenPayload = (payload: JSON) => {
   return msgs.length
 }
 
-const messageParams = (payload: JSON): MessageParams => {
+const messageParams = (payload: JSONObject): MessageParams => {
   const numMessages = flattenPayload(payload)
 
   return {
