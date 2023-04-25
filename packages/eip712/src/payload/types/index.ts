@@ -1,1 +1,1 @@
-export { default } from './types.js'
+export { default } from './parsePayload.js'
