@@ -1,4 +1,4 @@
-import { MessageParams, JSON, EIP712Type } from './common'
+import { MessageParams, JSON, EIP712Type } from '../common'
 import {
   newType,
   rootType,
@@ -23,6 +23,8 @@ interface ParseFieldParams {
   isArray?: boolean
 }
 
+const MAX_DUPL_TYPEDEFS = 1000
+
 const unwrapArray = (params: ParseFieldParams) => {
   const { key, value } = params
   let inner = value
@@ -34,6 +36,7 @@ const unwrapArray = (params: ParseFieldParams) => {
     // eslint-disable-next-line prefer-destructuring
     inner = value[0]
     if (value.length === 0) {
+      // arbitrarily use string[] because we cannot infer the type
       eipType = newType('string[]', key)
     }
   }
@@ -84,7 +87,7 @@ const addTypesToRoot = (types: JSON, key: string, newTypes: EIP712Type[]) => {
   let typedef: string = ''
 
   let i = 0
-  for (; i < 1000; i++) {
+  for (; i < MAX_DUPL_TYPEDEFS; i++) {
     typedef = `${key}${i}`
 
     const exists = typedef in types
@@ -97,7 +100,7 @@ const addTypesToRoot = (types: JSON, key: string, newTypes: EIP712Type[]) => {
     }
   }
 
-  if (i === 1000) {
+  if (i === MAX_DUPL_TYPEDEFS) {
     throw new Error('reached maximum number of duplicates for type')
   }
 

@@ -1,4 +1,4 @@
-import { EIP712Type, JSON } from './common'
+import { EIP712Type, JSON } from '../common'
 
 // replace JSON with new type to avoid conflict
 
@@ -42,9 +42,10 @@ export const typesAreEqual = (types1: EIP712Type[], types2: EIP712Type[]) => {
   }
 
   for (let i = 0; i < types1.length; i++) {
-    const type1 = types1[i]
-    const type2 = types2[i]
-    if (type1.type !== type2.type && type1.name !== type2.name) {
+    if (
+      types1[i].type !== types2[i].type &&
+      types1[i].name !== types2[i].name
+    ) {
       return false
     }
   }
