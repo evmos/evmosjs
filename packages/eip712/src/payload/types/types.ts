@@ -1,13 +1,14 @@
 import { MessageParams, JSONObject, EIP712Type } from '../common'
 import {
   newType,
-  rootType,
+  msgRootType,
   arrayAdjustedType,
-  ethPrimitive,
+  ethPrimitiveType,
   sanitizedType,
   baseTypes,
   typesAreEqual,
-  payloadTypedef,
+  typeForPrefix,
+  msgPayloadField,
   MAX_DUPL_TYPEDEFS,
   ROOT_PREFIX,
 } from './utils'
@@ -28,7 +29,7 @@ interface ParseFieldParams {
 const unwrapArray = (params: ParseFieldParams) => {
   const { key, value } = params
   let inner = value
-  let eipType: EIP712Type | undefined
+  let typeToAdd: EIP712Type | undefined
 
   const isArray = Array.isArray(value)
 
@@ -36,21 +37,21 @@ const unwrapArray = (params: ParseFieldParams) => {
     // eslint-disable-next-line prefer-destructuring
     inner = value[0]
     if (value.length === 0) {
-      // arbitrarily use string[] because we cannot infer the type
-      eipType = newType('string[]', key)
+      // use string[] because we cannot infer the type
+      typeToAdd = newType('string[]', key)
     }
   }
 
   return {
     value: inner,
     isArray,
-    eipType,
+    typeToAdd,
   }
 }
 
 const parsePrimitive = (params: ParseFieldParams) => {
   const { key, value, isArray } = params
-  let typeDef = ethPrimitive(value)
+  let typeDef = ethPrimitiveType(value)
 
   if (!typeDef) {
     return undefined
@@ -61,7 +62,7 @@ const parsePrimitive = (params: ParseFieldParams) => {
   return newType(typeDef, key)
 }
 
-const parseJSON = (
+const parseObject = (
   fieldParams: ParseFieldParams,
   payloadParams: ParseJSONParams,
 ) => {
@@ -70,6 +71,7 @@ const parseJSON = (
 
   const subPrefix = `${prefix}.${key}`
 
+  // recursively add the object's type definitions
   // eslint-disable-next-line no-use-before-define
   let typeDef = addPayloadTypes({
     types,
@@ -84,7 +86,7 @@ const parseJSON = (
 }
 
 const addTypesToRoot = (
-  types: JSONObject,
+  root: JSONObject,
   key: string,
   newTypes: EIP712Type[],
 ) => {
@@ -94,12 +96,13 @@ const addTypesToRoot = (
   for (; i < MAX_DUPL_TYPEDEFS; i++) {
     typedef = `${key}${i}`
 
-    const exists = typedef in types
-    if (exists && typesAreEqual(newTypes, types[typedef])) {
+    // return existing typedef if identical
+    const hasType = typedef in root
+    if (hasType && typesAreEqual(root[typedef], newTypes)) {
       return typedef
     }
 
-    if (!exists) {
+    if (!hasType) {
       break
     }
   }
@@ -109,39 +112,41 @@ const addTypesToRoot = (
   }
 
   // eslint-disable-next-line no-param-reassign
-  types[typedef] = newTypes
+  root[typedef] = newTypes
 
   return typedef
 }
 
-const addPayloadTypes = (params: ParseJSONParams) => {
-  const { types, payload, root, prefix } = params
+const addPayloadTypes = (payloadParams: ParseJSONParams) => {
+  const { types, payload, root, prefix } = payloadParams
 
-  const newTypes: EIP712Type[] = []
-
+  // sort for deterministic results
   const keys = Object.keys(payload)
   keys.sort()
 
+  const newTypes: EIP712Type[] = []
+
   for (const key of keys) {
-    const unwrapped = unwrapArray({ key, value: payload[key] })
-    const { value, isArray } = unwrapped
-    let { eipType } = unwrapped
-    if (eipType) {
-      newTypes.push(eipType)
+    const arrayInfo = unwrapArray({ key, value: payload[key] })
+    const { value, isArray } = arrayInfo
+    let { typeToAdd } = arrayInfo
+    if (typeToAdd) {
+      newTypes.push(typeToAdd)
       continue
     }
 
-    eipType = parsePrimitive({ key, value, isArray })
-    if (eipType) {
-      newTypes.push(eipType)
+    const fieldParams = { key, value, isArray }
+    typeToAdd = parsePrimitive(fieldParams)
+    if (typeToAdd) {
+      newTypes.push(typeToAdd)
       continue
     }
 
-    eipType = parseJSON({ key, value, isArray }, params)
-    newTypes.push(eipType)
+    typeToAdd = parseObject(fieldParams, payloadParams)
+    newTypes.push(typeToAdd)
   }
 
-  const typedef = payloadTypedef(prefix, root)
+  const typedef = typeForPrefix(prefix, root)
 
   return addTypesToRoot(types, typedef, newTypes)
 }
@@ -151,7 +156,7 @@ const addMsgTypes = (types: JSONObject, msg: JSONObject) => {
     throw new TypeError(`expected JSON message, got ${msg}`)
   }
 
-  const root = rootType(msg)
+  const root = msgRootType(msg)
 
   return addPayloadTypes({
     types,
@@ -166,7 +171,7 @@ const eip712Types = (messageParams: MessageParams) => {
   const types = baseTypes()
 
   for (let i = 0; i < numMessages; i++) {
-    const key = `msg${i}`
+    const key = msgPayloadField(i)
     const msg = payload[key]
 
     const typedef = addMsgTypes(types, msg)

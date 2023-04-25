@@ -2,6 +2,7 @@ import { EIP712Type, JSONObject } from '../common'
 
 // can separate into eth-utils and parse-utils
 // can use a types folder since this has the most logic
+// reverse newType order
 
 export const MAX_DUPL_TYPEDEFS = 1000
 export const ROOT_PREFIX = '_'
@@ -59,10 +60,13 @@ export const arrayAdjustedType = (
   typeDef: string,
   isArray: boolean | undefined,
 ) => {
-  return isArray ? `${typeDef}[]` : typeDef
+  if (isArray) {
+    return `${typeDef}[]`
+  }
+  return typeDef
 }
 
-export const ethPrimitive = (val: any) => {
+export const ethPrimitiveType = (val: any) => {
   switch (typeof val) {
     case 'string':
       return 'string'
@@ -79,8 +83,6 @@ export const sanitizedType = (typeDef: string) => {
   let sanitized = ''
   const parts = typeDef.split('.')
 
-  console.log(parts)
-
   parts.forEach((part) => {
     if (part === ROOT_PREFIX) {
       sanitized += TYPE_PREFIX
@@ -95,14 +97,16 @@ export const sanitizedType = (typeDef: string) => {
   return sanitized
 }
 
-export const payloadTypedef = (prefix: string, root: string) => {
+export const typeForPrefix = (prefix: string, root: string) => {
   if (prefix === ROOT_PREFIX) {
     return root
   }
   return sanitizedType(prefix)
 }
 
-export const rootType = (msg: JSONObject) => {
+export const msgPayloadField = (i: number) => `msg${i}`
+
+export const msgRootType = (msg: JSONObject) => {
   const { type } = msg
   if (typeof type !== 'string') {
     throw new TypeError(`field 'type' missing from msg: ${msg}`)
