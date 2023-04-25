@@ -1,4 +1,9 @@
-import { MessageParams, JSONObject, EIP712Type } from '../common'
+import {
+  MessageParams,
+  JSONObject,
+  EIP712Type,
+  payloadMsgField,
+} from '../common.js'
 import {
   newType,
   msgRootType,
@@ -8,10 +13,10 @@ import {
   baseTypes,
   typesAreEqual,
   typeForPrefix,
-  msgPayloadField,
+  addTypeToTx,
   MAX_DUPL_TYPEDEFS,
   ROOT_PREFIX,
-} from './utils'
+} from './utils.js'
 
 interface ParseJSONParams {
   types: JSONObject
@@ -171,11 +176,12 @@ const eip712Types = (messageParams: MessageParams) => {
   const types = baseTypes()
 
   for (let i = 0; i < numMessages; i++) {
-    const key = msgPayloadField(i)
+    const key = payloadMsgField(i)
     const msg = payload[key]
 
     const typedef = addMsgTypes(types, msg)
-    types.Tx.push(newType(typedef, key))
+    const txType = newType(typedef, key)
+    addTypeToTx(types, txType)
   }
 
   return types as JSONObject

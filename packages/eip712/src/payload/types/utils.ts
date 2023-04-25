@@ -38,6 +38,10 @@ export const newType = (type: string, name: string): EIP712Type => ({
   name,
 })
 
+export const addTypeToTx = (types: JSONObject, newType: EIP712Type) => {
+  types.Tx.push(newType)
+}
+
 // contract - types must be in the same sorted order
 export const typesAreEqual = (types1: EIP712Type[], types2: EIP712Type[]) => {
   if (types1.length !== types2.length) {
@@ -103,8 +107,6 @@ export const typeForPrefix = (prefix: string, root: string) => {
   }
   return sanitizedType(prefix)
 }
-
-export const msgPayloadField = (i: number) => `msg${i}`
 
 export const msgRootType = (msg: JSONObject) => {
   const { type } = msg

@@ -1,4 +1,4 @@
-import { JSONObject, MessageParams } from './common.js'
+import { JSONObject, MessageParams, payloadMsgField } from './common.js'
 
 const payloadMessages = (payload: JSONObject) => {
   const { msgs } = payload
@@ -15,7 +15,7 @@ const flattenPayload = (payload: JSONObject) => {
   const msgs = payloadMessages(payload)
 
   msgs.forEach((msg, i: number) => {
-    const key = `msg${i}`
+    const key = payloadMsgField(i)
 
     if (Object.keys(payload).includes(key)) {
       throw new TypeError(`malformed payload, found unexpected key ${key}`)

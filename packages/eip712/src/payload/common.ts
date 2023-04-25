@@ -11,3 +11,5 @@ export interface MessageParams {
   payload: JSONObject
   numMessages: number
 }
+
+export const payloadMsgField = (i: number) => `msg${i}`
