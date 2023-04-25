@@ -3,6 +3,10 @@ import { EIP712Type, JSONObject } from '../common'
 // can separate into eth-utils and parse-utils
 // can use a types folder since this has the most logic
 
+export const MAX_DUPL_TYPEDEFS = 1000
+export const ROOT_PREFIX = '_'
+const TYPE_PREFIX = 'Type'
+
 export const baseTypes = () => ({
   EIP712Domain: [
     { name: 'name', type: 'string' },
@@ -51,7 +55,7 @@ export const typesAreEqual = (types1: EIP712Type[], types2: EIP712Type[]) => {
   return true
 }
 
-export const arrayAdjusted = (
+export const arrayAdjustedType = (
   typeDef: string,
   isArray: boolean | undefined,
 ) => {
@@ -71,18 +75,18 @@ export const ethPrimitive = (val: any) => {
   }
 }
 
-export const sanitizeType = (typeDef: string) => {
+export const sanitizedType = (typeDef: string) => {
   let sanitized = ''
   const parts = typeDef.split('.')
 
   console.log(parts)
 
   parts.forEach((part) => {
-    if (part === '_') {
-      sanitized += 'Type'
+    if (part === ROOT_PREFIX) {
+      sanitized += TYPE_PREFIX
       return
     }
-    const subparts = part.split('_')
+    const subparts = part.split(ROOT_PREFIX)
     subparts.forEach((subpart) => {
       sanitized += subpart[0].toUpperCase() + subpart.substr(1)
     })
@@ -92,10 +96,10 @@ export const sanitizeType = (typeDef: string) => {
 }
 
 export const payloadTypedef = (prefix: string, root: string) => {
-  if (prefix === '_') {
+  if (prefix === ROOT_PREFIX) {
     return root
   }
-  return sanitizeType(prefix)
+  return sanitizedType(prefix)
 }
 
 export const rootType = (msg: JSONObject) => {
@@ -108,5 +112,5 @@ export const rootType = (msg: JSONObject) => {
   // cosmos-sdk/MsgSend -> MsgSend
   const base = tokens[tokens.length - 1]
 
-  return `Type${base}`
+  return `${TYPE_PREFIX}${base}`
 }

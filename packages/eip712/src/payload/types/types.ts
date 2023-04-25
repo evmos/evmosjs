@@ -2,12 +2,14 @@ import { MessageParams, JSONObject, EIP712Type } from '../common'
 import {
   newType,
   rootType,
-  arrayAdjusted,
+  arrayAdjustedType,
   ethPrimitive,
-  sanitizeType,
+  sanitizedType,
   baseTypes,
   typesAreEqual,
   payloadTypedef,
+  MAX_DUPL_TYPEDEFS,
+  ROOT_PREFIX,
 } from './utils'
 
 interface ParseJSONParams {
@@ -22,8 +24,6 @@ interface ParseFieldParams {
   value: any
   isArray?: boolean
 }
-
-const MAX_DUPL_TYPEDEFS = 1000
 
 const unwrapArray = (params: ParseFieldParams) => {
   const { key, value } = params
@@ -56,7 +56,7 @@ const parsePrimitive = (params: ParseFieldParams) => {
     return undefined
   }
 
-  typeDef = arrayAdjusted(typeDef, isArray)
+  typeDef = arrayAdjustedType(typeDef, isArray)
 
   return newType(typeDef, key)
 }
@@ -77,8 +77,8 @@ const parseJSON = (
     root,
     prefix: subPrefix,
   })
-  typeDef = sanitizeType(typeDef)
-  typeDef = arrayAdjusted(typeDef, isArray)
+  typeDef = sanitizedType(typeDef)
+  typeDef = arrayAdjustedType(typeDef, isArray)
 
   return newType(typeDef, key)
 }
@@ -157,7 +157,7 @@ const addMsgTypes = (types: JSONObject, msg: JSONObject) => {
     types,
     payload: msg,
     root,
-    prefix: '_',
+    prefix: ROOT_PREFIX,
   })
 }
 
