@@ -8,7 +8,7 @@ import {
 
 const TYPE_PREFIX = 'Type'
 const ROOT_PREFIX = '_'
-const MAX_DUPL_TYPEDEFS = 1000
+export const MAX_DUPL_TYPEDEFS = 1000
 
 interface ParseJSONParams {
   types: JSONObject
@@ -204,6 +204,10 @@ const addPayloadTypes = (payloadParams: ParseJSONParams) => {
     if (typeForField) {
       newTypes.push(typeForField)
       continue
+    }
+
+    if (Array.isArray(value)) {
+      throw new Error('multi-dimensional arrays are not supported')
     }
 
     const fieldParams = { key, value, isArray }

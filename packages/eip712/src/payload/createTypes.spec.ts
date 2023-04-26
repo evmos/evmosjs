@@ -1,11 +1,15 @@
 import eip712Types from './createTypes'
 import { createBaseTypes } from './createTypes/parsePayload'
+import { MAX_DUPL_TYPEDEFS } from './createTypes/parseMessage'
 import { JSONObject, payloadMsgFieldForIndex } from './common'
 import TestUtils from '../tests/utils'
+
+// TODO: Test code coverage and cover missing lines
 
 const createEIP712Types = (msgs: JSONObject[]) => {
   const numMessages = msgs.length
   const payload: JSONObject = {}
+
   for (let i = 0; i < msgs.length; i++) {
     const key = payloadMsgFieldForIndex(i)
     payload[key] = msgs[i]
@@ -59,8 +63,12 @@ const compareTypesAgainstExpected = (
   expect(types).toStrictEqual(expTypes)
 }
 
+const expectCreateTypesToThrow = (msgs: JSONObject[]) => {
+  expect(() => createEIP712Types(msgs)).toThrow(Error)
+}
+
 describe('test eip-712 type generation from payload', () => {
-  it('generates types for a MsgSend payload', () => {
+  it('generates types for a single-message payload', () => {
     const msgs = [createMsgSend()]
     const types = createEIP712Types(msgs)
 
@@ -245,12 +253,111 @@ describe('test eip-712 type generation from payload', () => {
 
     compareTypesAgainstExpected(types, expTxTypes, expMsgTypes)
   })
+
+  it('handles all eip-712 variable types', () => {
+    const msgJSON = {
+      type: 'TestMsg',
+      value: {
+        int64Array: [0],
+        emptyArray: [],
+        number: 0,
+        boolean: false,
+        object: {
+          string: '',
+        },
+      },
+    }
+
+    const types = createEIP712Types([msgJSON])
+
+    const expTxTypes = [
+      {
+        name: 'msg0',
+        type: 'TypeTestMsg0',
+      },
+    ]
+
+    const expMsgTypes = {
+      TypeTestMsg0: [
+        {
+          type: 'string',
+          name: 'type',
+        },
+        {
+          type: 'TypeValue0',
+          name: 'value',
+        },
+      ],
+      TypeValue0: [
+        {
+          type: 'bool',
+          name: 'boolean',
+        },
+        {
+          type: 'string[]',
+          name: 'emptyArray',
+        },
+        {
+          type: 'int64[]',
+          name: 'int64Array',
+        },
+        {
+          type: 'int64',
+          name: 'number',
+        },
+        {
+          type: 'TypeValueObject0',
+          name: 'object',
+        },
+      ],
+      TypeValueObject0: [
+        {
+          type: 'string',
+          name: 'string',
+        },
+      ],
+    }
+
+    compareTypesAgainstExpected(types, expTxTypes, expMsgTypes)
+  })
 })
 
-// eslint-disable-next-line jest/no-commented-out-tests
-// describe('test eip-712 types edge cases', () => {
-// })
-//
-// eslint-disable-next-line jest/no-commented-out-tests
-// describe('test eip-712 types error handling', () => {
-// })
+describe('test eip-712 types error handling', () => {
+  it('errors on malformed payload', () => {
+    const emptyPayload = {}
+    expectCreateTypesToThrow([emptyPayload])
+
+    const payloadMissingMsgs = {
+      key: 'value',
+    }
+    expectCreateTypesToThrow([payloadMissingMsgs])
+
+    const payloadMsgMissingType = {
+      msgs: {
+        key: 'value',
+      },
+    }
+    expectCreateTypesToThrow([payloadMsgMissingType])
+  })
+
+  it('errors on reaching the max number of duplicates', () => {
+    const msgSendJSON = createMsgSend()
+    const msgJSONs: JSONObject[] = Array(MAX_DUPL_TYPEDEFS)
+
+    for (let i = 0; i < MAX_DUPL_TYPEDEFS + 1; i++) {
+      const uniqueJSON = JSON.parse(JSON.stringify(msgSendJSON))
+      uniqueJSON[`${i}`] = ''
+
+      msgJSONs[i] = uniqueJSON
+    }
+
+    expectCreateTypesToThrow(msgJSONs)
+  })
+
+  it('errors on multi-dimensional arrays', () => {
+    const msgJSON = createMsgSend() as JSONObject
+    msgJSON['2DArray'] = [[0]]
+
+    expectCreateTypesToThrow([msgJSON])
+  })
+})
