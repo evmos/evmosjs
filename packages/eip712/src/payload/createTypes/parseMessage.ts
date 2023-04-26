@@ -73,7 +73,7 @@ const parseFieldAsArray = (params: ParseFieldParams) => {
     inner = value[0]
     if (value.length === 0) {
       // use string[] because we cannot infer the type
-      typeForField = newType('string[]', key)
+      typeForField = newType(key, 'string[]')
     }
   }
 
@@ -111,7 +111,7 @@ const parseFieldAsPrimitive = (params: ParseFieldParams) => {
 
   typeDef = typeArrayAdjusted(typeDef, isArray)
 
-  return newType(typeDef, key)
+  return newType(key, typeDef)
 }
 
 // Parses a payload object field as a JSON object by recursively
@@ -136,7 +136,7 @@ const parseFieldAsJSON = (
   typeDef = typeSanitized(typeDef)
   typeDef = typeArrayAdjusted(typeDef, isArray)
 
-  return newType(typeDef, key)
+  return newType(key, typeDef)
 }
 
 // Returns the type definition for the given prefix

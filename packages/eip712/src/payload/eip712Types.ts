@@ -1,11 +1,11 @@
 export interface EIP712Type {
-  type: string
   name: string
+  type: string
 }
 
-export const newType = (type: string, name: string): EIP712Type => ({
-  type,
+export const newType = (name: string, type: string): EIP712Type => ({
   name,
+  type,
 })
 
 // contract - types must be in the same sorted order

@@ -44,7 +44,7 @@ const eip712Types = (flattenedPayload: FlattenPayloadResponse) => {
     const msg = payload[key]
 
     const typedef = addMsgTypes(types, msg)
-    const txType = newType(typedef, key)
+    const txType = newType(key, typedef)
     addMsgTypedef(types, txType)
   }
 
