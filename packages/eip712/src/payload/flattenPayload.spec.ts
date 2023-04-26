@@ -1,5 +1,5 @@
 import flattenPayload from './flattenPayload'
-import { JSONObject } from './common'
+import { JSONObject } from './types'
 
 const expectFlattenedMessages = (message: JSONObject, payload: JSONObject) => {
   payload.msgs.forEach((msg: JSONObject, i: number) => {

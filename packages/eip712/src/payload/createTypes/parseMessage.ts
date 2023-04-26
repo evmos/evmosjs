@@ -1,4 +1,4 @@
-import { JSONObject } from '../common.js'
+import { JSONObject } from '../types.js'
 import {
   EIP712Type,
   newType,

@@ -1,8 +1,5 @@
-import {
-  FlattenPayloadResponse,
-  JSONObject,
-  payloadMsgFieldForIndex,
-} from '../common.js'
+import { FlattenPayloadResponse, JSONObject } from '../types.js'
+import { payloadMsgFieldForIndex } from '../flattenPayload.js'
 import { EIP712Type, newType } from '../eip712Types.js'
 import addMsgTypes from './parseMessage.js'
 

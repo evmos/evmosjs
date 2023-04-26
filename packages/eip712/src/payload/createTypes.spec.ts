@@ -1,7 +1,8 @@
 import eip712Types from './createTypes'
 import { createBaseTypes } from './createTypes/parsePayload'
 import { MAX_DUPL_TYPEDEFS } from './createTypes/parseMessage'
-import { JSONObject, payloadMsgFieldForIndex } from './common'
+import { payloadMsgFieldForIndex } from './flattenPayload'
+import { JSONObject } from './types'
 import TestUtils from '../tests/utils'
 
 // TODO: Test code coverage and cover missing lines

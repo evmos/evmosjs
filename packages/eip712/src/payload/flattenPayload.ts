@@ -1,8 +1,6 @@
-import {
-  JSONObject,
-  FlattenPayloadResponse,
-  payloadMsgFieldForIndex,
-} from './common.js'
+import { JSONObject, FlattenPayloadResponse } from './types.js'
+
+export const payloadMsgFieldForIndex = (i: number) => `msg${i}`
 
 const getPayloadMessages = (payload: JSONObject) => {
   const { msgs } = payload
