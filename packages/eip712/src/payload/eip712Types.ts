@@ -16,7 +16,7 @@ export const typesAreEqual = (types1: EIP712Type[], types2: EIP712Type[]) => {
 
   for (let i = 0; i < types1.length; i++) {
     if (
-      types1[i].type !== types2[i].type &&
+      types1[i].type !== types2[i].type ||
       types1[i].name !== types2[i].name
     ) {
       return false

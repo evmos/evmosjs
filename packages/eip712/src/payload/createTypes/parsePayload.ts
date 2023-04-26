@@ -1,12 +1,12 @@
 import {
   FlattenPayloadResponse,
   JSONObject,
-  payloadMsgField,
+  payloadMsgFieldForIndex,
 } from '../common.js'
 import { EIP712Type, newType } from '../eip712Types.js'
 import addMsgTypes from './parseMessage.js'
 
-export const baseTypes = () => ({
+export const createBaseTypes = () => ({
   EIP712Domain: [
     { name: 'name', type: 'string' },
     { name: 'version', type: 'string' },
@@ -37,10 +37,10 @@ const addMsgTypedef = (types: JSONObject, newType: EIP712Type) => {
 
 const eip712Types = (flattenedPayload: FlattenPayloadResponse) => {
   const { numMessages, payload } = flattenedPayload
-  const types = baseTypes()
+  const types = createBaseTypes()
 
   for (let i = 0; i < numMessages; i++) {
-    const key = payloadMsgField(i)
+    const key = payloadMsgFieldForIndex(i)
     const msg = payload[key]
 
     const typedef = addMsgTypes(types, msg)

@@ -7,4 +7,4 @@ export interface FlattenPayloadResponse {
   numMessages: number
 }
 
-export const payloadMsgField = (i: number) => `msg${i}`
+export const payloadMsgFieldForIndex = (i: number) => `msg${i}`
