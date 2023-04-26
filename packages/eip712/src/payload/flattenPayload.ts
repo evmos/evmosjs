@@ -1,6 +1,10 @@
-import { JSONObject, MessageParams, payloadMsgField } from './common.js'
+import {
+  JSONObject,
+  FlattenPayloadResponse,
+  payloadMsgField,
+} from './common.js'
 
-const payloadMessages = (payload: JSONObject) => {
+const getPayloadMessages = (payload: JSONObject) => {
   const { msgs } = payload
   if (!msgs || !Array.isArray(msgs)) {
     throw new TypeError(
@@ -11,8 +15,11 @@ const payloadMessages = (payload: JSONObject) => {
   return msgs
 }
 
-const flattenPayload = (payload: JSONObject) => {
-  const msgs = payloadMessages(payload)
+// Flattens a payload messages in-place: moves each message in
+// the `msgs` array to a corresponding field msg{i}.
+// This allows different EIP-712 types per message.
+const flattenPayloadMessages = (payload: JSONObject) => {
+  const msgs = getPayloadMessages(payload)
 
   msgs.forEach((msg, i: number) => {
     const key = payloadMsgField(i)
@@ -37,8 +44,10 @@ const flattenPayload = (payload: JSONObject) => {
   return msgs.length
 }
 
-const messageParams = (payload: JSONObject): MessageParams => {
-  const numMessages = flattenPayload(payload)
+// Flattens the payload in-place and returns a response containing
+// the number of messages and transformed payload.
+const flattenPayload = (payload: JSONObject): FlattenPayloadResponse => {
+  const numMessages = flattenPayloadMessages(payload)
 
   return {
     numMessages,
@@ -46,4 +55,4 @@ const messageParams = (payload: JSONObject): MessageParams => {
   }
 }
 
-export default messageParams
+export default flattenPayload

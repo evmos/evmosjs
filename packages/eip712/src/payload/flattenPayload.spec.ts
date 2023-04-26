@@ -1,7 +1,7 @@
-import messageParams from './message'
+import flattenPayload from './flattenPayload'
 import { JSONObject } from './common'
 
-const expectFlattened = (message: JSONObject, payload: JSONObject) => {
+const expectFlattenedMessages = (message: JSONObject, payload: JSONObject) => {
   payload.msgs.forEach((msg: JSONObject, i: number) => {
     expect(message[`msg${i}`]).toStrictEqual(msg)
   })
@@ -9,7 +9,7 @@ const expectFlattened = (message: JSONObject, payload: JSONObject) => {
   expect(message.msgs).toBeUndefined()
 }
 
-const expectRemainingUnchanged = (message: JSONObject, payload: JSONObject) => {
+const expectRestUnchanged = (message: JSONObject, payload: JSONObject) => {
   const newNumKeys = Object.keys(message).length
   const oldNumKeys = Object.keys(payload).length
   const numMsgs = payload.msgs.length
@@ -25,14 +25,14 @@ const expectRemainingUnchanged = (message: JSONObject, payload: JSONObject) => {
 
 const expectValidMessage = (payload: JSONObject) => {
   const original = JSON.parse(JSON.stringify(payload))
-  const message = messageParams(payload).payload
+  const message = flattenPayload(payload).payload
 
-  expectFlattened(message, original)
-  expectRemainingUnchanged(message, original)
+  expectFlattenedMessages(message, original)
+  expectRestUnchanged(message, original)
 }
 
-const expectMessageThrows = (payload: JSONObject) => {
-  expect(() => messageParams(payload)).toThrow(TypeError)
+const expectFlattenToThrow = (payload: JSONObject) => {
+  expect(() => flattenPayload(payload)).toThrow(TypeError)
 }
 
 describe('test eip712 payload flattening', () => {
@@ -79,12 +79,12 @@ describe('test eip712 payload flattening', () => {
 describe('test eip712 flattening errors', () => {
   it('throws on payload without msgs field', () => {
     const payload = { foo: 'bar' }
-    expectMessageThrows(payload)
+    expectFlattenToThrow(payload)
   })
 
   it('throws on payload with invalid msgs field', () => {
     const payload = { msgs: [2, 4, 8] }
-    expectMessageThrows(payload)
+    expectFlattenToThrow(payload)
   })
 
   it('throws on malformed payload', () => {
@@ -98,6 +98,6 @@ describe('test eip712 flattening errors', () => {
         bar: 'baz',
       },
     }
-    expectMessageThrows(payload)
+    expectFlattenToThrow(payload)
   })
 })

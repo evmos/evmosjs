@@ -1,4 +1,4 @@
-import eip712Types from './types'
+import eip712Types from './createTypes'
 
 describe('test eip-712 type generation from payload', () => {
   it('generates types for a complex payload', () => {
