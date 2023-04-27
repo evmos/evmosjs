@@ -44,6 +44,8 @@ const flattenPayloadMessages = (payload: JSONObject) => {
 
 // Flattens the payload in-place and returns a response containing
 // the number of messages and transformed payload.
+// (Modifies the payload since we generally do not care about preserving
+// the original object, and we can thus decrease processing).
 const flattenPayload = (payload: JSONObject): FlattenPayloadResponse => {
   const numMessages = flattenPayloadMessages(payload)
 

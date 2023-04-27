@@ -5,10 +5,11 @@ import flattenPayload from './flattenPayload.js'
 
 // TODO: Add integration tests against a network.
 
-const PRIMARY_TYPE = 'Tx'
+export const PRIMARY_TYPE = 'Tx'
 
-export const createTypedData = (chainId: number, signDoc: JSONObject) => {
-  const transformResponse = flattenPayload(signDoc)
+// TODO: Replace with cosmjs StdSignDoc
+const createTypedData = (chainId: number, stdSignDoc: JSONObject) => {
+  const transformResponse = flattenPayload(stdSignDoc)
   const types = createTypes(transformResponse)
   const domain = createDomain(chainId)
   const message = transformResponse.payload
@@ -20,3 +21,5 @@ export const createTypedData = (chainId: number, signDoc: JSONObject) => {
     message,
   }
 }
+
+export default createTypedData

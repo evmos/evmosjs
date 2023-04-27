@@ -5,6 +5,8 @@ import { payloadMsgFieldForIndex } from './flattenPayload'
 import { JSONObject } from './types'
 import TestUtils from '../tests/utils'
 
+const { msgSend } = TestUtils
+
 // TODO: Test code coverage and cover missing lines
 
 const createEIP712Types = (msgs: JSONObject[]) => {
@@ -22,24 +24,6 @@ const createEIP712Types = (msgs: JSONObject[]) => {
   }
 
   return eip712Types(messageParams)
-}
-
-const createMsgSend = () => {
-  const { denom } = TestUtils
-  const recipient = TestUtils.addr1
-  const amount = TestUtils.amount1
-  const type = TestUtils.typeUrl1
-
-  return {
-    type,
-    value: {
-      recipient,
-      amount: {
-        amount,
-        denom,
-      },
-    },
-  }
 }
 
 const createExpEIP712Types = (
@@ -70,7 +54,7 @@ const expectCreateTypesToThrow = (msgs: JSONObject[]) => {
 
 describe('test eip-712 type generation from payload', () => {
   it('generates types for a single-message payload', () => {
-    const msgs = [createMsgSend()]
+    const msgs = [msgSend]
     const types = createEIP712Types(msgs)
 
     console.log(types)
@@ -119,7 +103,7 @@ describe('test eip-712 type generation from payload', () => {
   })
 
   it('handles identical duplicate types', () => {
-    const msgSendJSON = createMsgSend()
+    const msgSendJSON = msgSend
     const types = createEIP712Types([msgSendJSON, msgSendJSON])
 
     const expTxTypes = [
@@ -170,7 +154,7 @@ describe('test eip-712 type generation from payload', () => {
   })
 
   it('handles non-identical duplicate types', () => {
-    const msgJSON = createMsgSend()
+    const msgJSON = msgSend
 
     // Change amount to be a numeric type instead of a string.
     const modifiedMsgJSON = JSON.parse(JSON.stringify(msgJSON))
@@ -342,7 +326,7 @@ describe('test eip-712 types error handling', () => {
   })
 
   it('errors on reaching the max number of duplicates', () => {
-    const msgSendJSON = createMsgSend()
+    const msgSendJSON = msgSend
     const msgJSONs: JSONObject[] = Array(MAX_DUPL_TYPEDEFS)
 
     for (let i = 0; i < MAX_DUPL_TYPEDEFS + 1; i++) {
@@ -356,7 +340,7 @@ describe('test eip-712 types error handling', () => {
   })
 
   it('errors on multi-dimensional arrays', () => {
-    const msgJSON = createMsgSend() as JSONObject
+    const msgJSON = msgSend as JSONObject
     msgJSON['2DArray'] = [[0]]
 
     expectCreateTypesToThrow([msgJSON])

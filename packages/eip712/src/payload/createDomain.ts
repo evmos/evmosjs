@@ -1,16 +1,14 @@
-const NAME = 'Cosmos Web3'
-const VERSION = '1.0.0'
-const VERIFYING_CONTRACT = 'cosmos'
-const SALT = '0'
+export const NAME = 'Cosmos Web3'
+export const VERSION = '1.0.0'
+export const VERIFYING_CONTRACT = 'cosmos'
+export const SALT = '0'
 
 const createDomain = (chainId: number) => ({
-  domain: {
-    name: NAME,
-    version: VERSION,
-    chainId,
-    verifyingContract: VERIFYING_CONTRACT,
-    salt: SALT,
-  },
+  name: NAME,
+  version: VERSION,
+  chainId,
+  verifyingContract: VERIFYING_CONTRACT,
+  salt: SALT,
 })
 
 export default createDomain
