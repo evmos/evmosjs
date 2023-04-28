@@ -3,23 +3,23 @@ import {
   snakeToCamelCase,
   convertProtoToDefaultJSON,
   convertAminoJSONToProto,
+  createAminoConverter,
 } from './objectConverter'
 import { createMsgSend } from '../messages/bank'
 import { MsgSend } from '../proto/cosmos/bank/tx'
-import { from, to, denom } from '../proto/tests/utils'
+import { from, to, denom, amount } from '../proto/tests/utils'
 
 describe('test converting protobuf to/from amino JSON', () => {
   it('correctly converts protobuf to/from amino', () => {
-    const msgAmount = '100000'
-    const protoMsgSend = createMsgSend(from, to, msgAmount, denom).message
-
+    const protoMsgSend = createMsgSend(from, to, amount, denom).message
     const aminoMsgSend = convertProtoToDefaultJSON(protoMsgSend)
+
     expect(aminoMsgSend).toStrictEqual({
       from_address: from,
       to_address: to,
       amount: [
         {
-          amount: msgAmount,
+          amount,
           denom,
         },
       ],
@@ -27,6 +27,25 @@ describe('test converting protobuf to/from amino JSON', () => {
 
     const reconstructedProtoMsg = convertAminoJSONToProto(aminoMsgSend, MsgSend)
     expect(protoMsgSend).toStrictEqual(reconstructedProtoMsg)
+  })
+
+  it('correctly creates default amino converters', () => {
+    const protoMsgSend = createMsgSend(from, to, amount, denom).message
+    const aminoMsgSend = convertProtoToDefaultJSON(protoMsgSend)
+
+    const expAminoType = 'cosmos-sdk/MsgSend'
+    const aminoConverter = createAminoConverter(MsgSend, expAminoType)
+
+    const protoMsgUrl = `/${new MsgSend().getType().typeName}`
+    const aminoConverterKeys = Object.keys(aminoConverter)
+
+    expect(aminoConverterKeys).toStrictEqual([protoMsgUrl])
+
+    const { aminoType, toAmino, fromAmino } = aminoConverter[protoMsgUrl]
+
+    expect(aminoType).toStrictEqual(expAminoType)
+    expect(toAmino(protoMsgSend)).toStrictEqual(aminoMsgSend)
+    expect(fromAmino(aminoMsgSend)).toStrictEqual(protoMsgSend)
   })
 })
 

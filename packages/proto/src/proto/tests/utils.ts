@@ -13,6 +13,7 @@ export const hex = '0xe2D61e49ff8a9d724CC54d338D8076F878aC6b71'
 // IBC denom
 export const ibcDenom =
   'ibc/748375B5DD168C6C4DCBF54B3D54DCF20C2B41572C9603B1B9774419326A5A43'
+export const amount = '1000000'
 
 // Compares a generic message's encoding and decoding against its expected value
 export const testMessageEncodeDecode = <T extends Message<T> = AnyMessage>(

@@ -49,6 +49,27 @@ export function convertAminoJSONToProto<T extends Message<T> = AnyMessage>(
   ProtoMessage: typeof Message<T>,
 ) {
   const camelCaseJSON = convertSnakeKeysToCamel(aminoJSON)
-  const protoMessage = new ProtoMessage()
-  return protoMessage.fromJson(camelCaseJSON)
+  const protoMessageObj = new ProtoMessage()
+  return protoMessageObj.fromJson(camelCaseJSON)
+}
+
+export function createAminoConverter<T extends Message<T> = AnyMessage>(
+  ProtoMessage: typeof Message<T>,
+  aminoType: string,
+  toAmino: typeof convertProtoToDefaultJSON = convertProtoToDefaultJSON,
+  fromAmino: typeof convertAminoJSONToProto = convertAminoJSONToProto,
+) {
+  const { typeName } = new ProtoMessage().getType()
+  const protoTypeUrl = `/${typeName}`
+
+  const converterFromAmino = (aminoJSON: any) =>
+    fromAmino(aminoJSON, ProtoMessage)
+
+  return {
+    [protoTypeUrl]: {
+      aminoType,
+      toAmino,
+      fromAmino: converterFromAmino,
+    },
+  }
 }
