@@ -62,14 +62,15 @@ export function createAminoConverter<T extends Message<T> = AnyMessage>(
   const { typeName } = new ProtoMessage().getType()
   const protoTypeUrl = `/${typeName}`
 
-  const converterFromAmino = (aminoJSON: any) =>
-    fromAmino(aminoJSON, ProtoMessage)
+  function convertFromAmino(aminoJSON: any) {
+    return fromAmino(aminoJSON, ProtoMessage)
+  }
 
   return {
     [protoTypeUrl]: {
       aminoType,
       toAmino,
-      fromAmino: converterFromAmino,
+      fromAmino: convertFromAmino,
     },
   }
 }
