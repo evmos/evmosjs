@@ -4,7 +4,7 @@ import { createAminoConverter } from '../../amino/objectConverter'
 import { expectEqualDefaultAminoConverters } from '../../../testutils/compareAminoRegistry'
 
 describe('test erc20 amino converters', () => {
-  it('creates expected converter for MsgConvertCoin', () => {
+  it('creates expected amino converters', () => {
     const aminoConverters = createERC20AminoConverters()
     const expAminoConverters = {
       ...createAminoConverter(MsgConvertCoin, 'evmos/MsgConvertCoin'),
