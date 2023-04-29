@@ -1,22 +1,24 @@
 import {
   convertSnakeKeysToCamel,
   snakeToCamelCase,
-  convertProtoToDefaultAminoJSON,
-  convertAminoJSONToProtoValue,
+  convertProtoValueToDefaultAmino,
+  convertAminoToProtoValue,
   createAminoConverter,
 } from './objectConverter'
 import { createMsgSend } from '../messages/bank'
 import { MsgSend } from '../proto/cosmos/bank/tx'
 import { from, to, denom, amount } from '../proto/tests/utils'
 
+const createMsgSendJSON = () => {
+  const protoJSON = createMsgSend(from, to, amount, denom).message.toJson()
+  const aminoJSON = convertProtoValueToDefaultAmino(protoJSON, MsgSend)
+
+  return { protoMsgSendJSON: protoJSON, aminoMsgSend: aminoJSON }
+}
+
 describe('test converting protobuf to/from amino JSON', () => {
   it('correctly converts protobuf to/from amino', () => {
-    const protoMsgSend = createMsgSend(from, to, amount, denom).message
-    const protoMsgSendJSON = protoMsgSend.toJson()
-    const aminoMsgSend = convertProtoToDefaultAminoJSON(
-      protoMsgSendJSON,
-      MsgSend,
-    )
+    const { protoMsgSendJSON, aminoMsgSend } = createMsgSendJSON()
 
     expect(aminoMsgSend).toStrictEqual({
       from_address: from,
@@ -29,20 +31,15 @@ describe('test converting protobuf to/from amino JSON', () => {
       ],
     })
 
-    const reconstructedProtoMsg = convertAminoJSONToProtoValue(
+    const reconstructedProtoValue = convertAminoToProtoValue(
       aminoMsgSend,
       MsgSend,
     )
-    expect(reconstructedProtoMsg).toStrictEqual(protoMsgSendJSON)
+    expect(reconstructedProtoValue).toStrictEqual(protoMsgSendJSON)
   })
 
   it('correctly creates default amino converters', () => {
-    const protoMsgSend = createMsgSend(from, to, amount, denom).message
-    const protoMsgSendJSON = protoMsgSend.toJson()
-    const aminoMsgSend = convertProtoToDefaultAminoJSON(
-      protoMsgSendJSON,
-      MsgSend,
-    )
+    const { protoMsgSendJSON, aminoMsgSend } = createMsgSendJSON()
 
     const expAminoType = 'cosmos-sdk/MsgSend'
     const aminoConverter = createAminoConverter(MsgSend, expAminoType)
@@ -55,7 +52,7 @@ describe('test converting protobuf to/from amino JSON', () => {
     const { aminoType, toAmino, fromAmino } = aminoConverter[protoMsgUrl]
 
     expect(aminoType).toStrictEqual(expAminoType)
-    expect(toAmino(protoMsgSend)).toStrictEqual(aminoMsgSend)
+    expect(toAmino(protoMsgSendJSON)).toStrictEqual(aminoMsgSend)
     expect(fromAmino(aminoMsgSend)).toStrictEqual(protoMsgSendJSON)
   })
 })
