@@ -1,8 +1,8 @@
 import {
   convertSnakeKeysToCamel,
   snakeToCamelCase,
-  convertProtoToDefaultJSON,
-  convertAminoJSONToProto,
+  convertProtoToDefaultAminoJSON,
+  convertAminoJSONToProtoValue,
   createAminoConverter,
 } from './objectConverter'
 import { createMsgSend } from '../messages/bank'
@@ -12,7 +12,11 @@ import { from, to, denom, amount } from '../proto/tests/utils'
 describe('test converting protobuf to/from amino JSON', () => {
   it('correctly converts protobuf to/from amino', () => {
     const protoMsgSend = createMsgSend(from, to, amount, denom).message
-    const aminoMsgSend = convertProtoToDefaultJSON(protoMsgSend)
+    const protoMsgSendJSON = protoMsgSend.toJson()
+    const aminoMsgSend = convertProtoToDefaultAminoJSON(
+      protoMsgSendJSON,
+      MsgSend,
+    )
 
     expect(aminoMsgSend).toStrictEqual({
       from_address: from,
@@ -25,13 +29,20 @@ describe('test converting protobuf to/from amino JSON', () => {
       ],
     })
 
-    const reconstructedProtoMsg = convertAminoJSONToProto(aminoMsgSend, MsgSend)
-    expect(protoMsgSend).toStrictEqual(reconstructedProtoMsg)
+    const reconstructedProtoMsg = convertAminoJSONToProtoValue(
+      aminoMsgSend,
+      MsgSend,
+    )
+    expect(reconstructedProtoMsg).toStrictEqual(protoMsgSendJSON)
   })
 
   it('correctly creates default amino converters', () => {
     const protoMsgSend = createMsgSend(from, to, amount, denom).message
-    const aminoMsgSend = convertProtoToDefaultJSON(protoMsgSend)
+    const protoMsgSendJSON = protoMsgSend.toJson()
+    const aminoMsgSend = convertProtoToDefaultAminoJSON(
+      protoMsgSendJSON,
+      MsgSend,
+    )
 
     const expAminoType = 'cosmos-sdk/MsgSend'
     const aminoConverter = createAminoConverter(MsgSend, expAminoType)
@@ -45,7 +56,7 @@ describe('test converting protobuf to/from amino JSON', () => {
 
     expect(aminoType).toStrictEqual(expAminoType)
     expect(toAmino(protoMsgSend)).toStrictEqual(aminoMsgSend)
-    expect(fromAmino(aminoMsgSend)).toStrictEqual(protoMsgSend)
+    expect(fromAmino(aminoMsgSend)).toStrictEqual(protoMsgSendJSON)
   })
 })
 

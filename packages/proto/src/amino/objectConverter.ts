@@ -1,18 +1,42 @@
 import { JsonWriteOptions, Message, AnyMessage } from '@bufbuild/protobuf'
 
+/**
+ * Set of utilities to convert between complex Protobuf Messages, Protobuf-
+ * formatted JSON objects, and Amino-formatted JSON objects.
+ */
+
 export const AminoJSONOptions: JsonWriteOptions = {
   emitDefaultValues: true,
   enumAsInteger: true,
   useProtoFieldName: true,
 }
 
+// Converts a Protobuf message into a default Protobuf-formatted
+// plain Javascript object.
+export function convertProtoMessageToObject<T extends Message<T> = AnyMessage>(
+  msg: Message<T>,
+) {
+  return {
+    typeUrl: `/${msg.getType().typeName}`,
+    value: msg.toJson(),
+  }
+}
+
+export function convertProtoValueToMessage<T extends Message<T> = AnyMessage>(
+  protoJSON: any,
+  ProtoMessage: typeof Message<T>,
+) {
+  return new ProtoMessage().fromJson(protoJSON)
+}
+
 // Converts a Protobuf message into a default Amino-formatted JSON
 // value. While this may exactly match the Amino value for some
 // messages, others will require custom logic.
-export function convertProtoToDefaultJSON<T extends Message<T> = AnyMessage>(
-  msg: Message<T>,
-) {
-  return msg.toJson(AminoJSONOptions)
+export function convertProtoToDefaultAminoJSON<
+  T extends Message<T> = AnyMessage,
+>(protoJSON: any, ProtoMessage: typeof Message<T>) {
+  const protoMessage = convertProtoValueToMessage(protoJSON, ProtoMessage)
+  return protoMessage.toJson(AminoJSONOptions)
 }
 
 export const snakeToCamelCase = (str: string) =>
@@ -42,25 +66,28 @@ export function convertSnakeKeysToCamel(item: any) {
   return objectWithCamel
 }
 
-// Converts an Amino JSON object into a fully-formed instance of the
-// provided Protobuf type.
-export function convertAminoJSONToProto<T extends Message<T> = AnyMessage>(
+// Converts an Amino JSON object into a Protobuf JSON object value.
+export function convertAminoJSONToProtoValue<T extends Message<T> = AnyMessage>(
   aminoJSON: any,
   ProtoMessage: typeof Message<T>,
 ) {
-  const camelCaseJSON = convertSnakeKeysToCamel(aminoJSON)
-  const protoMessageObj = new ProtoMessage()
-  return protoMessageObj.fromJson(camelCaseJSON)
+  const protoJSON = convertSnakeKeysToCamel(aminoJSON)
+  const protoMessage = convertProtoValueToMessage(protoJSON, ProtoMessage)
+  return protoMessage.toJson()
 }
 
 export function createAminoConverter<T extends Message<T> = AnyMessage>(
   ProtoMessage: typeof Message<T>,
   aminoType: string,
-  toAmino: typeof convertProtoToDefaultJSON = convertProtoToDefaultJSON,
-  fromAmino: typeof convertAminoJSONToProto = convertAminoJSONToProto,
+  toAmino: typeof convertProtoToDefaultAminoJSON = convertProtoToDefaultAminoJSON,
+  fromAmino: typeof convertAminoJSONToProtoValue = convertAminoJSONToProtoValue,
 ) {
   const { typeName } = new ProtoMessage().getType()
   const protoTypeUrl = `/${typeName}`
+
+  function convertToAmino(protoJSON: any) {
+    return toAmino(protoJSON, ProtoMessage)
+  }
 
   function convertFromAmino(aminoJSON: any) {
     return fromAmino(aminoJSON, ProtoMessage)
@@ -69,7 +96,7 @@ export function createAminoConverter<T extends Message<T> = AnyMessage>(
   return {
     [protoTypeUrl]: {
       aminoType,
-      toAmino,
+      toAmino: convertToAmino,
       fromAmino: convertFromAmino,
     },
   }

@@ -1,8 +1,23 @@
+import {
+  createDefaultAminoConverters as createDefaultCosmosAminoConverters,
+  AminoTypes as AminoTypesClass,
+} from '@cosmjs/stargate'
+import {
+  createRevenueAminoConverters,
+  createERC20AminoConverters,
+  createVestingAminoConverters,
+} from '../messages/index.js'
+
 // TODO: Add missing Amino types (see x/**/codec.go)
-// - x/authz
-// - x/feegrant
-// - x/evm (MsgUpdateParams)
-// - x/feemarket (MsgUpdateParams)
-// - x/inflation (MsgUpdateParams)
-// - x/incentives (MsgUpdateParams)
-// - (excluding claims, recovery)
+
+export function createDefaultAminoConverters() {
+  return {
+    ...createDefaultCosmosAminoConverters(),
+
+    ...createRevenueAminoConverters(),
+    ...createERC20AminoConverters(),
+    ...createVestingAminoConverters(),
+  }
+}
+
+export const AminoTypes = new AminoTypesClass(createDefaultAminoConverters())
