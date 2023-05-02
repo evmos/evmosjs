@@ -161,7 +161,7 @@ export function createStdSignDocFromProto(
 // Returns the hashed digest of the corresponding StdSignDoc.
 // If the StdSignDoc cannot be generated (e.g. types are not
 // supported), returns an empty string.
-export function createStdSignDigest(
+export function createStdSignDigestFromProto(
   messages: any,
   memo: string,
   fee: string,
@@ -212,7 +212,7 @@ export function createTransactionWithMultipleMessages(
     LEGACY_AMINO,
   )
   const aminoAuthInfo = createAuthInfo(aminoSignerInfo, feeMessage)
-  const aminoSignDigest = createStdSignDigest(
+  const aminoSignDigest = createStdSignDigestFromProto(
     messages,
     memo,
     fee,
