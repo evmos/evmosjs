@@ -27,11 +27,17 @@ class TestingClient {
   public readonly ibcDenom2 =
     'ibc/C9364B2C453F0428D04FD40B6CF486BA138FA462FE43A116268A7B695AFCFE7F'
 
+  public readonly accountNumber = 10
+
+  public readonly sequence = 6
+
   public readonly chainId = 9001
 
   public readonly memo = 'Transaction Memo'
 
   public readonly typeUrl1 = 'cosmos-sdk/MsgSend'
+
+  public readonly proposalId1 = 42
 
   // eslint-disable-next-line
   get validatorParams() {
@@ -66,7 +72,58 @@ class TestingClient {
     return Buffer.from(bytes).toString('base64')
   }
 
-  public readonly proposalId1 = 42
+  get msgSend() {
+    const { denom } = this
+    const recipient = this.addr1
+    const amount = this.amount1
+    const type = this.typeUrl1
+
+    return {
+      type,
+      value: {
+        recipient,
+        amount: {
+          amount,
+          denom,
+        },
+      },
+    }
+  }
+
+  get stdFee() {
+    const amount = this.amount1
+    const { denom } = this
+    const gas = this.amount2
+    const granter = this.addr1
+    const payer = this.addr2
+
+    return {
+      amount: [
+        {
+          amount,
+          denom,
+        },
+      ],
+      gas,
+      granter,
+      payer,
+    }
+  }
+
+  // TODO: Replace with imported cosmjs AminoMsg type
+  createStdSignDoc(aminoMsgs: any[]) {
+    const fee = this.stdFee
+    const { accountNumber, sequence, chainId, memo } = this
+
+    return {
+      chain_id: chainId,
+      account_number: accountNumber,
+      sequence,
+      fee,
+      msgs: aminoMsgs,
+      memo,
+    }
+  }
 }
 
 const client = new TestingClient()
