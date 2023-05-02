@@ -25,7 +25,7 @@ export const LEGACY_AMINO = SignMode.LEGACY_AMINO_JSON
 
 // Returns a base-64-encoded keccak256 hash of the
 // given content bytes.
-export function keccak256(content: Uint8Array) {
+export function keccak256ToBase64(content: Uint8Array) {
   const hash = new Keccak(256)
   hash.update(Buffer.from(content))
   const bytes = hash.digest('binary')
@@ -146,7 +146,7 @@ export function createStdFee(amount: string, denom: string, gasLimit: number) {
   }
 }
 
-export function createStdSignDoc(
+export function createStdSignDocFromProto(
   protoMessages: any[],
   fee: StdFee,
   chainId: string,
@@ -173,7 +173,7 @@ export function createStdSignDigest(
 ) {
   try {
     const stdFee = createStdFee(fee, denom, gasLimit)
-    const stdSignDoc = createStdSignDoc(
+    const stdSignDoc = createStdSignDocFromProto(
       messages,
       stdFee,
       chainId,
@@ -182,7 +182,7 @@ export function createStdSignDigest(
       accountNumber,
     )
 
-    return keccak256(serializeSignDoc(stdSignDoc))
+    return keccak256ToBase64(serializeSignDoc(stdSignDoc))
   } catch {
     return ''
   }
@@ -205,14 +205,12 @@ export function createTransactionWithMultipleMessages(
   const feeMessage = createFee(fee, denom, gasLimit)
   const pubKeyDecoded = Buffer.from(pubKey, 'base64')
 
-  // AMINO
   const aminoSignerInfo = createSignerInfo(
     algo,
     new Uint8Array(pubKeyDecoded),
     sequence,
     LEGACY_AMINO,
   )
-
   const aminoAuthInfo = createAuthInfo(aminoSignerInfo, feeMessage)
   const aminoSignDigest = createStdSignDigest(
     messages,
@@ -225,16 +223,13 @@ export function createTransactionWithMultipleMessages(
     chainId,
   )
 
-  // SignDirect
   const directSignerInfo = createSignerInfo(
     algo,
     new Uint8Array(pubKeyDecoded),
     sequence,
     SIGN_DIRECT,
   )
-
   const directAuthInfo = createAuthInfo(directSignerInfo, feeMessage)
-
   const directSignDoc = createSignDoc(
     body.toBinary(),
     directAuthInfo.toBinary(),
@@ -242,7 +237,7 @@ export function createTransactionWithMultipleMessages(
     accountNumber,
   )
 
-  const directSignDigest = keccak256(directSignDoc.toBinary())
+  const directSignDigest = keccak256ToBase64(directSignDoc.toBinary())
 
   return {
     legacyAmino: {

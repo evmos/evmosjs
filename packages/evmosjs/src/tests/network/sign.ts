@@ -2,9 +2,15 @@ import { createTxRaw } from '@evmos/proto'
 import { TxPayload } from '@evmos/transactions'
 import { eip712Digest } from './eip712'
 import { protoDigest } from './proto'
+import { aminoDigest } from './amino'
 import { wallet } from './params'
 import { TxExtensionParams } from './types'
 import { hexToBytes } from './common'
+
+enum SignMode {
+  SignDirect,
+  LegacyAmino,
+}
 
 const signDigest32 = (digest: Buffer) => {
   // eslint-disable-next-line no-underscore-dangle
@@ -13,9 +19,15 @@ const signDigest32 = (digest: Buffer) => {
   return Buffer.concat([hexToBytes(signature.r), hexToBytes(signature.s)])
 }
 
-const signedPayload = (tx: TxPayload, signature: Buffer) => {
-  const bodyBytes = tx.signDirect.body.toBinary()
-  const authInfoBytes = tx.signDirect.authInfo.toBinary()
+const signedPayload = (
+  tx: TxPayload,
+  signature: Buffer,
+  signMode: SignMode,
+) => {
+  const { body, authInfo } =
+    signMode === SignMode.SignDirect ? tx.signDirect : tx.legacyAmino
+  const bodyBytes = body.toBinary()
+  const authInfoBytes = authInfo.toBinary()
 
   return createTxRaw(bodyBytes, authInfoBytes, [signature])
 }
@@ -27,7 +39,21 @@ export const signDirect = (
   const digest = protoDigest(tx, extensionParams)
   const signature = signDigest32(digest)
 
-  return signedPayload(tx, signature)
+  return signedPayload(tx, signature, SignMode.SignDirect)
+}
+
+export const signAmino = (
+  tx: TxPayload,
+  extensionParams?: TxExtensionParams,
+) => {
+  if (extensionParams) {
+    throw new Error('extensions are not supported with amino')
+  }
+
+  const digest = aminoDigest(tx)
+  const signature = signDigest32(digest)
+
+  return signedPayload(tx, signature, SignMode.LegacyAmino)
 }
 
 export const signEIP712 = (
@@ -40,5 +66,5 @@ export const signEIP712 = (
   const digest = eip712Digest(tx.eipToSign)
   const signature = signDigest32(digest)
 
-  return signedPayload(tx, signature)
+  return signedPayload(tx, signature, SignMode.SignDirect)
 }

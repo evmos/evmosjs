@@ -2,7 +2,7 @@ import { makeSignDoc, serializeSignDoc } from '@cosmjs/amino'
 import { createMsgSend } from '../messages/bank/msgSend'
 
 import {
-  keccak256,
+  keccak256ToBase64,
   convertProtoMessagesToAmino,
   createBody,
   createFee,
@@ -11,7 +11,7 @@ import {
   createSignDoc,
   createTransaction,
   createStdFee,
-  createStdSignDoc,
+  createStdSignDocFromProto,
   SIGN_DIRECT,
 } from './transaction'
 import { JSONOptions } from '../proto/tests/common'
@@ -180,7 +180,7 @@ describe('test amino transaction stdsigndoc representation', () => {
     const gasLimit = 200000
     const stdFee = createStdFee(amount, denom, gasLimit)
 
-    expect(stdFee).toStrictEqual({
+    const expStdFee = {
       amount: [
         {
           amount,
@@ -188,7 +188,9 @@ describe('test amino transaction stdsigndoc representation', () => {
         },
       ],
       gas: gasLimit.toString(),
-    })
+    }
+
+    expect(stdFee).toStrictEqual(expStdFee)
   })
 
   it('creates stdsigndoc as expected', () => {
@@ -196,7 +198,7 @@ describe('test amino transaction stdsigndoc representation', () => {
     const msgSend = createMsgSend(from, to, amount, denom)
 
     const stdFee = createStdFee(fee, denom, gasLimit)
-    const stdSignDoc = createStdSignDoc(
+    const stdSignDoc = createStdSignDocFromProto(
       [msgSend],
       stdFee,
       chainId,
@@ -260,7 +262,7 @@ describe('test amino transaction stdsigndoc representation', () => {
       accountNumber,
       sequence,
     )
-    const expStdSignDigest = keccak256(serializeSignDoc(expStdSignDoc))
+    const expStdSignDigest = keccak256ToBase64(serializeSignDoc(expStdSignDoc))
 
     expect(stdSignDigest).toStrictEqual(expStdSignDigest)
   })
@@ -306,15 +308,14 @@ describe('test proto transaction to binary', () => {
 })
 
 describe('test utility methods', () => {
-  it('hashes keccak256 as expected', () => {
-    const emptyHashB64 = keccak256(new Uint8Array())
+  it('hashes keccak256ToBase64 as expected', () => {
+    const emptyHash = keccak256ToBase64(new Uint8Array())
 
-    const expEmptyHashHex =
-      'c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470'
-    const expEmptyHashB64 = Buffer.from(expEmptyHashHex, 'hex').toString(
-      'base64',
-    )
+    const expEmptyHash = Buffer.from(
+      'c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470',
+      'hex',
+    ).toString('base64')
 
-    expect(emptyHashB64).toStrictEqual(expEmptyHashB64)
+    expect(emptyHash).toStrictEqual(expEmptyHash)
   })
 })
