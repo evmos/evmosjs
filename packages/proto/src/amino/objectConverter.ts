@@ -1,4 +1,5 @@
 import { JsonWriteOptions, Message, AnyMessage } from '@bufbuild/protobuf'
+import { MessageGenerated } from '../messages/common.js'
 
 /**
  * Set of utilities to convert between complex Protobuf Messages, Protobuf-
@@ -20,6 +21,12 @@ export function convertProtoMessageToObject<T extends Message<T> = AnyMessage>(
     typeUrl: `/${msg.getType().typeName}`,
     value: msg.toJson(),
   }
+}
+
+export function convertProtoMessageGeneratedToObject<
+  T extends Message<T> = AnyMessage,
+>(msgGenerated: MessageGenerated<T>) {
+  return convertProtoMessageToObject(msgGenerated.message)
 }
 
 export function convertProtoValueToMessage<T extends Message<T> = AnyMessage>(

@@ -31,6 +31,7 @@
     "@buf/cosmos_ibc.bufbuild_es": "^1.0.0-20230127093016-72d4bdec25a0.1",
     "@buf/evmos_evmos.bufbuild_es": "^1.2.0-20230315212311-c66c6f141d04.1",
     "@bufbuild/protobuf": "^1.0.0",
+    "@cosmjs/amino": "^0.30.1",
     "@cosmjs/stargate": "^0.30.1",
     "@types/node": "^17.0.21",
     "link-module-alias": "^1.2.0",

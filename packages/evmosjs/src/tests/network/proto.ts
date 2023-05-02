@@ -1,6 +1,6 @@
 import { keccak256 } from '@ethersproject/keccak256'
 import { TxPayload } from '@evmos/transactions'
-import { createSigDoc } from '@evmos/proto'
+import { createSignDoc } from '@evmos/proto'
 import { hexToBytes, base64ToBytes } from './common'
 import { TxExtensionParams } from './types'
 
@@ -20,7 +20,7 @@ const signDocWithExtensions = (
   const chainId = context.chain.cosmosChainId
   const { accountNumber } = context.sender
 
-  return createSigDoc(bodyBytes, authInfoBytes, chainId, accountNumber)
+  return createSignDoc(bodyBytes, authInfoBytes, chainId, accountNumber)
 }
 
 const digestWithExtensions = (

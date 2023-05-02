@@ -1,18 +1,39 @@
+import { makeSignDoc, serializeSignDoc } from '@cosmjs/amino'
 import { createMsgSend } from '../messages/bank/msgSend'
 
 import {
+  keccak256,
+  convertProtoMessagesToAmino,
   createBody,
   createFee,
   createSignerInfo,
   createAuthInfo,
-  createSigDoc,
+  createSignDoc,
   createTransaction,
+  createStdFee,
+  createStdSignDoc,
   SIGN_DIRECT,
 } from './transaction'
 import { JSONOptions } from '../proto/tests/common'
 
-describe('transaction tests', () => {
-  it('createBody test', () => {
+import {
+  from,
+  to,
+  amount,
+  denom,
+  cosmosChainId as chainId,
+} from '../proto/tests/utils'
+
+const createTxParams = {
+  memo: 'tx memo',
+  fee: '1200',
+  gasLimit: 200000,
+  sequence: 10,
+  accountNumber: 20,
+}
+
+describe('test proto transaction generation', () => {
+  it('test create proto body', () => {
     const msgSend = createMsgSend(
       'evmos18lw704zeyg5zs098lq7x6ypfkfjqlzzln5qh89',
       'evmos1ndfagggdkgv9vc7wha5gj2zzrnyqd3r704lr4q',
@@ -41,7 +62,7 @@ describe('transaction tests', () => {
     })
   })
 
-  it('createFee test', () => {
+  it('test proto createFee', () => {
     const value = '20'
     const denom = 'aphoton'
     const gas = 20000
@@ -59,7 +80,7 @@ describe('transaction tests', () => {
     })
   })
 
-  it('createSignerInfo test', () => {
+  it('test proto createSignerInfo', () => {
     const pubkey = new Uint8Array([
       10, 33, 2, 136, 177, 245, 49, 184, 120, 113, 219, 192, 55, 41, 81, 135,
       37, 92, 174, 75, 160, 196, 188, 55, 202, 114, 97, 5, 178, 20, 10, 253, 14,
@@ -77,7 +98,7 @@ describe('transaction tests', () => {
     })
   })
 
-  it('createAuthInfo test', () => {
+  it('test proto createAuthInfo', () => {
     const pubkey = new Uint8Array([
       10, 33, 2, 136, 177, 245, 49, 184, 120, 113, 219, 192, 55, 41, 81, 135,
       37, 92, 174, 75, 160, 196, 188, 55, 202, 114, 97, 5, 178, 20, 10, 253, 14,
@@ -115,7 +136,7 @@ describe('transaction tests', () => {
     })
   })
 
-  it('createSigDoc test', () => {
+  it('test proto createSignDoc', () => {
     const msgSend = createMsgSend(
       'evmos18lw704zeyg5zs098lq7x6ypfkfjqlzzln5qh89',
       'evmos1ndfagggdkgv9vc7wha5gj2zzrnyqd3r704lr4q',
@@ -137,7 +158,7 @@ describe('transaction tests', () => {
     const authInfo = createAuthInfo(info, fee)
     const chainId = 'evmos_9000-1'
     const accountNumber = 0
-    const res = createSigDoc(
+    const res = createSignDoc(
       body.toBinary(),
       authInfo.toBinary(),
       chainId,
@@ -154,8 +175,99 @@ describe('transaction tests', () => {
   })
 })
 
-describe('transaction eip712', () => {
-  it('valid eip712', () => {
+describe('test amino transaction stdsigndoc representation', () => {
+  it('creates stdfee as expected', () => {
+    const gasLimit = 200000
+    const stdFee = createStdFee(amount, denom, gasLimit)
+
+    expect(stdFee).toStrictEqual({
+      amount: [
+        {
+          amount,
+          denom,
+        },
+      ],
+      gas: gasLimit.toString(),
+    })
+  })
+
+  it('creates stdsigndoc as expected', () => {
+    const { memo, fee, gasLimit, sequence, accountNumber } = createTxParams
+    const msgSend = createMsgSend(from, to, amount, denom)
+
+    const stdFee = createStdFee(fee, denom, gasLimit)
+    const stdSignDoc = createStdSignDoc(
+      [msgSend],
+      stdFee,
+      chainId,
+      memo,
+      sequence,
+      accountNumber,
+    )
+
+    const expStdSignDoc = {
+      chain_id: chainId,
+      account_number: accountNumber.toString(),
+      sequence: sequence.toString(),
+      fee: stdFee,
+      msgs: [
+        {
+          type: 'cosmos-sdk/MsgSend',
+          value: {
+            from_address: from,
+            to_address: to,
+            amount: [
+              {
+                denom,
+                amount,
+              },
+            ],
+          },
+        },
+      ],
+      memo,
+    }
+
+    expect(stdSignDoc).toStrictEqual(expStdSignDoc)
+  })
+
+  it('creates stdsigndigest as expected', () => {
+    const { memo, fee, gasLimit, sequence, accountNumber } = createTxParams
+    const msgSend = createMsgSend(from, to, amount, denom)
+
+    const tx = createTransaction(
+      msgSend,
+      memo,
+      fee,
+      denom,
+      gasLimit,
+      '',
+      '',
+      sequence,
+      accountNumber,
+      chainId,
+    )
+
+    const stdSignDigest = tx.legacyAmino.signBytes
+
+    const expStdFee = createStdFee(fee, denom, gasLimit)
+    const expAminoMsgs = convertProtoMessagesToAmino([msgSend])
+    const expStdSignDoc = makeSignDoc(
+      expAminoMsgs,
+      expStdFee,
+      chainId,
+      memo,
+      accountNumber,
+      sequence,
+    )
+    const expStdSignDigest = keccak256(serializeSignDoc(expStdSignDoc))
+
+    expect(stdSignDigest).toStrictEqual(expStdSignDigest)
+  })
+})
+
+describe('test proto transaction to binary', () => {
+  it('encodes body and authinfo to binary', () => {
     const msg = createMsgSend(
       'ethm1tfegf50n5xl0hd5cxfzjca3ylsfpg0fned5gqm',
       'ethm1tfegf50n5xl0hd5cxfzjca3ylsfpg0fned5gqm',
@@ -190,5 +302,19 @@ describe('transaction eip712', () => {
     ).toBe(
       'ClkKTwooL2V0aGVybWludC5jcnlwdG8udjEuZXRoc2VjcDI1NmsxLlB1YktleRIjCiECBPD7i/R1oivGw1JbgVxD4iiKeA+x4XAc7UOeyzKg6pkSBAoCCAEYARITCg0KB2FwaG90b24SAjIwEMCaDA==',
     )
+  })
+})
+
+describe('test utility methods', () => {
+  it('hashes keccak256 as expected', () => {
+    const emptyHashB64 = keccak256(new Uint8Array())
+
+    const expEmptyHashHex =
+      'c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470'
+    const expEmptyHashB64 = Buffer.from(expEmptyHashHex, 'hex').toString(
+      'base64',
+    )
+
+    expect(emptyHashB64).toStrictEqual(expEmptyHashB64)
   })
 })
