@@ -86,7 +86,7 @@ export interface TxPayload {
     authInfo: Proto.Cosmos.Transactions.Tx.AuthInfo
     signBytes: string
   }
-  eipToSign: EIP712ToSign
+  eipToSign: EIP712ToSign | undefined
 }
 
 export type Coin = {

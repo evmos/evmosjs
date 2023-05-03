@@ -32,7 +32,7 @@ describe('msgsend integration tests', () => {
     expectSuccess(response)
   })
 
-  it('fulfills legacy eip-712 msgsend transactions', async () => {
+  it('fulfills eip-712 msgsend transactions', async () => {
     const response = await networkClient.signEIP712AndBroadcast(
       MsgSendUtils.generateTx,
     )
