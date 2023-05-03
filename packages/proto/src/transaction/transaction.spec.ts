@@ -32,8 +32,8 @@ const createTxParams = {
   accountNumber: 20,
 }
 
-describe('test proto transaction partial generation', () => {
-  it('creates proto tx body objects', () => {
+describe('test protobuf intermediate object generators', () => {
+  it('correctly wraps tx body objects', () => {
     const msgSend = createMsgSend(
       'evmos18lw704zeyg5zs098lq7x6ypfkfjqlzzln5qh89',
       'evmos1ndfagggdkgv9vc7wha5gj2zzrnyqd3r704lr4q',
@@ -62,7 +62,7 @@ describe('test proto transaction partial generation', () => {
     })
   })
 
-  it('creates proto fees objects', () => {
+  it('correctly wraps fees objects', () => {
     const value = '20'
     const denom = 'aphoton'
     const gas = 20000
@@ -80,7 +80,7 @@ describe('test proto transaction partial generation', () => {
     })
   })
 
-  it('creates proto signerInfos objects', () => {
+  it('correctly wraps signerInfo objects', () => {
     const pubkey = new Uint8Array([
       10, 33, 2, 136, 177, 245, 49, 184, 120, 113, 219, 192, 55, 41, 81, 135,
       37, 92, 174, 75, 160, 196, 188, 55, 202, 114, 97, 5, 178, 20, 10, 253, 14,
@@ -98,7 +98,7 @@ describe('test proto transaction partial generation', () => {
     })
   })
 
-  it('creates proto authInfo objects', () => {
+  it('correctly wraps authInfo objects', () => {
     const pubkey = new Uint8Array([
       10, 33, 2, 136, 177, 245, 49, 184, 120, 113, 219, 192, 55, 41, 81, 135,
       37, 92, 174, 75, 160, 196, 188, 55, 202, 114, 97, 5, 178, 20, 10, 253, 14,
@@ -136,7 +136,7 @@ describe('test proto transaction partial generation', () => {
     })
   })
 
-  it('creates proto signDoc objects', () => {
+  it('correctly wraps signDoc objects', () => {
     const msgSend = createMsgSend(
       'evmos18lw704zeyg5zs098lq7x6ypfkfjqlzzln5qh89',
       'evmos1ndfagggdkgv9vc7wha5gj2zzrnyqd3r704lr4q',
@@ -175,8 +175,8 @@ describe('test proto transaction partial generation', () => {
   })
 })
 
-describe('test convert proto transactions to binary', () => {
-  it('encodes body and authinfo to binary', () => {
+describe('test proto transaction generation against binary', () => {
+  it('correctly encodes body and authinfo fields', () => {
     const msg = createMsgSend(
       'ethm1tfegf50n5xl0hd5cxfzjca3ylsfpg0fned5gqm',
       'ethm1tfegf50n5xl0hd5cxfzjca3ylsfpg0fned5gqm',
@@ -214,8 +214,8 @@ describe('test convert proto transactions to binary', () => {
   })
 })
 
-describe('test amino transaction stdsigndoc generation', () => {
-  it('creates amino stdfee objects', () => {
+describe('test amino transaction intermediate object generators', () => {
+  it('correctly wraps amino stdfee objects', () => {
     const gasLimit = 200000
     const stdFee = createStdFee(amount, denom, gasLimit)
 
@@ -232,7 +232,7 @@ describe('test amino transaction stdsigndoc generation', () => {
     expect(stdFee).toStrictEqual(expStdFee)
   })
 
-  it('creates amino stdsigndoc objects', () => {
+  it('correctly wraps amino stdsigndoc objects', () => {
     const { memo, fee, gasLimit, sequence, accountNumber } = createTxParams
     const msgSend = createMsgSend(from, to, amount, denom)
 
@@ -272,7 +272,7 @@ describe('test amino transaction stdsigndoc generation', () => {
     expect(stdSignDoc).toStrictEqual(expStdSignDoc)
   })
 
-  it('creates amino stdsigndigest objects', () => {
+  it('correctly wraps amino stdsigndigest objects', () => {
     const { memo, fee, gasLimit, sequence, accountNumber } = createTxParams
     const msgSend = createMsgSend(from, to, amount, denom)
 
@@ -308,14 +308,16 @@ describe('test amino transaction stdsigndoc generation', () => {
 })
 
 describe('test transaction utility methods', () => {
-  it('wraps keccak256 to hash to base64', () => {
-    const emptyHash = keccak256ToBase64(new Uint8Array())
+  describe('keccak256ToBase64', () => {
+    it('encodes hash in base64', () => {
+      const emptyHash = keccak256ToBase64(new Uint8Array())
 
-    const expEmptyHash = Buffer.from(
-      'c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470',
-      'hex',
-    ).toString('base64')
+      const expEmptyHash = Buffer.from(
+        'c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470',
+        'hex',
+      ).toString('base64')
 
-    expect(emptyHash).toStrictEqual(expEmptyHash)
+      expect(emptyHash).toStrictEqual(expEmptyHash)
+    })
   })
 })

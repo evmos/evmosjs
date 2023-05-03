@@ -20,7 +20,7 @@ const createMsgSendEncodings = () => {
   return { protoValue, aminoValue }
 }
 
-describe('test converting protobuf to/from amino JSON', () => {
+describe('test converter functions to/from amino JSON', () => {
   it('converts protobuf messages to json representations', () => {
     const { protoValue, aminoValue } = createMsgSendEncodings()
 
@@ -73,7 +73,7 @@ describe('test converting protobuf to/from amino JSON', () => {
   })
 })
 
-describe('test converting snake_case to camelCase', () => {
+describe('test converter functions from snake_case to camelCase', () => {
   it('leaves camelCase strings unchanged', () => {
     expect(snakeToCamelCase('lowerstring')).toBe('lowerstring')
     expect(snakeToCamelCase('camelString')).toBe('camelString')

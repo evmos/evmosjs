@@ -20,13 +20,13 @@ function expectReversibleAminoConversion<T extends Message<T> = AnyMessage>(
   expect(reconstructedProtoObject).toStrictEqual(protoObject)
 }
 
-describe('test generated amino types', () => {
-  it('converts registered cosmos messages', () => {
+describe('test integrated amino types converter', () => {
+  it('converts registered cosmos messages to/from amino', () => {
     const wrappedProtoMsgSend = createMsgSend(from, to, amount, denom)
     expectReversibleAminoConversion(wrappedProtoMsgSend)
   })
 
-  it('converts registered evmos messages', () => {
+  it('converts registered evmos messages to/from amino', () => {
     const wrappedProtoMsgClawback = createMsgClawback(from, to, to2)
     expectReversibleAminoConversion(wrappedProtoMsgClawback)
 
