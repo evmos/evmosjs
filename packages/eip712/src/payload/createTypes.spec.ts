@@ -69,32 +69,36 @@ describe('test eip-712 type generation from payload', () => {
     const expMsgTypes = {
       TypeMsgSend0: [
         {
-          type: 'string',
-          name: 'type',
-        },
-        {
           type: 'TypeValue0',
           name: 'value',
+        },
+        {
+          type: 'string',
+          name: 'type',
         },
       ],
       TypeValue0: [
         {
-          type: 'TypeValueAmount0',
-          name: 'amount',
+          type: 'string',
+          name: 'to_address',
         },
         {
           type: 'string',
-          name: 'recipient',
+          name: 'from_address',
+        },
+        {
+          type: 'TypeValueAmount0',
+          name: 'amount',
         },
       ],
       TypeValueAmount0: [
         {
           type: 'string',
-          name: 'amount',
+          name: 'denom',
         },
         {
           type: 'string',
-          name: 'denom',
+          name: 'amount',
         },
       ],
     }
@@ -120,32 +124,36 @@ describe('test eip-712 type generation from payload', () => {
     const expMsgTypes = {
       TypeMsgSend0: [
         {
-          type: 'string',
-          name: 'type',
-        },
-        {
           type: 'TypeValue0',
           name: 'value',
+        },
+        {
+          type: 'string',
+          name: 'type',
         },
       ],
       TypeValue0: [
         {
-          type: 'TypeValueAmount0',
-          name: 'amount',
+          type: 'string',
+          name: 'to_address',
         },
         {
           type: 'string',
-          name: 'recipient',
+          name: 'from_address',
+        },
+        {
+          type: 'TypeValueAmount0',
+          name: 'amount',
         },
       ],
       TypeValueAmount0: [
         {
           type: 'string',
-          name: 'amount',
+          name: 'denom',
         },
         {
           type: 'string',
-          name: 'denom',
+          name: 'amount',
         },
       ],
     }
@@ -176,62 +184,70 @@ describe('test eip-712 type generation from payload', () => {
     const expMsgTypes = {
       TypeMsgSend0: [
         {
-          type: 'string',
-          name: 'type',
-        },
-        {
           type: 'TypeValue0',
           name: 'value',
+        },
+        {
+          type: 'string',
+          name: 'type',
         },
       ],
       TypeValue0: [
         {
-          type: 'TypeValueAmount0',
-          name: 'amount',
+          type: 'string',
+          name: 'to_address',
         },
         {
           type: 'string',
-          name: 'recipient',
+          name: 'from_address',
+        },
+        {
+          type: 'TypeValueAmount0',
+          name: 'amount',
         },
       ],
       TypeValueAmount0: [
         {
           type: 'string',
-          name: 'amount',
+          name: 'denom',
         },
         {
           type: 'string',
-          name: 'denom',
+          name: 'amount',
         },
       ],
       TypeMsgSend1: [
         {
-          type: 'string',
-          name: 'type',
-        },
-        {
           type: 'TypeValue1',
           name: 'value',
+        },
+        {
+          type: 'string',
+          name: 'type',
         },
       ],
       TypeValue1: [
         {
-          type: 'TypeValueAmount1',
-          name: 'amount',
+          type: 'string',
+          name: 'to_address',
         },
         {
           type: 'string',
-          name: 'recipient',
+          name: 'from_address',
+        },
+        {
+          type: 'TypeValueAmount1',
+          name: 'amount',
         },
       ],
       TypeValueAmount1: [
         {
-          type: 'int64',
-          name: 'amount',
-        },
-        {
           type: 'string',
           name: 'denom',
+        },
+        {
+          type: 'int64',
+          name: 'amount',
         },
       ],
     }
@@ -265,34 +281,34 @@ describe('test eip-712 type generation from payload', () => {
     const expMsgTypes = {
       TypeTestMsg0: [
         {
-          type: 'string',
-          name: 'type',
-        },
-        {
           type: 'TypeValue0',
           name: 'value',
+        },
+        {
+          type: 'string',
+          name: 'type',
         },
       ],
       TypeValue0: [
         {
-          type: 'bool',
-          name: 'boolean',
-        },
-        {
-          type: 'string[]',
-          name: 'emptyArray',
-        },
-        {
-          type: 'int64[]',
-          name: 'int64Array',
+          type: 'TypeValueObject0',
+          name: 'object',
         },
         {
           type: 'int64',
           name: 'number',
         },
         {
-          type: 'TypeValueObject0',
-          name: 'object',
+          type: 'int64[]',
+          name: 'int64Array',
+        },
+        {
+          type: 'string[]',
+          name: 'emptyArray',
+        },
+        {
+          type: 'bool',
+          name: 'boolean',
         },
       ],
       TypeValueObject0: [

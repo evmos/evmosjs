@@ -74,14 +74,16 @@ class TestingClient {
 
   get msgSend() {
     const { denom } = this
-    const recipient = this.addr1
+    const fromAddress = this.addr1
+    const toAddress = this.addr2
     const amount = this.amount1
     const type = this.typeUrl1
 
     return {
       type,
       value: {
-        recipient,
+        from_address: fromAddress,
+        to_address: toAddress,
         amount: {
           amount,
           denom,
