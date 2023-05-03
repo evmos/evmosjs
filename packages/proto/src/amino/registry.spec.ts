@@ -13,11 +13,11 @@ import { from, to, to2, hex, amount, denom } from '../proto/tests/utils'
 function expectReversibleAminoConversion<T extends Message<T> = AnyMessage>(
   wrappedProtoMsg: MessageGenerated<T>,
 ) {
-  const protoMsg = convertProtoMessageToObject(wrappedProtoMsg.message)
-  const aminoMsg = AminoTypes.toAmino(protoMsg)
-  const generatedProtoMsg = AminoTypes.fromAmino(aminoMsg)
+  const protoObject = convertProtoMessageToObject(wrappedProtoMsg.message)
+  const aminoObject = AminoTypes.toAmino(protoObject)
+  const reconstructedProtoObject = AminoTypes.fromAmino(aminoObject)
 
-  expect(generatedProtoMsg).toStrictEqual(protoMsg)
+  expect(reconstructedProtoObject).toStrictEqual(protoObject)
 }
 
 describe('test generated amino types', () => {
