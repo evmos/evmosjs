@@ -5,7 +5,7 @@ import {
   createMsgClawback,
   createMsgRegisterRevenue,
 } from '../messages'
-import { convertProtoMessageGeneratedToObject } from './objectConverter'
+import { convertProtoMessageToObject } from './objectConverter'
 
 import { MessageGenerated } from '../messages/common'
 import { from, to, to2, hex, amount, denom } from '../proto/tests/utils'
@@ -13,7 +13,7 @@ import { from, to, to2, hex, amount, denom } from '../proto/tests/utils'
 function expectReversibleAminoConversion<T extends Message<T> = AnyMessage>(
   wrappedProtoMsg: MessageGenerated<T>,
 ) {
-  const protoMsg = convertProtoMessageGeneratedToObject(wrappedProtoMsg)
+  const protoMsg = convertProtoMessageToObject(wrappedProtoMsg.message)
   const aminoMsg = AminoTypes.toAmino(protoMsg)
   const generatedProtoMsg = AminoTypes.fromAmino(aminoMsg)
 

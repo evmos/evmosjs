@@ -1,10 +1,16 @@
 import { JsonWriteOptions, Message, AnyMessage } from '@bufbuild/protobuf'
-import { MessageGenerated } from '../messages/common.js'
 
 /**
- * Set of utilities to convert between complex Protobuf Messages, Protobuf-
+ * Set of utilities to convert between wrapped Protobuf Messages, Protobuf-
  * formatted JSON objects, and Amino-formatted JSON objects.
  */
+
+type AnyJSON = any
+
+interface ProtobufObject {
+  typeUrl: string
+  value: AnyJSON
+}
 
 export const AminoJSONOptions: JsonWriteOptions = {
   emitDefaultValues: true,
@@ -12,28 +18,20 @@ export const AminoJSONOptions: JsonWriteOptions = {
   useProtoFieldName: true,
 }
 
-// Converts a Protobuf message into a default Protobuf-formatted
-// plain Javascript object.
 export function convertProtoMessageToObject<T extends Message<T> = AnyMessage>(
   msg: Message<T>,
-) {
+): ProtobufObject {
   return {
     typeUrl: `/${msg.getType().typeName}`,
     value: msg.toJson(),
   }
 }
 
-export function convertProtoMessageGeneratedToObject<
-  T extends Message<T> = AnyMessage,
->(msgGenerated: MessageGenerated<T>) {
-  return convertProtoMessageToObject(msgGenerated.message)
-}
-
 export function convertProtoValueToMessage<T extends Message<T> = AnyMessage>(
-  protoJSON: any,
+  protoValue: any,
   ProtoMessage: typeof Message<T>,
-) {
-  return new ProtoMessage().fromJson(protoJSON)
+): Message<T> {
+  return new ProtoMessage().fromJson(protoValue)
 }
 
 // Converts a Protobuf message into a default Amino-formatted JSON
@@ -41,8 +39,8 @@ export function convertProtoValueToMessage<T extends Message<T> = AnyMessage>(
 // messages, others will require custom logic.
 export function convertProtoValueToDefaultAmino<
   T extends Message<T> = AnyMessage,
->(protoJSON: any, ProtoMessage: typeof Message<T>) {
-  const protoMessage = convertProtoValueToMessage(protoJSON, ProtoMessage)
+>(protoValue: any, ProtoMessage: typeof Message<T>): AnyJSON {
+  const protoMessage = convertProtoValueToMessage(protoValue, ProtoMessage)
   return protoMessage.toJson(AminoJSONOptions)
 }
 
@@ -73,13 +71,13 @@ export function convertSnakeKeysToCamel(item: any) {
   return objectWithCamel
 }
 
-// Converts an Amino JSON object into a Protobuf JSON object value.
 export function convertAminoToProtoValue<T extends Message<T> = AnyMessage>(
-  aminoJSON: any,
+  aminoValue: any,
   ProtoMessage: typeof Message<T>,
-) {
-  const protoJSON = convertSnakeKeysToCamel(aminoJSON)
-  const protoMessage = convertProtoValueToMessage(protoJSON, ProtoMessage)
+): AnyJSON {
+  const protoValue = convertSnakeKeysToCamel(aminoValue)
+  // Pass-through message representation to apply null-field parsing.
+  const protoMessage = convertProtoValueToMessage(protoValue, ProtoMessage)
   return protoMessage.toJson()
 }
 
@@ -89,15 +87,14 @@ export function createAminoConverter<T extends Message<T> = AnyMessage>(
   toAmino: typeof convertProtoValueToDefaultAmino = convertProtoValueToDefaultAmino,
   fromAmino: typeof convertAminoToProtoValue = convertAminoToProtoValue,
 ) {
-  const { typeName } = new ProtoMessage().getType()
-  const protoTypeUrl = `/${typeName}`
+  const protoTypeUrl = `/${new ProtoMessage().getType().typeName}`
 
-  function convertToAmino(protoJSON: any) {
-    return toAmino(protoJSON, ProtoMessage)
+  function convertToAmino(protoValue: any) {
+    return toAmino(protoValue, ProtoMessage)
   }
 
-  function convertFromAmino(aminoJSON: any) {
-    return fromAmino(aminoJSON, ProtoMessage)
+  function convertFromAmino(aminoValue: any) {
+    return fromAmino(aminoValue, ProtoMessage)
   }
 
   return {

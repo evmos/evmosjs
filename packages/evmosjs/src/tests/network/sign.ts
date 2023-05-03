@@ -19,13 +19,21 @@ const signDigest32 = (digest: Buffer) => {
   return Buffer.concat([hexToBytes(signature.r), hexToBytes(signature.s)])
 }
 
+const payloadFieldsForSignMode = (tx: TxPayload, signMode: SignMode) => {
+  switch (signMode) {
+    case SignMode.LegacyAmino:
+      return tx.legacyAmino
+    default:
+      return tx.signDirect
+  }
+}
+
 const signedPayload = (
   tx: TxPayload,
   signature: Buffer,
   signMode: SignMode,
 ) => {
-  const { body, authInfo } =
-    signMode === SignMode.SignDirect ? tx.signDirect : tx.legacyAmino
+  const { body, authInfo } = payloadFieldsForSignMode(tx, signMode)
   const bodyBytes = body.toBinary()
   const authInfoBytes = authInfo.toBinary()
 
