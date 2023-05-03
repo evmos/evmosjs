@@ -4,7 +4,7 @@ import {
   MsgCreateClawbackVestingAccount,
 } from '../../proto/evmos/vesting/tx'
 import { createAminoConverter } from '../../amino/objectConverter'
-import { expectEqualDefaultAminoConverters } from '../../../testutils/compareAminoRegistry'
+import { expectEqualsDefaultAminoConverters } from '../../../testutils/compareAminoRegistry'
 
 describe('test vesting amino converters', () => {
   it('creates expected amino converters', () => {
@@ -17,6 +17,6 @@ describe('test vesting amino converters', () => {
       ),
     }
 
-    expectEqualDefaultAminoConverters(aminoConverters, expAminoConverters)
+    expectEqualsDefaultAminoConverters(aminoConverters, expAminoConverters)
   })
 })

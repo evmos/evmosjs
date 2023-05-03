@@ -2,7 +2,7 @@ import { AminoConverter, AminoConverters } from '@cosmjs/stargate'
 
 // Compares AminoConverters for exact equivalence. Only to be
 // used for default AminoConverter constructions.
-export function expectEqualDefaultAminoConverters(
+export function expectEqualsDefaultAminoConverters(
   converters: AminoConverters,
   expConverters: AminoConverters,
 ) {
