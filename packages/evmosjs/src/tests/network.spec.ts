@@ -25,6 +25,13 @@ describe('msgsend integration tests', () => {
     expectSuccess(response)
   })
 
+  it('fulfills amino msgsend transactions', async () => {
+    const response = await networkClient.signAminoAndBroadcast(
+      MsgSendUtils.generateTx,
+    )
+    expectSuccess(response)
+  })
+
   it('fulfills legacy eip-712 msgsend transactions', async () => {
     const response = await networkClient.signEIP712AndBroadcast(
       MsgSendUtils.generateTx,

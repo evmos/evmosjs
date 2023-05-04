@@ -2,7 +2,7 @@ import secp256k1 from 'secp256k1'
 import { TxContext } from '@evmos/transactions'
 import { fetchSenderInfo } from './query'
 import { createTxContext } from './payload'
-import { signDirect, signEIP712 } from './sign'
+import { signDirect, signAmino, signEIP712 } from './sign'
 import { broadcastTx } from './broadcast'
 import { wallet } from './params'
 import { TxResponse, CreatePayloadFn, SignPayloadFn } from './types'
@@ -15,6 +15,13 @@ class NetworkTestClient {
     extensions?: any[],
   ) => {
     return this.signAndBroadcast(createTxPayload, signDirect, extensions)
+  }
+
+  signAminoAndBroadcast = async (
+    createTxPayload: CreatePayloadFn,
+    extensions?: any[],
+  ) => {
+    return this.signAndBroadcast(createTxPayload, signAmino, extensions)
   }
 
   signEIP712AndBroadcast = async (
