@@ -9,7 +9,7 @@ import {
   createTransaction,
   SIGN_DIRECT,
 } from './transaction'
-import { JSONOptions } from '../proto/tests/common'
+import { JSONOptions } from '../registry/registry'
 
 describe('transaction tests', () => {
   it('createBody test', () => {

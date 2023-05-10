@@ -1,7 +1,7 @@
 import { createMsgSend } from './msgSend'
 import { MsgSend } from '../../proto/cosmos/bank/tx'
 import { from, to, denom } from '../../proto/tests/utils'
-import { JSONOptions } from '../../proto/tests/common'
+import { JSONOptions } from '../../registry/registry'
 
 describe('test Bank Module message generation', () => {
   it('correctly wraps MsgSend', () => {

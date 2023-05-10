@@ -8,7 +8,7 @@ import {
   MsgDeposit,
 } from '../../proto/cosmos/gov/tx'
 import { from, denom } from '../../proto/tests/utils'
-import { JSONOptions } from '../../proto/tests/common'
+import { JSONOptions } from '../../registry/registry'
 
 describe('test Gov Module message generation', () => {
   it('correctly wraps MsgVote', () => {

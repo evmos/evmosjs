@@ -9,7 +9,7 @@ import {
 } from '../../proto/evmos/revenue/tx'
 
 import { from, hex, to } from '../../proto/tests/utils'
-import { JSONOptions } from '../../proto/tests/common'
+import { JSONOptions } from '../../registry/registry'
 
 describe('test Revenue Module message generation', () => {
   it('correctly wraps MsgRegisterRevenue', () => {

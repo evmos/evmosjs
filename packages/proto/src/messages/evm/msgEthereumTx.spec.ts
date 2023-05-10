@@ -8,7 +8,7 @@ import {
 
 import { MsgEthereumTx, LegacyTx } from '../../proto/ethermint/evm/tx'
 
-import { JSONOptions } from '../../proto/tests/common'
+import { JSONOptions } from '../../registry/registry'
 
 describe('test MsgEthereumTx payload conversions', () => {
   const blockchainTx =
