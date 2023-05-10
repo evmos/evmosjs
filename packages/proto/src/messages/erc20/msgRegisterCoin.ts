@@ -1,4 +1,4 @@
-import { Metadata } from '../../proto/cosmos/bank/bank'
+import { Metadata } from '../../proto/cosmos/bank/bank.js'
 import { RegisterCoinProposal } from '../../proto/evmos/erc20/erc20.js'
 
 export function createMsgRegisterCoin(
