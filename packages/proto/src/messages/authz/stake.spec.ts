@@ -1,7 +1,7 @@
 import { createStakeAuthorization } from './stake'
 import { StakeAuthorization } from '../../proto/cosmos/staking/authz'
 import { denom, val, val2 } from '../../proto/tests/utils'
-import { JSONOptions } from '../../proto/tests/common'
+import { JSONOptions } from '../../registry/registry'
 
 const validateStakeAuthorization = (validators: string | string[]) => {
   const authorization = 1

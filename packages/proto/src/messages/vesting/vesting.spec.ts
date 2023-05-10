@@ -7,7 +7,7 @@ import {
 } from '../../proto/evmos/vesting/tx'
 
 import { from, to, to2, denom } from '../../proto/tests/utils'
-import { JSONOptions } from '../../proto/tests/common'
+import { JSONOptions } from '../../registry/registry'
 
 describe('test Vesting Module message generation', () => {
   it('correctly wraps msgClawback', () => {
