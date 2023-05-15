@@ -1,52 +1,78 @@
 import secp256k1 from 'secp256k1'
-import { TxContext, TxPayload } from '@evmos/transactions'
+import { TxContext } from '@evmos/transactions'
 import { fetchSenderInfo } from './query'
 import { createTxContext } from './payload'
-import { signDirect } from './sign'
+import { signDirect, signAmino, signEIP712 } from './sign'
 import { broadcastTx } from './broadcast'
 import { wallet } from './params'
-
-export interface TxResponse {
-  // eslint-disable-next-line camelcase
-  tx_response: {
-    code: number
-  }
-}
-
-export type CreatePayloadFn = (context: TxContext) => TxPayload
+import { TxResponse, CreatePayloadFn, SignPayloadFn } from './types'
 
 class NetworkTestClient {
-  private readonly createTxPayload: CreatePayloadFn
+  private nonce: number | undefined
 
-  constructor(createTxPayload: CreatePayloadFn) {
-    // Instantiate an instance of NetworkTestClient with a payload generator function
-    // to sign and broadcast a generic input message.
-    this.createTxPayload = createTxPayload
+  signDirectAndBroadcast = async (
+    createTxPayload: CreatePayloadFn,
+    extensions?: any[],
+  ) => {
+    return this.signAndBroadcast(createTxPayload, signDirect, extensions)
   }
 
-  signDirectAndBroadcast = async () => {
+  signAminoAndBroadcast = async (
+    createTxPayload: CreatePayloadFn,
+    extensions?: any[],
+  ) => {
+    return this.signAndBroadcast(createTxPayload, signAmino, extensions)
+  }
+
+  signEIP712AndBroadcast = async (
+    createTxPayload: CreatePayloadFn,
+    extensions?: any[],
+  ) => {
+    return this.signAndBroadcast(createTxPayload, signEIP712, extensions)
+  }
+
+  private signAndBroadcast = async (
+    createTxPayload: CreatePayloadFn,
+    signPayload: SignPayloadFn,
+    extensions?: any[],
+  ) => {
     const context = await this.createTxContext()
-    const payload = this.createTxPayload(context)
+    const payload = createTxPayload(context)
 
-    const signedTx = await signDirect(payload)
-    const response = (await broadcastTx(signedTx)) as TxResponse
+    const extParams = this.createExtensionParams(context, extensions)
+    const signedTx = await signPayload(payload, extParams)
+    const response = await broadcastTx(signedTx)
 
-    return response
+    console.log(response)
+
+    if (this.nonce !== undefined) {
+      this.nonce += 1
+    }
+
+    return response as TxResponse
   }
 
   private createTxContext = async () => {
+    // eslint-disable-next-line camelcase
+    const { account_number, sequence, pub_key } = await this.getSenderAccount()
+
+    const pk = pub_key?.key ?? this.getSignerPubKey()
+
+    if (this.nonce === undefined) {
+      this.nonce = parseInt(sequence, 10)
+    }
+
+    return createTxContext(account_number, pk, this.nonce.toString())
+  }
+
+  private getSenderAccount = async () => {
     const senderInfo = await fetchSenderInfo()
 
     if (!senderInfo) {
       throw new Error('Expected sender info from node')
     }
 
-    // eslint-disable-next-line camelcase
-    const { account_number, sequence, pub_key } =
-      senderInfo.account.base_account
-    const pk = pub_key?.key ?? this.getSignerPubKey()
-
-    return createTxContext(account_number, pk, sequence)
+    return senderInfo.account.base_account
   }
 
   private getSignerPubKey = () => {
@@ -56,6 +82,17 @@ class NetworkTestClient {
     )
     const pk = Buffer.from(secp256k1.publicKeyConvert(pkUncompressed, true))
     return pk.toString('base64')
+  }
+
+  private createExtensionParams = (context: TxContext, extensions?: any[]) => {
+    if (!extensions) {
+      return undefined
+    }
+
+    return {
+      context,
+      extensions,
+    }
   }
 }
 

@@ -7,15 +7,18 @@ import {
 } from '../../proto/cosmos/staking/authz.js'
 
 export function createStakeAuthorization(
-  allowAddress: string,
+  allowAddresses: string | string[],
   denom: string,
   maxTokens: string | undefined,
   authorizationType: AuthorizationType,
 ) {
+  const addresses = Array.isArray(allowAddresses)
+    ? allowAddresses
+    : [allowAddresses]
   const msg = new StakeAuthorization({
     validators: {
       value: new StakeAuthorization_Validators({
-        address: [allowAddress],
+        address: addresses,
       }),
       case: 'allowList',
     },

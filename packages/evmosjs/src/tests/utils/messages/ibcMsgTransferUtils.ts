@@ -1,9 +1,9 @@
 import { createIBCMsgTransfer as protoIBCMsgTransfer } from '@evmos/proto'
 import {
   createIBCMsgTransfer as eip712IBCMsgTransfer,
-  IBC_MSG_TRANSFER_TYPES,
+  CREATE_IBC_MSG_TRANSFER_TYPES,
 } from '@evmos/eip712'
-import { createTxIBCMsgTransfer } from '@evmos/transactions'
+import { createTxIBCMsgTransfer, TxContext } from '@evmos/transactions'
 import { TestingClient } from '../utils'
 
 class IBCMsgTransferTestingClient extends TestingClient {
@@ -16,6 +16,7 @@ class IBCMsgTransferTestingClient extends TestingClient {
     const revisionNumber = 1000
     const revisionHeight = 84000
     const timeoutTimestamp = '900000000'
+    const memo = 'ibc memo'
 
     return {
       sourcePort,
@@ -26,6 +27,7 @@ class IBCMsgTransferTestingClient extends TestingClient {
       revisionNumber,
       revisionHeight,
       timeoutTimestamp,
+      memo,
     }
   }
 
@@ -42,13 +44,14 @@ class IBCMsgTransferTestingClient extends TestingClient {
       params.revisionNumber,
       params.revisionHeight,
       params.timeoutTimestamp,
+      params.memo,
     )
   }
 
   get eip712TypedData() {
     const { context, params } = this
 
-    const types = IBC_MSG_TRANSFER_TYPES
+    const types = CREATE_IBC_MSG_TRANSFER_TYPES(params.memo)
     const message = eip712IBCMsgTransfer(
       params.receiver,
       context.sender.accountAddress,
@@ -59,6 +62,7 @@ class IBCMsgTransferTestingClient extends TestingClient {
       params.timeoutTimestamp,
       params.amount,
       params.denom,
+      params.memo,
     )
 
     return {
@@ -77,6 +81,17 @@ class IBCMsgTransferTestingClient extends TestingClient {
       eip712TypedData,
       tx,
     }
+  }
+
+  generateTxWithoutMemo = (context: TxContext) => {
+    const txParams = JSON.parse(JSON.stringify(this.params))
+    delete txParams.memo
+    return createTxIBCMsgTransfer(context, txParams)
+  }
+
+  generateTx = (context: TxContext) => {
+    const { params } = this
+    return createTxIBCMsgTransfer(context, params)
   }
 }
 

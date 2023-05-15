@@ -1,33 +1,78 @@
-import { createTxRaw, Proto } from '@evmos/proto'
+import { createTxRaw } from '@evmos/proto'
+import { TxPayload } from '@evmos/transactions'
+import { eip712Digest } from './eip712'
+import { protoDigest } from './proto'
+import { aminoDigest } from './amino'
 import { wallet } from './params'
+import { TxExtensionParams } from './types'
+import { hexToBytes } from './common'
 
-interface TxPayload {
-  signDirect: {
-    body: Proto.Cosmos.Transactions.Tx.TxBody
-    authInfo: Proto.Cosmos.Transactions.Tx.AuthInfo
-    signBytes: string
+enum SignMode {
+  SignDirect,
+  LegacyAmino,
+}
+
+const signDigest32 = (digest: Buffer) => {
+  // eslint-disable-next-line no-underscore-dangle
+  const signature = wallet._signingKey().signDigest(digest)
+
+  return Buffer.concat([hexToBytes(signature.r), hexToBytes(signature.s)])
+}
+
+const payloadFieldsForSignMode = (tx: TxPayload, signMode: SignMode) => {
+  switch (signMode) {
+    case SignMode.LegacyAmino:
+      return tx.legacyAmino
+    default:
+      return tx.signDirect
   }
 }
 
-// Signs a hashed digest in base64 format and returns a 64-byte
-// signature (excluding the parity byte).
-const signDigest32 = (digestBase64: string) => {
-  // eslint-disable-next-line no-underscore-dangle
-  const signature = wallet
-    ._signingKey()
-    .signDigest(Buffer.from(digestBase64, 'base64'))
+const signedPayload = (
+  tx: TxPayload,
+  signature: Buffer,
+  signMode: SignMode,
+) => {
+  const { body, authInfo } = payloadFieldsForSignMode(tx, signMode)
+  const bodyBytes = body.toBinary()
+  const authInfoBytes = authInfo.toBinary()
 
-  return Buffer.concat([
-    Buffer.from(signature.r.replace('0x', ''), 'hex'),
-    Buffer.from(signature.s.replace('0x', ''), 'hex'),
-  ])
+  return createTxRaw(bodyBytes, authInfoBytes, [signature])
 }
 
-export const signDirect = async (tx: TxPayload) => {
-  const signatureBytes = signDigest32(tx.signDirect.signBytes)
+export const signDirect = (
+  tx: TxPayload,
+  extensionParams?: TxExtensionParams,
+) => {
+  const digest = protoDigest(tx, extensionParams)
+  const signature = signDigest32(digest)
 
-  const bodyBytes = tx.signDirect.body.toBinary()
-  const authInfoBytes = tx.signDirect.authInfo.toBinary()
+  return signedPayload(tx, signature, SignMode.SignDirect)
+}
 
-  return createTxRaw(bodyBytes, authInfoBytes, [signatureBytes])
+export const signAmino = (
+  tx: TxPayload,
+  extensionParams?: TxExtensionParams,
+) => {
+  if (extensionParams) {
+    throw new Error('extensions are not supported with amino')
+  }
+
+  const digest = aminoDigest(tx)
+  const signature = signDigest32(digest)
+
+  return signedPayload(tx, signature, SignMode.LegacyAmino)
+}
+
+export const signEIP712 = (
+  tx: TxPayload,
+  extensionParams?: TxExtensionParams,
+) => {
+  if (extensionParams) {
+    throw new Error('extensions are not supported with eip-712')
+  }
+  const digest = eip712Digest(tx.eipToSign)
+  const signature = signDigest32(digest)
+
+  return signedPayload(tx, signature, SignMode.SignDirect)
 }

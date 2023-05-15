@@ -26,6 +26,6 @@ RUN chmod +x init-node.sh
 
 COPY --from=build-env /go/src/github.com/evmos/evmos/build/evmosd /usr/bin/evmosd
 
-EXPOSE 1317 8545
+EXPOSE 1317 8545 26657
 
 CMD ["sh", "./init-node.sh"]

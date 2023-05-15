@@ -5,6 +5,8 @@ import {
   ethermintToEth,
   evmosToEth,
   ethToEvmos,
+  ethToPlanq,
+  planqToEth,
 } from '../src/index'
 
 describe('converter tests', () => {
@@ -45,5 +47,12 @@ describe('converter tests', () => {
     // ETH to EVMOS
     address = ethToEvmos('0x14574a6DFF2Ddf9e07828b4345d3040919AF5652')
     expect(address).toBe('evmos1z3t55m0l9h0eupuz3dp5t5cypyv674jj7mz2jw')
+
+    // PLANQ
+    address = planqToEth('plq1j3nnnlvlut6rkyu4vdkjs8pesxnr28u5ht6jek')
+    expect(address).toBe('0x946739fD9FE2f43B1395636d281C3981A6351F94')
+    // ETH to PLANQ
+    address = ethToPlanq('0x946739fD9FE2f43B1395636d281C3981A6351F94')
+    expect(address).toBe('plq1j3nnnlvlut6rkyu4vdkjs8pesxnr28u5ht6jek')
   })
 })

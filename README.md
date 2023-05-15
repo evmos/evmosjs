@@ -24,7 +24,7 @@ npm install evmosjs
 Or:
 
 ```bash
-npm install @evmos/[package]
+npm install @evmos/<package>
 ```
 
 ### Yarn v2.x or v3.x
@@ -46,7 +46,7 @@ yarn add evmosjs
 Or:
 
 ```bash
-yarn add @evmos/[package]
+yarn add @evmos/<package>
 ```
 
 Note that Yarn v1 is not supported ([see explanation](https://docs.buf.build/bsr/remote-packages/npm#other-package-managers)).
@@ -99,6 +99,61 @@ const result = await rawResult.json()
 */
 ```
 
+### Get an Account's Public Key
+
+Use Keplr or MetaMask to retrieve an account's public key
+if it is not returned in the query response.
+The public key is necessary in order to sign and broadcast
+transactions, and it must be encoded as a compressed key in
+`base64`.
+
+#### Keplr
+
+```ts
+const cosmosChainID = 'evmos_9001-2' // Use 'evmos_9000-4' for testnet
+
+const account = await window?.keplr?.getKey(cosmosChainID)
+const pk = Buffer.from(account.pubKey).toString('base64')
+```
+
+#### MetaMask
+
+Since MetaMask does not provide an interface to retrieve a user's
+public key, we must sign a message and
+[recover the key from a signature](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm#Public_key_recovery).
+
+```ts
+import { hashMessage } from '@ethersproject/hash'
+import {
+  computePublicKey,
+  recoverPublicKey,
+} from '@ethersproject/signing-key'
+
+const accounts = await window?.ethereum?.request({
+  method: 'eth_requestAccounts',
+})
+
+// Handle errors if MetaMask fails to return any accounts.
+const message = 'Verify Public Key'
+
+const signature = await window?.ethereum?.request({
+  method: 'personal_sign',
+  params: [message, accounts[0], ''],
+})
+
+// Compress the key, since the client expects
+// public keys to be compressed.
+const uncompressedPk = recoverPublicKey(
+  hashMessage(message),
+  signature,
+)
+
+const hexPk = computePublicKey(uncompressedPk, true)
+const pk = Buffer.from(
+  hexPk.replace('0x', ''), 'hex',
+).toString('base64')
+```
+
 ### Create a Signable Transaction
 
 Create a transaction payload which can be signed using either Metamask or Keplr.
@@ -124,11 +179,12 @@ const chain: Chain = {
 // Populate the transaction sender parameters using the
 // query API.
 const sender: Sender = {
-  accountAddress: [sender_account_address],
-  sequence: [sender_sequence],
-  accountNumber: [sender_account_number],
-  // Use an empty string if the pubkey is unknown.
-  pubkey: [sender_pub_key],
+  accountAddress: <sender_account_address>,
+  sequence: <sender_sequence>,
+  accountNumber: <sender_account_number>,
+  // Use the public key from the account query, or retrieve
+  // the public key from the code snippet above.
+  pubkey: <sender_pub_key>,
 }
 
 const fee: Fee = {
@@ -147,8 +203,8 @@ const context: TxContext = {
 }
 
 const params: MsgSendParams = {
-  destinationAddress: [destination_address],
-  amount: [transaction_amount],
+  destinationAddress: <destination_address>,
+  amount: <transaction_amount>,
   denom: 'aevmos',
 }
 
