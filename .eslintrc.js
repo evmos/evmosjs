@@ -27,6 +27,8 @@ const common = {
     'no-shadow': 'off',
     'no-unused-vars': 'off',
     'no-useless-constructor': 'off',
+    'no-continue': 'off',
+    'no-plusplus': 'off',
     'import/no-extraneous-dependencies': [
       'error',
       {
