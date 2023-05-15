@@ -17,3 +17,6 @@ export * from './messages/staking/index.js'
 // TODO: Find out why staking's index cannot re-export editValidator file
 export * from './messages/staking/editValidator.js'
 export * from './messages/vesting/index.js'
+
+// Payload
+export * from './payload/index.js'

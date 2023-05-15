@@ -6,7 +6,7 @@ import {
   createBody,
   createBodyWithMultipleMessages,
   createFee,
-  createSigDoc,
+  createSignDoc,
   SIGN_DIRECT,
 } from '@evmos/proto'
 import { TestingClient } from './utils'
@@ -55,7 +55,7 @@ class ProtobufTestingClient extends TestingClient {
     const chainId = context.chain.cosmosChainId
     const { accountNumber } = context.sender
 
-    return createSigDoc(bodyBytes, authInfoBytes, chainId, accountNumber)
+    return createSignDoc(bodyBytes, authInfoBytes, chainId, accountNumber)
   }
 
   getSignBytes = (signDoc: Proto.Cosmos.Transactions.Tx.SignDoc) => {

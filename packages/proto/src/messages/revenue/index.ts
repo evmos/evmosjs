@@ -1,4 +1,5 @@
 export * from './msgCancelRevenue.js'
 export * from './msgRegisterRevenue.js'
 export * from './msgUpdateRevenue.js'
+export * from './aminoRegistry.js'
 export * from './registry.js'
