@@ -1,6 +1,6 @@
 import { createED25519PubKey } from './keys'
 import { PubKey } from '../../proto/cosmos/crypto/ed25519/keys'
-import { JSONOptions } from '../../proto/tests/common'
+import { JSONOptions } from '../../registry/registry'
 
 describe('test Crypto Module message generation', () => {
   it('correctly wraps ED25519PubKey', () => {

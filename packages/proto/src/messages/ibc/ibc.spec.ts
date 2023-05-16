@@ -3,7 +3,7 @@ import { createIBCMsgTransfer } from './ibcMsgTransfer'
 import { MsgTransfer } from '../../proto/cosmos-ibc/ibc/applications/tx'
 
 import { from, to, denom } from '../../proto/tests/utils'
-import { JSONOptions } from '../../proto/tests/common'
+import { JSONOptions } from '../../registry/registry'
 
 interface MsgTransferParams {
   sourcePort: string

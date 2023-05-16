@@ -3,7 +3,7 @@ import { createGenericAuthorization } from './generic'
 import { GenericAuthorization } from '../../proto/cosmos/authz/authz'
 import { MsgGrant, MsgRevoke } from '../../proto/cosmos/authz/tx'
 import { from, to } from '../../proto/tests/utils'
-import { JSONOptions } from '../../proto/tests/common'
+import { JSONOptions } from '../../registry/registry'
 
 const msgType = 'cosmos-sdk/MsgSend'
 

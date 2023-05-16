@@ -11,7 +11,7 @@ import {
 } from '../../proto/evmos/erc20/erc20'
 
 import { from, to, denom, hex, ibcDenom } from '../../proto/tests/utils'
-import { JSONOptions } from '../../proto/tests/common'
+import { JSONOptions } from '../../registry/registry'
 
 describe('test ERC20 Module message generation', () => {
   it('correctly wraps msgConvertCoin', () => {

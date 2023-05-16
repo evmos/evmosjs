@@ -14,7 +14,7 @@ import {
   createStdSignDocFromProto,
   SIGN_DIRECT,
 } from './transaction'
-import { JSONOptions } from '../proto/tests/common'
+import { JSONOptions } from '../registry/registry'
 
 import {
   from,
