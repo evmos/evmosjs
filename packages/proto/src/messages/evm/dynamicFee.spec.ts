@@ -2,7 +2,7 @@ import { createDynamicFeeExtension } from './dynamicFee'
 
 import { ExtensionOptionDynamicFeeTx } from '../../proto/ethermint/types/dynamicFee'
 
-import { JSONOptions } from '../../proto/tests/common'
+import { JSONOptions } from '../../registry/registry'
 
 describe('test DynamicFeeExtension message generation', () => {
   it('correctly wraps dynamic fee extension', () => {

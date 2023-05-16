@@ -16,7 +16,7 @@ import { PubKey } from '../proto/ethermint/crypto/keys.js'
 import { PubKey as SECP256k1 } from '../proto/cosmos/crypto/secp256k1/keys.js'
 import { SignMode } from '../proto/cosmos/transactions/signing.js'
 import { AminoTypes } from '../amino/registry.js'
-import { convertProtoMessageGeneratedToObject } from '../amino/objectConverter.js'
+import { convertProtoMessageToObject } from '../amino/objectConverter.js'
 
 import { createAnyMessage, MessageGenerated } from '../messages/common.js'
 
@@ -35,8 +35,8 @@ export function keccak256ToBase64(content: Uint8Array) {
 // Converts an array of Protobuf MessageGenerated
 // objects to Amino representations using the registry.
 export function convertProtoMessagesToAmino(protoMessages: MessageGenerated[]) {
-  return protoMessages.map((protoMsg) => {
-    const protoObject = convertProtoMessageGeneratedToObject(protoMsg)
+  return protoMessages.map((wrappedProtoMsg) => {
+    const protoObject = convertProtoMessageToObject(wrappedProtoMsg.message)
     return AminoTypes.toAmino(protoObject)
   })
 }

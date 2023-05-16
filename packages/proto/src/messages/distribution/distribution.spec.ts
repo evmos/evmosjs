@@ -11,7 +11,7 @@ import {
 } from '../../proto/cosmos/distribution/tx'
 
 import { from, to, val } from '../../proto/tests/utils'
-import { JSONOptions } from '../../proto/tests/common'
+import { JSONOptions } from '../../registry/registry'
 
 describe('test Distribution Module message generation', () => {
   it('correctly wraps msgWithdrawDelegatorReward', () => {

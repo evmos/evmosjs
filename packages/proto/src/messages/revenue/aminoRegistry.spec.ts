@@ -5,7 +5,7 @@ import {
   MsgUpdateRevenue,
 } from '../../proto/evmos/revenue/tx'
 import { createAminoConverter } from '../../amino/objectConverter'
-import { expectEqualDefaultAminoConverters } from '../../../testutils/compareAminoRegistry'
+import { expectEqualsDefaultAminoConverters } from '../../../testutils/compareAminoRegistry'
 
 describe('test revenue amino converters', () => {
   it('creates expected amino converters', () => {
@@ -16,6 +16,6 @@ describe('test revenue amino converters', () => {
       ...createAminoConverter(MsgUpdateRevenue, 'evmos/MsgUpdateRevenue'),
     }
 
-    expectEqualDefaultAminoConverters(aminoConverters, expAminoConverters)
+    expectEqualsDefaultAminoConverters(aminoConverters, expAminoConverters)
   })
 })

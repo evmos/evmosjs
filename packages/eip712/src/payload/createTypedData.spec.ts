@@ -5,11 +5,11 @@ import flattenPayload from './flattenPayload.js'
 
 import TestUtils from '../tests/utils'
 
-const { msgSend, chainId } = TestUtils
+const { aminoMsgSend, chainId } = TestUtils
 
 describe('eip-712 TypedData generation unit tests', () => {
   it('correctly generates TypedData given StdSignDocs', () => {
-    const aminoMsgs = [msgSend, msgSend]
+    const aminoMsgs = [aminoMsgSend, aminoMsgSend]
     const stdSignDoc = TestUtils.createStdSignDoc(aminoMsgs)
     const stdSignDocCopy = JSON.parse(JSON.stringify(stdSignDoc))
 

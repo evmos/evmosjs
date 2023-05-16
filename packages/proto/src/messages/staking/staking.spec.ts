@@ -18,7 +18,7 @@ import {
 import { PubKey } from '../../proto/cosmos/crypto/ed25519/keys'
 
 import { from, val, val2, denom } from '../../proto/tests/utils'
-import { JSONOptions } from '../../proto/tests/common'
+import { JSONOptions } from '../../registry/registry'
 
 describe('test Staking Module message generation', () => {
   it('correctly wraps MsgDelegate', () => {

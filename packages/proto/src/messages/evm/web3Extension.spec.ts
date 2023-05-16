@@ -3,7 +3,7 @@ import { createWeb3Extension } from './web3Extension'
 import { ExtensionOptionsWeb3Tx } from '../../proto/ethermint/types/web3'
 
 import { from } from '../../proto/tests/utils'
-import { JSONOptions } from '../../proto/tests/common'
+import { JSONOptions } from '../../registry/registry'
 
 describe('test Web3Extension message generation', () => {
   it('correctly wraps web3Extension', () => {

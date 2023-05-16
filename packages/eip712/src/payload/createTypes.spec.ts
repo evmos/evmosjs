@@ -5,7 +5,7 @@ import { payloadMsgFieldForIndex } from './flattenPayload'
 import { JSONObject } from './types'
 import TestUtils from '../tests/utils'
 
-const { msgSend } = TestUtils
+const msgSend = TestUtils.aminoMsgSend
 
 // TODO: Test code coverage and cover missing lines
 
@@ -54,8 +54,7 @@ const expectCreateTypesToThrow = (msgs: JSONObject[]) => {
 
 describe('test eip-712 type generation from payload', () => {
   it('generates types for a single-message payload', () => {
-    const msgs = [msgSend]
-    const types = createEIP712Types(msgs)
+    const types = createEIP712Types([msgSend])
 
     console.log(types)
 
@@ -107,8 +106,7 @@ describe('test eip-712 type generation from payload', () => {
   })
 
   it('handles identical duplicate types', () => {
-    const msgSendJSON = msgSend
-    const types = createEIP712Types([msgSendJSON, msgSendJSON])
+    const types = createEIP712Types([msgSend, msgSend])
 
     const expTxTypes = [
       {
@@ -162,13 +160,11 @@ describe('test eip-712 type generation from payload', () => {
   })
 
   it('handles non-identical duplicate types', () => {
-    const msgJSON = msgSend
-
     // Change amount to be a numeric type instead of a string.
-    const modifiedMsgJSON = JSON.parse(JSON.stringify(msgJSON))
-    modifiedMsgJSON.value.amount.amount = 100
+    const modifiedMsgSend = JSON.parse(JSON.stringify(msgSend))
+    modifiedMsgSend.value.amount.amount = 100
 
-    const types = createEIP712Types([msgJSON, modifiedMsgJSON])
+    const types = createEIP712Types([msgSend, modifiedMsgSend])
 
     const expTxTypes = [
       {
@@ -342,11 +338,10 @@ describe('test eip-712 types error handling', () => {
   })
 
   it('errors on reaching the max number of duplicates', () => {
-    const msgSendJSON = msgSend
     const msgJSONs: JSONObject[] = Array(MAX_DUPL_TYPEDEFS)
 
     for (let i = 0; i < MAX_DUPL_TYPEDEFS + 1; i++) {
-      const uniqueJSON = JSON.parse(JSON.stringify(msgSendJSON))
+      const uniqueJSON = JSON.parse(JSON.stringify(msgSend))
       uniqueJSON[`${i}`] = ''
 
       msgJSONs[i] = uniqueJSON

@@ -72,7 +72,7 @@ class TestingClient {
     return Buffer.from(bytes).toString('base64')
   }
 
-  get msgSend() {
+  get aminoMsgSend() {
     const { denom } = this
     const fromAddress = this.addr1
     const toAddress = this.addr2

@@ -10,6 +10,8 @@ export * from './revenue/index.js'
 // TODO: Find out why export * from './staking' doesn't work
 export * from './staking/staking.js'
 export * from './staking/validator.js'
+export * from './staking/registry.js'
 export * from './transactions/index.js'
 export * from './vesting/index.js'
 export * from './common.js'
+export * from './baseRegistry.js'
