@@ -8,10 +8,7 @@ export const newType = (name: string, type: string): EIP712Type => ({
   type,
 })
 
-/**
- * Returns whether the given types are equivalent.
- * CONTRACT: Types must be in the same sorted order.
- */
+// Contract - Types must be in the same sorted order.
 export const typesAreEqual = (types1: EIP712Type[], types2: EIP712Type[]) => {
   if (types1.length !== types2.length) {
     return false
@@ -27,4 +24,16 @@ export const typesAreEqual = (types1: EIP712Type[], types2: EIP712Type[]) => {
   }
 
   return true
+}
+
+// Adjusts the type definition by converting it to an array
+// if isArray is true.
+export const typeArrayAdjusted = (
+  typeDef: string,
+  isArray: boolean | undefined,
+) => {
+  if (isArray) {
+    return `${typeDef}[]`
+  }
+  return typeDef
 }

@@ -1,6 +1,5 @@
-import { createMsgSend as protoMsgSend } from '@evmos/proto'
-import { generateTypes, createMsgSend, MSG_SEND_TYPES } from '@evmos/eip712'
-import { createTransactionPayload, TxContext } from '../base.js'
+import { createMsgSend as protoCreateMsgSend } from '@evmos/proto'
+import { newCreateTransactionPayload, TxContext } from '../base.js'
 
 export interface MsgSendParams {
   destinationAddress: string
@@ -8,24 +7,8 @@ export interface MsgSendParams {
   denom: string
 }
 
-const createEIP712MsgSend = (context: TxContext, params: MsgSendParams) => {
-  const types = generateTypes(MSG_SEND_TYPES)
-
-  const message = createMsgSend(
-    params.amount,
-    params.denom,
-    context.sender.accountAddress,
-    params.destinationAddress,
-  )
-
-  return {
-    types,
-    message,
-  }
-}
-
-const createCosmosMsgSend = (context: TxContext, params: MsgSendParams) => {
-  return protoMsgSend(
+const createMsgSend = (context: TxContext, params: MsgSendParams) => {
+  return protoCreateMsgSend(
     context.sender.accountAddress,
     params.destinationAddress,
     params.amount,
@@ -46,8 +29,8 @@ const createCosmosMsgSend = (context: TxContext, params: MsgSendParams) => {
  *
  */
 export const createTxMsgSend = (context: TxContext, params: MsgSendParams) => {
-  const typedData = createEIP712MsgSend(context, params)
-  const cosmosMsg = createCosmosMsgSend(context, params)
-
-  return createTransactionPayload(context, typedData, cosmosMsg)
+  const msgSend = createMsgSend(context, params)
+  return newCreateTransactionPayload(context, msgSend)
+  // Works with multiple messages
+  // return newCreateTransactionPayload(context, [msgSend, msgSend])
 }

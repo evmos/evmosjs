@@ -32,7 +32,7 @@ const addMsgTypedef = (types: JSONObject, newType: EIP712Type) => {
   types.Tx.push(newType)
 }
 
-const createEIP712Types = (flattenedPayload: FlattenPayloadResponse) => {
+const eip712Types = (flattenedPayload: FlattenPayloadResponse) => {
   const { numMessages, payload } = flattenedPayload
   const types = createBaseTypes()
 
@@ -48,4 +48,4 @@ const createEIP712Types = (flattenedPayload: FlattenPayloadResponse) => {
   return types as JSONObject
 }
 
-export default createEIP712Types
+export default eip712Types

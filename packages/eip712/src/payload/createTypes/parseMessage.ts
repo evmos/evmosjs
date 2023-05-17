@@ -1,5 +1,10 @@
 import { JSONObject } from '../types.js'
-import { EIP712Type, newType, typesAreEqual } from '../eip712Types.js'
+import {
+  EIP712Type,
+  newType,
+  typeArrayAdjusted,
+  typesAreEqual,
+} from '../eip712Types.js'
 
 const TYPE_PREFIX = 'Type'
 const ROOT_PREFIX = '_'
@@ -20,7 +25,7 @@ interface ParseFieldParams {
 
 // Gets the root type definition for a message:
 // e.g. "MsgSend" for "cosmos-sdk/MsgSend" payload messages.
-const getMsgRootTypedef = (msg: JSONObject) => {
+const msgRootTypedef = (msg: JSONObject) => {
   const { type } = msg
   if (typeof type !== 'string') {
     throw new TypeError(`field 'type' missing from msg: ${msg}`)
@@ -35,7 +40,7 @@ const getMsgRootTypedef = (msg: JSONObject) => {
 // Gets the type as a sanitized string, since Geth does not accept
 // complex types.
 // _.foo.bar -> TypeFooBar
-const getSanitizedType = (typeDef: string) => {
+const typeSanitized = (typeDef: string) => {
   let sanitized = ''
   const parts = typeDef.split('.')
 
@@ -51,18 +56,6 @@ const getSanitizedType = (typeDef: string) => {
   })
 
   return sanitized
-}
-
-// Adjusts the type definition by converting it to an array
-// if isArray is true.
-const getArrayAdjustedType = (
-  typeDef: string,
-  isArray: boolean | undefined,
-) => {
-  if (isArray) {
-    return `${typeDef}[]`
-  }
-  return typeDef
 }
 
 // Parses a payload object field as an array by unwrapping it
@@ -93,7 +86,7 @@ const parseFieldAsArray = (params: ParseFieldParams) => {
 
 // Gets the EIP-712 type for a primitive value.
 // Returns undefined for objects or arrays.
-const getEthPrimitiveType = (val: any) => {
+const typeAsEthPrimitive = (val: any) => {
   switch (typeof val) {
     case 'string':
       return 'string'
@@ -110,13 +103,13 @@ const getEthPrimitiveType = (val: any) => {
 // the corresponding EIP-712 type if successful, and undefined otherwise.
 const parseFieldAsPrimitive = (params: ParseFieldParams) => {
   const { key, value, isArray } = params
-  let typeDef = getEthPrimitiveType(value)
+  let typeDef = typeAsEthPrimitive(value)
 
   if (!typeDef) {
     return undefined
   }
 
-  typeDef = getArrayAdjustedType(typeDef, isArray)
+  typeDef = typeArrayAdjusted(typeDef, isArray)
 
   return newType(key, typeDef)
 }
@@ -140,19 +133,19 @@ const parseFieldAsJSON = (
     root,
     prefix: subPrefix,
   })
-  typeDef = getSanitizedType(typeDef)
-  typeDef = getArrayAdjustedType(typeDef, isArray)
+  typeDef = typeSanitized(typeDef)
+  typeDef = typeArrayAdjusted(typeDef, isArray)
 
   return newType(key, typeDef)
 }
 
 // Returns the type definition for the given prefix
 // depending on whether it's a root prefix.
-const getRootAdjustedTypedef = (prefix: string, root: string) => {
+const rootAdjustedTypedef = (prefix: string, root: string) => {
   if (prefix === ROOT_PREFIX) {
     return root
   }
-  return getSanitizedType(prefix)
+  return typeSanitized(prefix)
 }
 
 const addTypesToRoot = (
@@ -191,7 +184,7 @@ const addTypesToRoot = (
 const addPayloadTypes = (payloadParams: ParseJSONParams) => {
   const { types, payload, root, prefix } = payloadParams
 
-  // Sort the payload keys in reverse-order for deterministic results.
+  // Sort the payload keys for deterministic results.
   const keys = Object.keys(payload)
   keys.sort()
   keys.reverse()
@@ -229,7 +222,7 @@ const addPayloadTypes = (payloadParams: ParseJSONParams) => {
     newTypes.push(typeForField)
   }
 
-  const typedef = getRootAdjustedTypedef(prefix, root)
+  const typedef = rootAdjustedTypedef(prefix, root)
 
   return addTypesToRoot(types, typedef, newTypes)
 }
@@ -239,7 +232,7 @@ const addMsgTypes = (types: JSONObject, msg: JSONObject) => {
     throw new TypeError(`expected JSON message, got ${msg}`)
   }
 
-  const root = getMsgRootTypedef(msg)
+  const root = msgRootTypedef(msg)
 
   return addPayloadTypes({
     types,

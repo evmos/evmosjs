@@ -175,8 +175,101 @@ describe('test protobuf intermediate object generators', () => {
   })
 })
 
-describe('test proto transaction generation against binary', () => {
-  it('correctly encodes body and authinfo fields', () => {
+describe('test amino transaction stdsigndoc representation', () => {
+  it('creates stdfee as expected', () => {
+    const gasLimit = 200000
+    const stdFee = createStdFee(amount, denom, gasLimit)
+
+    const expStdFee = {
+      amount: [
+        {
+          amount,
+          denom,
+        },
+      ],
+      gas: gasLimit.toString(),
+    }
+
+    expect(stdFee).toStrictEqual(expStdFee)
+  })
+
+  it('creates stdsigndoc as expected', () => {
+    const { memo, fee, gasLimit, sequence, accountNumber } = createTxParams
+    const msgSend = createMsgSend(from, to, amount, denom)
+
+    const stdFee = createStdFee(fee, denom, gasLimit)
+    const stdSignDoc = createStdSignDocFromProto(
+      [msgSend],
+      stdFee,
+      chainId,
+      memo,
+      sequence,
+      accountNumber,
+    )
+
+    const expStdSignDoc = {
+      chain_id: chainId,
+      account_number: accountNumber.toString(),
+      sequence: sequence.toString(),
+      fee: stdFee,
+      msgs: [
+        {
+          type: 'cosmos-sdk/MsgSend',
+          value: {
+            from_address: from,
+            to_address: to,
+            amount: [
+              {
+                denom,
+                amount,
+              },
+            ],
+          },
+        },
+      ],
+      memo,
+    }
+
+    expect(stdSignDoc).toStrictEqual(expStdSignDoc)
+  })
+
+  it('creates stdsigndigest as expected', () => {
+    const { memo, fee, gasLimit, sequence, accountNumber } = createTxParams
+    const msgSend = createMsgSend(from, to, amount, denom)
+
+    const tx = createTransaction(
+      msgSend,
+      memo,
+      fee,
+      denom,
+      gasLimit,
+      '',
+      '',
+      sequence,
+      accountNumber,
+      chainId,
+    )
+
+    const stdSignDigest = tx.legacyAmino.signBytes
+
+    const expStdFee = createStdFee(fee, denom, gasLimit)
+    const expAminoMsgs = convertProtoMessagesToAmino([msgSend])
+    const expStdSignDoc = makeSignDoc(
+      expAminoMsgs,
+      expStdFee,
+      chainId,
+      memo,
+      accountNumber,
+      sequence,
+    )
+    const expStdSignDigest = keccak256ToBase64(serializeSignDoc(expStdSignDoc))
+
+    expect(stdSignDigest).toStrictEqual(expStdSignDigest)
+  })
+})
+
+describe('test proto transaction to binary', () => {
+  it('encodes body and authinfo to binary', () => {
     const msg = createMsgSend(
       'ethm1tfegf50n5xl0hd5cxfzjca3ylsfpg0fned5gqm',
       'ethm1tfegf50n5xl0hd5cxfzjca3ylsfpg0fned5gqm',

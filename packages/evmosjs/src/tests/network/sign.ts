@@ -71,6 +71,10 @@ export const signEIP712 = (
   if (extensionParams) {
     throw new Error('extensions are not supported with eip-712')
   }
+  if (!tx.eipToSign) {
+    throw new Error('eip712 typed data is undefined')
+  }
+
   const digest = eip712Digest(tx.eipToSign)
   const signature = signDigest32(digest)
 
