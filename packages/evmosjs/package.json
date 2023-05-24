@@ -1,7 +1,7 @@
 {
   "name": "evmosjs",
   "description": "JS and TS libs for Evmos",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
