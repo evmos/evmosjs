@@ -6,9 +6,8 @@ on:
     # The branches below must be a subset of the branches above
     branches: [main]
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
-    if: env.GIT_DIFF
     steps:
       - uses: actions/checkout@v2
 
@@ -25,9 +24,11 @@ jobs:
 
       - name: Install modules
         run: npm install
+        if: env.GIT_DIFF
 
       - name: Build and link packages
         run: npm run build
+        if: env.GIT_DIFF
 
       - name: Start Docker local node
         run: >-
@@ -36,9 +37,11 @@ jobs:
           docker create -p 1317:1317 -p 8545:8545 --name evmos -t evmosjs-test &&
           docker start evmos &&
           cd ../../../..
+        if: env.GIT_DIFF
 
       - name: Wait for Docker to spin up
-        run: sleep 30
+        run: sleep 30s
 
       - name: Run tests
         run: npm run test
+        if: env.GIT_DIFF
