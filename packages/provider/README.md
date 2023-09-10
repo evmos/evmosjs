@@ -30,7 +30,7 @@ const main = async () => {
     // query accounts
     data = await app.auth.accounts({
       'pagination.count_total': true,
-      'pagination.limit': 3,
+      'pagination.limit': '3',
     })
     console.log('accounts = ', data)
   }
@@ -38,7 +38,7 @@ const main = async () => {
   {
     // query account balances
     data = await app.bank.allBalances(address, {
-      'pagination.limit': 10,
+      'pagination.limit': '10',
     })
     console.log(`${address} all balances = `, data)
   }
@@ -53,7 +53,7 @@ const main = async () => {
   try {
     // a invalid query account balances for error
     data = await app.bank.allBalances(address + 'ERROR', {
-      'pagination.limit': 10,
+      'pagination.limit': '10',
     })
   } catch (error) {
     console.log('app.bank.allBalances error = ', error)
@@ -62,7 +62,7 @@ const main = async () => {
   try {
     const errBaseUrlApp = new App({ baseURL: 'http://127.0.0.1:12345' })
     await errBaseUrlApp.bank.allBalances(address, {
-      'pagination.limit': 10,
+      'pagination.limit': '10',
     })
   } catch (error) {
     console.log('err base url app error = ', error)
