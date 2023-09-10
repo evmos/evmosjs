@@ -58,27 +58,16 @@ Note that Yarn v1 is not supported ([see explanation](https://docs.buf.build/bsr
 Query the account number, sequence, and pubkey for a given address.
 
 ```ts
-import { generateEndpointAccount } from '@evmos/provider'
+import { App } from '@evmos/provider'
 
-const address = 'evmos1...'
+const address = 'evmos1qqqqhe5pnaq5qq39wqkn957aydnrm45sdn8583'
 
 // Find node urls for either mainnet or testnet here:
 // https://docs.evmos.org/develop/api/networks.
-const nodeUrl = '...'
-const queryEndpoint = `${nodeUrl}${generateEndpointAccount(address)}`
+const baseURL = 'https://rest.bd.evmos.org:1317'
+const app = new App({ baseURL })
 
-const restOptions = {
-  method: 'GET',
-  headers: { 'Content-Type': 'application/json' },
-}
-
-// Note that the node will return a 400 status code if the account does not exist.
-const rawResult = await fetch(
-  queryEndpoint,
-  restOptions,
-)
-
-const result = await rawResult.json()
+const account = await app.auth.account(address)
 
 // The response format is available at @evmos/provider/rest/account/AccountResponse.
 // Note that the `pub_key` will be `null` if the address has not sent any transactions.

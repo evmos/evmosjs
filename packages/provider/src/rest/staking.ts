@@ -19,7 +19,7 @@ export function generateEndpointGetValidators() {
 }
 
 /* eslint-disable camelcase */
-export interface Validator {
+interface Validator {
   commission: {
     commission_rates: {
       max_change_rate: string

@@ -37,6 +37,7 @@ Ref: https://keepachangelog.com/en/1.0.0/
 ## Unreleased
 
 - (proto)[#166](https://github.com/evmos/evmosjs/pull/166) Expose DynamicFeeExtension Protobuf message
+- (rest)[#180](https://github.com/evmos/evmosjs/pull/180) Implement evmos and cometbft rest interfaces for us to query information about the chain
 
 ## evmosjs v0.3.3
 
