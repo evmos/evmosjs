@@ -1,6 +1,8 @@
 # evmosjs
 
-JS and TS libs for Evmos.
+> ⚠️ This repository is no longer maintained. Many of the features are no longer working due to changes in the [Evmos protocol](https://github.com/evmos/evmos) that were not mirrored in this repository.
+>
+> Also we encourage builders to interact with the protocol using [EVM Extensions](https://docs.evmos.org/develop/smart-contracts/evm-extensions) instead of building complex Cosmos transactions. EVM Extensions are basically precompiled stateful smart contracts. You can interact with them the same way you interact with EVM Solidity smart contracts.
 
 ## Installation
 
