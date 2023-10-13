@@ -10,7 +10,7 @@ export interface CounterParty {
 }
 
 /* eslint-disable camelcase */
-export interface Channel {
+interface Channel {
   state: string
   ordering: string
   counterparty: CounterParty
